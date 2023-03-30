@@ -1,0 +1,108 @@
+BACKUP ~infinity_ui/backup~
+AUTHOR ~Pecca~
+VERSION ~v0.1~
+
+LANGUAGE
+	~English~ ~infinity_ui/tra~ ~infinity_ui/tra/english.tra~
+
+
+/////////////////////////////////////////////////////////////////////////////////
+///  CORE COMPONENT
+/////////////////////////////////////////////////////////////////////////////////
+
+BEGIN @1000
+
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+
+COPY ~infinity_ui/content~ ~override~
+
+COPY ~infinity_ui/language~ ~override~
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+///  TRANSPARENT TOOLTIP BACKGROUND
+/////////////////////////////////////////////////////////////////////////////////
+
+BEGIN @1002
+
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+
+COPY ~infinity_ui/content-tooltip~ ~override~
+
+	
+/////////////////////////////////////////////////////////////////////////////////
+///  UPDATE DIALOG.TLK STRINGS
+/////////////////////////////////////////////////////////////////////////////////
+
+BEGIN @1001
+
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+
+STRING_SET ~23084~ @101
+
+
+/////////////////////////////////////////////////////////////////////////////////
+///  QUICKSAVE SLOTS NUMBER
+/////////////////////////////////////////////////////////////////////////////////
+
+BEGIN ~1~
+
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+
+SUBCOMPONENT @1003
+
+COPY_EXISTING ~savename.2da~ ~override~
+	SET_2DA_ENTRY 1 3 4 1
+
+
+BEGIN ~2~
+
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+
+SUBCOMPONENT @1003
+
+COPY_EXISTING ~savename.2da~ ~override~
+	SET_2DA_ENTRY 1 3 4 2
+
+	
+BEGIN ~3~
+
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+
+SUBCOMPONENT @1003
+
+COPY_EXISTING ~savename.2da~ ~override~
+	SET_2DA_ENTRY 1 3 4 3
+	
+
+BEGIN ~4~
+
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+
+SUBCOMPONENT @1003
+
+COPY_EXISTING ~savename.2da~ ~override~
+	SET_2DA_ENTRY 1 3 4 4
+	
+	
+BEGIN ~5~
+
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+
+SUBCOMPONENT @1003
+
+COPY_EXISTING ~savename.2da~ ~override~
+	SET_2DA_ENTRY 1 3 4 5
+	
+	
+BEGIN ~6~
+
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+
+SUBCOMPONENT @1003
+
+COPY_EXISTING ~savename.2da~ ~override~
+	SET_2DA_ENTRY 1 3 4 6
+
+	
