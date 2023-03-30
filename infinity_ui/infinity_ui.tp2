@@ -18,6 +18,12 @@ COPY ~infinity_ui/content~ ~override~
 
 COPY ~infinity_ui/language~ ~override~
 
+// Try to enable EEex's B3Scale module
+ACTION_IF MOD_IS_INSTALLED ~EEex.tp2~ ~0~ AND FILE_EXISTS ~override/EEex_Modules.lua~ BEGIN
+	COPY ~override/EEex_Modules.lua~ ~override~
+		REPLACE_TEXTUALLY ~^\([ %TAB%]+\["B3Scale"\][ %TAB%]+=[ %TAB%]+\)false~ ~\1true~
+	BUT_ONLY
+END
 
 
 /////////////////////////////////////////////////////////////////////////////////
