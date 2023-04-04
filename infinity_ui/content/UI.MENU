@@ -11967,7 +11967,7 @@ menu
 		--	B3Scale_SetWidth(rgSetUIZoomWidth())
 		--end
 		
-		if EEex_Active then
+		if EEex_Active and EEex_Modules['B3Scale'] then
 			B3Scale_SetPercentage(RgSettingEEexZoomUI/10)
 		end
 		
@@ -38661,7 +38661,7 @@ menu
 	--}
 	text
 	{
-		enabled "EEex_Active"
+		enabled "EEex_Active and EEex_Modules['B3Scale']"
 		area		402 560 200 47
 		--area		852 329 200 47
 		text "EEex UI Zoom"
@@ -38674,7 +38674,7 @@ menu
 	}
 	slider
 	{
-		enabled "EEex_Active"
+		enabled "EEex_Active and EEex_Modules['B3Scale']"
 		area 614 560 200 47
 		--area 1066 329 200 47
 		position "RgSettingEEexZoomUI"
@@ -38695,7 +38695,7 @@ menu
 	}
 	text
 	{
-		enabled "EEex_Active"
+		enabled "EEex_Active and EEex_Modules['B3Scale']"
 		area		614 607 200 47
 		--area		1066 376 200 47
 		text lua "RgSettingEEexZoomUI*10 .. '%'"
