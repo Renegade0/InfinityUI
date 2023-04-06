@@ -1636,7 +1636,7 @@ menu
 		text lua "listClassLevels[2][1]"
 		text style 'normal'
 		text align left center
-		enabled "characterViewable"
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil"
 	}
 	label
 	{
@@ -10335,6 +10335,11 @@ menu
 	
 	onOpen
 	"
+		if (rgCharSoundCancel == 1) then
+			rgCharSoundCancel = 0
+			Infinity_PopMenu('CHARACTER_COLOR',0,0)
+		end
+	
 		Infinity_UpdateLuaStats()
 		
 		SLIDER_color_hair = characters[id].colors.hair
@@ -13159,23 +13164,23 @@ function unmemorizeMageSpell(level,slot)
 	showMageMemorizationFlash = false
 	--mageScreen:UnmemorizeSpell( bottomSpells[slot].level, bottomSpells[slot].memorizedIndex )
 	
-	if level == 1 then
+	if level == 1 and rgBottomSpells1[slot] then
 		mageScreen:UnmemorizeSpell( rgBottomSpells1[slot].level, rgBottomSpells1[slot].memorizedIndex )
-	elseif level == 2 then                                                     
+	elseif level == 2 and rgBottomSpells2[slot] then                                                     
 		mageScreen:UnmemorizeSpell( rgBottomSpells2[slot].level, rgBottomSpells2[slot].memorizedIndex )
-	elseif level == 3 then                                                     
+	elseif level == 3 and rgBottomSpells3[slot] then                                                     
 		mageScreen:UnmemorizeSpell( rgBottomSpells3[slot].level, rgBottomSpells3[slot].memorizedIndex )
-	elseif level == 4 then                                                     
+	elseif level == 4 and rgBottomSpells4[slot] then                                                     
 		mageScreen:UnmemorizeSpell( rgBottomSpells4[slot].level, rgBottomSpells4[slot].memorizedIndex )
-	elseif level == 5 then                                                     
+	elseif level == 5 and rgBottomSpells5[slot] then                                                     
 		mageScreen:UnmemorizeSpell( rgBottomSpells5[slot].level, rgBottomSpells5[slot].memorizedIndex )
-	elseif level == 6 then                                                     
+	elseif level == 6 and rgBottomSpells6[slot] then                                                     
 		mageScreen:UnmemorizeSpell( rgBottomSpells6[slot].level, rgBottomSpells6[slot].memorizedIndex )
-	elseif level == 7 then                                                     
+	elseif level == 7 and rgBottomSpells7[slot] then                                                     
 		mageScreen:UnmemorizeSpell( rgBottomSpells7[slot].level, rgBottomSpells7[slot].memorizedIndex )
-	elseif level == 8 then                                                     
+	elseif level == 8 and rgBottomSpells8[slot] then                                                     
 		mageScreen:UnmemorizeSpell( rgBottomSpells8[slot].level, rgBottomSpells8[slot].memorizedIndex )
-	elseif level == 9 then                                                     
+	elseif level == 9 and rgBottomSpells9[slot] then                                                     
 		mageScreen:UnmemorizeSpell( rgBottomSpells9[slot].level, rgBottomSpells9[slot].memorizedIndex )
 	end
 	Infinity_PlaySound('GAM_44')
@@ -13292,7 +13297,7 @@ function rgGetContMemorizedText()
 end
 
 function rgGetBottomSpell(list,firstSpell,column)
-	return list[firstSpell+column]
+	if list[firstSpell+column] ~= nil then return list[firstSpell+column] else return {} end
 end
 		
 
@@ -13617,7 +13622,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][1].icon ~= null"
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -13625,12 +13630,14 @@ menu
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
 				area	0 0 50 50
 				bam	lua "rgBookSpells[rowNumber][1].icon"
 				align	center center
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][1].name)"
 				text style "rg_normal_spell"
@@ -13641,7 +13648,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][2].icon ~= null"
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -13649,12 +13656,14 @@ menu
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
 				area	0 0 50 50
 				bam	lua "rgBookSpells[rowNumber][2].icon"
 				align	center center
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][2].name)"
 				text style "rg_normal_spell"
@@ -13665,7 +13674,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][3].icon ~= null"
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -13673,12 +13682,14 @@ menu
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
 				area	0 0 50 50
 				bam	lua "rgBookSpells[rowNumber][3].icon"
 				align	center center
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][3].name)"
 				text style "rg_normal_spell"
@@ -14201,7 +14212,7 @@ menu
 		"
 			local level = rgBottomSpells[currentBottomSpell][3]
 			local firstSpell = rgBottomSpells[currentBottomSpell][4]
-			if cellNumber == 0 then
+			if cellNumber == 1 then
 				setMageBookLevel(level)
 			else
 				rgBottomSpellLeftClick(level,cellNumber+firstSpell-2)
@@ -15526,19 +15537,19 @@ end
 function unmemorizePriestSpell(level,slot)
 	showPriestMemorizationFlash = false
 	
-	if level == 1 then
+	if level == 1 and rgBottomSpells1[slot] then
 		priestScreen:UnmemorizeSpell( rgBottomSpells1[slot].level, rgBottomSpells1[slot].memorizedIndex )
-	elseif level == 2 then                                                     
+	elseif level == 2 and rgBottomSpells2[slot] then                                                     
 		priestScreen:UnmemorizeSpell( rgBottomSpells2[slot].level, rgBottomSpells2[slot].memorizedIndex )
-	elseif level == 3 then                                                     
+	elseif level == 3 and rgBottomSpells3[slot] then                                                     
 		priestScreen:UnmemorizeSpell( rgBottomSpells3[slot].level, rgBottomSpells3[slot].memorizedIndex )
-	elseif level == 4 then                                                     
+	elseif level == 4 and rgBottomSpells4[slot] then                                                     
 		priestScreen:UnmemorizeSpell( rgBottomSpells4[slot].level, rgBottomSpells4[slot].memorizedIndex )
-	elseif level == 5 then                                                     
+	elseif level == 5 and rgBottomSpells5[slot] then                                                     
 		priestScreen:UnmemorizeSpell( rgBottomSpells5[slot].level, rgBottomSpells5[slot].memorizedIndex )
-	elseif level == 6 then                                                     
+	elseif level == 6 and rgBottomSpells6[slot] then                                                    
 		priestScreen:UnmemorizeSpell( rgBottomSpells6[slot].level, rgBottomSpells6[slot].memorizedIndex )
-	elseif level == 7 then                                                     
+	elseif level == 7 and rgBottomSpells7[slot] then                                                 
 		priestScreen:UnmemorizeSpell( rgBottomSpells7[slot].level, rgBottomSpells7[slot].memorizedIndex )
 	end
 	Infinity_PlaySound('GAM_44')
@@ -15901,7 +15912,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][1].icon ~= null"
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -15909,12 +15920,14 @@ menu
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
 				area	0 0 50 50
 				bam	lua "rgBookSpells[rowNumber][1].icon"
 				align	center center
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][1].name)"
 				text style "rg_normal_spell"
@@ -15925,7 +15938,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][2].icon ~= null"
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -15933,12 +15946,14 @@ menu
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
 				area	0 0 50 50
 				bam	lua "rgBookSpells[rowNumber][2].icon"
 				align	center center
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][2].name)"
 				text style "rg_normal_spell"
@@ -15949,7 +15964,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][3].icon ~= null"
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -15957,12 +15972,14 @@ menu
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
 				area	0 0 50 50
 				bam	lua "rgBookSpells[rowNumber][3].icon"
 				align	center center
 			}
 			label
 			{
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][3].name)"
 				text style "rg_normal_spell"
@@ -16184,7 +16201,7 @@ menu
 			local level = rgBottomSpells[currentBottomSpell][3]
 			local firstSpell = rgBottomSpells[currentBottomSpell][4]
 			local slotid = cellNumber+firstSpell-2
-			if cellNumber == 0 then
+			if cellNumber == 1 then
 				setPriestBookLevel(level)
 			else
 				setPriestBookLevel(level)
@@ -17527,7 +17544,7 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
 				text lua "store.storeItems[rowNumber].value"
 				text style "rg_normal_small"
 				text color '$'
@@ -17535,7 +17552,7 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber] and store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
@@ -17546,14 +17563,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -17577,7 +17594,7 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+1] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
 				text lua "store.storeItems[rowNumber+1].value"
 				text style "rg_normal_small"
 				text color '$'
@@ -17585,7 +17602,7 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+1].valid == 0 and store.storeItems[rowNumber+1].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].valid == 0 and store.storeItems[rowNumber+1].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
@@ -17596,14 +17613,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+2] and store.storeItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+2] and store.storeItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -17627,7 +17644,7 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+2] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
 				text lua "store.storeItems[rowNumber+2].value"
 				text style "rg_normal_small"
 				text color '$'
@@ -17635,7 +17652,7 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+2].valid == 0 and store.storeItems[rowNumber+2].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+2] and store.storeItems[rowNumber+2].valid == 0 and store.storeItems[rowNumber+2].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
@@ -17646,14 +17663,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+3] and store.storeItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+3] and store.storeItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -17677,8 +17694,8 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
-				text lua "store.storeItems[rowNumber+3].value"
+				enabled "store.storeItems[rowNumber+3] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
+				text lua "store.storeItems[rowNumber+3] and store.storeItems[rowNumber+3].value"
 				text style "rg_normal_small"
 				text color '$'
 				text align center center
@@ -17696,14 +17713,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+4].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+4] and store.storeItems[rowNumber+4].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+4].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+4] and store.storeItems[rowNumber+4].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -17727,7 +17744,7 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+4] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
 				text lua "store.storeItems[rowNumber+4].value"
 				text style "rg_normal_small"
 				text color '$'
@@ -17735,7 +17752,7 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+4].valid == 0 and store.storeItems[rowNumber+4].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+4] and store.storeItems[rowNumber+4].valid == 0 and store.storeItems[rowNumber+4].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
@@ -17746,14 +17763,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+5].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+5].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -17777,7 +17794,7 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+5] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,6)"
 				text lua "store.storeItems[rowNumber+5].value"
 				text style "rg_normal_small"
 				text color '$'
@@ -17785,7 +17802,7 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+5].valid == 0 and store.storeItems[rowNumber+5].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].valid == 0 and store.storeItems[rowNumber+5].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
@@ -18071,19 +18088,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -18107,7 +18124,7 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
 				text lua "store.groupItems[rowNumber].value"
 				text style "rg_normal_small"
 				text color '$'
@@ -18116,7 +18133,7 @@ menu
 			label
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
-				enabled "store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
@@ -18127,19 +18144,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -18163,7 +18180,7 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
 				text lua "store.groupItems[rowNumber+1].value"
 				text style "rg_normal_small"
 				text color '$'
@@ -18172,7 +18189,7 @@ menu
 			label
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
-				enabled "store.groupItems[rowNumber+1].valid == 0  and store.groupItems[rowNumber+1].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0  and store.groupItems[rowNumber+1].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
@@ -18183,19 +18200,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -18219,7 +18236,7 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
 				text lua "store.groupItems[rowNumber+2].value"
 				text style "rg_normal_small"
 				text color '$'
@@ -18228,7 +18245,7 @@ menu
 			label
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
-				enabled "store.groupItems[rowNumber+2].valid == 0  and store.groupItems[rowNumber+2].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0  and store.groupItems[rowNumber+2].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
@@ -18239,19 +18256,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -18275,7 +18292,7 @@ menu
 			label
 			{
 				area 8 74 64 24
-				enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
 				text lua "store.groupItems[rowNumber+3].value"
 				text style "rg_normal_small"
 				text color '$'
@@ -18284,7 +18301,7 @@ menu
 			label
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
-				enabled "store.groupItems[rowNumber+3].valid == 0  and store.groupItems[rowNumber+3].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0  and store.groupItems[rowNumber+3].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
@@ -24689,7 +24706,7 @@ function rgGetJournalBestiaryEntry(text,row)
 	if rgMessageBoxLastRowNumber ~= row then
 		rgGotBestiaryEntryOnce = 0
 	end
-	if (string.match(text, Infinity_FetchString(14026))) then --Death
+	if (text ~= nil and string.match(text, Infinity_FetchString(14026))) then --Death
 		if (rgGotBestiaryEntryOnce == 0) then
 			text = string.gsub(text, "%^0x........", "")
 			text = string.gsub(text, ": " .. Infinity_FetchString(14026), "")
@@ -26225,6 +26242,7 @@ menu
 		createCharScreen:OnMenuButtonClick()
 		createCharScreen:OnDoneButtonClick()
 		createCharScreen:OnCancelButtonClick()
+		createCharScreen:OnDoneButtonClick()
 		"
 	}
 	
@@ -28402,7 +28420,7 @@ menu
 	}
 	button
 	{
-		enabled "chargen.levelingUp and rgGetGameEngine() == 2"
+		enabled "chargen.levelingUp and (rgGetGameEngine() == 2 or rgGetGameEngine() == 4)"
 		area 524 661 320 70
 		bam		rgdmbut1
 		ScaleToClip
@@ -28981,21 +28999,54 @@ menu
 	modal
 	align center center
 	ignoreesc
-	onOpen "
+	onOpen
+	"
+		Infinity_UpdateLuaStats()
+		
+		SLIDER_color_hair = characters[id].colors.hair
+		SLIDER_color_skin = characters[id].colors.skin
+		SLIDER_color_major = characters[id].colors.major
+		SLIDER_color_minor = characters[id].colors.minor
+		
+		SLIDER_color_hair_start = SLIDER_color_hair
+		SLIDER_color_skin_start = SLIDER_color_skin
+		SLIDER_color_major_start = SLIDER_color_major
+		SLIDER_color_minor_start = SLIDER_color_minor
+		
+		--rgCustomSound = 1
+		--currentChargenCustomSound = 1
+		
 		currentChargenCustomSound = rgCustomSound
 		prepareSounds(chargen.customSound)
 	"
+	onClose
+	"
+		if(SLIDER_color_hair_start ~= -1) then Infinity_SetHairColor(SLIDER_color_hair_start) end
+		if(SLIDER_color_skin_start ~= -1) then Infinity_SetSkinColor(SLIDER_color_skin_start) end
+		if(SLIDER_color_major_start ~= -1) then Infinity_SetMajorColor(SLIDER_color_major_start) end
+		if(SLIDER_color_minor_start ~= -1) then Infinity_SetMinorColor(SLIDER_color_minor_start) end
+	"
 	label
 	{
-		area 0 0 864 710
-		mosaic 'GUICGSND'
+		area	0 0 768 768
+		bam lua "rgGetAppearanceBackground()"
+		frame 0
+		scaleToClip
 	}
 	label
 	{
-		area	220 34 426 44
-		text	"SOUND_TITLE"
-		text style	title
+		area	597 0 768 768
+		bam lua "rgGetAppearanceBackground()"
+		frame 1
+		scaleToClip
 	}
+	label
+	{
+		area 146 36 1074 44
+		text "APPEARANCE_LABEL"
+		text style "button"
+	}
+	
 	list
 	{
 		column 
@@ -29003,56 +29054,299 @@ menu
 			width 100
 			label
 			{
-				area 0 0 384 18
+				area 0 0 -1 -1
+				bam rgdslct
+				sequence lua "rgGetSelectedHighlight(rowNumber, currentChargenCustomSound)"
+				ScaleToClip
 				text lua "getSoundStringRef(rowNumber, chargen.customSound)"
-				text style	"list"
+				text style	"normal_parchment"
 				pad 8 0 0 0
 			}
 		}
-		area 46 86 312 346
-		rowheight	18
+		area 926 146 338 440
+		hideHighlight
+		enabled "e:GetActiveEngine() == createCharScreen"
+		rowheight	30
 		table		"chargen.customSound"
 		var			"currentChargenCustomSound"
 		scrollbar	'rgdscrl1'
 		action
 		"
+			rgCustomSound = currentChargenCustomSound
 			createCharScreen:OnSoundItemSelect(chargen.customSound[currentChargenCustomSound].index-1)
 		"
 	}
-	text
+	label
 	{
-		area 398 90 434 505
-		text "SOUND_DESCRIPTION"
-		scrollbar 'rgdscrl1'
-		text style	normal
+		enabled "e:GetActiveEngine() == createCharScreen"
+		area	926 108 318 38
+		text	"SOUND_TITLE"
+		text style	'normal_parchment'
+		text align center top
+		text upper
 	}
 	button
 	{
-		area 84 452 230 40
-		bam GUIBUTMT
+		enabled "e:GetActiveEngine() == createCharScreen"
+		area 978 590 230 52
+		bam rgdwbut1
 		text "PLAY_SOUND_BUTTON"
 		text style "button"
+		text color '5'
+		scaleToClip
 		action "createCharScreen:OnPlayButtonClick()"
+	}
+	
+	
+	button
+	{
+		area 378 140 114 160
+		paperdoll 0
+	}
+	button
+	{
+		area 496 140 114 160
+		paperdoll 1
+	}
+	
+	label
+	{
+		enabled "characters[id].PC == 1"
+		area 854 332 42 42
+		colordisplay 6
+	}
+	label
+	{
+		enabled "characters[id].PC == 1"
+		area 854 408 42 42
+		colordisplay 3
+	}
+	label
+	{
+		area 854 524 42 42
+		colordisplay 2
+	}
+	label
+	{
+		area 854 598 42 42
+		colordisplay 1
+	}
+	
+	label
+	{
+		area 100 100 792 28
+		text "COLOR_CHOICES_TITLE"
+		text style "button"
+		text point 14
+	}
+	
+	label
+	{
+		enabled "characters[id].PC == 1"
+		area 100 300 792 30
+		text "HAIR_LABEL"
+		text style "normal"
+	}
+	slider
+	{
+		palette 6
+		enabled "characters[id].PC == 1"
+		area 100 330 754 44
+		bam	 'RGDSLDRS'
+		scaleToClip
+		position "SLIDER_color_hair"
+		sequence 0
+		frame	 1
+		settings lua "game:GetPaletteSize(6)"
+		action
+		"
+			Infinity_SetHairColor(SLIDER_color_hair)
+		"
+	}
+
+	label
+	{
+		enabled "characters[id].PC == 1"
+		area 100 374 792 32
+		text "SKIN_LABEL"
+		text style "normal"
+	}
+	slider
+	{
+		palette 3
+		enabled "characters[id].PC == 1"
+		area 100 406 754 44
+		bam	 'RGDSLDRS'
+		scaleToClip
+		position "SLIDER_color_skin"
+		sequence 0
+		frame	 1
+		settings lua "game:GetPaletteSize(3)"
+		action
+		"
+			Infinity_SetSkinColor(SLIDER_color_skin)
+		"
+	}
+	
+	label
+	{
+		area 100 462 792 28
+		text "CLOTHING_LABEL"
+		text style "button"
+		text point 14
+	}
+	
+	label
+	{
+		area 100 490 792 32
+		text "MAJOR_LABEL"
+		text style "normal"
+	}
+	slider
+	{
+		palette 2
+		area 100 522 754 44
+		bam	 'RGDSLDRS'
+		scaleToClip
+		position "SLIDER_color_major"
+		sequence 0
+		frame	 1
+		settings lua "game:GetPaletteSize(2)"
+		action
+		"
+			Infinity_SetMajorColor(SLIDER_color_major)
+		"
+	}
+	
+	label
+	{
+		area 100 566 792 32
+		text "MINOR_LABEL"
+		align center center
+		text style "normal"
+	}
+	slider
+	{
+		palette 1
+		area 100 598 754 44
+		bam	 'RGDSLDRS'
+		scaleToClip
+		position "SLIDER_color_minor"
+		sequence 0
+		frame	 1
+		settings lua "game:GetPaletteSize(1)"
+		action
+		"
+			Infinity_SetMinorColor(SLIDER_color_minor)
+		"
 	}
 	button
 	{
 		on escape
-		area 196 653 230 40
-		bam GUIBUTMT
-		text "BACK_BUTTON"
+		area 316 661 320 70
+		bam		rgdmbut1
+		ScaleToClip
+		text "CANCEL_BUTTON"
 		text style "button"
-		action "Infinity_PopMenu(); createCharScreen:OnCancelButtonClick()"
+		action
+		"
+			rgCharSoundCancel = 1
+			Infinity_PopMenu(); 
+			createCharScreen:OnCancelButtonClick()
+		"
 	}
 	button
 	{
 		on return
-		area 438 653 230 40
-		bam GUIBUTMT
+		area 732 661 320 70
+		bam		rgdmbut1
+		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
-		clickable lua "createCharScreen:IsDoneButtonClickable()"
-		action "Infinity_PopMenu(); createCharScreen:OnDoneButtonClick()"
+		action
+		"
+			--save settings
+			SLIDER_color_hair_start = SLIDER_color_hair
+			SLIDER_color_skin_start = SLIDER_color_skin
+			SLIDER_color_major_start = SLIDER_color_major
+			SLIDER_color_minor_start = SLIDER_color_minor
+			
+			if (e:GetActiveEngine() == createCharScreen) then
+				createCharScreen:OnDoneButtonClick()
+			end
+			
+			Infinity_PopMenu('CHARACTER_COLOR',0,0)
+		"
 	}
+	
+	--label
+	--{
+	--	area 0 0 864 710
+	--	mosaic 'GUICGSND'
+	--}
+	--label
+	--{
+	--	area	220 34 426 44
+	--	text	"SOUND_TITLE"
+	--	text style	title
+	--}
+	--list
+	--{
+	--	column 
+	--	{ 
+	--		width 100
+	--		label
+	--		{
+	--			area 0 0 384 18
+	--			text lua "getSoundStringRef(rowNumber, chargen.customSound)"
+	--			text style	"list"
+	--			pad 8 0 0 0
+	--		}
+	--	}
+	--	area 46 86 312 346
+	--	rowheight	18
+	--	table		"chargen.customSound"
+	--	var			"currentChargenCustomSound"
+	--	scrollbar	'rgdscrl1'
+	--	action
+	--	"
+	--		createCharScreen:OnSoundItemSelect(chargen.customSound[currentChargenCustomSound].index-1)
+	--	"
+	--}
+	--text
+	--{
+	--	area 398 90 434 505
+	--	text "SOUND_DESCRIPTION"
+	--	scrollbar 'rgdscrl1'
+	--	text style	normal
+	--}
+	--button
+	--{
+	--	area 84 452 230 40
+	--	bam GUIBUTMT
+	--	text "PLAY_SOUND_BUTTON"
+	--	text style "button"
+	--	action "createCharScreen:OnPlayButtonClick()"
+	--}
+	--button
+	--{
+	--	on escape
+	--	area 196 653 230 40
+	--	bam GUIBUTMT
+	--	text "BACK_BUTTON"
+	--	text style "button"
+	--	action "Infinity_PopMenu(); createCharScreen:OnCancelButtonClick()"
+	--}
+	--button
+	--{
+	--	on return
+	--	area 438 653 230 40
+	--	bam GUIBUTMT
+	--	text "DONE_BUTTON"
+	--	text style "button"
+	--	clickable lua "createCharScreen:IsDoneButtonClickable()"
+	--	action "Infinity_PopMenu(); createCharScreen:OnDoneButtonClick()"
+	--}
 }
 
 `
