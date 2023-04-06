@@ -25089,7 +25089,7 @@ function rgSetMessageBox()
 		
 		local x,y,w,h = Infinity_GetArea('rgMessagesRectUnlocked')
 		local screenWidth, screenHeight = Infinity_GetScreenSize()
-		if(y > screenHeight - 68 - h) then
+		if(y > screenHeight - 68 - h and RgIsModernHud == 0) then
 			adjustItemGroup({"rgMessagesHandleXLeftUnlocked","rgMessagesHandleXRightUnlocked","rgMessagesHandleDragUnlocked","rgMessagesHandleYUpUnlocked","rgMessagesHandleYDownUnlocked","rgMessagesRectUnlocked","rgWorldMessageBoxUnlocked","rgMessagesHandleDragDownUnlocked"},0,-68,0,0)
 		end
 		
