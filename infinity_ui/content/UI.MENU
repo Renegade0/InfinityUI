@@ -7761,7 +7761,11 @@ menu
 		--name 'rgRightSidebarL'
 		area 0 0 80 1
 	}
-	
+	label
+	{
+		name 'rightSidebarBackground'
+		area 0 0 1 1
+	}
 	
 	
 	
