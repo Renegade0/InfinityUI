@@ -17384,6 +17384,9 @@ function rgIsNthNumber(num,nth)
     end
 end
 function rgItemNameText(num)
+	rgItemName = store.groupItems[num].label
+end
+function rgInvItemNameText(num)
 	rgItemName = store.storeItems[num].label
 end
 function rgGetStoreItemQuantity(num)
@@ -17408,7 +17411,8 @@ menu
 	"
 		storeScreen:UpdateBuySellPanel()
 		rgItemName = ''
-		rgGroupItemCount = 0
+		rgInvItemName = ''
+		--rgGroupItemCount = 0
 	"
 	onClose 
 	"
@@ -17497,13 +17501,25 @@ menu
 		text style "normal"
 		align left center
 	}
+	label
+	{
+		area 380 10 200 50
+		text lua "rgInvItemName"
+		text style "normal"
+		align left center
+	}
 	
 	button
 	{
 		area 630 15 175 18
 		encumbrance
 	}
-	
+	label
+	{
+		area 701 2 34 46
+		bam rgdcontb
+		scaleToClip
+	}
 	
 	list
 	{
@@ -18323,15 +18339,20 @@ menu
 		action
 		"
 			storeGroupItemsVar = storeGroupItemsVar + cellNumber - 1
+			rgInvItemName = ''
 			if store.groupItems[storeGroupItemsVar].valid ~= 0 then
 				local selected = true
 				if(store.groupItems[storeGroupItemsVar].highlight == 1) then 
-					rgGroupItemCount = rgGroupItemCount - 2
+					--rgGroupItemCount = rgGroupItemCount - 2
 					selected = false 
 				end
 				storeScreen:SelectGroupItem( storeGroupItemsVar - 1,  selected)
-				storeScreen:SelectIdentifyItem( storeGroupItemsVar - 1,  selected)
-				rgGroupItemCount = rgGroupItemCount + 1
+				--storeScreen:SelectIdentifyItem( storeGroupItemsVar - 1,  selected)
+				--rgGroupItemCount = rgGroupItemCount + 1
+				rgInvItemName = store.groupItems[storeGroupItemsVar].label
+			end
+			if(store.groupItems[storeGroupItemsVar].highlight == 0) then 
+				rgInvItemName = ''
 			end
 		"
 		actionalt
@@ -18359,11 +18380,7 @@ menu
 		end
 		"
 	}
-
-
-
-
-
+	
 
 
 	--container
@@ -18371,77 +18388,354 @@ menu
 	{
 		column 
 		{ 
-			width 100
+			width 25
+			label 
+			{
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 0 0  80 110 
+				bam "RGDISLOT" 
+				ScaleToClip
+			}
+			label 
+			{
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 0 0  80 120 
+			}
 			label
 			{
-				area 8 0 64 60
-				bam STONSLOT
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 8 8 64 64
+				bam RGDSLOT
+				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
 				tint lua "store.groupItems[rowNumber].item.tint"
 				icon lua "store.groupItems[rowNumber].item.icon"
-				count lua "store.groupItems[rowNumber].item.count"
-				usages lua "store.groupItems[rowNumber].count"
-				align center center
+				count lua "store.groupItems[rowNumber].count"
+				usages lua "store.groupItems[rowNumber].item.usages"
+				align left top
 			}
 			label
 			{
-				area 80 0 200 60
-				text lua "store.groupItems[rowNumber].label"
-				text style "normal"
-				text align left center
+				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				text lua "rgGetGroupItemQuantity(rowNumber)"
+				text style	"rg_normal_small"
+				text align center center
 			}
 			label
 			{
-				area 300 0 62 60
-				enabled "not storeScreen:IsContainer()"
+				area 8 74 64 24
+				enabled "store.groupItems[rowNumber] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
 				text lua "store.groupItems[rowNumber].value"
-				text style "gold"
+				text style "rg_normal_small"
+				text color '$'
+				text align center center
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber].valid == 0"
-				area 0 0 436 60
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0 and rgIsNthNumber(rowNumber,4)"
+				area 0 0 -1 -1
 				rectangle 1
 				rectangle opacity 150
 			}
 		}
-		area 462 142 370 348
+		column 
+		{ 
+			width 25
+			label 
+			{
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 0 0  80 110 
+				bam "RGDISLOT" 
+				ScaleToClip
+			}
+			label 
+			{
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 0 0  80 120 
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 8 8 64 64
+				bam RGDSLOT
+				ScaleToClip
+				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber+1].highlight)"
+				tint lua "store.groupItems[rowNumber+1].item.tint"
+				icon lua "store.groupItems[rowNumber+1].item.icon"
+				count lua "store.groupItems[rowNumber+1].count"
+				usages lua "store.groupItems[rowNumber+1].item.usages"
+				align left top
+			}
+			label
+			{
+				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber+1) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				text lua "rgGetGroupItemQuantity(rowNumber+1)"
+				text style	"rg_normal_small"
+				text align center center
+			}
+			label
+			{
+				area 8 74 64 24
+				enabled "store.groupItems[rowNumber+1] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
+				text lua "store.groupItems[rowNumber+1].value"
+				text style "rg_normal_small"
+				text color '$'
+				text align center center
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0 and rgIsNthNumber(rowNumber,4)"
+				area 0 0 -1 -1
+				rectangle 1
+				rectangle opacity 150
+			}
+		}
+		column 
+		{ 
+			width 25
+			label 
+			{
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 0 0  80 110 
+				bam "RGDISLOT" 
+				ScaleToClip
+			}
+			label 
+			{
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 0 0  80 120 
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 8 8 64 64
+				bam RGDSLOT
+				ScaleToClip
+				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber+2].highlight)"
+				tint lua "store.groupItems[rowNumber+2].item.tint"
+				icon lua "store.groupItems[rowNumber+2].item.icon"
+				count lua "store.groupItems[rowNumber+2].count"
+				usages lua "store.groupItems[rowNumber+2].item.usages"
+				align left top
+			}
+			label
+			{
+				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber+2) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				text lua "rgGetGroupItemQuantity(rowNumber+2)"
+				text style	"rg_normal_small"
+				text align center center
+			}
+			label
+			{
+				area 8 74 64 24
+				enabled "store.groupItems[rowNumber+2] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
+				text lua "store.groupItems[rowNumber+2].value"
+				text style "rg_normal_small"
+				text color '$'
+				text align center center
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0 and rgIsNthNumber(rowNumber,4)"
+				area 0 0 -1 -1
+				rectangle 1
+				rectangle opacity 150
+			}
+		}
+		column 
+		{ 
+			width 25
+			label 
+			{
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 0 0  80 110 
+				bam "RGDISLOT" 
+				ScaleToClip
+			}
+			label 
+			{
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 0 0  80 120 
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				area 8 8 64 64
+				bam RGDSLOT
+				ScaleToClip
+				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber+3].highlight)"
+				tint lua "store.groupItems[rowNumber+3].item.tint"
+				icon lua "store.groupItems[rowNumber+3].item.icon"
+				count lua "store.groupItems[rowNumber+3].count"
+				usages lua "store.groupItems[rowNumber+3].item.usages"
+				align left top
+			}
+			label
+			{
+				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber+3) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				text lua "rgGetGroupItemQuantity(rowNumber+3)"
+				text style	"rg_normal_small"
+				text align center center
+			}
+			label
+			{
+				area 8 74 64 24
+				enabled "store.groupItems[rowNumber+3] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,4)"
+				text lua "store.groupItems[rowNumber+3].value"
+				text style "rg_normal_small"
+				text color '$'
+				text align center center
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0 and rgIsNthNumber(rowNumber,4)"
+				area 0 0 -1 -1
+				rectangle 1
+				rectangle opacity 150
+			}
+		}
+		area 636 74 394 480
 		enabled "storeScreen:IsCloseBagButtonClickable()"
 		hidehighlight
-		rowheight	60
+		rowheight	dynamic
 		table		"store.groupItems"
 		var			"storeGroupItemsVar"
-		rowbackground	 GUISTBK2
+		--rowbackground	 GUISTBK2
 		scrollbar 'rgdscrl1'
 		action
 		"
+			storeGroupItemsVar = storeGroupItemsVar + cellNumber - 1
+			rgInvItemName = ''
 			if store.groupItems[storeGroupItemsVar].valid ~= 0 then
 				local selected = true
-				if(store.groupItems[storeGroupItemsVar].highlight == 1) then selected = false end
+				if(store.groupItems[storeGroupItemsVar].highlight == 1) then 
+					--rgGroupItemCount = rgGroupItemCount - 2
+					selected = false 
+				end
 				storeScreen:SelectGroupItem( storeGroupItemsVar - 1,  selected)
+				--storeScreen:SelectIdentifyItem( storeGroupItemsVar - 1,  selected)
+				--rgGroupItemCount = rgGroupItemCount + 1
+				rgInvItemName = store.groupItems[storeGroupItemsVar].label
+			end
+			if(store.groupItems[storeGroupItemsVar].highlight == 0) then 
+				rgInvItemName = ''
 			end
 		"
 		actionalt
 		"
+			storeGroupItemsVar = storeGroupItemsVar + cellNumber - 1
+			Infinity_SetOffset('ITEM_DESCRIPTION',-290, 30)
 			showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
 		"
 		actionDbl
 		"
+		storeGroupItemsVar = storeGroupItemsVar + cellNumber - 1
+		if(store.groupItems[storeGroupItemsVar].item.isBag == 1) then
+			showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
+			itemDescLeftButtonAction()
+		else
 			if store.groupItems[storeGroupItemsVar].valid ~= 0 then
 				local count = store.groupItems[storeGroupItemsVar].item.count
-				local stock = store.groupItems[storeGroupItemsVar].numInStock
+				local stock = store.groupItems[storeGroupItemsVar].numInStock or 0
 				if(count > 1) then
 					popupRequester(count, groupSplitStack, true)
 				elseif stock > 1 then
 					popupRequester(stock, groupSplitStack, true)
 				end	
 			end
+		end
 		"
 	}
 	
+	
+	--container
+	--list
+	--{
+	--	column 
+	--	{ 
+	--		width 100
+	--		label
+	--		{
+	--			area 8 0 64 60
+	--			bam STONSLOT
+	--			frame lua "getStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
+	--			tint lua "store.groupItems[rowNumber].item.tint"
+	--			icon lua "store.groupItems[rowNumber].item.icon"
+	--			count lua "store.groupItems[rowNumber].item.count"
+	--			usages lua "store.groupItems[rowNumber].count"
+	--			align center center
+	--		}
+	--		label
+	--		{
+	--			area 80 0 200 60
+	--			text lua "store.groupItems[rowNumber].label"
+	--			text style "normal"
+	--			text align left center
+	--		}
+	--		label
+	--		{
+	--			area 300 0 62 60
+	--			enabled "not storeScreen:IsContainer()"
+	--			text lua "store.groupItems[rowNumber].value"
+	--			text style "gold"
+	--		}
+	--		label
+	--		{
+	--			enabled "store.groupItems[rowNumber].valid == 0"
+	--			area 0 0 436 60
+	--			rectangle 1
+	--			rectangle opacity 150
+	--		}
+	--	}
+	--	area 462 142 370 348
+	--	enabled "storeScreen:IsCloseBagButtonClickable()"
+	--	hidehighlight
+	--	rowheight	60
+	--	table		"store.groupItems"
+	--	var			"storeGroupItemsVar"
+	--	--rowbackground	 GUISTBK2
+	--	scrollbar 'rgdscrl1'
+	--	action
+	--	"
+	--		if store.groupItems[storeGroupItemsVar].valid ~= 0 then
+	--			local selected = true
+	--			if(store.groupItems[storeGroupItemsVar].highlight == 1) then selected = false end
+	--			storeScreen:SelectGroupItem( storeGroupItemsVar - 1,  selected)
+	--		end
+	--	"
+	--	actionalt
+	--	"
+	--		showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
+	--	"
+	--	actionDbl
+	--	"
+	--		if store.groupItems[storeGroupItemsVar].valid ~= 0 then
+	--			local count = store.groupItems[storeGroupItemsVar].item.count
+	--			local stock = store.groupItems[storeGroupItemsVar].numInStock
+	--			if(count > 1) then
+	--				popupRequester(count, groupSplitStack, true)
+	--			elseif stock > 1 then
+	--				popupRequester(stock, groupSplitStack, true)
+	--			end	
+	--		end
+	--	"
+	--}
+	
 	button
 	{
-		area 0 566 320 70
+		area 35 566 320 70
 		bam		rgdmbut1
 		ScaleToClip
 		text lua "checkContainerText(t('BUY_BUTTON') .. ' (' .. storeScreen:GetStoreCost() .. ')', 'TO_BACKPACK_BUTTON')"
@@ -18451,11 +18745,12 @@ menu
 		"
 			storeScreen:OnBuyItemButtonClick()
 			rgItemName = ''
+			rgInvItemName = ''
 		"
 	}
 	button
 	{
-		area 710 566 320 70
+		area 675 566 320 70
 		bam		rgdmbut1
 		ScaleToClip
 		text lua "checkContainerText(t('SELL_BUTTON') .. ' (' .. storeScreen:GetGroupCost() .. ')','TO_CONTAINER_BUTTON')"
@@ -18464,14 +18759,15 @@ menu
 		action
 		"
 			storeScreen:OnSellItemButtonClick()
-			rgGroupItemCount = 0
+			--rgGroupItemCount = 0
 			rgItemName = ''
+			rgInvItemName = ''
 		"
 	}
 	button
 	{
-		area 320 566 198 70
-		--enabled "(not storeScreen:IsContainer()) and storeScreen:IsStealEnabled()"
+		area 355 566 320 70
+		enabled "(not storeScreen:IsContainer()) and storeScreen:IsStealEnabled()"
 		bam		rgdmbut1
 		ScaleToClip
 		text "STEAL_BUTTON"
@@ -18481,25 +18777,26 @@ menu
 		"
 			storeScreen:OnStealItemButtonClick()
 			rgItemName = ''
+			rgInvItemName = ''
 		"
 	}
+	--button
+	--{
+	--	area 512 566 198 70
+	--	bam		rgdmbut1
+	--	ScaleToClip
+	--	text lua "rgGetIdentifyCost()"
+	--	text style "button"
+	--	clickable lua "storeScreen:GetGroupCost() == rgGroupItemCount and storeScreen:GetGroupCost() ~= 0"
+	--	action
+	--	"
+	--		storeScreen:OnIdentifyItemButtonClick()
+	--		storeScreen:SelectGroupItem( storeGroupItemsVar - 1,  true)
+	--	"
+	--}
 	button
 	{
-		area 512 566 198 70
-		bam		rgdmbut1
-		ScaleToClip
-		text lua "rgGetIdentifyCost()"
-		text style "button"
-		clickable lua "storeScreen:GetGroupCost() == rgGroupItemCount and storeScreen:GetGroupCost() ~= 0"
-		action
-		"
-			storeScreen:OnIdentifyItemButtonClick()
-			storeScreen:SelectGroupItem( storeGroupItemsVar - 1,  true)
-		"
-	}
-	button
-	{
-		area 360 534 201 40
+		area 355 566 320 70
 		enabled "storeScreen:IsCloseBagButtonClickable()"
 		bam		rgdmbut1
 		ScaleToClip
@@ -18536,14 +18833,14 @@ menu
 
 }
 `
-function rgGetIdentifyCost()
-	if storeScreen:GetGroupCost() == rgGroupItemCount and storeScreen:GetGroupCost() ~= 0 then
-		local cost = rgGroupItemCount * 100
-		return t("IDENTIFY_BUTTON") .. ' (' .. cost .. ')'
-	else
-		return t("IDENTIFY_BUTTON")
-	end
-end
+--function rgGetIdentifyCost()
+--	if storeScreen:GetGroupCost() == rgGroupItemCount and storeScreen:GetGroupCost() ~= 0 then
+--		local cost = rgGroupItemCount * 100
+--		return t("IDENTIFY_BUTTON") .. ' (' .. cost .. ')'
+--	else
+--		return t("IDENTIFY_BUTTON")
+--	end
+--end
 	identifyItemsVar = 0
 `
 menu
@@ -18629,7 +18926,7 @@ menu
 		rowheight	60
 		table		"store.identifyItems"
 		var			"identifyItemsVar"
-		rowbackground	 GUISTBK2
+		--rowbackground	 GUISTBK2
 		scrollbar 'rgdscrl1'
 		action
 		"
@@ -18796,7 +19093,7 @@ menu
 {
 	name 'STORE_ROOMS'
 	align center center
-	offset 0 50
+	offset 0 30
 	onOpen 
 	"
 		storeScreen:SetRoomType(0)
@@ -18806,31 +19103,31 @@ menu
 	
 	label
 	{
-		area 0 0 864 598
-		mosaic GUISTROB
+		area 0 0 1030 636
+		--mosaic GUISTROB
 	}
 	label
 	{
-		area 48 6 768 44
+		area 254 6 521 44
 		text "ROOMS_TITLE"
-		text style "title"
+		text style "button"
 	}
-	label
-	{
-		area 255 62 360 37
-		text lua "Infinity_FetchString(storeScreen:GetStoreName())"
-		text style "label"
-	}
-	label
-	{
-		area 724 67 110 48
-		text lua "game:GetPartyGold()"
-		text style "gold"
-	}
+	--label
+	--{
+	--	area 255 62 360 37
+	--	text lua "Infinity_FetchString(storeScreen:GetStoreName())"
+	--	text style "label"
+	--}
+	--label
+	--{
+	--	area 724 67 110 48
+	--	text lua "game:GetPartyGold()"
+	--	text style "gold"
+	--}
 	
 	button
 	{
-		area 31 128 245 161
+		area 8 109 245 161
 		bam "INNROOMS"
 		sequence 0
 		clickable lua "storeScreen:IsRoomTypeClickable(1)"
@@ -18843,8 +19140,9 @@ menu
 	button
 	{
 		name "BUTTON_room_peasant"
-		area 38 304 230 40
-		bam GUIBUTMT
+		area 0 270 258 70
+		bam		rgdmbut1
+		ScaleToClip
 		text "PEASANT_BUTTON"
 		text style "button"
 		glow lua "storeScreen:GetRoomType() == 1"
@@ -18857,7 +19155,7 @@ menu
 	
 	button
 	{
-		area 385 128 245 161
+		area 264 109 245 161
 		bam "INNROOMS"
 		sequence 1
 		clickable lua "storeScreen:IsRoomTypeClickable(2)"
@@ -18870,8 +19168,9 @@ menu
 	button
 	{
 		name "BUTTON_room_merchant"
-		area 392 304 230 40
-		bam GUIBUTMT
+		area 258 270 256 70
+		bam		rgdmbut1
+		ScaleToClip
 		text "MERCHANT_BUTTON"
 		text style "button"
 		glow lua "storeScreen:GetRoomType() == 2"
@@ -18884,7 +19183,7 @@ menu
 	
 	button
 	{
-		area 31 367 245 161
+		area 520 109 245 161
 		bam "INNROOMS"
 		sequence 2
 		clickable lua "storeScreen:IsRoomTypeClickable(3)"
@@ -18898,8 +19197,9 @@ menu
 	button
 	{
 		name "BUTTON_room_noble"
-		area 38 540 230 40
-		bam GUIBUTMT
+		area 514 270 256 70
+		bam		rgdmbut1
+		ScaleToClip
 		text "NOBLE_BUTTON"
 		text style "button"
 		glow lua "storeScreen:GetRoomType() == 3"
@@ -18912,7 +19212,7 @@ menu
 	
 	button
 	{
-		area 385 367 245 161
+		area 776 109 245 161
 		bam "INNROOMS"
 		sequence 3
 		clickable lua "storeScreen:IsRoomTypeClickable(4)"
@@ -18925,8 +19225,9 @@ menu
 	button
 	{
 		name "BUTTON_room_royal"
-		area 392 540 230 40
-		bam GUIBUTMT
+		area 770 270 256 70
+		bam		rgdmbut1
+		ScaleToClip
 		text "ROYAL_BUTTON"
 		text style "button"
 		glow lua "storeScreen:GetRoomType() == 4"
@@ -18936,29 +19237,39 @@ menu
 			storeScreen:SetRoomType(4)
 		"
 	}
+	--label
+	--{
+	--	area 804 564 70 40
+	--	text "COST_LABEL"
+	--	text style "button"
+	--}
 	label
 	{
-		area 654 464 70 40
-		text "COST_LABEL"
-		text style "label"
+		area 254 348 521 206
+		bam rgdobcg
+		sequence lua "RgUISkin"
+		scaleToClip
 	}
 	text
 	{
-		area 662 137 160 298
+		area 264 358 501 186
 		text lua "store.roomText"
 		text style "normal"
 	}
-	label
-	{
-		area 727 464 120 40
-		text lua "storeScreen:GetRoomCost()"
-		text style "gold"
-	}
+	--label
+	--{
+	--	area 882 564 120 40
+	--	text lua "storeScreen:GetRoomCost()"
+	--	text style "normal"
+	--	text color '$'
+	--	align center center
+	--}
 	button
 	{
-		area 650 518 200 40
-		bam GUIBUTNT
-		text "RENT_BUTTON"
+		area 254 558 521 78
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "t('RENT_BUTTON') .. ' ( ' .. t('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
 		text style "button"
 		action
 		"
@@ -19050,7 +19361,7 @@ menu
 		rowheight	60
 		table		"store.healingSpells"
 		var			"healingSpellsVar"
-		rowbackground	 GUISTBK2
+		--rowbackground	 GUISTBK2
 		scrollbar 'rgdscrl1'
 		action
 		"
@@ -19363,6 +19674,13 @@ menu
 		text style "normal"
 		text color '$'
 		align center center
+	}
+	
+	label
+	{
+		area 1026 102 50 38
+		bam GUIGOLD
+		scaleToClip
 	}
 	label
 	{
@@ -22725,7 +23043,7 @@ menu
 	{
 		name 'rgmainmenutitleload'
 		ScaleToClip
-		area 815 48 510 131
+		area 1370 48 510 131
 		bam 'RGDTITLE'
 		frame lua "rgGetTitleFrame()"
 	}
@@ -22733,7 +23051,7 @@ menu
 	{
 		enabled "rgLoadColumns < 3"
 		name "rgLoadListBackground"
-		area 0 0 870 800
+		area 0 0 870 1080
 		bam rgdlolbc
 		scaleToClip
 	}
@@ -22741,7 +23059,7 @@ menu
 	{
 		enabled "rgLoadColumns == 3"
 		name "rgLoadListBackground1"
-		area 0 0 1250 800
+		area 0 0 1250 1080
 		bam rgdlolbc
 		scaleToClip
 	}
@@ -22939,7 +23257,7 @@ menu
 		"
 		enabled "rgLoadColumns == 1"
 		name "rgmainmenuloadlist1"
-		area 28 48 780 678
+		area 28 5 780 1070
 		rowheight	dynamic
 		hidehighlight
 		table		"rgLoadFiltered"
@@ -23175,7 +23493,7 @@ menu
 		"
 		enabled "rgLoadColumns == 2"
 		name "rgmainmenuloadlist2"
-		area 28 48 780 678
+		area 28 5 780 1070
 		rowheight	dynamic
 		hidehighlight
 		table		"rgLoadFiltered"
@@ -23511,7 +23829,7 @@ menu
 		"
 		enabled "rgLoadColumns == 3"
 		name "rgmainmenuloadlist3"
-		area 28 48 1154 678
+		area 28 5 1154 1070
 		rowheight	dynamic
 		hidehighlight
 		table		"rgLoadFiltered"
@@ -23897,7 +24215,7 @@ menu
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,4)"
 		clickable	lua	"currentSave"	
 		ScaleToClip
-		area 865 366 409 75
+		area 1420 291 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('LOAD_BUTTON')"
@@ -23913,7 +24231,7 @@ menu
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,5)"
 		clickable	lua	"currentSave"	
 		ScaleToClip
-		area 865 441 409 75
+		area 1420 366 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('DELETE_BUTTON')"
@@ -23927,7 +24245,7 @@ menu
 	button
 	{
 		name 'rgmainmenubuttonload6'
-		area 865 516 409 75
+		area 1420 591 409 75
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,6)"
 		ScaleToClip
@@ -23945,7 +24263,7 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,1)"
 		ScaleToClip
-		area 865 291 409 75
+		area 1420 216 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString(rgGetLoadNameTitle())"
@@ -23966,7 +24284,7 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,2)"
 		ScaleToClip
-		area 865 216 409 75
+		area 1420 441 409 75
 		pad 10 8 10 8
 		text style "button"
 		text color '$'
@@ -24001,7 +24319,7 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,3)"
 		ScaleToClip
-		area 865 216 409 75
+		area 1420 516 409 75
 		pad 10 8 10 8
 		text style "button"
 		text color '$'
@@ -24052,7 +24370,7 @@ menu
 		name "rgLoadNamesList"
 		fill 0 0 0 200
 		enabled "rgLoadNamesFilter == 1"
-		area 865 366 420 392
+		area 1420 291 420 779
 		rowheight	60
 		hidehighlight
 		table		"rgLoadNames"
@@ -25136,7 +25454,7 @@ menu
 	{
 		name 'rgMessagesRectUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
-		area 46 41 489 149
+		area 1416 907 489 159
 		mosaic 'rgdmbox1'
 	}
 	list
@@ -25162,7 +25480,7 @@ menu
 		}
 		name "rgWorldMessageBoxUnlocked"
 		enabled "RgMessageboxUnlocked == 1"
-		area 58 53 465 125
+		area 1428 919 465 135
 		rowheight dynamic
 		table "combatLog"
 		hideHighlight
@@ -25174,7 +25492,7 @@ menu
 	{
 		name 'rgMessagesHandleYUpUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
-		area 46 41 489 10
+		area 1416 907 489 10
 		pulse lua "worldMessageBoxClickedOnce == 0"
 		actionDrag
 		"
@@ -25187,7 +25505,7 @@ menu
 		name 'rgMessagesHandleYDownUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
 		mosaic 'rgdmbox2'
-		area 46 180 489 10
+		area 1416 1056 489 10
 		actionDrag
 		"
 			rgSetMessagesUnlockedYDown(motionY)
@@ -25198,7 +25516,7 @@ menu
 		name 'rgMessagesHandleXRightUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
 		mosaic 'rgdmbox3'
-		area 525 41 10 149
+		area 1895 907 10 159
 		actionDrag
 		"
 			rgSetMessagesUnlockedXRight(motionX)
@@ -25208,7 +25526,7 @@ menu
 	{
 		name 'rgMessagesHandleXLeftUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
-		area 46 41 10 149
+		area 1416 907 10 159
 		actionDrag
 		"
 			rgSetMessagesUnlockedXLeft(motionX)
@@ -25220,7 +25538,7 @@ menu
 		enabled "RgMessageboxUnlocked == 1"
 		bam 'rgdmboxc'
 		scaleToClip
-		area 46 41 21 15
+		area 1416 907 21 15
 		actionDrag
 		"
 			rgDragMessageboxUnlocked()
@@ -25233,7 +25551,7 @@ menu
 		bam 'rgdmboxc'
 		frame 1
 		scaleToClip
-		area 514 175 21 15
+		area 1884 1051 21 15
 		actionDrag
 		"
 			rgDragMessageboxUnlocked()
