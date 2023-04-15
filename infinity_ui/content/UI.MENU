@@ -25454,7 +25454,7 @@ menu
 	{
 		name 'rgMessagesRectUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
-		area 1416 907 489 159
+		area 46 41 489 149
 		mosaic 'rgdmbox1'
 	}
 	list
@@ -25480,7 +25480,7 @@ menu
 		}
 		name "rgWorldMessageBoxUnlocked"
 		enabled "RgMessageboxUnlocked == 1"
-		area 1428 919 465 135
+		area 58 53 465 125
 		rowheight dynamic
 		table "combatLog"
 		hideHighlight
@@ -25492,7 +25492,7 @@ menu
 	{
 		name 'rgMessagesHandleYUpUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
-		area 1416 907 489 10
+		area 46 41 489 10
 		pulse lua "worldMessageBoxClickedOnce == 0"
 		actionDrag
 		"
@@ -25505,7 +25505,7 @@ menu
 		name 'rgMessagesHandleYDownUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
 		mosaic 'rgdmbox2'
-		area 1416 1056 489 10
+		area 46 180 489 10
 		actionDrag
 		"
 			rgSetMessagesUnlockedYDown(motionY)
@@ -25516,7 +25516,7 @@ menu
 		name 'rgMessagesHandleXRightUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
 		mosaic 'rgdmbox3'
-		area 1895 907 10 159
+		area 525 41 10 149
 		actionDrag
 		"
 			rgSetMessagesUnlockedXRight(motionX)
@@ -25526,7 +25526,7 @@ menu
 	{
 		name 'rgMessagesHandleXLeftUnlocked'
 		enabled "RgMessageboxUnlocked == 1"
-		area 1416 907 10 159
+		area 46 41 10 149
 		actionDrag
 		"
 			rgSetMessagesUnlockedXLeft(motionX)
@@ -25538,7 +25538,7 @@ menu
 		enabled "RgMessageboxUnlocked == 1"
 		bam 'rgdmboxc'
 		scaleToClip
-		area 1416 907 21 15
+		area 46 41 21 15
 		actionDrag
 		"
 			rgDragMessageboxUnlocked()
@@ -25551,7 +25551,7 @@ menu
 		bam 'rgdmboxc'
 		frame 1
 		scaleToClip
-		area 1884 1051 21 15
+		area 514 175 21 15
 		actionDrag
 		"
 			rgDragMessageboxUnlocked()
