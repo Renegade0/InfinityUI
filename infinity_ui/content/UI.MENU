@@ -1620,6 +1620,9 @@ menu
 		text align right center
 		enabled "characterViewable"
 	}
+	
+	
+	--one/two classes
 	label
 	{
 		name 'rgrecclass1'
@@ -1627,7 +1630,7 @@ menu
 		text lua "listClassLevels[1][1]"
 		text style 'normal'
 		text align left center
-		enabled "characterViewable"
+		enabled "characterViewable and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1636,16 +1639,7 @@ menu
 		text lua "listClassLevels[2][1]"
 		text style 'normal'
 		text align left center
-		enabled "characterViewable and characters[currentID].classlevel.second ~= nil"
-	}
-	label
-	{
-		name 'rgrecclass3'
-		area		362 654 414 36 
-		text lua "listClassLevels[3][1]"
-		text style 'normal'
-		text align left center
-		enabled "characterViewable and characters[currentID].classlevel.third ~= nil"
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1654,7 +1648,7 @@ menu
 		bam rgdrcbar
 		ScaleToClip
 		sequence 1
-		enabled "characterViewable"
+		enabled "characterViewable and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1663,16 +1657,7 @@ menu
 		bam rgdrcbar
 		ScaleToClip
 		sequence 1
-		enabled "characterViewable and characters[currentID].classlevel.second ~= nil"
-	}
-	label
-	{
-		name 'rgrecclass3progback'
-		area		362 690 414 10
-		bam rgdrcbar
-		ScaleToClip
-		sequence 1
-		enabled "characterViewable and characters[currentID].classlevel.third ~= nil"
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1684,7 +1669,7 @@ menu
 		--greyscale	0 --display greyscale or not, number 0-1
 		--progressbar color	128 0 0 255	 --color when percentage != 100
 		--progressbar full	128 0 0 255	 --color when percentage == 100
-		enabled "characterViewable"
+		enabled "characterViewable and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1692,19 +1677,7 @@ menu
 		area		362 690 314 5
 		bam rgdrcbar
 		ScaleToClip
-		--progressbar lua "listClassLevels[2][2], 100" --progress percentage, number 0-100
-		--greyscale	0 --display greyscale or not, number 0-1
-		--progressbar color	128 0 0 255	 --color when percentage != 100
-		--progressbar full	128 0 0 255	 --color when percentage == 100
-		enabled "characterViewable and characters[currentID].classlevel.second ~= nil"
-	}
-	label
-	{
-		name 'rgrecclass3progress'
-		area		362 690 414 10
-		bam rgdrcbar
-		ScaleToClip
-		enabled "characterViewable and characters[currentID].classlevel.third ~= nil"
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1715,6 +1688,86 @@ menu
 		text align left center
 		text color 'X'
 		enabled "characterViewable and characters[currentID].classlevel.second == nil"
+	}
+	
+	--three classes
+	label
+	{
+		name 'rgrecclass1'
+		area		362 588 414 36 
+		text lua "listClassLevels[1][1]"
+		text style 'normal'
+		text align left center
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil"
+	}
+	label
+	{
+		name 'rgrecclass2'
+		area		362 628 414 36 
+		text lua "listClassLevels[2][1]"
+		text style 'normal'
+		text align left center
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third ~= nil"
+	}
+	label
+	{
+		name 'rgrecclass3'
+		area		362 668 414 36 
+		text lua "listClassLevels[3][1]"
+		text style 'normal'
+		text align left center
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil and characters[currentID].classlevel.third ~= nil"
+	}
+	label
+	{
+		name 'rgrecclass1progback'
+		area		362 624 414 5
+		bam rgdrcbar
+		ScaleToClip
+		sequence 1
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil"
+	}
+	label
+	{
+		name 'rgrecclass2progback'
+		area		362 664 414 5
+		bam rgdrcbar
+		ScaleToClip
+		sequence 1
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third ~= nil"
+	}
+	label
+	{
+		name 'rgrecclass3progback'
+		area		362 704 414 5
+		bam rgdrcbar
+		ScaleToClip
+		sequence 1
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil and characters[currentID].classlevel.third ~= nil"
+	}
+	label
+	{
+		name 'rgrecclass1progress'
+		area		362 624 414 5
+		bam rgdrcbar
+		ScaleToClip
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil"
+	}
+	label
+	{
+		name 'rgrecclass2progress'
+		area		362 664 314 5
+		bam rgdrcbar
+		ScaleToClip
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third ~= nil"
+	}
+	label
+	{
+		name 'rgrecclass3progress'
+		area		362 704 414 5
+		bam rgdrcbar
+		ScaleToClip
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil and characters[currentID].classlevel.third ~= nil"
 	}
 	
 	
