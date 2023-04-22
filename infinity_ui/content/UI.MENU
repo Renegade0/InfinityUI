@@ -1115,9 +1115,11 @@ end
 function rgSetExpSlider()
 	
 	Infinity_SetArea('rgrecclass1progress', nil, nil, rgSetExpSliderClass(1), nil)
+	Infinity_SetArea('rgrecclass1progressx', nil, nil, rgSetExpSliderClass(1), nil)
 
 	if characterViewable and characters[currentID].classlevel.second ~= nil then
 		Infinity_SetArea('rgrecclass2progress', nil, nil, rgSetExpSliderClass(2), nil)
+		Infinity_SetArea('rgrecclass2progressx', nil, nil, rgSetExpSliderClass(2), nil)
 	end
 	if characterViewable and characters[currentID].classlevel.third ~= nil then
 		Infinity_SetArea('rgrecclass3progress', nil, nil, rgSetExpSliderClass(3), nil)
@@ -1625,7 +1627,7 @@ menu
 	--one/two classes
 	label
 	{
-		name 'rgrecclass1'
+		name 'rgrecclass1x'
 		area		362 594 414 36 
 		text lua "listClassLevels[1][1]"
 		text style 'normal'
@@ -1634,7 +1636,7 @@ menu
 	}
 	label
 	{
-		name 'rgrecclass2'
+		name 'rgrecclass2x'
 		area		362 654 414 36 
 		text lua "listClassLevels[2][1]"
 		text style 'normal'
@@ -1643,7 +1645,7 @@ menu
 	}
 	label
 	{
-		name 'rgrecclass1progback'
+		name 'rgrecclass1progbackx'
 		area		362 630 414 5
 		bam rgdrcbar
 		ScaleToClip
@@ -1652,7 +1654,7 @@ menu
 	}
 	label
 	{
-		name 'rgrecclass2progback'
+		name 'rgrecclass2progbackx'
 		area		362 690 414 5
 		bam rgdrcbar
 		ScaleToClip
@@ -1661,7 +1663,7 @@ menu
 	}
 	label
 	{
-		name 'rgrecclass1progress'
+		name 'rgrecclass1progressx'
 		area		362 630 414 5
 		bam rgdrcbar
 		ScaleToClip
@@ -1673,7 +1675,7 @@ menu
 	}
 	label
 	{
-		name 'rgrecclass2progress'
+		name 'rgrecclass2progressx'
 		area		362 690 314 5
 		bam rgdrcbar
 		ScaleToClip
