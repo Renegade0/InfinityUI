@@ -26087,7 +26087,7 @@ menu
 	{
 		name 'messagesRect'
 		enabled "RgMessageboxUnlocked == 0 and RgIsModernHud == 0"
-		area 0 0 0 50
+		area 0 0 664 200
 		--area 0 0 664 200
 		rectangle 0
 		--fill  0 0 0 150
@@ -26116,7 +26116,7 @@ menu
 		--enabled "RgIsModernHud == 0"
 		enabled "RgMessageboxUnlocked == 0 and RgIsModernHud == 0"
 		name "worldMessageBox"
-		area 0 12 0 52
+		area 12 12 640 176
 		--area 12 12 640 176
 		rowheight dynamic
 		table "combatLog"
@@ -26129,7 +26129,7 @@ menu
 	{
 		name 'messagesHandleY'
 		enabled "RgMessageboxUnlocked == 0 and RgIsModernHud == 0"
-		area 0 0 0 52
+		area 0 0 664 10
 		--area 0 0 664 10
 		--bam RGDMBCG4
 		--ScaleToClip
