@@ -12785,7 +12785,7 @@ menu
 		area 100 586 300 80
 		pad 10 8 10 8
 		text style "button"
-		text lua "rgString('UI++ SETTINGS')"
+		text lua "rgString('RG_UI_SETTINGS')"
 		action 
 		"
 			Infinity_PopMenu()
