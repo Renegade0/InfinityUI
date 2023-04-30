@@ -10754,7 +10754,9 @@ menu
 `
 function rgGetPopupArea()
 	local rgJHeight = Infinity_GetContentHeight(styles.normal.font, 622, getBodyString(), styles.normal.point, 1, styles.normal.useFontZoom)
-	Infinity_SetArea('rgJournalPopudBackground', nil, nil, nil, (rgJHeight+50))
+	Infinity_SetArea('rgJournalPopupBackground', nil, nil, nil, (rgJHeight+50))
+	Infinity_SetArea('rgJournalPopupButton', nil, nil, nil, (rgJHeight+50))
+	Infinity_SetArea('rgJournalPopupText', nil, nil, nil, (rgJHeight))
 end
 `
 menu
@@ -10767,7 +10769,7 @@ menu
 
 	label
 	{
-		name "rgJournalPopudBackground"
+		name "rgJournalPopupBackground"
 		area 0 0 650 214	
 		rectangle 4
 		rectangle opacity 200 
@@ -10800,6 +10802,7 @@ menu
 
 	text
 	{
+		name "rgJournalPopupText"
 		area 20 40 622 180
 		text lua "getBodyString()"
 		text style "normal"
@@ -10810,6 +10813,7 @@ menu
 	}	
 	button
 	{
+		name "rgJournalPopupButton"
 		area 0 0 650 240
 		action
 		"
