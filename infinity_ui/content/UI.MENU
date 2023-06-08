@@ -8,9 +8,17 @@ end
 listMetaInfo = {}
 combatLog = {}
 
+
+
+Infinity_DoFile("my__CNST") --// BY_ME
+Infinity_DoFile("my__LIB")  --// BY_ME
+Infinity_DoFile("my_CRE")   --// BY_ME
+Infinity_DoFile("my__RDR")  --// BY_ME
+
+
 fontcolors['X'] = 'FF7D7D7D'
 
-styles =
+styles = 
 {
 	gamelog =
 	{
@@ -189,108 +197,9 @@ styles =
 	}
 }
 
+
 portraits =
 {
-	{'MAN1', 1},
-	{'MAN2', 1},
-	{'GENDWRF', 1},
-	{'GENMELF', 1},
-	{'GENMHLF', 1},
-	{'AJANTIS', 1},
-	{'CORAN', 1},
-	{'EDWIN', 1},
-	{'ELDOTH', 1},
-	{'GARRICK', 1},
-	{'KAGAIN', 1},
-	{'KHALID', 1},
-	{'KIVAN', 1},
-	{'MINSC', 1},
-	{'MONTAR', 1},
-	{'QUAYLE', 1},
-	{'TIAX', 1},
-	{'XAN', 1},
-	{'XZAR', 1},
-	{'YESLICK', 1},
-	{'NCERND', 1},
-	{'NKELDOR', 1},
-	{'NANOMEN', 1},
-	{'NEDWIN', 1},
-	{'NHAER', 1},
-	{'NJAN', 1},
-	{'NMINSC', 1},
-	{'NVALYGA', 1},
-	{'NYOSHIM', 1},
-	{'NKORGAN', 1},
-	{'NHORC', 1},
-	{'RASAAD', 1},
-	{'DORN',	1},
-	{'BAELOTH',	1},
-	{'GLINT',	1},
-	{'VOGHILN',	1},
-	{'BDSHAM1', 1},
-	{'BDORCM1', 1},
-	{'YANNER4', 1},
-	{'YANNER5', 1},
-	{'YANNER6', 1},
-	{'HELM', 1},
-	{'HVLN', 1},
-	{'MANLEY0', 1},
-	{'MANLEY3', 1},
-	{'MANLEY6', 1},
-	{'MANLEY7', 1},
-	{'MANLEY8', 1},
-	{'MANLEY9', 1},
-	{'bdtma', 1},
-	{'bdtmc', 1},
-	{'bdtmd', 1},
-	{'bdtmg', 1},
-	{'bdtmh', 1},
-	{'bdtmi', 1},
-	{'bdtmk', 1},
-	{'hephern', 1},
-	{'unnamed', 1},
-	{'sorce', 1},
-	{'WOMAN1', 2},
-	{'WOMAN2', 2},
-	{'ALORA', 2},
-	{'BRANWE', 2},
-	{'DYNAHEI', 2},
-	{'FALDORN', 2},
-	{'IMOEN', 2},
-	{'JAHEIRA', 2},
-	{'SAFANA', 2},
-	{'SHARTEL', 2},
-	{'SKIE', 2},
-	{'VICONIA', 2},
-	{'NNALIA', 2},
-	{'NMAZZY', 2},
-	{'NAERIE', 2},
-	{'NJAHEIR', 2},
-	{'NVICON', 2},
-	{'BDVICON', 2},
-	{'BDIMOEN', 2},
-	{'NEERA', 2},
-	{'SCHAEL', 2},
-	{'DSCLARA', 2},
-	{'OHHEXX', 2},
-	{'BDSHAF1', 2},
-	{'BDORCF1', 2},
-	{'YANNER1', 2},
-	{'YANNER2', 2},
-	{'YANNER3', 2},
-	{'SKAN', 2},
-	{'MANLEY1', 2},
-	{'MANLEY2', 2},
-	{'MANLEY4', 2},
-	{'MANLEY5', 2},
-	{'MANLEYX', 2},
-	{'bdtmb', 2},
-	{'bdtme', 2},
-	{'bdtmf', 2},
-	{'bdtmj', 2},
-	{'caelar', 2},
-	{'mkhiin', 2}
-	
 }
 
 chapterBackgrounds = {}
@@ -359,6 +268,212 @@ chapterBackgrounds[100] = "GUICHP6B"
 
 
 currentPanelID = 0
+
+function rgGetGameEnginePortraits()
+	if rgGameEngine ~= 3 then
+	portraits =
+	{
+		{'MAN1', 1},
+		{'MAN2', 1},
+		{'GENDWRF', 1},
+		{'GENMELF', 1},
+		{'GENMHLF', 1},
+		{'AJANTIS', 1},
+		{'CORAN', 1},
+		{'EDWIN', 1},
+		{'ELDOTH', 1},
+		{'GARRICK', 1},
+		{'KAGAIN', 1},
+		{'KHALID', 1},
+		{'KIVAN', 1},
+		{'MINSC', 1},
+		{'MONTAR', 1},
+		{'QUAYLE', 1},
+		{'TIAX', 1},
+		{'XAN', 1},
+		{'XZAR', 1},
+		{'YESLICK', 1},
+		{'NCERND', 1},
+		{'NKELDOR', 1},
+		{'NANOMEN', 1},
+		{'NEDWIN', 1},
+		{'NHAER', 1},
+		{'NJAN', 1},
+		{'NMINSC', 1},
+		{'NVALYGA', 1},
+		{'NYOSHIM', 1},
+		{'NKORGAN', 1},
+		{'NHORC', 1},
+		{'RASAAD', 1},
+		{'DORN',	1},
+		{'BAELOTH',	1},
+		{'GLINT',	1},
+		{'VOGHILN',	1},
+		{'BDSHAM1', 1},
+		{'BDORCM1', 1},
+		{'YANNER4', 1},
+		{'YANNER5', 1},
+		{'YANNER6', 1},
+		{'HELM', 1},
+		{'HVLN', 1},
+		{'MANLEY0', 1},
+		{'MANLEY3', 1},
+		{'MANLEY6', 1},
+		{'MANLEY7', 1},
+		{'MANLEY8', 1},
+		{'MANLEY9', 1},
+		{'bdtma', 1},
+		{'bdtmc', 1},
+		{'bdtmd', 1},
+		{'bdtmg', 1},
+		{'bdtmh', 1},
+		{'bdtmi', 1},
+		{'bdtmk', 1},
+		{'hephern', 1},
+		{'unnamed', 1},
+		{'sorce', 1},
+		{'WOMAN1', 2},
+		{'WOMAN2', 2},
+		{'ALORA', 2},
+		{'BRANWE', 2},
+		{'DYNAHEI', 2},
+		{'FALDORN', 2},
+		{'IMOEN', 2},
+		{'JAHEIRA', 2},
+		{'SAFANA', 2},
+		{'SHARTEL', 2},
+		{'SKIE', 2},
+		{'VICONIA', 2},
+		{'NNALIA', 2},
+		{'NMAZZY', 2},
+		{'NAERIE', 2},
+		{'NJAHEIR', 2},
+		{'NVICON', 2},
+		{'BDVICON', 2},
+		{'BDIMOEN', 2},
+		{'NEERA', 2},
+		{'SCHAEL', 2},
+		{'DSCLARA', 2},
+		{'OHHEXX', 2},
+		{'BDSHAF1', 2},
+		{'BDORCF1', 2},
+		{'YANNER1', 2},
+		{'YANNER2', 2},
+		{'YANNER3', 2},
+		{'SKAN', 2},
+		{'MANLEY1', 2},
+		{'MANLEY2', 2},
+		{'MANLEY4', 2},
+		{'MANLEY5', 2},
+		{'MANLEYX', 2},
+		{'bdtmb', 2},
+		{'bdtme', 2},
+		{'bdtmf', 2},
+		{'bdtmj', 2},
+		{'caelar', 2},
+		{'mkhiin', 2}
+		
+	}
+	else
+	portraits =
+	{
+		{'DMC_', 1},
+		{'DMF2_', 1},
+		{'DMF_', 1},
+		{'DMT_', 1},
+		{'EMC_', 1},
+		{'EMF2_', 1},
+		{'EMF_', 1},
+		{'EMT_', 1},
+		{'EMW_', 1},
+		{'GMT_', 1},
+		{'GMW_', 1},
+		{'HAMF_', 1},
+		{'HAMT_', 1},
+		{'HEMF_', 1},
+		{'HEMT_', 1},
+		{'HEMW_', 1},
+		{'HMB2_', 1},
+		{'HMB_', 1},
+		{'HMC2_', 1},
+		{'HMC3_', 1},
+		{'HMC4_', 1},
+		{'HMC_', 1},
+		{'HMF2_', 1},
+		{'HMF3_', 1},
+		{'HMF4_', 1},
+		{'HMF5_', 1},
+		{'HMF6_', 1},
+		{'HMF7_', 1},
+		{'HMF_', 1},
+		{'HMW2_', 1},
+		{'HMW3_', 1},
+		{'HMW4_', 1},
+		{'HMW_', 1},
+		{'2MBAR1_', 1},
+		{'2MHUM1_', 1},
+		{'2MORC1_', 1},
+		{'DFF_', 2},
+		{'EFC_', 2},
+		{'EFF_', 2},
+		{'EFW2_', 2},
+		{'EFW_', 2},
+		{'GFW_', 2},
+		{'HAFF_', 2},
+		{'HAFT_', 2},
+		{'HEFB_', 2},
+		{'HEFC_', 2},
+		{'HEFF_', 2},
+		{'HEFW_', 2},
+		{'HFD_', 2},
+		{'HFF2_', 2},
+		{'HFF_', 2},
+		{'HFT2_', 2},
+		{'HFT_', 2},
+		{'HFW2_', 2},
+		{'HFW3_', 2},
+		{'HFW_', 2},
+		{'2FBAR1_', 2},
+		{'2FHUM4_', 2},
+		{'2FORC1_', 2},
+		{'2FDEF1_', 2},
+		{'2FELF1_', 2},
+		{'2FELF2_', 2},
+		{'2FELF3_', 2},
+		{'2FGNM1_', 2},
+		{'2FHUM1_', 2},
+		{'2FHUM2_', 2},
+		{'2FHUM3_', 2},
+		{'2FTIF1_', 2},
+		{'2MAAS1_', 1},
+		{'2MDEF1_', 1},
+		{'2MDEF2_', 1},
+		{'2MDWF1_', 1},
+		{'2MDWF2_', 1},
+		{'2MELF1_', 1},
+		{'2MGNM1_', 1},
+		{'2MHAF1_', 1},
+		{'2MHUM2_', 1},
+		{'2MHUM3_', 1},
+		{'2MHUM4_', 1},
+		{'2MHUM5_', 1},
+		{'2MHUM6_', 1},
+		{'2MHUM7_', 1},
+		{'2MPAL1_', 1},
+		{'bdtma', 1},
+		{'bdtmb', 2},
+		{'bdtmc', 1},
+		{'bdtmd', 1},
+		{'bdtme', 2},
+		{'bdtmf', 2},
+		{'bdtmg', 1},
+		{'bdtmh', 1},
+		{'bdtmi', 1},
+		{'bdtmj', 2},
+		{'bdtmk', 1}
+	}
+	end
+end
 
 function rgIsNthNumber(num,nth)
 	local res = num - 1
@@ -1250,7 +1365,7 @@ menu
 	}
 	button
 	{
-		
+		enabled 	"CurrentlyInGame()"
 		name 'rgrecpor1'
 		area 340 102 64 93
 		portrait 0
@@ -1267,7 +1382,7 @@ menu
 	}
 	button
 	{
-		
+		enabled 	"CurrentlyInGame()"
 		name 'rgrecpor2'
 		area 418 102 64 93
 		portrait 1
@@ -1284,7 +1399,7 @@ menu
 	}
 	button
 	{
-		
+		enabled 	"CurrentlyInGame()"
 		name 'rgrecpor3'
 		area 496 102 64 93
 		portrait 2
@@ -1301,7 +1416,7 @@ menu
 	}
 	button
 	{
-		
+		enabled 	"CurrentlyInGame()"
 		name 'rgrecpor4'
 		area 574 102 64 93
 		portrait 3
@@ -1318,7 +1433,7 @@ menu
 	}
 	button
 	{
-		
+		enabled 	"CurrentlyInGame()"
 		name 'rgrecpor5'
 		area 653 102 64 93
 		portrait 4
@@ -1335,7 +1450,7 @@ menu
 	}
 	button
 	{
-		
+		enabled 	"CurrentlyInGame()"
 		name 'rgrecpor6'
 		area 732 102 64 93
 		portrait 5
@@ -1784,6 +1899,7 @@ menu
 				bam            'STATES'
 				sequence    lua "listItems[rowNumber][1]"
 				text align	left center
+				enabled "listItems[rowNumber][1] ~= '233'"
 				--enabled "rowNumber ~= 233"
 				--ScaleToClip
 			}
@@ -2209,17 +2325,15 @@ menu
 			e:SelectEngine(worldScreen)
 		"
 	}
-    
-	--button
-	--{
-	--	enabled 	"not CurrentlyInGame()"
-	--	area		388 664 200 40
-	--	text		"DONE_BUTTON"
-	--	text style 	"button"
-	--	bam			GUIBUTNT
-	--	sequence	3
-	--	action		"Infinity_PopMenu()"
-	--}
+	button
+	{
+		enabled 	"not CurrentlyInGame()"
+		area		1290 7 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action		"Infinity_PopMenu()"
+	}
 }
 menu
 {
@@ -6303,24 +6417,14 @@ menu
 	name 'POPUP_THREEBUTTON'
 	align center center
 	modal
-	label
-	{
-		area 0 0 657 234
-		mosaic GUIERR6
-	}
-	label
-	{
-		area 29 21 580 126
-		text lua "getStringFromAmbiguousSource(Popup3Button.info)"
-		text style	"label"
-		text align center center
-	}
 	button
 	{
-		area 440 170 200 40
-		bam GUIBUTNT
+		area 235 37 400 75
+		bam		rgdmbut1
+		ScaleToClip
+		pad 10 8 10 8
+		text style "button"
 		text lua "t(Popup3Button.rightText)"
-		text style	"button"
 		action 
 		"
 			Infinity_PopMenu()
@@ -6331,9 +6435,11 @@ menu
 	}
 	button
 	{
-		area 228 170 200 40
-		bam GUIBUTNT
-		text style	"button"
+		area 235 112 400 75
+		bam		rgdmbut1
+		ScaleToClip
+		pad 10 8 10 8
+		text style "button"
 		text lua "t(Popup3Button.midText)"
 		action 
 		"
@@ -6345,9 +6451,11 @@ menu
 	}
 	button
 	{
-		area 18 170 200 40
-		bam GUIBUTNT
-		text style	"button"
+		area 235 187 400 75
+		bam		rgdmbut1
+		ScaleToClip
+		pad 10 8 10 8
+		text style "button"
 		text lua "t(Popup3Button.leftText)"
 		action 
 		"
@@ -6356,6 +6464,19 @@ menu
 				Popup3Button.leftFunc()
 			end
 		"
+	}
+	label
+	{
+		area 0 0 300 300
+		bam rgdpopup
+		ScaleToClip
+	}
+	label
+	{
+		area 50 50 200 200
+		text lua "getStringFromAmbiguousSource(Popup3Button.info)"
+		text style	"normal"
+		text align center center
 	}
 }
 
@@ -6604,12 +6725,21 @@ function rgGetLibraryJournalEntry(text)
 		end
 	end
 end
+function rgGetItemDescriptionArea()
+	if rgGameEngine == 3 then
+		Infinity_SetArea('rgItemDesc',32,96,566,486)
+	else
+		Infinity_SetArea('rgItemDesc',222,96,376,486)
+	end	
+end
+
 `
 menu
 {
 	name 'ITEM_DESCRIPTION'
 	align center center
 	onOpen "
+		rgGetItemDescriptionArea()
 		rgGetLibraryJournalEntry(itemDesc.item.name)
 		--Infinity_OnAddUserEntry(itemDesc.item.name)
 	"
@@ -6641,6 +6771,7 @@ menu
 	}
 	text
 	{
+		name "rgItemDesc"
 		area 222 96 376 486
 		text lua "itemDesc.item.description"
 		scrollbar 'rgdscrl1'
@@ -6822,7 +6953,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton1"
-		area 1303 1028 40 40
+		area 10 142 40 40
 		bitmap 'rgdslotb'
 		enabled "worldScreen == e:GetActiveEngine() and (RgHotkeyButtonsVisibility == 1 or rgHotkeyButtonsUnlocked == 1)"
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[1][1])"
@@ -6846,7 +6977,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton2"
-		area 10 142 40 40
+		area 10 184 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[2][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[2][1])"
@@ -6859,7 +6990,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton3"
-		area 10 184 40 40
+		area 10 226 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[3][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[3][1])"
@@ -6871,7 +7002,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton4"
-		area 10 226 40 40
+		area 10 268 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[4][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[4][1])"
@@ -6883,7 +7014,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton5"
-		area 10 268 40 40
+		area 10 310 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[5][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[5][1])"
@@ -6895,7 +7026,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton6"
-		area 10 310 40 40
+		area 10 352 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[6][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[6][1])"
@@ -6907,7 +7038,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton7"
-		area 10 352 40 40
+		area 10 394 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[7][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[7][1])"
@@ -6919,7 +7050,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton8"
-		area 10 394 40 40
+		area 10 436 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[8][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[8][1])"
@@ -6931,7 +7062,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton9"
-		area 10 436 40 40
+		area 10 478 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[9][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[9][1])"
@@ -6943,7 +7074,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton10"
-		area 10 478 40 40
+		area 10 520 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[10][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[10][1])"
@@ -6955,7 +7086,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton11"
-		area 10 520 40 40
+		area 10 562 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[11][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[11][1])"
@@ -6967,7 +7098,7 @@ menu
 	button
 	{
 		name "rgHotkeyButton12"
-		area 10 562 40 40
+		area 10 604 40 40
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[12][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[12][1])"
@@ -6981,7 +7112,7 @@ menu
 	{
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		name "rgHotkeyButtonHandle1"
-		area 1303 1028 40 40
+		area 10 142 40 40
 		actionDrag
 		"
 			rgDragHotkeyButton(1)
@@ -6990,77 +7121,77 @@ menu
 	handle
 	{
 		name "rgHotkeyButtonHandle2"
-		area 10 142 40 40
+		area 10 184 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(2)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle3"
-		area 10 184 40 40
+		area 10 226 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(3)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle4"
-		area 10 226 40 40
+		area 10 268 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(4)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle5"
-		area 10 268 40 40
+		area 10 310 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(5)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle6"
-		area 10 310 40 40
+		area 10 352 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(6)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle7"
-		area 10 352 40 40
+		area 10 394 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(7)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle8"
-		area 10 394 40 40
+		area 10 436 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(8)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle9"
-		area 10 436 40 40
+		area 10 478 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(9)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle10"
-		area 10 478 40 40
+		area 10 520 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(10)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle11"
-		area 10 520 40 40
+		area 10 562 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(11)"
 	}
 	handle
 	{
 		name "rgHotkeyButtonHandle12"
-		area 10 562 40 40
+		area 10 604 40 40
 		enabled "rgHotkeyButtonsUnlocked == 1"
 		actionDrag "rgDragHotkeyButton(12)"
 	}
@@ -11273,136 +11404,509 @@ menu
 
 `
 	partyImport = {}
+	rgClearPartyOnce = 0
+	rgIwdSoloPlay = 0
+	
+function rgClearPartyScreen()
+	if rgClearPartyOnce == 1 then
+		createPartyScreen:OnCreateDeleteButtonClick(0)
+		createPartyScreen:OnCreateDeleteButtonClick(0)
+		createPartyScreen:OnCreateDeleteButtonClick(0)
+		createPartyScreen:OnCreateDeleteButtonClick(0)
+		createPartyScreen:OnCreateDeleteButtonClick(0)
+		createPartyScreen:OnCreateDeleteButtonClick(0)
+		rgClearPartyOnce = 0
+		if rgIwdSoloPlay == 1 then
+			rgCreateButtonClick(1)
+			rgChargenSteps(0)
+			createCharScreen:OnMenuButtonClick()
+		end
+	end
+end
+function rgGetImportButtonString(num)
+	if partyImport.character[num].createdelete == t('CREATE_BUTTON'):lower() then
+		return t('IMPORT_BUTTON')
+	else
+		return partyImport.character[num].createdelete
+	end
+end
+function rgGetCreateButtonString(num)
+	if partyImport.character[num].createdelete == t('CREATE_BUTTON'):lower() then
+		return t('CREATE_BUTTON')
+	else
+		return partyImport.character[num].name
+	end
+end
+function rgCreateButtonClick(num)
+	if partyImport.character[num].createdelete == t('CREATE_BUTTON'):lower() then
+		createPartyScreen:OnCreateDeleteButtonClick(num-1)
+		Infinity_PopMenu()
+		Infinity_PushMenu('CHARGEN')
+	else
+		createPartyScreen:OnPortraitButtonClick(num-1)
+	end
+end
+function rgGetLargePortrait(port)
+	if port ~= 'noportsm' and port ~= 'noportls' then
+		port = port:sub(1, -2)
+		port = port .. 'l'
+	else
+		port = 'rgnoport'
+	end
+	return port
+end
+function rgGetPartyArea()
+	local screenWidth, screenHeight = Infinity_GetScreenSize()
+	Infinity_SetArea('rgPartyPregenButton',nil,screenHeight-74,nil,nil)
+	Infinity_SetArea('rgPartyBackButton',nil,screenHeight-74,nil,nil)
+	Infinity_SetArea('rgPartyPlayButton',nil,screenHeight-74,nil,nil)
+end
+
+
+
 `
 menu
 {
 	name 'IMPORTPARTY'
-	align center center
-	label 
-	{
-		mosaic 'GMPCARBD'
-		area 0 0 1024 768
-	}
-	label
-	{
-		area 162 16 700 44
-		text "CREATE_PARTY_TITLE"
-		text style "title"
-	}
-	label
-	{
-		enabled		"game:GetMissionPackInfoTBP()"
-		area 		54 584 902 62
-		scrollbar	'rgdscrl1'
-		text style	"normal"
-		text 			69563
-	}
-
-	--portraits
-	label
-	{
-		area 67 180 64 90
-		bam 'GUIRSP10'
-		sequence 0
-	}
+	align center top
+	onOpen "
+		rgGetPartyArea()
+		if rgGameEngine == 3 then
+			Infinity_SetBackground('BACKGROUND')
+		end
+	"
 	button
 	{
-		area 71 182 56 86
-		bitmap lua "partyImport.character[1].portrait"
+		area 0 0 0 0
+		text lua "rgClearPartyScreen()"
+	}
+	label 
+	{
+		area 0 0 1365 768
+	}
+	label
+	{
+		area 170 10 1025 44
+		text "CREATE_PARTY_TITLE"
+		text style "button"
+		text shadow 1
+	}
+	--label
+	--{
+	--	enabled		"game:GetMissionPackInfoTBP()"
+	--	area 		54 584 902 62
+	--	scrollbar	'rgdscrl1'
+	--	text style	"normal"
+	--	text 			69563
+	--}
+	
+	--label
+	--{
+	--	area 10 152 210 360
+	--	bam rgdcgen2
+	--	scaleToClip
+	--}
+	--label
+	--{
+	--	area 237 152 210 360
+	--	bam rgdcgen2
+	--	scaleToClip
+	--}
+	--label
+	--{
+	--	area 464 152 210 360
+	--	bam rgdcgen2
+	--	scaleToClip
+	--}
+	--label
+	--{
+	--	area 691 152 210 360
+	--	bam rgdcgen2
+	--	scaleToClip
+	--}
+	--label
+	--{
+	--	area 918 152 210 360
+	--	bam rgdcgen2
+	--	scaleToClip
+	--}
+	--label
+	--{
+	--	area 1145 152 210 360
+	--	bam rgdcgen2
+	--	scaleToClip
+	--}
+	
+
+	--portraits
+	--label
+	--{
+	--	area 67 180 64 90
+	--	bam 'GUIRSP10'
+	--	sequence 0
+	--}
+	button
+	{
+		area 20 215 190 299
+		--text lua "partyImport.character[1].portrait"
+		bitmap lua "rgGetLargePortrait(partyImport.character[1].portrait)"
 		clickable lua "partyImport.character[1].name ~= ''"
 		action
 		"
 			createPartyScreen:OnPortraitButtonClick(0)
 		"
 	}
-	label
-	{
-		area 67 315 64 90
-		bam 'GUIRSP10'
-		sequence 0
-	}
+	--label
+	--{
+	--	area 67 315 64 90
+	--	bam 'GUIRSP10'
+	--	sequence 0
+	--}
 	button
 	{
-		area 71 317 56 86
-		bitmap lua "partyImport.character[2].portrait"
+		area 247 215 190 299
+		bitmap lua "rgGetLargePortrait(partyImport.character[2].portrait)"
 		clickable lua "partyImport.character[2].name ~= ''"
 		action
 		"
 			createPartyScreen:OnPortraitButtonClick(1)
 		"
 	}
-	label
-	{
-		area 67 454 64 90
-		bam 'GUIRSP10'
-		sequence 0
-	}
+	--label
+	--{
+	--	area 67 454 64 90
+	--	bam 'GUIRSP10'
+	--	sequence 0
+	--}
 	button
 	{
-		area 71 456 56 86
-		bitmap lua "partyImport.character[3].portrait"
+		area 474 215 190 299
+		bitmap lua "rgGetLargePortrait(partyImport.character[3].portrait)"
 		clickable lua "partyImport.character[3].name ~= ''"
 		action
 		"
 			createPartyScreen:OnPortraitButtonClick(2)
 		"
 	}
-	label
-	{
-		area 557 180 64 90
-		bam 'GUIRSP10'
-		sequence 0
-	}
+	--label
+	--{
+	--	area 557 180 64 90
+	--	bam 'GUIRSP10'
+	--	sequence 0
+	--}
 	button
 	{
-		area 561 182 56 86
-		bitmap lua "partyImport.character[4].portrait"
+		area 701 215 190 299
+		bitmap lua "rgGetLargePortrait(partyImport.character[4].portrait)"
 		clickable lua "partyImport.character[4].name ~= ''"
 		action
 		"
 			createPartyScreen:OnPortraitButtonClick(3)
 		"
 	}
-	label
-	{
-		area 557 315 64 90
-		bam 'GUIRSP10'
-		sequence 0
-	}
+	--label
+	--{
+	--	area 557 315 64 90
+	--	bam 'GUIRSP10'
+	--	sequence 0
+	--}
 	button
 	{
-		area 561 317 56 86
-		bitmap lua "partyImport.character[5].portrait"
+		area 928 215 190 299
+		bitmap lua "rgGetLargePortrait(partyImport.character[5].portrait)"
 		clickable lua "partyImport.character[5].name ~= ''"
 		action
 		"
 			createPartyScreen:OnPortraitButtonClick(4)
 		"
 	}
-	label
-	{
-		area 557 454 64 90
-		bam 'GUIRSP10'
-		sequence 0
-	}
+	--label
+	--{
+	--	area 557 454 64 90
+	--	bam 'GUIRSP10'
+	--	sequence 0
+	--}
 	button
 	{
-		area 561 456 56 86
-		bitmap lua "partyImport.character[6].portrait"
+		area 1155 215 190 299
+		bitmap lua "rgGetLargePortrait(partyImport.character[6].portrait)"
 		clickable lua "partyImport.character[6].name ~= ''"
 		action
 		"
 			createPartyScreen:OnPortraitButtonClick(5)
 		"
 	}
+	
+	label
+	{
+		area 15 210 200 308
+		bam 'rgdport4'
+		ScaleToClip
+	}
+	label
+	{
+		area 242 210 200 308
+		bam 'rgdport4'
+		ScaleToClip
+	}
+	label
+	{
+		area 469 210 200 308
+		bam 'rgdport4'
+		ScaleToClip
+	}
+	label
+	{
+		area 696 210 200 308
+		bam 'rgdport4'
+		ScaleToClip
+	}
+	label
+	{
+		area 923 210 200 308
+		bam 'rgdport4'
+		ScaleToClip
+	}
+	label
+	{
+		area 1150 210 200 308
+		bam 'rgdport4'
+		ScaleToClip
+	}
 
+	
+
+	--delete/create buttons
 	button
 	{
-		area 527 710 200 40
-		bam 'GUIBUTNT'
-		sequence 1
+		area 5 164 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetCreateButtonString(1)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			rgCreateButtonClick(1)
+			if rgGameEngine == 3 then
+				rgChargenSteps(0)
+				createCharScreen:OnMenuButtonClick()
+			end
+		"
+	}
+	button
+	{
+		area 5 511 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetImportButtonString(1)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			createPartyScreen:OnCreateDeleteButtonClick(0)
+			if rgGameEngine ~= 3 then
+				createCharScreen:OnImportCharacterButtonClick()
+			end
+		"
+	}
+	
+	button
+	{
+		area 232 164 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetCreateButtonString(2)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			rgCreateButtonClick(2)
+			if rgGameEngine == 3 then
+				rgChargenSteps(0)
+				createCharScreen:OnMenuButtonClick()
+			end
+		"
+	}
+	button
+	{
+		area 232 511 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetImportButtonString(2)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			createPartyScreen:OnCreateDeleteButtonClick(1)
+			if rgGameEngine ~= 3 then
+				createCharScreen:OnImportCharacterButtonClick()
+			end
+		"
+	}
+	
+	button
+	{
+		area 459 164 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetCreateButtonString(3)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			rgCreateButtonClick(3)
+			if rgGameEngine == 3 then
+				rgChargenSteps(0)
+				createCharScreen:OnMenuButtonClick()
+			end
+		"
+	}
+	button
+	{
+		area 459 511 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetImportButtonString(3)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			createPartyScreen:OnCreateDeleteButtonClick(2)
+			if rgGameEngine ~= 3 then
+				createCharScreen:OnImportCharacterButtonClick()
+			end
+		"
+	}
+	
+	button
+	{
+		area 686 164 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetCreateButtonString(4)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			rgCreateButtonClick(4)
+			if rgGameEngine == 3 then
+				rgChargenSteps(0)
+				createCharScreen:OnMenuButtonClick()
+			end
+		"
+	}
+	button
+	{
+		area 686 511 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetImportButtonString(4)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			createPartyScreen:OnCreateDeleteButtonClick(3)
+			if rgGameEngine ~= 3 then
+				createCharScreen:OnImportCharacterButtonClick()
+			end
+		"
+	}
+	
+	button
+	{
+		area 913 164 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetCreateButtonString(5)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			rgCreateButtonClick(5)
+			if rgGameEngine == 3 then
+				rgChargenSteps(0)
+				createCharScreen:OnMenuButtonClick()
+			end
+		"
+	}
+	button
+	{
+		area 913 511 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetImportButtonString(5)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			createPartyScreen:OnCreateDeleteButtonClick(4)
+			if rgGameEngine ~= 3 then
+				createCharScreen:OnImportCharacterButtonClick()
+			end
+		"
+	}
+	
+	button
+	{
+		area 1140 164 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetCreateButtonString(6)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			rgCreateButtonClick(6)
+			if rgGameEngine == 3 then
+				rgChargenSteps(0)
+				createCharScreen:OnMenuButtonClick()
+			end
+		"
+	}
+	button
+	{
+		area 1140 511 220 54
+		bam		rgdmbut1
+		ScaleToClip
+		text lua "rgGetImportButtonString(6)"
+		text style "button"
+		pad 8 2 8 2
+		action
+		"
+			createPartyScreen:OnCreateDeleteButtonClick(5)
+			if rgGameEngine ~= 3 then
+				createCharScreen:OnImportCharacterButtonClick()
+			end
+		"
+	}
+	
+	
+	button
+	{
+		name "rgPartyPregenButton"
+		area 532 1006 300 64
+		bam		rgdmbut1
+		ScaleToClip
+		text "Pre-gen party"
+		text style 'button'
+		pad 8 2 8 2
+		action 
+		"
+			createPartyScreen:OnBackButtonClick()
+			Infinity_PopMenu(); 
+			startEngine:OnCreatePartyButtonClick();
+		"
+	}
+	button
+	{
+		name "rgPartyPlayButton"
+		area 865 1006 300 64
+		bam		rgdmbut1
+		ScaleToClip
 		text "PLAY_IMPORT_BUTTON" -- Play
 		text style 'button'
+		pad 8 2 8 2
 		clickable lua "partyImport.playbuttonclickable"
 		action 
 		"
@@ -11411,129 +11915,57 @@ menu
 	}
 	button
 	{
+		name "rgPartyBackButton"
 		on escape
-		area 305 710 200 40
-		bam 'GUIBUTNT'
-		sequence 0
+		area 200 1006 300 64
+		bam		rgdmbut1
+		ScaleToClip
 		text "BACK_BUTTON" -- Back
 		text style 'button'
+		pad 8 2 8 2
 		action 
 		"
 			createPartyScreen:OnBackButtonClick()
 		"
 	}
 
-	--delete/create buttons
-	button
-	{
-		area 155 180 300 40
-		bam 'GUIBUTWT'
-		sequence 0
-		text lua "partyImport.character[1].createdelete"
-		text style "button"
-		action
-		"
-			createPartyScreen:OnCreateDeleteButtonClick(0)
-		"
-	}
-	button
-	{
-		area 155 317 300 40
-		bam 'GUIBUTWT'
-		sequence 2
-		text lua "partyImport.character[2].createdelete"
-		text style "button"
-		action
-		"
-			createPartyScreen:OnCreateDeleteButtonClick(1)
-		"
-	}
-	button
-	{
-		area 155 452 300 40
-		bam 'GUIBUTWT'
-		sequence 1
-		text lua "partyImport.character[3].createdelete"
-		text style "button"
-		action
-		"
-			createPartyScreen:OnCreateDeleteButtonClick(2)
-		"
-	}
-	button
-	{
-		area 645 180 300 40
-		bam 'GUIBUTWT'
-		sequence 0
-		text lua "partyImport.character[4].createdelete"
-		text style "button"
-		action
-		"
-			createPartyScreen:OnCreateDeleteButtonClick(3)
-		"
-	}
-	button
-	{
-		area 645 317 300 40
-		bam 'GUIBUTWT'
-		sequence 2
-		text lua "partyImport.character[5].createdelete"
-		text style "button"
-		action
-		"
-			createPartyScreen:OnCreateDeleteButtonClick(4)
-		"
-	}
-	button
-	{
-		area 645 452 300 40
-		bam 'GUIBUTWT'
-		sequence 1
-		text lua "partyImport.character[6].createdelete"
-		text style "button"
-		action
-		"
-			createPartyScreen:OnCreateDeleteButtonClick(5)
-		"
-	}
-
 	-- character labels
-	label
-	{
-		area 155 228 314 50
-		text lua "partyImport.character[1].name"
-		text style "title"
-	}
-	label
-	{
-		area 155 365 314 50
-		text lua "partyImport.character[2].name"
-		text style "title"
-	}
-	label
-	{
-		area 155 500 314 50
-		text lua "partyImport.character[3].name"
-		text style "title"
-	}
-	label
-	{
-		area 645 228 314 50
-		text lua "partyImport.character[4].name"
-		text style "title"
-	}
-	label
-	{
-		area 645 365 314 50
-		text lua "partyImport.character[5].name"
-		text style "title"
-	}
-	label
-	{
-		area 645 500 314 50
-		text lua "partyImport.character[6].name"
-		text style "title"
-	}
+	--label
+	--{
+	--	area 155 228 314 50
+	--	text lua "partyImport.character[1].name"
+	--	text style "title"
+	--}
+	--label
+	--{
+	--	area 155 365 314 50
+	--	text lua "partyImport.character[2].name"
+	--	text style "title"
+	--}
+	--label
+	--{
+	--	area 155 500 314 50
+	--	text lua "partyImport.character[3].name"
+	--	text style "title"
+	--}
+	--label
+	--{
+	--	area 645 228 314 50
+	--	text lua "partyImport.character[4].name"
+	--	text style "title"
+	--}
+	--label
+	--{
+	--	area 645 365 314 50
+	--	text lua "partyImport.character[5].name"
+	--	text style "title"
+	--}
+	--label
+	--{
+	--	area 645 500 314 50
+	--	text lua "partyImport.character[6].name"
+	--	text style "title"
+	--}
 }
 
 menu
@@ -11713,32 +12145,32 @@ menu
 	}
 	
 function rgGetGameCampaigns()
-	if rgGetGameEngine() == 0 then
+	if rgGameEngine == 0 then
 	rgCampaigns = { 
 		{order = 1, bigLogo = 0, icon = 0, title = "RG_MENU_CAMPAIGN1", background = 2, button = 2, sidebar = 2, importEnabled = false, tutorialEnabled = true}, 
 		{order = 3, bigLogo = 2, icon = 2, title = "RG_MENU_CAMPAIGN3", background = 2, button = 2, sidebar = 2, importEnabled = false, tutorialEnabled = false},
 	}
-	elseif rgGetGameEngine() == 1 then
+	elseif rgGameEngine == 1 then
 	rgCampaigns = { 
 		{order = 1, bigLogo = 0, icon = 0, title = "RG_MENU_CAMPAIGN1", background = 2, button = 2, sidebar = 2, importEnabled = false, tutorialEnabled = true}, 
 		{order = 2, bigLogo = 1, icon = 1, title = "RG_MENU_CAMPAIGN2", background = 2, button = 2, sidebar = 2, importEnabled = true, tutorialEnabled = false},
 		{order = 3, bigLogo = 2, icon = 2, title = "RG_MENU_CAMPAIGN3", background = 2, button = 2, sidebar = 2, importEnabled = false, tutorialEnabled = false},
 		
 	}
-	elseif rgGetGameEngine() == 2 then
+	elseif rgGameEngine == 2 then
 	rgCampaigns = { 
 		{order = 4, bigLogo = 3, icon = 3, title = "RG_MENU_CAMPAIGN4", background = 2, button = 2, sidebar = 2, importEnabled = false, tutorialEnabled = true}, 
 		{order = 5, bigLogo = 4, icon = 4, title = "RG_MENU_CAMPAIGN5", background = 2, button = 2, sidebar = 2, importEnabled = true, tutorialEnabled = false},
 		{order = 6, bigLogo = 5, icon = 5, title = "RG_MENU_CAMPAIGN6", background = 2, button = 2, sidebar = 2, importEnabled = false, tutorialEnabled = false},
 		
 	}
-	elseif rgGetGameEngine() == 3 then
+	elseif rgGameEngine == 3 then
 	rgCampaigns = { 
 		{order = 7, bigLogo = 6, icon = 6, title = "RG_MENU_CAMPAIGN7", background = 2, button = 2, sidebar = 2, importEnabled = false, tutorialEnabled = true}, 
 		{order = 8, bigLogo = 7, icon = 7, title = "RG_MENU_CAMPAIGN8", background = 2, button = 2, sidebar = 2, importEnabled = true, tutorialEnabled = false},
 		
 	}
-	elseif rgGetGameEngine() == 4 then
+	elseif rgGameEngine == 4 then
 	rgCampaigns = { 
 		--{order = 1, bigLogo = 0, icon = 0, title = "RG_MENU_CAMPAIGN1", background = 2, button = 2, sidebar = 2, importEnabled = false, tutorialEnabled = false}, 
 		--{order = 2, bigLogo = 1, icon = 1, title = "RG_MENU_CAMPAIGN2", background = 2, button = 2, sidebar = 2, importEnabled = true, tutorialEnabled = false},
@@ -11783,7 +12215,7 @@ end
 	--end
 	
 	function onCampaignButton(buttonNum)
-		if rgGetGameEngine() == 4 then
+		if rgGameEngine == 4 then
 			if rgCampaigns[buttonNum] ~= nil then
 				startEngine:OnCampaignButtonClick(rgCampaigns[buttonNum].id,true)
 				Infinity_SetINIValue('Program Options','Active Campaign',buttonNum)
@@ -11845,7 +12277,7 @@ function rgGetGameEngine()
 end
 
 function rgGetGameEngineString(bg1,sod,bg2,iwd)
-	local eng = rgGetGameEngine()
+	local eng = rgGameEngine
 	
 	if eng == 0 then 
 		return Infinity_FetchString(bg1)
@@ -11861,7 +12293,7 @@ function rgGetGameEngineString(bg1,sod,bg2,iwd)
 end
 
 function rgGetGameEngineStringRef(bg1,sod,bg2,iwd)
-	local eng = rgGetGameEngine()
+	local eng = rgGameEngine
 	
 	if eng == 0 then 
 		return bg1
@@ -11914,13 +12346,13 @@ end
 --end
 
 function rgGetTitleFrame()
-	if rgGetGameEngine() == 0 then
+	if rgGameEngine == 0 then
 		if startEngine:GetCampaign() == const.START_CAMPAIGN_BG then
 			return 0
 		elseif startEngine:GetCampaign() == const.START_CAMPAIGN_BP then
 			return 2
 		end
-	elseif rgGetGameEngine() == 1 then
+	elseif rgGameEngine == 1 then
 		if startEngine:GetCampaign() == const.START_CAMPAIGN_BG then
 			return 0
 		elseif startEngine:GetCampaign() == const.START_CAMPAIGN_SOD then
@@ -11928,7 +12360,7 @@ function rgGetTitleFrame()
 		elseif startEngine:GetCampaign() == const.START_CAMPAIGN_BP then
 			return 2
 		end
-	elseif rgGetGameEngine() == 2 then
+	elseif rgGameEngine == 2 then
 		if startEngine:GetCampaign() == 1 then
 			if rgCurrentCampaign == 4 then
 				return 4
@@ -11938,13 +12370,15 @@ function rgGetTitleFrame()
 		elseif startEngine:GetCampaign() == 2 then
 			return 5
 		end
-	elseif rgGetGameEngine() == 3 then
+	elseif rgGameEngine == 3 then
 		if startEngine:GetCampaign() == 1 then
-			return 7
-		elseif startEngine:GetCampaign() == 2 then
-			return 6
+			if rgCurrentCampaign == 7 then
+				return 6
+			else
+				return 7
+			end
 		end
-	elseif rgGetGameEngine() == 4 then
+	elseif rgGameEngine == 4 then
 		return rgCampaigns[currentCampaign].bigLogo
 	end
 end
@@ -11969,6 +12403,7 @@ function rgGetNewGameMenuArea()
 	Infinity_SetArea('rgmainmenubuttonnew3', 		screenWidth - 500, 291,nil,nil)
 	Infinity_SetArea('rgmainmenubuttonnew4', 		screenWidth - 500, 441,nil,nil)
 	Infinity_SetArea('rgmainmenubuttonnew5', 		screenWidth - 500, 516,nil,nil)
+	Infinity_SetArea('rgmainmenubuttonnew1x', 		screenWidth - 500, 366,nil,nil)
 	Infinity_SetArea('rgmainmenuversionnew', 		screenWidth - 500, screenHeight - 50, nil,nil)
 end
 function rgGetOptionsMenuArea()
@@ -12004,6 +12439,7 @@ if type(cheatAreasExpansion) == 'table' then
 	end
 end
 rgCurrentCampaign = 0
+rgFirstStart = 1
 `
 menu
 {
@@ -12011,8 +12447,10 @@ menu
 	align left top
 	ignoreesc
 	onOpen "
+		rgGameEngine = rgGetGameEngine()
+		rgGetGameEnginePortraits()
 		rgGetGameCampaigns()
-		if rgGetGameEngine() == 4 then --eet
+		if rgGameEngine == 4 then --eet
 			if(Infinity_GetINIValue('Program Options','EET Installation State') == 1) then --EET_end not installed
 				Infinity_PushMenu('START_INSTALLATION_WARNING')
 			end
@@ -12077,10 +12515,16 @@ menu
 		Infinity_SetBackground('BACKGROUND')
 		
 		--If we're coming back from the tutorial make sure we're set to our actual campaign.
-		if(startEngine:GetCampaign() == const.START_CAMPAIGN_BG) then
+		if(startEngine:GetCampaign() == const.START_CAMPAIGN_BG and rgGameEngine ~= 3) then
 			startEngine:OnSoAButtonClick(false)
 		end
 		rgGetMainMenuArea()
+		
+		
+		if rgGameEngine == 3 and rgFirstStart == 1 then
+			rgFirstStart = 0
+			startEngine:OnSoAButtonClick(true)
+		end
 	"
 	onClose "
 		local state = startEngine:GetEngineState()
@@ -12133,7 +12577,7 @@ menu
 			}
 		}
 		
-		area 10 775 340 300
+		area 10 875 340 200
 		name "rgCampaignList"
 		rowheight	100
 		hideHighlight
@@ -12144,7 +12588,7 @@ menu
 			
 			rgCurrentCampaign = rgCampaigns[rgSelectedCampaign].icon
 			
-			if rgGetGameEngine() == 4 then
+			if rgGameEngine == 4 then
 				onCampaignButton(rgSelectedCampaign)
 				rgSelectedCampaign = 0
 				startEngine:DismissChooseCampaignPopup()
@@ -12162,9 +12606,9 @@ menu
 				elseif rgCampaigns[rgSelectedCampaign].order == 6 then
 					startEngine:OnTBPButtonClick(true)
 				elseif rgCampaigns[rgSelectedCampaign].order == 7 then
-					
+					startEngine:OnSoAButtonClick(true)
 				elseif rgCampaigns[rgSelectedCampaign].order == 8 then
-					
+					startEngine:OnToBButtonClick(true)
 				end
 				rgSelectedCampaign = 0
 			end
@@ -12329,6 +12773,7 @@ menu
 	onopen 
 	"
 		rgGetNewGameMenuArea()
+		rgIwdSoloPlay = 0
 		--Infinity_PlayMovie('flames','flames2')
 	"
 
@@ -12336,22 +12781,43 @@ menu
 	{
 		name 'rgmainmenutitlenew'
 		ScaleToClip
-		area 815 48 510 131
+		area 1370 48 510 131
 		bam 'RGDTITLE'
 		frame lua "rgGetTitleFrame()"
 	}
 
+button
+	{
+		name 'rgmainmenubuttonnew1x'
+		bam 'RGDMBUT1'
+		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,1)"
+		ScaleToClip
+		area 1420 366 409 75
+		pad 10 8 10 8
+		text style "button"
+		text lua "rgString('New solo game')"
+		enabled "rgGameEngine == 3"
+		action 
+		"
+			Infinity_PopMenu(); 
+			rgClearPartyOnce = 1
+			rgIwdSoloPlay = 1
+			startEngine:OnCreatePartyButtonClick();
+		"
+		actionEnter "rgMainButtHighlight = 1"
+		actionExit "rgMainButtHighlight = 0"
+	}
 	button
 	{
 		name 'rgmainmenubuttonnew1'
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,1)"
 		ScaleToClip
-		area 865 366 409 75
+		area 1420 366 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('TUTORIAL_BUTTON')"
-		enabled "getTutorialEnabled()"
+		enabled "getTutorialEnabled() and rgGameEngine ~= 3"
 		action 
 		"
 			Infinity_PopMenu();
@@ -12366,7 +12832,7 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,1)"
 		ScaleToClip
-		area 865 366 409 75
+		area 1420 366 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('IMPORT_GAME_BUTTON')"
@@ -12385,14 +12851,15 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,2)"
 		ScaleToClip
-		area 865 291 409 75
+		area 1420 291 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('NEW_GAME_BUTTON')"
 		action 
 		"
 			Infinity_PopMenu(); 
-			if rgGetGameEngine() == 3 then
+			if rgGameEngine == 3 then
+				rgClearPartyOnce = 1
 				startEngine:OnCreatePartyButtonClick();
 			else
 				startEngine:OnNewGameButtonClick();
@@ -12408,7 +12875,7 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,3)"
 		ScaleToClip
-		area 865 441 409 75
+		area 1420 441 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('PREGENERATE_BUTTON')"
@@ -12424,7 +12891,7 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,4)"
 		ScaleToClip
-		area 865 516 409 75
+		area 1420 516 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('BACK_BUTTON')"
@@ -12435,7 +12902,7 @@ menu
 	label
 	{
 		name 'rgmainmenuversionnew'
-		area 865 718 409 41
+		area 1420 1030 409 41
 		text style "normal"
 		text align center center
 		text lua "CBaldurChitin:GetVersionString()"
@@ -17063,13 +17530,13 @@ menu
 	onOpen "
 		rgScrollWorldMapOnce = 0
 		local w, h = Infinity_GetScreenSize()
-		if rgGetGameEngine() == 0 or rgGetGameEngine() == 1 then
+		if rgGameEngine == 0 or rgGameEngine == 1 then
 			Infinity_SetArea('rgWorldMap1',95,78,1000,h-78)
 			Infinity_SetArea('rgWorldMapBcg1',0,0,595,78)
 			Infinity_SetArea('rgWorldMapBcg2',594,0,595,78)
 			Infinity_SetArea('rgWorldMapTitl',295,17,600,44)
 			Infinity_SetArea('rgWorldMapButt',1122,18,42,42)
-		elseif rgGetGameEngine() == 2 then
+		elseif rgGameEngine == 2 then
 			local a = 0
 			local b = 0
 			if w < 1470 then
@@ -17083,7 +17550,7 @@ menu
 			Infinity_SetArea('rgWorldMapBcg3',875-a,(h/2)-350-39,595,78)
 			Infinity_SetArea('rgWorldMapTitl',435,(h/2)-350-39+17,600,44)
 			Infinity_SetArea('rgWorldMapButt',1402-a,(h/2)-350-39+18,42,42)
-		elseif rgGetGameEngine() == 4 then
+		elseif rgGameEngine == 4 then
 			local a = 0
 			local b = 0
 			if w < 1550 then
@@ -17102,7 +17569,7 @@ menu
 	label
 	{
 		name "rgWorldMapBac2"
-		enabled "rgGetGameEngine() == 2"
+		enabled "rgGameEngine == 2"
 		area 0 71 1484 714
 		mosaic "rgdabox2"
 	}
@@ -17127,7 +17594,7 @@ menu
 	label
 	{
 		name 'rgWorldMapBcg3'
-		enabled "rgGetGameEngine() == 2"
+		enabled "rgGameEngine == 2"
 		area 875 0 595 78
 		bam 'rgdabcg1'
 		frame 1
@@ -17162,13 +17629,13 @@ menu
 	} 
 	label
 	{
-		enabled "rgGetGameEngine() < 2"
+		enabled "rgGameEngine < 2"
 		area 87 78 1014 2000
 		mosaic "rgdabox1"
 	}
 	map
 	{
-		enabled "rgGetGameEngine() < 2"
+		enabled "rgGameEngine < 2"
 		area 95 78 1000 664
 		name "rgWorldMap1"
 		worldmap
@@ -17187,7 +17654,7 @@ menu
 	}
 	map
 	{
-		enabled "rgGetGameEngine() == 2"
+		enabled "rgGameEngine == 2"
 		area 7 78 1470 700
 		name "rgWorldMap2"
 		worldmap
@@ -17206,7 +17673,7 @@ menu
 	}
 	map
 	{
-		enabled "rgGetGameEngine() == 4"
+		enabled "rgGameEngine == 4"
 		area 0 78 1550 1080
 		name "rgWorldMap4"
 		worldmap
@@ -17268,7 +17735,7 @@ function setChapterBackground(id)
 	--chapterBackground = chapterBackgrounds[id]
 end
 function rgGetBackgroundFrame()
-	if rgGetGameEngine() == 3 then --iwd
+	if rgGameEngine == 3 then --iwd
 		return 1
 	else
 		return 0
@@ -17283,7 +17750,7 @@ function getChapterArea()
 	Infinity_SetArea('rgChapterTextBcg',screenWidth - 565, nil, nil, nil)
 end
 function rgChapterNumber()
-	if rgGetGameEngine() == 4 then
+	if rgGameEngine == 4 then
 		return ''
 	else
 		chapter = Infinity_GetMaxChapterPage()
@@ -22086,7 +22553,7 @@ menu
 	{
 		area 678 125 184 34
 		bam "rgdmloot"
-		text 'Loot all'
+		text 'RG_LOOTALL'
 		text style "button"
 		text align left center
 		pad 45 6 0 5
@@ -22120,7 +22587,7 @@ menu
 		end
 	end
 	
-	function showGroundItemDescription(slotId)
+	function rgQuicklootMassPickSameItem(slotId)
 		local slot = loot.groundItems[slotId + worldScreen:GetTopGroundItem()]
 			if(slot and slot.item) then
 				Infinity_GetGroundItemDescription(slotId + worldScreen:GetTopGroundItem(), slot.slotId, slot.containerId)
@@ -22373,6 +22840,19 @@ function rgQuicklootFirstSlotClickable(row)
 	end
 end
 
+function rgQuicklootMassPickSameItem(item)
+	rgQlName = getGroundItemProperty(item,'name')
+	local idxs = {rgQlRowIndex6,rgQlRowIndex5,rgQlRowIndex4,rgQlRowIndex3,rgQlRowIndex2,rgQlRowIndex1}
+	for i=1,6,1 do
+		for j=1,10,1 do
+			local idx = idxs[i]+(10-j)
+			if getGroundItemProperty(rgGetQlSlotIndex(idx),'name') == rgQlName then
+				groundItemClick(rgGetQlSlotIndex(idx))
+			end
+		end
+	end
+end
+
 --RgQuicklootRows = 3
 --RgQuicklootBottom = 0
 --RgQuicklootFilterJunk = 1
@@ -22387,6 +22867,7 @@ menu
 	onOpen
 	"
 		rgGetQuicklootSlotPosition()
+		rgQlName = ''
 		--worldScreen:GroundScrollEnabled(0)
 		--Infinity_SetOffset('WORLD_QUICKLOOT',0, -toolbarTop)
 	"
@@ -22493,7 +22974,7 @@ menu
 	--	"
 	--		groundItemClick(selectedLootItem-1)
 	--	"
-	--	actionAlt "showGroundItemDescription(selectedLootItem-1)"
+	--	actionAlt "rgQuicklootMassPickSameItem(selectedLootItem-1)"
 	--	actionEnter "mouseOverQuicklootContainer = getSlotContainerId(selectedLootItem-1,'containerId')"
 	--	actionExit "mouseOverQuicklootContainer = nil"
 	--}
@@ -22512,7 +22993,7 @@ menu
 	button
 	{
 		name 'rgQuicklootJunkButton'
-		area		0 285 28 28 
+		area		0 308 28 28 
 		enabled "getSlotContainerId(0,'containerId') and (RgMessageboxUnlocked == 1 or RgIsModernHud == 1)"
 		bam			RGDMBTQL
 		Sequence 2
@@ -22526,7 +23007,7 @@ menu
 	button
 	{
 		name 'rgQuicklootArrLeft'
-		area 28 285 28 28
+		area 28 308 28 28
 		bam		RGDMBTQL
 		ScaleToClip
 		enabled "rgQuicklootArrowsEnabled()"
@@ -22538,7 +23019,7 @@ menu
 	button
 	{
 		name 'rgQuicklootArrRight'
-		area 56 285 28 28
+		area 56 308 28 28
 		bam		RGDMBTQL
 		ScaleToClip
 		Sequence 1
@@ -22562,7 +23043,8 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+0),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+0),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+0))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+0))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+0))"
+		--actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+0),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22579,7 +23061,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+1),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+1),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+1))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+1))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+1),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22596,7 +23078,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+2),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+2),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+2))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+2))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+2),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22613,7 +23095,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+3),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+3),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+3))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+3))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+3),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22630,7 +23112,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+4),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+4),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+4))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+4))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+4),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22647,7 +23129,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+5),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+5),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+5))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+5))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+5),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22664,7 +23146,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+6),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+6),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+6))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+6))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+6),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22681,7 +23163,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+7),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+7),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+7))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+7))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+7),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22698,7 +23180,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+8),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+8),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+8))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+8))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+8),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22715,7 +23197,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+9),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex1+9),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+9))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+9))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+9),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}	
@@ -22733,7 +23215,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+0),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+0),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+0))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+0))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+0),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22750,7 +23232,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+1),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+1),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+1))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+1))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+1),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22767,7 +23249,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+2),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+2),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+2))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+2))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+2),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22784,7 +23266,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+3),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+3),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+3))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+3))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+3),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22801,7 +23283,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+4),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+4),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+4))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+4))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+4),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22818,7 +23300,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+5),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+5),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+5))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+5))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+5),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22835,7 +23317,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+6),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+6),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+6))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+6))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+6),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22852,7 +23334,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+7),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+7),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+7))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+7))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+7),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22869,7 +23351,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+8),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+8),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+8))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+8))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+8),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22886,7 +23368,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+9),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex2+9),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+9))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex2+9))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+9),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}	
@@ -22904,7 +23386,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+0),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+0),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+0))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+0))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+0),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22921,7 +23403,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+1),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+1),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+1))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+1))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+1),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22938,7 +23420,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+2),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+2),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+2))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+2))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+2),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22955,7 +23437,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+3),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+3),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+3))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+3))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+3),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22972,7 +23454,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+4),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+4),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+4))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+4))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+4),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -22989,7 +23471,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+5),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+5),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+5))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+5))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+5),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23006,7 +23488,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+6),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+6),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+6))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+6))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+6),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23023,7 +23505,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+7),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+7),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+7))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+7))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+7),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23040,7 +23522,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+8),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+8),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+8))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+8))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+8),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23057,7 +23539,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+9),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex3+9),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+9))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex3+9))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+9),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}	
@@ -23075,7 +23557,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+0),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+0),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+0))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+0))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+0),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23092,7 +23574,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+1),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+1),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+1))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+1))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+1),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23109,7 +23591,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+2),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+2),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+2))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+2))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+2),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23126,7 +23608,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+3),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+3),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+3))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+3))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+3),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23143,7 +23625,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+4),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+4),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+4))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+4))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+4),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23160,7 +23642,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+5),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+5),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+5))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+5))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+5),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23177,7 +23659,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+6),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+6),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+6))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+6))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+6),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23194,7 +23676,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+7),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+7),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+7))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+7))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+7),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23211,7 +23693,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+8),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+8),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+8))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+8))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+8),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23228,7 +23710,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+9),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex4+9),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+9))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex4+9))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+9),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23246,7 +23728,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+0),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+0),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+0))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+0))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+0),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23263,7 +23745,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+1),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+1),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+1))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+1))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+1),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23280,7 +23762,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+2),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+2),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+2))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+2))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+2),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23297,7 +23779,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+3),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+3),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+3))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+3))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+3),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23314,7 +23796,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+4),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+4),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+4))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+4))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+4),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23331,7 +23813,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+5),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+5),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+5))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+5))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+5),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23348,7 +23830,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+6),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+6),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+6))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+6))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+6),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23365,7 +23847,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+7),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+7),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+7))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+7))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+7),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23382,7 +23864,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+8),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+8),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+8))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+8))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+8),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23399,7 +23881,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+9),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex5+9),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+9))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex5+9))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+9),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23417,7 +23899,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+0),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+0),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+0))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+0))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+0),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23434,7 +23916,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+1),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+1),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+1))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+1))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+1),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23451,7 +23933,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+2),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+2),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+2))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+2))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+2),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23468,7 +23950,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+3),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+3),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+3))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+3))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+3),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23485,7 +23967,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+4),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+4),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+4))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+4))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+4),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23502,7 +23984,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+5),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+5),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+5))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+5))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+5),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23519,7 +24001,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+6),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+6),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+6))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+6))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+6),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23536,7 +24018,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+7),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+7),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+7))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+7))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+7),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23553,7 +24035,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+8),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+8),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+8))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+8))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+8),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23570,7 +24052,7 @@ menu
 		count lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+9),'count') "
 		usages lua	"getGroundItemProperty(rgGetQlSlotIndex(rgQlRowIndex6+9),'usages') "
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+9))"
-		actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex6+9))"
+		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+9),'containerId') "
 		actionExit "mouseOverQuicklootContainer = nil"
 	}
@@ -23900,7 +24382,7 @@ menu
 	{
 		name 'rgmainmenutitleload'
 		ScaleToClip
-		area 1370 48 510 131
+		area 815 48 510 131
 		bam 'RGDTITLE'
 		frame lua "rgGetTitleFrame()"
 	}
@@ -23908,7 +24390,7 @@ menu
 	{
 		enabled "rgLoadColumns < 3"
 		name "rgLoadListBackground"
-		area 0 0 870 1080
+		area 0 0 870 768
 		bam rgdlolbc
 		scaleToClip
 	}
@@ -23916,7 +24398,7 @@ menu
 	{
 		enabled "rgLoadColumns == 3"
 		name "rgLoadListBackground1"
-		area 0 0 1250 1080
+		area 0 0 1250 768
 		bam rgdlolbc
 		scaleToClip
 	}
@@ -24114,7 +24596,7 @@ menu
 		"
 		enabled "rgLoadColumns == 1"
 		name "rgmainmenuloadlist1"
-		area 28 5 780 1070
+		area 28 5 780 758
 		rowheight	dynamic
 		hidehighlight
 		table		"rgLoadFiltered"
@@ -24350,7 +24832,7 @@ menu
 		"
 		enabled "rgLoadColumns == 2"
 		name "rgmainmenuloadlist2"
-		area 28 5 780 1070
+		area 28 5 780 758
 		rowheight	dynamic
 		hidehighlight
 		table		"rgLoadFiltered"
@@ -24686,7 +25168,7 @@ menu
 		"
 		enabled "rgLoadColumns == 3"
 		name "rgmainmenuloadlist3"
-		area 28 5 1154 1070
+		area 28 5 1154 758
 		rowheight	dynamic
 		hidehighlight
 		table		"rgLoadFiltered"
@@ -25072,7 +25554,7 @@ menu
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,4)"
 		clickable	lua	"currentSave"	
 		ScaleToClip
-		area 1420 291 409 75
+		area 865 291 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('LOAD_BUTTON')"
@@ -25088,7 +25570,7 @@ menu
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,5)"
 		clickable	lua	"currentSave"	
 		ScaleToClip
-		area 1420 366 409 75
+		area 865 366 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('DELETE_BUTTON')"
@@ -25102,7 +25584,7 @@ menu
 	button
 	{
 		name 'rgmainmenubuttonload6'
-		area 1420 591 409 75
+		area 865 591 409 75
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,6)"
 		ScaleToClip
@@ -25120,7 +25602,7 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,1)"
 		ScaleToClip
-		area 1420 216 409 75
+		area 865 216 409 75
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString(rgGetLoadNameTitle())"
@@ -25141,7 +25623,7 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,2)"
 		ScaleToClip
-		area 1420 441 409 75
+		area 865 441 409 75
 		pad 10 8 10 8
 		text style "button"
 		text color '$'
@@ -25176,7 +25658,7 @@ menu
 		bam 'RGDMBUT1'
 		sequence lua "rgGetHighlightSkin(rgMainButtHighlight,3)"
 		ScaleToClip
-		area 1420 516 409 75
+		area 865 516 409 75
 		pad 10 8 10 8
 		text style "button"
 		text color '$'
@@ -25227,7 +25709,7 @@ menu
 		name "rgLoadNamesList"
 		fill 0 0 0 200
 		enabled "rgLoadNamesFilter == 1"
-		area 1420 291 420 779
+		area 865 291 420 467
 		rowheight	60
 		hidehighlight
 		table		"rgLoadNames"
@@ -26091,7 +26573,7 @@ menu
 	{
 		name 'messagesRect'
 		enabled "RgMessageboxUnlocked == 0 and RgIsModernHud == 0"
-		area 0 0 664 200
+		area 0 0 0 -5
 		--area 0 0 664 200
 		rectangle 0
 		--fill  0 0 0 150
@@ -26120,7 +26602,7 @@ menu
 		--enabled "RgIsModernHud == 0"
 		enabled "RgMessageboxUnlocked == 0 and RgIsModernHud == 0"
 		name "worldMessageBox"
-		area 12 12 640 176
+		area 0 12 0 0
 		--area 12 12 640 176
 		rowheight dynamic
 		table "combatLog"
@@ -26133,7 +26615,7 @@ menu
 	{
 		name 'messagesHandleY'
 		enabled "RgMessageboxUnlocked == 0 and RgIsModernHud == 0"
-		area 0 0 664 10
+		area 0 0 0 0
 		--area 0 0 664 10
 		--bam RGDMBCG4
 		--ScaleToClip
@@ -27159,13 +27641,34 @@ function rgChargenSteps(t)
 end
 function rgGetChargenArea()
 	local screenWidth, screenHeight = Infinity_GetScreenSize()
-	Infinity_SetArea('rgChargenBackground',nil,screenHeight-74,nil,nil)
+	local h = (screenHeight - 768) / 2
 	Infinity_SetArea('chargenButtonImport',nil,screenHeight-74,nil,nil)
 	Infinity_SetArea('chargenButtonBio',nil,screenHeight-74,nil,nil)
 	Infinity_SetArea('chargenButtonBack',nil,screenHeight-74,nil,nil)
 	Infinity_SetArea('chargenButtonCancel',nil,screenHeight-74,nil,nil)
 	Infinity_SetArea('chargenButtonAccept',nil,screenHeight-74,nil,nil)
 	Infinity_SetArea('chargenButtonParty',nil,screenHeight-74,nil,nil)
+	Infinity_SetArea('chargenButtonAcceptIwd',nil,screenHeight-74,nil,nil)
+	if rgGameEngine == 3 then
+		Infinity_SetArea('chargenButton1',20,h+140,300,60)
+		Infinity_SetArea('chargenButton2',20,h+210,300,60)
+		Infinity_SetArea('chargenButton3',20,h+280,300,60)
+		Infinity_SetArea('chargenButton4',20,h+350,300,60)
+		Infinity_SetArea('chargenButton5',20,h+420,300,60)
+		Infinity_SetArea('chargenButtonName',20,h+490,300,60)
+		Infinity_SetArea('chargenTitle',20,h+80,300,44)
+		Infinity_SetArea('chargenInfoBack',nil,h+56,nil,nil) --498 196 324 552
+		--Infinity_SetArea('chargenInfoBack1',nil,h+56,nil,nil)
+		Infinity_SetArea('chargenInfoText',nil,h+76,nil,nil)
+	else
+		Infinity_SetArea('chargenButton1',74,118,244,58)
+		Infinity_SetArea('chargenButton2',318,118,244,58)
+		Infinity_SetArea('chargenButton3',562,118,244,58)
+		Infinity_SetArea('chargenButton4',806,118,244,58)
+		Infinity_SetArea('chargenButton5',1048,118,244,58)
+		Infinity_SetArea('chargenTitle',170,10,1025,44)
+	end
+	
 end
 function rgGetChargenInfo(step)
 	
@@ -27198,15 +27701,30 @@ menu
 	name 'CHARGEN'
 	align center top
 	ignoreesc
-	onOpen "rgGetChargenArea()"
+	onOpen "
+		if rgGameEngine == 3 then
+			Infinity_SetBackground('RG_CHARGEN_BACKGROUND')
+		end
+		rgGetChargenArea()
+		
+	"
 	label
 	{
 		name "rgChargenBackground"
-		area 0 694 1365 768
+		area 0 0 1365 768
 	}
+	--label
+	--{
+	--	name "chargenInfoBack1"
+	--	enabled "rgGameEngine == 3"
+	--	area 0 212 340 552 
+	--	bam rgdcgen2
+	--	ScaleToClip
+	--}
 	label
 	{
-		area 170 10 1025 44
+		name "chargenTitle"
+		area 20 216 300 44
 		text "CHARGEN_TITLE"
 		--text lua "createCharScreen:GetCurrentStep()"
 		text style "button"
@@ -27214,30 +27732,35 @@ menu
 	}
 	label
 	{
+		enabled "rgGameEngine ~= 3"
 		area 74 152 244 420
 		bam rgdcgen2
 		scaleToClip
 	}
 	label
 	{
+		enabled "rgGameEngine ~= 3"
 		area 318 152 244 420
 		bam rgdcgen2
 		scaleToClip
 	}
 	label
 	{
+		enabled "rgGameEngine ~= 3"
 		area 562 152 244 420
 		bam rgdcgen2
 		scaleToClip
 	}
 	label
 	{
+		enabled "rgGameEngine ~= 3"
 		area 806 152 242 420
 		bam rgdcgen2
 		scaleToClip
 	}
 	label
 	{
+		enabled "rgGameEngine ~= 3"
 		area 1048 152 244 420
 		bam rgdcgen2
 		scaleToClip
@@ -27245,6 +27768,7 @@ menu
 	
 	label
 	{
+		enabled "rgGameEngine ~= 3"
 		area 96 218 200 314
 		bitmap lua "chargen.portrait"
 	}
@@ -27257,13 +27781,14 @@ menu
 	--}
 	label
 	{
-		enabled "createCharScreen:GetCurrentStep() > 0"
+		enabled "createCharScreen:GetCurrentStep() > 0 and rgGameEngine ~= 3"
 		area 92 214 208 322
 		bam 'rgdport4'
 		ScaleToClip
 	}
 	text
 	{
+		enabled "rgGameEngine ~= 3"
 		area 96 176 208 360
 		text lua "rgGetChargenInfo(1)"
 		scrollbar 'rgdscrl1'
@@ -27272,6 +27797,7 @@ menu
 	}
 	text
 	{
+		enabled "rgGameEngine ~= 3"
 		area 340 176 208 360
 		text lua "rgGetChargenInfo(2)"
 		scrollbar 'rgdscrl1'
@@ -27280,6 +27806,7 @@ menu
 	}
 	text
 	{
+		enabled "rgGameEngine ~= 3"
 		area 584 176 208 360
 		text lua "rgGetChargenInfo(3)"
 		scrollbar 'rgdscrl1'
@@ -27288,7 +27815,7 @@ menu
 	}
 	text
 	{
-		enabled "createCharScreen:GetCurrentStep() > 9"
+		enabled "createCharScreen:GetCurrentStep() > 9 and rgGameEngine ~= 3"
 		area 828 176 208 360
 		text lua "rgGetChargenInfo(4)"
 		scrollbar 'rgdscrl1'
@@ -27297,13 +27824,13 @@ menu
 	}
 	button
 	{
-		enabled "createCharScreen:GetCurrentStep() > 15"
+		enabled "createCharScreen:GetCurrentStep() > 15 and rgGameEngine ~= 3"
 		area 1112 262 114 160
 		paperdoll 1
 	}
 	text
 	{
-		enabled "createCharScreen:GetCurrentStep() > 15"
+		enabled "createCharScreen:GetCurrentStep() > 15 and rgGameEngine ~= 3"
 		area 1070 176 208 90
 		text lua "t('SOUND_TITLE') .. '\n' .. getSoundStringRef(currentChargenCustomSound, chargen.customSound)"
 		scrollbar 'rgdscrl1'
@@ -27314,7 +27841,8 @@ menu
 
 	button
 	{
-		area 74 118 244 58
+		name "chargenButton1"
+		area 20 276 300 60
 		bam		rgdmbut1
 		ScaleToClip
 		--clickable lua "createCharScreen:GetCurrentStep() == 0"
@@ -27329,7 +27857,8 @@ menu
 	}
 	button
 	{
-		area 318 118 244 58
+		name "chargenButton2"
+		area 20 346 300 60
 		bam		rgdmbut1
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 3"
@@ -27378,7 +27907,8 @@ menu
 
 	button
 	{
-		area 562 118 244 58
+		name "chargenButton3"
+		area 20 416 300 60
 		bam		rgdmbut1
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 8"
@@ -27393,7 +27923,8 @@ menu
 	}
 	button
 	{
-		area 806 118 244 58
+		name "chargenButton4"
+		area 20 486 300 60
 		bam		rgdmbut1
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 9"
@@ -27408,7 +27939,8 @@ menu
 	}
 	button
 	{
-		area 1048 118 244 58
+		name "chargenButton5"
+		area 20 556 300 60
 		bam		rgdmbut1
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 15"
@@ -27429,7 +27961,7 @@ menu
 	button
 	{
 		name "chargenButtonImport"
-		area 566 694 230 60
+		area 566 1006 230 60
 		text "IMPORT_BUTTON"
 		text style "button"
 		bam		rgdmbut1
@@ -27439,7 +27971,7 @@ menu
 	button
 	{
 		name "chargenButtonBio"
-		area 800 694 230 60
+		area 800 1006 230 60
 		text "BIOGRAPHY_BUTTON"
 		text style "button"
 		bam		rgdmbut1
@@ -27451,7 +27983,7 @@ menu
 	{
 		name "chargenButtonBack"
 		on escape
-		area 96 694 230 60
+		area 96 1006 230 60
 		text "BACK_BUTTON"
 		text style "button"
 		bam		rgdmbut1
@@ -27468,6 +28000,10 @@ menu
 			createCharScreen:OnMainBackButtonClick()
 			createCharScreen:OnMainBackButtonClick()
 			
+			if rgGameEngine == 3 then
+				createCharScreen:OnMainCancelButtonClick()
+			end
+			
 			--if createCharScreen:GetCurrentStep() == 7 then
 			--	createCharScreen:OnMainBackButtonClick()
 			--	createCharScreen:OnMainBackButtonClick()
@@ -27478,7 +28014,7 @@ menu
 	{
 		name "chargenButtonCancel"
 		on escape
-		area 96 694 230 60
+		area 96 1006 230 60
 		text "CANCEL_BUTTON"
 		text style "button"
 		bam		rgdmbut1
@@ -27486,20 +28022,12 @@ menu
 		enabled "not createCharScreen:IsMainBackButtonClickable()"
 		action "createCharScreen:OnMainCancelButtonClick()"
 	}
-	--button
-	--{
-	--	area 1036 694 230 60
-	--	text lua "chargenAcceptOrExport()"
-	--	text style "button"
-	--	bam		rgdmbut1
-	--	ScaleToClip
-	--	clickable lua "createCharScreen:IsChargenComplete()"
-	--	action "createCharScreen:AcceptCharacter(-1)"
-	--}
+	
 	button
 	{
+		enabled "rgGameEngine ~= 3"
 		name "chargenButtonAccept"
-		area 1036 694 230 60
+		area 1036 1006 230 60
 		bam		rgdmbut1
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 17"
@@ -27516,7 +28044,7 @@ menu
 	button
 	{
 		name "chargenButtonParty"
-		area 332 694 230 60
+		area 332 1006 230 60
 		text "CREATE_PARTY_BUTTON"
 		text style "button"
 		bam		rgdmbut1
@@ -27524,6 +28052,61 @@ menu
 		clickable lua "createCharScreen:IsAdvancedButtonClickable() == true"
 		action "createCharScreen:OnAdvancedButtonClick()"
 	}
+	
+	--iwd
+	label
+	{
+		name "chargenInfoBack"
+		enabled "rgGameEngine == 3"
+		area 1025 212 340 552  --1045 212 300 530
+		bam rgdcgen2
+		ScaleToClip
+	}
+	
+	button
+	{
+		name "chargenButtonAcceptIwd"
+		enabled "rgGameEngine == 3"
+		area 1036 1006 230 60
+		text lua "chargenAcceptOrExport()"
+		text style "button"
+		bam		rgdmbut1
+		ScaleToClip
+		clickable lua "createCharScreen:IsChargenComplete()"
+		action "
+			createCharScreen:AcceptCharacter(-1)
+			if rgIwdSoloPlay == 1 then
+				createPartyScreen:OnDoneButtonClick()
+			end
+		"
+	}
+	button
+	{
+		enabled "rgGameEngine == 3"
+		name "chargenButtonName"
+		area 20 626 300 60
+		bam		rgdmbut1
+		ScaleToClip
+		clickable lua "createCharScreen:GetCurrentStep() >= 17"
+		glow lua "createCharScreen:GetCurrentStep() == 17"
+		text "NAME_BUTTON"
+		text style "button"
+		pad 8 2 8 2
+		action "
+		rgChargenSteps(17)
+		createCharScreen:OnMenuButtonClick()
+		"
+	}
+	text
+	{
+		name "chargenInfoText"
+		enabled "rgGameEngine == 3"
+		area 1060 234 281 484
+		text lua "chargen.information"
+		scrollbar 'rgdscrl1'
+		text style "normal"
+	}
+	
 }
 
 `
@@ -27808,6 +28391,10 @@ menu
 		Infinity_PopMenu('CHARGEN_PORTRAIT');
 		currentPortrait = 1
 		createCharScreen:OnCancelButtonClick()
+		
+			if rgGameEngine == 3 then
+				createCharScreen:OnMainCancelButtonClick()
+			end
 		"
 	}
 	button
@@ -27835,14 +28422,26 @@ menu
 
 function rgGetPortraitList(gender)
     
+	local genderM = 'MAN1L'
+	local genderF = 'WOMAN1L'
+    if rgGameEngine == 3 then
+		if gender == 'MAN1L' then
+			gender = 'DMC_L'
+		else
+			gender = 'DFF_L'
+		end
+		genderM = 'DMC_L'
+		genderF = 'DFF_L'
+	end
+	
 	local i = 1
     while i > 0 do
 		local port = createCharScreen:GetCurrentPortrait()
 		local prefix = string.sub(port, 1, 2)
 		if port == gender and i > 1 then break end
-		if gender == 'MAN1L' and prefix ~= 'f#' then
+		if gender == genderM and prefix ~= 'f#' then
 			table.insert(rgMalePortraitList, port)
-		elseif gender == 'WOMAN1L' and prefix ~= 'm#' then
+		elseif gender == genderF and prefix ~= 'm#' then
 			table.insert(rgFemalePortraitList, port)
 		end
 		i = i + 1
@@ -27856,15 +28455,27 @@ function rgGetPortraitList(gender)
 end
 function rgGetCustomizedPortraitList()
     
+	genderM = 'MAN1L'
+	genderF = 'WOMAN1L'
+    if rgGameEngine == 3 then
+		if gender == 'MAN1L' then
+			gender = 'DMC_L'
+		else
+			gender = 'DFF_L'
+		end
+		genderM = 'DMC_L'
+		genderF = 'DFF_L'
+	end
+	
 	local i = 1
 	local gender = createCharScreen:GetCurrentPortrait()
     while i > 0 do
 		local port = createCharScreen:GetCurrentPortrait()
 		local prefix = string.sub(port, 1, 2)
 		if port == gender and i > 1 then break end
-		if gender == 'MAN1L' and prefix ~= 'f#' then
+		if gender == genderM and prefix ~= 'f#' then
 			table.insert(rgCustomizedPortraitList, port)
-		elseif gender == 'WOMAN1L' and prefix ~= 'm#' then
+		elseif gender == genderF and prefix ~= 'm#' then
 			table.insert(rgCustomizedPortraitList, port)
 		end
 		i = i + 1
@@ -28038,7 +28649,13 @@ menu
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
-		action "Infinity_PopMenu(); createCharScreen:OnCancelButtonClick()"
+		action "
+			Infinity_PopMenu(); 
+			createCharScreen:OnCancelButtonClick()
+			if rgGameEngine == 3 and e:GetActiveEngine() == createCharScreen then
+				createCharScreen:OnMainCancelButtonClick()
+			end
+			"
 	}
 	button
 	{
@@ -28893,6 +29510,7 @@ function rgAutoroll()
 			if string.len(chargen.ability[1].roll) == 5 then
 				local mod = string.sub(chargen.ability[1].roll,4,5)
 				local num = mod - 0
+				if num == 0 then num = 100 end
 				if rgMinimumStrDesc() > num then
 					rgIsRolling = 1
 				end
@@ -28962,7 +29580,7 @@ menu
 	modal
 	align center center
 	ignoreesc
-	onopen "ticksPassed = 0; ticksStarting = 0; rgIsRolling = 0; rgDragonEnabled = false"
+	onopen "ticksPassed = 0; ticksStarting = 0; rgIsRolling = 0; rgDragonEnabled = false; rgIwdSkillPoints = 0"
 	label
 	{
 		area	0 0 768 768
@@ -29269,7 +29887,7 @@ function proficiencyOrGeneralHelp()
 				return chargen.levelInfo
 			end
 		else
-		return Infinity_FetchString(24315)
+		return rgGetGameEngineString(24315,24315,9588,9588) 
 	end
 	end
 end
@@ -29293,7 +29911,7 @@ function rgGetProficiencyElementsArea()
 		Infinity_SetArea('proficiencyText',nil,nil,nil,538)
 	end
 	
-	if chargen.levelingUp and rgGetGameEngine() == 2 then
+	if chargen.levelingUp and rgGameEngine == 2 then
 		Infinity_SetArea('chargenProfBackButton',204,nil,nil,nil)
 		Infinity_SetArea('chargenProfDoneButton',844,nil,nil,nil)
 	else
@@ -29310,11 +29928,16 @@ menu
 	align center center
 	ignoreesc
 	onopen "
-	currentChargenProficiency = nil; 
-	currentChargenThiefSkill = nil; 
-	ticksPassed = 0; 
-	ticksStarting = 0
-	rgGetProficiencyElementsArea()
+		currentChargenProficiency = nil; 
+		currentChargenThiefSkill = nil; 
+		ticksPassed = 0; 
+		ticksStarting = 0
+		rgGetProficiencyElementsArea()
+		if rgGameEngine == 3 then
+			for index = 1, rgIwdSkillPoints, 1 do
+				createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[1].id, false)
+			end
+		end
 	"
 	label
 	{
@@ -29576,7 +30199,7 @@ menu
 	text
 	{
 		name "proficiencyText"
-		area 922 104 348 486
+		area 922 104 348 538
 		text lua "proficiencyOrGeneralHelp()"
 		text style "normal_parchment"
 		scrollbar	'rgdscrl1'
@@ -29599,7 +30222,7 @@ menu
 	}
 	button
 	{
-		enabled "chargen.levelingUp and (rgGetGameEngine() == 2 or rgGetGameEngine() == 4)"
+		enabled "chargen.levelingUp and (rgGameEngine == 2 or rgGameEngine == 4)"
 		area 524 661 320 70
 		bam		rgdmbut1
 		ScaleToClip
@@ -29616,7 +30239,7 @@ menu
 	{
 		name "chargenProfBackButton"
 		on escape
-		area 204 661 320 70
+		area 316 661 320 70
 		bam		rgdmbut1
 		ScaleToClip
 		text "BACK_BUTTON"
@@ -29628,13 +30251,986 @@ menu
 	{
 		name "chargenProfDoneButton"
 		on return
-		area 844 661 320 70
+		area 732 661 320 70
 		bam		rgdmbut1
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
 		clickable lua "createCharScreen:IsDoneButtonClickable()"
 		action "createCharScreen:OnDoneButtonClick();"
+	}
+
+}
+menu
+{
+	name 'CHARGEN_SKILLS'
+	modal
+	align center center
+	ignoreesc
+	onopen "
+		currentChargenProficiency = nil; 
+		currentChargenThiefSkill = nil; 
+		ticksPassed = 0; 
+		ticksStarting = 0
+		rgIwdSkillPoints = chargen.extraSkillPoints - 0
+		for index = 1, rgIwdSkillPoints, 1 do
+			createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[1].id, true)
+		end
+		createCharScreen:OnDoneButtonClick()
+		"
+	modal
+	label
+	{
+		area 0 0 870 714
+		mosaic GUICGSKL
+	}
+	label
+	{
+		area 216 26 438 40
+		text 11983
+		text style "title"
+	}
+	label
+	{
+		area 402 424 106 30
+		text lua "chargen.extraSkillPoints"
+		text style "label"
+		text align center center
+	}
+	list
+	{
+		column
+		{
+			width 60
+			label
+			{
+				area 0 0 280 54
+				text lua "Infinity_FetchString(chargen.thief_skill[rowNumber].name)"
+				text style "normal"
+				text align right center
+				
+			}
+		}
+		column
+		{
+			width 10
+			label
+			{
+				area 0 0 40 54
+				text lua "chargen.thief_skill[rowNumber].value"
+				text style "normal"
+				text align center center
+
+			}
+		}
+		column
+		{
+			width 20
+			label
+			{
+				area 50 6 45 42
+				bam GUIOSW
+				enabled "createCharScreen:IsThiefSkillPlusMinusButtonClickable()"
+				frame lua "currentCellCheck(3)"
+				sequence 0
+			}
+		}
+		column
+		{
+			width 10
+			label
+			{
+				area 0 6 45 42
+				bam GUIOSW
+				enabled "createCharScreen:IsThiefSkillPlusMinusButtonClickable()"
+				frame lua "currentCellCheck(4)"
+				sequence 1
+
+			}
+		}
+
+		action 
+		"
+			currentChargenProficiency = nil
+			if ticksStarting < 10 then
+				if createCharScreen:IsThiefSkillPlusMinusButtonClickable() then
+					if cellNumber == 3 then
+						Infinity_PlaySound('GAM_09')
+						createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, true)
+					elseif cellNumber == 4 then
+						Infinity_PlaySound('GAM_09')
+						createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, false)
+					end
+				end
+			end
+			cellNumber = nil
+			ticksPassed = 0
+			ticksStarting = 0
+		"
+		actionUpdate 
+		"
+			currentChargenProficiency = nil
+			if createCharScreen:IsThiefSkillPlusMinusButtonClickable() then
+				ticksStarting = ticksStarting + 1
+				if ticksStarting > 10 then
+					ticksPassed = ticksPassed + 1
+					if ticksPassed > 2 then
+						if cellNumber == 3 then
+							createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, true)
+						elseif cellNumber == 4 then
+							createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, false)
+						end
+						ticksPassed = 0
+					end
+				end
+			end
+		"
+
+		rowheight 47
+		area 36 80 486 338
+		hideHighlight
+		table "chargen.thief_skill"
+		var currentChargenThiefSkill
+		scrollbar	'GUISCRC'
+	}
+	text
+	{
+		area 528 90 312 508
+		text lua "proficiencyOrGeneralHelp(17248)"
+		text style "normal"
+		scrollbar	'GUISCRC'
+	}
+	
+	button
+	{
+		on escape
+		area 198 654 232 44
+		bam GUIBUTMT
+		sequenceonce lua "getRandomButtonSequence('GUIBUTMT')"
+		text "BACK_BUTTON"
+		text style "button"
+		clickable lua "isChargenProficienciesBackButtonClickable()"
+		action "createCharScreen:OnCancelButtonClick();"
+	}
+	button
+	{
+		on return
+		area 440 654 234 46
+		bam GUIBUTMT
+		sequenceonce lua "getRandomButtonSequence('GUIBUTMT')"
+		text "DONE_BUTTON"
+		text style "button"
+		clickable lua "createCharScreen:IsDoneButtonClickable()"
+		action "createCharScreen:OnDoneButtonClick();"
+	}
+}
+`
+function rgGetLvlUpArea()
+	local screenWidth, screenHeight = Infinity_GetScreenSize()
+	local h = screenHeight * 1.777
+	local x = screenWidth - h
+	local a = screenWidth - screenHeight
+	local d = (screenWidth/2)
+	local e = (screenHeight/2)
+	local f = (screenHeight/2) - 384
+	local m = (screenWidth/2) - 682
+	if m > 0 then m = m / 2 end
+	local n = (((screenWidth/2) - 682) / 2) -- 17
+	Infinity_SetArea('rgdlvlback1', x, 0, screenHeight, screenHeight)
+	Infinity_SetArea('rgdlvlback2', x + a, 0, screenHeight, screenHeight)
+	Infinity_SetArea('rglvldefbcg1', x, 0, screenHeight, screenHeight)
+	Infinity_SetArea('rglvldefbcg2', x + a, 0, screenHeight, screenHeight)
+	
+	Infinity_SetArea("rgdlvlBackButt",	d-330,screenHeight - 70,320,70    )
+	Infinity_SetArea("rgdlvlDoneButt", 	d+30,screenHeight - 70,320,70    )
+	
+	--Infinity_SetArea("rgdlvlTitle",		d-500,0,1000,44)
+	--Infinity_SetArea("rgdlvlProfBack",	m,e-303,486,586)
+	--Infinity_SetArea("rgdlvlProfButt",	m+8,e-299,236,74)
+	--Infinity_SetArea("rgdlvlSkillButt",	m+244,e-299,236,74)
+	--Infinity_SetArea("rgdlvlProfList",	m+8,e-227,472,494)
+	--Infinity_SetArea("rgdlvlSkillList",	m+8,e-227,472,494)
+	--Infinity_SetArea("rgdlvlInfoBack",	d+n+310,e-303,355,586)
+	--Infinity_SetArea("rgdlvlInfo",		d+n+326,e-282,326,496)
+	--Infinity_SetArea("rgdlvlInfoButt",	d+n+370,e+213,238,52)
+	--Infinity_SetArea("rgdlvlInfoButt1",	d+n+370,e-303,379,88)
+	--Infinity_SetArea("rgdlvlBackButt",	d-330,screenHeight - 70,320,70    )
+	--Infinity_SetArea("rgdlvlDoneButt", 	d+30,screenHeight - 70,320,70    )
+	
+	Infinity_SetArea("rgdlvlProfBack",	m+14,f+52,472,586)
+	Infinity_SetArea("rgdlvlProfButt",	m,f,500,88)
+	Infinity_SetArea("rgdlvlSkillButt",	m,f+602,500,88)
+	Infinity_SetArea("rgdlvlProfList",	m+14,f+88,466,514)
+	Infinity_SetArea("rgdlvlSkillList",	m+14,f+88,466,514)
+	Infinity_SetArea("rgdlvlInfoBack",	d+n+315,f+52,355,586)
+	Infinity_SetArea("rgdlvlInfo",		d+n+327,f+88,336,514)
+	Infinity_SetArea("rgdlvlInfoButt",	d+n+303,f+602,379,88)
+	Infinity_SetArea("rgdlvlInfoButt1",	d+n+303,f,379,88)
+	
+	
+	--Infinity_SetArea("rgdlvlInfoBack",	998,56,355,586)
+	--Infinity_SetArea("rgdlvlProfBack",	14,52,472,586)
+	--Infinity_SetArea("rgdlvlProfButt",	0,0,500,88)
+	--Infinity_SetArea("rgdlvlSkillButt",	0,602,500,88)
+	--Infinity_SetArea("rgdlvlProfList",	14,88,466,514)
+	--Infinity_SetArea("rgdlvlSkillList",	14,88,472,514)
+	--Infinity_SetArea("rgdlvlInfo",		1010,88,336,514)
+	--Infinity_SetArea("rgdlvlInfoButt",	986,602,379,88)
+	--Infinity_SetArea("rgdlvlInfoButt1",	986,0,379,88)
+end
+
+function rgLvlUpTabFrame(tab)
+	if rgLvlUpTabMode == tab then 
+		return 2 
+	else 
+		return 0 
+	end
+end
+`
+menu
+{
+	name 'LEVELUP_PROFICIENCIES'
+	--modal
+	align left top
+	ignoreesc
+	onopen "
+		currentChargenProficiency = nil; 
+		currentChargenThiefSkill = nil; 
+		ticksPassed = 0; 
+		ticksStarting = 0; 
+		
+		rgLvlUpTabMode = 0
+		rgGetLvlUpArea()
+		Infinity_PopMenu('RIGHT_SIDEBAR')
+	"
+	label
+	{
+		area 0 0 1365 768
+	}
+	label
+	{
+		name 'rglvldefbcg1'
+		area	0 0 768 768
+		bam rgdbccg3
+		frame 0
+		scaleToClip
+	}
+	label
+	{
+		name 'rglvldefbcg2'
+		area	597 0 768 768
+		bam rgdbccg3
+		frame 1
+		scaleToClip
+	}
+	label
+	{
+		name 'rgdlvlback1'
+		area 0 0 768 768
+		bam lua "characters[currentID].portrait"
+		sequence lua "rgGetTitleFrame()"
+		frame 0
+		scaleToClip
+	}
+	label
+	{
+		name 'rgdlvlback2'
+		area 597 0 768 768
+		bam lua "characters[currentID].portrait"
+		sequence lua "rgGetTitleFrame()"
+		frame 1
+		scaleToClip
+	}
+	--label
+	--{
+	--	name 'rgdlvlTitleBack'
+	--	area 0 0 486 81
+	--	bam "rgdlobt2"
+	--	scaleToClip
+	--}
+	--label
+	--{
+	--	name "rgdlvlInfoBack"
+	--	area 990 104 355 586
+	--	bam RGDSTBC1
+	--	ScaleToClip
+	--}
+	label
+	{
+		name "rgdlvlInfoBack"
+		area 998 56 355 586
+		bam rgdlvbox
+		ScaleToClip
+	}
+	label
+	{
+		name "rgdlvlProfBack"
+		area 14 52 472 586
+		bam rgdlvbox
+		sequence lua "RgUISkin"
+		scaleToClip
+	}
+	--label
+	--{
+	--	name "rgdlvlTitle"
+	--	area 512 12 486 44
+	--	text lua  "t('LEVEL_UP_TITLE') .. ' - ' ..  characters[currentID].name .. ', ' .. characters[currentID].class"
+	--	text style "button"
+	--	text shadow 1
+	--}
+	--label
+	--{
+	--	area 58 172 398 44
+	--	text "PROF_SLOTS_LABEL"
+	--	text style "label"
+	--}
+	
+	--button
+	--{
+	--	name "rgdlvlProfButt"
+	--	area		8 108 236 74
+	--	text lua "rgString('PROF_SLOTS_LABEL') .. ': ' .. chargen.extraProficiencySlots"
+	--	text style "button"
+	--	bam		RGDSBUT2
+	--	sequence lua "RgUISkin"
+	--	scaleToClip
+	--	frame lua "rgLvlUpTabFrame(0)"
+	--	action "rgLvlUpTabMode = 0"
+	--}
+	--button
+	--{
+	--	name "rgdlvlSkillButt"
+	--	area		244 108 236 74
+	--	text lua "rgString('SKILLS_LABEL') .. ': ' .. chargen.extraSkillPoints"
+	--	text style "button"
+	--	bam		RGDSBUT2
+	--	sequence lua "RgUISkin"
+	--	frame lua "rgLvlUpTabFrame(1)"
+	--	clickable lua "#chargen.thief_skill > 0"
+	--	scaleToClip
+	--	action "rgLvlUpTabMode = 1"
+	--}
+	
+	button
+	{
+		name "rgdlvlProfButt"
+		area		0 0 500 88
+		text lua "rgString('PROF_SLOTS_LABEL') .. ': ' .. chargen.extraProficiencySlots"
+		text style "button"
+		bam		rgdmbut1
+		sequence lua "RgUISkin"
+		scaleToClip
+		frame lua "rgLvlUpTabFrame(0)"
+		action "rgLvlUpTabMode = 0"
+	}
+	button
+	{
+		name "rgdlvlSkillButt"
+		area		0 602 500 88
+		text lua "rgString('SKILLS_LABEL') .. ': ' .. chargen.extraSkillPoints"
+		text style "button"
+		bam		rgdmbut1
+		sequence lua "RgUISkin"
+		frame lua "rgLvlUpTabFrame(1)"
+		clickable lua "#chargen.thief_skill > 0"
+		scaleToClip
+		action "rgLvlUpTabMode = 1"
+	}
+	
+	--label
+	--{
+	--	area 460 172 50 44
+	--	text lua "chargen.extraProficiencySlots"
+	--	text style "label"
+	--}
+	--label
+	--{
+	--	area 326 72 366 42
+	--	text lua "characters[currentID].name .. ' - ' .. characters[currentID].class"
+	--	text style "button"
+	--	text shadow 1
+	--}
+	
+	
+		
+	--label
+	--{
+	--	area 326 120 366 36
+	--	text lua "characters[currentID].class"
+	--	text style "label"
+	--}
+	--label
+	--{
+	--	area 510 172 398 44
+	--	text "SKILLS_LABEL"
+	--	text style "label"
+	--}
+	--label
+	--{
+	--	area 900 172 50 44
+	--	text lua "chargen.extraSkillPoints"
+	--	text style "label"
+	--}
+	
+	list
+	{
+		column
+		{
+			width 82
+			label
+			{
+				area 0 0 -1 -1
+				bam rgdslct
+				sequence lua "rgGetSelectedHighlight(rowNumber, currentChargenProficiency)"
+				ScaleToClip
+			}
+			label
+			{
+				area 0 0 280 55
+				text lua "Infinity_FetchString(chargen.proficiency[rowNumber].name)"
+				text style "normal"
+				align right center
+			}
+			label
+			{
+				bam rgdstar
+				area 284 19 16 16
+				scaleToClip
+				enabled "chargen.proficiency[rowNumber].value > 4"
+			}
+			label
+			{
+				bam rgdstar
+				area 302 19 16 16
+				scaleToClip
+				enabled "chargen.proficiency[rowNumber].value > 3"
+			}
+			label
+			{
+				bam rgdstar
+				area 320 19 16 16
+				scaleToClip
+				enabled "chargen.proficiency[rowNumber].value > 2"
+			}
+			label
+			{
+				bam rgdstar
+				area 338 19 16 16
+				scaleToClip
+				enabled "chargen.proficiency[rowNumber].value > 1"
+			}
+			label
+			{
+				bam rgdstar
+				area 356 19 16 16
+				scaleToClip
+				enabled "chargen.proficiency[rowNumber].value > 0"
+			}
+		}
+		column
+		{
+			width 9
+			label
+			{
+				area 0 5 44 44
+				bam rgdcpbt1
+				scaleToClip
+				frame lua "getPlusFrame(2)"
+			}
+		}
+		column
+		{
+			width 9
+			label
+			{
+				area 0 5 44 44
+				bam rgdcpbt2
+				scaleToClip
+				frame lua "getMinusFrame(3)"
+			}
+		}
+
+		name "rgdlvlProfList"
+		enabled "rgLvlUpTabMode == 0"
+		rowheight 54
+		hideHighlight
+		area 14 88 466 514
+		table "chargen.proficiency"
+		var currentChargenProficiency
+		scrollbar	'rgdscrl1'
+		action 
+		"
+			currentChargenThiefSkill = nil
+			if ticksStarting < 10 then
+				if cellNumber == 2 and plusButtonClickable(currentChargenProficiency) then
+					createCharScreen:OnProficiencyPlusMinusButtonClick(chargen.proficiency[currentChargenProficiency].id, true)
+				elseif cellNumber == 3 and minusButtonClickable(currentChargenProficiency) then
+					createCharScreen:OnProficiencyPlusMinusButtonClick(chargen.proficiency[currentChargenProficiency].id, false)
+				end
+			end
+			cellNumber = nil
+			ticksPassed = 0
+			ticksStarting = 0
+		"
+		actionUpdate 
+		"
+			currentChargenThiefSkill = nil
+			ticksStarting = ticksStarting + 1
+			if ticksStarting > 10 then
+				ticksPassed = ticksPassed + 1
+				if ticksPassed > 7 then
+					if cellNumber == 2 and plusButtonClickable(currentChargenProficiency) then
+						createCharScreen:OnProficiencyPlusMinusButtonClick(chargen.proficiency[currentChargenProficiency].id, true)
+					elseif cellNumber == 3 and minusButtonClickable(currentChargenProficiency) then
+						createCharScreen:OnProficiencyPlusMinusButtonClick(chargen.proficiency[currentChargenProficiency].id, false)
+					end
+					ticksPassed = 0
+				end
+			end
+		"
+
+	}
+	list
+	{
+		column
+		{
+			width 70
+			label
+			{
+				area 0 0 -1 -1
+				bam rgdslct
+				sequence lua "rgGetSelectedHighlight(rowNumber, currentChargenThiefSkill)"
+				ScaleToClip
+			}
+			label
+			{
+				area 0 0 200 54
+				text lua "Infinity_FetchString(chargen.thief_skill[rowNumber].name)"
+				text style "normal"
+				text align right center
+				
+			}
+			label
+			{
+				area 240 0 40 54
+				text lua "chargen.thief_skill[rowNumber].value"
+				text style "normal"
+				text align left center
+
+			}
+		}
+		--column
+		--{
+		--	width 10
+		--	label
+		--	{
+		--		area 0 0 40 54
+		--		text lua "chargen.thief_skill[rowNumber].value"
+		--		text style "normal"
+		--		text align left center
+		--
+		--	}
+		--}
+		column
+		{
+			width 15
+			label
+			{
+				area 10 5 44 44
+				bam rgdcpbt1
+				scaleToClip
+				enabled "createCharScreen:IsThiefSkillPlusMinusButtonClickable()"
+				frame lua "currentCellCheck(2)"
+			}
+		}
+		column
+		{
+			width 15
+			label
+			{
+				area 0 5 44 44
+				bam rgdcpbt2
+				scaleToClip
+				enabled "createCharScreen:IsThiefSkillPlusMinusButtonClickable()"
+				frame lua "currentCellCheck(3)"
+
+			}
+		}
+
+		name "rgdlvlSkillList"
+		enabled "rgLvlUpTabMode == 1"
+		rowheight 54
+		hideHighlight
+		area 14 88 472 514
+		table "chargen.thief_skill"
+		var currentChargenThiefSkill
+		scrollbar	'rgdscrl1'
+		action 
+		"
+			currentChargenProficiency = nil
+			if ticksStarting < 10 then
+				if createCharScreen:IsThiefSkillPlusMinusButtonClickable() then
+					if cellNumber == 2 then
+						createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, true)
+					elseif cellNumber == 3 then
+						createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, false)
+					end
+				end
+			end
+			cellNumber = nil
+			ticksPassed = 0
+			ticksStarting = 0
+		"
+		actionUpdate 
+		"
+			currentChargenProficiency = nil
+			if createCharScreen:IsThiefSkillPlusMinusButtonClickable() then
+				ticksStarting = ticksStarting + 1
+				if ticksStarting > 10 then
+					ticksPassed = ticksPassed + 1
+					if ticksPassed > 2 then
+						if cellNumber == 2 then
+							createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, true)
+						elseif cellNumber == 3 then
+							createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, false)
+						end
+						ticksPassed = 0
+					end
+				end
+			end
+		"
+	}
+
+	--list
+	--{
+	--	column
+	--	{
+	--		width 64
+	--		label
+	--		{
+	--			area 0 0 280 63
+	--			text lua "Infinity_FetchString(chargen.proficiency[rowNumber].name)"
+	--			text style "normal"
+	--			align right center
+	--			
+	--		}
+	--	}
+	--	column
+	--	{
+	--		width 3
+	--		label
+	--		{
+	--			bam GUIPFC
+	--			area 0 19 16 16
+	--			align center center
+	--			enabled "chargen.proficiency[rowNumber].value > 4"
+	--		}
+	--	}
+	--	column
+	--	{
+	--		width 3
+	--		label
+	--		{
+	--			bam GUIPFC
+	--			area 0 19 16 16
+	--			align center center
+	--			enabled "chargen.proficiency[rowNumber].value > 3"
+	--		}
+	--	}
+	--	column
+	--	{
+	--		width 3
+	--		label
+	--		{
+	--			bam GUIPFC
+	--			area 0 19 16 16
+	--			align center center
+	--			enabled "chargen.proficiency[rowNumber].value > 2"
+	--		}
+	--	}
+	--	column
+	--	{
+	--		width 3
+	--		label
+	--		{
+	--			bam GUIPFC
+	--			area 0 19 16 16
+	--			align center center
+	--			enabled "chargen.proficiency[rowNumber].value > 1"
+	--		}
+	--	}
+	--	column
+	--	{
+	--		width 3
+	--		label
+	--		{
+	--			bam GUIPFC
+	--			area 0 19 16 16
+	--			align center center
+	--			enabled "chargen.proficiency[rowNumber].value > 0"
+	--		}
+	--	}
+	--
+	--	column
+	--	{
+	--		width 10
+	--		label
+	--		{
+	--			area 0 6 45 45
+	--			bam GUIOSW
+	--			frame lua "getPlusFrame(7)"
+	--			sequence 0
+	--			align center center
+	--		}
+	--	}
+	--	column
+	--	{
+	--		width 10
+	--		label
+	--		{
+	--			area 0 6 45 45
+	--			bam GUIOSW
+	--			sequence 1
+	--			frame lua "getMinusFrame(8)"
+	--
+	--			align center center
+	--		}
+	--	}
+	--
+	--	action 
+	--	"
+	--		currentChargenThiefSkill = nil
+	--		if ticksStarting < 10 then
+	--			if cellNumber == 7 and plusButtonClickable(currentChargenProficiency) then
+	--				Infinity_PlaySound('GAM_09')
+	--				createCharScreen:OnProficiencyPlusMinusButtonClick(chargen.proficiency[currentChargenProficiency].id, true)
+	--			elseif cellNumber == 8 and minusButtonClickable(currentChargenProficiency) then
+	--				Infinity_PlaySound('GAM_09')
+	--				createCharScreen:OnProficiencyPlusMinusButtonClick(chargen.proficiency[currentChargenProficiency].id, false)
+	--			end
+	--		end
+	--		cellNumber = nil
+	--		ticksPassed = 0
+	--		ticksStarting = 0
+	--	"
+	--	actionUpdate 
+	--	"
+	--		currentChargenThiefSkill = nil
+	--		ticksStarting = ticksStarting + 1
+	--		if ticksStarting > 10 then
+	--			ticksPassed = ticksPassed + 1
+	--			if ticksPassed > 7 then
+	--				if cellNumber == 7 and plusButtonClickable(currentChargenProficiency) then
+	--					createCharScreen:OnProficiencyPlusMinusButtonClick(chargen.proficiency[currentChargenProficiency].id, true)
+	--				elseif cellNumber == 8 and minusButtonClickable(currentChargenProficiency) then
+	--					createCharScreen:OnProficiencyPlusMinusButtonClick(chargen.proficiency[currentChargenProficiency].id, false)
+	--				end
+	--				ticksPassed = 0
+	--			end
+	--		end
+	--	"
+	--
+	--	rowheight 63
+	--	area 37 248 497 432
+	--	table "chargen.proficiency"
+	--	var currentChargenProficiency
+	--	scrollbar	'rgdscrl1'
+	--	scrollbar clunkyScroll 63
+	--	hideHighlight
+	--
+	--}
+	--list
+	--{
+	--	column
+	--	{
+	--		width 55
+	--		label
+	--		{
+	--			area 0 0 180 54
+	--			text lua "Infinity_FetchString(chargen.thief_skill[rowNumber].name)"
+	--			text style "normal"
+	--			text align left center
+	--			
+	--		}
+	--	}
+	--	column
+	--	{
+	--		width 15
+	--		label
+	--		{
+	--			area 0 0 60 54
+	--			text lua "chargen.thief_skill[rowNumber].value"
+	--			text style "normal"
+	--			text align left center
+	--
+	--		}
+	--	}
+	--	column
+	--	{
+	--		width 18
+	--		label
+	--		{
+	--			area 24 6 45 42
+	--			bam GUIOSW
+	--			enabled "createCharScreen:IsThiefSkillPlusMinusButtonClickable()"
+	--			frame lua "currentCellCheck(3)"
+	--			sequence 0
+	--		}
+	--	}
+	--	column
+	--	{
+	--		width 12
+	--		label
+	--		{
+	--			area 0 6 45 42
+	--			bam GUIOSW
+	--			enabled "createCharScreen:IsThiefSkillPlusMinusButtonClickable()"
+	--			frame lua "currentCellCheck(4)"
+	--			sequence 1
+	--
+	--		}
+	--	}
+	--
+	--	action 
+	--	"
+	--		currentChargenProficiency = nil
+	--		if ticksStarting < 10 then
+	--			if createCharScreen:IsThiefSkillPlusMinusButtonClickable() then
+	--				if cellNumber == 3 then
+	--					Infinity_PlaySound('GAM_09')
+	--					createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, true)
+	--				elseif cellNumber == 4 then
+	--					Infinity_PlaySound('GAM_09')
+	--					createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, false)
+	--				end
+	--			end
+	--		end
+	--		cellNumber = nil
+	--		ticksPassed = 0
+	--		ticksStarting = 0
+	--	"
+	--	actionUpdate 
+	--	"
+	--		currentChargenProficiency = nil
+	--		if createCharScreen:IsThiefSkillPlusMinusButtonClickable() then
+	--			ticksStarting = ticksStarting + 1
+	--			if ticksStarting > 10 then
+	--				ticksPassed = ticksPassed + 1
+	--				if ticksPassed > 2 then
+	--					if cellNumber == 3 then
+	--						createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, true)
+	--					elseif cellNumber == 4 then
+	--						createCharScreen:OnThiefSkillPlusMinusButtonClick(chargen.thief_skill[currentChargenThiefSkill].id, false)
+	--					end
+	--					ticksPassed = 0
+	--				end
+	--			end
+	--		end
+	--	"
+	--
+	--	rowheight 54
+	--	scrollbar clunkyScroll 54
+	--	area 578 262 414 216
+	--	table "chargen.thief_skill"
+	--	var currentChargenThiefSkill
+	--	scrollbar	'rgdscrl1'
+	--	hideHighlight
+	--}
+
+	--text
+	--{
+	--	name "rgdlvlInfo"
+	--	area 1006 124 326 496
+	--	text lua "proficiencyOrGeneralHelp()"
+	--	text style "normal_parchment"
+	--	scrollbar	'rgdscrl1'
+	--}
+	--
+	--button
+	--{
+	--	name "rgdlvlInfoButt"
+	--	enabled "chargen.levelingUp"
+	--	area 1050 620 238 52
+	--	bam rgdwbut1
+	--	ScaleToClip
+	--	text "INFORMATION_BUTTON"
+	--	text style "button"
+	--	text color '5'
+	--	toggle "levelUpInfoToggle"
+	--	action
+	--	"
+	--		currentChargenProficiency = nil
+	--		currentChargenThiefSkill = nil
+	--	"
+	--}
+	
+	text
+	{
+		name "rgdlvlInfo"
+		area 1010 88 336 514
+		text lua "proficiencyOrGeneralHelp()"
+		text style "normal"
+		scrollbar	'rgdscrl1'
+	}
+	
+	button
+	{
+		name "rgdlvlInfoButt"
+		enabled "chargen.levelingUp"
+		area 986 602 379 88
+		bam rgdmbut1
+		ScaleToClip
+		text "INFORMATION_BUTTON"
+		text style "button"
+		toggle "levelUpInfoToggle"
+		action
+		"
+			currentChargenProficiency = nil
+			currentChargenThiefSkill = nil
+		"
+	}
+	button
+	{
+		name "rgdlvlInfoButt1"
+		enabled "chargen.levelingUp"
+		area 986 0 379 88
+		bam rgdmbut1
+		ScaleToClip
+		text lua "characters[currentID].name .. ', ' .. characters[currentID].class"
+		text style "button"
+		action
+		"
+			currentChargenProficiency = nil
+			currentChargenThiefSkill = nil
+		"
+	}
+	button
+	{
+		name "rgdlvlBackButt"
+		on escape
+		area 390 698 320 70
+		bam		rgdmbut1
+		ScaleToClip
+		text "BACK_BUTTON"
+		text style "button"
+		clickable lua "isChargenProficienciesBackButtonClickable()"
+		action "createCharScreen:OnCancelButtonClick();"
+	}
+	button
+	{
+		name "rgdlvlDoneButt"
+		on return
+		area 730 698 320 70
+		bam		rgdmbut1
+		ScaleToClip
+		text "DONE_BUTTON"
+		text style "button"
+		clickable lua "createCharScreen:IsDoneButtonClickable()"
+		action 
+		"
+			Infinity_PopMenu()
+			createCharScreen:OnDoneButtonClick()
+		"
 	}
 
 }
@@ -30654,7 +32250,13 @@ menu
 		text "DONE_BUTTON"
 		text style "button"
 		clickable lua "createCharScreen:IsDoneButtonClickable()"
-		action "Infinity_PopMenu(); createCharScreen:OnDoneButtonClick(); createCharScreen:AcceptCharacter(-1)"
+		action "
+			Infinity_PopMenu(); 
+			createCharScreen:OnDoneButtonClick(); 
+			if rgGameEngine ~= 3 then
+				createCharScreen:AcceptCharacter(-1)
+			end
+		"
 	}
 	
 	label
@@ -32736,6 +34338,21 @@ function rgGetScreenSize()
 	Infinity_SetArea('rgdmmenu5', f, e, a, c)
 	Infinity_SetArea('rgdmmenu6', d, e, a, c)
 end
+function rgGetScreenSizeChargen()
+	local screenWidth, screenHeight = Infinity_GetScreenSize()
+	local a = screenWidth / 2.369
+	local b = screenHeight / 1.333
+	local c = screenHeight / 3.413
+	local d = screenWidth - a
+	local e = screenHeight - c
+	local f = d / 2
+	Infinity_SetArea('rgdmmenu1x', 0, 0, a, b)
+	Infinity_SetArea('rgdmmenu2x', f, 0, a, b)
+	Infinity_SetArea('rgdmmenu3x', d, 0, a, b)
+	Infinity_SetArea('rgdmmenu4x', 0, e, a, c)
+	Infinity_SetArea('rgdmmenu5x', f, e, a, c)
+	Infinity_SetArea('rgdmmenu6x', d, e, a, c)
+end
 
 `
 menu
@@ -32826,6 +34443,7 @@ menu
 	--	bam "rgdescbc"
 	--	scaleToClip
 	--}
+
 	label
 	{
 		name 'rgdescback1'
@@ -32840,6 +34458,128 @@ menu
 		name 'rgdescback2'
 		area 839 0 1080 1080
 		bam "rgdebcg1"
+		sequence lua "rgGetTitleFrame()"
+		frame 1
+		scaleToClip
+	}
+}
+menu
+{
+	name 'RG_CHARGEN_BACKGROUND'
+	align left top
+	onOpen
+	"
+		rgGetScreenSizeChargen()
+		local screenWidth, screenHeight = Infinity_GetScreenSize()
+		local h = screenHeight * 1.777
+		local x = screenWidth - h
+		local a = screenWidth - screenHeight
+		local n = (screenHeight - 768) / 2
+		Infinity_SetArea('rgdchback0', (screenWidth/2) - 682,n+56 , nil,nil)
+		Infinity_SetArea('rgdchback1', x, 0, screenHeight, screenHeight)
+		Infinity_SetArea('rgdchback2', x + a, 0, screenHeight, screenHeight)
+		Infinity_SetArea('rgdchport0', (screenWidth/2) - 170,n+56 , nil,nil)
+		Infinity_SetArea('rgdchport1', (screenWidth/2) - 145,n+90 , nil,nil)
+		Infinity_SetArea('rgdchport2', (screenWidth/2) - 149, n+86, nil,nil)
+	"
+	label
+	{
+		name 'rgdmmenu1x'
+		area 0 0 576 576
+		bam "RGDMENU1"
+		ScaleToClip
+		sequence lua "rgGetTitleFrame()"
+		frame 0
+	}
+	label
+	{
+		name 'rgdmmenu2x'
+		area 394 0 576 576
+		bam "RGDMENU1"
+		ScaleToClip
+		sequence lua "rgGetTitleFrame()"
+		frame 1
+	}
+	label
+	{
+		name 'rgdmmenu3x'
+		area 788 0 576 576
+		bam "RGDMENU1"
+		ScaleToClip
+		sequence lua "rgGetTitleFrame()"
+		frame 2
+	}
+	label
+	{
+		name 'rgdmmenu4x'
+		area 0 542 576 225
+		bam "RGDMENU1"
+		ScaleToClip
+		sequence lua "rgGetTitleFrame()"
+		frame 3
+	}
+	label
+	{
+		name 'rgdmmenu5x'
+		area 394 542 576 225
+		bam "RGDMENU1"
+		ScaleToClip
+		sequence lua "rgGetTitleFrame()"
+		frame 4
+	}
+	label
+	{
+		name 'rgdmmenu6x'
+		area 788 542 576 225
+		bam "RGDMENU1"
+		ScaleToClip
+		sequence lua "rgGetTitleFrame()"
+		frame 5
+	}
+	label
+	{
+		name "rgdchback0"
+		enabled "rgGameEngine == 3"
+		area 0 212 340 552 
+		bam rgdcgen2
+		ScaleToClip
+	}
+	label
+	{
+		name "rgdchport0"
+		enabled "rgGameEngine == 3"
+		area 0 212 340 552 
+		bam rgdcgen2
+		ScaleToClip
+	}
+	label
+	{
+		name 'rgdchport1'
+		area 746 172 290 456
+		bitmap lua "chargen.portrait"
+	}
+	label
+	{
+		name 'rgdchport2'
+		enabled "rgGameEngine == 3"
+		area 742 168 298 464
+		bam 'rgdport4'
+		ScaleToClip
+	}
+	label
+	{
+		name 'rgdchback1'
+		area 0 0 1080 1080
+		bam lua "chargen.portrait"
+		sequence lua "rgGetTitleFrame()"
+		frame 0
+		scaleToClip
+	}
+	label
+	{
+		name 'rgdchback2'
+		area 840 0 1080 1080
+		bam lua "chargen.portrait"
 		sequence lua "rgGetTitleFrame()"
 		frame 1
 		scaleToClip
@@ -38074,7 +39814,7 @@ function rgGetEpilogueArea()
 	Infinity_SetArea('rgEpilogueImageFrame',nil, (screenHeight/2)-169, nil, nil)
 end
 function rgGetEpilogueText()
-	if rgGetGameEngine() == 1 then
+	if rgGameEngine == 1 then
 		return megacredits
 	else
 		return text_CHAPTERSCROLL
@@ -40371,7 +42111,7 @@ menu
 	movie
 	{
 		name "flames4"
-		area 549 10 70 76
+		area 615 10 70 76
 		loop
 	}
 	button
@@ -40594,6 +42334,9 @@ menu
 			--Infinity_PopMenu('CHARACTER')
 			--rgJournalOpened = 0
 			e:GetActiveEngine():OnLeftPanelButtonClick(0)
+			
+			--// BY_ME - CLOSE RADAR MENU
+			if Infinity_IsMenuOnStack('RADAR') then Infinity_PopMenu('RADAR') end
 			
 			--Infinity_PopMenu('JOURNAL')
 			--rgJournalOpened = 1
@@ -41355,5 +43098,651 @@ menu
 	--		Infinity_PopMenu()
 	--	"
 	--}
+		
+}
+`
+createPartyOffset = 0
+prerollCharacters = {}
+
+function scrollPregens()
+	if scrollDirection > 0 then
+		scrollPregenUp()
+	elseif scrollDirection < 0 then
+		scrollPregenDown()
+	end
+end
+
+function scrollPregenUp()
+	if createPartyOffset > 0 then
+		createPartyOffset = createPartyOffset - 1
+	end
+end
+
+function scrollPregenDown()
+	if createPartyOffset < (#prerollCharacters - 4) then
+		createPartyOffset = createPartyOffset + 1
+	end
+end
+
+function getPregenCharacterName(slotNumber)
+	local ret = ""
+
+	if slotNumber + createPartyOffset < #prerollCharacters+1 then
+		ret = prerollCharacters[slotNumber+createPartyOffset]["name"]
+	end
+
+	return ret
+end
+
+function getPregenCharacterBiography(slotNumber)
+	local ret = ""
+
+	if slotNumber + createPartyOffset < #prerollCharacters+1 then
+		ret = prerollCharacters[slotNumber+createPartyOffset]["description"]
+	end
+
+	return ret
+end
+
+function getPregenCharacterPortrait(slotNumber)
+	local ret = "noportsm"
+
+	if slotNumber + createPartyOffset < #prerollCharacters+1 then
+		ret = prerollCharacters[slotNumber+createPartyOffset]["image"]
+	end
+
+	return ret
+end
+
+function getPregenCharacterFileName(slotNumber)
+	local ret = ""
+
+	if slotNumber + createPartyOffset < #prerollCharacters+1 then
+		ret = prerollCharacters[slotNumber+createPartyOffset]["file"]
+	end
+
+	return ret
+end
+
+function playAsPreroll(slotNumber)
+	local fileName = getPregenCharacterFileName(slotNumber)
+	if fileName ~= "" then
+
+	end
+end
+
+function rgGetImportArea()
+	local screenWidth, screenHeight = Infinity_GetScreenSize()
+	Infinity_SetArea('rgImportBackButton',nil,screenHeight-74,nil,nil)
+	Infinity_SetArea('rgImportList',nil,84,nil,screenHeight-168)
+end
+
+function rgGetImportInfo(text)
+	local list = {}
+	for i in string.gmatch(text, "[^\r\n]+") do
+		table.insert(list, i);
+	end
 	
+	return list[1]
+end
+`
+menu
+{
+	name 'CHARGEN_SELECTPREGEN'
+	align center top
+	onOpen
+	"
+		rgGetImportArea()
+		createPartyOffset = 0
+		createCharScreen:GetImportableCharacters()
+		ticksPassed = 0
+		ticksStarting = 0
+	"
+
+	label
+	{
+		area 0 0 1365 768
+	}
+
+	--button
+	--{
+	--	area 0 0 1365 768
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+
+	label
+	{
+		area 170 10 1025 44
+		text "CHARGEN_TITLE"
+		text style "button"
+		text shadow 1
+	}
+	
+	list
+	{
+		column 
+		{ 
+			width 80
+			label
+			{
+				area		0 0 -1 -1
+				bam 'rgdcgim1'
+				scaleToClip
+				frame lua "rgGetSelectedHighlight(rowNumber,rgImportCharacter)"
+				align		left top
+			}
+			label
+			{
+				bitmap lua 'prerollCharacters[rowNumber].image'
+				area 9 8 58 84
+				align center center
+			}
+			label
+			{
+				area 85 12 -1 35
+				text lua "prerollCharacters[rowNumber].name"
+				text style	"normal"
+			}
+			label
+			{
+				area 85 50 720 50
+				text lua "rgGetImportInfo(prerollCharacters[rowNumber].description)"
+				text style	"rg_normal_small"
+			}
+		}
+		column 
+		{ 
+			width 20
+			label
+			{
+				area		0 0 -1 -1
+				bam 'rgdcgim2'
+				scaleToClip
+				frame lua "rgGetSelectedHighlight(rowNumber,rgImportCharacter)"
+				align		left top
+			}
+			label
+			{
+				area 0 20 187 60
+				bam		rgdmbut1
+				ScaleToClip
+				frame lua "currentCellCheck(2)"
+				text "PLAY_IMPORT_BUTTON"
+				text style "button"
+				pad 8 2 8 2
+			}
+		}
+		name "rgImportList"
+		area 182 84 1000 912
+		rowheight	100
+		hidehighlight
+		var rgImportCharacter
+		table		"prerollCharacters"
+		scrollbar	'rgdscrl1'
+		action
+		"
+			
+			if ticksStarting < 20 then 
+				if(cellNumber == 2) then
+					Infinity_PopMenu()
+					createCharScreen:OnPrerollCharacterPick(rgImportCharacter-1)
+				end
+			end
+			cellNumber = nil
+			ticksPassed = 0
+			ticksStarting = 0
+		"
+		actionUpdate 
+		"
+			ticksStarting = ticksStarting + 1
+			if ticksStarting > 20 then
+				ticksPassed = ticksPassed + 1
+				if ticksPassed > 2 then
+					ticksPassed = 0
+					ticksStarting = 0
+					if(cellNumber == 2) then
+						--Infinity_PopMenu()
+						--createCharScreen:OnPrerollCharacterPick(rgImportCharacter-1)
+					end
+					
+				end
+			end
+		"
+	}
+
+	
+	--button 
+	--{
+	--	bitmap "noportsm"
+	--	area 48 128 62 90
+	--	align center center
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 134 106 534 30
+	--	text style "label"
+	--	align left top
+	--	text lua "Infinity_FetchString(10264)"
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 152 148 502 82
+	--	text style "label"
+	--	align left top
+	--	text lua "Infinity_FetchString(34752)"
+	--}
+	--button 
+	--{
+	--	bam 'GUIBUTNT'
+	--	sequenceonce lua "getRandomButtonSequence('GUIBUTNT')"
+	--	area 760 98 202 42
+	--	align center center
+	--	text style "button"
+	--	text "CREATE_BUTTON"
+	--	action 
+	--	"
+	--		Infinity_PopMenu()
+	--		Infinity_PushMenu('CHARGEN')
+	--	"
+	--}
+	
+	--button 
+	--{
+	--	bitmap lua 'getPregenCharacterPortrait(4)'
+	--	area 48 128 58 86
+	--	align center center
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 162 106 542 26
+	--	text style "normal"
+	--	align left top
+	--	text lua "getPregenCharacterName(4)"
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 158 144 572 136
+	--	text style "normal"
+	--	align left top
+	--	text lua "getPregenCharacterBiography(4)"
+	--	scrollbar 'rgdscrl1'
+	--}
+	--button 
+	--{
+	--	bam 'GUIBUTNT'
+	--	sequenceonce lua "getRandomButtonSequence('GUIBUTNT')"
+	--	area 760 138 202 42
+	--	align center center
+	--	text style "button"
+	--	text "PLAY_IMPORT_BUTTON"
+	--	action 
+	--	"
+	--		Infinity_PopMenu()
+	--		createCharScreen:OnPrerollCharacterPick(3 + createPartyOffset)
+	--	"
+	--}
+	--
+	--
+	--
+	--button 
+	--{
+	--	bitmap lua 'getPregenCharacterPortrait(1)'
+	--	area 48 328 58 86
+	--	align center center
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 162 306 542 26
+	--	text style "normal"
+	--	align left top
+	--	text lua "getPregenCharacterName(1)"
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 128 350 602 82
+	--	text style "normal"
+	--	align left top
+	--	text lua "getPregenCharacterBiography(1)"
+	--}
+	--button 
+	--{
+	--	bam 'GUIBUTNT'
+	--	sequenceonce lua "getRandomButtonSequence('GUIBUTNT')"
+	--	area 760 338 202 42
+	--	align center center
+	--	text style "button"
+	--	text "PLAY_IMPORT_BUTTON"
+	--	action 
+	--	"
+	--		Infinity_PopMenu()
+	--		createCharScreen:OnPrerollCharacterPick(0 + createPartyOffset)
+	--	"
+	--}
+	--
+	--
+	--button 
+	--{
+	--	bitmap lua 'getPregenCharacterPortrait(2)'
+	--	area 48 474 58 86
+	--	align center center
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 162 452 542 28
+	--	text style "normal"
+	--	align left top
+	--	text lua "getPregenCharacterName(2)"
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 128 498 602 82
+	--	text style "normal"
+	--	align left top
+	--	text lua "getPregenCharacterBiography(2)"
+	--}
+	--button 
+	--{
+	--	bam 'GUIBUTNT'
+	--	sequenceonce lua "getRandomButtonSequence('GUIBUTNT')"
+	--	area 760 490 202 42
+	--	align center center
+	--	text style "button"
+	--	text "PLAY_IMPORT_BUTTON"
+	--	action 
+	--	"
+	--		Infinity_PopMenu()
+	--		createCharScreen:OnPrerollCharacterPick(1 + createPartyOffset)
+	--	"
+	--}
+	--
+	--
+	--button 
+	--{
+	--	bitmap lua 'getPregenCharacterPortrait(3)'
+	--	area 48 624 58 86
+	--	align center center
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 158 602 546 24
+	--	text style "normal"
+	--	align left top
+	--	text lua "getPregenCharacterName(3)"
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--label
+	--{
+	--	area 128 648 602 82
+	--	text style "normal"
+	--	align left top
+	--	text lua "getPregenCharacterBiography(3)"
+	--}
+	--button 
+	--{
+	--	bam 'GUIBUTNT'
+	--	sequenceonce lua "getRandomButtonSequence('GUIBUTNT')"
+	--	area 760 636 202 42
+	--	align center center
+	--	text style "button"
+	--	text "PLAY_IMPORT_BUTTON"
+	--	action 
+	--	"
+	--		Infinity_PopMenu()
+	--		createCharScreen:OnPrerollCharacterPick(2 + createPartyOffset)
+	--	"
+	--}
+	--
+	--
+	--button 
+	--{
+	--	bam 'GUISV10'
+	--	sequence 0
+	--	area 52 274 46 50
+	--	action 
+	--	"
+	--		scrollPregenUp()
+	--	"
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	--button 
+	--{
+	--	bam 'GUISV10'
+	--	sequence 1
+	--	area 52 718 46 50
+	--	action 
+	--	"
+	--		scrollPregenDown()
+	--	"
+	--	actionScroll
+	--	"
+	--		scrollPregens()
+	--	"
+	--}
+	button 
+	{
+		name "rgImportBackButton"
+		on escape
+		area 532 1006 300 64
+		bam		rgdmbut1
+		ScaleToClip
+		align center center
+		text style "button"
+		text "BACK_BUTTON"
+		pad 8 2 8 2
+		action 
+		"
+			Infinity_PopMenu()
+			createCharScreen:OnMainCancelButtonClick()
+		"
+	}
+}
+
+
+menu  
+{
+	name 'RADAR' --// BY_ME
+	align center center
+	ignoreEsc
+	
+	onOpen 
+	"
+		Infinity_PopMenu('RGWORLD_MESSAGES')
+		Infinity_PopMenu('WORLD_MESSAGES')
+		Infinity_PopMenu('WORLD_ACTIONBAR')
+		popSidebars()
+		Infinity_PushMenu('RG_MENU_BAR')
+		
+		my_screen_radar_Search_sprites()
+	"
+	onClose 
+	"				
+		Infinity_PopMenu('RG_MENU_BAR')
+		Infinity_PushMenu('WORLD_ACTIONBAR')
+		Infinity_PushMenu('WORLD_MESSAGES')
+		Infinity_PushMenu('RGWORLD_MESSAGES')		
+		charTable = {}
+	"
+	
+	label
+	{
+		name 'my_radar_background_left'
+		area	0 0 768 768
+		bam rgdbcrad
+		frame 0
+		scaleToClip
+	}
+	
+	label
+	{
+		name 'my_radar_background_right'
+		area	597 0 768 768
+		bam rgdbcrad
+		frame 1
+		scaleToClip
+	}
+	
+	list -- UI DISPLAYING THE CREATURES VISIBLE BY PARTY
+	{
+		column
+		{
+			width 100
+			label
+			{
+				area        0 0 300 30
+				text        lua "my_radar_sprites[rowNumber].displayed_name"
+				text style	'rg_normal_small'
+				text point 13
+				text align left center				
+			}
+		}
+	
+		name "ui_radar_sprites"
+		area 106 110 262 598
+		rowheight	30
+		table		"my_radar_sprites"
+		scrollbar	'rgdscrl1'
+		var			"SPRITE_ROW"
+		action
+		"
+			my_screen_radar_Inspect_sprite(SPRITE_ROW)
+		"		
+	}
+	
+	text -- UI DISPLAYING THE SPRITE STATS
+	{
+		name 'ui_screen_radar_main'
+		area		388 110 326 376
+		text lua	'my_radar_sprite.main_text'
+		text style	'rg_normal_small'
+		scrollbar	'rgdscrl1'	
+		pad 10 10 0 0		
+		scaleToClip
+	}
+	
+	label
+	{
+		name "ui_screen_radar_portrait"
+		area 718 114 132 210
+		bitmap lua "my_radar_sprite.portrait"
+		scaleToClip
+		enabled 'my_dashboard_screen_id == my_dashboard_screen_id_radar'
+	}
+	
+	list -- UI DISPLAYING SPRITE ITEMS
+	{
+		column
+		{
+			width 100
+			label
+			{
+				area        0 0 30 30
+				bam STONSLOT
+				icon lua		"my_radar_sprite.items[rowNumber].icon"
+				count lua 		"my_radar_sprite.items[rowNumber].count"
+				align center center
+			}
+			label
+			{
+				area        35 0 400 25
+				text        lua "my_radar_sprite.items[rowNumber].text"
+				text style  'normal'
+				pad 4 0 0 0
+				text align left center
+			}
+		}
+		name "ui_screen_radar_inventory"
+		area 876 110 384 376
+		rowheight	25
+		table		"my_radar_sprite.items"
+		var 		"SPRITE_INVENTORY_ROW"
+		scrollbar	'rgdscrl1'	
+		actionAlt
+		"
+			--if SPRITE_INVENTORY_ROW > 0 then
+			--	local block = my_radar_sprite.items[SPRITE_INVENTORY_ROW]
+			--	-- showItemDescription(block, 0) // THIS OPEN THE CANON MODAL DESCRIPTION MENU // but you dont use it anymore
+			--end
+		"
+	}
+	
+	list -- UI DISPLAYING SPRITE EFFECTS
+	{
+		column
+		{
+			width 100
+			label
+			{
+				area        0 0 30 30
+				bam STONSLOT
+				icon lua		"my_radar_sprite.timed_effects[rowNumber].icon"
+				align center center
+			}
+			label
+			{
+				area        35 0 980 25
+				text        lua "my_radar_sprite.timed_effects[rowNumber].text"
+				text style  'normal'
+				pad 4 0 0 0
+				text align left center
+			}
+		}
+		name "ui_screen_radar_effects"
+		area 388 500 882 222
+		rowheight	25
+		table		"my_radar_sprite.timed_effects"
+		var 		"SPRITE_EFFECT_ROW"
+		scrollbar	'rgdscrl1'	
+		actionAlt
+		"
+			--if SPRITE_EFFECT_ROW > 0 then
+			--	local block = my_radar_sprite.timed_effects[SPRITE_EFFECT_ROW]
+			--	-- showItemDescription(block, 0) // THIS OPEN THE CANON MODAL DESCRIPTION MENU // but you dont use it anymore
+			--end
+		"
+	}
 }

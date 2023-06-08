@@ -1,6 +1,6 @@
 BACKUP ~infinity_ui/backup~
 AUTHOR ~Pecca~
-VERSION ~v0.1~
+VERSION ~v0.5~
 
 LANGUAGE
 	~English~ ~infinity_ui/tra~ ~infinity_ui/tra/english.tra~
@@ -12,11 +12,19 @@ LANGUAGE
 
 BEGIN @1000
 
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1005
 
 COPY ~infinity_ui/content~ ~override~
 
 COPY ~infinity_ui/language~ ~override~
+
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+	COPY ~infinity_ui/content_bg~ ~override~
+END
+
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+	COPY ~infinity_ui/content_iwd~ ~override~
+END
 
 // Try to enable EEex's B3Scale module
 ACTION_IF MOD_IS_INSTALLED ~EEex.tp2~ ~0~ AND FILE_EXISTS ~override/EEex_Modules.lua~ BEGIN
@@ -32,7 +40,7 @@ END
 
 BEGIN @1002
 
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1005
 
 COPY ~infinity_ui/content-tooltip~ ~override~
 
@@ -43,7 +51,7 @@ COPY ~infinity_ui/content-tooltip~ ~override~
 
 BEGIN @1001
 
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1005
 
 STRING_SET ~23084~ @101
 
@@ -54,7 +62,7 @@ STRING_SET ~23084~ @101
 
 BEGIN ~1~
 
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1005
 
 SUBCOMPONENT @1003
 
@@ -64,7 +72,7 @@ COPY_EXISTING ~savename.2da~ ~override~
 
 BEGIN ~2~
 
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1005
 
 SUBCOMPONENT @1003
 
@@ -74,7 +82,7 @@ COPY_EXISTING ~savename.2da~ ~override~
 	
 BEGIN ~3~
 
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1005
 
 SUBCOMPONENT @1003
 
@@ -84,7 +92,7 @@ COPY_EXISTING ~savename.2da~ ~override~
 
 BEGIN ~4~
 
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1005
 
 SUBCOMPONENT @1003
 
@@ -94,7 +102,7 @@ COPY_EXISTING ~savename.2da~ ~override~
 	
 BEGIN ~5~
 
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1005
 
 SUBCOMPONENT @1003
 
@@ -104,7 +112,7 @@ COPY_EXISTING ~savename.2da~ ~override~
 	
 BEGIN ~6~
 
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1005
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1005
 
 SUBCOMPONENT @1003
 
