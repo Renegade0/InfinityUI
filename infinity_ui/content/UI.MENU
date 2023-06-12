@@ -17530,7 +17530,7 @@ menu
 	onOpen "
 		rgScrollWorldMapOnce = 0
 		local w, h = Infinity_GetScreenSize()
-		if rgGameEngine == 0 or rgGameEngine == 1 then
+		if rgGameEngine == 0 or rgGameEngine == 1 or rgGameEngine == 3 then
 			Infinity_SetArea('rgWorldMap1',95,78,1000,h-78)
 			Infinity_SetArea('rgWorldMapBcg1',0,0,595,78)
 			Infinity_SetArea('rgWorldMapBcg2',594,0,595,78)
@@ -17629,13 +17629,13 @@ menu
 	} 
 	label
 	{
-		enabled "rgGameEngine < 2"
+		enabled "rgGameEngine == 0 or rgGameEngine == 1 or rgGameEngine == 3"
 		area 87 78 1014 2000
 		mosaic "rgdabox1"
 	}
 	map
 	{
-		enabled "rgGameEngine < 2"
+		enabled "rgGameEngine == 0 or rgGameEngine == 1 or rgGameEngine == 3"
 		area 95 78 1000 664
 		name "rgWorldMap1"
 		worldmap
