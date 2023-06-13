@@ -4,6 +4,9 @@ VERSION ~v0.5~
 
 LANGUAGE
 	~English~ ~infinity_ui/tra~ ~infinity_ui/tra/english.tra~
+	
+LANGUAGE
+	~French~ ~infinity_ui/tra~ ~infinity_ui/tra/french.tra~
 
 
 /////////////////////////////////////////////////////////////////////////////////
