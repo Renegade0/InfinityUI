@@ -8414,49 +8414,19 @@ menu
 `
 	TEXT_inventoryError = ""
 
+inventoryStats = {}
+inventoryShow = {1,1,1,1,1,1}
+savedID = 0
+savedHeight = 0
+
 function resetStatsDisplay()
 	tempStats = {}
 end
-function getTempDamage()
-	local str = ""
-	local dmgMinTemp = getTempStat(characters[id].damage.min,'dmgMin',1)
-	local dmgMaxTemp = getTempStat(characters[id].damage.max,'dmgMax',1)
-	if(dmgMinTemp == "-" and dmgMaxTemp == "-") then
-		return "-"
-	end
-	if(dmgMinTemp == "-") then
-		str = characters[id].damage.min
-	else
-		str = dmgMinTemp
-	end
-	str = str .. " - "
-	if(dmgMaxTemp == "-") then
-		str = str .. characters[id].damage.max
-	else
-		str = str .. dmgMaxTemp
-	end
 
-	return str
-end
 function getStat(old, newName, coeff)
 	return old
 end
-function getTempStat(old, newName, coeff)
-	if(tempStats[id] == nil) then
-		return "-"
-	end
-	local new = tempStats[id][newName]
-	local score = coeff * (new - old)
-	if(score == 0) then
-		return "-"
-	end
-	if(score < 0) then
-		return "^R" .. new .. "^-"
-	end
-	if(score > 0) then
-		return "^G" .. new .. "^-"
-	end
-end
+
 function getStatsTitle()
 	if(tempStats[id] ~= nil) then
 		return tempStats[id].tempItem
@@ -8494,24 +8464,7 @@ function checkDoubleClickScheduled(slotName)
 		doubleClickEventScheduled = nil
 	end
 end
-function getTempHP()
-	local maxHP = getTempStat(characters[id].HP.max,'maxHP',1)
-	local currentHP = getTempStat(characters[id].HP.current, 'currentHP',1)
-	if(maxHP == "-" and currentHP == "-") then
-		--nothing changed.
-		return "-"
-	end
-	if(maxHP == "-") then
-		--only current HP changed.
-		maxHP = characters[id].HP.max
-	end
-	if(currentHP == "-") then
-		--only max HP changed.
-		currentHP = characters[id].HP.current
-	end
-	
-	return currentHP .. '/' .. maxHP
-end
+
 function shouldGreyOutInventory()
 	return characters[id].HP.current <= 0 or inventoryScreen:IsSpriteOrderable() == false
 end
@@ -8558,6 +8511,102 @@ function scrollGroundItems()
 		Infinity_OnGroundPage(1)
 	end
 	currentFakePage = Infinity_GetCurrentGroundPage()
+end
+
+function formatString(value, score, coeff)
+	local str = value .. " (-)"
+	if score < 0 then
+		str = value .. " (" .. score .. ")"
+	elseif score > 0 then
+		str = value .. " (+" .. score .. ")"
+	end
+	if coeff * score < 0 then return "^R" .. str .. "^-" end
+	if coeff * score > 0 then return "^G" .. str .. "^-" end
+	return str
+end
+function getTempStat(old, newName, name, coeff)
+	local new = tempStats[id][newName]
+	local score = (new - old)
+	if score ~= 0 then
+		local str = formatString(new, score, coeff)
+		table.insert(inventoryStats, {3,name,str})
+	end
+end
+function getTempDamage()
+	local dmgMinTemp = tempStats[id]['dmgMin']
+	local dmgMaxTemp = tempStats[id]['dmgMax']
+	if characters[id].damage.min ~= dmgMinTemp or characters[id].damage.max ~= dmgMaxTemp then
+		local old = (characters[id].damage.min + characters[id].damage.max) / 2
+		local new = (dmgMinTemp + dmgMaxTemp) / 2
+		local score = (new - old)
+		local str = formatString(dmgMinTemp .. '-' .. dmgMaxTemp, score, 1)
+		table.insert(inventoryStats, {3,t("DAMAGE_LABEL"),str})
+	end
+end
+function buildInventoryStats()
+	inventoryStats = {}
+
+	if(tempStats[id] ~= nil) then
+		getTempStat(characters[id].AC.current,'AC',t("ARMOR_CLASS_LABEL"),-1)
+		getTempStat(characters[id].HP.max,'maxHP',t("HIT_POINTS_LABEL"),1)
+		getTempStat(characters[id].THAC0.current,'THAC0',t("THAC0_LABEL"),-1)
+		getTempDamage()
+		if length(inventoryStats) ~= 0 then
+			table.insert(inventoryStats, 1, {1,tempStats[id].tempItem})
+			return inventoryStats
+		end
+	end
+
+	table.insert(inventoryStats, {1,t("ARMOR_CLASS_LABEL"),1})
+	if inventoryShow[1] == 1 then
+		table.insert(inventoryStats, {2,characters[id].AC.details})
+	end
+
+	table.insert(inventoryStats, {1,t("HIT_POINTS_LABEL"),2})
+	if inventoryShow[2] == 1 then
+		table.insert(inventoryStats, {2,characters[id].HP.details})
+	end
+
+	if (characters[id].THAC0.detailsOffhand ~= nil and characters[id].THAC0.detailsOffhand ~= "") then
+		table.insert(inventoryStats, {1,t("MAIN_HAND_THAC0"),3})
+		if inventoryShow[3] == 1 then
+			table.insert(inventoryStats, {2,characters[id].THAC0.details})
+		end
+		table.insert(inventoryStats, {1,t("OFF_HAND_THAC0"),4})
+		if inventoryShow[4] == 1 then
+			table.insert(inventoryStats, {2,characters[id].THAC0.detailsOffhand})
+		end
+	else
+		table.insert(inventoryStats, {1,t("THAC0_LABEL"),3})
+		if inventoryShow[3] == 1 then
+			table.insert(inventoryStats, {2,characters[id].THAC0.details})
+		end
+	end
+
+	if (characters[id].damage.maxOffhand) then
+		table.insert(inventoryStats, {1,t("MAIN_HAND_DAMAGE"),5})
+		if inventoryShow[5] == 1 then
+			table.insert(inventoryStats, {2,characters[id].damage.details})
+		end
+		table.insert(inventoryStats, {1,t("OFF_HAND_DAMAGE"),6})
+		if inventoryShow[6] == 1 then
+			table.insert(inventoryStats, {2,characters[id].damage.detailsOffhand})
+		end
+	else
+		table.insert(inventoryStats, {1,t("DAMAGE_LABEL"),5})
+		if inventoryShow[5] == 1 then
+			table.insert(inventoryStats, {2,characters[id].damage.details})
+		end
+	end
+	return inventoryStats
+end
+function inventoryScroll(top, height, contentHeight)
+	savedHeight = contentHeight
+	if id ~= savedID then
+		savedID = id
+		return 0
+	end
+	return nil
 end
 
 fakeItemList = {}
@@ -9296,14 +9345,135 @@ menu
 	--		end
 	--	"
 	--}
-	
-	text
+
+	list
 	{
+		column
+		{
+			width 100
+			label
+			{
+				area		0 0 260 30
+				mosaic		INVSEP1
+				respectClipping
+				enabled		"inventoryStats[rowNumber][1] == 1"
+				text		lua "inventoryStats[rowNumber][2]"
+				text style  'normal'
+				text color 	'D'
+				text point 10
+				text align	left bottom
+				text useFontZoom 0
+				pad 10 0 0 2
+			}
+			label
+			{
+				area		225 3 30 27
+				enabled		"inventoryStats[rowNumber][1] == 1 and inventoryShow[inventoryStats[rowNumber][3]] == 0"
+				text		lua "'v'"
+				text style  'normal'
+				text color 	'D'
+				text point 12
+				text align	center center
+				text useFontZoom 0
+			}
+			label
+			{
+				area		8 0 250 -1
+				enabled		"inventoryStats[rowNumber][1] == 2 or inventoryStats[rowNumber][1] == 3"
+				text		lua "inventoryStats[rowNumber][2]"
+				text style  'normal'
+				text align	left center
+			}
+		}
+		name 'rginvcombatstatdesc'
+		area	98 203 270 493
+		enabled "savedHeight >= 493"
+		rowheight	dynamic
+		hidehighlight
+		table		"buildInventoryStats()"
+		var			inventoryVar
+		text style	"rg_normal_small"
+		scrollbar	'rgdscrl1'
+		scrollbar	func 'inventoryScroll'
+		action
+		"
+			if inventoryStats[inventoryVar] ~= nil and inventoryStats[inventoryVar][1] == 1 then
+				local idx = inventoryStats[inventoryVar][3]
+				if idx ~= nil then
+					local value = 1
+					if inventoryShow[idx] == 1 then value = 0 end
+					inventoryShow[idx] = value
+				end
+			end
+		"
+	}
+		list
+	{
+		column
+		{
+			width 100
+			label
+			{
+				area		0 0 280 30
+				mosaic		INVSEP2
+				respectClipping
+				enabled		"inventoryStats[rowNumber][1] == 1"
+				text		lua "inventoryStats[rowNumber][2]"
+				text style  'normal'
+				text color 	'D'
+				text point 10
+				text align	left bottom
+				text useFontZoom 0
+				pad 10 0 0 2
+			}
+			label
+			{
+				area		245 3 30 27
+				enabled		"inventoryStats[rowNumber][1] == 1 and inventoryShow[inventoryStats[rowNumber][3]] == 0"
+				text		lua "'v'"
+				text style  'normal'
+				text color 	'D'
+				text point 12
+				text align	center center
+				text useFontZoom 0
+			}
+			label
+			{
+				area		8 0 250 -1
+				enabled		"inventoryStats[rowNumber][1] == 2 or inventoryStats[rowNumber][1] == 3"
+				text		lua "inventoryStats[rowNumber][2]"
+				text style  'normal'
+				text align	left center
+			}
+			label
+			{
+				area		8 0 250 -1
+				enabled		"inventoryStats[rowNumber][1] == 3"
+				text		lua "inventoryStats[rowNumber][3]"
+				text style  'normal'
+				text align	right center
+			}
+		}
 		name 'rginvcombatstatdesc'
 		area		98 203 270 493
-		text lua	"rgGetCombatStatsString()"
+		enabled "savedHeight < 493"
+		rowheight	dynamic
+		hidehighlight
+		table		"buildInventoryStats()"
+		var			inventoryVar
 		text style	"rg_normal_small"
-		scrollbar	'rgdscrl1'	--'rgdscrl1'
+		scrollbar	func 'inventoryScroll'
+		action
+		"
+			if inventoryStats[inventoryVar] ~= nil and inventoryStats[inventoryVar][1] == 1 then
+				local idx = inventoryStats[inventoryVar][3]
+				if idx ~= nil then
+					local value = 1
+					if inventoryShow[idx] == 1 then value = 0 end
+					inventoryShow[idx] = value
+				end
+			end
+		"
 	}
 	
 	button
@@ -17871,18 +18041,16 @@ store = {}
 storeGroupItemsVar = 0
 storeItemsVar = 0
 function rgGetStoreSlotHighlight(highlight)
-	if(highlight == 0) then 
+	if(highlight == 0) then
 		return 0
-	else
-		return 1 
 	end
+	return 1
 end
 function getStoreSlotHighlight(highlight)
-	if(highlight == 0) then 
+	if (highlight == 0) then
 		return 0
-	else
-		return 2 
 	end
+	return 2
 end
 function storeSplitStack(count)
 	storeScreen:SelectStoreItem(storeItemsVar-1, true);
