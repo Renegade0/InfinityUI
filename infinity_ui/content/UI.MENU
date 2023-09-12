@@ -475,6 +475,40 @@ function rgGetGameEnginePortraits()
 	end
 end
 
+function isItemValid(index, isStore)
+
+	if isStore then
+		local anyItem = store.storeItems[index]
+		if anyItem.valid == 0 and anyItem.highlight == 0 then
+			return false
+		end
+	else
+		local anyItem = store.groupItems[index]
+		if anyItem.valid == 0 and anyItem.item.isBag ~= 1 then
+			return false
+		end
+	end
+
+	return true
+end
+
+function isItemColumnValid(index, column, isStore)
+
+	if isStore then
+		local anyItem = store.storeItems[index + column]
+		if anyItem and anyItem.valid == 0 and anyItem.highlight == 0 and rgIsNthNumber(index,6) then
+			return false
+		end
+	else
+		local anyItem = store.groupItems[index + column]
+		if anyItem and anyItem.valid == 0 and anyItem.item.isBag ~= 1 and rgIsNthNumber(index,4) then
+			return false
+		end
+	end
+
+	return true
+end
+
 function rgIsNthNumber(num,nth)
 	local res = num - 1
     local num1,num2=math.modf(res/nth)
@@ -4064,7 +4098,7 @@ menu
 				bam rgdslct
 				sequence lua "rgGetSelectedHighlight(rowNumber, selectedGraphicOpt)"
 				ScaleToClip
-				text lua "t( graphicsToggles[rowNumber][1])"
+				text lua "t(graphicsToggles[rowNumber][1])"
 				text style "normal"
 				pad 10 0 0 0
 				text align left center
@@ -18125,10 +18159,24 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber] and store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 0, true)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 0, true) and rgGetStoreItemQuantity(rowNumber) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetStoreItemQuantity(rowNumber)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -18175,10 +18223,24 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].valid == 0 and store.storeItems[rowNumber+1].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 1, true)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 1, true) and rgGetStoreItemQuantity(rowNumber+1) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetStoreItemQuantity(rowNumber+1)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -18225,10 +18287,24 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+2] and store.storeItems[rowNumber+2].valid == 0 and store.storeItems[rowNumber+2].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 2, true)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 2, true) and rgGetStoreItemQuantity(rowNumber+2) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetStoreItemQuantity(rowNumber+2)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -18275,10 +18351,24 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+3].valid == 0 and store.storeItems[rowNumber+3].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 3, true)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 3, true) and rgGetStoreItemQuantity(rowNumber+3) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetStoreItemQuantity(rowNumber+3)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -18325,10 +18415,24 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+4] and store.storeItems[rowNumber+4].valid == 0 and store.storeItems[rowNumber+4].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 4, true)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 4, true) and rgGetStoreItemQuantity(rowNumber+4) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetStoreItemQuantity(rowNumber+4)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -18337,7 +18441,7 @@ menu
 			label 
 			{
 				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
-				area 0 0  80 110 
+				area 0 0 80 110
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
@@ -18375,10 +18479,24 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].valid == 0 and store.storeItems[rowNumber+5].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 5, true)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 5, true) and rgGetStoreItemQuantity(rowNumber+5) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetStoreItemQuantity(rowNumber+5)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		
@@ -18424,240 +18542,7 @@ menu
 				end
 			end
 		"
-		--actionEnter
-		--"
-		--	rgItemName = ''
-		--"
-		--actionExit
-		--"
-		--	rgItemName = ''
-		--"
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	--list
-	--{
-	--	column 
-	--	{ 
-	--		width 50
-	--		label
-	--		{
-	--			enabled "rgIsOddNumber(rowNumber)"
-	--			area 0 0 58 58
-	--			bam RGDSLOT
-	--			ScaleToClip
-	--			frame lua "getStoreSlotHighlight(store.storeItems[rowNumber].highlight)"
-	--			icon lua "store.storeItems[rowNumber].item.icon"
-	--			tint lua "store.storeItems[rowNumber].item.tint"
-	--			usages lua "store.storeItems[rowNumber].amountSelected" --how many selected
-	--			count lua "store.storeItems[rowNumber].item.stackSize" --How many to a stack
-	--			align left top
-	--		}
-	--		label
-	--		{
-	--			enabled "rgIsOddNumber(rowNumber)"
-	--			area 65 0 140 -1
-	--			text lua "store.storeItems[rowNumber].label"
-	--			text style	"rg_normal_small"
-	--			text align left center
-	--		}
-	--		label
-	--		{
-	--			area 225 0 50 -1
-	--			enabled "not storeScreen:IsContainer() and rgIsOddNumber(rowNumber)"
-	--			text lua "store.storeItems[rowNumber].value"
-	--			text style "rg_normal_small"
-	--			text color '$'
-	--			text align right center
-	--		}
-	--		label
-	--		{
-	--			enabled "store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0 and rgIsOddNumber(rowNumber)"
-	--			area 0 0 290 -1
-	--			rectangle 1
-	--			rectangle opacity 150
-	--		}
-	--	}
-	--	column 
-	--	{ 
-	--		width 50
-	--		label
-	--		{
-	--			enabled "store.storeItems[rowNumber+1].item.icon ~= null and rgIsOddNumber(rowNumber)"
-	--			area 0 0 58 58
-	--			bam RGDSLOT
-	--			ScaleToClip
-	--			frame lua "getStoreSlotHighlight(store.storeItems[rowNumber+1].highlight)"
-	--			icon lua "store.storeItems[rowNumber+1].item.icon"
-	--			tint lua "store.storeItems[rowNumber+1].item.tint"
-	--			usages lua "store.storeItems[rowNumber+1].amountSelected" --how many selected
-	--			count lua "store.storeItems[rowNumber+1].item.stackSize" --How many to a stack
-	--			align left top
-	--		}
-	--		label
-	--		{
-	--			enabled "rgIsOddNumber(rowNumber)"
-	--			area 65 0 140 -1
-	--			text lua "store.storeItems[rowNumber+1].label"
-	--			text style	"rg_normal_small"
-	--			text align left center
-	--		}
-	--		label
-	--		{
-	--			area 225 0 50 -1
-	--			enabled "not storeScreen:IsContainer() and rgIsOddNumber(rowNumber)"
-	--			text lua "store.storeItems[rowNumber+1].value"
-	--			text style "rg_normal_small"
-	--			text color '$'
-	--			text align right center
-	--		}
-	--		label
-	--		{
-	--			enabled "store.storeItems[rowNumber+1].valid == 0 and store.storeItems[rowNumber+1].highlight == 0 and rgIsOddNumber(rowNumber)"
-	--			area 0 0 290 -1
-	--			rectangle 1
-	--			rectangle opacity 150
-	--		}
-	--	}
-	--	area 14 14 580 462
-	--	hidehighlight
-	--	rowheight	dynamic
-	--	table		"store.storeItems"
-	--	var			"storeItemsVar"
-	--	--rowbackground	 GUISTBK2
-	--	scrollbar 'rgdscrl1'
-	--	action
-	--	"
-	--		if cellNumber == 2 then
-	--			storeItemsVar = storeItemsVar + 1
-	--		end
-	--		if store.storeItems[storeItemsVar].clickable == 1 then
-	--			if not storeScreen:IsCloseBagButtonClickable() or store.storeItems[storeItemsVar].valid == 1 then
-	--				local highlight = true
-	--				if(store.storeItems[storeItemsVar].highlight == 1) then highlight = false end
-	--				storeScreen:SelectStoreItem( storeItemsVar - 1,  highlight)
-	--			end
-	--		end
-	--	"
-	--	actionalt
-	--	"
-	--		if cellNumber == 2 then
-	--			storeItemsVar = storeItemsVar + 1
-	--		end
-	--		showItemDescription(store.storeItems[storeItemsVar].item, 1)
-	--	"
-	--	actionDbl
-	--	"
-	--		if cellNumber == 2 then
-	--			storeItemsVar = storeItemsVar + 1
-	--		end
-	--		if store.storeItems[storeItemsVar].clickable == 1 then
-	--			if not storeScreen:IsCloseBagButtonClickable() or store.storeItems[storeItemsVar].valid == 1 then
-	--				local maxCount = store.storeItems[storeItemsVar].maxCount
-	--				if(maxCount > 1) then
-	--					popupRequester(maxCount, storeSplitStack, false)
-	--				end
-	--			end
-	--		end
-	--	"
-	--}
-	
-	
-	
-	--label
-	--{
-	--	area 469 112 250 30
-	--	text  lua "Infinity_GetSelectedCharacterName()"
-	--	text style "label"
-	--	align left center
-	--}
-	--list
-	--{
-	--	column 
-	--	{ 
-	--		width 100
-	--		label
-	--		{
-	--			area 8 0 64 60
-	--			bam STONSLOT
-	--			frame lua "getStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
-	--			tint lua "store.groupItems[rowNumber].item.tint"
-	--			icon lua "store.groupItems[rowNumber].item.icon"
-	--			count lua "store.groupItems[rowNumber].count"
-	--			usages lua "store.groupItems[rowNumber].item.usages"
-	--			align center center
-	--		}
-	--		label
-	--		{
-	--			area 80 0 200 60
-	--			text lua "store.groupItems[rowNumber].label"
-	--			text style "normal"
-	--			text align left center
-	--		}
-	--		label
-	--		{
-	--			area 300 0 62 60
-	--			enabled "not storeScreen:IsContainer()"
-	--			text lua "store.groupItems[rowNumber].value"
-	--			text style "gold"
-	--		}
-	--		label
-	--		{
-	--			--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
-	--			enabled "store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1"
-	--			area 0 0 436 60
-	--			rectangle 1
-	--			rectangle opacity 150
-	--		}
-	--	}
-	--	area 614 14 562 462
-	--	enabled "not storeScreen:IsCloseBagButtonClickable()"
-	--	hidehighlight
-	--	rowheight	60
-	--	table		"store.groupItems"
-	--	var			"storeGroupItemsVar"
-	--	rowbackground	 GUISTBK2
-	--	scrollbar 'rgdscrl1'
-	--	action
-	--	"
-	--		if store.groupItems[storeGroupItemsVar].valid ~= 0 then
-	--			local selected = true
-	--			if(store.groupItems[storeGroupItemsVar].highlight == 1) then selected = false end
-	--			storeScreen:SelectGroupItem( storeGroupItemsVar - 1,  selected)
-	--		end
-	--	"
-	--	actionalt
-	--	"
-	--		showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
-	--	"
-	--	actionDbl
-	--	"
-	--	if(store.groupItems[storeGroupItemsVar].item.isBag == 1) then
-	--		showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
-	--		itemDescLeftButtonAction()
-	--	else
-	--		if store.groupItems[storeGroupItemsVar].valid ~= 0 then
-	--			local count = store.groupItems[storeGroupItemsVar].item.count
-	--			local stock = store.groupItems[storeGroupItemsVar].numInStock
-	--			if(count > 1) then
-	--				popupRequester(count, groupSplitStack, true)
-	--			elseif stock > 1 then
-	--				popupRequester(stock, groupSplitStack, true)
-	--			end	
-	--		end
-	--	end
-	--	"
-	--}
-	
 	
 	--inventory
 	list
@@ -18712,10 +18597,24 @@ menu
 			label
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
-				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 0, false)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 0, false) and rgGetGroupItemQuantity(rowNumber) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetGroupItemQuantity(rowNumber)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -18768,10 +18667,24 @@ menu
 			label
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
-				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0  and store.groupItems[rowNumber+1].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 1, false)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 1, false) and rgGetGroupItemQuantity(rowNumber + 1) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetGroupItemQuantity(rowNumber+1)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -18824,10 +18737,24 @@ menu
 			label
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
-				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0  and store.groupItems[rowNumber+2].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 2, false)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 2, false) and rgGetGroupItemQuantity(rowNumber + 2) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetGroupItemQuantity(rowNumber+2)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -18880,10 +18807,24 @@ menu
 			label
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
-				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0  and store.groupItems[rowNumber+3].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 3, false)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 3, false) and rgGetGroupItemQuantity(rowNumber + 3) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetGroupItemQuantity(rowNumber+3)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		
@@ -19008,10 +18949,24 @@ menu
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 0, false)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 0, false) and rgGetGroupItemQuantity(rowNumber + 0) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetGroupItemQuantity(rowNumber+0)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -19063,10 +19018,24 @@ menu
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 1, false)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 1, false) and rgGetGroupItemQuantity(rowNumber + 1) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetGroupItemQuantity(rowNumber+1)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -19118,10 +19087,24 @@ menu
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 2, false)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 2, false) and rgGetGroupItemQuantity(rowNumber + 2) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetGroupItemQuantity(rowNumber+2)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		column 
@@ -19173,10 +19156,24 @@ menu
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				enabled "not isItemColumnValid(rowNumber, 3, false)"
+				area 0 0 80 110
+				bam "RGDISLOT"
+				ScaleToClip
+				respectClipping
+				opacity 150
+			}
+			label
+			{
+				enabled "not isItemColumnValid(rowNumber, 3, false) and rgGetGroupItemQuantity(rowNumber + 3) ~= null"
+				area 64 0 24 24
+				bam RGDSLOT
+				ScaleToClip
+				respectClipping
+				text lua "rgGetGroupItemQuantity(rowNumber+3)"
+				text style	"rg_normal_small"
+				text align center center
+				text color 128 128 128 128
 			}
 		}
 		area 636 74 394 480
@@ -19293,10 +19290,12 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0"
+				enabled "not isItemValid(rowNumber, true)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				bam RGDSTBC3
+				ScaleToClip
+				opacity 150
+				respectClipping
 			}
 		}
 		enabled "rgStoreMode == 1"
@@ -19379,10 +19378,12 @@ menu
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1"
+				enabled "not isItemValid(rowNumber, false)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				bam RGDSTBC3
+				ScaleToClip
+				opacity 150
+				respectClipping
 			}
 		}
 		area 530 64 470 496
@@ -19440,7 +19441,7 @@ menu
 			label
 			{
 				area 0 0 454 60
-				bam "RGDSTBC3"
+				bam RGDSTBC3
 				ScaleToClip
 				align left top
 				frame lua "rgGetStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
@@ -19476,10 +19477,12 @@ menu
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1"
+				enabled "not isItemValid(rowNumber, false)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				bam RGDSTBC3
+				ScaleToClip
+				opacity 150
+				respectClipping
 			}
 		}
 		area 530 64 470 496
@@ -19527,336 +19530,6 @@ menu
 		end
 		"
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	----store items mode 1
-	--list
-	--{
-	--	column 
-	--	{ 
-	--		width 50
-	--		label
-	--		{
-	--			enabled "rgIsNthNumber(rowNumber,2)"
-	--			area 0 0 1 62
-	--		}
-	--		label
-	--		{
-	--			enabled "rgIsNthNumber(rowNumber,2)"
-	--			area 0 0 60 60
-	--			bam RGDSLOT
-	--			ScaleToClip
-	--			frame lua "getStoreSlotHighlight(store.storeItems[rowNumber].highlight)"
-	--			icon lua "store.storeItems[rowNumber].item.icon"
-	--			tint lua "store.storeItems[rowNumber].item.tint"
-	--			usages lua "store.storeItems[rowNumber].amountSelected" --how many selected
-	--			count lua "store.storeItems[rowNumber].item.stackSize" --How many to a stack
-	--			align left top
-	--		}
-	--		label
-	--		{
-	--			enabled "rgIsNthNumber(rowNumber,2)"
-	--			area 60 0 270 60
-	--			bam "RGDSLOTD"
-	--			ScaleToClip
-	--			align left top
-	--		}
-	--		label
-	--		{
-	--			enabled "rgIsNthNumber(rowNumber,2)"
-	--			area 66 0 206 60
-	--			text lua "store.storeItems[rowNumber].label"
-	--			text style "normal"
-	--			text align left center
-	--		}
-	--		label
-	--		{
-	--			area 271 0 69 60
-	--			enabled "not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,2)"
-	--			text lua "store.storeItems[rowNumber].value"
-	--			text style "rg_normal_small"
-	--			text color "$"
-	--			text align center center
-	--		}
-	--		label
-	--		{
-	--			enabled "store.storeItems[rowNumber] and store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0 and rgIsNthNumber(rowNumber,2)"
-	--			area 0 0 -1 -1
-	--			rectangle 1
-	--			rectangle opacity 150
-	--		}
-	--	}
-	--	column 
-	--	{ 
-	--		width 50
-	--		label
-	--		{
-	--			enabled "rgIsNthNumber(rowNumber,2)"
-	--			area 0 0 1 62
-	--		}
-	--		label
-	--		{
-	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,2)"
-	--			area 0 0 60 60
-	--			bam RGDSLOT
-	--			ScaleToClip
-	--			frame lua "getStoreSlotHighlight(store.storeItems[rowNumber+1].highlight)"
-	--			icon lua "store.storeItems[rowNumber+1].item.icon"
-	--			tint lua "store.storeItems[rowNumber+1].item.tint"
-	--			usages lua "store.storeItems[rowNumber+1].amountSelected" --how many selected
-	--			count lua "store.storeItems[rowNumber+1].item.stackSize" --How many to a stack
-	--			align left top
-	--		}
-	--		label
-	--		{
-	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,2)"
-	--			area 60 0 270 60
-	--			bam "RGDSLOTD"
-	--			ScaleToClip
-	--			align left top
-	--		}
-	--		label
-	--		{
-	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,2)"
-	--			area 66 0 206 60
-	--			text lua "store.storeItems[rowNumber+1].label"
-	--			text style "normal"
-	--			text align left center
-	--		}
-	--		label
-	--		{
-	--			area 271 0 69 60
-	--			enabled "store.storeItems[rowNumber+1] and not storeScreen:IsContainer() and rgIsNthNumber(rowNumber,2)"
-	--			text lua "store.storeItems[rowNumber+1].value"
-	--			text style "rg_normal_small"
-	--			text color "$"
-	--			text align center center
-	--		}
-	--		label
-	--		{
-	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].valid == 0 and store.storeItems[rowNumber+1].highlight == 0 and rgIsNthNumber(rowNumber,2)"
-	--			area 0 0 -1 -1
-	--			rectangle 1
-	--			rectangle opacity 150
-	--		}
-	--	}
-	--	enabled "rgStoreMode == 1"
-	--	area 0 64 680 496
-	--	hidehighlight
-	--	rowheight	dynamic
-	--	table		"store.storeItems"
-	--	var			"storeItemsVar"
-	--	--rowbackground	 GUISTBK2
-	--	scrollbar 'rgdscrl1'
-	--	action
-	--	"
-	--		storeItemsVar = storeItemsVar + cellNumber - 1
-	--		if store.storeItems[storeItemsVar].clickable == 1 then
-	--			if not storeScreen:IsCloseBagButtonClickable() or store.storeItems[storeItemsVar].valid == 1 then
-	--				local highlight = true
-	--				if(store.storeItems[storeItemsVar].highlight == 1) then highlight = false end
-	--				storeScreen:SelectStoreItem( storeItemsVar - 1,  highlight)
-	--			end
-	--		end
-	--	"
-	--	actionalt
-	--	"
-	--		storeItemsVar = storeItemsVar + cellNumber - 1
-	--		Infinity_SetOffset('ITEM_DESCRIPTION',300, 30)
-	--		showItemDescription(store.storeItems[storeItemsVar].item, 1)
-	--	"
-	--	actionDbl
-	--	"
-	--		storeItemsVar = storeItemsVar + cellNumber - 1
-	--		if store.storeItems[storeItemsVar].clickable == 1 then
-	--			if not storeScreen:IsCloseBagButtonClickable() or store.storeItems[storeItemsVar].valid == 1 then
-	--				local maxCount = store.storeItems[storeItemsVar].maxCount
-	--				if(maxCount > 1) then
-	--					popupRequester(maxCount, storeSplitStack, false)
-	--				end
-	--			end
-	--		end
-	--	"
-	--	--actionEnter
-	--	--"
-	--	--	rgItemName = ''
-	--	--"
-	--	--actionExit
-	--	--"
-	--	--	rgItemName = ''
-	--	--"
-	--}
-	--
-	----invetory mode 1
-	--list
-	--{
-	--	column 
-	--	{ 
-	--		width 100
-	--		label
-	--		{
-	--			area 0 0 60 60
-	--			bam RGDSLOT
-	--			ScaleToClip
-	--			frame lua "getStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
-	--			tint lua "store.groupItems[rowNumber].item.tint"
-	--			icon lua "store.groupItems[rowNumber].item.icon"
-	--			count lua "store.groupItems[rowNumber].count"
-	--			usages lua "store.groupItems[rowNumber].item.usages"
-	--			align left top
-	--		}
-	--		label
-	--		{
-	--			area 60 0 265 60
-	--			bam "RGDSLOTD"
-	--			ScaleToClip
-	--			align left top
-	--		}
-	--		label
-	--		{
-	--			area 66 0 206 60
-	--			text lua "store.groupItems[rowNumber].label"
-	--			text style "normal"
-	--			text align left center
-	--		}
-	--		label
-	--		{
-	--			area 276 0 69 60
-	--			enabled "not storeScreen:IsContainer()"
-	--			text lua "store.groupItems[rowNumber].value"
-	--			text style "rg_normal_small"
-	--			text color "$"
-	--			text align center center
-	--		}
-	--		label
-	--		{
-	--			enabled "store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1"
-	--			area 0 0 -1 -1
-	--			rectangle 1
-	--			rectangle opacity 150
-	--		}
-	--	}
-	--	area 690 64 340 496
-	--	enabled "not storeScreen:IsCloseBagButtonClickable() and rgStoreMode == 1"
-	--	hidehighlight
-	--	rowheight	62
-	--	table		"store.groupItems"
-	--	var			"storeGroupItemsVar"
-	--	scrollbar 'rgdscrl1'
-	--	action
-	--	"
-	--		if store.groupItems[storeGroupItemsVar].valid ~= 0 then
-	--			local selected = true
-	--			if(store.groupItems[storeGroupItemsVar].highlight == 1) then selected = false end
-	--			storeScreen:SelectGroupItem( storeGroupItemsVar - 1,  selected)
-	--		end
-	--	"
-	--	actionalt
-	--	"
-	--		showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
-	--	"
-	--	actionDbl
-	--	"
-	--	if(store.groupItems[storeGroupItemsVar].item.isBag == 1) then
-	--		showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
-	--		itemDescLeftButtonAction()
-	--	else
-	--		if store.groupItems[storeGroupItemsVar].valid ~= 0 then
-	--			local count = store.groupItems[storeGroupItemsVar].item.count
-	--			local stock = store.groupItems[storeGroupItemsVar].numInStock or 0
-	--			if(count > 1) then
-	--				popupRequester(count, groupSplitStack, true)
-	--			elseif stock > 1 then
-	--				popupRequester(stock, groupSplitStack, true)
-	--			end	
-	--		end
-	--	end
-	--	"
-	--}
-	
-
-
-	
-	
-	
-	--container
-	--list
-	--{
-	--	column 
-	--	{ 
-	--		width 100
-	--		label
-	--		{
-	--			area 8 0 64 60
-	--			bam STONSLOT
-	--			frame lua "getStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
-	--			tint lua "store.groupItems[rowNumber].item.tint"
-	--			icon lua "store.groupItems[rowNumber].item.icon"
-	--			count lua "store.groupItems[rowNumber].item.count"
-	--			usages lua "store.groupItems[rowNumber].count"
-	--			align center center
-	--		}
-	--		label
-	--		{
-	--			area 80 0 200 60
-	--			text lua "store.groupItems[rowNumber].label"
-	--			text style "normal"
-	--			text align left center
-	--		}
-	--		label
-	--		{
-	--			area 300 0 62 60
-	--			enabled "not storeScreen:IsContainer()"
-	--			text lua "store.groupItems[rowNumber].value"
-	--			text style "gold"
-	--		}
-	--		label
-	--		{
-	--			enabled "store.groupItems[rowNumber].valid == 0"
-	--			area 0 0 436 60
-	--			rectangle 1
-	--			rectangle opacity 150
-	--		}
-	--	}
-	--	area 462 142 370 348
-	--	enabled "storeScreen:IsCloseBagButtonClickable()"
-	--	hidehighlight
-	--	rowheight	60
-	--	table		"store.groupItems"
-	--	var			"storeGroupItemsVar"
-	--	--rowbackground	 GUISTBK2
-	--	scrollbar 'rgdscrl1'
-	--	action
-	--	"
-	--		if store.groupItems[storeGroupItemsVar].valid ~= 0 then
-	--			local selected = true
-	--			if(store.groupItems[storeGroupItemsVar].highlight == 1) then selected = false end
-	--			storeScreen:SelectGroupItem( storeGroupItemsVar - 1,  selected)
-	--		end
-	--	"
-	--	actionalt
-	--	"
-	--		showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
-	--	"
-	--	actionDbl
-	--	"
-	--		if store.groupItems[storeGroupItemsVar].valid ~= 0 then
-	--			local count = store.groupItems[storeGroupItemsVar].item.count
-	--			local stock = store.groupItems[storeGroupItemsVar].numInStock
-	--			if(count > 1) then
-	--				popupRequester(count, groupSplitStack, true)
-	--			elseif stock > 1 then
-	--				popupRequester(stock, groupSplitStack, true)
-	--			end	
-	--		end
-	--	"
-	--}
 	
 	button
 	{
