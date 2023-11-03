@@ -10927,7 +10927,7 @@ menu
 	--	text align left center
 	--	text point 14
 	--	text color D
-	--	scrollbar 'rgpscrl'
+	--	scrollbar 'rgdscrl1'
 	--	scrollbar hide lua "1"
 	--}
 
@@ -10939,7 +10939,7 @@ menu
 		text style "normal"
 		text align left top
 		text point 10
-		scrollbar 'rgpscrl'
+		scrollbar 'rgdscrl1'
 		scrollbar hide lua "1"
 	}	
 	button
@@ -32859,7 +32859,7 @@ menu
 		area 664 100 592 552
 		text lua "chargenHLADescription()"
 		text style "normal"
-		scrollbar	'rgpscrl'
+		scrollbar	'rgdscrl1'
 	}
 	
 	list
@@ -32930,7 +32930,7 @@ menu
 		}
 
 
-		scrollbar	'rgpscrl'
+		scrollbar	'rgdscrl1'
 		rowheight 52
 		hideHighlight
 		area 100 168 526 484
@@ -38834,7 +38834,7 @@ menu
 	--	seperator "showObjectiveSeperator(rowNumber)"
 	--	table		"questDisplay"
 	--	var			selectedQuest
-	--	scrollbar	'rgpscrl'
+	--	scrollbar	'rgdscrl1'
 	--	area		622 178 624 526
 	--}
 	
@@ -38918,7 +38918,7 @@ menu
 	--	hidehighlight
 	--	table		"journalDisplay"
 	--	var			selectedJournal
-	--	scrollbar	'rgpscrl'
+	--	scrollbar	'rgdscrl1'
 	--	area		622 178 624 522
 	--}
 	
