@@ -839,4 +839,10 @@ uiStrings = {
 	RGB_ABIS = "Abishai are common on the first and second layers of the Nine Hells, appearing much like gothic gargoyles. They are thin and reptilian with long, prehensile tails and great wings. There are three varieties of abishai. They are, in ascending order of station, black, green, and red. Abishai communicate with telepathy. Abishai are voracious and evil. They delight in tormenting those few natives of the Nine Hells that are lower in power.",
 	RGB_BEARS = "Bear",
 	RG_LOOTALL = "Loot all",
+	RG_MM_REFRESH = 'Refresh',
+	RG_SET_MODERN_HUD_R = 'Move actionbar to the right',
+	RG_SET_MODERN_HUD_R_D = 'Moves actionbar to the bottom right side of the screen. This option is only allowed, when Modern HUD and Unlocked Messagebox options are active.',
+	RG_CHEATSPELL = '* Select spell from the list and click on the character portrait to learn it.',
+	RG_CHEATCOMMAND = '* Apply selected command by clicking on the character portrait.',
+	RG_CHEATHISTORY = 'Lua History',
 }
