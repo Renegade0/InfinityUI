@@ -845,4 +845,13 @@ uiStrings = {
 	RG_CHEATSPELL = "* Sélectionnez un sortilège dans la liste et cliquez sur le portrait du personnage pour l'ajouter à sa liste de sort.",
 	RG_CHEATCOMMAND = "* Appliquer la commande sélectionnée en cliquant sur le portrait du personnage désiré.",
 	RG_CHEATHISTORY = "Historique de la CLUAConsole (Lua)",
+	RG_HB_CHOOSEKEY = "Choose keybinded hotkey: ",
+	RG_HB_CHOOSESEL = "Choose portrait selection: ",
+	RG_HB_CHOOSEPOR = "Choose portrait selection: Portrait ",
+	RG_HB_CHOOSENON = "Choose portrait selection: No selection",
+	RG_HB_NONE = "None",
+	RG_HB_ALL = "All",
+	RG_HB_DRAG = "Unlock dragging",
+	RG_JUNKBUTTON = "Junk filter",
+	RGB_DOGN = "Dog",
 }

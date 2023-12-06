@@ -845,4 +845,13 @@ uiStrings = {
 	RG_CHEATSPELL = '* Označ kouzlo ze seznamu a klikni na portét postavy, aby se ho naučila.',
 	RG_CHEATCOMMAND = '* Použij označený příkaz kliknutím na portrét postavy.',
 	RG_CHEATHISTORY = 'Historie Lua',
+	RG_HB_CHOOSEKEY = 'Vyber aktivní klávesovou zkratku: ',
+	RG_HB_CHOOSESEL = 'Vyber označení portrétu: ',
+	RG_HB_CHOOSEPOR = 'Vyber označení portrétu: Portrét ',
+	RG_HB_CHOOSENON = 'Vyber označení portrétu: Žádné označení',
+	RG_HB_NONE = 'Žádný',
+	RG_HB_ALL = 'Všechny',
+	RG_HB_DRAG = 'Odemknout potažení',
+	RG_JUNKBUTTON = 'Filtr obyčejných předmětů',
+	RGB_DOGN = "Pes",
 }

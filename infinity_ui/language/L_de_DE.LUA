@@ -845,4 +845,13 @@ uiStrings = {
 	RG_CHEATSPELL = '* Select spell from the list and click on the character portrait to learn it.',
 	RG_CHEATCOMMAND = '* Apply selected command by clicking on the character portrait.',
 	RG_CHEATHISTORY = 'Lua History',
+	RG_HB_CHOOSEKEY = 'Choose keybinded hotkey: ',
+	RG_HB_CHOOSESEL = 'Choose portrait selection: ',
+	RG_HB_CHOOSEPOR = 'Choose portrait selection: Portrait ',
+	RG_HB_CHOOSENON = 'Choose portrait selection: No selection',
+	RG_HB_NONE = 'None',
+	RG_HB_ALL = 'All',
+	RG_HB_DRAG = 'Unlock dragging',
+	RG_JUNKBUTTON = 'Junk filter',
+	RGB_DOGN = "Dog",
 }

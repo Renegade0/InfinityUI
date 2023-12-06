@@ -13744,7 +13744,7 @@ menu
 		rgGetMainMenuArea()
 		
 		
-		if rgGameEngine == 3 and rgFirstStart == 1 then
+		if (rgGameEngine == 3 or rgGameEngine == 0) and rgFirstStart == 1 then
 			rgFirstStart = 0
 			startEngine:OnSoAButtonClick(true)
 		end
@@ -22428,24 +22428,39 @@ menu
 	align center center
 	ignoreEsc
 	modal
+	onOpen 
+	"
+		local w, h = Infinity_GetScreenSize()
+		Infinity_SetArea('rgdeathback', 0, 0,w,h)
+		Infinity_SetArea('rgdeathtext', (w/2)-290, 0,nil,nil)
+		Infinity_SetArea('rgdeathload', (w/2)-330, h-70,nil,nil)
+		Infinity_SetArea('rgdeathquit', (w/2)+10, h-70,nil,nil)
+	"
 	label
 	{
-		area 0 0 657 234
-		mosaic GUIERR6
+		name "rgdeathback"
+		area 0 0 1365 768
+		bam rgddeath
+		scaleToClip
 	}
 	label
 	{
-		area 29 21 580 126
+		name "rgdeathtext"
+		area 29 21 580 80
 		text lua "worldDeathText()"
-		text style	"label"
+		text style	"button"
 		text align center center
+		text shadow 1
 	}
 	button
 	{
-		area 79 170 230 40
-		bam GUIBUTMT
-		text "LOAD_BUTTON"
-		text style	"button"
+		name "rgdeathload"
+		area 0 0 320 70
+		bam 'RGDMBUT1'
+		ScaleToClip
+		pad 10 8 10 8
+		text style "button"
+		text lua "rgString('LOAD_BUTTON')"
 		clickable lua "worldDeathLoadClickable()"
 		action 
 		"
@@ -22455,10 +22470,13 @@ menu
 	}
 	button
 	{
-		area 343 170 230 40
-		bam GUIBUTMT
-		text style	"button"
-		text lua "worldDeathQuitText()"
+		name "rgdeathquit"
+		area 0 0 320 70
+		bam 'RGDMBUT1'
+		ScaleToClip
+		pad 10 8 10 8
+		text style "button"
+		text lua "rgString(worldDeathQuitText())"
 		clickable lua "worldDeathQuitClickable()"
 		action 
 		"
@@ -24236,6 +24254,7 @@ menu
 		Sequence 2
 		scaleToClip
 		toggle		RgQuicklootFilterJunk
+		tooltip lua "t('RG_JUNKBUTTON')"
 		action
 		"
 			Infinity_SetINIValue('Game Options','RgQuicklootFilterJunk',RgQuicklootFilterJunk)
@@ -28987,7 +29006,7 @@ menu
 	{
 		name 'messagesRect'
 		enabled "RgMessageboxUnlocked == 0 and RgIsModernHud == 0"
-		area 0 0 0 -5
+		area 0 0 664 200
 		--area 0 0 664 200
 		rectangle 0
 		--fill  0 0 0 150
@@ -29016,7 +29035,7 @@ menu
 		--enabled "RgIsModernHud == 0"
 		enabled "RgMessageboxUnlocked == 0 and RgIsModernHud == 0"
 		name "worldMessageBox"
-		area 0 12 0 0
+		area 12 12 640 176
 		--area 12 12 640 176
 		rowheight dynamic
 		table "combatLog"
@@ -29029,7 +29048,7 @@ menu
 	{
 		name 'messagesHandleY'
 		enabled "RgMessageboxUnlocked == 0 and RgIsModernHud == 0"
-		area 0 0 0 0
+		area 0 0 664 10
 		--area 0 0 664 10
 		--bam RGDMBCG4
 		--ScaleToClip
@@ -46830,27 +46849,27 @@ function rgGetHotkeyFrame(row,val)
 	end
 end
 function rgGetHotkeySlotName()
-	local ret = 'Choose keybinded hotkey: '
+	local ret = t('RG_HB_CHOOSEKEY')
 	if key > 0 then
-		ret = 'Choose keybinded hotkey: ' .. rgGetHotkeyName(key)
+		ret = t('RG_HB_CHOOSEKEY') .. rgGetHotkeyName(key)
 	end
 	return ret
 end
 function rgGetHotkeySelectionName()
-	local ret = 'Choose portrait selection: '
+	local ret = t('RG_HB_CHOOSESEL')
 	if sel > 1 then
-		ret = 'Choose portrait selection: Portrait ' .. sel-1
+		ret = t('RG_HB_CHOOSEPOR') .. sel-1
 	else
-		ret = 'Choose portrait selection: No selection'
+		ret = t('RG_HB_CHOOSENON')
 	end
 	return ret
 end
 function rgGetHotkeySlotSelectionName(row)
 	local ret = rgHotkeySelection[row]
 	if row == 1 then
-		ret = 'None'
+		ret = t('RG_HB_NONE')
 	elseif row == 8 then
-		ret = 'All'
+		ret = t('RG_HB_ALL')
 	end
 	return ret
 end
@@ -47151,7 +47170,8 @@ menu
 	label
 	{
 		area 518 176 274 40
-		text "Unlock dragging"
+		text "RG_HB_DRAG
+		"
 		text style	"normal"
 		align left center
 	}
