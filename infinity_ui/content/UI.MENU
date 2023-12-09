@@ -22425,7 +22425,7 @@ menu
 menu
 {
 	name "WORLD_DEATH"
-	align center center
+	align left top
 	ignoreEsc
 	modal
 	onOpen 
