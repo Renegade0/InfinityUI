@@ -1,6 +1,6 @@
 BACKUP ~infinity_ui/backup~
 AUTHOR ~Pecca~
-VERSION ~v0.6~
+VERSION ~v0.64~
 
 LANGUAGE
 	~English~ ~infinity_ui/tra~ ~infinity_ui/tra/english.tra~
@@ -10,6 +10,9 @@ LANGUAGE
 	
 LANGUAGE
 	~Czech~ ~infinity_ui/tra~ ~infinity_ui/tra/czech.tra~
+
+LANGUAGE
+	~Spanish~ ~infinity_ui/tra~ ~infinity_ui/tra/spanish.tra~
 
 
 /////////////////////////////////////////////////////////////////////////////////
