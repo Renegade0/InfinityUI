@@ -13,6 +13,8 @@ LANGUAGE
 
 LANGUAGE
 	~Spanish~ ~infinity_ui/tra~ ~infinity_ui/tra/spanish.tra~
+LANGUAGE
+	~Simplified Chinese~ ~infinity_ui/tra~ ~infinity_ui/tra/schinese.tra~
 
 
 /////////////////////////////////////////////////////////////////////////////////
