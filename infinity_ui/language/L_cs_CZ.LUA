@@ -854,4 +854,8 @@ uiStrings = {
 	RG_HB_DRAG = 'Odemknout potažení',
 	RG_JUNKBUTTON = 'Filtr obyčejných předmětů',
 	RGB_DOGN = "Pes",
+	RG_JOURNAL_MODE1 = "Malý deník",
+	RG_JOURNAL_MODE2 = "Velký deník",
+	RG_INV_MODE = "Mód inventáře",
+	RG_HOTKEY_BUTT = "Tlačítko kláv. zkratky",
 }

@@ -854,4 +854,8 @@ uiStrings = {
 	RG_HB_DRAG = '解锁拖拽',
 	RG_JUNKBUTTON = '垃圾过滤器',
 	RGB_DOGN = "狗",
+	RG_JOURNAL_MODE1 = "Small Journal",
+	RG_JOURNAL_MODE2 = "Large Journal",
+	RG_INV_MODE = "Inventory Mode",
+	RG_HOTKEY_BUTT = "Hotkey Button",
 }

@@ -854,4 +854,8 @@ uiStrings = {
 	RG_HB_DRAG = 'Unlock dragging',
 	RG_JUNKBUTTON = 'Junk filter',
 	RGB_DOGN = "Dog",
+	RG_JOURNAL_MODE1 = "Small Journal",
+	RG_JOURNAL_MODE2 = "Large Journal",
+	RG_INV_MODE = "Inventory Mode",
+	RG_HOTKEY_BUTT = "Hotkey Button",
 }

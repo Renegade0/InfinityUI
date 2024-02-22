@@ -635,68 +635,68 @@ function rgFirstLetterUpper(instr)
     return instr
 end
 function rgFetchMageClassString(class)
-    if rgGetClassName(class) == rgFirstLetterUpper(rgGetGameEngineString(1081,1081,1081,1081))  or 
-		rgGetClassName(class) == rgGetGameEngineString(12837,12837,12837,12837) or 
-		rgGetClassName(class) == rgGetGameEngineString(31977,31977,74302,37252) or 
-		rgGetClassName(class) == rgGetGameEngineString(32342,32342,103061,40880) then
+    if rgGetClassName(class):lower() == rgGetGameEngineString(1081,1081,1081,1081):lower()  or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(12837,12837,12837,12837):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(31977,31977,74302,37252):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(32342,32342,103061,40880):lower() then
 		return true
 	else
 		return false
 	end
 end
 function rgFetchFighterClassString(class)
-    if rgGetClassName(class) == rgFirstLetterUpper(rgGetGameEngineString(1076,1076,1076,1076)) then
+    if rgGetClassName(class):lower() == rgGetGameEngineString(1076,1076,1076,1076):lower() then
 		return true
 	else
 		return false
 	end
 end
 function rgFetchRangerClassString(class)
-    if rgGetClassName(class) == rgGetGameEngineString(1078,1078,1078,1078) or 
-		rgGetClassName(class) == rgGetGameEngineString(24264,24264,25154,25154) or 
-		rgGetClassName(class) == rgGetGameEngineString(24265,24265,25155,25155) or 
-		rgGetClassName(class) == rgGetGameEngineString(24266,24266,25156,25156) or 
-		rgGetClassName(class) == rgGetGameEngineString(1077,1077,1077,1077) or 
-		rgGetClassName(class) == rgGetGameEngineString(24267,24267,25157,25157) or 
-		rgGetClassName(class) == rgGetGameEngineString(24268,24268,25158,25158) or 
-		rgGetClassName(class) == rgGetGameEngineString(24269,24269,25159,25159) then
+    if rgGetClassName(class):lower() == rgGetGameEngineString(1078,1078,1078,1078):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24264,24264,25154,25154):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24265,24265,25155,25155):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24266,24266,25156,25156):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(1077,1077,1077,1077):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24267,24267,25157,25157):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24268,24268,25158,25158):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24269,24269,25159,25159):lower() then
 		return true
 	else
 		return false
 	end
 end
 function rgFetchPriestClassString(class)
-    if rgGetClassName(class) == rgGetGameEngineString(1079,1079,1079,1079) or 
-		rgGetClassName(class) == rgGetGameEngineString(24276,24276,25168,1) or 
-		rgGetClassName(class) == rgGetGameEngineString(24277,24277,25169,1) or 
-		rgGetClassName(class) == rgGetGameEngineString(24278,24278,25170,1) or 
-		rgGetClassName(class) == rgGetGameEngineString(9410,9410,9410,9410) or 
-		rgGetClassName(class) == rgGetGameEngineString(31980,31980,74306,37261) or 
-		rgGetClassName(class) == rgGetGameEngineString(31983,31983,74309,37264) then
+    if rgGetClassName(class):lower() == rgGetGameEngineString(1079,1079,1079,1079):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24276,24276,25168,1):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24277,24277,25169,1):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24278,24278,25170,1):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(9410,9410,9410,9410):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(31980,31980,74306,37261):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(31983,31983,74309,37264):lower() then
 		return true
 	else
 		return false
 	end
 end
 function rgFetchDruidClassString(class)
-    if rgGetClassName(class) == rgGetGameEngineString(1080,1080,1080,1080) or 
-		rgGetClassName(class) == rgGetGameEngineString(24279,24279,25171,25171) or 
-		rgGetClassName(class) == rgGetGameEngineString(24280,24280,25173,25173) or 
-		rgGetClassName(class) == rgGetGameEngineString(24281,24281,25174,25174)then
+    if rgGetClassName(class):lower() == rgGetGameEngineString(1080,1080,1080,1080):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24279,24279,25171,25171):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24280,24280,25173,25173):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24281,24281,25174,25174):lower() then
 		return true
 	else
 		return false
 	end
 end
 function rgFetchRogueClassString(class)
-    if rgGetClassName(class) == rgGetGameEngineString(1082,1082,1082,1082) or 
-		rgGetClassName(class) == rgGetGameEngineString(24270,24270,25160,25160) or 
-		rgGetClassName(class) == rgGetGameEngineString(24271,24271,25161,25161) or 
-		rgGetClassName(class) == rgGetGameEngineString(24272,24272,25162,25162) or 
-		rgGetClassName(class) == rgGetGameEngineString(1083,1083,1083,1083) or 
-		rgGetClassName(class) == rgGetGameEngineString(24273,24273,25164,25164) or 
-		rgGetClassName(class) == rgGetGameEngineString(24274,24274,25165,25165) or 
-		rgGetClassName(class) == rgGetGameEngineString(24275,24275,25166,25166) then
+    if rgGetClassName(class):lower() == rgGetGameEngineString(1082,1082,1082,1082):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24270,24270,25160,25160):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24271,24271,25161,25161):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24272,24272,25162,25162):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(1083,1083,1083,1083):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24273,24273,25164,25164):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24274,24274,25165,25165):lower() or 
+		rgGetClassName(class):lower() == rgGetGameEngineString(24275,24275,25166,25166):lower() then
 		return true
 	else
 		return false
@@ -835,96 +835,96 @@ function updateAttrTable()
 
 	if currentTab == 1 then
 		if statusEffects[1] ~= nil then
-			table.insert(listItems, { '233', '^D' .. t('STATUS_EFFECTS_LABEL') .. ':' .. '^B'})
+			table.insert(listItems, { 'rgempty','0', '^D' .. t('STATUS_EFFECTS_LABEL') .. ':' .. '^B'})
 		end
 		for k, v in pairs(characters[currentID].statusEffects) do
-			if v.current == 0 then --haste exception
-				table.insert(listItems, {103, '    ' .. Infinity_FetchString(v.strRef)})
-			else
-				table.insert(listItems, {v.current, '    ' .. Infinity_FetchString(v.strRef)})
-			end
+			--if v.current == 0 then --haste exception
+			--	table.insert(listItems, {103, '    ' .. Infinity_FetchString(v.strRef)})
+			--else
+				table.insert(listItems, {v.bam, v.current, '    ' .. Infinity_FetchString(v.strRef)})
+			--end
 		end
 		if statusEffects[1] ~= nil then
-			table.insert(listItems, { '233', '' })
+			table.insert(listItems, { 'rgempty','0', '' })
 		end
-		table.insert(listItems, { '233', '^D' .. t('SKILLS_LABEL') .. ':' .. '^B'})
-		table.insert(listItems, { '233', t('LORE_LABEL') .. ': ' .. characters[currentID].proficiencies.lore.current })
-		table.insert(listItems, { '233', t('REPUTATION_LABEL') .. ': ' .. characters[currentID].proficiencies.reputation.current })
+		table.insert(listItems, { 'rgempty','0', '^D' .. t('SKILLS_LABEL') .. ':' .. '^B'})
+		table.insert(listItems, { 'rgempty','0', t('LORE_LABEL') .. ': ' .. characters[currentID].proficiencies.lore.current })
+		table.insert(listItems, { 'rgempty','0', t('REPUTATION_LABEL') .. ': ' .. characters[currentID].proficiencies.reputation.current })
 		
 		
 		for k, v in ipairs(characters[currentID].proficiencies.class_skills) do
-			table.insert(listItems, { '233', Infinity_FetchString(v.strRef) .. ': '.. v.current .. '^-'})
+			table.insert(listItems, { 'rgempty','0', Infinity_FetchString(v.strRef) .. ': '.. v.current .. '^-'})
 		end
 		
-		table.insert(listItems, { '233', '' })
-		table.insert(listItems, { '233', '^D' .. t('PROFICIENCIES_LABEL') .. ':' .. '^B'})
+		table.insert(listItems, { 'rgempty','0', '' })
+		table.insert(listItems, { 'rgempty','0', '^D' .. t('PROFICIENCIES_LABEL') .. ':' .. '^B'})
 		if characters[currentID].proficiencies.weapons.current ~= "" then
-			table.insert(listItems, { '233', characters[currentID].proficiencies.weapons.current })
+			table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.weapons.current })
 		end
 		
 		if characters[currentID].proficiencies.fightingstyles.current ~= "" then
-			table.insert(listItems, { '233', characters[currentID].proficiencies.fightingstyles.current})
+			table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.fightingstyles.current})
 		end
 		
-		table.insert(listItems, { '233', '' })
-		table.insert(listItems, { '233', '^D' .. t('SAVING_THROWS_LABEL') .. ':' .. '^B'})
-		table.insert(listItems, { '233', characters[currentID].proficiencies.savingThrows})
-		table.insert(listItems, { '233', '' })
-		table.insert(listItems, { '233', '^D' .. t('RESISTANCES_LABEL') .. ':' .. '^B' .. '^B'})
-		table.insert(listItems, { '233', characters[currentID].proficiencies.resistances})
-		--table.insert(listItems, { '233', '' })
-		table.insert(listItems, { '233', '^D' .. '\n' .. t('ABILITIES_TITLE') ..  ':' .. '^B'})--11976
+		table.insert(listItems, { 'rgempty','0', '' })
+		table.insert(listItems, { 'rgempty','0', '^D' .. t('SAVING_THROWS_LABEL') .. ':' .. '^B'})
+		table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.savingThrows})
+		table.insert(listItems, { 'rgempty','0', '' })
+		table.insert(listItems, { 'rgempty','0', '^D' .. t('RESISTANCES_LABEL') .. ':' .. '^B' .. '^B'})
+		table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.resistances})
+		--table.insert(listItems, { 'rgempty','0', '' })
+		table.insert(listItems, { 'rgempty','0', '^D' .. '\n' .. t('ABILITIES_TITLE') ..  ':' .. '^B'})--11976
 		for k, v in ipairs(characters[currentID].proficiencies.ability) do
-			table.insert(listItems, {'233', v.current})
+			table.insert(listItems, {'rgempty','0', v.current})
 		end
 	elseif currentTab == 2 then
 		listItems = { 
-		{ '233', '^D' .. t('BIOGRAPHY_LABEL') .. ':' .. '^B'},
-		{ '233', Infinity_FetchString(characters[currentID].biography)},
+		{ 'rgempty','0', '^D' .. t('BIOGRAPHY_LABEL') .. ':' .. '^B'},
+		{ 'rgempty','0', Infinity_FetchString(characters[currentID].biography)},
 		}
 	elseif currentTab == 3 then
 	
-		table.insert(listItems, { '233', '^D' .. t('CLASS_LABEL') .. ':' .. '^B' })
-		table.insert(listItems, { '233', characters[currentID].classlevel.first.details .. '\n' })
+		table.insert(listItems, { 'rgempty','0', '^D' .. t('CLASS_LABEL') .. ':' .. '^B' })
+		table.insert(listItems, { 'rgempty','0', characters[currentID].classlevel.first.details .. '\n' })
 		
 		if characters[currentID].classlevel.second ~= nil then
-			table.insert(listItems, { '233', characters[currentID].classlevel.second.details .. '\n'})
+			table.insert(listItems, { 'rgempty','0', characters[currentID].classlevel.second.details .. '\n'})
 		end
 		
 		if characters[currentID].classlevel.third ~= nil then
-			table.insert(listItems, { '233', characters[currentID].classlevel.third.details .. '\n'})
+			table.insert(listItems, { 'rgempty','0', characters[currentID].classlevel.third.details .. '\n'})
 		end
 		
-		table.insert(listItems, { '233', characters[currentID].kitDesc})
+		table.insert(listItems, { 'rgempty','0', characters[currentID].kitDesc})
 		
 	elseif currentTab == 4 then
 		listItems = { 
-		{ '233', '^D' .. Infinity_FetchString(characters[currentID].Stats.partychapxp.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' ..  characters[currentID].Stats.partychapxp.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamexp.current .. '%\n'},
-		{ '233', '^D' .. Infinity_FetchString(characters[currentID].Stats.partychapkills.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.partychapkills.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamekills.current .. '%\n'},
-		{ '233', '^D' .. Infinity_FetchString(characters[currentID].Stats.chapxpvalue.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapxpvalue.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamexpvalue.current .. '\n'},
-		{ '233', '^D' .. Infinity_FetchString(characters[currentID].Stats.chapkills.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapkills.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamekills.current .. '\n'},
-		{ '233', '^D' .. Infinity_FetchString(characters[currentID].Stats.bestenemy.strRef) .. '^B\n' .. characters[currentID].Stats.bestenemy.current .. '\n'},
-		{ '233', '^D' .. Infinity_FetchString(characters[currentID].Stats.timespent.strRef) .. '^B\n' .. characters[currentID].Stats.timespent.current .. '\n'},
-		{ '233', '^D' .. Infinity_FetchString(characters[currentID].Stats.favweapon.strRef) .. '^B\n' .. characters[currentID].Stats.favweapon.current .. '\n'},
-		{ '233', '^D' .. Infinity_FetchString(characters[currentID].Stats.favspell.strRef) .. '^B\n' .. characters[currentID].Stats.favspell.current},
+		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.partychapxp.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' ..  characters[currentID].Stats.partychapxp.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamexp.current .. '%\n'},
+		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.partychapkills.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.partychapkills.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamekills.current .. '%\n'},
+		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.chapxpvalue.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapxpvalue.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamexpvalue.current .. '\n'},
+		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.chapkills.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapkills.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamekills.current .. '\n'},
+		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.bestenemy.strRef) .. '^B\n' .. characters[currentID].Stats.bestenemy.current .. '\n'},
+		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.timespent.strRef) .. '^B\n' .. characters[currentID].Stats.timespent.current .. '\n'},
+		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.favweapon.strRef) .. '^B\n' .. characters[currentID].Stats.favweapon.current .. '\n'},
+		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.favspell.strRef) .. '^B\n' .. characters[currentID].Stats.favspell.current},
 		}
 	elseif currentTab == 5 then
 		listItems = { 
-		{ '233', '^D' .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[currentID].AC.current .. '^B'},
-		{ '233', characters[currentID].AC.details .. '\n'},
-		--{ '233', Infinity_FetchString(11766) },
-		--{ '233', Infinity_FetchString(11768) .. ': ' .. characters[currentID].AC.slashing },
-		--{ '233', Infinity_FetchString(11769) .. ': ' .. characters[currentID].AC.piercing },
-		--{ '233', Infinity_FetchString(11770) .. ': ' .. characters[currentID].AC.crushing },
-		--{ '233', Infinity_FetchString(11767) .. ': ' .. characters[currentID].AC.missile .. '\n' },
-		{ '233', '^D' .. t('HIT_POINTS_LABEL') .. ': ' .. characters[currentID].HP.current .. '/' .. characters[currentID].HP.max .. '^B'},
-		{ '233', characters[currentID].HP.details .. '\n'},
-		{ '233', rgGetTHAC0(currentID)},
-		{ '233', characters[currentID].THAC0.details .. '\n'},
-		{ '233', rgGetDamage(currentID)},
-		{ '233', characters[currentID].damage.details .. '\n'},
-		{ '233', '^D' .. Infinity_FetchString(characters[currentID].proficiencies.numAttacks.strRef) .. ': ' .. characters[currentID].proficiencies.numAttacks.current .. '^B\n'},
-		{ '233', '^D' .. t('CURRENT_SCRIPT_LABEL') .. ': ' .. characters[currentID].proficiencies.currentScript .. '^B'},
+		{ 'rgempty','0', '^D' .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[currentID].AC.current .. '^B'},
+		{ 'rgempty','0', characters[currentID].AC.details .. '\n'},
+		--{ 'rgempty','0', Infinity_FetchString(11766) },
+		--{ 'rgempty','0', Infinity_FetchString(11768) .. ': ' .. characters[currentID].AC.slashing },
+		--{ 'rgempty','0', Infinity_FetchString(11769) .. ': ' .. characters[currentID].AC.piercing },
+		--{ 'rgempty','0', Infinity_FetchString(11770) .. ': ' .. characters[currentID].AC.crushing },
+		--{ 'rgempty','0', Infinity_FetchString(11767) .. ': ' .. characters[currentID].AC.missile .. '\n' },
+		{ 'rgempty','0', '^D' .. t('HIT_POINTS_LABEL') .. ': ' .. characters[currentID].HP.current .. '/' .. characters[currentID].HP.max .. '^B'},
+		{ 'rgempty','0', characters[currentID].HP.details .. '\n'},
+		{ 'rgempty','0', rgGetTHAC0(currentID)},
+		{ 'rgempty','0', characters[currentID].THAC0.details .. '\n'},
+		{ 'rgempty','0', rgGetDamage(currentID)},
+		{ 'rgempty','0', characters[currentID].damage.details .. '\n'},
+		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].proficiencies.numAttacks.strRef) .. ': ' .. characters[currentID].proficiencies.numAttacks.current .. '^B\n'},
+		{ 'rgempty','0', '^D' .. t('CURRENT_SCRIPT_LABEL') .. ': ' .. characters[currentID].proficiencies.currentScript .. '^B'},
 		}
 	end
 
@@ -1743,6 +1743,31 @@ menu
 		text align right center
 		enabled "characterViewable"
 	}
+	text
+	{
+		area 578 316 200 52 
+		tooltip lua "t('ARMOR_CLASS_LABEL')"
+	}
+	text
+	{
+		area 578 364 200 52 
+		tooltip lua "t('HIT_POINTS_LABEL')"
+	}
+	text
+	{
+		area 578 412 200 52 
+		tooltip lua "t('THAC0_LABEL')"
+	}
+	text
+	{
+		area 578 460 200 52 
+		tooltip lua "t('DAMAGE_LABEL')"
+	}
+	text
+	{
+		area 578 508 200 52 
+		tooltip lua "t('NUM_ATTACKS_LABEL')"
+	}
 	
 	
 	--one/two classes
@@ -1902,17 +1927,17 @@ menu
 			label
 			{
 				area		0 0 -1 -1
-				bam            'STATES'
-				sequence    lua "listItems[rowNumber][1]"
+				bam  lua "listItems[rowNumber][1]"
+				sequence    lua "listItems[rowNumber][2]"
 				text align	left center
-				enabled "listItems[rowNumber][1] ~= '233'"
+				--enabled "listItems[rowNumber][1] ~= '233'"
 				--enabled "rowNumber ~= 233"
 				--ScaleToClip
 			}
 			label
 			{
 				area		0 0 -1 -1
-				text		lua "listItems[rowNumber][2]" 
+				text		lua "listItems[rowNumber][3]" 
 				text style  'normal'
 				text align	left center
 			}
@@ -1939,6 +1964,7 @@ menu
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 0
+		tooltip lua "t('ASSIGN_KEYS_PAGE_CHARACTERINFORMATION')"
 		--text 'INFORMATION_BUTTON'
 		--text style "button"
 		--pad 10 4 10 4
@@ -1953,6 +1979,7 @@ menu
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 4
+		tooltip lua "t('BIOGRAPHY_LABEL')"
 		--text 'BIOGRAPHY_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -1967,6 +1994,7 @@ menu
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 1
+		tooltip lua "t('CLASS_LABEL')"
 		--text 'CLASS_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -1981,6 +2009,7 @@ menu
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 3
+		tooltip lua "t('STATS_LABEL')"
 		--text 'STATS_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -1995,6 +2024,7 @@ menu
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 2
+		tooltip lua "t('COMBAT_STATS_LABEL')"
 		--text 'COMBAT_STATS_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -3675,19 +3705,42 @@ function removeOptionFromList(list, option)
 	end
 end
 
-toggleTitles = {
-{"DIFFICULTY_LABEL_STORYMODE_MIXED",	"DIFFICULTY_DESCRIPTION_STORYMODE",	65, 0, 0},
-{"ENABLE_CLOUD_LABEL",					"ENABLE_CLOUD_DESCRIPTION", 		60, 0, 0},
-{"WORLDMAP_HIGHLIGHT_LABEL",			"WORLDMAP_HIGHLIGHT_DESCRIPTION", 	66, 0, 0},
-{"MP_CHAT_LABEL",						"MP_CHAT_DESCRIPTION",				67, 0, 0},
-{"GORE_LABEL",							"GORE_DESCRIPTION", 				19, 0, 0},
-{"WEATHER_LABEL",						"WEATHER_DESCRIPTION", 				47, 0, 0},
-{"GROUP_INFRA_LABEL",					"GROUP_INFRA_DESCRIPTION", 			42, 0, 0},
-{"HEAL_ON_REST_LABEL",					"HEAL_ON_REST_DESCRIPTION", 		50, 0, 0},
-{"MAX_HP_ON_LEVEL_LABEL",				"MAX_HP_ON_LEVEL_DESCRIPTION", 		55, 0, 0},
-{"NO_DAMAGE_INCREASE_LABEL",			"NO_DAMAGE_INCREASE_DESCRIPTION", 	64, 0, 0},
-{"AUTO_USE_MAGIC_AMMO_LABEL",			"AUTO_USE_MAGIC_AMMO_DESCRIPTION", 	68, 0, 0},
-}
+toggleTitles = { }
+
+function rgGetGameplayToggles()
+	if rgGameEngine == 3 then --iwd
+	toggleTitles = {
+		{"GORE_LABEL",							"GORE_DESCRIPTION", 				19, 0, 0},
+		{"GROUP_INFRA_LABEL",					"GROUP_INFRA_DESCRIPTION", 			42, 0, 0},
+		{"MAX_HP_ON_LEVEL_LABEL",				"MAX_HP_ON_LEVEL_DESCRIPTION", 		55, 0, 0},
+		{"HEAL_ON_REST_LABEL",					"HEAL_ON_REST_DESCRIPTION", 		50, 0, 0},
+		{40198,									40199, 								57, 0, 0},
+		{"WEATHER_LABEL",						"WEATHER_DESCRIPTION", 				47, 0, 0},
+		{40200,									40201, 								59, 0, 0},
+		{"DIFFICULTY_LABEL_STORYMODE_MIXED",	"DIFFICULTY_DESCRIPTION_STORYMODE_BG2EE",	65, 0, 0},
+		{40844,									40845,								62, 0, 0},
+		{"NO_DAMAGE_INCREASE_LABEL",			"NO_DAMAGE_INCREASE_DESCRIPTION", 	64, 0, 0},
+		{"ENABLE_CLOUD_LABEL",					"ENABLE_CLOUD_DESCRIPTION", 		60, 0, 0},
+		{"WORLDMAP_HIGHLIGHT_LABEL",			"WORLDMAP_HIGHLIGHT_DESCRIPTION", 	66, 0, 0},
+		{"MP_CHAT_LABEL",						"MP_CHAT_DESCRIPTION",				67, 0, 0},
+		{"AUTO_USE_MAGIC_AMMO_LABEL",			"AUTO_USE_MAGIC_AMMO_DESCRIPTION", 	68, 0, 0},
+		}
+	else
+	toggleTitles = {
+		{"DIFFICULTY_LABEL_STORYMODE_MIXED",	"DIFFICULTY_DESCRIPTION_STORYMODE",	65, 0, 0},
+		{"ENABLE_CLOUD_LABEL",					"ENABLE_CLOUD_DESCRIPTION", 		60, 0, 0},
+		{"WORLDMAP_HIGHLIGHT_LABEL",			"WORLDMAP_HIGHLIGHT_DESCRIPTION", 	66, 0, 0},
+		{"MP_CHAT_LABEL",						"MP_CHAT_DESCRIPTION",				67, 0, 0},
+		{"GORE_LABEL",							"GORE_DESCRIPTION", 				19, 0, 0},
+		{"WEATHER_LABEL",						"WEATHER_DESCRIPTION", 				47, 0, 0},
+		{"GROUP_INFRA_LABEL",					"GROUP_INFRA_DESCRIPTION", 			42, 0, 0},
+		{"HEAL_ON_REST_LABEL",					"HEAL_ON_REST_DESCRIPTION", 		50, 0, 0},
+		{"MAX_HP_ON_LEVEL_LABEL",				"MAX_HP_ON_LEVEL_DESCRIPTION", 		55, 0, 0},
+		{"NO_DAMAGE_INCREASE_LABEL",			"NO_DAMAGE_INCREASE_DESCRIPTION", 	64, 0, 0},
+		{"AUTO_USE_MAGIC_AMMO_LABEL",			"AUTO_USE_MAGIC_AMMO_DESCRIPTION", 	68, 0, 0},
+		}
+	end
+end
 
 selectedOpt = 0
 helpString = 0
@@ -7293,6 +7346,17 @@ function rgGetItemDescriptionArea()
 		Infinity_SetArea('rgItemDesc',222,96,376,486)
 	end	
 end
+function rgPopItemDesc()
+	Infinity_PopMenu('ITEM_DESCRIPTION');
+	Infinity_PopMenu('ITEM_DESCRIPTION');
+	Infinity_PopMenu('ITEM_DESCRIPTION');
+	Infinity_PopMenu('ITEM_DESCRIPTION');
+	Infinity_PopMenu('ITEM_DESCRIPTION');
+	Infinity_PopMenu('ITEM_DESCRIPTION');
+	Infinity_PopMenu('ITEM_DESCRIPTION');
+	Infinity_PopMenu('ITEM_DESCRIPTION');
+	Infinity_PopMenu('ITEM_DESCRIPTION');
+end
 
 `
 menu
@@ -7364,6 +7428,7 @@ menu
 	}
 	button
 	{
+		on esc
 		area	548 26 50 50
 		bam rgdwbut
 		sequence 0 
@@ -7376,15 +7441,7 @@ menu
 		action
 		"
 			Infinity_PopMenu( );
-			Infinity_PopMenu('ITEM_DESCRIPTION');
-			Infinity_PopMenu('ITEM_DESCRIPTION');
-			Infinity_PopMenu('ITEM_DESCRIPTION');
-			Infinity_PopMenu('ITEM_DESCRIPTION');
-			Infinity_PopMenu('ITEM_DESCRIPTION');
-			Infinity_PopMenu('ITEM_DESCRIPTION');
-			Infinity_PopMenu('ITEM_DESCRIPTION');
-			Infinity_PopMenu('ITEM_DESCRIPTION');
-			Infinity_PopMenu('ITEM_DESCRIPTION');
+			rgPopItemDesc()
 		"
 	}
 	button
@@ -7520,6 +7577,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[1][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[1][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		--ScaleToClip
 		--align left top
 		action "rgHotkeyButtonLeftClick(1)"
@@ -7542,9 +7600,9 @@ menu
 		enabled "worldScreen == e:GetActiveEngine() and ((RgHotkeyButtonsTable[2][1] > 0 and RgHotkeyButtonsVisibility == 1) or rgHotkeyButtonsUnlocked == 1)"
 		bitmap 'rgdslotb'
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[2][1])"
-		--ScaleToClip
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[2][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(2)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7557,6 +7615,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[3][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[3][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(3)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7569,6 +7628,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[4][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[4][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(4)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7581,6 +7641,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[5][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[5][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(5)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7593,6 +7654,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[6][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[6][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(6)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7605,6 +7667,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[7][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[7][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(7)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7617,6 +7680,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[8][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[8][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(8)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7629,6 +7693,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[9][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[9][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(9)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7641,6 +7706,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[10][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[10][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(10)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7653,6 +7719,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[11][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[11][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(11)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7665,6 +7732,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[12][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[12][1])"
 		scaleToClip
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(12)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -9815,7 +9883,7 @@ menu
 	onClose 
 	"
 		Infinity_PopMenu('CHARACTER_COLOR')
-		Infinity_PopMenu('ITEM_DESCRIPTION')
+		rgPopItemDesc()
 		Infinity_PopMenu('ITEM_IDENTIFY')
 		Infinity_PopMenu('RG_MENU_BAR')
 		--Infinity_PopMenu('RG_JOURNAL')
@@ -9845,6 +9913,7 @@ menu
 		bam			rgdimbut
 		scaleToClip
 		toggle		rgInventoryMode
+		tooltip lua "t('RG_INV_MODE')"
 		action
 		"
 			if rgInventoryMode == 0 then
@@ -10191,6 +10260,32 @@ menu
 		text lua	"characters[id].proficiencies.numAttacks.current"
 		text style	"rg_normal_small"
 		align center center
+	}
+	
+	text
+	{
+		area 98 97 50 93
+		tooltip lua "t('ARMOR_CLASS_LABEL')"
+	}
+	text
+	{
+		area 152 97 50 93
+		tooltip lua "t('HIT_POINTS_LABEL')"
+	}
+	text
+	{
+		area 206 97 50 93
+		tooltip lua "t('THAC0_LABEL')"
+	}
+	text
+	{
+		area 260 97 50 93
+		tooltip lua "t('DAMAGE_LABEL')"
+	}
+	text
+	{
+		area 314 97 50 93
+		tooltip lua "t('NUM_ATTACKS_LABEL')"
 	}
 	
 	
@@ -11177,7 +11272,12 @@ menu
 		frame 1
 		scaleToClip
 	}
-	
+	button
+	{
+		enabled "e:GetActiveEngine() ~= createCharScreen"
+		area		108 108 210 331
+		bitmap		lua "characters[id].portrait"
+	} 
 	button
 	{
 		enabled "e:GetActiveEngine() ~= createCharScreen"
@@ -11652,11 +11752,21 @@ menu
 		action
 		"
 			FindTitle = getSubtitleString()
+			IwdQuest = getBodyString()
 			if(sidebarsGreyed ~= 1) then
-				rgEscModeJournal = 1
-				e:GetActiveEngine():OnLeftPanelButtonClick(2)
-				--CloseAll_Small()
-				findQuestPopUp()
+				if rgGameEngine == 3 then --iwd
+					rgCloseAll()
+					rgFindQuestPopUpIwd()
+					e:GetActiveEngine():OnLeftPanelButtonClick(2)
+				elseif rgGameEngine ~= 3 then
+					rgCloseAll()
+					findQuestPopUp()
+					if(showJournal == 1 and rgLargeJournal == 0) then
+						Infinity_PopMenu('JOURNAL')
+					end
+					e:GetActiveEngine():OnLeftPanelButtonClick(2)
+				end
+				
 				local tf = next(textflashes)
 				setSelectedQuest(textflashes[tf][5])
 				CheckForOpenedQuests_Small()
@@ -11702,6 +11812,16 @@ function findQuestPopUp()
 			else
 				rgIsCurrentQuests = 0
 			end
+		end
+	end
+end
+function rgFindQuestPopUpIwd()
+	for i=1,#questDisplay,1 do
+		local rowTab =  questDisplay[i]
+		if rowTab.text == IwdQuest then
+			local p = questDisplay[rowTab.parent].parent
+			questDisplay[p].expanded = 1
+			break
 		end
 	end
 end
@@ -13475,7 +13595,7 @@ function rgGetGameEngineString(bg1,sod,bg2,iwd)
 		return Infinity_FetchString(sod)
 	elseif eng == 2 then 
 		return Infinity_FetchString(bg2)
-	elseif eng == 3then 
+	elseif eng == 3 then 
 		return Infinity_FetchString(iwd)
 	elseif eng == 4 then 
 		return Infinity_FetchString(bg2)
@@ -13726,6 +13846,7 @@ menu
 		rgSetMessageBox()
 		rgGetCheatLists()
 		rgGetGraphicToggles()
+		rgGetGameplayToggles()
 		
 		if e:IsTouchUI() and startEngine:GetCampaign() ~= 3 then
 			startEngine:OnCampaignButtonClick('SOD',false)
@@ -14997,13 +15118,13 @@ function rgBookSpellLeftClick(slotid)
 end
 function rgBookSpellRightClick(slotid)
 	if characters[id].hasSorcererBook == false then
-		popup2Button(24485, 'REMOVE_BUTTON', function() mageScreen:EraseKnownSpell(bookSpells[slotid].resref) end)
+		popup2Button(rgGetGameEngineStringRef(11824,11824,63745,11824), 'REMOVE_BUTTON', function() mageScreen:EraseKnownSpell(bookSpells[slotid].resref) end)
 	end
 end
 function rgBottomSpellLeftClick(level,slotid)
 	setMageBookLevel(level)
 	if findMemorizedUncastable(bottomSpells[slotid].resref) == -1 and Infinity_GetOption(41, 9) ~= 0 then
-		popup2Button(11824, 'REMOVE_BUTTON', function() unmemorizeMageSpell(slotid) end, 'CANCEL_BUTTON')
+		popup2Button(rgGetGameEngineStringRef(11824,11824,63745,11824), 'REMOVE_BUTTON', function() unmemorizeMageSpell(slotid) end, 'CANCEL_BUTTON')
 	else
 		--if rgMX[level] == 0 then
 		--	rgCurrentBottomSpellSlot = 'rgBottomSpell' .. level .. slotid
@@ -15937,10 +16058,18 @@ menu
 		"
 			local level = rgBottomSpells[currentBottomSpell][3]
 			local firstSpell = rgBottomSpells[currentBottomSpell][4]
+			local slotid = cellNumber+firstSpell-2
+			--if cellNumber == 1 then
+			--	setMageBookLevel(level)
+			--else
+			--	rgBottomSpellLeftClick(level,cellNumber+firstSpell-2)
+			--end
 			if cellNumber == 1 then
 				setMageBookLevel(level)
 			else
-				rgBottomSpellLeftClick(level,cellNumber+firstSpell-2)
+				setMageBookLevel(level)
+				
+				unmemorizeMageSpell(level,slotid)
 			end
 		"
 	}
@@ -16265,7 +16394,7 @@ menu
 		--text color '5'
 		action "
 		if bookMode == 0 and characters[id].hasSorcererBook == false then 
-			popup2Button(rgGetGameEngineStringRef(24485,24485,24485,24485), 'REMOVE_BUTTON', function() mageScreen:EraseKnownSpell(rgBookSpells[currentBookSpell][cellNumber].resref); rgSpellDescString = nil end) 
+			popup2Button(rgGetGameEngineStringRef(24485,24485,63745,24485), 'REMOVE_BUTTON', function() mageScreen:EraseKnownSpell(rgBookSpells[currentBookSpell][cellNumber].resref); rgSpellDescString = nil end) 
 		end
 		"
 	}
@@ -17118,6 +17247,9 @@ showPriestMemorizationFlash = false
 function refreshPriestBook()
 	if currentSpellLevel == nil then
 		currentSpellLevel = 1
+	end
+	if currentSpellLevel > 7 then
+		currentSpellLevel = 7
 	end
 	if characters[id].hasClericBook then
 			rgBookPriestSpells = characters[id].priestSpells[currentSpellLevel]
@@ -18344,6 +18476,7 @@ menu
 		scaleToClip
 		sequence 2
 		frame lua "rgGetMapCheckboxFrame()"
+		tooltip lua "t('WORLDMAP_HIGHLIGHT_LABEL')"
 		--sequence lua "mapScreen:DisplayExploredMap() and 0 or 1"
 		action "mapScreen:ToggleDisplayExploredMap()"
 	}
@@ -18372,6 +18505,7 @@ menu
 		bam rgdabut1
 		scaleToClip
 		sequence 1
+		tooltip lua "t('WORLD_MAP_NOTES_LABEL')"
 		--sequence lua "showNotes == 1 and 0 or 1"
 		toggle showNotes
 	}
@@ -18381,6 +18515,7 @@ menu
 		area 172 10 62 58
 		bam rgdabut1
 		scaleToClip
+		tooltip lua "t('WORLD_MAP_BUTTON')"
 		action
 		"
 			worldMapScreen:StartWorldMap(0)
@@ -18649,42 +18784,77 @@ end
 menu
 {
 	name "WORLD_MAP"
-	align center top
+	align left top
 	onOpen "
 		rgScrollWorldMapOnce = 0
+		
 		local w, h = Infinity_GetScreenSize()
+		local c = w/2
+		local d = h/2
+		local x = 0
+		local y = 0
+		
 		if rgGameEngine == 0 or rgGameEngine == 1 or rgGameEngine == 3 then
-			Infinity_SetArea('rgWorldMap1',95,78,1000,h-78)
-			Infinity_SetArea('rgWorldMapBcg1',0,0,595,78)
-			Infinity_SetArea('rgWorldMapBcg2',594,0,595,78)
-			Infinity_SetArea('rgWorldMapTitl',295,17,600,44)
-			Infinity_SetArea('rgWorldMapButt',1122,18,42,42)
+			x = c - 595
+			Infinity_SetArea('rgWorldMap1',x+95,78,1000,h-78)
+			Infinity_SetArea('rgWorldMapBac1',x+87,78,1014,2000)
+			Infinity_SetArea('rgWorldMapBcg1',x,0,595,78)
+			Infinity_SetArea('rgWorldMapBcg2',x+594,0,595,78)
+			Infinity_SetArea('rgWorldMapTitl',x+295,17,600,44)
+			Infinity_SetArea('rgWorldMapButt',x+1122,18,42,42)
+			Infinity_SetArea('rgWorldMap4',0,0,0,0)
+			Infinity_SetArea('rgWorldMap2',0,0,0,0)
+			Infinity_SetArea('rgWorldMapBac2',0,0,0,0)
+			Infinity_SetArea('rgWorldMapBcg3',0,0,0,0)
+			
 		elseif rgGameEngine == 2 then
-			local a = 0
-			local b = 0
-			if w < 1470 then
-				a = ((1470 - w)/2)-7
-				b = a + 14
+			if w < 1484 then
+				x = c - 682
+				y = d - 384
+				Infinity_SetArea('rgWorldMap2',x,y+78,1365,690)
+				Infinity_SetArea('rgWorldMapBac2',x,y+78,1365,690)
+				Infinity_SetArea('rgWorldMapBcg1',x,y,595,78)
+				Infinity_SetArea('rgWorldMapBcg2',x+594,y,595,78)
+				Infinity_SetArea('rgWorldMapBcg3',x+770,y,595,78)
+				Infinity_SetArea('rgWorldMapTitl',x+382,y+17,600,44)
+				Infinity_SetArea('rgWorldMapButt',x+1298,y+18,42,42)
+			else
+				x = c - 742
+				y = d - 392
+				Infinity_SetArea('rgWorldMap2',x+7,y+78,1470,700)
+				Infinity_SetArea('rgWorldMapBac2',x,y+71,1484,714)
+				Infinity_SetArea('rgWorldMapBcg1',x,y,595,78)
+				Infinity_SetArea('rgWorldMapBcg2',x+594,y,595,78)
+				Infinity_SetArea('rgWorldMapBcg3',x+889,y,595,78)
+				Infinity_SetArea('rgWorldMapTitl',x+442,y+17,600,44)
+				Infinity_SetArea('rgWorldMapButt',x+1417,y+18,42,42)
 			end
-			Infinity_SetArea('rgWorldMap2',b,(h/2)-350+39,1470,700)
-			Infinity_SetArea('rgWorldMapBac2',a-7,(h/2)-350+39-7,1484,714)
-			Infinity_SetArea('rgWorldMapBcg1',b,(h/2)-350-39,595,78)
-			Infinity_SetArea('rgWorldMapBcg2',594,(h/2)-350-39,595,78)
-			Infinity_SetArea('rgWorldMapBcg3',875-a,(h/2)-350-39,595,78)
-			Infinity_SetArea('rgWorldMapTitl',435,(h/2)-350-39+17,600,44)
-			Infinity_SetArea('rgWorldMapButt',1402-a,(h/2)-350-39+18,42,42)
+			Infinity_SetArea('rgWorldMap1',0,0,0,0)
+			Infinity_SetArea('rgWorldMapBac1',0,0,0,0)
+			Infinity_SetArea('rgWorldMap4',0,0,0,0)
 		elseif rgGameEngine == 4 then
-			local a = 0
-			local b = 0
 			if w < 1550 then
-				a = ((1550 - w)/2)-7
-				b = a + 14
+				x = c - 682
+				Infinity_SetArea('rgWorldMap2',x,78,1365,690)
+				Infinity_SetArea('rgWorldMapBcg1',x,0,595,78)
+				Infinity_SetArea('rgWorldMapBcg2',x+594,0,595,78)
+				Infinity_SetArea('rgWorldMapBcg3',x+770,0,595,78)
+				Infinity_SetArea('rgWorldMapTitl',x+382,17,600,44)
+				Infinity_SetArea('rgWorldMapButt',x+1298,18,42,42)
+			else
+				x = c - 775
+				Infinity_SetArea('rgWorldMap4',x,78,1550,h-78)
+				Infinity_SetArea('rgWorldMapBcg1',x,0,595,78)
+				Infinity_SetArea('rgWorldMapBcg2',x+594,0,595,78)
+				Infinity_SetArea('rgWorldMapBcg3',x+955,0,595,78)
+				Infinity_SetArea('rgWorldMapTitl',x+475,17,600,44)
+				Infinity_SetArea('rgWorldMapButt',x+1483,18,42,42)
 			end
-			Infinity_SetArea('rgWorldMap4',b,78,1550,h-78)
-			Infinity_SetArea('rgWorldMapBcg1',181,0,595,78)
-			Infinity_SetArea('rgWorldMapBcg2',775,0,595,78)
-			Infinity_SetArea('rgWorldMapTitl',476,17,600,44)
-			Infinity_SetArea('rgWorldMapButt',1303,18,42,42)
+			Infinity_SetArea('rgWorldMap1',0,0,0,0)
+			Infinity_SetArea('rgWorldMapBac1',0,0,0,0)
+			Infinity_SetArea('rgWorldMap2',0,0,0,0)
+			Infinity_SetArea('rgWorldMapBac2',0,0,0,0)
+			Infinity_SetArea('rgWorldMapBcg3',0,0,0,0)
 		end
 		
 		"
@@ -18693,13 +18863,13 @@ menu
 	{
 		name "rgWorldMapBac2"
 		enabled "rgGameEngine == 2"
-		area 0 71 1484 714
+		area 0 0 0 0
 		mosaic "rgdabox2"
 	}
 	label
 	{
 		name 'rgWorldMapBcg1'
-		area 0 0 595 78
+		area 0 0 0 0
 		bam 'rgdabcg1'
 		frame 0
 		--sequence lua "RgUISkin"
@@ -18708,7 +18878,7 @@ menu
 	label
 	{
 		name 'rgWorldMapBcg2'
-		area 594 0 595 78
+		area 0 0 0 0
 		bam 'rgdabcg1'
 		frame 1
 		--sequence lua "RgUISkin"
@@ -18717,8 +18887,8 @@ menu
 	label
 	{
 		name 'rgWorldMapBcg3'
-		enabled "rgGameEngine == 2"
-		area 875 0 595 78
+		enabled "rgGameEngine == 2 or rgGameEngine == 4"
+		area 0 0 0 0
 		bam 'rgdabcg1'
 		frame 1
 		--sequence lua "RgUISkin"
@@ -18727,7 +18897,7 @@ menu
 	label
 	{
 		name 'rgWorldMapTitl'
-		area 295 17 600 44
+		area 0 0 0 0
 		text "WORLD_MAP_TITLE"
 		text style 'rg_trajan'
 		text color '$'
@@ -18741,7 +18911,7 @@ menu
 	button
 	{
 		name 'rgWorldMapButt'
-		area 1122 18 42 42
+		area 0 0 0 0
 		bam rgdbtcls
 		sequence lua "RgUISkin"
 		ScaleToClip
@@ -18752,14 +18922,15 @@ menu
 	} 
 	label
 	{
+		name 'rgWorldMapBac1'
 		enabled "rgGameEngine == 0 or rgGameEngine == 1 or rgGameEngine == 3"
-		area 87 78 1014 2000
+		area 0 0 0 0
 		mosaic "rgdabox1"
 	}
 	map
 	{
 		enabled "rgGameEngine == 0 or rgGameEngine == 1 or rgGameEngine == 3"
-		area 95 78 1000 664
+		area 0 0 0 0
 		name "rgWorldMap1"
 		worldmap
 		action
@@ -18778,7 +18949,7 @@ menu
 	map
 	{
 		enabled "rgGameEngine == 2"
-		area 7 78 1470 700
+		area 0 0 0 0
 		name "rgWorldMap2"
 		worldmap
 		action
@@ -18797,7 +18968,7 @@ menu
 	map
 	{
 		enabled "rgGameEngine == 4"
-		area 0 78 1550 1080
+		area 0 0 0 0
 		name "rgWorldMap4"
 		worldmap
 		action
@@ -19092,15 +19263,7 @@ menu
 	onClose 
 	"
 		rgIsBuySell = 0
-		Infinity_PopMenu('ITEM_DESCRIPTION');
-		Infinity_PopMenu('ITEM_DESCRIPTION');
-		Infinity_PopMenu('ITEM_DESCRIPTION');
-		Infinity_PopMenu('ITEM_DESCRIPTION');
-		Infinity_PopMenu('ITEM_DESCRIPTION');
-		Infinity_PopMenu('ITEM_DESCRIPTION');
-		Infinity_PopMenu('ITEM_DESCRIPTION');
-		Infinity_PopMenu('ITEM_DESCRIPTION');
-		Infinity_PopMenu('ITEM_DESCRIPTION');
+		rgPopItemDesc()
 	"
 	offset 0 30
 	ignoreEsc
@@ -19250,8 +19413,7 @@ menu
 			{
 				enabled "store.storeItems[rowNumber] and store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -19300,8 +19462,7 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].valid == 0 and store.storeItems[rowNumber+1].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -19350,8 +19511,7 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+2] and store.storeItems[rowNumber+2].valid == 0 and store.storeItems[rowNumber+2].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -19400,8 +19560,7 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+3].valid == 0 and store.storeItems[rowNumber+3].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -19450,8 +19609,7 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+4] and store.storeItems[rowNumber+4].valid == 0 and store.storeItems[rowNumber+4].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -19500,8 +19658,7 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].valid == 0 and store.storeItems[rowNumber+5].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		
@@ -19837,8 +19994,7 @@ menu
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
 				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -19893,8 +20049,7 @@ menu
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
 				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0  and store.groupItems[rowNumber+1].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -19949,8 +20104,7 @@ menu
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
 				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0  and store.groupItems[rowNumber+2].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -20005,8 +20159,7 @@ menu
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
 				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0  and store.groupItems[rowNumber+3].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		
@@ -20133,8 +20286,7 @@ menu
 			{
 				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -20188,8 +20340,7 @@ menu
 			{
 				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -20243,8 +20394,7 @@ menu
 			{
 				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		column 
@@ -20298,8 +20448,7 @@ menu
 			{
 				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0 and rgIsNthNumber(rowNumber,4)"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		area 636 74 394 480
@@ -20418,8 +20567,7 @@ menu
 			{
 				enabled "store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		enabled "rgStoreMode == 1"
@@ -20504,8 +20652,7 @@ menu
 			{
 				enabled "store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		area 530 64 470 496
@@ -20601,8 +20748,7 @@ menu
 			{
 				enabled "store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1"
 				area 0 0 -1 -1
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		area 530 64 470 496
@@ -21155,22 +21301,31 @@ menu
 		{ 
 			width 100
 			label
+			{
+				enabled "store.identifyItems[rowNumber].valid == 1"
+				area 0 0 400 60
+				bam "RGDSTBC5"
+				ScaleToClip
+				align left top
+				frame lua "rgGetStoreSlotHighlight(store.identifyItems[rowNumber].highlight)"
+			}
+			label
 			{	
 				enabled "store.identifyItems[rowNumber].valid == 1"
-				area 0 0 -1 -1
-				bam rgdslct
-				sequence lua "rgGetSelectedHighlight(rowNumber, identifyItemsVar)"
-				ScaleToClip
+				area 0 0 0 62
+				--bam rgdslct
+				--sequence lua "rgGetStoreSlotHighlight(store.identifyItems[rowNumber].highlight)"
+				--ScaleToClip
 			}
 			label
 			{
 				enabled "store.identifyItems[rowNumber].valid == 1"
-				area 5 0 64 60
-				bam STONSLOT
+				area 6 0 60 60
+				bam RGDSLOT
+				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.identifyItems[rowNumber].highlight)"
 				icon lua "store.identifyItems[rowNumber].item.icon"
-				--tint lua "store.identifyItems[rowNumber].item.tint"
-				align center center
+				tint lua "store.identifyItems[rowNumber].item.tint"
 			}
 			label
 			{
@@ -21465,7 +21620,7 @@ menu
 	{
 		name "BUTTON_room_merchant"
 		area 308 66 260 237
-		bam "rgdroom1"
+		bam "rgdroom2"
 		scaleToClip
 		clickable lua "storeScreen:IsRoomTypeClickable(2)"
 		glow lua "storeScreen:GetRoomType() == 2"
@@ -21484,7 +21639,7 @@ menu
 	{
 		name "BUTTON_room_noble"
 		area 30 314 260 237
-		bam "rgdroom1"
+		bam "rgdroom3"
 		scaleToClip
 		clickable lua "storeScreen:IsRoomTypeClickable(3)"
 		glow lua "storeScreen:GetRoomType() == 3"
@@ -21503,7 +21658,7 @@ menu
 	{
 		name "BUTTON_room_royal"
 		area 308 314 260 237
-		bam "rgdroom1"
+		bam "rgdroom4"
 		scaleToClip
 		clickable lua "storeScreen:IsRoomTypeClickable(4)"
 		glow lua "storeScreen:GetRoomType() == 4"
@@ -21727,22 +21882,32 @@ menu
 		column 
 		{ 
 			width 100
+			--label
+			--{	
+			--	enabled "store.healingSpells[rowNumber].valid == 1"
+			--	area 0 0 -1 -1
+			--	bam rgdslct
+			--	--sequence lua "rgGetSelectedHighlight(rowNumber, healingSpellsVar)"
+			--	sequence lua "rgGetStoreSlotHighlight(store.healingSpells[rowNumber].highlight)"
+			--	ScaleToClip
+			--}
 			label
-			{	
-				enabled "store.healingSpells[rowNumber].valid == 1"
-				area 0 0 -1 -1
-				bam rgdslct
-				sequence lua "rgGetSelectedHighlight(rowNumber, healingSpellsVar)"
+			{
+				--enabled "store.healingSpells[rowNumber].valid == 1"
+				area 0 0 400 60
+				bam "RGDSTBC5"
 				ScaleToClip
+				align left top
+				frame lua "rgGetStoreSlotHighlight(store.healingSpells[rowNumber].highlight)"
 			}
 			label
 			{
-				area 5 0 64 60
-				bam STONSLOT
+				area 6 0 60 60
+				bam RGDSLOT
 				frame lua "getStoreSlotHighlight(store.healingSpells[rowNumber].highlight)"
 				icon lua "store.healingSpells[rowNumber].icon"
 				tint lua "store.healingSpells[rowNumber].tint"
-				align center center
+				scaleToClip
 			}
 			label
 			{
@@ -21763,13 +21928,12 @@ menu
 			{
 				enabled "store.healingSpells[rowNumber].valid == 0"
 				area 0 0 400 60
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		area 28 104 420 442
 		hidehighlight
-		rowheight	60
+		rowheight	62
 		table		"store.healingSpells"
 		var			"healingSpellsVar"
 		--rowbackground	 GUISTBK2
@@ -21880,6 +22044,7 @@ menu
 				area 0 0 -1 -1
 				bam rgdslct
 				sequence lua "rgGetSelectedHighlight(rowNumber, storeDrinksVar)"
+				--sequence lua "rgGetStoreSlotHighlight(store.drinks[rowNumber].highlight)"
 				ScaleToClip
 			}
 			label
@@ -21902,8 +22067,7 @@ menu
 			{
 				enabled "store.drinks[rowNumber].valid == 0"
 				area 0 0 400 60
-				rectangle 1
-				rectangle opacity 150
+				fill 0 0 0 150
 			}
 		}
 		area 28 104 400 442
@@ -28466,6 +28630,7 @@ menu
 	}
 	button
 	{
+		enabled	currentSave
 		bam		rgdmbut1
 		ScaleToClip
 		area 450 190 380 80
@@ -29098,6 +29263,16 @@ function rgSetMessageBox()
 		Infinity_SetArea('messagesHandleY',0,nil,0,52)
 	end
 end
+function rgResetMessageBox()
+	Infinity_SetArea('rgMessagesRectUnlocked',			46, 41, 489, 149)
+	Infinity_SetArea('rgWorldMessageBoxUnlocked',		58, 53, 465, 125)
+	Infinity_SetArea('rgMessagesHandleYUpUnlocked',		46, 41, 489, 10)
+	Infinity_SetArea('rgMessagesHandleYDownUnlocked',	46, 180, 489, 10)
+	Infinity_SetArea('rgMessagesHandleXRightUnlocked',	525, 41, 10, 149)
+	Infinity_SetArea('rgMessagesHandleXLeftUnlocked',	46, 41, 10, 149)
+	Infinity_SetArea('rgMessagesHandleDragUnlocked',	46, 41, 21, 15)
+	Infinity_SetArea('rgMessagesHandleDragDownUnlocked',514, 175, 21, 15)
+end
 function rgSaveCoordinates()
 	local x,y,w,h = Infinity_GetArea('rgMessagesRectUnlocked')
 	Infinity_SetINIValue('Game Options','RgMessUnlockedCoor',x .. ',' .. y .. ',' .. w .. ',' .. h)
@@ -29111,6 +29286,11 @@ menu
 	ignoreEsc
 	onOpen
 	"
+		local x,y,w,h = Infinity_GetArea('rgMessagesRectUnlocked')
+		local sw, sh = Infinity_GetScreenSize()
+		if x > sw or y > sh then
+			rgResetMessageBox()
+		end
 		
 		--if RgIsModernHud == 1 then
 		--	local x,y,w,h = Infinity_GetArea('rgmessagesRect')
@@ -29761,8 +29941,7 @@ menu
 				area 0 0 -1 -1
 				pad 6 0 0 0
 				enabled "rowNumber > 1 and dialogEntryGreyed()"
-				rectangle 1
-				rectangle opacity 100
+				fill 0 0 0 150
 			}
 			text
 			{
@@ -33714,9 +33893,11 @@ end
 function rgChooseSpellsMenuOnOpen()
 	if rgChooseSpellsMenuOnOpenOnce == 0 then
 	
-		for k,v in pairs(chargen.choose_spell) do
-			if v.enabled or v.known then
-				createCharScreen:OnLearnMageSpellButtonClick(k)
+		if not CurrentlyInGame() then
+			for k,v in pairs(chargen.choose_spell) do
+				if v.enabled or v.known then
+					createCharScreen:OnLearnMageSpellButtonClick(k)
+				end
 			end
 		end
 		
@@ -41678,7 +41859,8 @@ menu
 		text style "normal"
 		text lua "getMPMessage()"
 		pad 8 8 8 8
-		rectangle 1
+		--rectangle 1
+		fill 0 0 0 150
 		ignoreEvents
 	}
 	text
@@ -42244,6 +42426,13 @@ function rgGetQuestText(rowNumber)
 		end
 	end
 end
+function rgGetQuestSelection(rowNumber)
+	if questDisplay[rowNumber].expanded == 1 then
+		return 1
+	else
+		return 0
+	end
+end
 function rgBestiaryJournalEntry(text)
 	if (string.match(text, t('RG_BESTIARY'))) then
 		return 1
@@ -42769,10 +42958,11 @@ menu
 	}
 	button
 	{
-		enabled "rgLargeJournal == 1"
+		enabled "rgLargeJournal == 1 and rgGameEngine ~= 3"
 		area		1077 28 62 58 
 		bam			rgdjobut
 		scaleToClip 
+		tooltip lua "t('RG_JOURNAL_MODE1')"
 		--toggle		rgLargeJournal
 		action
 		"
@@ -42968,19 +43158,21 @@ menu
 			width 100 
 			label
 			{	
-				enabled "questEnabled(rowNumber) and rgCurrentFinishedQuests(rowNumber)" -- and questDisplay[rowNumber].expanded == 1
+				enabled "(questEnabled(rowNumber) and rgCurrentFinishedQuests(rowNumber)) or getQuestText(rowNumber) == rgGetGameEngineString(31270, 31270, 74295, 37872)" -- and questDisplay[rowNumber].expanded == 1
 				area 0 0 -1 -1
 				bam rgdslct
-				sequence lua "rgGetSelectedHighlight(rowNumber, selectedQuest)"
+				--sequence lua "rgGetSelectedHighlight(rowNumber, selectedQuest)"
+				sequence lua "rgGetQuestSelection(rowNumber)"
 				--sequence lua "RgUISkin + 1"
 				ScaleToClip
 			}
 			label
 			{	
-				enabled "questEnabled(rowNumber) and rgCurrentFinishedQuests(rowNumber)"
+				enabled "(questEnabled(rowNumber) and rgCurrentFinishedQuests(rowNumber)) or getQuestText(rowNumber) == rgGetGameEngineString(31270, 31270, 74295, 37872)"
 				area 15 0 -1 -1
 				--text lua "getQuestText(rowNumber)"
 				text lua "rgGetQuestText(rowNumber)"
+				--text lua "questDisplay[rowNumber].parent"
 				text style "normal"
 				text point 14
 				pad 0 15 0 15
@@ -43629,6 +43821,7 @@ menu
 		enabled "rgLargeJournal == 0"
 		area		14 8 62 58 
 		bam			rgdjobut
+		tooltip lua "t('RG_JOURNAL_MODE2')"
 		scaleToClip
 		toggle		rgLargeJournal
 		action
@@ -43637,13 +43830,13 @@ menu
 			e:SelectEngine(journalScreen)
 		"
 	}
-	
 	button
 	{
 		enabled "rgLargeJournal == 0"
 		area 121 8 62 58 
 		bam "rgdjbt1"
 		scaleToClip
+		tooltip lua "t('CURRENT_LABEL')"
 		glow lua "journalMode == const.JOURNAL_MODE_QUESTS and rgIsCurrentQuests == 1"
 		action 
 		"
@@ -43657,6 +43850,7 @@ menu
 		area 184 8 62 58 
 		bam "rgdjbt2"
 		scaleToClip
+		tooltip lua "t('OBJECTIVE_FINISHED_NORMAL')"
 		glow lua "journalMode == const.JOURNAL_MODE_QUESTS and rgIsCurrentQuests == 0"
 		action 
 		"
@@ -43670,6 +43864,7 @@ menu
 		area 247 8 62 58 
 		bam "rgdjbt3"
 		scaleToClip
+		tooltip lua "t('JOURNAL_LABEL')"
 		glow lua "journalMode == const.JOURNAL_MODE_JOURNAL"
 		action "journalMode = const.JOURNAL_MODE_JOURNAL"
 	}
@@ -46451,6 +46646,7 @@ menu
 	}
 	movie
 	{
+		enabled "rgGameEngine ~= 2"
 		name "flames4"
 		area 615 10 70 76
 		loop
