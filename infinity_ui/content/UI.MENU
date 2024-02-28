@@ -9877,7 +9877,7 @@ menu
 		Infinity_PushMenu('RG_MENU_BAR')
 		rgUpdateSlots()
 		--rgSetInvArea()
-		rgGroupSlotInfo = ''
+		rgGroupSlotInfo = 'group0'
 		Infinity_SetOffset('ITEM_DESCRIPTION',-290, 30)
 	"
 	onClose 
@@ -15523,7 +15523,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -15531,13 +15531,13 @@ menu
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "rgBookSpells[rowNumber][1].icon" 
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][1].name)"
 				text style "rg_normal_spell"
@@ -15548,7 +15548,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -15556,13 +15556,13 @@ menu
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "rgBookSpells[rowNumber][2].icon"
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][2].name)"
 				text style "rg_normal_spell"
@@ -15573,7 +15573,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -15581,13 +15581,13 @@ menu
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "rgBookSpells[rowNumber][3].icon"
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][3].name)"
 				text style "rg_normal_spell"
@@ -15610,7 +15610,7 @@ menu
 			local rgCurrentBookSpell = currentBookSpell + cellNumber - 1
 			
 			if bookMode == 0 then
-				if #bottomSpells < #bottomSpellsPlaceHolder and rgBookSpells[currentBookSpell][cellNumber].icon ~= null then
+				if #bottomSpells < #bottomSpellsPlaceHolder and rgBookSpells[currentBookSpell][cellNumber].icon ~= nil then
 					createMageMemorizationSparkle((1 + (167 * (cellNumber-1))), 0, 60, 60, 'bookListMage', -1)
 					--createMageMemorizationSparkle(0,0,36,36,'rgBottomSpell' .. currentSpellLevel .. 1, -1)
 					Infinity_PlaySound('GAM_24')
@@ -15634,7 +15634,7 @@ menu
 	--		width 33
 	--		--label
 	--		--{
-	--		--	enabled "bookSpells[(rowNumber*3)-2].icon ~= null"
+	--		--	enabled "bookSpells[(rowNumber*3)-2].icon ~= nil"
 	--		--	area	0 0 -1 50
 	--		--	bam "rgdwspbc" 
 	--		--	align left top 
@@ -15654,12 +15654,12 @@ menu
 	--		--}
 	--		label
 	--		{
-	--			enabled "rgIsNthNumber(rowNumber,3) and bookSpells[rowNumber].icon ~= null"
+	--			enabled "rgIsNthNumber(rowNumber,3) and bookSpells[rowNumber].icon ~= nil"
 	--			area	0 0 -1 60
 	--		}
 	--		label
 	--		{
-	--			enabled "rgIsNthNumber(rowNumber,3) and bookSpells[rowNumber].icon ~= null"
+	--			enabled "rgIsNthNumber(rowNumber,3) and bookSpells[rowNumber].icon ~= nil"
 	--			area	0 0 -1 50
 	--			bam "rgdwspbc" 
 	--			align left top 
@@ -15685,7 +15685,7 @@ menu
 	--		width 33
 	--		label
 	--		{
-	--			enabled "rgIsNthNumber(rowNumber,3) and bookSpells[rowNumber+1].icon ~= null"
+	--			enabled "rgIsNthNumber(rowNumber,3) and bookSpells[rowNumber+1].icon ~= nil"
 	--			area	0 0 -1 50
 	--			bam "rgdwspbc" 
 	--			align left top 
@@ -15711,7 +15711,7 @@ menu
 	--		width 33
 	--		label
 	--		{
-	--			enabled "rgIsNthNumber(rowNumber,3) and bookSpells[rowNumber+2].icon ~= null"
+	--			enabled "rgIsNthNumber(rowNumber,3) and bookSpells[rowNumber+2].icon ~= nil"
 	--			area	0 0 -1 50
 	--			bam "rgdwspbc" 
 	--			align left top 
@@ -15815,30 +15815,30 @@ menu
 	--}
 	
 	
-	--label { name "rgBookSpellBack1"  area 140 210 160 50 bam "rgdwspbc" enabled "bookSpells[1].icon ~= null"  align left top ScaleToClip }
-	--label { name "rgBookSpellBack2"  area 315 210 160 50 bam "rgdwspbc" enabled "bookSpells[2].icon ~= null"  align left top ScaleToClip }
-	--label { name "rgBookSpellBack3"  area 490 210 160 50 bam "rgdwspbc" enabled "bookSpells[3].icon ~= null"  align left top ScaleToClip }
-	--label { name "rgBookSpellBack4"  area 140 275 160 50 bam "rgdwspbc" enabled "bookSpells[4].icon ~= null"  align left top ScaleToClip }
-	--label { name "rgBookSpellBack5"  area 315 275 160 50 bam "rgdwspbc" enabled "bookSpells[5].icon ~= null"  align left top ScaleToClip }
-	--label { name "rgBookSpellBack6"  area 490 275 160 50 bam "rgdwspbc" enabled "bookSpells[6].icon ~= null"  align left top ScaleToClip }
-	--label { name "rgBookSpellBack7"  area 140 338 160 50 bam "rgdwspbc" enabled "bookSpells[7].icon ~= null"  align left top ScaleToClip }
-	--label { name "rgBookSpellBack8"  area 315 338 160 50 bam "rgdwspbc" enabled "bookSpells[8].icon ~= null"  align left top ScaleToClip }
-	--label { name "rgBookSpellBack9"  area 490 338 160 50 bam "rgdwspbc" enabled "bookSpells[9].icon ~= null"  align left top ScaleToClip }
-	--label { name "rgBookSpellBack10" area 140 401 160 50 bam "rgdwspbc" enabled "bookSpells[10].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack11" area 315 401 160 50 bam "rgdwspbc" enabled "bookSpells[11].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack12" area 490 401 160 50 bam "rgdwspbc" enabled "bookSpells[12].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack13" area 140 464 160 50 bam "rgdwspbc" enabled "bookSpells[13].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack14" area 315 464 160 50 bam "rgdwspbc" enabled "bookSpells[14].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack15" area 490 464 160 50 bam "rgdwspbc" enabled "bookSpells[15].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack16" area 140 527 160 50 bam "rgdwspbc" enabled "bookSpells[16].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack17" area 315 527 160 50 bam "rgdwspbc" enabled "bookSpells[17].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack18" area 490 527 160 50 bam "rgdwspbc" enabled "bookSpells[18].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack19" area 140 590 160 50 bam "rgdwspbc" enabled "bookSpells[19].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack20" area 315 590 160 50 bam "rgdwspbc" enabled "bookSpells[20].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack21" area 490 590 160 50 bam "rgdwspbc" enabled "bookSpells[21].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack22" area 140 653 160 50 bam "rgdwspbc" enabled "bookSpells[22].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack23" area 315 653 160 50 bam "rgdwspbc" enabled "bookSpells[23].icon ~= null" align left top ScaleToClip }
-	--label { name "rgBookSpellBack24" area 490 653 160 50 bam "rgdwspbc" enabled "bookSpells[24].icon ~= null" align left top ScaleToClip }
+	--label { name "rgBookSpellBack1"  area 140 210 160 50 bam "rgdwspbc" enabled "bookSpells[1].icon ~= nil"  align left top ScaleToClip }
+	--label { name "rgBookSpellBack2"  area 315 210 160 50 bam "rgdwspbc" enabled "bookSpells[2].icon ~= nil"  align left top ScaleToClip }
+	--label { name "rgBookSpellBack3"  area 490 210 160 50 bam "rgdwspbc" enabled "bookSpells[3].icon ~= nil"  align left top ScaleToClip }
+	--label { name "rgBookSpellBack4"  area 140 275 160 50 bam "rgdwspbc" enabled "bookSpells[4].icon ~= nil"  align left top ScaleToClip }
+	--label { name "rgBookSpellBack5"  area 315 275 160 50 bam "rgdwspbc" enabled "bookSpells[5].icon ~= nil"  align left top ScaleToClip }
+	--label { name "rgBookSpellBack6"  area 490 275 160 50 bam "rgdwspbc" enabled "bookSpells[6].icon ~= nil"  align left top ScaleToClip }
+	--label { name "rgBookSpellBack7"  area 140 338 160 50 bam "rgdwspbc" enabled "bookSpells[7].icon ~= nil"  align left top ScaleToClip }
+	--label { name "rgBookSpellBack8"  area 315 338 160 50 bam "rgdwspbc" enabled "bookSpells[8].icon ~= nil"  align left top ScaleToClip }
+	--label { name "rgBookSpellBack9"  area 490 338 160 50 bam "rgdwspbc" enabled "bookSpells[9].icon ~= nil"  align left top ScaleToClip }
+	--label { name "rgBookSpellBack10" area 140 401 160 50 bam "rgdwspbc" enabled "bookSpells[10].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack11" area 315 401 160 50 bam "rgdwspbc" enabled "bookSpells[11].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack12" area 490 401 160 50 bam "rgdwspbc" enabled "bookSpells[12].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack13" area 140 464 160 50 bam "rgdwspbc" enabled "bookSpells[13].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack14" area 315 464 160 50 bam "rgdwspbc" enabled "bookSpells[14].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack15" area 490 464 160 50 bam "rgdwspbc" enabled "bookSpells[15].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack16" area 140 527 160 50 bam "rgdwspbc" enabled "bookSpells[16].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack17" area 315 527 160 50 bam "rgdwspbc" enabled "bookSpells[17].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack18" area 490 527 160 50 bam "rgdwspbc" enabled "bookSpells[18].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack19" area 140 590 160 50 bam "rgdwspbc" enabled "bookSpells[19].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack20" area 315 590 160 50 bam "rgdwspbc" enabled "bookSpells[20].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack21" area 490 590 160 50 bam "rgdwspbc" enabled "bookSpells[21].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack22" area 140 653 160 50 bam "rgdwspbc" enabled "bookSpells[22].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack23" area 315 653 160 50 bam "rgdwspbc" enabled "bookSpells[23].icon ~= nil" align left top ScaleToClip }
+	--label { name "rgBookSpellBack24" area 490 653 160 50 bam "rgdwspbc" enabled "bookSpells[24].icon ~= nil" align left top ScaleToClip }
 	
 	--slot { name "rgBookSpell1"  area 147 217 36 36 bam lua "bookSpells[1].icon"  align center center  action "rgBookSpellLeftClick(1)"  actionalt "rgBookSpellRightClick(1)"  }
 	--slot { name "rgBookSpell2"  area 322 217 36 36 bam lua "bookSpells[2].icon"  align center center  action "rgBookSpellLeftClick(2)"  actionalt "rgBookSpellRightClick(2)"  }
@@ -15865,30 +15865,30 @@ menu
 	--slot { name "rgBookSpell23" area 322 660 36 36 bam lua "bookSpells[23].icon" align center center  action "rgBookSpellLeftClick(23)" actionalt "rgBookSpellRightClick(23)" }
 	--slot { name "rgBookSpell24" area 497 660 36 36 bam lua "bookSpells[24].icon" align center center  action "rgBookSpellLeftClick(24)" actionalt "rgBookSpellRightClick(24)" }
 	--
-	--slot { name "rgBookSpellName1"  area 140 210 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[1].name)"  text style "rg_normal_spell" enabled "bookSpells[1].icon ~= null"  action "rgBookSpellLeftClick(1)"  actionalt "rgBookSpellRightClick(1)"  }
-	--slot { name "rgBookSpellName2"  area 315 210 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[2].name)"  text style "rg_normal_spell" enabled "bookSpells[2].icon ~= null"  action "rgBookSpellLeftClick(2)"  actionalt "rgBookSpellRightClick(2)"  }
-	--slot { name "rgBookSpellName3"  area 490 210 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[3].name)"  text style "rg_normal_spell" enabled "bookSpells[3].icon ~= null"  action "rgBookSpellLeftClick(3)"  actionalt "rgBookSpellRightClick(3)"  }
-	--slot { name "rgBookSpellName4"  area 140 275 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[4].name)"  text style "rg_normal_spell" enabled "bookSpells[4].icon ~= null"  action "rgBookSpellLeftClick(4)"  actionalt "rgBookSpellRightClick(4)"  }
-	--slot { name "rgBookSpellName5"  area 315 275 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[5].name)"  text style "rg_normal_spell" enabled "bookSpells[5].icon ~= null"  action "rgBookSpellLeftClick(5)"  actionalt "rgBookSpellRightClick(5)"  }
-	--slot { name "rgBookSpellName6"  area 490 275 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[6].name)"  text style "rg_normal_spell" enabled "bookSpells[6].icon ~= null"  action "rgBookSpellLeftClick(6)"  actionalt "rgBookSpellRightClick(6)"  }
-	--slot { name "rgBookSpellName7"  area 140 338 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[7].name)"  text style "rg_normal_spell" enabled "bookSpells[7].icon ~= null"  action "rgBookSpellLeftClick(7)"  actionalt "rgBookSpellRightClick(7)"  }
-	--slot { name "rgBookSpellName8"  area 315 338 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[8].name)"  text style "rg_normal_spell" enabled "bookSpells[8].icon ~= null"  action "rgBookSpellLeftClick(8)"  actionalt "rgBookSpellRightClick(8)"  }
-	--slot { name "rgBookSpellName9"  area 490 338 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[9].name)"  text style "rg_normal_spell" enabled "bookSpells[9].icon ~= null"  action "rgBookSpellLeftClick(9)"  actionalt "rgBookSpellRightClick(9)"  }
-	--slot { name "rgBookSpellName10" area 140 401 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[10].name)" text style "rg_normal_spell" enabled "bookSpells[10].icon ~= null" action "rgBookSpellLeftClick(10)" actionalt "rgBookSpellRightClick(10)" }
-	--slot { name "rgBookSpellName11" area 315 401 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[11].name)" text style "rg_normal_spell" enabled "bookSpells[11].icon ~= null" action "rgBookSpellLeftClick(11)" actionalt "rgBookSpellRightClick(11)" }
-	--slot { name "rgBookSpellName12" area 490 401 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[12].name)" text style "rg_normal_spell" enabled "bookSpells[12].icon ~= null" action "rgBookSpellLeftClick(12)" actionalt "rgBookSpellRightClick(12)" }
-	--slot { name "rgBookSpellName13" area 140 464 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[13].name)" text style "rg_normal_spell" enabled "bookSpells[13].icon ~= null" action "rgBookSpellLeftClick(13)" actionalt "rgBookSpellRightClick(13)" }
-	--slot { name "rgBookSpellName14" area 315 464 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[14].name)" text style "rg_normal_spell" enabled "bookSpells[14].icon ~= null" action "rgBookSpellLeftClick(14)" actionalt "rgBookSpellRightClick(14)" }
-	--slot { name "rgBookSpellName15" area 490 464 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[15].name)" text style "rg_normal_spell" enabled "bookSpells[15].icon ~= null" action "rgBookSpellLeftClick(15)" actionalt "rgBookSpellRightClick(15)" }
-	--slot { name "rgBookSpellName16" area 140 527 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[16].name)" text style "rg_normal_spell" enabled "bookSpells[16].icon ~= null" action "rgBookSpellLeftClick(16)" actionalt "rgBookSpellRightClick(16)" }
-	--slot { name "rgBookSpellName17" area 315 527 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[17].name)" text style "rg_normal_spell" enabled "bookSpells[17].icon ~= null" action "rgBookSpellLeftClick(17)" actionalt "rgBookSpellRightClick(17)" }
-	--slot { name "rgBookSpellName18" area 490 527 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[18].name)" text style "rg_normal_spell" enabled "bookSpells[18].icon ~= null" action "rgBookSpellLeftClick(18)" actionalt "rgBookSpellRightClick(18)" }
-	--slot { name "rgBookSpellName19" area 140 590 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[19].name)" text style "rg_normal_spell" enabled "bookSpells[19].icon ~= null" action "rgBookSpellLeftClick(19)" actionalt "rgBookSpellRightClick(19)" }
-	--slot { name "rgBookSpellName20" area 315 590 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[20].name)" text style "rg_normal_spell" enabled "bookSpells[20].icon ~= null" action "rgBookSpellLeftClick(20)" actionalt "rgBookSpellRightClick(20)" }
-	--slot { name "rgBookSpellName21" area 490 590 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[21].name)" text style "rg_normal_spell" enabled "bookSpells[21].icon ~= null" action "rgBookSpellLeftClick(21)" actionalt "rgBookSpellRightClick(21)" }
-	--slot { name "rgBookSpellName22" area 140 653 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[22].name)" text style "rg_normal_spell" enabled "bookSpells[22].icon ~= null" action "rgBookSpellLeftClick(22)" actionalt "rgBookSpellRightClick(22)" }
-	--slot { name "rgBookSpellName23" area 315 653 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[23].name)" text style "rg_normal_spell" enabled "bookSpells[23].icon ~= null" action "rgBookSpellLeftClick(23)" actionalt "rgBookSpellRightClick(23)" }
-	--slot { name "rgBookSpellName24" area 490 653 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[24].name)" text style "rg_normal_spell" enabled "bookSpells[24].icon ~= null" action "rgBookSpellLeftClick(24)" actionalt "rgBookSpellRightClick(24)" }
+	--slot { name "rgBookSpellName1"  area 140 210 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[1].name)"  text style "rg_normal_spell" enabled "bookSpells[1].icon ~= nil"  action "rgBookSpellLeftClick(1)"  actionalt "rgBookSpellRightClick(1)"  }
+	--slot { name "rgBookSpellName2"  area 315 210 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[2].name)"  text style "rg_normal_spell" enabled "bookSpells[2].icon ~= nil"  action "rgBookSpellLeftClick(2)"  actionalt "rgBookSpellRightClick(2)"  }
+	--slot { name "rgBookSpellName3"  area 490 210 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[3].name)"  text style "rg_normal_spell" enabled "bookSpells[3].icon ~= nil"  action "rgBookSpellLeftClick(3)"  actionalt "rgBookSpellRightClick(3)"  }
+	--slot { name "rgBookSpellName4"  area 140 275 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[4].name)"  text style "rg_normal_spell" enabled "bookSpells[4].icon ~= nil"  action "rgBookSpellLeftClick(4)"  actionalt "rgBookSpellRightClick(4)"  }
+	--slot { name "rgBookSpellName5"  area 315 275 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[5].name)"  text style "rg_normal_spell" enabled "bookSpells[5].icon ~= nil"  action "rgBookSpellLeftClick(5)"  actionalt "rgBookSpellRightClick(5)"  }
+	--slot { name "rgBookSpellName6"  area 490 275 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[6].name)"  text style "rg_normal_spell" enabled "bookSpells[6].icon ~= nil"  action "rgBookSpellLeftClick(6)"  actionalt "rgBookSpellRightClick(6)"  }
+	--slot { name "rgBookSpellName7"  area 140 338 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[7].name)"  text style "rg_normal_spell" enabled "bookSpells[7].icon ~= nil"  action "rgBookSpellLeftClick(7)"  actionalt "rgBookSpellRightClick(7)"  }
+	--slot { name "rgBookSpellName8"  area 315 338 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[8].name)"  text style "rg_normal_spell" enabled "bookSpells[8].icon ~= nil"  action "rgBookSpellLeftClick(8)"  actionalt "rgBookSpellRightClick(8)"  }
+	--slot { name "rgBookSpellName9"  area 490 338 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[9].name)"  text style "rg_normal_spell" enabled "bookSpells[9].icon ~= nil"  action "rgBookSpellLeftClick(9)"  actionalt "rgBookSpellRightClick(9)"  }
+	--slot { name "rgBookSpellName10" area 140 401 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[10].name)" text style "rg_normal_spell" enabled "bookSpells[10].icon ~= nil" action "rgBookSpellLeftClick(10)" actionalt "rgBookSpellRightClick(10)" }
+	--slot { name "rgBookSpellName11" area 315 401 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[11].name)" text style "rg_normal_spell" enabled "bookSpells[11].icon ~= nil" action "rgBookSpellLeftClick(11)" actionalt "rgBookSpellRightClick(11)" }
+	--slot { name "rgBookSpellName12" area 490 401 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[12].name)" text style "rg_normal_spell" enabled "bookSpells[12].icon ~= nil" action "rgBookSpellLeftClick(12)" actionalt "rgBookSpellRightClick(12)" }
+	--slot { name "rgBookSpellName13" area 140 464 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[13].name)" text style "rg_normal_spell" enabled "bookSpells[13].icon ~= nil" action "rgBookSpellLeftClick(13)" actionalt "rgBookSpellRightClick(13)" }
+	--slot { name "rgBookSpellName14" area 315 464 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[14].name)" text style "rg_normal_spell" enabled "bookSpells[14].icon ~= nil" action "rgBookSpellLeftClick(14)" actionalt "rgBookSpellRightClick(14)" }
+	--slot { name "rgBookSpellName15" area 490 464 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[15].name)" text style "rg_normal_spell" enabled "bookSpells[15].icon ~= nil" action "rgBookSpellLeftClick(15)" actionalt "rgBookSpellRightClick(15)" }
+	--slot { name "rgBookSpellName16" area 140 527 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[16].name)" text style "rg_normal_spell" enabled "bookSpells[16].icon ~= nil" action "rgBookSpellLeftClick(16)" actionalt "rgBookSpellRightClick(16)" }
+	--slot { name "rgBookSpellName17" area 315 527 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[17].name)" text style "rg_normal_spell" enabled "bookSpells[17].icon ~= nil" action "rgBookSpellLeftClick(17)" actionalt "rgBookSpellRightClick(17)" }
+	--slot { name "rgBookSpellName18" area 490 527 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[18].name)" text style "rg_normal_spell" enabled "bookSpells[18].icon ~= nil" action "rgBookSpellLeftClick(18)" actionalt "rgBookSpellRightClick(18)" }
+	--slot { name "rgBookSpellName19" area 140 590 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[19].name)" text style "rg_normal_spell" enabled "bookSpells[19].icon ~= nil" action "rgBookSpellLeftClick(19)" actionalt "rgBookSpellRightClick(19)" }
+	--slot { name "rgBookSpellName20" area 315 590 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[20].name)" text style "rg_normal_spell" enabled "bookSpells[20].icon ~= nil" action "rgBookSpellLeftClick(20)" actionalt "rgBookSpellRightClick(20)" }
+	--slot { name "rgBookSpellName21" area 490 590 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[21].name)" text style "rg_normal_spell" enabled "bookSpells[21].icon ~= nil" action "rgBookSpellLeftClick(21)" actionalt "rgBookSpellRightClick(21)" }
+	--slot { name "rgBookSpellName22" area 140 653 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[22].name)" text style "rg_normal_spell" enabled "bookSpells[22].icon ~= nil" action "rgBookSpellLeftClick(22)" actionalt "rgBookSpellRightClick(22)" }
+	--slot { name "rgBookSpellName23" area 315 653 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[23].name)" text style "rg_normal_spell" enabled "bookSpells[23].icon ~= nil" action "rgBookSpellLeftClick(23)" actionalt "rgBookSpellRightClick(23)" }
+	--slot { name "rgBookSpellName24" area 490 653 160 50 bam "rgdwspbc" align left top ScaleToClip text lua "Infinity_FetchString( bookSpells[24].name)" text style "rg_normal_spell" enabled "bookSpells[24].icon ~= nil" action "rgBookSpellLeftClick(24)" actionalt "rgBookSpellRightClick(24)" }
 	
 	
 	
@@ -15958,92 +15958,92 @@ menu
 			width 7
 			
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= rgBottomSpells[rowNumber][4]" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,0).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,0).icon" greyscale lua "rgBottomShort(rowNumber,0).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,0).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,0).icon" greyscale lua "rgBottomShort(rowNumber,0).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,0).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,0).icon" greyscale lua "rgBottomShort(rowNumber,0).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,0).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,0).icon" greyscale lua "rgBottomShort(rowNumber,0).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+1)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,1).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,1).icon" greyscale lua "rgBottomShort(rowNumber,1).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,1).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,1).icon" greyscale lua "rgBottomShort(rowNumber,1).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,1).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,1).icon" greyscale lua "rgBottomShort(rowNumber,1).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,1).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,1).icon" greyscale lua "rgBottomShort(rowNumber,1).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+2)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,2).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,2).icon" greyscale lua "rgBottomShort(rowNumber,2).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,2).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,2).icon" greyscale lua "rgBottomShort(rowNumber,2).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,2).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,2).icon" greyscale lua "rgBottomShort(rowNumber,2).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,2).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,2).icon" greyscale lua "rgBottomShort(rowNumber,2).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+3)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,3).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,3).icon" greyscale lua "rgBottomShort(rowNumber,3).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,3).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,3).icon" greyscale lua "rgBottomShort(rowNumber,3).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,3).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,3).icon" greyscale lua "rgBottomShort(rowNumber,3).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,3).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,3).icon" greyscale lua "rgBottomShort(rowNumber,3).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+4)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,4).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,4).icon" greyscale lua "rgBottomShort(rowNumber,4).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,4).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,4).icon" greyscale lua "rgBottomShort(rowNumber,4).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,4).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,4).icon" greyscale lua "rgBottomShort(rowNumber,4).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,4).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,4).icon" greyscale lua "rgBottomShort(rowNumber,4).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+5)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,5).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,5).icon" greyscale lua "rgBottomShort(rowNumber,5).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,5).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,5).icon" greyscale lua "rgBottomShort(rowNumber,5).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,5).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,5).icon" greyscale lua "rgBottomShort(rowNumber,5).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,5).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,5).icon" greyscale lua "rgBottomShort(rowNumber,5).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+6)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,6).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,6).icon" greyscale lua "rgBottomShort(rowNumber,6).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,6).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,6).icon" greyscale lua "rgBottomShort(rowNumber,6).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,6).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,6).icon" greyscale lua "rgBottomShort(rowNumber,6).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,6).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,6).icon" greyscale lua "rgBottomShort(rowNumber,6).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+7)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,7).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,7).icon" greyscale lua "rgBottomShort(rowNumber,7).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,7).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,7).icon" greyscale lua "rgBottomShort(rowNumber,7).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,7).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,7).icon" greyscale lua "rgBottomShort(rowNumber,7).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,7).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,7).icon" greyscale lua "rgBottomShort(rowNumber,7).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+8)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,8).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,8).icon" greyscale lua "rgBottomShort(rowNumber,8).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,8).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,8).icon" greyscale lua "rgBottomShort(rowNumber,8).castable == 0" scaleToClip }  
+			label  {  enabled "rgBottomShort(rowNumber,8).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,8).icon" greyscale lua "rgBottomShort(rowNumber,8).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,8).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,8).icon" greyscale lua "rgBottomShort(rowNumber,8).castable == 0" scaleToClip }  
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+9)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,9).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,9).icon" greyscale lua "rgBottomShort(rowNumber,9).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,9).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,9).icon" greyscale lua "rgBottomShort(rowNumber,9).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,9).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,9).icon" greyscale lua "rgBottomShort(rowNumber,9).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,9).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,9).icon" greyscale lua "rgBottomShort(rowNumber,9).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+10)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,10).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,10).icon" greyscale lua "rgBottomShort(rowNumber,10).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,10).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,10).icon" greyscale lua "rgBottomShort(rowNumber,10).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,10).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,10).icon" greyscale lua "rgBottomShort(rowNumber,10).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,10).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,10).icon" greyscale lua "rgBottomShort(rowNumber,10).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+11)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,11).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,11).icon" greyscale lua "rgBottomShort(rowNumber,11).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,11).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,11).icon" greyscale lua "rgBottomShort(rowNumber,11).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,11).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,11).icon" greyscale lua "rgBottomShort(rowNumber,11).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,11).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,11).icon" greyscale lua "rgBottomShort(rowNumber,11).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+12)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,12).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,12).icon" greyscale lua "rgBottomShort(rowNumber,12).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,12).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,12).icon" greyscale lua "rgBottomShort(rowNumber,12).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,12).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,12).icon" greyscale lua "rgBottomShort(rowNumber,12).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,12).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,12).icon" greyscale lua "rgBottomShort(rowNumber,12).castable == 0" scaleToClip } 
 		}
 		area 690 210 540 500 
 		name "rgMemorizedListMage" 
@@ -17768,7 +17768,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -17776,13 +17776,13 @@ menu
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "rgBookSpells[rowNumber][1].icon"
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= null"
+				enabled "rgBookSpells[rowNumber][1] and rgBookSpells[rowNumber][1].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][1].name)"
 				text style "rg_normal_spell"
@@ -17793,7 +17793,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -17801,13 +17801,13 @@ menu
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "rgBookSpells[rowNumber][2].icon"
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= null"
+				enabled "rgBookSpells[rowNumber][2] and rgBookSpells[rowNumber][2].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][2].name)"
 				text style "rg_normal_spell"
@@ -17818,7 +17818,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -17826,13 +17826,13 @@ menu
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "rgBookSpells[rowNumber][3].icon"
 			}
 			label
 			{
-				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= null"
+				enabled "rgBookSpells[rowNumber][3] and rgBookSpells[rowNumber][3].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString( rgBookSpells[rowNumber][3].name)"
 				text style "rg_normal_spell"
@@ -17852,7 +17852,7 @@ menu
 		"
 			local rgCurrentBookSpell = currentBookSpell + cellNumber - 1
 			
-			if #bottomSpells < #bottomSpellsPlaceHolder and rgBookSpells[currentBookSpell][cellNumber].icon ~= null then
+			if #bottomSpells < #bottomSpellsPlaceHolder and rgBookSpells[currentBookSpell][cellNumber].icon ~= nil then
 				createPriestMemorizationSparkle((1 + (167 * (cellNumber-1))), 0, 60, 60, 'bookListPriest', -1)
 				Infinity_PlaySound('GAM_24')
 				showPriestMemorizationFlash = true
@@ -17901,92 +17901,92 @@ menu
 			width 7
 			
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= rgBottomSpells[rowNumber][4]" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,0).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,0).icon" greyscale lua "rgBottomShort(rowNumber,0).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,0).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,0).icon" greyscale lua "rgBottomShort(rowNumber,0).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,0).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,0).icon" greyscale lua "rgBottomShort(rowNumber,0).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,0).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,0).icon" greyscale lua "rgBottomShort(rowNumber,0).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+1)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,1).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,1).icon" greyscale lua "rgBottomShort(rowNumber,1).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,1).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,1).icon" greyscale lua "rgBottomShort(rowNumber,1).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,1).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,1).icon" greyscale lua "rgBottomShort(rowNumber,1).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,1).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,1).icon" greyscale lua "rgBottomShort(rowNumber,1).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+2)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,2).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,2).icon" greyscale lua "rgBottomShort(rowNumber,2).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,2).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,2).icon" greyscale lua "rgBottomShort(rowNumber,2).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,2).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,2).icon" greyscale lua "rgBottomShort(rowNumber,2).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,2).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,2).icon" greyscale lua "rgBottomShort(rowNumber,2).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+3)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,3).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,3).icon" greyscale lua "rgBottomShort(rowNumber,3).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,3).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,3).icon" greyscale lua "rgBottomShort(rowNumber,3).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,3).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,3).icon" greyscale lua "rgBottomShort(rowNumber,3).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,3).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,3).icon" greyscale lua "rgBottomShort(rowNumber,3).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+4)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,4).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,4).icon" greyscale lua "rgBottomShort(rowNumber,4).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,4).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,4).icon" greyscale lua "rgBottomShort(rowNumber,4).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,4).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,4).icon" greyscale lua "rgBottomShort(rowNumber,4).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,4).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,4).icon" greyscale lua "rgBottomShort(rowNumber,4).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+5)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,5).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,5).icon" greyscale lua "rgBottomShort(rowNumber,5).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,5).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,5).icon" greyscale lua "rgBottomShort(rowNumber,5).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,5).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,5).icon" greyscale lua "rgBottomShort(rowNumber,5).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,5).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,5).icon" greyscale lua "rgBottomShort(rowNumber,5).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+6)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,6).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,6).icon" greyscale lua "rgBottomShort(rowNumber,6).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,6).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,6).icon" greyscale lua "rgBottomShort(rowNumber,6).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,6).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,6).icon" greyscale lua "rgBottomShort(rowNumber,6).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,6).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,6).icon" greyscale lua "rgBottomShort(rowNumber,6).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+7)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,7).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,7).icon" greyscale lua "rgBottomShort(rowNumber,7).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,7).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,7).icon" greyscale lua "rgBottomShort(rowNumber,7).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,7).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,7).icon" greyscale lua "rgBottomShort(rowNumber,7).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,7).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,7).icon" greyscale lua "rgBottomShort(rowNumber,7).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+8)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,8).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,8).icon" greyscale lua "rgBottomShort(rowNumber,8).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,8).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,8).icon" greyscale lua "rgBottomShort(rowNumber,8).castable == 0" scaleToClip }  
+			label  {  enabled "rgBottomShort(rowNumber,8).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,8).icon" greyscale lua "rgBottomShort(rowNumber,8).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,8).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,8).icon" greyscale lua "rgBottomShort(rowNumber,8).castable == 0" scaleToClip }  
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+9)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,9).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,9).icon" greyscale lua "rgBottomShort(rowNumber,9).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,9).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,9).icon" greyscale lua "rgBottomShort(rowNumber,9).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,9).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,9).icon" greyscale lua "rgBottomShort(rowNumber,9).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,9).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,9).icon" greyscale lua "rgBottomShort(rowNumber,9).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+10)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,10).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,10).icon" greyscale lua "rgBottomShort(rowNumber,10).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,10).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,10).icon" greyscale lua "rgBottomShort(rowNumber,10).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,10).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,10).icon" greyscale lua "rgBottomShort(rowNumber,10).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,10).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,10).icon" greyscale lua "rgBottomShort(rowNumber,10).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+11)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,11).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,11).icon" greyscale lua "rgBottomShort(rowNumber,11).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,11).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,11).icon" greyscale lua "rgBottomShort(rowNumber,11).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,11).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,11).icon" greyscale lua "rgBottomShort(rowNumber,11).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,11).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,11).icon" greyscale lua "rgBottomShort(rowNumber,11).castable == 0" scaleToClip } 
 		}
 		column  
 		{  
 			width 7
 			label  {  enabled "rgBottomSpells[rowNumber][2] >= (rgBottomSpells[rowNumber][4]+12)" area	0 4 36 36    bam	"rgdwspb3"  align left top  ScaleToClip }
-			label  {  enabled "rgBottomShort(rowNumber,12).icon ~= null and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,12).icon" greyscale lua "rgBottomShort(rowNumber,12).castable == 0" align center center } 
-			label  {  enabled "rgBottomShort(rowNumber,12).icon ~= null and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,12).icon" greyscale lua "rgBottomShort(rowNumber,12).castable == 0" scaleToClip } 
+			label  {  enabled "rgBottomShort(rowNumber,12).icon ~= nil and rgHdIcons == 0" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,12).icon" greyscale lua "rgBottomShort(rowNumber,12).castable == 0" align center center } 
+			label  {  enabled "rgBottomShort(rowNumber,12).icon ~= nil and rgHdIcons == 1" area 0 4 36 36 bam lua "rgBottomShort(rowNumber,12).icon" greyscale lua "rgBottomShort(rowNumber,12).castable == 0" scaleToClip } 
 		}
 		
 		area 690 210 540 500 
@@ -18835,7 +18835,7 @@ menu
 		elseif rgGameEngine == 4 then
 			if w < 1550 then
 				x = c - 682
-				Infinity_SetArea('rgWorldMap2',x,78,1365,690)
+				Infinity_SetArea('rgWorldMap4',x,78,1365,690)
 				Infinity_SetArea('rgWorldMapBcg1',x,0,595,78)
 				Infinity_SetArea('rgWorldMapBcg2',x+594,0,595,78)
 				Infinity_SetArea('rgWorldMapBcg3',x+770,0,595,78)
@@ -18854,7 +18854,6 @@ menu
 			Infinity_SetArea('rgWorldMapBac1',0,0,0,0)
 			Infinity_SetArea('rgWorldMap2',0,0,0,0)
 			Infinity_SetArea('rgWorldMapBac2',0,0,0,0)
-			Infinity_SetArea('rgWorldMapBcg3',0,0,0,0)
 		end
 		
 		"
@@ -19235,7 +19234,10 @@ function rgInvItemNameText(num)
 end
 function rgGetStoreItemQuantity(num)
 	local str = store.storeItems[num].label
-	local out = string.match(str,"%((.-)%)")
+	local out = ""
+	if str ~= nil then
+		out = string.match(str,"%((.-)%)")
+	end
 	--one, two = string:match("([^%(]+),([^%(]+)")
 	--local out = string:match(str,"%((.-)%)")
 	return out
@@ -19243,7 +19245,10 @@ function rgGetStoreItemQuantity(num)
 end
 function rgGetGroupItemQuantity(num)
 	local str = store.groupItems[num].label
-	local out = string.match(str,"%((.-)%)")
+	local out = ""
+	if str ~= nil then
+		out = string.match(str,"%((.-)%)")
+	end
 	return out
 end
 
@@ -19367,19 +19372,19 @@ menu
 			width 17
 			label 
 			{
-				enabled "rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -19392,7 +19397,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,6) and rgGetStoreItemQuantity(rowNumber) ~= null"
+				enabled "store.storeItems[rowNumber] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -19421,14 +19426,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+1] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+1] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -19441,7 +19446,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,6) and rgGetStoreItemQuantity(rowNumber+1) ~= null"
+				enabled "store.storeItems[rowNumber+1] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -19470,14 +19475,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+2] and store.storeItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+2] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+2] and store.storeItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+2] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -19490,7 +19495,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,6) and rgGetStoreItemQuantity(rowNumber+2) ~= null"
+				enabled "store.storeItems[rowNumber+2] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -19519,14 +19524,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+3] and store.storeItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+3] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+3] and store.storeItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+3] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -19539,7 +19544,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,6) and rgGetStoreItemQuantity(rowNumber+3) ~= null"
+				enabled "store.storeItems[rowNumber+3] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -19558,7 +19563,7 @@ menu
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+3].valid == 0 and store.storeItems[rowNumber+3].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+3] and store.storeItems[rowNumber+3].valid == 0 and store.storeItems[rowNumber+3].highlight == 0 and rgIsNthNumber(rowNumber,6)"
 				area 0 0 -1 -1
 				fill 0 0 0 150
 			}
@@ -19568,14 +19573,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+4] and store.storeItems[rowNumber+4].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+4] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+4] and store.storeItems[rowNumber+4].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+4] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -19588,7 +19593,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,6) and rgGetStoreItemQuantity(rowNumber+4) ~= null"
+				enabled "store.storeItems[rowNumber+4] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -19617,14 +19622,14 @@ menu
 			width 17
 			label 
 			{
-				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+5] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label
 			{
-				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].item.icon ~= null and rgIsNthNumber(rowNumber,6)"
+				enabled "store.storeItems[rowNumber+5] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -19637,7 +19642,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,6) and rgGetStoreItemQuantity(rowNumber+5) ~= null"
+				enabled "store.storeItems[rowNumber+5] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -19684,6 +19689,15 @@ menu
 			end
 			if(store.storeItems[storeItemsVar].highlight == 0) then 
 				rgItemName = ''
+			end
+			if storeScreen:IsContainer() then
+				local count = store.storeItems[storeItemsVar].item.count
+				local stock = store.storeItems[storeItemsVar].numInStock
+				if (count > 1) then
+					storeScreen:SetStoreItemCount(storeItemsVar - 1, count)
+				elseif (stock > 1) then
+					storeScreen:SetStoreItemCount(storeItemsVar - 1, stock)
+				end
 			end
 		"
 		actionalt
@@ -19772,7 +19786,7 @@ menu
 	--		width 50
 	--		label
 	--		{
-	--			enabled "store.storeItems[rowNumber+1].item.icon ~= null and rgIsOddNumber(rowNumber)"
+	--			enabled "store.storeItems[rowNumber+1].item.icon ~= nil and rgIsOddNumber(rowNumber)"
 	--			area 0 0 58 58
 	--			bam RGDSLOT
 	--			ScaleToClip
@@ -19947,19 +19961,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -19972,7 +19986,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber) ~= null"
+				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -20002,19 +20016,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -20027,7 +20041,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber+1) ~= null"
+				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -20057,19 +20071,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -20082,7 +20096,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber+2) ~= null"
+				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -20112,19 +20126,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -20137,7 +20151,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber+3) ~= null"
+				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -20240,19 +20254,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -20265,7 +20279,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber) ~= null"
+				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -20294,19 +20308,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -20319,7 +20333,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber+1) ~= null"
+				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -20348,19 +20362,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -20373,7 +20387,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber+2) ~= null"
+				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -20402,19 +20416,19 @@ menu
 			width 25
 			label 
 			{
-				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
 				bam "RGDISLOT" 
 				ScaleToClip
 			}
 			label 
 			{
-				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 120 
 			}
 			label
 			{
-				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].item.icon ~= null and rgIsNthNumber(rowNumber,4)"
+				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
 				ScaleToClip
@@ -20427,7 +20441,7 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,4) and rgGetGroupItemQuantity(rowNumber+3) ~= null"
+				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
 				ScaleToClip
@@ -20584,6 +20598,15 @@ menu
 					local highlight = true
 					if(store.storeItems[storeItemsVar].highlight == 1) then highlight = false end
 					storeScreen:SelectStoreItem( storeItemsVar - 1,  highlight)
+				end
+			end
+			if storeScreen:IsContainer() then
+				local count = store.storeItems[storeItemsVar].item.count
+				local stock = store.storeItems[storeItemsVar].numInStock
+				if (count > 1) then
+					storeScreen:SetStoreItemCount(storeItemsVar - 1, count)
+				elseif (stock > 1) then
+					storeScreen:SetStoreItemCount(storeItemsVar - 1, stock)
 				end
 			end
 		"
@@ -20871,7 +20894,7 @@ menu
 	--		}
 	--		label
 	--		{
-	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,2)"
+	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= nil and rgIsNthNumber(rowNumber,2)"
 	--			area 0 0 60 60
 	--			bam RGDSLOT
 	--			ScaleToClip
@@ -20884,7 +20907,7 @@ menu
 	--		}
 	--		label
 	--		{
-	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,2)"
+	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= nil and rgIsNthNumber(rowNumber,2)"
 	--			area 60 0 270 60
 	--			bam "RGDSLOTD"
 	--			ScaleToClip
@@ -20892,7 +20915,7 @@ menu
 	--		}
 	--		label
 	--		{
-	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= null and rgIsNthNumber(rowNumber,2)"
+	--			enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].item.icon ~= nil and rgIsNthNumber(rowNumber,2)"
 	--			area 66 0 206 60
 	--			text lua "store.storeItems[rowNumber+1].label"
 	--			text style "normal"
@@ -24009,6 +24032,9 @@ function rgGetQlSlotIndex(index)
 			junk = rgQuicklootJunkTable[index+1] + rgQuicklootJunkTable[worldScreen:GetTopGroundItem()]
 		end
 		
+	end
+	if junk == nil then
+		junk = 0
 	end
 	return index+junk
 end
@@ -28101,7 +28127,7 @@ menu
 		text style "button"
 		text lua "rgString('BACK_BUTTON')"
 		on escape
-		action  "loadScreen:OnMainCancelButtonClick()"
+		action  "saveScreen:OnMainCancelButtonClick()"
 		actionEnter "rgMainButtHighlight = 6"
 		actionExit "rgMainButtHighlight = 0"
 	}
@@ -29627,12 +29653,20 @@ menu
 			rgAlreadyAdded = 1
 		end
 	end
+	rgDialogLoadCount = 0
 	function rgLoadFromDialog()
 		if rgDialogLoad == 1 then
 			if rgDialogChoicesCount() == 0 then
 				worldScreen:StepDialog()
 			else
-				worldScreen:OnDialogReplyClick(worldPlayerDialogChoices[2].marker)
+				rgDialogLoadCount = rgDialogLoadCount + 1
+				for i = 1, #worldPlayerDialogChoices, 1 do
+					if rgDialogLoadCount < i*10 then
+						if worldPlayerDialogChoices[i].marker ~= nil then 
+							worldScreen:OnDialogReplyClick(worldPlayerDialogChoices[i].marker)
+						end
+					end
+				end
 			end
 		end
 	end
@@ -29679,6 +29713,7 @@ menu
 		Infinity_PushMenu('RIGHT_SIDEBAR_BOTTOM')
 		ungreySidebars()
 		if rgDialogLoad == 1 then
+			rgDialogLoadCount = 0
 			Infinity_PressKeyboardButton('l')
 		end
 		rgDialogLoad = 0
@@ -29798,6 +29833,7 @@ menu
 		bam rgdmenub
 		sequence 1
 		ScaleToClip
+		tooltip lua "t('RG_WRITE_JOURNAL')"
 		action 
 		"
 			rgAddNewNote(worldNPCDialogText)
@@ -29806,9 +29842,10 @@ menu
 	button
 	{
 		area 68 336 40 40
-		bam "rgdhkbt3"
+		bam "rgdhkbt6"
 		text lua "rgLoadFromDialog()"
 		ScaleToClip
+		tooltip lua "t('ASSIGN_KEYS_MISC_QUICKLOAD')"
 		action 
 		"
 			rgDialogLoad = 1
@@ -30211,27 +30248,29 @@ function rgGetChargenArea()
 	
 end
 function rgGetChargenInfo(step)
-	
+	local out = ""
 	local s = chargen.information
 	local list = {}
-	for i in string.gmatch(chargen.information, "[^\r\n]+") do
-		table.insert(list, i);
+	if chargen.information ~= nil then
+		for i in string.gmatch(chargen.information, "[^\r\n]+") do
+			table.insert(list, i);
+		end
 	end
 	
-	if step == 1 then
-		return list[1]
-	elseif step == 2 then
-		return list[2] .. '\n' .. list[3] .. '\n' .. list[4]
-	elseif step == 3 then
-		return list[5] .. '\n' .. list[6] .. '\n' .. list[7] .. '\n' .. list[8] .. '\n' .. list[9] .. '\n' .. list[10]
+	if step == 1 and #list > 0 then
+		out = list[1]
+	elseif step == 2 and #list > 3 then
+		out = list[2] .. '\n' .. list[3] .. '\n' .. list[4]
+	elseif step == 3 and #list > 9 then
+		out = list[5] .. '\n' .. list[6] .. '\n' .. list[7] .. '\n' .. list[8] .. '\n' .. list[9] .. '\n' .. list[10]
 	elseif step == 4 then
 		for i = 1, 12, 1 do
 			s = string.gsub(s, '^[^\n]*\n', '')
 		end
-		return s
+		out = s
 	end
 	
-	
+	return out
 end
 
 
@@ -31342,13 +31381,13 @@ menu
 	}
 	button
 	{
-		on return
+		--on return
 		area 732 661 320 70
 		bam		rgdmbut1
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
-		clickable "false"
+		clickable lua "false"
 		action "createCharScreen:OnDoneButtonClick() createCharScreen:OnMenuButtonClick()"
 	}
 
@@ -31767,7 +31806,7 @@ menu
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
-		clickable "false"
+		clickable lua "false"
 		action "Infinity_PopMenu(); createCharScreen:OnDoneButtonClick()"
 	}
 
@@ -34272,7 +34311,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -34281,20 +34320,20 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon"
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil and chargen.choose_spell[rowNumber+1].enabled == false and chargen.choose_spell[rowNumber+1].known == false"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil and chargen.choose_spell[rowNumber+1].enabled == false and chargen.choose_spell[rowNumber+1].known == false"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString(spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].name)"
 				text style "rg_normal_spell"
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil and (chargen.choose_spell[rowNumber+1].enabled or chargen.choose_spell[rowNumber+1].known)"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil and (chargen.choose_spell[rowNumber+1].enabled or chargen.choose_spell[rowNumber+1].known)"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString(spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].name)"
 				text style "rg_normal_spell"
@@ -34306,7 +34345,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -34315,20 +34354,20 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon"
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil and chargen.choose_spell[rowNumber+2].enabled == false and chargen.choose_spell[rowNumber+2].known == false"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil and chargen.choose_spell[rowNumber+2].enabled == false and chargen.choose_spell[rowNumber+2].known == false"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString(spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].name)"
 				text style "rg_normal_spell"
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil and (chargen.choose_spell[rowNumber+2].enabled or chargen.choose_spell[rowNumber+2].known)"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil and (chargen.choose_spell[rowNumber+2].enabled or chargen.choose_spell[rowNumber+2].known)"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString(spellBook[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].name)"
 				text style "rg_normal_spell"
@@ -34820,7 +34859,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -34829,13 +34868,13 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon"
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString(mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].name)"
 				text style "rg_normal_spell"
@@ -34846,7 +34885,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -34855,13 +34894,13 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon"
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString(mageSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].name)"
 				text style "rg_normal_spell"
@@ -35323,7 +35362,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -35332,13 +35371,13 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon"
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+1] and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString(priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+1].key].name)"
 				text style "rg_normal_spell"
@@ -35349,7 +35388,7 @@ menu
 			width 33
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
 				area	0 0 -1 50
 				bam "rgdwspbc" 
 				align left top 
@@ -35358,13 +35397,13 @@ menu
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
 				area	0 0 50 50
 				icon	lua "priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon"
 			}
 			label
 			{
-				enabled "rgIsNthNumber(rowNumber,3) and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
+				enabled "rgIsNthNumber(rowNumber,3) and chargen.choose_spell[rowNumber+2] and priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].icon ~= nil"
 				area		0 0 -1 50
 				text lua "Infinity_FetchString(priestSpells[chargen.currentSpellLevelChoice][chargen.choose_spell[rowNumber+2].key].name)"
 				text style "rg_normal_spell"

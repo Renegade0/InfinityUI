@@ -858,4 +858,5 @@ uiStrings = {
 	RG_JOURNAL_MODE2 = "Velký deník",
 	RG_INV_MODE = "Mód inventáře",
 	RG_HOTKEY_BUTT = "Tlačítko kláv. zkratky",
+	RG_WRITE_JOURNAL = "Zapiš do deníku",
 }

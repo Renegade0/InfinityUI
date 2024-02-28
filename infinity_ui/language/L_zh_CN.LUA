@@ -858,4 +858,5 @@ uiStrings = {
 	RG_JOURNAL_MODE2 = "Large Journal",
 	RG_INV_MODE = "Inventory Mode",
 	RG_HOTKEY_BUTT = "Hotkey Button",
+	RG_WRITE_JOURNAL = "Write into journal",
 }
