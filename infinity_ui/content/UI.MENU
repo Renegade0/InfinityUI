@@ -39524,6 +39524,7 @@ function get4CheckFrame(slot)
 	return ret
 end
 function rgPlayerButtonAction(slot)
+	selectedCharacter = slot
 	if multiplayerLocalPlayerID == 1 and slot ~= 1 then
 		if multiplayerFromInGame == false then
 			multiplayerScreen:SetModifiedCharacterSlot(slot - 1)
@@ -39554,6 +39555,7 @@ function rgGetCharacterSlotName(slot)
 	return ret
 end
 function rgCharacterButtonAction(slot)
+	selectedCharacter = slot
 	if shouldGreyscaleEditButton(slot) == false then
 		if getMultiplayerCharacterButtonText(slot) == t('MULTIPLAYER_VIEW_DETAILS_BUTTON') then
 			multiplayerScreen:OnPortraitButtonClick(slot-1)
@@ -39575,6 +39577,7 @@ function rgCharacterButtonAction(slot)
 	end
 end
 function rgReadyButtonAction(slot)
+	selectedCharacter = slot
 	if multiplayerFromInGame == false then
 		if multiplayerLocalPlayerID == mpaCharacters[slot]['player'] then
 			multiplayerScreen:OnReadyButtonClick(slot-1)
@@ -39973,11 +39976,11 @@ menu
 	
 	
 	label { area 154 336 195 51 text lua "getMultiplayerPlayerName(1, false, true)" text style "normal" align left center }
-	label { area 154 388 195 51 text lua "getMultiplayerPlayerName(1, false, true)" text style "normal" align left center }
-	label { area 154 440 195 51 text lua "getMultiplayerPlayerName(1, false, true)" text style "normal" align left center }
-	label { area 154 492 195 51 text lua "getMultiplayerPlayerName(1, false, true)" text style "normal" align left center }
-	label { area 154 544 195 51 text lua "getMultiplayerPlayerName(1, false, true)" text style "normal" align left center }
-	label { area 154 596 195 51 text lua "getMultiplayerPlayerName(1, false, true)" text style "normal" align left center }
+	label { area 154 388 195 51 text lua "getMultiplayerPlayerName(2, false, true)" text style "normal" align left center }
+	label { area 154 440 195 51 text lua "getMultiplayerPlayerName(3, false, true)" text style "normal" align left center }
+	label { area 154 492 195 51 text lua "getMultiplayerPlayerName(4, false, true)" text style "normal" align left center }
+	label { area 154 544 195 51 text lua "getMultiplayerPlayerName(5, false, true)" text style "normal" align left center }
+	label { area 154 596 195 51 text lua "getMultiplayerPlayerName(6, false, true)" text style "normal" align left center }
 	
 	
 	list -- player list
