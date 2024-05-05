@@ -775,21 +775,18 @@ uiStrings = {
 	RG_SET_QLOOT_ROWS = "快速拾取栏",
 	RG_SET_SKIN = "界面外观",
 	RG_SET_EEEX_ZOOM = "EEex 界面缩放",
-<<<<<<< HEAD
 	RG_SET_FREE_MSGBOX_D = "允许消息框在屏幕上自由移动，通过按住和拖动角。拖动消息框的两侧也可以将其大小调整到任何方向",
 	RG_SET_MODERN_HUD_D = "将HUD元素重新排列到屏幕底部.",
 	RG_SET_HOTKEY_BUTT_D = "额外的按钮出现在屏幕上，打开菜单分配热键按钮。菜单也可以通过右键单击任何热键按钮打开。也可以将任何或所有字符分配给热键，在热键触发之前自动选择它们.",
 	RG_SET_BOTTOM_QLOOT_D = "将快速战利品菜单切换到屏幕的左下方，而不是默认的左上方.",
 	RG_SET_INV_SWAP_D = "在'全员'物品栏模式下 ,只有将鼠标悬停在他们的库存上才能切换活动角色。重要提示!\n热键1-6必须分配给角色以便进行这项操作.",
 	RG_SET_SPACE_DLG_D = "按空格键可以加速对话。默认情况下是关闭的.",
-=======
 	RG_SET_FREE_MSGBOX_D = "允许消息框在屏幕上自由移动，通过按住和拖动角。拖动消息框的两侧也可以将其大小调整到任何方向。",
 	RG_SET_MODERN_HUD_D = "将HUD元素重新排列到屏幕底部。",
 	RG_SET_HOTKEY_BUTT_D = "额外的按钮出现在屏幕上，打开菜单分配热键按钮。菜单也可以通过右键单击任何热键按钮打开。也可以将任何或所有字符分配给热键，在热键触发之前自动选择它们。",
 	RG_SET_BOTTOM_QLOOT_D = "将快速战利品菜单切换到屏幕的左下方，而不是默认的左上方。",
 	RG_SET_INV_SWAP_D = "在“全员”物品栏模式下 ,只有将鼠标悬停在他们的库存上才能切换活动角色。重要提示!\n热键1-6必须分配给角色以便进行这项操作。",
 	RG_SET_SPACE_DLG_D = "按空格键可以加速对话。默认情况下是关闭的。",
->>>>>>> 45d253f2371d68139c53609490456584826b2996
 	RG_SET_QLOOT_ROWS_D = "指定在屏幕上的快速拾取行数",
 	RG_SET_SKIN_D = "选择界面外观",
 	RG_SET_EEEX_ZOOM_D = "EEEx 特征. 将界面缩放到首选大小。",
@@ -803,9 +800,7 @@ uiStrings = {
 	RG_BOOKS = '书籍',
 	RG_BEASTS = '野兽',
 	RG_BESTIARY_TITLE = '类人生物',
-<<<<<<< HEAD
 	RG_BESTIARY = '类人生物: ',
-=======
 	RG_BESTIARY = '类人生物：',
 	RGB_SLIME = "史莱姆类",
 	RGB_LYCAN = "兽化人",
