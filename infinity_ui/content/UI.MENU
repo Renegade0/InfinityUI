@@ -10078,7 +10078,7 @@ function rgGetSlotVisibility()
 end
 function rgGetInvSlot()
     if RgInvPartyModeHover == 0 then
-		return 'RGDSLOT'
+		return 'RGDSLOT2'
 	else
 		return 'RGDSLOT2'
 	end
@@ -10295,7 +10295,7 @@ function rgGetTempItemCheck(tempItem)
 end
 
 function rgOnPartyModeHover(char)
-	if rgCurChar ~= char and RgInvPartyModeHover == 1 then
+	if rgCurChar ~= char then --rgUnlockInvId()
 		rgCurChar = char 
 		Infinity_PressKeyboardButton(char) 
 		rgPaperdollSwap = 0
@@ -10309,6 +10309,10 @@ function rgGetInvPortSelected(num)
 	else
 		return 0
 	end
+end
+
+function rgUnlockInvId()
+	rgInvId = id
 end
 
 --function rgGetInvId()
@@ -10463,6 +10467,13 @@ menu
 	--	area		0 0 0 0
 	--	text lua	"rgGetInvId()"
 	--}
+	
+	text
+	{
+		enabled		"rgInventoryMode == 0 and RgInvPartyModeHover == 0"
+		area		0 0 0 0
+		text lua "rgUnlockInvId()"
+	}
 	
 	label
 	{
@@ -11480,70 +11491,70 @@ menu
 		"
 	}
 	
-	text 
-	{ 
-		enabled "rgActiveArea ~= 1 and rgInventoryMode == 0 and RgInvPartyModeHover == 0" 
-		area	774 96 392 98	 
-		fill 1 1 1 110 
-		--action  "rgActiveArea = 1" 
-		--actionEnter "rgInvPortraitArea = 1" 
-		--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
-	}
-	
-	text            
-	{               
-		enabled "rgActiveArea ~= 2 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"	
-		name "rgSlotsArea2"
-		area		774 202 392 98
-		fill 1 1 1 110
-		--action "rgActiveArea = 2"
-		--actionEnter "rgInvPortraitArea = 2" 
-		--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
-	}
-	
-	text
-	{
-		enabled "rgActiveArea ~= 3 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"
-		name "rgSlotsArea3"
-		area		774 308 392 98
-		fill 1 1 1 110
-		--action "rgActiveArea = 3"
-		--actionEnter "rgInvPortraitArea = 3" 
-		--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
-	}
-	
-	text
-	{
-		enabled "rgActiveArea ~= 4 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"
-		name "rgSlotsArea4"
-		area		774 414 392 98
-		fill 1 1 1 110
-		--action "rgActiveArea = 4"
-		--actionEnter "rgInvPortraitArea = 4" 
-		--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
-	}
-	
-	text
-	{
-		enabled "rgActiveArea ~= 5 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"
-		name "rgSlotsArea5"
-		area		774 520 392 98
-		fill 1 1 1 110
-		--action "rgActiveArea = 5"
-		--actionEnter "rgInvPortraitArea = 5" 
-		--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
-	}
-	
-	text
-	{
-		enabled "rgActiveArea ~= 6 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"
-		name "rgSlotsArea6"
-		area		774 626 392 98
-		fill 1 1 1 110
-		--action "rgActiveArea = 6"
-		--actionEnter "rgInvPortraitArea = 6" 
-		--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
-	}
+	--text 
+	--{ 
+	--	enabled "rgActiveArea ~= 1 and rgInventoryMode == 0 and RgInvPartyModeHover == 0" 
+	--	area	774 96 392 98	 
+	--	fill 1 1 1 110 
+	--	--action  "rgActiveArea = 1" 
+	--	--actionEnter "rgInvPortraitArea = 1" 
+	--	--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
+	--}
+	--
+	--text            
+	--{               
+	--	enabled "rgActiveArea ~= 2 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"	
+	--	name "rgSlotsArea2"
+	--	area		774 202 392 98
+	--	fill 1 1 1 110
+	--	--action "rgActiveArea = 2"
+	--	--actionEnter "rgInvPortraitArea = 2" 
+	--	--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
+	--}
+	--
+	--text
+	--{
+	--	enabled "rgActiveArea ~= 3 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"
+	--	name "rgSlotsArea3"
+	--	area		774 308 392 98
+	--	fill 1 1 1 110
+	--	--action "rgActiveArea = 3"
+	--	--actionEnter "rgInvPortraitArea = 3" 
+	--	--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
+	--}
+	--
+	--text
+	--{
+	--	enabled "rgActiveArea ~= 4 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"
+	--	name "rgSlotsArea4"
+	--	area		774 414 392 98
+	--	fill 1 1 1 110
+	--	--action "rgActiveArea = 4"
+	--	--actionEnter "rgInvPortraitArea = 4" 
+	--	--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
+	--}
+	--
+	--text
+	--{
+	--	enabled "rgActiveArea ~= 5 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"
+	--	name "rgSlotsArea5"
+	--	area		774 520 392 98
+	--	fill 1 1 1 110
+	--	--action "rgActiveArea = 5"
+	--	--actionEnter "rgInvPortraitArea = 5" 
+	--	--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
+	--}
+	--
+	--text
+	--{
+	--	enabled "rgActiveArea ~= 6 and rgInventoryMode == 0 and RgInvPartyModeHover == 0"
+	--	name "rgSlotsArea6"
+	--	area		774 626 392 98
+	--	fill 1 1 1 110
+	--	--action "rgActiveArea = 6"
+	--	--actionEnter "rgInvPortraitArea = 6" 
+	--	--actionExit "rgUpdateSlotsOnExit(); rgInvPortraitArea = 0" 
+	--}
 	
     
 	--button
@@ -24513,18 +24524,21 @@ function rgGetQuicklootSlotPosition()
 			Infinity_SetArea('rgQuicklootArrLeft',nil,285,nil,nil)
 			Infinity_SetArea('rgQuicklootArrRight',nil,285,nil,nil)
 			Infinity_SetArea('rgQuicklootJunkButton',nil,285,nil,nil)
+			Infinity_SetArea('rgQuicklootPickButton',nil,257,nil,nil)
 		end
 		if RgIsModernHud == 1 then
 			Infinity_SetOffset('WORLD_QUICKLOOT',0, screenHeight - 337 - 140)
 			Infinity_SetArea('rgQuicklootArrLeft',nil,308,nil,nil)
 			Infinity_SetArea('rgQuicklootArrRight',nil,308,nil,nil)
 			Infinity_SetArea('rgQuicklootJunkButton',nil,308,nil,nil)
+			Infinity_SetArea('rgQuicklootPickButton',nil,290,nil,nil)
 		end
 		if RgMessageboxUnlocked == 0 and RgIsModernHud == 0 then
 			Infinity_SetOffset('WORLD_QUICKLOOT',((screenWidth/2)-354), screenHeight - 337 -toolbarTop)
 			Infinity_SetArea('rgQuicklootArrLeft',nil,308,nil,nil)
 			Infinity_SetArea('rgQuicklootArrRight',nil,308,nil,nil)
 			Infinity_SetArea('rgQuicklootJunkButton',nil,308,nil,nil)
+			Infinity_SetArea('rgQuicklootPickButton',nil,290,nil,nil)
 		end
 	else
 		rgQlRowIndex1 = 0
@@ -24537,6 +24551,7 @@ function rgGetQuicklootSlotPosition()
 		Infinity_SetArea('rgQuicklootArrLeft',nil,5,nil,nil)
 		Infinity_SetArea('rgQuicklootArrRight',nil,5,nil,nil)
 		Infinity_SetArea('rgQuicklootJunkButton',nil,5,nil,nil)
+		Infinity_SetArea('rgQuicklootPickButton',nil,33,nil,nil)
 	end
 end
 
@@ -24887,6 +24902,20 @@ menu
 	}
 	button
 	{
+		name 'rgQuicklootPickButton'
+		area		0 35 28 28 
+		enabled "getSlotContainerId(0,'containerId') and (RgMessageboxUnlocked == 1 or RgIsModernHud == 1)"
+		bam			RGDMBTQL
+		Sequence 3
+		scaleToClip
+		tooltip lua "t('RG_LOOTALL')"
+		action
+		"
+			rgQuicklootPickAllItems()
+		"
+	}
+	button
+	{
 		name 'rgQuicklootArrLeft'
 		area 28 5 28 28
 		bam		RGDMBTQL
@@ -24927,7 +24956,7 @@ menu
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+0))"
 		--actionAlt "showGroundItemDescription(rgGetQlSlotIndex(rgQlRowIndex1+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+0),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 		
 	}
 	button
@@ -24945,7 +24974,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+1))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+1),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -24962,7 +24991,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+2))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+2),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -24979,7 +25008,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+3))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+3),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -24996,7 +25025,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+4))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+4),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25013,7 +25042,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+5))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+5),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25030,7 +25059,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+6))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+6),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25047,7 +25076,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+7))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+7),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25064,7 +25093,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+8))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+8),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25081,7 +25110,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex1+9))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex1+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex1+9),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}	
 	button
 	{
@@ -25099,7 +25128,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+0))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+0),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25116,7 +25145,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+1))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+1),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25133,7 +25162,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+2))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+2),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25150,7 +25179,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+3))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+3),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25167,7 +25196,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+4))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+4),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25184,7 +25213,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+5))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+5),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25201,7 +25230,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+6))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+6),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25218,7 +25247,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+7))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+7),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25235,7 +25264,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+8))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+8),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25252,7 +25281,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex2+9))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex2+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex2+9),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}	
 	button
 	{
@@ -25270,7 +25299,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+0))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+0),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25287,7 +25316,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+1))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+1),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25304,7 +25333,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+2))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+2),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25321,7 +25350,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+3))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+3),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25338,7 +25367,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+4))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+4),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25355,7 +25384,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+5))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+5),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25372,7 +25401,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+6))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+6),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25389,7 +25418,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+7))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+7),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25406,7 +25435,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+8))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+8),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25423,7 +25452,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex3+9))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex3+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex3+9),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}	
 	button
 	{
@@ -25441,7 +25470,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+0))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+0),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25458,7 +25487,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+1))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+1),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25475,7 +25504,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+2))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+2),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25492,7 +25521,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+3))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+3),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25509,7 +25538,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+4))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+4),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25526,7 +25555,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+5))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+5),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25543,7 +25572,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+6))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+6),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25560,7 +25589,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+7))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+7),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25577,7 +25606,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+8))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+8),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25594,7 +25623,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex4+9))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex4+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex4+9),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25612,7 +25641,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+0))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+0),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25629,7 +25658,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+1))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+1),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25646,7 +25675,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+2))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+2),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25663,7 +25692,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+3))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+3),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25680,7 +25709,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+4))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+4),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25697,7 +25726,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+5))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+5),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25714,7 +25743,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+6))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+6),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25731,7 +25760,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+7))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+7),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25748,7 +25777,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+8))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+8),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25765,7 +25794,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex5+9))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex5+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex5+9),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25783,7 +25812,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+0))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+0))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+0),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25800,7 +25829,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+1))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+1))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+1),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25817,7 +25846,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+2))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+2))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+2),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25834,7 +25863,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+3))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+3))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+3),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25851,7 +25880,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+4))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+4))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+4),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25868,7 +25897,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+5))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+5))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+5),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25885,7 +25914,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+6))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+6))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+6),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25902,7 +25931,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+7))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+7))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+7),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25919,7 +25948,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+8))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+8))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+8),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	button
 	{
@@ -25936,7 +25965,7 @@ menu
 		action "groundItemClick(rgGetQlSlotIndex(rgQlRowIndex6+9))"
 		actionAlt "rgQuicklootMassPickSameItem(rgGetQlSlotIndex(rgQlRowIndex6+9))"
 		actionEnter "mouseOverQuicklootContainer = getSlotContainerId(rgGetQlSlotIndex(rgQlRowIndex6+9),'containerId') "
-		actionDbl "rgQuicklootPickAllItems()" actionExit "mouseOverQuicklootContainer = nil"
+		actionExit "mouseOverQuicklootContainer = nil"
 	}
 	
 }
