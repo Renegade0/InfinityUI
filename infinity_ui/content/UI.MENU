@@ -8009,132 +8009,7 @@ menu
 	--	ScaleToClip
 	--	area 71 707 54 54
 	--}
-	button
-	{
-		name 'rgModHudPortrait1'
-		area 1 0 78 118
-		portrait 0
-		bam rgdport2
-		ScaleToClip
-		sequence lua "RgUISkin"
-		enabled "Infinity_GetNumCharacters() > 0 and RgIsModernHud == 1"
-		glow lua "draggedPortrait and draggedPortrait ~= 0"
-		action "Infinity_OnPortraitLClick(0)"
-		actionAlt "Infinity_OnPortraitRClick(0)"
-		actionDbl "Infinity_OnPortraitDblClick(0)"
-		actiondrag "Infinity_SwapWithPortrait(0)"
-		actionEnter "mouseOverPortrait = 0"
-		actionExit "mouseOverPortrait = -1"
-		actionSimpleDrag "draggedPortrait = 0"
-		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(0)"
-		tooltip lua "Infinity_GetPortraitTooltip(0)"
-		clickable lua "sidebarsGreyed ~= 1"
-	}
-	button
-	{
-		name 'rgModHudPortrait2'
-		area 83 0 78 118
-		portrait 1
-		bam rgdport2
-		ScaleToClip
-		sequence lua "RgUISkin"
-		enabled "Infinity_GetNumCharacters() > 1 and RgIsModernHud == 1"
-		glow lua "draggedPortrait and draggedPortrait ~= 1"
-		action "Infinity_OnPortraitLClick(1)"
-		actionAlt "Infinity_OnPortraitRClick(1)"
-		actionDbl "Infinity_OnPortraitDblClick(1)"
-		actiondrag "Infinity_SwapWithPortrait(1)"
-		actionEnter "mouseOverPortrait = 1"
-		actionExit "mouseOverPortrait = -1"
-		actionSimpleDrag "draggedPortrait = 1"
-		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(1)"
-		tooltip lua "Infinity_GetPortraitTooltip(1)"
-		clickable lua "sidebarsGreyed ~= 1"
-	}
-	button
-	{
-		name 'rgModHudPortrait3'
-		area 165 0 78 118
-		portrait 2
-		bam rgdport2
-		ScaleToClip
-		sequence lua "RgUISkin"
-		enabled "Infinity_GetNumCharacters() > 2 and RgIsModernHud == 1"
-		glow lua "draggedPortrait and draggedPortrait ~= 2"
-		action "Infinity_OnPortraitLClick(2)"
-		actionAlt "Infinity_OnPortraitRClick(2)"
-		actionDbl "Infinity_OnPortraitDblClick(2)"
-		actiondrag "Infinity_SwapWithPortrait(2)"
-		actionEnter "mouseOverPortrait = 2"
-		actionExit "mouseOverPortrait = -1"
-		actionSimpleDrag "draggedPortrait = 2"
-		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(2)"
-		tooltip lua "Infinity_GetPortraitTooltip(2)"
-		clickable lua "sidebarsGreyed ~= 1"
-	}
-	button
-	{
-		name 'rgModHudPortrait4'
-		area 247 0 78 118
-		portrait 3
-		bam rgdport2
-		ScaleToClip
-		sequence lua "RgUISkin"
-		enabled "Infinity_GetNumCharacters() > 3 and RgIsModernHud == 1"
-		glow lua "draggedPortrait and draggedPortrait ~= 3"
-		action "Infinity_OnPortraitLClick(3)"
-		actionAlt "Infinity_OnPortraitRClick(3)"
-		actionDbl "Infinity_OnPortraitDblClick(3)"
-		actiondrag "Infinity_SwapWithPortrait(3)"
-		actionEnter "mouseOverPortrait = 3"
-		actionExit "mouseOverPortrait = -1"
-		actionSimpleDrag "draggedPortrait = 3"
-		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(3)"
-		tooltip lua "Infinity_GetPortraitTooltip(3)"
-		clickable lua "sidebarsGreyed ~= 1"
-	}
-	button
-	{
-		name 'rgModHudPortrait5'
-		area 329 0 78 118
-		portrait 4
-		bam rgdport2
-		ScaleToClip
-		sequence lua "RgUISkin"
-		enabled "Infinity_GetNumCharacters() > 4 and RgIsModernHud == 1"
-		glow lua "draggedPortrait and draggedPortrait ~= 4"
-		action "Infinity_OnPortraitLClick(4)"
-		actionAlt "Infinity_OnPortraitRClick(4)"
-		actionDbl "Infinity_OnPortraitDblClick(4)"
-		actiondrag "Infinity_SwapWithPortrait(4)"
-		actionEnter "mouseOverPortrait = 4"
-		actionExit "mouseOverPortrait = -1"
-		actionSimpleDrag "draggedPortrait = 4"
-		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(4)"
-		tooltip lua "Infinity_GetPortraitTooltip(4)"
-		clickable lua "sidebarsGreyed ~= 1"
-	}
-	button
-	{
-		name 'rgModHudPortrait6'
-		area 411 0 78 118
-		portrait 5
-		bam rgdport2
-		ScaleToClip
-		sequence lua "RgUISkin"
-		enabled "Infinity_GetNumCharacters() > 5 and RgIsModernHud == 1"
-		glow lua "draggedPortrait and draggedPortrait ~= 5"
-		action "Infinity_OnPortraitLClick(5)"
-		actionAlt "Infinity_OnPortraitRClick(5)"
-		actionDbl "Infinity_OnPortraitDblClick(5)"
-		actiondrag "Infinity_SwapWithPortrait(5)"
-		actionEnter "mouseOverPortrait = 5"
-		actionExit "mouseOverPortrait = -1"
-		actionSimpleDrag "draggedPortrait = 5"
-		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(5)"
-		tooltip lua "Infinity_GetPortraitTooltip(5)"
-		clickable lua "sidebarsGreyed ~= 1"
-	}
+	
 	
 	
 	label
@@ -8744,6 +8619,26 @@ menu
 			Infinity_SetArea('rgHudPortrait5Big',nil,nil,82,nil)
 			Infinity_SetArea('rgHudPortrait6Big',nil,nil,82,nil)
 		end
+		
+		if RgIsModernHud == 1 then
+			local w, h = Infinity_GetScreenSize()
+			local sw = 0 - w + 78
+			local sh = h - 118
+			Infinity_SetArea('rgModHudPortrait1',sw+1,sh,78,118)
+			Infinity_SetArea('rgModHudPortrait2',sw+83,sh,78,118)
+			Infinity_SetArea('rgModHudPortrait3',sw+165,sh,78,118)
+			Infinity_SetArea('rgModHudPortrait4',sw+247,sh,78,118)
+			Infinity_SetArea('rgModHudPortrait5',sw+329,sh,78,118)
+			Infinity_SetArea('rgModHudPortrait6',sw+411,sh,78,118)
+		else
+			Infinity_SetArea('rgModHudPortrait1',0,0,0,118)
+			Infinity_SetArea('rgModHudPortrait2',0,0,0,118)
+			Infinity_SetArea('rgModHudPortrait3',0,0,0,118)
+			Infinity_SetArea('rgModHudPortrait4',0,0,0,118)
+			Infinity_SetArea('rgModHudPortrait5',0,0,0,118)
+			Infinity_SetArea('rgModHudPortrait6',0,0,0,118)
+		end
+		
 		if(sidebarVisible.RIGHT == 1) then
 			Infinity_PushMenu('RIGHT_SIDEBAR_BOTTOM')
 		else
@@ -9011,6 +8906,133 @@ menu
 		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 5 and RgIsModernHud == 0 and RgLargePortraits == 1"
+		glow lua "draggedPortrait and draggedPortrait ~= 5"
+		action "Infinity_OnPortraitLClick(5)"
+		actionAlt "Infinity_OnPortraitRClick(5)"
+		actionDbl "Infinity_OnPortraitDblClick(5)"
+		actiondrag "Infinity_SwapWithPortrait(5)"
+		actionEnter "mouseOverPortrait = 5"
+		actionExit "mouseOverPortrait = -1"
+		actionSimpleDrag "draggedPortrait = 5"
+		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(5)"
+		tooltip lua "Infinity_GetPortraitTooltip(5)"
+		clickable lua "sidebarsGreyed ~= 1"
+	}
+	
+	button
+	{
+		name 'rgModHudPortrait1'
+		area 1 0 0 118
+		portrait 0
+		bam rgdport2
+		ScaleToClip
+		sequence lua "RgUISkin"
+		enabled "Infinity_GetNumCharacters() > 0 and RgIsModernHud == 1"
+		glow lua "draggedPortrait and draggedPortrait ~= 0"
+		action "Infinity_OnPortraitLClick(0)"
+		actionAlt "Infinity_OnPortraitRClick(0)"
+		actionDbl "Infinity_OnPortraitDblClick(0)"
+		actiondrag "Infinity_SwapWithPortrait(0)"
+		actionEnter "mouseOverPortrait = 0"
+		actionExit "mouseOverPortrait = -1"
+		actionSimpleDrag "draggedPortrait = 0"
+		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(0)"
+		tooltip lua "Infinity_GetPortraitTooltip(0)"
+		clickable lua "sidebarsGreyed ~= 1"
+	}
+	button
+	{
+		name 'rgModHudPortrait2'
+		area 1 0 0 118
+		portrait 1
+		bam rgdport2
+		ScaleToClip
+		sequence lua "RgUISkin"
+		enabled "Infinity_GetNumCharacters() > 1 and RgIsModernHud == 1"
+		glow lua "draggedPortrait and draggedPortrait ~= 1"
+		action "Infinity_OnPortraitLClick(1)"
+		actionAlt "Infinity_OnPortraitRClick(1)"
+		actionDbl "Infinity_OnPortraitDblClick(1)"
+		actiondrag "Infinity_SwapWithPortrait(1)"
+		actionEnter "mouseOverPortrait = 1"
+		actionExit "mouseOverPortrait = -1"
+		actionSimpleDrag "draggedPortrait = 1"
+		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(1)"
+		tooltip lua "Infinity_GetPortraitTooltip(1)"
+		clickable lua "sidebarsGreyed ~= 1"
+	}
+	button
+	{
+		name 'rgModHudPortrait3'
+		area 1 0 0 118
+		portrait 2
+		bam rgdport2
+		ScaleToClip
+		sequence lua "RgUISkin"
+		enabled "Infinity_GetNumCharacters() > 2 and RgIsModernHud == 1"
+		glow lua "draggedPortrait and draggedPortrait ~= 2"
+		action "Infinity_OnPortraitLClick(2)"
+		actionAlt "Infinity_OnPortraitRClick(2)"
+		actionDbl "Infinity_OnPortraitDblClick(2)"
+		actiondrag "Infinity_SwapWithPortrait(2)"
+		actionEnter "mouseOverPortrait = 2"
+		actionExit "mouseOverPortrait = -1"
+		actionSimpleDrag "draggedPortrait = 2"
+		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(2)"
+		tooltip lua "Infinity_GetPortraitTooltip(2)"
+		clickable lua "sidebarsGreyed ~= 1"
+	}
+	button
+	{
+		name 'rgModHudPortrait4'
+		area 1 0 0 118
+		portrait 3
+		bam rgdport2
+		ScaleToClip
+		sequence lua "RgUISkin"
+		enabled "Infinity_GetNumCharacters() > 3 and RgIsModernHud == 1"
+		glow lua "draggedPortrait and draggedPortrait ~= 3"
+		action "Infinity_OnPortraitLClick(3)"
+		actionAlt "Infinity_OnPortraitRClick(3)"
+		actionDbl "Infinity_OnPortraitDblClick(3)"
+		actiondrag "Infinity_SwapWithPortrait(3)"
+		actionEnter "mouseOverPortrait = 3"
+		actionExit "mouseOverPortrait = -1"
+		actionSimpleDrag "draggedPortrait = 3"
+		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(3)"
+		tooltip lua "Infinity_GetPortraitTooltip(3)"
+		clickable lua "sidebarsGreyed ~= 1"
+	}
+	button
+	{
+		name 'rgModHudPortrait5'
+		area 1 0 0 118
+		portrait 4
+		bam rgdport2
+		ScaleToClip
+		sequence lua "RgUISkin"
+		enabled "Infinity_GetNumCharacters() > 4 and RgIsModernHud == 1"
+		glow lua "draggedPortrait and draggedPortrait ~= 4"
+		action "Infinity_OnPortraitLClick(4)"
+		actionAlt "Infinity_OnPortraitRClick(4)"
+		actionDbl "Infinity_OnPortraitDblClick(4)"
+		actiondrag "Infinity_SwapWithPortrait(4)"
+		actionEnter "mouseOverPortrait = 4"
+		actionExit "mouseOverPortrait = -1"
+		actionSimpleDrag "draggedPortrait = 4"
+		actionSimpleDrop "rgGetHotkeyPortraitSlotsDrag(); swapPortraits(4)"
+		tooltip lua "Infinity_GetPortraitTooltip(4)"
+		clickable lua "sidebarsGreyed ~= 1"
+	}
+	button
+	{
+		name 'rgModHudPortrait6'
+		area 1 0 0 118
+		portrait 5
+		bam rgdport2
+		ScaleToClip
+		sequence lua "RgUISkin"
+		enabled "Infinity_GetNumCharacters() > 5 and RgIsModernHud == 1"
 		glow lua "draggedPortrait and draggedPortrait ~= 5"
 		action "Infinity_OnPortraitLClick(5)"
 		actionAlt "Infinity_OnPortraitRClick(5)"
@@ -14545,6 +14567,7 @@ menu
 			RgRadarKey = ''
 			RgRadarShowPcEffects = 0
 		end
+		B3Spell_Menu_TEMPLATE_OptionsButton_Bam = rgGetAdvSettingsButtonBam()
 		
 		if e:IsTouchUI() and startEngine:GetCampaign() ~= 3 then
 			startEngine:OnCampaignButtonClick('SOD',false)
@@ -48597,6 +48620,8 @@ menu
 			RgRadarKey = rgRadarKey
 			Infinity_SetINIValue('Game Options','RgRadarKey',RgRadarKey)
 			
+			B3Spell_Menu_TEMPLATE_OptionsButton_Bam = rgGetAdvSettingsButtonBam()
+			
 			Infinity_PopMenu('RG_UI_SETTINGS')
 			RgOptionsMode = 0
 			rgGetHotkeySlotPosition()
@@ -52591,6 +52616,7 @@ B3Spell_Menu_Options_TEMPLATE_Toggle_Sequence = RgUISkin
 B3Spell_Menu_OptimizeSlotSize_Bam = "rgdbuts1"
 
 B3Spell_Menu_TEMPLATE_OptionsButton_Bam = "rgdmrnd3"
+
 B3Spell_Menu_TEMPLATE_OptionsButton_Sequence = 1
 `
 
