@@ -11154,6 +11154,11 @@ menu
 		text style	"rg_normal_small"
 		align center center
 	}
+	button
+	{
+		area		98 147 50 43
+		tooltip lua "t('ARMOR_CLASS_LABEL')"
+	}
 	label
 	{
 		name 'rginvcombatstat2'
@@ -11161,6 +11166,11 @@ menu
 		text lua	"characters[rgInvId].HP.current .. '\n' .. characters[rgInvId].HP.max"
 		text style	"rg_normal_small"
 		align center center
+	}
+	button
+	{
+		area		152 147 50 43
+		tooltip lua "t('HIT_POINTS_LABEL')"
 	}
 	label
 	{
@@ -11170,6 +11180,11 @@ menu
 		text style	"rg_normal_small"
 		align center center
 	}
+	button
+	{
+		area		206 147 50 43
+		tooltip lua "t('THAC0_LABEL')"
+	}
 	label
 	{
 		name 'rginvcombatstat4'
@@ -11178,6 +11193,11 @@ menu
 		text style	"rg_normal_small"
 		align center center
 	}
+	button
+	{
+		area		260 147 50 43
+		tooltip lua "t('DAMAGE_LABEL')"
+	}
 	label
 	{
 		name 'rginvcombatstat5'
@@ -11185,6 +11205,11 @@ menu
 		text lua	"characters[rgInvId].proficiencies.numAttacks.current"
 		text style	"rg_normal_small"
 		align center center
+	}
+	button
+	{
+		area		314 147 50 43
+		tooltip lua "t('NUM_ATTACKS_LABEL')"
 	}
 	
 	text
