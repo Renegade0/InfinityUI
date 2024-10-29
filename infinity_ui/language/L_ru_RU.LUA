@@ -795,6 +795,7 @@ uiStrings = {
 	RG_LIBRARY = 'Библиотека: ',
 	RG_BOOKS = 'Книги',
 	RG_BEASTS = 'Монстры',
+	RG_BOSSES = "Боссы",
 	RG_BESTIARY_TITLE = 'Бестиарий',
 	RG_BESTIARY = 'Бестиарий: ',
 	RG_LOOTALL = "Собрать всё",
