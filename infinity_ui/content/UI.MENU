@@ -108,7 +108,7 @@ styles =
 	},
 	button =
 	{
-		color = '$',
+		color = 'B',
 		font = 'RGTRAJ' ,
 		point = 12,
 		valign = 'center',
@@ -520,8 +520,8 @@ function rgString(str)
 	local color = ''
 	if RgUISkin == 0 then
 		color = '^$'
-	else
-		color = '^B'
+	--else
+	--	color = '^B'
 	end
 	return color .. t(str)
 end
@@ -845,10 +845,16 @@ function updateAttrTable()
 		{ characters[currentID].attr.cha, 9587 }
 		}
 
+	local head = '^D'
+	local body = '^B'
+	if RgUISkin == 1 or RgUISkin == 2 then
+		head = '^M'
+		body = '^5'
+	end
 
 	if currentTab == 1 then
 		if statusEffects[1] ~= nil then
-			table.insert(listItems, { 'rgempty','0', '^D' .. t('STATUS_EFFECTS_LABEL') .. ':' .. '^B'})
+			table.insert(listItems, { 'rgempty','0', head .. t('STATUS_EFFECTS_LABEL') .. ':'})
 		end
 		for k, v in pairs(characters[currentID].statusEffects) do
 			--if v.current == 0 then --haste exception
@@ -860,7 +866,7 @@ function updateAttrTable()
 		if statusEffects[1] ~= nil then
 			table.insert(listItems, { 'rgempty','0', '' })
 		end
-		table.insert(listItems, { 'rgempty','0', '^D' .. t('SKILLS_LABEL') .. ':' .. '^B'})
+		table.insert(listItems, { 'rgempty','0', head .. t('SKILLS_LABEL') .. ':'})
 		table.insert(listItems, { 'rgempty','0', t('LORE_LABEL') .. ': ' .. characters[currentID].proficiencies.lore.current })
 		table.insert(listItems, { 'rgempty','0', t('REPUTATION_LABEL') .. ': ' .. characters[currentID].proficiencies.reputation.current })
 		
@@ -870,7 +876,7 @@ function updateAttrTable()
 		end
 		
 		table.insert(listItems, { 'rgempty','0', '' })
-		table.insert(listItems, { 'rgempty','0', '^D' .. t('PROFICIENCIES_LABEL') .. ':' .. '^B'})
+		table.insert(listItems, { 'rgempty','0', head .. t('PROFICIENCIES_LABEL') .. ':'})
 		if characters[currentID].proficiencies.weapons.current ~= "" then
 			table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.weapons.current })
 		end
@@ -880,24 +886,24 @@ function updateAttrTable()
 		end
 		
 		table.insert(listItems, { 'rgempty','0', '' })
-		table.insert(listItems, { 'rgempty','0', '^D' .. t('SAVING_THROWS_LABEL') .. ':' .. '^B'})
+		table.insert(listItems, { 'rgempty','0', head .. t('SAVING_THROWS_LABEL') .. ':'})
 		table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.savingThrows})
 		table.insert(listItems, { 'rgempty','0', '' })
-		table.insert(listItems, { 'rgempty','0', '^D' .. t('RESISTANCES_LABEL') .. ':' .. '^B' .. '^B'})
+		table.insert(listItems, { 'rgempty','0', head .. t('RESISTANCES_LABEL') .. ':'})
 		table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.resistances})
 		--table.insert(listItems, { 'rgempty','0', '' })
-		table.insert(listItems, { 'rgempty','0', '^D' .. '\n' .. t('ABILITIES_TITLE') ..  ':' .. '^B'})--11976
+		table.insert(listItems, { 'rgempty','0', head .. '\n' .. t('ABILITIES_TITLE') ..  ':'})--11976
 		for k, v in ipairs(characters[currentID].proficiencies.ability) do
 			table.insert(listItems, {'rgempty','0', v.current})
 		end
 	elseif currentTab == 2 then
 		listItems = { 
-		{ 'rgempty','0', '^D' .. t('BIOGRAPHY_LABEL') .. ':' .. '^B'},
+		{ 'rgempty','0', head .. t('BIOGRAPHY_LABEL') .. ':'},
 		{ 'rgempty','0', Infinity_FetchString(characters[currentID].biography)},
 		}
 	elseif currentTab == 3 then
 	
-		table.insert(listItems, { 'rgempty','0', '^D' .. t('CLASS_LABEL') .. ':' .. '^B' })
+		table.insert(listItems, { 'rgempty','0', head .. t('CLASS_LABEL') .. ':' })
 		table.insert(listItems, { 'rgempty','0', characters[currentID].classlevel.first.details .. '\n' })
 		
 		if characters[currentID].classlevel.second ~= nil then
@@ -912,32 +918,40 @@ function updateAttrTable()
 		
 	elseif currentTab == 4 then
 		listItems = { 
-		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.partychapxp.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' ..  characters[currentID].Stats.partychapxp.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamexp.current .. '%\n'},
-		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.partychapkills.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.partychapkills.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamekills.current .. '%\n'},
-		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.chapxpvalue.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapxpvalue.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamexpvalue.current .. '\n'},
-		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.chapkills.strRef) .. '^B\n' .. t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapkills.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamekills.current .. '\n'},
-		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.bestenemy.strRef) .. '^B\n' .. characters[currentID].Stats.bestenemy.current .. '\n'},
-		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.timespent.strRef) .. '^B\n' .. characters[currentID].Stats.timespent.current .. '\n'},
-		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.favweapon.strRef) .. '^B\n' .. characters[currentID].Stats.favweapon.current .. '\n'},
-		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].Stats.favspell.strRef) .. '^B\n' .. characters[currentID].Stats.favspell.current},
+		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.partychapxp.strRef)},
+		{ 'rgempty','0', t('CHAPTER_LABEL') .. ': ' ..  characters[currentID].Stats.partychapxp.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamexp.current .. '%\n'},
+		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.partychapkills.strRef)},
+		{ 'rgempty','0', t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.partychapkills.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamekills.current .. '%\n'},
+		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.chapxpvalue.strRef)},
+		{ 'rgempty','0', t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapxpvalue.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamexpvalue.current .. '\n'},
+		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.chapkills.strRef)},
+		{ 'rgempty','0', t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapkills.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamekills.current .. '\n'},
+		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.bestenemy.strRef)},
+		{ 'rgempty','0', characters[currentID].Stats.bestenemy.current .. '\n'},
+		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.timespent.strRef)},
+		{ 'rgempty','0', characters[currentID].Stats.timespent.current .. '\n'},
+		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.favweapon.strRef)},
+		{ 'rgempty','0', characters[currentID].Stats.favweapon.current .. '\n'},
+		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.favspell.strRef)},
+		{ 'rgempty','0', characters[currentID].Stats.favspell.current},
 		}
 	elseif currentTab == 5 then
 		listItems = { 
-		{ 'rgempty','0', '^D' .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[currentID].AC.current .. '^B'},
+		{ 'rgempty','0', head .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[currentID].AC.current},
 		{ 'rgempty','0', characters[currentID].AC.details .. '\n'},
 		--{ 'rgempty','0', Infinity_FetchString(11766) },
 		--{ 'rgempty','0', Infinity_FetchString(11768) .. ': ' .. characters[currentID].AC.slashing },
 		--{ 'rgempty','0', Infinity_FetchString(11769) .. ': ' .. characters[currentID].AC.piercing },
 		--{ 'rgempty','0', Infinity_FetchString(11770) .. ': ' .. characters[currentID].AC.crushing },
 		--{ 'rgempty','0', Infinity_FetchString(11767) .. ': ' .. characters[currentID].AC.missile .. '\n' },
-		{ 'rgempty','0', '^D' .. t('HIT_POINTS_LABEL') .. ': ' .. characters[currentID].HP.current .. '/' .. characters[currentID].HP.max .. '^B'},
+		{ 'rgempty','0', head .. t('HIT_POINTS_LABEL') .. ': ' .. characters[currentID].HP.current .. '/' .. characters[currentID].HP.max},
 		{ 'rgempty','0', characters[currentID].HP.details .. '\n'},
-		{ 'rgempty','0', rgGetTHAC0(currentID)},
+		{ 'rgempty','0', head .. rgGetTHAC0(currentID,body)},
 		{ 'rgempty','0', characters[currentID].THAC0.details .. '\n'},
-		{ 'rgempty','0', rgGetDamage(currentID)},
+		{ 'rgempty','0', head .. rgGetDamage(currentID,body)},
 		{ 'rgempty','0', characters[currentID].damage.details .. '\n'},
-		{ 'rgempty','0', '^D' .. Infinity_FetchString(characters[currentID].proficiencies.numAttacks.strRef) .. ': ' .. characters[currentID].proficiencies.numAttacks.current .. '^B\n'},
-		{ 'rgempty','0', '^D' .. t('CURRENT_SCRIPT_LABEL') .. ': ' .. characters[currentID].proficiencies.currentScript .. '^B'},
+		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].proficiencies.numAttacks.strRef) .. ': ' .. characters[currentID].proficiencies.numAttacks.current .. '\n'},
+		{ 'rgempty','0', head .. t('CURRENT_SCRIPT_LABEL') .. ': ' .. characters[currentID].proficiencies.currentScript},
 		}
 	end
 
@@ -950,15 +964,15 @@ function updateAttrTable()
 	--showAbilityBonuses = showAbilityBonuses == 1 and characterViewable == true
 
 end
-function rgGetTHAC0(rgid)
-	local str = '^D' .. t('THAC0_LABEL') .. ': ' .. characters[rgid].THAC0.current .. '^B'
+function rgGetTHAC0(rgid, body)
+	local str = t('THAC0_LABEL') .. ': ' .. characters[rgid].THAC0.current .. body
 	if(characters[rgid].THAC0.offhand) then
 		str = str .. "\n" .. t('OFF_HAND_THAC0') .. ': ' .. characters[rgid].THAC0.offhand
 	end
 	return str
 end
-function rgGetDamage(rgid)
-	local str =  '^D' .. t('DAMAGE_LABEL') .. ': ' .. characters[rgid].damage.min .. ' - ' .. characters[rgid].damage.max .. '^B'
+function rgGetDamage(rgid, body)
+	local str = t('DAMAGE_LABEL') .. ': ' .. characters[rgid].damage.min .. ' - ' .. characters[rgid].damage.max .. body
 	if(characters[rgid].damage.minOffhand and characters[rgid].damage.maxOffhand) then
 		str = str .. "\n"  .. t('OFF_HAND_DAMAGE') .. ': ' .. characters[rgid].damage.minOffhand .. ' - ' .. characters[rgid].damage.maxOffhand 
 	end
@@ -1338,6 +1352,7 @@ menu
 		name 'rgdbcrec1'
 		area	0 0 768 768
 		bam rgdbcrec
+		sequence lua "RgUISkin"
 		frame 0
 		scaleToClip
 	}
@@ -1347,6 +1362,7 @@ menu
 		name 'rgdbcrec2'
 		area	597 0 768 768
 		bam rgdbcrec
+		sequence lua "RgUISkin"
 		frame 1
 		scaleToClip
 	}
@@ -1376,10 +1392,11 @@ menu
 	}
 	label
 	{
-		
+		--enabled "RgUISkin < 3"
 		name 'rgdbcrecport'
 		area	102 102 223 344
-		bam rgdbcrep
+		bam rgdport7
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	button
@@ -1389,6 +1406,7 @@ menu
 		area 340 102 64 93
 		portrait 0
 		bam rgdport2
+		sequence lua "RgUISkin"
 		--bitmap		lua "characters[charTable[1]].portrait"
 		ScaleToClip
 		--highlightgroup	rgrecport
@@ -1406,10 +1424,11 @@ menu
 		area 418 102 64 93
 		portrait 1
 		bam rgdport2
+		sequence lua "RgUISkin"
 		--bitmap		lua "characters[charTable[2]].portrait"
 		ScaleToClip
 		--highlightgroup	rgrecport
-		clickable lua "Infinity_GetNumCharacters() > 1"
+		--clickable lua "Infinity_GetNumCharacters() > 1"
 		glow lua "draggedPortrait and draggedPortrait ~= 1"
 		action "Infinity_OnPortraitLClick(1)"
 		actionEnter "mouseOverPortrait = 1"
@@ -1423,10 +1442,11 @@ menu
 		area 496 102 64 93
 		portrait 2
 		bam rgdport2
+		sequence lua "RgUISkin"
 		--bitmap		lua "characters[charTable[3]].portrait"
 		ScaleToClip
 		--highlightgroup	rgrecport
-		clickable lua "Infinity_GetNumCharacters() > 2"
+		--clickable lua "Infinity_GetNumCharacters() > 2"
 		glow lua "draggedPortrait and draggedPortrait ~= 2"
 		action "Infinity_OnPortraitLClick(2)"
 		actionEnter "mouseOverPortrait = 2"
@@ -1440,10 +1460,11 @@ menu
 		area 574 102 64 93
 		portrait 3
 		bam rgdport2
+		sequence lua "RgUISkin"
 		--bitmap		lua "characters[charTable[4]].portrait"
 		ScaleToClip
 		--highlightgroup	rgrecport
-		clickable lua "Infinity_GetNumCharacters() > 3"
+		--clickable lua "Infinity_GetNumCharacters() > 3"
 		glow lua "draggedPortrait and draggedPortrait ~= 3"
 		action "Infinity_OnPortraitLClick(3)"
 		actionEnter "mouseOverPortrait = 3"
@@ -1457,10 +1478,11 @@ menu
 		area 653 102 64 93
 		portrait 4
 		bam rgdport2
+		sequence lua "RgUISkin"
 		--bitmap		lua "characters[charTable[5]].portrait"
 		ScaleToClip
 		--highlightgroup	rgrecport
-		clickable lua "Infinity_GetNumCharacters() > 4"
+		--clickable lua "Infinity_GetNumCharacters() > 4"
 		glow lua "draggedPortrait and draggedPortrait ~= 4"
 		action "Infinity_OnPortraitLClick(4)"
 		actionEnter "mouseOverPortrait = 4"
@@ -1474,10 +1496,11 @@ menu
 		area 732 102 64 93
 		portrait 5
 		bam rgdport2
+		sequence lua "RgUISkin"
 		--bitmap		lua "characters[charTable[6]].portrait"
 		ScaleToClip
 		--highlightgroup	rgrecport
-		clickable lua "Infinity_GetNumCharacters() > 5"
+		--clickable lua "Infinity_GetNumCharacters() > 5"
 		glow lua "draggedPortrait and draggedPortrait ~= 5"
 		action "Infinity_OnPortraitLClick(5)"
 		actionEnter "mouseOverPortrait = 5"
@@ -1949,13 +1972,22 @@ menu
 			}
 			label
 			{
+				enabled "RgUISkin == 0 or RgUISkin == 3"
 				area		0 0 -1 -1
 				text		lua "listItems[rowNumber][3]" 
 				text style  'normal'
 				text align	left center
 			}
+			label
+			{
+				enabled "RgUISkin == 1 or RgUISkin == 2"
+				area		0 0 -1 -1
+				text		lua "listItems[rowNumber][3]" 
+				text style  'normal_parchment'
+				text align	left center
+			}
 		}
-		area 812 102 452 580
+		area 817 104 449 576
 		name 'rgdreclist'
 		
 		rowheight	dynamic
@@ -1973,7 +2005,7 @@ menu
 		
 		name 'rgdrectab1'
 		area 812 687 88 46
-		bam rgdrectb
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 0
@@ -1988,7 +2020,7 @@ menu
 		
 		name 'rgdrectab2'
 		area 1164 687 88 46
-		bam rgdrectb
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 4
@@ -2003,7 +2035,7 @@ menu
 		
 		name 'rgdrectab3'
 		area 988 687 88 46
-		bam rgdrectb
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 1
@@ -2018,7 +2050,7 @@ menu
 		
 		name 'rgdrectab4'
 		area 1076 687 88 46
-		bam rgdrectb
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 3
@@ -2033,7 +2065,7 @@ menu
 		
 		name 'rgdrectab5'
 		area 900 687 88 46
-		bam rgdrectb
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 2
@@ -2298,9 +2330,10 @@ menu
 		enabled 	"CurrentlyInGame()"
 		name		"BUTTON_2_50"
 		area		102 558 222 50
-		text		"CUSTOMIZE_BUTTON"
+		text lua	"rgString('CUSTOMIZE_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "characterScreen:IsMultiPlayerModifyable()"
 		action 
@@ -2313,9 +2346,10 @@ menu
 		enabled 	"CurrentlyInGame()"
 		name		"BUTTON_2_36"
 		area		102 612 222 50
-		text		"EXPORT_BUTTON"
+		text lua	"rgString('EXPORT_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "characterScreen:IsExportButtonClickable()"
 		action 
@@ -2330,9 +2364,10 @@ menu
 		clickable	lua "characterScreen:IsReformPartyButtonClickable()"
 		name		"BUTTON_2_51"
 		area		102 666 222 50
-		text		"REFORM_PARTY_BUTTON"
+		text lua	"rgString('REFORM_PARTY_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action		"characterScreen:OnReformPartyButtonClick();"
 	}
@@ -2341,9 +2376,10 @@ menu
 		enabled 	"CurrentlyInGame()"
 		name		"BUTTON_2_0"
 		area		102 504 222 50
-		text		"DUAL_CLASS_BUTTON"
+		text lua "rgString('DUAL_CLASS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable	lua "characterScreen:IsDualClassButtonClickable()"
 		action 		
@@ -2356,9 +2392,11 @@ menu
 		enabled 	"CurrentlyInGame()"
 		name		"BUTTON_2_37"
 		area		102 450 222 50
-		text		"LEVEL_UP_BUTTON"
+		text lua	"rgString('LEVEL_UP_BUTTON')" 
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
+		glow lua "characterScreen:IsLevelUpButtonClickable()"
 		ScaleToClip
 		clickable	lua "characterScreen:IsLevelUpButtonClickable()"
 		action		" characterScreen:OnLevelUpButtonClick();"
@@ -6795,8 +6833,17 @@ menu
 	}
 	label
 	{
+		enabled "RgUISkin == 0"
 		area 388 414 272 262
 		bam rgdpopin
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgUISkin > 0"
+		area 388 414 272 262
+		bam rgdpopin
+		sequence 1
 		ScaleToClip
 	}
 	button
@@ -7429,8 +7476,17 @@ menu
 	--modal
 	label
 	{
+		enabled "RgUISkin == 0"
 		area 0 0 622 660
 		bam RGDIDESC
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgUISkin > 0"
+		area 0 0 622 660
+		bam RGDIDESC
+		sequence 1
 		ScaleToClip
 	}
 	--label
@@ -9451,6 +9507,7 @@ function getTempStat(old, newName, coeff)
 	if(tempStats[rgInvId] == nil) then
 		return "-"
 	end
+	
 	local new = tempStats[rgInvId][newName]
 	local score = coeff * (new - old)
 	if(score == 0) then
@@ -9743,6 +9800,30 @@ function rgUpdateSlotsOnExit(recId)
     elseif curCharId == charTable[6] then Infinity_OnPortraitLClick(5)
     end
 end
+local body = '^B'
+	if RgUISkin == 1 or RgUISkin == 2 then
+		body = '^5'
+	end
+
+function rgGetForeground()
+	local body = '^B'
+	if RgUISkin == 1 or RgUISkin == 2 then
+		body = '^5'
+	end
+	return body
+end
+function rgGetTempAC()
+	return getTempStat(characters[rgInvId].AC.current,'AC',-1)
+end
+function rgGetTempHP()
+	return getTempHP()
+end
+function rgGetTempDamage()
+	return getTempStat(characters[rgInvId].THAC0.current,'THAC0',-1)
+end
+function rgGetTempTHAC0()
+	return getTempDamage()
+end
 
 
 function rgGetCombatStatsString(charId)
@@ -9767,22 +9848,29 @@ function rgGetCombatStatsString(charId)
 	
 	local out = ''
 	
+	local head = '^D'
+	local body = '^B'
+	if RgUISkin == 1 or RgUISkin == 2 then
+		head = '^M'
+		body = '^5'
+	end
+	
 	if TEXT_inventoryError == rgGetGameEngineString(24355,24355,16321,16321) or TEXT_inventoryError == nil or  TEXT_inventoryError == '' then
 	
 		out =
-		'^D' .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[charId].AC.current .. '^B\n' ..
+		head .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[charId].AC.current .. body .. '\n' ..
 		characters[charId].AC.details .. '\n\n' ..
-		'^D' .. t('HIT_POINTS_LABEL') .. ': ' .. characters[charId].HP.current .. '/' .. characters[charId].HP.max .. '^B\n' ..
+		head .. t('HIT_POINTS_LABEL') .. ': ' .. characters[charId].HP.current .. '/' .. characters[charId].HP.max .. body .. '\n' ..
 		characters[charId].HP.details .. '\n\n' ..
-		rgGetTHAC0(charId) .. '\n' ..
+		head .. rgGetTHAC0(charId, body) .. '\n' ..
 		characters[charId].THAC0.details .. '\n\n' ..
-		rgGetDamage(charId) .. '\n' ..
+		head .. rgGetDamage(charId, body) .. '\n' ..
 		characters[charId].damage.details .. '\n\n' ..
-		'^D' .. t('SAVING_THROWS_LABEL') .. ':' .. '^B\n' ..
-		characters[charId].proficiencies.savingThrows .. '\n\n' ..
-		'^D' .. t('RESISTANCES_LABEL') .. ':' .. '^B' .. '^B\n' ..
+		head .. t('SAVING_THROWS_LABEL') .. ':' .. body .. '\n' ..
+		characters[charId].proficiencies.savingThrows .. body .. '\n\n' ..
+		head .. t('RESISTANCES_LABEL') .. ':' .. body .. '\n' ..
 		characters[charId].proficiencies.resistances .. '\n\n' ..
-		'^D' .. t('PROFICIENCIES_LABEL') .. ':' .. '^B\n' ..
+		head .. t('PROFICIENCIES_LABEL') .. ':' .. body .. '\n' ..
 		characters[charId].proficiencies.weapons.current .. '\n' ..
 		characters[charId].proficiencies.fightingstyles.current
 		
@@ -10358,9 +10446,16 @@ function rgGetTempItemDesc()
 	--	rgTempItemName = tempStats[rgInvId].tempItem
 	--end
 	
+	local head = '^D'
+	local body = '^B'
+	if RgUISkin == 1 or RgUISkin == 2 then
+		head = '^M'
+		body = '^5'
+	end
+	
 	for i=1,#rgItemDescList,1 do
 		if rgItemDescList[i][1] == tempStats[rgInvId].tempItem  then
-			rgTestItemDesc =  '^D' .. tempStats[rgInvId].tempItem .. '^B\n\n' .. rgSplitByDoubleLine(rgItemDescList[i][2])
+			rgTestItemDesc =  head .. tempStats[rgInvId].tempItem .. body .. '\n\n' .. rgSplitByDoubleLine(rgItemDescList[i][2])
 			break
 		end
 	end
@@ -10479,6 +10574,64 @@ function rgUnlockInvId()
 	rgInvId = id
 end
 
+function rgGetInvPaperdollBam()
+	local bam = 'rgpap'
+	if characters[rgInvId].gender == 15729635 then
+		bam = bam .. 'f'
+	elseif characters[rgInvId].gender == 15729749 then
+		bam = bam .. 'm'
+	end
+	if characters[rgInvId].race == 1096 or characters[rgInvId].race == 2828 then
+		bam = bam .. 'h'
+	elseif  characters[rgInvId].race == 1097 or characters[rgInvId].race == 1098 or characters[rgInvId].race == 8330 then
+		bam = bam .. 'e'
+	elseif  characters[rgInvId].race == 1100 then
+		bam = bam .. 'd'
+	elseif  characters[rgInvId].race == 1101 then
+		bam = bam .. 'l'
+	elseif  characters[rgInvId].race == 1099 then
+		bam = bam .. 'g'
+	elseif  characters[rgInvId].race == 53212 then
+		bam = bam .. 'o'
+	end
+	return bam
+end
+function rgGetInvPaperdollSeq()
+	if characters[rgInvId].class == Infinity_FetchString(10177) or characters[rgInvId].class == Infinity_FetchString(10184) or characters[rgInvId].class == Infinity_FetchString(10186) or characters[rgInvId].class == Infinity_FetchString(1065)
+			or characters[rgInvId].class == Infinity_FetchString(1079) or characters[rgInvId].class == Infinity_FetchString(1080) then
+		return 0
+	elseif  characters[rgInvId].class == Infinity_FetchString(10174) or characters[rgInvId].class == Infinity_FetchString(10178) or characters[rgInvId].class == Infinity_FetchString(10182) or characters[rgInvId].class == Infinity_FetchString(10187) 
+			or characters[rgInvId].class == Infinity_FetchString(10188) or characters[rgInvId].class == Infinity_FetchString(10189) or characters[rgInvId].class == Infinity_FetchString(10173) 
+			or characters[rgInvId].class == Infinity_FetchString(1073) or characters[rgInvId].class == Infinity_FetchString(1074) or characters[rgInvId].class == Infinity_FetchString(1075) or characters[rgInvId].class == Infinity_FetchString(1076 )
+			or characters[rgInvId].class == Infinity_FetchString(1077) or characters[rgInvId].class == Infinity_FetchString(1078) or characters[rgInvId].class == Infinity_FetchString(1066)
+			or characters[rgInvId].class == Infinity_FetchString(10190) or characters[rgInvId].class == Infinity_FetchString(10191) or characters[rgInvId].class == Infinity_FetchString(10194) 
+			or characters[rgInvId].class == Infinity_FetchString(1052) or characters[rgInvId].class == Infinity_FetchString(1053) or characters[rgInvId].class == Infinity_FetchString(1056) then
+		return 1
+	elseif  characters[rgInvId].class:lower() == Infinity_FetchString(10176):lower() or characters[rgInvId].class:lower() == Infinity_FetchString(10180):lower() or characters[rgInvId].class:lower() == Infinity_FetchString(1058):lower() 
+			or characters[rgInvId].class:lower() == Infinity_FetchString(1058):lower()
+			or characters[rgInvId].class:lower() == Infinity_FetchString(1081):lower() then
+		return 2
+	elseif  characters[rgInvId].class:lower() == Infinity_FetchString(10175):lower() or characters[rgInvId].class:lower() == Infinity_FetchString(10179):lower() or characters[rgInvId].class:lower() == Infinity_FetchString(10193):lower()
+			or characters[rgInvId].class:lower() == Infinity_FetchString(1057):lower()
+			or characters[rgInvId].class:lower() == Infinity_FetchString(1082):lower() or characters[rgInvId].class:lower() == Infinity_FetchString(1083):lower() then
+		return 3
+	else
+		return rgClassString
+	end
+end
+
+function rgGetInvPaperdollFrame()
+
+end
+function rgGetInvModeSequence()
+	if RgUISkin == 3 then
+		return 1
+	else
+		return 0
+	end
+end
+
+
 --function rgGetInvId()
 --    if rgInvId ~= id then
 --		rgGetTempItemDescList()
@@ -10507,6 +10660,7 @@ rgInvId = 0
 rgInvChar = ''
 rgCurChar = ''
 rgPaperdollSwap = 0
+rgClassString = 0
 --RgInvPartyModeHover = 0
 `
 menu
@@ -10535,6 +10689,7 @@ menu
 		Infinity_SetOffset('ITEM_DESCRIPTION',-290, 30)
 		--rgGetTempItemDescList()
 		rgTempItem = ''
+		rgClassString = rgGetInvPaperdollSeq()
 	"
 	onClose 
 	"
@@ -10552,6 +10707,7 @@ menu
 		name 'rgdbcinv1'
 		area	0 0 768 768
 		bam rgdbcinv
+		sequence lua "RgUISkin"
 		frame 0
 		scaleToClip
 	}
@@ -10560,16 +10716,23 @@ menu
 		name 'rgdbcinv2'
 		area	597 0 768 768
 		bam rgdbcinv
+		sequence lua "RgUISkin"
 		frame 1
 		scaleToClip
 	}
+	--label
+	--{
+	--	area	0 0 768 768
+	--	fill 255 255 255 255
+	--}
 	button
 	{
-		area		1077 28 62 58 
+		area		1081 36 54 50 
 		bam			rgdimbut
 		scaleToClip
 		toggle		rgInventoryMode
 		tooltip lua "t('RG_INV_MODE')"
+		sequence lua "rgGetInvModeSequence()"
 		action
 		"
 			rgInvId = id
@@ -10643,15 +10806,16 @@ menu
 	{
 		enabled		"tempStats[rgInvId] ~= nil"
 		area		93 195 275 55
-		bam rgdicomp
+		bam rgdicomx
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
-	
+
 	label
 	{
 		enabled		"tempStats[rgInvId] ~= nil"
 		area		98 203 50 43
-		text lua	"getTempStat(characters[rgInvId].AC.current,'AC',-1)"
+		text lua	"rgGetTempAC()"
 		text style	"rg_normal_small"
 		align center center
 	}
@@ -10659,15 +10823,7 @@ menu
 	{
 		enabled		"tempStats[rgInvId] ~= nil"
 		area		152 203 50 43
-		text lua	"getTempHP()"
-		text style	"rg_normal_small"
-		align center center
-	}
-	label
-	{
-		enabled		"tempStats[rgInvId] ~= nil"
-		area		206 203 50 43
-		text lua	"getTempStat(characters[rgInvId].THAC0.current,'THAC0',-1)"
+		text lua	"rgGetTempHP()"
 		text style	"rg_normal_small"
 		align center center
 	}
@@ -10675,7 +10831,15 @@ menu
 	{
 		enabled		"tempStats[rgInvId] ~= nil"
 		area		260 203 50 43
-		text lua	"getTempDamage()"
+		text lua	"rgGetTempTHAC0()"
+		text style	"rg_normal_small"
+		align center center
+	}
+	label
+	{
+		enabled		"tempStats[rgInvId] ~= nil"
+		area		206 203 50 43
+		text lua	"rgGetTempDamage()"
 		text style	"rg_normal_small"
 		align center center
 	}
@@ -10707,27 +10871,43 @@ menu
 	}
 	
 	
+	label
+	{
+		--enabled "rgInventoryMode == 1 or rgPaperdollSwap == 1"
+		enabled "id ~= rgInvId"
+		area 462 275 122 158
+		bam lua "rgGetInvPaperdollBam()"
+		sequence lua "rgGetInvPaperdollSeq()"
+		--text lua "characters[rgInvId].equipment.armor.item[3]"
+	}
 	button
 	{
 		--enabled "rgInventoryMode == 1 or rgPaperdollSwap == 1"
+		enabled "id == rgInvId"
 		name 'rginvpaperdoll'
 		area 462 275 122 158
 		paperdoll 1
 		actiondrag "Infinity_SwapWithAppearance()"
 	}
-	button
-	{
-		enabled "rgInventoryMode == 0 and rgPaperdollSwap == 0 and RgInvPartyModeHover == 1"
-		area 452 245 142 218
-		bitmap		lua "characters[rgInvId].portrait"
-	}
-	label
-	{
-		enabled "rgInventoryMode == 0 and rgPaperdollSwap == 0 and RgInvPartyModeHover == 1"
-		area 451 244 144 220
-		bam "rgdport4"
-		scaleToClip
-	}
+	--label
+	--{
+	--	enabled "rgInventoryMode == 0 and rgPaperdollSwap == 0 and RgInvPartyModeHover == 1 and id ~= rgInvId"
+	--	area 463 281 122 158
+	--	bam 'aaa'
+	--}
+	--button
+	--{
+	--	enabled "rgInventoryMode == 0 and rgPaperdollSwap == 0 and RgInvPartyModeHover == 1"
+	--	area 452 245 142 218
+	--	bitmap		lua "characters[rgInvId].portrait"
+	--}
+	--label
+	--{
+	--	enabled "rgInventoryMode == 0 and rgPaperdollSwap == 0 and RgInvPartyModeHover == 1"
+	--	area 451 244 144 220
+	--	bam "rgdport4"
+	--	scaleToClip
+	--}
 	
 	
 	button
@@ -10764,7 +10944,7 @@ menu
 	{
 		name 'rginvnamelabel'
 		area 374 102 300 26
-		text lua "characters[rgInvId].name"
+		text lua "rgString(characters[rgInvId].name)"
 		text style "rg_trajan"
 		align center center
 		text color '$'
@@ -10773,7 +10953,7 @@ menu
 	{
 		name 'rginvclasslabel'
 		area 374 130 300 26
-		text lua "characters[rgInvId].class"
+		text lua "rgString(characters[rgInvId].class)"
 		--text lua "tempStats[rgInvId].tempItem .. '/' .. rgTempItemName .. ';' .. rgTempItem"
 		text style "rg_trajan"
 		align center center
@@ -10805,6 +10985,7 @@ menu
 		area 702 105 71 98
 		portrait 0
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 0 and rgInventoryMode == 1"
 		action "Infinity_OnPortraitLClick(0); rgInvId = id; rgInvChar = '1'"
@@ -10822,6 +11003,7 @@ menu
 		area 782 105 71 98
 		portrait 1
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 1 and rgInventoryMode == 1"
 		action "Infinity_OnPortraitLClick(1); rgInvId = id; rgInvChar = '2'"
@@ -10839,6 +11021,7 @@ menu
 		area 862 105 71 98
 		portrait 2
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 2 and rgInventoryMode == 1"
 		action "Infinity_OnPortraitLClick(2); rgInvId = id; rgInvChar = '3'"
@@ -10856,6 +11039,7 @@ menu
 		area 942 105 71 98
 		portrait 3
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 3 and rgInventoryMode == 1"
 		action "Infinity_OnPortraitLClick(3); rgInvId = id; rgInvChar = '4'"
@@ -10873,6 +11057,7 @@ menu
 		area 1022 105 71 98
 		portrait 4
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 4 and rgInventoryMode == 1"
 		action "Infinity_OnPortraitLClick(4); rgInvId = id; rgInvChar = '5'"
@@ -10890,6 +11075,7 @@ menu
 		area 1102 105 71 98
 		portrait 5
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 5 and rgInventoryMode == 1"
 		action "Infinity_OnPortraitLClick(5); rgInvId = id; rgInvChar = '6'"
@@ -10943,11 +11129,12 @@ menu
 	{
 		area 703 96 71 98
 		bam rgdport5
+		sequence lua "RgUISkin"
 		ScaleToClip
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(1)"
 		enabled "Infinity_GetNumCharacters() > 0 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(0); rgActiveArea = 1; rgInvId = id; rgInvChar = '1'"
+		action "Infinity_OnPortraitLClick(0); rgActiveArea = 1; rgInvId = id; rgInvChar = '1'; rgClassString = rgGetInvPaperdollSeq()"
 		actionAlt "Infinity_OnPortraitRClick(0)"
 		actionDbl "Infinity_OnPortraitDblClick(0); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(0)"
@@ -10960,11 +11147,12 @@ menu
 	{
 		area 703 202 71 98
 		bam rgdport5
+		sequence lua "RgUISkin"
 		ScaleToClip
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(2)"
 		enabled "Infinity_GetNumCharacters() > 1 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(1); rgActiveArea = 2; rgInvId = id; rgInvChar = '2'"
+		action "Infinity_OnPortraitLClick(1); rgActiveArea = 2; rgInvId = id; rgInvChar = '2'; rgClassString = rgGetInvPaperdollSeq()"
 		actionAlt "Infinity_OnPortraitRClick(1)"
 		actionDbl "Infinity_OnPortraitDblClick(1); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(1)"
@@ -10977,11 +11165,12 @@ menu
 	{
 		area 703 308 71 98
 		bam rgdport5
+		sequence lua "RgUISkin"
 		ScaleToClip
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(3)"
 		enabled "Infinity_GetNumCharacters() > 2 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(2); rgActiveArea = 3; rgInvId = id; rgInvChar = '3'"
+		action "Infinity_OnPortraitLClick(2); rgActiveArea = 3; rgInvId = id; rgInvChar = '3'; rgClassString = rgGetInvPaperdollSeq()"
 		actionAlt "Infinity_OnPortraitRClick(2)"
 		actionDbl "Infinity_OnPortraitDblClick(2); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(2)"
@@ -10994,11 +11183,12 @@ menu
 	{
 		area 703 414 71 98
 		bam rgdport5
+		sequence lua "RgUISkin"
 		ScaleToClip
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(4)"
 		enabled "Infinity_GetNumCharacters() > 3 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(3); rgActiveArea = 4; rgInvId = id; rgInvChar = '4'"
+		action "Infinity_OnPortraitLClick(3); rgActiveArea = 4; rgInvId = id; rgInvChar = '4'; rgClassString = rgGetInvPaperdollSeq()"
 		actionAlt "Infinity_OnPortraitRClick(3)"
 		actionDbl "Infinity_OnPortraitDblClick(3); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(3)"
@@ -11011,11 +11201,12 @@ menu
 	{
 		area 703 520 71 98
 		bam rgdport5
+		sequence lua "RgUISkin"
 		ScaleToClip
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(5)"
 		enabled "Infinity_GetNumCharacters() > 4 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(4); rgActiveArea = 5; rgInvId = id; rgInvChar = '5'"
+		action "Infinity_OnPortraitLClick(4); rgActiveArea = 5; rgInvId = id; rgInvChar = '5'; rgClassString = rgGetInvPaperdollSeq()"
 		actionAlt "Infinity_OnPortraitRClick(4)"
 		actionDbl "Infinity_OnPortraitDblClick(4); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(4)"
@@ -11028,11 +11219,12 @@ menu
 	{
 		area 703 626 71 98
 		bam rgdport5
+		sequence lua "RgUISkin"
 		ScaleToClip
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(6)"
 		enabled "Infinity_GetNumCharacters() > 5 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(5); rgActiveArea = 6; rgInvId = id; rgInvChar = '6'"
+		action "Infinity_OnPortraitLClick(5); rgActiveArea = 6; rgInvId = id; rgInvChar = '6'; rgClassString = rgGetInvPaperdollSeq()"
 		actionAlt "Infinity_OnPortraitRClick(5)"
 		actionDbl "Infinity_OnPortraitDblClick(5); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(5)"
@@ -11047,6 +11239,7 @@ menu
 		area 703 96 71 98
 		portrait 0
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 0 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 0"
 		action "Infinity_OnPortraitLClick(0); rgActiveArea = 1; rgInvId = id; rgInvChar = '1'"
@@ -11063,6 +11256,7 @@ menu
 		area 703 202 71 98
 		portrait 1
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 1 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 0"
 		action "Infinity_OnPortraitLClick(1); rgActiveArea = 2; rgInvId = id; rgInvChar = '2'"
@@ -11079,6 +11273,7 @@ menu
 		area 703 308 71 98
 		portrait 2
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 2 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 0"
 		action "Infinity_OnPortraitLClick(2); rgActiveArea = 3; rgInvId = id; rgInvChar = '3'"
@@ -11095,6 +11290,7 @@ menu
 		area 703 414 71 98
 		portrait 3
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 3 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 0"
 		action "Infinity_OnPortraitLClick(3); rgActiveArea = 4; rgInvId = id; rgInvChar = '4'"
@@ -11111,6 +11307,7 @@ menu
 		area 703 520 71 98
 		portrait 4
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 4 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 0"
 		action "Infinity_OnPortraitLClick(4); rgActiveArea = 5; rgInvId = id; rgInvChar = '5'"
@@ -11127,6 +11324,7 @@ menu
 		area 703 626 71 98
 		portrait 5
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 5 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 0"
 		action "Infinity_OnPortraitLClick(5); rgActiveArea = 6; rgInvId = id; rgInvChar = '6'"
@@ -11144,6 +11342,7 @@ menu
 		name 'rginvcombatstatback'
 		area 93 96 275 98
 		bam rgdistat
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -11231,31 +11430,31 @@ menu
 	--	text style normal
 	--}
 	
-	label {area 602 546 72 72 name 'rginvslotback1'	bam "RGDISLOT" ScaleToClip}
-	label {area 602 622 72 72 name 'rginvslotback2'	bam "RGDISLOT" ScaleToClip}
+	label {area 602 546 72 72 name 'rginvslotback1'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 602 622 72 72 name 'rginvslotback2'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
     
-	label {area 374 470 72 72 name 'rginvslotback3'	bam "RGDISLOT" ScaleToClip}
-	label {area 450 470 72 72 name 'rginvslotback4'	bam "RGDISLOT" ScaleToClip}
-	label {area 526 470 72 72 name 'rginvslotback5'	bam "RGDISLOT" ScaleToClip}
-	label {area 602 470 72 72 name 'rginvslotback6'	bam "RGDISLOT" ScaleToClip}
+	label {area 374 470 72 72 name 'rginvslotback3'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 450 470 72 72 name 'rginvslotback4'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 526 470 72 72 name 'rginvslotback5'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 602 470 72 72 name 'rginvslotback6'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
     
-	label {area 374 622 72 72 name 'rginvslotback7'	bam "RGDISLOT" ScaleToClip}
-	label {area 450 622 72 72 name 'rginvslotback8'	bam "RGDISLOT" ScaleToClip}
-	label {area 526 622 72 72 name 'rginvslotback9'	bam "RGDISLOT" ScaleToClip}
+	label {area 374 622 72 72 name 'rginvslotback7'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 450 622 72 72 name 'rginvslotback8'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 526 622 72 72 name 'rginvslotback9'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
     
-	label {area 374 166 72 72 name 'rginvslotback10'	bam "RGDISLOT" ScaleToClip}
-	label {area 374 242 72 72 name 'rginvslotback11'	bam "RGDISLOT" ScaleToClip}
-	label {area 450 166 72 72 name 'rginvslotback12'	bam "RGDISLOT" ScaleToClip}
-	label {area 602 166 72 72 name 'rginvslotback13'	bam "RGDISLOT" ScaleToClip}
-	label {area 374 546 72 72 name 'rginvslotback14'	bam "RGDISLOT" ScaleToClip}
-	label {area 450 546 72 72 name 'rginvslotback15'	bam "RGDISLOT" ScaleToClip}
-	label {area 526 546 72 72 name 'rginvslotback16'	bam "RGDISLOT" ScaleToClip}
-	label {area 374 318 72 72 name 'rginvslotback17'	bam "RGDISLOT" ScaleToClip}
-	label {area 602 318 72 72 name 'rginvslotback18'	bam "RGDISLOT" ScaleToClip}
-	label {area 602 242 72 72 name 'rginvslotback19'	bam "RGDISLOT" ScaleToClip}
-	label {area 526 166 72 72 name 'rginvslotback20'	bam "RGDISLOT" ScaleToClip}
-	label {area 374 394 72 72 name 'rginvslotback21'	bam "RGDISLOT" ScaleToClip}
-	label {area 602 394 72 72 name 'rginvslotback22'	bam "RGDISLOT" ScaleToClip}
+	label {area 374 166 72 72 name 'rginvslotback10'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 374 242 72 72 name 'rginvslotback11'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 450 166 72 72 name 'rginvslotback12'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 602 166 72 72 name 'rginvslotback13'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 374 546 72 72 name 'rginvslotback14'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 450 546 72 72 name 'rginvslotback15'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 526 546 72 72 name 'rginvslotback16'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 374 318 72 72 name 'rginvslotback17'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 602 318 72 72 name 'rginvslotback18'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 602 242 72 72 name 'rginvslotback19'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 526 166 72 72 name 'rginvslotback20'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 374 394 72 72 name 'rginvslotback21'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 602 394 72 72 name 'rginvslotback22'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
 	
 	--label {area 406 464 72 72	bam "RGDSLOT" ScaleToClip	}
 	--label {area 478 464 72 72	bam "RGDSLOT" ScaleToClip	}
@@ -11311,22 +11510,22 @@ menu
 	slot {name "slot_inv_45"		area 942 638 58 58	bam "RGDSLOT" sequence lua "RgUISkin" ScaleToClip	slotinfo "characters[id].equipment.group15"	enabled "rgInventoryMode == 1" actionEnter "rgGetTempItemCheck(characters[id].equipment.group15.item)" }
 	
 	
-	text {area 760 218 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group0.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group0')  rgGetTempItemCheck(characters[id].equipment.group0.item) " 	}
-	text {area 760 278 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group1.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group1')  rgGetTempItemCheck(characters[id].equipment.group1.item) "  	}
-	text {area 760 338 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group2.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group2')  rgGetTempItemCheck(characters[id].equipment.group2.item) "  	}
-	text {area 760 398 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group3.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group3')  rgGetTempItemCheck(characters[id].equipment.group3.item) "  	}
-	text {area 760 458 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group4.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group4')  rgGetTempItemCheck(characters[id].equipment.group4.item) "  	}
-	text {area 760 518 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group5.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group5')  rgGetTempItemCheck(characters[id].equipment.group5.item) "  	}
-	text {area 760 578 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group6.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group6')  rgGetTempItemCheck(characters[id].equipment.group6.item) "  	}
-	text {area 760 638 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group7.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group7')  rgGetTempItemCheck(characters[id].equipment.group7.item) "  	}
-	text {area 1000 218 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group8.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group8')  rgGetTempItemCheck(characters[id].equipment.group8.item) "  	}
-	text {area 1000 278 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group9.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group9')  rgGetTempItemCheck(characters[id].equipment.group9.item) "  	}
-	text {area 1000 338 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group10.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group10') rgGetTempItemCheck(characters[id].equipment.group10.item)" 	}
-	text {area 1000 398 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group11.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group11') rgGetTempItemCheck(characters[id].equipment.group11.item)" 	}
-	text {area 1000 458 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group12.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group12') rgGetTempItemCheck(characters[id].equipment.group12.item)" 	}
-	text {area 1000 518 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group13.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group13') rgGetTempItemCheck(characters[id].equipment.group13.item)" 	}
-	text {area 1000 578 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group14.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group14') rgGetTempItemCheck(characters[id].equipment.group14.item)" 	}
-	text {area 1000 638 173 58	bam "RGDSLOTD" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group15.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group15') rgGetTempItemCheck(characters[id].equipment.group15.item)" 	}
+	text {area 760 218 173 58	bam "RGDSLOTD" sequence lua "RgUISkin" ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group0.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group0')  rgGetTempItemCheck(characters[id].equipment.group0.item) " 	}
+	text {area 760 278 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group1.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group1')  rgGetTempItemCheck(characters[id].equipment.group1.item) "  	}
+	text {area 760 338 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group2.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group2')  rgGetTempItemCheck(characters[id].equipment.group2.item) "  	}
+	text {area 760 398 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group3.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group3')  rgGetTempItemCheck(characters[id].equipment.group3.item) "  	}
+	text {area 760 458 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group4.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group4')  rgGetTempItemCheck(characters[id].equipment.group4.item) "  	}
+	text {area 760 518 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group5.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group5')  rgGetTempItemCheck(characters[id].equipment.group5.item) "  	}
+	text {area 760 578 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group6.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group6')  rgGetTempItemCheck(characters[id].equipment.group6.item) "  	}
+	text {area 760 638 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group7.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group7')  rgGetTempItemCheck(characters[id].equipment.group7.item) "  	}
+	text {area 1000 218 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group8.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group8')  rgGetTempItemCheck(characters[id].equipment.group8.item) "  	}
+	text {area 1000 278 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group9.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group9')  rgGetTempItemCheck(characters[id].equipment.group9.item) "  	}
+	text {area 1000 338 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group10.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group10') rgGetTempItemCheck(characters[id].equipment.group10.item)" 	}
+	text {area 1000 398 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group11.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group11') rgGetTempItemCheck(characters[id].equipment.group11.item)" 	}
+	text {area 1000 458 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group12.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group12') rgGetTempItemCheck(characters[id].equipment.group12.item)" 	}
+	text {area 1000 518 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group13.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group13') rgGetTempItemCheck(characters[id].equipment.group13.item)" 	}
+	text {area 1000 578 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group14.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group14') rgGetTempItemCheck(characters[id].equipment.group14.item)" 	}
+	text {area 1000 638 173 58	bam "RGDSLOTD" sequence lua "RgUISkin"  ScaleToClip	enabled "rgInventoryMode == 1"	text lua "characters[id].equipment.group15.item.name"	text style	"rg_normal_small" text align left center pad 8 0 0 0 ActionEnter "rgGetSlotInfoArea('group15') rgGetTempItemCheck(characters[id].equipment.group15.item)" 	}
 	
 	slot {name "rgSlotInfo01" area 760 518 3 58		slotinfo "characters[id].equipment[rgGroupSlotInfo]"	enabled "rgInventoryMode == 1"	}
 	slot {name "rgSlotInfo02" area 763 518 3 58		slotinfo "characters[id].equipment[rgGroupSlotInfo]"	enabled "rgInventoryMode == 1"	}
@@ -11597,6 +11796,7 @@ menu
 		name 'rginvcolor1'
 		area 609 553 58 58
 		bam RGDICLR
+		sequence lua "(RgUISkin*2)"
 		ScaleToClip
 		colordisplay 1
 		action
@@ -11610,6 +11810,7 @@ menu
 		name 'rginvcolor2'
 		area 609 629 58 58
 		bam RGDICLR
+		sequence lua "(RgUISkin*2)"
 		ScaleToClip
 		colordisplay 2
 		action
@@ -11623,7 +11824,7 @@ menu
 		area 609 553 58 58
 		bam RGDICLR
 		ScaleToClip
-		sequence 1
+		sequence lua "(RgUISkin*2)+1"
 		action
 		"
 			Infinity_PushMenu('CHARACTER_COLOR', 0, 0)
@@ -11641,7 +11842,7 @@ menu
 		area 609 629 58 58
 		bam RGDICLR
 		ScaleToClip
-		sequence 1
+		sequence lua "(RgUISkin*2)+1"
 		--action "rgPaperdollSwap = 1"
 		action
 		"
@@ -11746,14 +11947,14 @@ menu
 		enabled "isGroundScrollbarEnabled()"
 	}
     
-	label {area 1200 131 69 69 name 'rginvgroud1'	bam "RGDISLOT" ScaleToClip}
-	label {area 1200 203 69 69 name 'rginvgroud2'	bam "RGDISLOT" ScaleToClip}
-	label {area 1200 275 69 69 name 'rginvgroud3'	bam "RGDISLOT" ScaleToClip}
-	label {area 1200 347 69 69 name 'rginvgroud4'	bam "RGDISLOT" ScaleToClip}
-	label {area 1200 419 69 69 name 'rginvgroud5'	bam "RGDISLOT" ScaleToClip}
-	label {area 1200 491 69 69 name 'rginvgroud6'	bam "RGDISLOT" ScaleToClip}
-	label {area 1200 563 69 69 name 'rginvgroud7'	bam "RGDISLOT" ScaleToClip}
-	label {area 1200 635 69 69 name 'rginvgroud8'	bam "RGDISLOT" ScaleToClip}
+	label {area 1200 131 69 69 name 'rginvgroud1'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 1200 203 69 69 name 'rginvgroud2'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 1200 275 69 69 name 'rginvgroud3'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 1200 347 69 69 name 'rginvgroud4'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 1200 419 69 69 name 'rginvgroud5'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 1200 491 69 69 name 'rginvgroud6'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 1200 563 69 69 name 'rginvgroud7'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
+	label {area 1200 635 69 69 name 'rginvgroud8'	bam "RGDISLOT" sequence lua "RgUISkin" ScaleToClip}
 	
 	list
 	{
@@ -15920,6 +16121,32 @@ function rgBottomShort(row,slot)
 	return rgGetBottomSpell(rgBottomSpells[row][1],rgBottomSpells[row][4],slot)
 end
 
+function rgGetSpellLvlButtBam()
+	if RgUISkin == 0 then
+		return 'rgdwhl1'
+	elseif RgUISkin == 3 then
+		return 'rgdwhl3'
+	else
+		return 'rgdwhl2'
+	end
+end
+function rgGetSpellLvlButtText(str)
+	local color = ''
+	if RgUISkin == 3 then
+		color = '^$'
+	else
+		color = '^5'
+	end
+	return color .. t(str)
+end
+function rgGetSpellLvlButtOpacity()
+	if RgUISkin == 3 then
+		return 210
+	else
+		return 255
+	end
+	
+end
 
 		
 
@@ -16026,6 +16253,7 @@ menu
 		name 'rgdbcmag1'
 		area	0 0 768 768
 		bam rgdbcmag
+		sequence lua "RgUISkin"
 		frame 0
 		scaleToClip
 	}
@@ -16035,6 +16263,7 @@ menu
 		name 'rgdbcmag2'
 		area	597 0 768 768
 		bam rgdbcmag
+		sequence lua "RgUISkin"
 		frame 1
 		scaleToClip
 	}
@@ -16043,6 +16272,7 @@ menu
 		enabled "bookMode == 1"
 		area	0 0 768 768
 		bam rgdbcmac
+		sequence lua "RgUISkin"
 		frame 0
 		scaleToClip
 	}
@@ -16051,6 +16281,7 @@ menu
 		enabled "bookMode == 1"
 		area	597 0 768 768
 		bam rgdbcmac
+		sequence lua "RgUISkin"
 		frame 1
 		scaleToClip
 	}
@@ -16058,11 +16289,11 @@ menu
 	{
 		enabled "bookMode == 0"
 		name 'rgmagdesc1'
-		area		118 106 322 26 
+		area		114 106 322 26 
 		ScaleToClip
-		text lua "rgCharDescString1(characters[id])"
+		text lua "rgString(rgCharDescString1(characters[id]))"
 		text style 'rg_trajan'
-		text color '$'
+		--text color '$'
 		text align left center
 	}
 	
@@ -16084,6 +16315,7 @@ menu
 		area 452 98 64 93
 		portrait 0
 		bam rgdport2
+		sequence lua "RgUISkin"
 		enabled "bookMode == 0 and Infinity_GetNumCharacters() > 0"
 		--bitmap		lua "characters[charTable[1]].portrait"
 		ScaleToClip
@@ -16101,6 +16333,7 @@ menu
 		area 531 98 64 93
 		portrait 1
 		bam rgdport2
+		sequence lua "RgUISkin"
 		enabled "bookMode == 0 and Infinity_GetNumCharacters() > 1"
 		--bitmap		lua "characters[charTable[2]].portrait"
 		ScaleToClip
@@ -16118,6 +16351,7 @@ menu
 		area 610 98 64 93
 		portrait 2
 		bam rgdport2
+		sequence lua "RgUISkin"
 		enabled "bookMode == 0 and Infinity_GetNumCharacters() > 2"
 		--bitmap		lua "characters[charTable[3]].portrait"
 		ScaleToClip
@@ -16135,6 +16369,7 @@ menu
 		area 689 98 64 93
 		portrait 3
 		bam rgdport2
+		sequence lua "RgUISkin"
 		enabled "bookMode == 0 and Infinity_GetNumCharacters() > 3"
 		--bitmap		lua "characters[charTable[4]].portrait"
 		ScaleToClip
@@ -16152,6 +16387,7 @@ menu
 		area 768 98 64 93
 		portrait 4
 		bam rgdport2
+		sequence lua "RgUISkin"
 		enabled "bookMode == 0 and Infinity_GetNumCharacters() > 4"
 		--bitmap		lua "characters[charTable[5]].portrait"
 		ScaleToClip
@@ -16169,6 +16405,7 @@ menu
 		area 847 98 64 93
 		portrait 5
 		bam rgdport2
+		sequence lua "RgUISkin"
 		enabled "bookMode == 0 and Infinity_GetNumCharacters() > 5"
 		--bitmap		lua "characters[charTable[6]].portrait"
 		ScaleToClip
@@ -16183,7 +16420,7 @@ menu
 	
 	label
 	{
-		area 136 164 219 27
+		area 139 167 219 27
 		enabled "bookMode == 0"
 		text lua "Infinity_FetchString(11945) .. ': ' .. Infinity_FetchString(7192) .. '  ' .. currentSpellLevel"
 		text style "rg_trajan"
@@ -16192,7 +16429,7 @@ menu
 	label
 	{
 		name 'rgMageMemorizedLabel'
-		area 942 164 284 27
+		area 939 167 284 27
 		text lua "magePageInfo()"
 		enabled "rgSpellDescString == nil and bookMode == 0"
 		--text 'MEMORIZED_LABEL'
@@ -16204,10 +16441,23 @@ menu
 	button
 	{
 		area 975 94 273 54
-		enabled "bookMode == 0 and (#characters[id].contingencySpells > 0 or #characters[id].sequencerSpells > 0)"
-		bam		rgdmbut1
+		enabled "bookMode == 0 and (#characters[id].contingencySpells > 0 or #characters[id].sequencerSpells > 0) and RgUISkin ~= 3"
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
-		text "CONTINGENCY_BUTTON"
+		text lua "rgString(t('CONTINGENCY_BUTTON'))"
+		text style "button"
+		action "Infinity_PushMenu('MAGE_CONTINGENCY')"
+		
+	}
+	button
+	{
+		area 922 84 358 69
+		enabled "bookMode == 0 and (#characters[id].contingencySpells > 0 or #characters[id].sequencerSpells > 0) and RgUISkin == 3"
+		bam		rgdbutw1
+		sequence lua "RgUISkin"
+		ScaleToClip
+		text lua "rgString(t('CONTINGENCY_BUTTON'))"
 		text style "button"
 		action "Infinity_PushMenu('MAGE_CONTINGENCY')"
 		
@@ -16321,7 +16571,7 @@ menu
 		rowheight	60
 		table		"rgBookSpells"
 		var		currentBookSpell
-		scrollbar	'rgdscrl2'
+		scrollbar	'rgdscrl1'
 		sound		""
 		hidehighlight
 		action		
@@ -16653,10 +16903,11 @@ menu
 			{ 
 				enabled "rgBottomSpells[rowNumber][4] == 1"
 				area	6 0 36 44   
-				text lua "rgBottomSpells[rowNumber][3]"
-				bam		rgdwhl1
+				text lua "rgGetSpellLvlButtText(rgBottomSpells[rowNumber][3])"
+				bam	lua	"rgGetSpellLvlButtBam()"
 				text style 'rg_trajan'
-				text color '5'
+				opacity lua "rgGetSpellLvlButtOpacity()"
+				--text color '5'
 				text point 14
 				ScaleToClip
 				align left top
@@ -17088,7 +17339,7 @@ menu
 	}
 	button
 	{
-		area 1204 164 36 36
+		area 1196 164 36 36
 		enabled "rgSpellDescString ~= nil"
 		--text "X"
 		bam rgdwbut
@@ -17102,7 +17353,7 @@ menu
 	}
 	button
 	{
-		area 1164 164 36 36
+		area 1156 164 36 36
 		enabled "rgSpellDescString ~= nil and bookMode == 0"
 		--text "Ø"
 		bam rgdwbut
@@ -17128,10 +17379,9 @@ menu
 	button
 	{
 		area		696 164 36 44
-		bam		rgdwhl1
-		text '*'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('*')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17144,10 +17394,9 @@ menu
 	button
 	{
 		area		696 218 36 44
-		bam		rgdwhl1
-		text '1'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('1')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17161,10 +17410,9 @@ menu
 	button
 	{
 		area		696 274 36 44
-		bam		rgdwhl1
-		text '2'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('2')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17178,10 +17426,9 @@ menu
 	button
 	{
 		area		696 330 36 44
-		bam		rgdwhl1
-		text '3'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('3')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17195,10 +17442,9 @@ menu
 	button
 	{
 		area		696 384 36 44
-		bam		rgdwhl1
-		text '4'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('4')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17212,10 +17458,9 @@ menu
 	button
 	{
 		area		696 440 36 44
-		bam		rgdwhl1
-		text '5'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('5')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17229,10 +17474,9 @@ menu
 	button
 	{
 		area		696 494 36 44
-		bam		rgdwhl1
-		text '6'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('6')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17246,10 +17490,9 @@ menu
 	button
 	{
 		area		696 550 36 44
-		bam		rgdwhl1
-		text '7'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('7')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17263,10 +17506,9 @@ menu
 	button
 	{
 		area		696 604 36 44
-		bam		rgdwhl1
-		text '8'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('8')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17280,10 +17522,9 @@ menu
 	button
 	{
 		area		696 660 36 44
-		bam		rgdwhl1
-		text '9'
+		bam	lua "rgGetSpellLvlButtBam()"
+		text lua "rgGetSpellLvlButtText('9')"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -17311,14 +17552,14 @@ menu
 		name 'rgmagdesc1'
 		area		118 106 1130 26 
 		ScaleToClip
-		text lua "rgCharDescString1(characters[id])"
+		text lua "rgString(rgCharDescString1(characters[id]))"
 		text style 'rg_trajan'
 		text color '$'
 		text align center center
 	}
 	label
 	{
-		area 136 164 290 27
+		area 139 167 290 27
 		enabled "bookMode == 1"
 		text lua "rgGetContMemorizedText()"
 		text style "rg_trajan"
@@ -17326,7 +17567,7 @@ menu
 	}
 	label
 	{
-		area 748 164 392 27
+		area 748 167 392 27
 		enabled "bookMode == 1 and rgSpellDescString == nil"
 		text lua "mageBookAction()"
 		text style "rg_trajan"
@@ -17468,9 +17709,10 @@ menu
 		text lua "contingencyDoneButtonText()"
 		text style "rg_trajan"
 		text align center center
-		text color '$'
+		--text color '$'
 		text point 12
-		bam		RGDBUT3
+		bam		RGDSBUT3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -17635,8 +17877,24 @@ menu
 	
 	label
 	{
+		enabled "RgUISkin == 0"
 		area 0 0 622 660
 		bam RGDIDESC
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgUISkin == 1"
+		area 0 0 622 660
+		bam RGDIDESC
+		sequence 1
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgUISkin > 1"
+		area 0 0 622 660
+		bam RGDWCON1
 		ScaleToClip
 	}
 	label
@@ -18205,21 +18463,23 @@ menu
 		area	0 0 768 768
 		bam rgdbcpri
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
 		area	597 0 768 768
 		bam rgdbcpri
+		sequence lua "RgUISkin"
 		frame 1
 		scaleToClip
 	}
 	
 	label
 	{
-		area		118 106 322 26 
+		area		114 106 322 26 
 		ScaleToClip
-		text lua "rgCharDescString1(characters[id])"
+		text lua "rgString(rgCharDescString1(characters[id]))"
 		text style 'rg_trajan'
 		text color '$'
 		text align left center
@@ -18232,6 +18492,7 @@ menu
 		bam rgdport2
 		enabled "Infinity_GetNumCharacters() > 0"
 		ScaleToClip
+		sequence lua "RgUISkin"
 		clickable lua "Infinity_GetNumCharacters() > 0"
 		glow lua "draggedPortrait and draggedPortrait ~= 0"
 		action "Infinity_OnPortraitLClick(0)"
@@ -18246,6 +18507,7 @@ menu
 		bam rgdport2
 		enabled "Infinity_GetNumCharacters() > 1"
 		ScaleToClip
+		sequence lua "RgUISkin"
 		clickable lua "Infinity_GetNumCharacters() > 1"
 		glow lua "draggedPortrait and draggedPortrait ~= 1"
 		action "Infinity_OnPortraitLClick(1)"
@@ -18261,6 +18523,7 @@ menu
 		bam rgdport2
 		enabled "Infinity_GetNumCharacters() > 2"
 		ScaleToClip
+		sequence lua "RgUISkin"
 		clickable lua "Infinity_GetNumCharacters() > 2"
 		glow lua "draggedPortrait and draggedPortrait ~= 2"
 		action "Infinity_OnPortraitLClick(2)"
@@ -18275,6 +18538,7 @@ menu
 		bam rgdport2
 		enabled "Infinity_GetNumCharacters() > 3"
 		ScaleToClip
+		sequence lua "RgUISkin"
 		clickable lua "Infinity_GetNumCharacters() > 3"
 		glow lua "draggedPortrait and draggedPortrait ~= 3"
 		action "Infinity_OnPortraitLClick(3)"
@@ -18289,6 +18553,7 @@ menu
 		bam rgdport2
 		enabled "Infinity_GetNumCharacters() > 4"
 		ScaleToClip
+		sequence lua "RgUISkin"
 		clickable lua "Infinity_GetNumCharacters() > 4"
 		glow lua "draggedPortrait and draggedPortrait ~= 4"
 		action "Infinity_OnPortraitLClick(4)"
@@ -18303,6 +18568,7 @@ menu
 		bam rgdport2
 		enabled "Infinity_GetNumCharacters() > 5"
 		ScaleToClip
+		sequence lua "RgUISkin"
 		clickable lua "Infinity_GetNumCharacters() > 5"
 		glow lua "draggedPortrait and draggedPortrait ~= 5"
 		action "Infinity_OnPortraitLClick(5)"
@@ -18313,14 +18579,14 @@ menu
 	
 	label
 	{
-		area 136 164 219 27
+		area 139 167 219 27
 		text lua "Infinity_FetchString(11945) .. ': ' .. Infinity_FetchString(7192) .. '  ' .. currentSpellLevel"
 		text style "rg_trajan"
 		text color '5'
 	}
 	label
 	{
-		area 942 164 284 27
+		area 939 167 284 27
 		enabled "rgSpellDescString == nil"
 		--text 'MEMORIZED_LABEL'
 		text lua "priestPageInfo()"
@@ -18566,7 +18832,7 @@ menu
 		rowheight	60
 		table		"rgBookSpells"
 		var		currentBookSpell
-		scrollbar	'rgdscrl2'
+		scrollbar	'rgdscrl1'
 		sound		""
 		hidehighlight
 		action		
@@ -18596,9 +18862,10 @@ menu
 			{ 
 				enabled "rgBottomSpells[rowNumber][4] == 1"
 				area	6 0 36 44   
-				text lua "rgBottomSpells[rowNumber][3]"
-				bam		rgdwhl1
+				text lua "rgGetSpellLvlButtText(rgBottomSpells[rowNumber][3])"
+				bam	lua	"rgGetSpellLvlButtBam()"
 				text style 'rg_trajan'
+				opacity lua "rgGetSpellLvlButtOpacity()"
 				text color '5'
 				text point 14
 				ScaleToClip
@@ -18747,7 +19014,7 @@ menu
 	}
 	button
 	{
-		area 1204 164 36 36
+		area 1196 164 36 36
 		enabled "rgSpellDescString ~= nil"
 		--text "X"
 		bam rgdwbut
@@ -30866,7 +31133,6 @@ menu
 			--Color the text white when selected
 			text = string.gsub(text, "%^0xff212eff", "^0xFFFFFFFF")
 		end
-		text = string.gsub(text, " ", "\t")
 		return text
 	end
 	
@@ -43768,9 +44034,9 @@ function rgGetQuestText(rowNumber)
 end
 function rgGetQuestSelection(rowNumber)
 	if questDisplay[rowNumber].expanded == 1 then
-		return 1
+		return (RgUISkin*2) + 1
 	else
-		return 0
+		return RgUISkin*2
 	end
 end
 function rgBestiaryJournalEntry(text)
@@ -44599,6 +44865,23 @@ menu
 		else
 			Infinity_SetOffset('JOURNAL',rgJournalOffsetX, rgJournalOffsetY)
 		end
+		
+		if RgUISkin == 3 then
+			Infinity_SetArea('rgQuestTable',634,178,624,536)
+			Infinity_SetArea('rgJournalTable',568,178,690,532)
+			Infinity_SetArea('rgBeastTable',552,215,720,480)
+			Infinity_SetArea('rgBeastsTable',87,174,446,542)
+			
+		else
+			Infinity_SetArea('rgQuestTable',622,178,624,526)
+			Infinity_SetArea('rgJournalTable',556,178,690,522)
+			Infinity_SetArea('rgBeastTable',550,215,710,480)
+			Infinity_SetArea('rgBeastsTable',87,174,449,542)
+			
+		end
+		
+		 
+		
 		reinitQuests()
 		buildQuestDisplay()
 		chapter = math.max(0,Infinity_GetMaxChapterPage());
@@ -44665,10 +44948,11 @@ menu
 	button
 	{
 		enabled "rgLargeJournal == 1 and rgGameEngine ~= 3"
-		area		1077 28 62 58 
+		area		1077 34 58 54 
 		bam			rgdjobut
 		scaleToClip 
 		tooltip lua "t('RG_JOURNAL_MODE1')"
+		sequence lua "rgGetInvModeSequence()"
 		--toggle		rgLargeJournal
 		action
 		"
@@ -44702,7 +44986,7 @@ menu
 	--}
 	label -- Chapter
 	{
-		enabled "rgLargeJournal == 1 and (rgIsJournalBestiary == 0 or journalMode == const.JOURNAL_MODE_QUESTS)"
+		enabled "rgLargeJournal == 1 and (rgIsJournalBestiary == 0 or journalMode == const.JOURNAL_MODE_QUESTS) and RgUISkin < 3"
 		area 206 108 228 42
 		text lua "rgString(chapterText())"
 		text style "rg_trajan"
@@ -44711,7 +44995,7 @@ menu
 	}
 	button --prev chapter
 	{
-		enabled "rgLargeJournal == 1 and (rgIsJournalBestiary == 0 or journalMode == const.JOURNAL_MODE_QUESTS)"
+		enabled "rgLargeJournal == 1 and (rgIsJournalBestiary == 0 or journalMode == const.JOURNAL_MODE_QUESTS) and RgUISkin < 3"
 		area		445 103 50 50
 		bam		RGDAROW1
 		ScaleToClip
@@ -44723,8 +45007,40 @@ menu
 	}
 	button
 	{
-		enabled "rgLargeJournal == 1 and (rgIsJournalBestiary == 0 or journalMode == const.JOURNAL_MODE_QUESTS)"
+		enabled "rgLargeJournal == 1 and (rgIsJournalBestiary == 0 or journalMode == const.JOURNAL_MODE_QUESTS) and RgUISkin < 3"
 		area		145 103 50 50
+		bam		RGDAROW1
+		ScaleToClip
+		action
+		"
+			incrChapter(-1);
+		"	
+	}
+	label -- Chapter
+	{
+		enabled "rgLargeJournal == 1 and (rgIsJournalBestiary == 0 or journalMode == const.JOURNAL_MODE_QUESTS) and RgUISkin == 3"
+		area 196 100 228 42
+		text lua "rgString(chapterText())"
+		text style "rg_trajan"
+		text align center center
+		text color '$'
+	}
+	button --prev chapter
+	{
+		enabled "rgLargeJournal == 1 and (rgIsJournalBestiary == 0 or journalMode == const.JOURNAL_MODE_QUESTS) and RgUISkin == 3"
+		area		435 95 50 50
+		bam		RGDAROW1
+		ScaleToClip
+		Sequence 1
+		action
+		"
+			incrChapter(1);
+		"	
+	}
+	button
+	{
+		enabled "rgLargeJournal == 1 and (rgIsJournalBestiary == 0 or journalMode == const.JOURNAL_MODE_QUESTS) and RgUISkin == 3"
+		area		135 95 50 50
 		bam		RGDAROW1
 		ScaleToClip
 		action
@@ -44734,7 +45050,7 @@ menu
 	}
 	label -- bestiary
 	{
-		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 0"
+		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 0 and RgUISkin < 3"
 		area 206 108 228 42
 		--text lua "rgString(t('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
 		text lua "rgString(t('RG_BEASTS'))"
@@ -44743,7 +45059,7 @@ menu
 	}
 	label -- bestiary bosses
 	{
-		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 1"
+		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 1 and RgUISkin < 3"
 		area 206 108 228 42
 		text lua "rgString(t('RG_BOSSES'))"
 		text style "rg_trajan"
@@ -44751,8 +45067,33 @@ menu
 	}
 	label -- library count
 	{
-		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 2 and journalMode == const.JOURNAL_MODE_JOURNAL"
+		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 2 and journalMode == const.JOURNAL_MODE_JOURNAL and RgUISkin < 3"
 		area 206 108 228 42
+		text lua "rgString(t('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
+		text style "rg_trajan"
+		text align center center
+	}
+	label -- bestiary
+	{
+		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 0 and RgUISkin == 3"
+		area 196 100 228 42
+		--text lua "rgString(t('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
+		text lua "rgString(t('RG_BEASTS'))"
+		text style "rg_trajan"
+		text align center center
+	}
+	label -- bestiary bosses
+	{
+		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 1 and RgUISkin == 3"
+		area 196 100 228 42
+		text lua "rgString(t('RG_BOSSES'))"
+		text style "rg_trajan"
+		text align center center
+	}
+	label -- library count
+	{
+		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 2 and journalMode == const.JOURNAL_MODE_JOURNAL and RgUISkin == 3"
+		area 196 100 228 42
 		text lua "rgString(t('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
 		text style "rg_trajan"
 		text align center center
@@ -44873,6 +45214,7 @@ menu
 			width 100 
 			label
 			{	
+			
 				enabled "(questEnabled(rowNumber) and rgCurrentFinishedQuests(rowNumber)) or getQuestText(rowNumber) == rgGetGameEngineString(31270, 31270, 74295, 37872)" -- and questDisplay[rowNumber].expanded == 1
 				area 0 0 -1 -1
 				bam rgdslct
@@ -44954,6 +45296,7 @@ menu
 				text color M
 			}
 		}
+		name "rgQuestTable"
 		enabled "journalMode == const.JOURNAL_MODE_QUESTS and rgLargeJournal == 1"
 		rowheight	dynamic
 		seperator "showObjectiveSeperator(rowNumber)"
@@ -45196,6 +45539,7 @@ menu
 			
 			
 		}
+		name "rgJournalTable"
 		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 0"
 		seperator "getJournalEntryEnabled(rowNumber)"
 		rowheight	dynamic
@@ -45284,11 +45628,12 @@ menu
 	button
 	{
 		enabled "journalMode == const.JOURNAL_MODE_EDIT and rgLargeJournal == 1"
-		area 176 516 356 78
-		bam		RGDBUT2
+		area 136 516 356 78
+		bam		RGDBUTS1
 		text style "rg_trajan"
 		text color '$'
 		align center center
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "CANCEL_BUTTON"
 		action 
@@ -45299,11 +45644,12 @@ menu
 	button
 	{
 		enabled "journalMode == const.JOURNAL_MODE_EDIT and rgLargeJournal == 1"
-		area 176 608 356 78
-		bam		RGDBUT2
+		area 136 608 356 78
+		bam		RGDBUTS1
 		text style "rg_trajan"
 		text color '$'
 		align center center
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		action 
@@ -45351,6 +45697,7 @@ menu
 			
 			
 		}
+		name "rgBeastsTable"
 		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 1"
 		rowheight	dynamic
 		hidehighlight
@@ -45396,7 +45743,40 @@ menu
 	}
 	button 
 	{
-		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 1"
+		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 1 and RgUISkin == 3"
+		area		435 95 50 50
+		bam		RGDAROW1
+		ScaleToClip
+		Sequence 1
+		action
+		"
+			if rgBestiaryBoss == 0 then
+				rgBestiaryBoss = 1
+			else
+				rgBestiaryBoss = 0
+			end
+			selectedBeast = nil
+		"	
+	}
+	button
+	{
+		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 1 and RgUISkin ==3"
+		area		135 95 50 50
+		bam		RGDAROW1
+		ScaleToClip
+		action
+		"
+			if rgBestiaryBoss == 0 then
+				rgBestiaryBoss = 1
+			else
+				rgBestiaryBoss = 0
+			end
+			selectedBeast = nil
+		"	
+	}
+	button 
+	{
+		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 1 and RgUISkin < 3"
 		area		445 103 50 50
 		bam		RGDAROW1
 		ScaleToClip
@@ -45413,7 +45793,7 @@ menu
 	}
 	button
 	{
-		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 1"
+		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 1 and RgUISkin < 3"
 		area		145 103 50 50
 		bam		RGDAROW1
 		ScaleToClip
@@ -45427,6 +45807,7 @@ menu
 			selectedBeast = nil
 		"	
 	}
+	
 	
 	label
 	{
@@ -45546,7 +45927,7 @@ menu
 			
 		}
 		
-		
+		name "rgBeastTable"
 		area		550 215 710 480
 		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 1 and selectedBeast ~= 0 and selectedBeast ~= nil"
 		rowheight	dynamic
@@ -45614,7 +45995,7 @@ menu
 	label
 	{
 		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 2 and rgSelectedBook ~= 0 and rgSelectedBook ~= nil"
-		area		622 178 624 522
+		area		582 178 664 522
 		text lua "rgLibraryDescString"
 		text style "normal"
 		scrollbar 'rgdscrl1'
@@ -48304,7 +48685,7 @@ menu
 	{
 		area		1066 176 200 47
 		text lua "rgQuicklootRows"
-		bam rgdslct
+		--bam rgdslct
 		ScaleToClip
 		sequence lua "RgUISkin*2"
 		text style	normal
@@ -48341,7 +48722,7 @@ menu
 	{
 		area		1066 276 200 47
 		text lua "rgGetUISkinString()"
-		bam rgdslct
+		--bam rgdslct
 		ScaleToClip
 		sequence lua "RgUISkin*2"
 		text style	normal
@@ -48377,7 +48758,7 @@ menu
 	{
 		area		1066 376 200 47
 		text lua "rgBestiaryKoef"
-		bam rgdslct
+		--bam rgdslct
 		ScaleToClip
 		sequence lua "RgUISkin*2"
 		text style	normal
@@ -48435,7 +48816,7 @@ menu
 		area		614 583 200 33
 		--area		1066 376 200 47
 		text lua "RgSettingEEexZoomUI*10 .. '%'"
-		bam rgdslct
+		--bam rgdslct
 		ScaleToClip
 		sequence lua "RgUISkin*2"
 		text style	normal
@@ -48633,15 +49014,20 @@ menu
 function rgSetMenubarArea()
 	Infinity_SetArea('rgmenubackg1',0,0,1365,1)
 	Infinity_SetArea('rgmenubackg2',0,0,1,768)
-	Infinity_SetArea('rgmenubutton1',421,28,62,58)
-	Infinity_SetArea('rgmenubutton2',487,28,62,58)
-	Infinity_SetArea('rgmenubutton3',553,28,62,58)
-	Infinity_SetArea('rgmenubutton4',619,28,62,58)
-	Infinity_SetArea('rgmenubutton5',685,28,62,58)
-	Infinity_SetArea('rgmenubutton6',751,28,62,58)
-	Infinity_SetArea('rgmenubutton7',817,28,62,58)
-	Infinity_SetArea('rgmenubutton8',883,28,62,58)
-	Infinity_SetArea('rgmenubutton9',1143,28,62,58)
+	Infinity_SetArea('rgmenubutton1',423,30,58,54)
+	Infinity_SetArea('rgmenubutton2',489,30,58,54)
+	Infinity_SetArea('rgmenubutton3',555,30,58,54)
+	Infinity_SetArea('rgmenubutton4',621,30,58,54)
+	Infinity_SetArea('rgmenubutton5',687,30,58,54)
+	Infinity_SetArea('rgmenubutton6',753,30,58,54)
+	Infinity_SetArea('rgmenubutton7',819,30,58,54)
+	Infinity_SetArea('rgmenubutton8',885,30,58,54)
+	--Infinity_SetArea('rgmenubutton9',1143,28,62,58)
+	if RgUISkin == 3 then
+			Infinity_SetArea('rgmenubutton9',1014,32,54,50)
+		else
+			Infinity_SetArea('rgmenubutton9',1147,32,54,50)
+		end
 	Infinity_SetArea('rgmenubuttclose',1290,7,42,42)
 	if e:GetActiveEngine() == characterScreen then
 		Infinity_SetArea('flames4',615,10,70,76)
@@ -48659,18 +49045,24 @@ function rgSetMenubarArea()
 		local w, h = Infinity_GetScreenSize()
 		local top = (h-768)/2
 		Infinity_SetArea('flames4',417,-top,70,76)
-		Infinity_SetArea('rgmenubutton1',421,10-top,62,58)
-		Infinity_SetArea('rgmenubutton2',487,10-top,62,58)
-		Infinity_SetArea('rgmenubutton3',553,10-top,62,58)
-		Infinity_SetArea('rgmenubutton4',619,10-top,62,58)
-		Infinity_SetArea('rgmenubutton5',685,10-top,62,58)
-		Infinity_SetArea('rgmenubutton6',751,10-top,62,58)
-		Infinity_SetArea('rgmenubutton7',817,10-top,62,58)
-		Infinity_SetArea('rgmenubutton8',883,10-top,62,58)
-		Infinity_SetArea('rgmenubutton9',1043,10-top,62,58)
+		Infinity_SetArea('rgmenubutton1',423,12-top,58,54)
+		Infinity_SetArea('rgmenubutton2',489,12-top,58,54)
+		Infinity_SetArea('rgmenubutton3',555,12-top,58,54)
+		Infinity_SetArea('rgmenubutton4',611,12-top,58,54)
+		Infinity_SetArea('rgmenubutton5',687,12-top,58,54)
+		Infinity_SetArea('rgmenubutton6',753,12-top,58,54)
+		Infinity_SetArea('rgmenubutton7',819,12-top,58,54)
+		Infinity_SetArea('rgmenubutton8',885,12-top,58,54)
+		Infinity_SetArea('rgmenubutton9',1047,14-top,54,50)
 		Infinity_SetArea('rgmenubuttclose',1210,18-top,42,42)
 		Infinity_SetArea('rgmenubackg1',0,0-top,1365,1)
 		Infinity_SetArea('rgmenubackg2',0,0,1,1)
+	end
+	
+	if RgUISkin == 3 then
+		Infinity_SetOffset('RG_MENU_BAR',0,4)
+	else
+		Infinity_SetOffset('RG_MENU_BAR',0,0)
 	end
 end
 
@@ -48691,6 +49083,7 @@ menu
 	"
 		rgSetMenubarArea()
 		Infinity_PlayMovie('flames','flames4')
+		
 	"
 	label
 	{
@@ -48903,7 +49296,7 @@ menu
 	{
 		enabled "e:GetActiveEngine() ~= optionsScreen"
 		name 'rgmenubutton9'
-		area 1143 28 62 58
+		area 1143 28 54 50
 		bam lua "rgGetActionbarButtonBam()"
 		sequence 9
 		ScaleToClip
