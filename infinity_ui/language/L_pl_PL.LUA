@@ -748,258 +748,625 @@ uiStrings = {
 	YES = "Tak",
 	YES_BUTTON = "TAK",
 	ZOOM_LOCK_LABEL = "Zablokowanie przybliżania",
-	RG_UI_SETTINGS = "UI++ Settings",
-	RG_MENU_CAMPAIGN = "Baldur's Gate EE Campaigns",
-	RG_MENU_CAMPAIGN1 = "Baldur's Gate",
-	RG_MENU_CAMPAIGN2 = "Siege of Dragonspear",
-	RG_MENU_CAMPAIGN3 = "The Black Pits",
-	RG_MENU_CAMPAIGN4 = "Shadows of Amn", 
-	RG_MENU_CAMPAIGN5 = "Throne of Bhaal",
-	RG_MENU_CAMPAIGN6 = "The Black Pits 2",
-	RG_MENU_CAMPAIGN7 = "Icewind Dale",
-	RG_MENU_CAMPAIGN8 = "Heart of Winter",
-	RG_CG_MINROLL = 'Minimum roll',
-	RG_CG_MINSTRMOD = 'Minimum strength modifier',
-	RG_L_SORT_DEFA = 'Default sort',
-	RG_L_SORT_TIME = 'Sort by Game Time',
-	RG_L_SORT_NAME = 'Sort by Save Name',
-	RG_L_CHARACTER = 'Character',
-	RG_L_ROW_VIEW = 'Rows view',
-	RG_L_TIL_VIEW = 'Tiles view',
-	RG_SET_FREE_MSGBOX = "Unlock messagebox",
-	RG_SET_MODERN_HUD = "Display modern HUD",
-	RG_SET_HOTKEY_BUTT = "Enable hotkey buttons",
-	RG_SET_BOTTOM_QLOOT = "Quickloot at the bottom",
-	RG_SET_INV_SWAP = "Lock character on party inventory",
-	RG_SET_SPACE_DLG = "Advance dialogue with space",
-	RG_SET_QLOOT_ROWS = "Quickloot rows",
-	RG_SET_SKIN = "UI Skin",
-	RG_SET_EEEX_ZOOM = "EEex UI Zoom",
-	RG_SET_FREE_MSGBOX_D = "Allows messagebox to be freely movable across the screen, by holding and dragging corners. Dragging sides of the messagebox also resizes it to any direction.",
-	RG_SET_MODERN_HUD_D = "Rearranges HUD elements to the bottom of the screen.",
-	RG_SET_HOTKEY_BUTT_D = "Additional buton appears on the screen, opening menu to assign hotkeys to buttons. The menu can also be opened by right-clicking any hotkey button. Any or all characters can also be assigned to hotkey, automatically selecting them before the hotkey triggers.",
-	RG_SET_BOTTOM_QLOOT_D = "Switches Quickloot menu to the bottom left of the screen instead the default top left.",
-	RG_SET_INV_SWAP_D = "In the inventory 'All party' mode, characters are switched when hovering over their inventories. With this option On, you can lock selected character, so it stays active while accessing any inventory.\nIMPORTANT NOTE! Hotkeys 1-6 must be assigned to character selections for party inventory to work.",
-	RG_SET_SPACE_DLG_D = "Dialog can be advanced be pressing Space button. That is disabled by default.",
-	RG_SET_QLOOT_ROWS_D = "Specify a number of Quickloot rows on the screen",
-	RG_SET_SKIN_D = "Select UI Skin",
-	RG_SET_EEEX_ZOOM_D = "EEEx feature. Zoom UI to preffered size.",
-	RG_SET_DESC = "Advanced settings for UI++ mod personalization.",
-	RG_SET_SKIN_SOD = 'Dragonspear Theme',
-	RG_SET_SKIN_IWD = 'IWD:EE Theme',
-	RG_SET_SKIN_BG1 = 'BG1 Theme',
-	RG_SET_SKIN_BG2 = 'BG2 Theme',
-	RG_LIBRARY_TITLE = 'Library',
-	RG_LIBRARY = 'Library: ',
-	RG_BOOKS = 'Books',
-	RG_BEASTS = 'Beasts',
-	RG_BESTIARY_TITLE = 'Bestiary',
-	RG_BESTIARY = 'Bestiary: ',
-	RG_LOOTALL = "Loot all",
-	RG_MM_REFRESH = 'Refresh',
-	RG_SET_MODERN_HUD_R = 'Move actionbar to the right',
-	RG_SET_MODERN_HUD_R_D = 'Moves actionbar to the bottom right side of the screen. This option is only allowed, when Modern HUD and Unlocked Messagebox options are active.',
-	RG_CHEATSPELL = '* Select spell from the list and click on the character portrait to learn it.',
-	RG_CHEATCOMMAND = '* Apply selected command by clicking on the character portrait.',
-	RG_CHEATHISTORY = 'Lua History',
-	RG_HB_CHOOSEKEY = 'Choose keybinded hotkey: ',
-	RG_HB_CHOOSESEL = 'Choose portrait selection: ',
-	RG_HB_CHOOSEPOR = 'Choose portrait selection: Portrait ',
-	RG_HB_CHOOSENON = 'Choose portrait selection: No selection',
-	RG_HB_NONE = 'None',
-	RG_HB_ALL = 'All',
-	RG_HB_DRAG = 'Unlock dragging',
-	RG_JUNKBUTTON = 'Junk filter',
-	RGB_DOGN = "Dog",
-	RG_JOURNAL_MODE1 = "Small Journal",
-	RG_JOURNAL_MODE2 = "Large Journal",
-	RG_INV_MODE = "Inventory Mode",
-	RG_HOTKEY_BUTT = "Hotkey Button",
-	RG_WRITE_JOURNAL = "Write into journal",
-	RG_B_LVL = "LVL",
-	RG_B_HPS = "HP",
-	RG_B_ACB = "AC",   
-	RG_B_THA = "THAC0",
-	RG_B_APR = "APR",  
-	RG_B_STR = "STR",  
-	RG_B_DEX = "DEX",  
-	RG_B_CON = "CON",  
+	RG_UI_SETTINGS = "Ustawienia UI++ ",
+	RG_MENU_CAMPAIGN = "Kampanie Baldur's Gate EE",
+	RG_MENU_CAMPAIGN1 = "Wrota Baldura",
+	RG_MENU_CAMPAIGN2 = "Oblężenie Smoczej Włóczni",
+	RG_MENU_CAMPAIGN3 = "Kręgi Podmroku",
+	RG_MENU_CAMPAIGN4 = "Cienie Amn", 
+	RG_MENU_CAMPAIGN5 = "Tron Bhaala",
+	RG_MENU_CAMPAIGN6 = "Kręgi Podmroku 2",
+	RG_MENU_CAMPAIGN7 = "Dolina Lodowego Wichru",
+	RG_MENU_CAMPAIGN8 = "Serce Zimy",
+	RG_CG_MINROLL = 'Minimalny rzut',
+	RG_CG_MINSTRMOD = 'Minimalny modyfikator siły',
+	RG_L_SORT_DEFA = 'Domyślne sortowanie',
+	RG_L_SORT_TIME = 'Sortuj po czasie gry',
+	RG_L_SORT_NAME = 'Sortuj po nazwie zapisu',
+	RG_L_CHARACTER = 'Postać',
+	RG_L_ROW_VIEW = 'Widok wierszy',
+	RG_L_TIL_VIEW = 'Widok kafelków',
+	RG_SET_FREE_MSGBOX = "Odblokuj okno dialogowe",
+	RG_SET_MODERN_HUD = "Pokaż nowoczesny interfejs",
+	RG_SET_HOTKEY_BUTT = "Włącz przyciski skrótów klawiszowych",
+	RG_SET_BOTTOM_QLOOT = "„Weź wszystko„ na dole ekranu",
+	RG_SET_INV_SWAP = "Zablokuj postać w ekwipunku drużyny",
+	RG_SET_SPACE_DLG = "Kontynuuj dialog za pomocą spacji",
+	RG_SET_QLOOT_ROWS = "Rzędy „Weź wszystko„",
+	RG_SET_SKIN = "Skórka interfejsu",
+	RG_SET_EEEX_ZOOM = "Przybliżenie EEex UI",
+	RG_SET_FREE_MSGBOX_D = "Umożliwia swobodne przesuwanie okna dialogowego po ekranie poprzez przytrzymanie i przesuwanie rogów. Przeciąganie boków okna dialogowego zmienia również jego rozmiar w dowolnym kierunku.",
+	RG_SET_MODERN_HUD_D = "Przesuwa elementy interfejsu na dół ekranu.",
+	RG_SET_HOTKEY_BUTT_D = "Na ekranie pojawia się dodatkowy przycisk otwierający menu umożliwiające przypisanie skrótów klawiszowych do przycisków. Menu można również otworzyć klikając prawym przyciskiem myszy dowolny skrót klawiszowy. Wszyskie albo dowolne postacie mogą być przypisane do skrótu klawiszowego wybierając je automatycznie przed wciśnięciem skrótu.",
+	RG_SET_BOTTOM_QLOOT_D = "Przenosi menu „Weź wszystko„ do lewego dolnego rogu ekranu zamiast domyślnego lewego górnego rogu",
+	RG_SET_INV_SWAP_D = "W trybie ekwipunku „Cała drużyna” postacie są przełączane po najechaniu kursorem na ich ekwipunek. Po włączeniu tej opcji możesz zablokować wybraną postać, dzięki czemu pozostanie ona aktywna podczas dostępu do dowolnego ekwipunku.\nWAŻNA UWAGA! Aby ekwipunek drużyny działał, skróty klawiszowe 1-6 muszą być przypisane do wyboru postaci.",
+	RG_SET_SPACE_DLG_D = "Dialog można kontynuować naciskając przycisk spacji. Jest to domyślnie wyłączone",
+	RG_SET_QLOOT_ROWS_D = "Ustala liczbę rzędów menu „Weź wszystko„ na ekranie",
+	RG_SET_SKIN_D = "Wybierz skórkę interfejsu",
+	RG_SET_EEEX_ZOOM_D = "Opcja EEEx. Powiększ interfejs do preferowanego rozmiaru.",
+	RG_SET_DESC = "Zaawansowane ustawienia modu UI++.",
+	RG_SET_SKIN_SOD = 'Motyw Dragonspear ',
+	RG_SET_SKIN_IWD = 'Motyw IWD:EE',
+	RG_SET_SKIN_BG1 = 'Motyw BG1',
+	RG_SET_SKIN_BG2 = 'Motyw BG2',
+	RG_LIBRARY_TITLE = 'Biblioteka',
+	RG_LIBRARY = 'Biblioteka: ',
+	RG_BOOKS = 'Książki',
+	RG_BEASTS = 'Potwory',
+	RG_BESTIARY_TITLE = 'Bestiariusz',
+	RG_BESTIARY = 'Bestiariusz: ',
+	RG_LOOTALL = "Weź wszystko",
+	RG_MM_REFRESH = 'Odśwież',
+	RG_SET_MODERN_HUD_R = 'Przenieś pasek akcji na prawo',
+	RG_SET_MODERN_HUD_R_D = 'Przenosi pasek akcji do prawego dolnego rogu ekranu. Ta opcja jest dozwolona tylko wtedy, gdy aktywne są opcje „Pokaż nowoczesny interfejs„ i „Odblokuj okno dialogowe„.',
+	RG_CHEATSPELL = '* Wybierz zaklęcie z listy i kliknij na portret postaci, aby się go nauczyć.',
+	RG_CHEATCOMMAND = '* Zastosuj wybrane polecenie klikając na portret postaci.',
+	RG_CHEATHISTORY = 'Historia Lua',
+	RG_HB_CHOOSEKEY = 'Wybierz skrót klawiszowy: ',
+	RG_HB_CHOOSESEL = 'Wybierz wybór portretu: ',
+	RG_HB_CHOOSEPOR = 'Wybierz wybór portretu: Portret ',
+	RG_HB_CHOOSENON = 'Wybierz wybór portretu: Bez wyboru',
+	RG_HB_NONE = 'Nic',
+	RG_HB_ALL = 'Wszystko',
+	RG_HB_DRAG = 'Odbloku przeciąganie',
+	RG_JUNKBUTTON = 'Filtr śmieci',
+	RGB_DOGN = "Pies",
+	RG_JOURNAL_MODE1 = "Mały dziennik",
+	RG_JOURNAL_MODE2 = "Duży dziennik",
+	RG_INV_MODE = "Tryb inwentarza",
+	RG_HOTKEY_BUTT = "Przycisk skrótu klawiszowego",
+	RG_WRITE_JOURNAL = "Zapisz w dzienniku",
+	RG_B_LVL = "POZ",
+	RG_B_HPS = "PŻ",
+	RG_B_ACB = "KP",   
+	RG_B_THA = "TraK0",
+	RG_B_APR = "ANR",  
+	RG_B_STR = "SIŁ",  
+	RG_B_DEX = "ZRĘ",  
+	RG_B_CON = "KON",  
 	RG_B_INT = "INT",  
-	RG_B_WIS = "WIS",  
+	RG_B_WIS = "MĄD",  
 	RG_B_CHA = "CHA",  
-	RG_SET_BEST_KOEF_D = "This option controls how fast are bestiary stats going to be revealed. Coefficient is multiplied by increasing variable against number of kills of the creature in the bestiary to allow for gradual revelation. Value Zero means instant revelation.",
-	RG_SET_BEST_KOEF = "Bestiary Coef.",
-	RG_RESET_BUTTON = "Reset Messagebox",
+	RG_SET_BEST_KOEF_D = "Ta opcja kontroluje, jak szybko statystyki bestiariusza będą ujawniane. Współczynnik jest mnożony przez rosnącą zmienną w stosunku do liczby zabójstw stworzenia w bestiariuszu, aby umożliwić stopniowe ujawnianie. Wartość zero oznacza natychmiastowe ujawnienie.",
+	RG_SET_BEST_KOEF = "Współczynnik bestiariusza.",
+	RG_RESET_BUTTON = "Zresetuj okno dialogowe",
 	--note these RG_ITM_COMP strings must be equal to those inside item description strings 
-	RG_ITM_COMP_ST = "STATISTICS",
-	RG_ITM_COMP_WE = "Weight",
-	RG_ITM_COMP_RE = "Requires",
-	RG_ITM_COMP_PR = "Proficiency Type: ",
-	RG_ITM_COMP_DA = "Damage type: ",
-	RG_ITM_COMP_TY = "Type: ",
-	RG_SET_EEEX_PCEFF = "EEex enable PC Effects",
-	RG_SET_EEEX_NPCBAR = "EEex show NPC bar",
-	RG_SET_EEEX_PCEFF_D = "Spell effects are shown next to character portraits with an expiration timer progressbar.",
-	RG_SET_EEEX_NPCBAR_D = "You must choose a key to enable this option. After the key is pressed on gameplay screen while cursor over a sprite, NPC bar is opened displaying various information about the creature. The bar can be further customized in its setting.",
-	RG_NPCBAR_CLOSE = "Close NPC Bar",
-	RG_NPCBAR_WEAPON = "Show Weapons on Portraits",
-	RG_NPCBAR_CRE = "Show Creature Names",
-	RG_NPCBAR_HP = "Show Hit points on Portraits",
-	RG_NPCBAR_HPT = "Show HP Tresholds Only",
-	RG_NPCBAR_EFF = "Show Effects on NPCs",
-	RG_NPCBAR_ENEMY = "Show All Enemy Creatures",
-	RG_NPCBAR_NEUTR = "Show All Neutral Creatures",
-	RG_NPCBAR_ALLY = "Show All Allied Creatures",
-	RG_NPCBAR_SELECT = "Show Selected Creature Only",
-	RG_NPCBAR_INFO = "Show Information Box on Right Click",
-	RG_NPCBAR_AREA = "Show Creatures in Entire Area",
-	RG_NPCBAR_MINI = "Show Minimized Settings Bar",
-	RG_NPCBAR_ALWAYS = "NPC Bar Always On",
-	RG_NPCBAR_SETT = "NPC Bar Settings",
-	RG_B3_DISABLE_OPTMIZE = "Automatic slot size optimization is recommended with 'Overlay Mode', as it can cover other UI elements. Do you really want to disable this option?",
+	RG_ITM_COMP_ST = "STATYSTYKI",
+	RG_ITM_COMP_WE = "Waga",
+	RG_ITM_COMP_RE = "Wymaga",
+	RG_ITM_COMP_PR = "Typ biegłości: ",
+	RG_ITM_COMP_DA = "Typ obrażeń: ",
+	RG_ITM_COMP_TY = "Typ: ",
+	RG_SET_EEEX_PCEFF = "EEex włącz efekty gracza",
+	RG_SET_EEEX_NPCBAR = "EEex pokaż pasek NPC",
+	RG_SET_EEEX_PCEFF_D = "Efekty zaklęć są wyświetlane obok portretów postaci z paskiem czasu wygasania.",
+	RG_SET_EEEX_NPCBAR_D = "Aby włączyć tę opcję, musisz wybrać klawisz. Po naciśnięciu klawisza na ekranie rozgrywki, gdy kursor znajduje się nad postacią, otwiera się pasek NPC, wyświetlając różne informacje o stworzeniu. Pasek można dostosować w jego ustawieniach.",
+	RG_NPCBAR_CLOSE = "Zamknij pasek NPC",
+	RG_NPCBAR_WEAPON = "Pokaż broń na portretach",
+	RG_NPCBAR_CRE = "Pokaż nazwy stworzeń",
+	RG_NPCBAR_HP = "Pokaż punkty życia na portretach",
+	RG_NPCBAR_HPT = "Pokaż tylko próg PŻ",
+	RG_NPCBAR_EFF = "Pokaż efekty dla NPC",
+	RG_NPCBAR_ENEMY = "Pokaż wszystkie wrogie stworzenia",
+	RG_NPCBAR_NEUTR = "Pokaż wszystkie neutralne stworzenia",
+	RG_NPCBAR_ALLY = "Pokaż wszystkie sojusznicze stworzenia",
+	RG_NPCBAR_SELECT = "Pokaż tylko wybrane stworzenie",
+	RG_NPCBAR_INFO = "Pokaż pole informacyjne po kliknięciu prawym przyciskiem myszy",
+	RG_NPCBAR_AREA = "Pokaż stworzenia na całym obszarze",
+	RG_NPCBAR_MINI = "Pokaż zminimalizowany pasek ustawień",
+	RG_NPCBAR_ALWAYS = "Pasek NPC zawsze włączony",
+	RG_NPCBAR_SETT = "Ustawienia paska NPC",
+	RG_B3_DISABLE_OPTMIZE = "Zalecana jest automatyczna optymalizacja rozmiaru slotu w trybie nakładki, ponieważ może on obejmować inne elementy interfejsu użytkownika. Czy naprawdę chcesz wyłączyć tę opcję?",
+	
 }
 
 BestiaryStrings = {
-	RGG_SLIM = "Slime",
-	RGG_LYCA = "Lycanthrope",
-	RGG_GIAN = "Giant",
-	RGG_MIST = "Mist",
+	RGG_SLIM = "Śluz",
+	RGG_LYCA = "Likantrop",
+	RGG_GIAN = "Gigant",
+	RGG_MIST = "Mgła",
 	RGG_DROW = "Drow",
-	RGG_MEPH = "Demon, Mephit",
-	RGG_BASI = "Basilisk",
+	RGG_MEPH = "Demon, Mefit",
+	RGG_BASI = "Bazyliszek",
 	RGG_BOSS = "Boss",
 	RGG_DEMO = "Demon",
-	RGG_UNDC = "Undead Ghoulish",
-	RGG_UNDG = "Undead Greater",
-	RGG_UNDS = "Undead Skeletal",
-	RGG_UNDP = "Undead Spectral",
-	RGG_BEAR = "Animal Bear",
-	RGG_WOLF = "Animal Wolf",
-	RGG_DOGN = "Animal Dog",
-	RGG_BEET = "Animal Beetle",
-	RGG_ANIM = "Animal",
-	RGB_BEAR = "Bears are omnivorous, predatorial mammals most commonly found in forests and caves. Incredibly strong and fast for their size, bears hibernate throughout the winter and forage for food during the summer, and will attack hapless travellers who are foolish enough to stray too close to them.",
-    RGB_WOLF = "The wolf is a very active, cunning carnivore, capable of surviving in nearly every climate. Shrouded in mystery and suspicion, they are viewed as vicious killers that slaughter men and animals alike for the lack of better things to do. The truth is that never in recorded history has a non-rabid or non-charmed wolf attacked any creature having an equal or higher intellect than itself. (The chance of encountering a rabid wolf that would attack anything is 1%, if a lone wolf is encountered.) Northern wolves exhibit colors from pure white, to grey, to black. Southern wolves are reddish and brown in color. Although fur coloration vary with climate, all wolves have various features in common. They are characterized by powerful jaws; wide strong teeth; bushy tails; tall, strong ears; and round pupils. Their eyes, a gold or amber color, seem to have an almost empathic ability. ",
-    RGB_SLIM = "The oozes, slimes and jellies of the underworld are hideous, amorphous creatures that are the bane of all that lives, dissolving the weapons, armor, and flesh of their victims. A beast with no visible support within its gelatinous body. The acid touch of these creatures can vary from type to type, but all are deadly scavengers.",
-    RGB_WYVE = "The wyvern is a large, winged lizard. While physically weaker and less intelligent than their dragon cousins, they can be fearsome due to their fast flying skills and stinging tails, which drip with a deadly, fast-acting venom. Unlike true dragons, wyverns only have a pair of hind legs instead of a set four. Their wingspan can get over 50 feet in length. And their tails are often quite long, comprising almost half of their bodies, yet very mobile. These ends in a thick cartilage knot with a stinger protruding out of it, not unlike that of a scorpion.",
-    RGB_BASI = "Basilisks are massive, eight-legged reptilian creatures. While their bite is highly poisonous, their truly fearsome feature comes from their ability to instantly petrify any living being with their gaze. Areas where basilisks run rampant are easily recognized due to their tendency to leave their stone victims in their trail.",
-	RGB_BASG = "The greater basilisk is a larger cousin of the more common reptilian horror, the ordinary basilisk. These monsters are typically used to guard treasure.\n\nBasilisks are massive, eight-legged reptilian creatures. While their bite is highly poisonous, their truly fearsome feature comes from their ability to instantly petrify any living being with their gaze. Areas where basilisks run rampant are easily recognized due to their tendency to leave their stone victims in their trail.",
-    RGB_DOPP = "Dopplegangers are humanoid creatures with the ability to shapeshift. They are cunning in nature, being capable of near-perfectly imitating a chosen target after observing them for a sufficient amount of time. When exposed, their tough hides and sharp claws give them a means of self-defense in their natural form.",
-    RGB_DOGG = "Smaller than wolves, the appearance of the wild dog varies from place to place. Most appear very wolflike, while others seem to combine the looks of a wolf and a jackal. Wild dogs fight as an organized pack. They favor small game, and attack men and human habitations only in times of great hunger. They are found almost anywhere, run in packs, and are led by the dominant male. The pack usually hunts a variety of game, even attacking deer or antelope. Pups are born in the spring. Wild dogs can be tamed if separated from their pack.",		
-    RGB_ANKH = "Ankhegs are massive, insectoid monsters that burrow beneath the earth. While not actively malicious and valued for to their ability to aerate soil with their tunnelling, ankhegs are dangerous monsters due to their tough chitinous shells (which can be treated by skilled armorers to create plate mail), sharp claws, and projectile acidic spittle.",
-    RGB_FLES = "A golem is an artificial humanoid body which is animated by an elemental spirit and under the control of its creator.\n\nThe flesh golem stands a head and a half taller than most humans and weighs almost 350 pounds. It is made from a ghoulish collection of stolen human body parts, stitched together to form a single composite human body. Its skin is the sickly green or yellow of partially decayed flesh. A flesh golem smells faintly of freshly dug earth and dead flesh. No natural animal, such as a dog, will willingly track a flesh golem. It wears whatever clothing its creator desires, usually just a ragged pair of trousers. It has no possessions, and no weapons. The golem can not speak, although it can emit a hoarse roar of sorts. It walks and moves with a stiff jointed gait, as if it is not in complete control over its body parts.",
-    RGB_DRYA = "Dryads are beautiful, intelligent tree sprites. They are as elusive as they are alluring, however, and dryads are rarely seen unless taken by surprise - or they wish to be spotted. The dryad's exquisite features, delicate and finely chiseled, are much like an elf maiden's. Dryads have high cheek bones and amber, violet, or dark green eyes. A dryad's complexion and hair color changes with the seasons, presenting the sprite with natural camouflage. During the fall, a dryad's hair turns golden or red, and her skin subtly darkens from its usual light tan to more closely match her hair color. This enables her to blend with the falling leaves of autumn. In winter, both the dryad's hair and skin are white, like the snows that cover the oak groves. When encountered in a forest during fall or winter, a dryad is often mistaken for an attractive maid, probably of elvish descent. No one would mistake a dryad for an elf maid during the spring and summer, however. At these times of year, a dryad's skin is lightly tanned and her hair is green like the oak leaves around her. Dryads often appear clothed in a loose, simple garment. The clothing they wear is the color of the oak grove in the season they appear. They speak their own tongue, as well as the languages of elves, pixies, and sprites. Dryads can also speak with plants.",
-    RGB_SIRI = "Sirines are beautiful, human-like females, at home in any aquatic environment. They have human skin tones ranging to a light yellow-green, and their hair can be almost any color, though silver and dark green are the most common. Sirines have beautiful figures and wear scanty clothing at best. Most sirines are antisocial, so they try to drive intruders away, with evil sirines taking stronger measures. Other sirines are hungry for social interaction, and try to lure male humans or demihumans to join them for a time. ",
-    RGB_TASL = "Tasloi are long-legged, flat-headed humanoids. They walk in a crouching posture, touching their knuckles to the ground from time to time. Their skins are a lustrous green and are thinly covered with coarse black hair. Their eyes are similar to a cat's and are gold in color. Often they can be heard at night, speaking in their high, whispery voices. Tasloi speak their own tongue and can also speak the languages of monkeys and apes. About 5% of their kind have learned a pidgin common that they use when trading.",
-    RGB_WEWO = "Werewolves are the most feared of the lycanthropes, men who can transform into wolflike beasts. They should not be confused with wolfweres - wolves who turn into men. Great enmity exists between werewolves and wolfweres. The human forms of werewolves have no distinguishing traits. The werewolf form is equally varied. Many have a bipedal form that is a hybrid of human and lupine features. These creatures are about 1-foot taller and stronger than their human forms. The bodies are fur-covered and have short tails, wolflike legs, and heads that are combinations in varying degrees of human and lupine features. A second form of hybrid is more wolflike, and may be mistaken for a large wolf when it runs on all four legs. This hybrid can also walk erect and has humanlike hands. Another type of werewolf (about 20%) looks exactly like a large wolf about the size of a bear. This creature has no human features, although the eyes may glow red in the dark. ",
-    RGB_WOWE = "The wolfwere is an evil and hateful creature that delights in the brutal slaying of humans and demihumans alike. In many cases, the wolfwere is able to attack its victims with utter surprise because of its ability to assume the shape of a human of exceptional charisma. The wolfwere is able to assume a wide variety of shapes at will. Transformation from one form to another takes only a single round. Its true shape, and that in which it prefers to spend the vast majority of its time, is that of a large wolf. When in this state, it is almost indistinguishable from a dire wolf. When a wolfwere is attempting to lure humans or demihumans into an ambush, it will assume the shape of member of their race. Almost without exception, the new persona will not be of the same sex as the potential victim. Thus, a wolfwere which is stalking a male elf will transform itself into a female elf. In all cases, the newly disguised wolfwere will have exceptional physical beauty. ",
-	RGB_XVAR = "Xvarts are a cruel, cowardly race of humanoids which live in hilly, cavernous regions. They occupy a place in humanoid society somewhere between goblins and kobolds. The small, bald, blueskinned creatures often act as intermediaries between these two races, usually dominating the latter. Although weak individually, they are extremely prolific, and are almost always encountered in large groups. ",
-    RGB_ZOMB = "Among the lowest caliber of undead creatures, zombies are mindless animated corpses that exist in a state of perpetual hunger, shambling towards anything living with single-minded purpose. Despite being slow and weak, they are at their most dangerous when gathering in hordes.",
-	RGB_HORB = "Battle Horror, a creation of ancient magics and arcane craftsmanship, strides through the darkness with an aura of silent menace and unyielding resolve. Forged from enchanted armor and animated by powerful spells, this spectral guardian embodies the timeless vigilance and unwavering loyalty of its creators. Clad in gleaming steel and adorned with mystic sigils, the Helmed Horror strikes fear into the hearts of those who dare to cross its path.",
-	RGB_HORH = "The Helmed Horror, a creation of ancient magics and arcane craftsmanship, strides through the darkness with an aura of silent menace and unyielding resolve. Forged from enchanted armor and animated by powerful spells, this spectral guardian embodies the timeless vigilance and unwavering loyalty of its creators. Clad in gleaming steel and adorned with mystic sigils, the Helmed Horror strikes fear into the hearts of those who dare to cross its path.",
-    RGB_INVI = "The invisible stalker is a creature from the elemental plane of Air. Those encountered on the Prime Material plane have almost always been summoned by wizards to fulfill a specific task. The true form of the invisible stalker is unknown. On the Material, Astral, or Ethereal planes, the invisible stalker can only be perceived as a shimmering air mass which looks much like the refraction effect caused by hot air passing in front of cold. Invisible stalkers understand the common speech of men, but can not speak it. They can converse only in their own language, which sounds much like the roaring and whooshing of a great wind storm. ",
-    RGB_RATS = "The Rat, a ubiquitous creature of the darkened alleys and forgotten sewers, scurries with an aura of skittishness and primal survival instinct. Born from the teeming masses of urban sprawl and the decaying depths of ancient ruins, the Rat embodies the essence of scavenging and adaptability, its wiry form adorned with coarse fur and twitching whiskers. With its keen senses and nimble movements, the Rat navigates the hidden recesses of the world with cautious curiosity and wary vigilance.",
-	RGB_BAND = "The Bandit, a lawless renegade of the open road, roams with an aura of reckless abandon and roguish charm. Born from the fringes of society and forged in the crucible of desperation, the Bandit embodies the essence of freedom and defiance, their rugged attire adorned with stolen trinkets and ill-gotten gains. With their cunning tactics and swift blades, the Bandit preys upon the unwary, striking fear into the hearts of travelers and merchants alike.",
-	RGB_DROW = "Long ago, dark elves were part of the elven race that roamed the world's forests. Not long after they were created, though, the elves found themselves torn into rival factions - one following the tenets of evil, the other owning the ideals of good (or at least neutrality). A great civil war between the elves followed, and the selfish elves who followed the paths of evil and chaos were driven into the depths of the earth, into the bleak, lightless caverns and deep tunnels of the underworld. These dark elves became the drow. The drow no longer wish to live upon the surface of the earth. In fact, few who live on the surface ever see a drow. But the dark elves resent the elves and faeries who drove them away, and scheme against those that dwell in the sunlight.",
-	RGB_ETTI = "Ettins, or two-headed giants, as they are often called, are vicious and unpredictable hunters that stalk by night and eat any meat they can catch. An ettin at first appears to be a stone or hill giant with two heads. On closer inspection, however, the creature's vast differences from the relatively civilized giant races become readily apparent. An ettin has pink to brownish skin, though it appears to be covered in a dark brown hide. This is because an ettin never bathes if it can help it, and is therefore usually encrusted with a thick layer of dirt and grime. An ettin's right head is always the dominant one, and the right arm and leg will likely appear slightly more muscular and well-developed than the left. An ettin wears only rough, untreated skins, which are dirty and unwashed. Obviously, ettins smell very bad, due to their complete lack of grooming habits -- good or bad.",
-	RGB_GOBL = "These small, evil humanoids would be merely pests, if not for their great numbers. Goblins have flat faces, broad noses, pointed ears, wide mouths and small, sharp fangs. Their foreheads slope back, and their eyes are usually dull and glazed. They always walk upright, but their arms hang down almost to their knees. Their skin colors range from yellow through any shade of orange to a deep red. Usually a single tribe has members all of about the same color skin. Their eyes vary from bright red to a gleaming lemon yellow. They wear clothing of dark leather, tending toward dull soiled-looking colors. Goblin speech is harsh, and pitched higher than that of humans. In addition to their own language, some goblins can speak in the kobold, orc, and hobgoblin tongues. ",
-	RGB_LIZA = "Typically only found in tropical regions, lizard men are primitive bipeds with a well developed social structure and advanced religious beliefs. Lizard men tribes are typically led by a lizard king who is significantly larger and more powerful than his kin. Lizard men do not come into conflict with humans often, but their fondness for the taste of human flesh often causes problems.",
-	RGB_MINO = "Minotaurs are either cursed humans or the offspring of minotaurs and humans. They usually dwell in underground labyrinths, for they are not confused in these places, which gives them an advantage over their prey. Minotaurs are huge, well over 7 feet tall, and quite broad and muscular. They have the head of a bull but the body of a human male. Their fur is brown to black while their body coloring varies as would a normal human's. Clothing is minimal, usually a loin cloth or skirt. ",
-	RGB_YUAN = "These creatures are rare, but extremely deadly opponents. Yuan-ti are an offshoot of a race which ruled Faerûn long before humanoids took control. With snakelike bodies and vaguely human limbs, yuan-ti hide in secret vaults until the time is right to strike out at their enemies. Yuan-ti are extremely intelligent foes with very sophisticated magical talents. They are known for their cunning minds, poisonous traps, and vile religious rituals.",
-	RGB_MUMM = "Mummies are corpses native to dry desert areas, where the dead are entombed by a process known as mummification. When their tombs are disturbed, the corpses become animated into a weird unlife state, whose unholy hatred of life causes them to attack living things without mercy. Mummies are usually (but not always) clothed in rotting strips of linen. They stand between 5 and 7 feet tall and are supernaturally strong.",
-	RGB_MUMG = "Also known as Anhktepot's Children, greater mummies are a powerful form of undead created when a high-level lawful evil priest of certain religions is mummified and charged with the guarding of a burial place. It can survive for centuries as the steadfast protector of its lair, killing all who would defile its holy resting place. Greater mummies look just like their more common cousins save that they are almost always adorned with (un)holy symbols and wear the vestments of their religious order. They give off an odor that is said to be reminiscent of a spice cupboard because of the herbs used in the embalming process that created them. Greater mummies are keenly intelligent and are able to communicate just as they did in life. Further, they have an inherent ability to telepathically command all normal mummies created by them. They have the ability to control other mummies, provided that they are not under the domination of another mummy, but this is possible only when verbal orders can be given. ",
-	RGB_MYCO = "Myconids, or fungus men, are a race of intelligent fungi that live in the remote reaches of the Underdark. They are cautious creatures that deplore violence; myconids have no desire to conquer anybody and would prefer to be left alone. Myconids resemble walking toadstools in human form. Their flesh is bloated and spongy and varies in color from purple to gray. Their wide feet have vestigial toes and their pudgy hands have two stubby fingers and a thumb on either side. They have no spoken language.",
-	RGB_ORCS = "Orcs are a species of aggressive mammalian carnivores that band together in tribes and survive by hunting and raiding. They are the hereditary enemies of goblins and hobgoblins, with whom they often compete for resources. Reasonably intelligent carnivores, orcs are constantly waging war against other races to maintain their tribes. These wars thin the weak predators from their tribes and gather resources for the next generation. Orcs have a reputation for being extremely powerful warriors. Wizards have tried to create orcish variants to take advantage of the race's natural ferocity and strength.",
-	RGB_MIST = "The crimson death is a malevolent, vaporous creature that feeds on the bodily fluids of its victims. The body of the crimson death is a humanoid-shaped cloud of pale color. It is difficult to distinguish if seen against fog and nearly invisible to infravision. When the creature is fed, it develops a crimson flush that is easily visible by normal or infravision. The cloud possesses humanoid features. The fingers elongate into tentacles when it is feeding. Because of its behavior, sages believe that a Crimson Death Mist is the result of the actual death of a vampire. The crimson death's language is a barely audible series of whispers. It can communicate with other vaporous beings such as air elementals. It communicates with humanoids only if it is their captive.",
-	RGB_SALA = "Beings from the Elemental Plane of Fire and the Paraelemental Plane of Ice, salamanders are large creatures with the upper bodies of men and the lower bodies of serpents. Salamanders are typically only found in extremely hot and extremely cold environments. As these beings are elemental-kin, they radiate small amounts of elemental energy at all times. They are selfish and cruel creatures that cannot abide being removed from their environment for an extended period of time.",
-	RGB_GITH = "Githyanki are an ancient race descended from humans. They dwell upon the Astral plane but will often leave that plane to make war on other races. They are engaged in a lengthy war with the githzerai. Githyanki are strongly humanoid in appearance. They are approximately of human height but tend to be much more gaunt and long of limb. They have rough, yellow skin and gleaming black eyes that instantly betray their inhumanness. Like many demihuman races, their ears have sharp points and are serrated at the back. Dress for the githyanki is always an elaborate affair. Their baroque armor and weapons of war are decorated with feathers, beads, and precious metals and gems. Githyanki speak their own tongue, and no others.",
-	RGB_BALO = "The greatest and most terrible of the true tanar'ri, the balors are the undisputed terrors of the Abyss. They are the very motivation behind the tanar'ri involvement in the Blood War. In every sense of the word, balors are the quintessential tanar'ri. They derive great pleasure from the suffering of others and go out of their way to torment lesser beings and cause them pain. Balors are repulsive and loathsome to behold. They are towering humanoids with deep, dark red skin. They have huge wings that propel them with unnatural speed and agility. They have long, wicked claws and grotesque fangs that drip with venom. Balors are commonly surrounded by searing flames.",
-	RGB_MARI = "Bold and cunning, marilith are the generals and tacticians for the Blood War. Where the balors are the influence and energy behind the war effort, the marilith are the brains and tactics. Terrible to behold, these creatures have the bodies of giant snakes, with huge, green, scaly coils. From the waist up, they are beautiful, comely females. Besides her obvious snake body, the feature that reveals the true nature of this tanar'ri is her six arms. They are commonly adorned with precious jewelry and highly decorated weapons, marilith most often carry a different weapon in each of their six hands.",
-	RGB_TANA = "Tanar'ri are, in the broadest terms, chaos and evil defined. The less intelligent often attack without question and fight until slain. True and greater tanar'ri often roam the Astral and Ethereal Planes -- their attention is attracted by those in an ethereal state.",
-	RGB_PITF = "Pit fiends are the lords of the Nine Hells. They are the baatezu of the greatest power and the highest station. Pit fiends are found throughout the various layers of the Nine Hells, but are very rare on the upper layers. Wherever they are found, these mighty lords hold a position of great authority and power. They sometimes command vast legions consisting of dozens of complete armies, leading them into battle against the tanar'ri.",
-	RGB_ABIS = "Abishai are common on the first and second layers of the Nine Hells, appearing much like gothic gargoyles. They are thin and reptilian with long, prehensile tails and great wings. There are three varieties of abishai. They are, in ascending order of station, black, green, and red. Abishai communicate with telepathy. Abishai are voracious and evil. They delight in tormenting those few natives of the Nine Hells that are lower in power.",	
-	RGB_DOGW = "Generally large mastiffs or wolfhounds, they have keen senses of smell and hearing, making them adept at detecting intruders. Most war dogs are not usually vicious, and will rarely attack without cause. The status of war dogs varies greatly; some are loyal and beloved pets, some are watch dogs, others are hunting dogs, and some are trained for battle. ",
-	RGB_CATS = "A great cat is a redoubtable foe in battle and is surprised only on a 1. They are experts in stalking and often hunt in pairs or groups. They can leap 10 feet upward, and spring forward 30 feet to 50 feet to attack. If they strike successfully with both forepaws, their rear claws rake for 2-8 (2d4) points of damage per claw. The species ranges from the subarctic to the tropics, generally inhabiting wooded or covered terrain. They are nocturnal, solitary, graceful climbers and swimmers who are capable of sustained high speed. These animals rarely fight among themselves, but will protect their territories ferociously. They are also the most unpredictable and dangerous of the great cats, not hesitating to attack men. Their favorite prey includes cattle, wild pigs and deer. Females raise their 1-3 cubs alone. The cubs remain with their mother for several years. If encountered in the lair, there is a 25% chance that the cubs will be present. Feared by men, tigers are hunted aggressively, and are threatened by the destruction of forests. In the untamed wilderness, however, the tiger occupies the top predatory niche.",
-	RGB_DUER = "Duergar, or gray dwarves, are a malevolent breed that exist at extreme depths underground. Duergar may be fighters, priests, thieves, or multi-classed fighter/priests, fighter/thieves, or priest/thieves. Thieves are proficient in the use of poison. Duergar appear to be emaciated, nasty-looking dwarves. Their complexions and hair range from medium to dark gray. They prefer drab clothing designed to blend into their environment. In their lairs, they may wear jewelry, although such pieces are kept dull. Duergar have infravision to 120 feet. They speak the duergar dialect of the dwarven tongue, undercommon (the trading language of subterranean cultures), and the silent speech employed by some subterranean creatures. Intelligent duergar may speak other languages as well. ",
-	RGB_GIAN = "Fire giants are brutal, ruthless, and militaristic. They are tall, but squat, resembling huge dwarves. An adult male is 18 feet tall, has a 12 foot chest, and weighs about 7,500 pounds. Fire giants have coal black skin, flaming red or bright orange hair, and prognathous jaws that reveal dirty ivory or yellow teeth. They can live to be 350 years old. Warriors usually wear banded mail and round metal helmets. They carry their belongings in huge sacks. A typical fire giant's sack contains 2-5 (1d4+1) throwing rocks, the giant's wealth, a tinderbox, and 3-12 (3d4) common items. Everything they own is battered, filthy, and smelly, making it difficult to identify valuable items. All fire giants can speak the language of all giants and their own tongue.",
-	RGB_MIMI = "Mimics are magically-created creatures with a hard rock-like outer shell that protects their soft inner organs. Mimics can alter their form and their pigmentation; they use this talent to lure victims into close range, where they attempt to feed on them. They usually appear in the form of treasure chests. There are two varieties, the smaller, more intelligent common mimic, and the larger, less intelligent killer mimic. Mimics are large. Common mimics occupy about 150 cubic feet (a 3' x 6' x 8' chest, or a large door frame). Killer mimics occupy about 200 cubic feet. Mimics' natural color is a speckled grey that resembles granite. Mimics can alter their pigmentation to resemble varieties of stone (such as marble), wood grain, and various metals (gold, silver, copper); it takes one round to make the desired alteration. They cannot lose mass in this transformation (they must remain the same size, though they may radically alter their dimensions). Common mimics have their own tongue (corruptions of the original language spoken by their wizard creators) and can also be taught to speak in common and other languages. Killer mimics are incapable of speech.",
-	RGB_OROG = "Elite orcs, or orogs, are a race of great orcs, possibly mixed with ogre blood. Orogs range between 6 and 6 and a half feet tall. They are highly disciplined warriors and have their own standards and banners which they display prominently - it is usually easy to tell when orogs are present among common orcs. Orogs can be found at the vanguard of large orc armies, but rarely on patrol. There is a 10% chance that an orc tribe will have orogs, whose number equals 10% of the male population. (Thus a community of 3,000 male orcs has a 10% chance of having 300 additional orogs.) Small bands of elites (20-80 orogs) will hire themselves out as mercenaries.",
-	RGB_SHAM = "Shambling mounds, or shamblers, appear to be heaps of rotting vegetation. They are actually an intelligent form of plant life, with a roughly humanoid shape, and a brain-like control center in its chest area. A shambler has a 6-foot girth on its lower half, tapering to about 2 feet at its head. Shambling mounds are found only in regions of dense rainfall and vegetation. Dismal swamps, marshes, and rain forests are their favorite living areas, but some wet, subterranean places also serve as shambler lairs. They are solitary beasts, rarely living in the same area with other shamblers - usually only in areas where the food source is constant, near famous ruins, or abandoned gold mines. Shamblers are almost totally silent and invisible in their natural surroundings; opponents suffer a -3 penalty to surprise rolls. A shambler often lies in a shallow bog, waiting for some creature to walk onto it, then it attacks. The creatures are excellent swimmers as well, and they have been known to sneak into the camps of unsuspecting travelers at night. ",
-	RGB_SNAK = "Snakes are long, slender reptiles that can be found anywhere in the entire world, even in the coldest arctic regions. There are basically two types of snakes, in all manner of sizes. The poisonous snakes make up for their relatively smaller size with deadly venoms, while the larger constrictors squeeze their victims to death. Both types sleep for days after eating. All snakes shed their skin several times each year.",
-	RGB_WIGH = "In ages long past, the word wight meant simply man. As the centuries have passed, though, it has come to be associated only with those undead that typically inhabit barrow mounds and catacombs. From a distance, wights can easily be mistaken for any number of humanoid races. Upon closer examination, however, their true nature becomes apparent. As undead creatures, wights are nightmarish reflections of their former selves, with cruel, burning eyes set in mummified flesh over a twisted skeleton with hands that end in sharp claws.",
-	RGB_SHAD = "Shadow Druids are a druidic cult which believes that nature should drive out civilization with violence. They are active along the Sword Coast with bases of operations in the Cloakwood Forest and the Druid Grove. The druidic circle as a whole is led by the Shadow Archdruid, while 'First Druids' serve as the leaders of individual groves. They use extreme methods and violence to drive away civilization, using the ferocious powers of nature.",
-	RGB_SHAT = "The Shadow Thieves are an organization that operate through agents all over Western Faerun among their many bases. Their head base is in the Athkatla Docks in the city of Athkatla, and their highest leader is Aran Linvail. They thrive in criminal activity.",
-	RGB_COWL = "The Cowled Wizards is an organization that regulates the use of wizardly magic by the people in Athkatla. They place strict laws that ban unlicensed wizardly spells. The casting of one will lead to the arrest of those involved. If they resist, they will be killed. After they are arrested they go on trial in a building in the Athkatla Government, where the leader decides what sentence is applicable.",
-	RGB_GLAB = "Of all the tanar'ri - demonic fiends that inhabit the Abyss of chaos and evil - few are as cunning as the doglike glabrezu. These are the chosen tempters of mortal minds, offering power and knowledge beyond the ken of even the most knowledgeable. Of course, this knowledge comes with a price. They're also brutal warriors, among the most dangerous creatures you have encountered. Tread carefully, both in body and mind.",
-	RGB_CORN = "One of the highest-ranking levels of baatezu in all Baator, cornugons are those who have ascended through the ranks of their fellows by way of countless generations of betrayal, self-sacrifice, deception, and all manner of vices. Covered with tiny horns, wearing a huge pair of wings, and heavily-muscled, they look like stupid creatures and often play on that to their advantage - they are, in fact, deeply intelligent creatures, and there's no telling how deep their schemes might run.",
-	RGB_ALUF = "The child of a tanar'ri and a human father, the alu-fiend is akin to a succubus in appearance. Some of them try to repress the evil within them; far more attempt to outdo their fiendish forebears in sheer evil and cruelty. You should know better than to trust a tanar'ri.",
-	RGB_ERIN = "Erinyes are fierce baatezu whose heavenly appearance belie their wicked intentions. They are the furies of the Nine Hells, responsible for bringing infernal justice and vengeful retribution to mortals and devils alike. While most scholars of the planes consider erinyes to be among the lesser devils, their unique position in reporting directly to the Dark Eight meant that some consider them greater baatezu.",
-	RGB_SUCU = "One of the tanar'ri, they are a devilish temptresses. When uncovered in her true form, a succubus appears as a stunningly beautiful woman of statuesque build and perfect figure, with flawless skin and red or raven-black hair, but also clawed fingers and large dark-hued or reddish bat-like wings mounted on their backs. Their eyes are said to smolder with sinister desire. Small horns or a tail might also be seen. Succubi stand on average around 6 feet tall and weighed 125 pounds. Demonic succubi are by far the most attractive of the otherwise-hideous tanar'ri, maybe even of all demons.",
-	RGB_REDW = "The Red Wizards of Thay are a malevolent organization of wizards - a magocracy - that rules over the distant realm of Thay in the eastern reaches of Faerun, far from the lands of Baldur's Gate or Athkatla. These ruthless, cruel and power-hungry wizards seek to dominate all races and peoples of the world, with ploys to achieving this goal ranging from mercantile subversion to assassination to open-warfare. Their land neighbors Rashemen, and they have frequently invaded that realm in order to pursue their ambitions, but have been beaten back on every single occasion.",
-	RGB_MONK = "Monks are warriors who pursue perfection through contemplation as well as action. They are versatile fighters, especially skilled in combat without weapons or armor. Though Monks cannot cast spells, they have a unique magic of their own: They channel a subtle energy, called ki, which allows them to perform amazing feats. The Monk's best known feat is their ability to stun an opponent with an unarmed blow.",
-	RGB_MOND = "The Order of the Dark Moon is a secretive monastic order that follows the teachings of the dark goddess Shar. Monks of the Dark Moon use physical prowess, dark magic, and many different forms of deception to mask their activities and strike with deadly precision.",
-	RGB_MONH = "The Heretic Monk, a renegade acolyte of forbidden doctrines and arcane secrets, moves with an aura of defiant zeal and mystical fervor. Cast out from the orthodox orders and branded as apostates, the Heretic Monks embody the essence of rebellion and spiritual exploration, their robes adorned with esoteric symbols and forbidden scriptures. With their unorthodox techniques and blasphemous rituals, the Heretic Monks challenge the established dogma and seek enlightenment through paths untrodden by their traditional brethren.",
-	RGB_MONS = "The Monk of Shar, a shadowy disciple of darkness and harbinger of despair, moves with an aura of silent menace and infernal grace. Devoted to the Mistress of the Night and sworn to uphold her sinister tenets, the Monk of Shar embodies the essence of shadow and secrecy, their form cloaked in midnight hues and their movements shrouded in darkness. With their unholy strikes and eldritch abilities, the Monk of Shar strikes fear into the hearts of those who dare to oppose the will of their dark mistress.",
-	RGB_BARB = "The Barbarian, a fierce warrior of untamed lands, charges into battle with an aura of primal fury and indomitable strength. Hailing from rugged landscapes and wild frontiers, the Barbarian embodies the essence of freedom and raw power, their muscular frame adorned with tribal markings and battle scars. With their mighty weapons and ferocious battle cries, the Barbarian strikes fear into the hearts of their foes and inspires awe in those who witness their unmatched prowess.",
-	RGB_BATN = "Bats, the nocturnal denizens of the night sky, are often overlooked as mere pests or nuisances by those who dwell in the light. However, these winged creatures play a crucial role in the delicate balance of the natural world. With their leathery wings and keen echolocation, bats navigate the darkness with unparalleled grace and precision, hunting insects and pollinating flowers with equal efficiency.",
-	RGB_BEET = "Giant beetles are similar to their more ordinary counterparts, but thousands of times larger -- with chewing mandibles and hard wings that provide substantial armor protection. Beetles have two pairs of wings and three pairs of legs. Fortunately, the wings of a giant beetle cannot be used to fly, and in most cases, its six bristly legs do not enable it to move as fast as a fleeing man. The hard, chitinous shell of several varieties of these beetles are brightly colored, and sometimes have value to art collectors. While their shells protect beetles as well as plate mail armor, it is difficult to craft armor from them, and a skilled alchemist would need to be brought in on the job. All beetles are basically unintelligent and always hungry. They will feed on virtually any form of organic material, including other sorts of beetles. They taste matter with their antennae, or feelers; if a substance tasted is organic, the beetle grasps it with its mandibles, crushes it, and eats it. Because of the thorough grinding of the mandibles, nothing eaten by giant beetles can be revived by anything short of a wish. Beetles do not hear or see well, and rely primarily on taste and feel.",	
-	RGB_BEHO = "The beholder is the stuff of nightmares. This creature, also called the sphere of many eyes or the eye tyrant, appears as a large orb dominated by a central eye and a large toothy maw, has 10 smaller eyes on stalks sprouting from the top of the orb. Among adventurers, beholders are known as deadly adversaries. Equally deadly are a number of variant creatures known collectively as beholder-kin, including radical and related creatures, and an undead variety. These creatures are related in manners familial and arcane to the 'traditional' beholders, and share a number of features, including the deadly magical nature of their eyes. The most extreme of these creatures are called beholder abominations. The globular body of the beholder and its kin is supported by levitation, allowing it to float slowly about as it wills. Beholders and beholder-kin are usually solitary creatures, but there are reports of large communities of them surviving deep beneath the earth and in the void between the stars, under the dominion of hive mothers. All beholders speak their own language, which is also understood by all beholder-kin. In addition, they often speak the tongues of other lawful evil creatures.",
-	RGB_DJIN = "Genies come from the elemental planes. There, among their own kind, they are have their own societies. Genies are sometimes encountered on the Prime Material plane and are often summoned specifically to perform some service for a powerful wizard or priest. All genies can travel to any of the elemental planes, as well as the Prime Material and Astral planes. Genies speak their own tongue and that of any intelligent beings they meet through a limited form of telepathy.  Djinn, the elemental genies of air, are majestic beings that soar through the skies on currents of wind and magic. Born from the swirling chaos of the Elemental Plane of Air, these powerful entities embody the essence of freedom and tempestuousness.",
-	RGB_EFRE = "The efreet (singular: efreeti) are genies from the elemental plane of Fire. They are enemies of the djinn and attack them whenever they are encountered. A properly summoned or captured efreeti can be forced to serve for a maximum of 1,001 days, or it can be made to fulfill three wishes. Efreet are not willing servants and seek to pervert the intent of their masters by adhering to the letter of their commands. The efreet are said to be made of basalt, bronze, and solid flames. They are massive, solid creatures.", 
-	RGB_ELEF = "From the heart of the elemental plane of fire, Fire Elementals manifest as living infernos, their ethereal forms flickering with an unbridled intensity. These beings embody the essence of fire itself, their presence marked by scorching heat that mirrors the ferocity of a blazing conflagration. Encounters with Fire Elementals are incandescent spectacles, where the very air shimmers with the intense energy they command. Amidst ancient sanctuaries or volcanic domains, adventurers may find themselves facing Fire Elementals. Battles with these living flames demand not only martial skill but also a strategic understanding of the unpredictable nature of elemental fire. In the arcane landscapes where secrets flicker like embers, the appearance of Fire Elementals signifies a convergence of elemental power and the ever-present threat of conflagration.",
-	RGB_ELEE = "Forged from the bedrock of the elemental plane of earth, Earth Elementals rise as colossal embodiments of stone and soil. Within subterranean depths and ancient caverns, these entities command the solidity of the very ground adventurers tread. Encounters with Earth Elementals are battles against the enduring strength of the earth itself, where the very terrain becomes both weapon and shield.In the labyrinthine passages or buried ruins, adventurers may face Earth Elementals as silent guardians. These creatures can meld with the very earth, making them formidable opponents with an uncanny ability to control the battlefield. Engaging with Earth Elementals requires not only martial prowess but a strategic understanding of the solid ground on which the battle unfolds. In the subterranean realms where mysteries lie buried, the presence of Earth Elementals signifies a confrontation with the enduring forces of the earth.",
-	RGB_ELEA = "Sweeping through the skies from the boundless reaches of the elemental plane of air, Air Elementals materialize as ethereal vortexes. These entities, comprised of swirling currents and debris, command the very atmosphere itself. Encounters with Air Elementals are graceful yet tumultuous dances, where the air becomes both ally and adversary. In the aerial expanses or mystical chambers where winds converge, adventurers may confront Air Elementals. These entities can manipulate the very air currents, creating a battlefield that challenges both ground-bound stability and aerial maneuverability. Engaging with Air Elementals requires not only mastery of combat but an understanding of the ever-shifting winds that define the atmospheric realms. In the vast skies of the world, where secrets soar high, the presence of Air Elementals signifies a dance with the untamed forces of the atmosphere.",
-	RGB_ELEW = "Emerging from the depths of the elemental plane of water, Water Elementals undulate through aquatic realms with a fluid grace. These living torrents of water embody the ebb and flow of the ocean itself. Encounters with Water Elementals are fluid dances, where the boundaries between the physical and the aqueous become indistinct.Beneath the surface of mystical pools or hidden aquatic caverns, adventurers may encounter Water Elementals as guardians or denizens of submerged realms. Their fluid forms make them elusive adversaries, capable of manipulating water to drown foes or launch watery assaults. Engaging with Water Elementals requires not only mastery of combat but an understanding of the fluid dynamics that define the aquatic environments they inhabit. In the underwater tapestry of Baldur's Gate II, where secrets ripple beneath the surface, the presence of Water Elementals signifies a dance with the ever-shifting tides.",
-	RGB_MINF = "The Mind Flayer, an abomination born of the darkest depths of the Underdark, moves through the shadows with a sinister aura of psychic power and eldritch knowledge. Its slimy, tentacled visage strikes fear into the hearts of those who behold it, while its malevolent intellect schemes and plots with cruel efficiency. Armed with psionic abilities and a hunger for the thoughts of others, the Mind Flayer preys upon the minds of sentient beings, twisting their thoughts and draining their very essence.",
-	RGB_GOLS = "The Stone Golem, a towering colossus of animated rock and earth, stands as a sentinel of ancient power and enduring strength. Carved from solid stone and imbued with arcane energy, this formidable construct embodies the resilience and immovability of the mountains themselves. With its massive form and impassive visage, the Stone Golem strikes fear into the hearts of all who dare to challenge its domain.",
-	RGB_GOLI = "The Iron Golem, a towering behemoth forged from molten metal and arcane enchantments, looms over its surroundings with an imposing presence. Crafted by master artisans and infused with powerful magic, this formidable construct epitomizes the fusion of artifice and sorcery. Its gleaming metallic form, wrought with intricate detail and formidable strength, strikes fear into the hearts of all who behold it.",
-	RGB_GOLA = "The Adamantite Golem, a pinnacle of craftsmanship and arcane mastery, stands as a sentinel of unyielding resolve and indomitable strength. Fashioned from the rarest of metals and infused with the purest of magical energies, this towering construct embodies the epitome of durability and resilience. Its gleaming form, forged with precision and infused with ancient enchantments, radiates an aura of invincibility that commands respect and fear alike.",
-	RGB_GOLF = "The Flesh Golem, a grotesque amalgamation of stitched-together body parts and dark sorcery, shambles forth with an eerie semblance of life. Created through unholy rituals and blasphemous experimentation, this abomination of flesh and bone embodies the horrors of the darkest recesses of the mind. Its stitched-together form, animated by forbidden necromantic energies, exudes an aura of dread that chills the very soul.",
-	RGB_GOLC = "The Clay Golem, a massive construct molded from enchanted clay and animated by ancient sorcery, strides forward with a ponderous grace. Crafted by skilled artisans and imbued with powerful magic, this formidable guardian embodies the enduring strength and resilience of earth itself. Its massive form, sculpted with precision and infused with arcane energies, exudes an aura of stoic determination that commands respect and awe alike.",
-	RGB_GOLM = "The Magic Golem, a marvel of arcane craftsmanship and mystical enchantment, strides forth with an aura of otherworldly power and ancient wisdom. Crafted by master artificers and infused with potent sorceries, this ethereal guardian embodies the convergence of magic and machinery. Its form, shimmering with arcane energy and adorned with intricate runes, radiates an aura of transcendent majesty that commands respect and reverence alike.",
-	RGB_GOLD = "The Sand Golem, a towering figure sculpted from the shifting sands of the desert and imbued with ancient magic, strides forth with an eerie grace and silent determination. Fashioned by forgotten sorcerers and animated by the primal forces of the desert itself, this formidable guardian embodies the harsh beauty and unforgiving nature of the arid wasteland. Its towering form, composed of swirling sands and bound by mystical energies, exudes an aura of timeless wisdom and stoic resilience that commands respect and fear alike.",
-	RGB_HARP = "Harpies are wicked avian beasts that prey upon nearly all creatures but prefer the flesh of humans and demihumans. Harpies have the bodies of vultures but the upper torsos and heads of women. Their human features are youthful, but hideous, with frayed unkempt hair and decaying teeth. A foul odor surrounds all harpies and that which they touch. Harpies never bathe nor clean themselves in any way. Their dress, if anything, is limited to tattered rags and shiny trinkets taken from previous victims. The language of harpies, in contrast to their enticing song, is a horrible collection of cackles and shrieks. Although there are instances of harpies which could speak the languages of other creatures, these are few and far between. ",
-	RGB_JACK = "The jackalwere is a terrible and savage creature which preys on unsuspecting travelers and other demihumans that it can ambush. Its ability to alter its shape at will makes it a most dangerous foe. The jackalwere can be found in any of three forms, showing no preference for any one over the others. The first of these is that of a normal jackal. In this form it will often run and hunt with jackal packs. Its second form is a six foot tall, half-human/half-jackal hybrid which stands erect. In its third form, the jackalwere is physically indistinguishable from normal human beings. The exact physical characteristics of the jackalwere's human form varies according to the desires of the monster. ",
-	RGB_REMO = "Remorhaz, sometimes known as polar worms, inhabit only chill arctic wastes. They are very aggressive predators that devour any animal matter, including humans, demihumans, and humanoids; they have even been known to attack frost giants. A remorhaz has a segmented body with a winged head and neck, standing on dozens of chitinous legs. Remorhaz have an ice blue color everywhere except on their backs, where a streak of white sets off the many protrusions located there. The size of a remorhaz varies betwwen 21 to 42 feet long. Their language consists of roaring, bellowing, and howling.",
-	RGB_RAKS = "Rakshasas are malevolent fiends that stalk the material plane, their origins shrouded in dark and ancient lore. Possessing the cunning of a predator and the guile of a master manipulator, these fiends often take on humanoid forms to blend seamlessly among mortals. However, their true nature is revealed by their telltale features: the feral eyes of a beast, the razor-sharp claws of a predator, and the unmistakable aura of malevolence that surrounds them. Encounters with Rakshasas are often marked by deception and intrigue, as these fiends delight in toying with the lives and destinies of mortals. Masters of illusion and mind manipulation, they weave intricate webs of deceit to further their own sinister agendas. Despite their humanoid guise, Rakshasas are creatures of pure evil, their insatiable hunger for power and dominance driving them to commit unspeakable acts of cruelty and depravity.",
-	RGB_SAHU = "Sahuagin are a vicious, predatory race of fish-men that live in warm coastal waters. They are highly organized and greatly enjoy raiding shore communities for food and sport. Typical sahuagins are blackish green on their backs, shading to green on their bellies, with black fins. Their great, staring eyes are deep, shining black. They have scaly skin, with webbed fingers and toes, and their mouths are filled with sharp fangs. About 1 in 216 sahuagin is a mutation with four usable arms. These specimens are usually black shading to gray. Females are indistinguishable from males, except that they are slightly smaller. Hatchlings are a light green color, but they darken and attain full growth approximately one to two months after hatching. Sahuagin speak their own tongue. ",
-	RGB_SHAW = "Shadows are sinister undead creatures that lurk within the darkest recesses of the world, born from the remnants of departed souls and suffused with the essence of darkness. These incorporeal beings drift silently through the shadows, their amorphous forms barely visible against the dim light. With each passing moment, they hunger for the warmth of life, draining the vitality of those unfortunate enough to cross their path. Encounters with Shadows are chilling experiences, as their touch saps the strength and resilience of the living, leaving behind only cold emptiness. In the desolate crypts and haunted ruins where they dwell, Shadows are harbingers of fear and despair, their presence a reminder of the inevitability of mortality and the lingering specter of undeath. Only those armed with light and resolve can hope to withstand the numbing grasp of these spectral terrors.",
-	RGB_BONF = "Bone fiends were a type of fiend that could be found in a number of the lower planes. They slashed at their foes with long, bladed arms that infected others with disease. They had inherent protection from the elements, physical harm, and even magic itself. They could only be harmed by magical weapons. Bone fiends were used as minions by some of the more powerful Bhaalspawn members of the Five. Both Abazigal and Yaga-Shura were known to keep them within their respective domains in Tethyr.",	
-	RGB_CAMB = "The exact meaning of the term 'cambion' has differed over the years. Some sources stated a true cambion was the union of a planetouched woman (usually a tiefling) and a tanar'ri. They also further delineated this terminology to create 'noble cambions': marquis and baron cambions were similarly sired by a demon lord father and a female humanoid half-fiend.",	
-	RGB_MAUR = "Maurezhi were tanar'ri demons with many marked similarities to ghouls. What made them particularly more dangerous was that by consuming the flesh of the recently deceased, they could absorb the experience and memories of their victims. The primary goal of a maurezhi was to kill and consume mortals of great physical prowess and intellect. In between their real targets, maurezhis snacked on the already deceased within graveyards in order to quench their need for flesh. They normally attempted to enter a Material Plane in order to begin their voracious work before returning to the Abyss far more powerful than they were before.",
-	RGB_NABA = "Nabassus, otherwise known as death stealers,were aggressive tanar'ri demons that had strong connections to undeath and were eternally hungry for souls. They were unique among demons as the only ones that had to live on a foreign plane for a part of their lives, sent as they were to bring the terror of the Abyss to the Material Plane. Death stealers held a special enmity towards beings of the Material Plane, seemingly blaming the denizens for their exile from the Abyss. Although juvenile nabassus were not particularly treasure-hungry, adults had far greater greed and often sought treasures and prizes.",
-	RGB_VELI = "Velithuu is a demon found in Watcher's Keep Compass Level. It has immunities common to most demons. In addition, it is immune to Backstab and +1 weapons and can innately see invisible creatures. It prefers to attack with lightning arrows with the shortbow, but its melee attacks can poison the target for 1 damage per second over 10s, unless they save vs Death with a -2 penalty.",
-	RGB_DKNI = "A death knight is the horrifying corruption of a paladin or lawful good warrior cursed by the gods to its terrible form as punishment for betraying the code of honor it held in life. A death knight resembles a hulking knight, typically taller than 6 feet and weighing more than 300 pounds. Its face is a blackened skull covered with shards of shriveled, rotting flesh. It has two tiny, glowing orange-red pinpoints for eyes. Its armor is scorched black as if it had been in a fire. The demeanor of a death knight is so terrifying that even kender have been known to become frightened. A death knight's deep, chilling voice seems to echo from the depths of a bottomless cavern. A death knight converses in the language it spoke in its former life, as well as up to six additional languages. ",
-	RGB_IMP1 = "Imps are diminutive creatures of an evil nature who roam the world and act as familiars for lawful evil wizards and priests. The average imp is a 2' humanoid with leathery, bat-like wings, a barbed tail, and sharp, twisted horns. Its skin is a dark red and its horns and jagged teeth are a gleaming white. The imp can polymorph itself into two other animal forms. The most commonly encountered alternate forms are those of a large spider, raven, giant rat, or goat. In such forms the imp is physically identical to a normal animal. ",
-	RGB_QUAS = "The Quasit, a fiendish familiar bound to serve dark sorcerers and infernal masters, skitters through the shadows with an aura of malevolent glee and unholy mischief. Manifesting in the mortal realm through dark rituals and infernal pacts, the Quasit embodies the essence of demonic temptation and diabolic servitude, its impish form adorned with leathery wings and jagged claws. With its fiendish intellect and supernatural abilities, the Quasit serves as a constant companion and agent of chaos to those who dare to summon it.",
-	RGB_DRAG = "The Dragon, an ancient and majestic creature of legend, soars through the skies with an aura of awe-inspiring power and primal majesty. Born from the primordial forces of creation and bound to the natural order of the world, the Dragon embodies the essence of raw elemental energy and draconic might, its massive form adorned with shimmering scales and formidable claws. With its draconic intellect and mastery of arcane magic, the Dragon commands respect and fear from all who behold its magnificent presence.",
-	RGB_GOLE = "The Ice Golem, a towering sentinel of frozen fury, strides through blizzard-ridden landscapes with an aura of chilling majesty and elemental power. Crafted from the icy depths of glacial caverns and bound by ancient sorceries, the Ice Golem embodies the essence of winter's wrath, its crystalline form gleaming with frost and snow. With its colossal frame and icy fists, the Ice Golem strikes fear into the hearts of those who dare to trespass upon its frozen domain.",
-	RGB_GOLB = "The bone golem is built from the previously animated bones of skeletal undead. These horrors stand roughly 6 feet tall and weight between 50 and 60 pounds. They are seldom armored and can easily be mistaken for undead, much to the dismay of those who make this error. Bone golems are no more intelligent than other forms of golem, so they will not employ clever tactics or strategies in combat. Their great power, however, makes them far deadlier than they initially appear to be. There is a 95% chance that those not familiar with the true nature of their opponent will mistake them for simple undead. ",
-	RGB_GOLN = "The Brain Golem, a grotesque fusion of intellect and animating force, strides through arcane laboratories with an aura of eerie intellect and unnatural vitality. Crafted from the harvested minds of scholars and infused with the essence of eldritch energy, the Brain Golem embodies the essence of cerebral supremacy and arcane mastery, its form pulsating with arcane energy and pulsing with arcane energy. With its telepathic abilities and formidable mental prowess, the Brain Golem strikes fear into the hearts of those who dare to challenge its psychic might.",
-	RGB_GOLJ = "The Juggernaut Golem, a colossal behemoth of unyielding might, thunders across the battlefield with an aura of unstoppable force and mechanical precision. Forged from the molten depths of ancient foundries and imbued with the essence of relentless determination, the Juggernaut Golem embodies the essence of destruction and mechanical supremacy, its massive frame adorned with reinforced plating and crackling energy. With its thunderous footsteps and pulverizing fists, the Juggernaut Golem strikes fear into the hearts of those who dare to stand in its path.",
-	RGB_KUOT = "Kuo-toa are an ancient race of fish-men that dwells underground and harbors a deep hatred of surface dwellers and sunlight. A kuo-toan presents a cold and horrible appearance. A typical specimen looks much like a human body, albeit a paunchy one, covered in scales and topped with a fish's head. The huge fish eyes tend to swivel in different directions when observing an area or creature. The hands and feet are very long, with three fingers and an opposing digit, partially webbed. The legs and arms are short for the body size. Its coloration is pale grey, with undertones of tan or yellow in males only. The skin has a sheen from its slimy covering. The color darkens when the kuo-toan is angry and pales when it is badly frightened. A strong odor of dead fish follows it around. It wears no clothing, only leather harnesses for its weapons and gear. Typically, a kuo-toan warrior carries daggers, spears, shields, harpoons and weighted throwing nets.",
-	RGB_MEPH = "Mephits are nasty little messengers created by powerful lower planes creatures. They are evil and malicious by nature and appear on the Prime Material Plane only to perform evil deeds. Six types of mephits are known: fire, ice, lava, mist, smoke, and steam. Each is created from the substance for which it is named. Mephits appear as thin, 5-foot humanoids with wings. Their faces have exaggerated features, including hooked noses, pointed ears, wide eyes, and protruding chins. Their skin continually oozes the stuff from which they were made. Mephits speak a common mephit tongue. ",
-	RGB_TROL = "Inherently violent and aggressive, trolls frequently attack with little or no provocation. They attack humans and small human settlements regularly, destroying everything in their path. Trolls are not only feared for their large, powerful limbs, but for their ability to rapidly regenerate most wounds inflicted on them. Experienced adventurers carry fire and acid with them when expecting trolls.",
-	RGB_LICH = "The lich is potentially the most powerful form of undead known to exist, and they are difficult, if not impossible, to destroy. Besides having the power of an undead wizard at their command, they store their life force in a secure location separate from their physical form. Destruction of their body is meaningless unless the container is found as well.",
-	RGB_VAMP = "Of all the chaotic evil undead creatures that stalk the world, none is more dreadful than the vampire. Moving silently through the night, vampires prey upon the living without mercy or compassion. Unless deep underground, they must return to the coffins in which they pass the daylight hours, and even in the former case they must occasionally return to such to rest, for their power is renewed by contact with soil from their graves. One aspect that makes the vampire far more fearful than many of its undead kindred is its appearance. Unlike other undead creatures, the vampire can easily pass among normal men without drawing attention to itself for, although its facial features are sharp and feral, they do not seem inhuman. In many cases, a vampire's true nature is revealed only when it attacks. There are ways in which a vampire may be detected by the careful observer, however. Vampires cast no reflection in a glass, cast no shadows, and move in complete silence. ",
-	RGB_YETI = "Sometimes confused with the abominable snowman, the yeti is a distant cousin to the great carnivorous apes of warmer climates. An adult yeti stands 8 feet tall and is covered in long, white fur. Their feet and hands are wide and flat, which helps to disperse their great weight (about 300 pounds) on treacherous snow fields. They travel on all fours like the apes, but fight very comfortably standing erect. Unlike most apes and gorillas, the yeti does not have an opposable toe on its feet. They wear no clothing or ornamentation. The spoor, or smell, of a yeti is very subtle in cold climates, but in confined or warm areas, they have a strong, musky odor. The eyes of a yeti are icy blue or almost colorless. Their claws and flesh are ivory white. Unlike many arctic creatures, the yeti does not have a thick layer of body fat to keep it warm. Instead, it relies upon the special properties of its thick, warm fur. It has a transparent second eyelid, which allows the creature to see in blowing snow, and prevents its eyes from freezing in extreme temperatures.",
-	RGB_ELVE = "Elves tend to be shorter and slimmer than humans. Their features are finely chiseled and delicate, and they speak in melodic tones. Elves are looked upon as being frivolous and aloof. They concern themselves with natural beauty, dancing, frolicking, and other similar pursuits. Their humor is clever, as are their songs and poetry. There are six racial divisions of elves within the realms: gold elves, moon elves, wild elves, sea elves, dark elves (drow), and winged elves (avariel).",
-	RGB_SOUL = "The Shattered Soul, a tormented specter of lost identity and fractured existence, drifts with an aura of haunting sorrow and spectral anguish. Born from the shattered remnants of a once-whole spirit and bound by the chains of unresolved trauma, the Shattered Soul embodies the essence of fragmented consciousness and spectral unrest, its ethereal form flickering with fractured memories and unresolved emotions. With its mournful wails and spectral manifestations, the Shattered Soul strikes fear into the hearts of those who dare to peer into the abyss of its fractured psyche.",
-	RGB_CRUS = "The crusader warriors are fervent followers of Caelar Argent, the Shining Lady. They are devout believers in her cause, seeing themselves as righteous defenders of the realm against the forces of darkness. Clad in gleaming armor adorned with the symbol of their crusade, they march into battle with unwavering faith and determination. Trained in both martial combat and religious doctrine, they blend the skills of a seasoned warrior with the fervor of a religious zealot. These crusaders form the backbone of Caelar's army, ready to lay down their lives in service to her vision of a purified and righteous world.",
-	RGB_HCAT = "The Hell Cat, a fiendish predator from the depths of the infernal realms, prowls through the shadows with an aura of malevolent grace and demonic fury. Born from the darkest pits of the Nine Hells and imbued with the essence of infernal power, the Hell Cat embodies the essence of predatory instinct and demonic savagery, its sleek form adorned with ebony fur and burning eyes. With its razor-sharp claws and fiery breath, the Hell Cat strikes fear into the hearts of those who dare to challenge its demonic might.",
-	RGB_LEMU = "The least of the hordes of the lawful evil baatezu, lemures are the incarnate spirits of the truly evil. They are used as ballista-fodder for the Blood War, and are barely intelligent. You need magic weapons or holy items to hurt them, it seems, for their gelatinous flesh seals behind any wounds you might inflict.",
-	RGB_GFEY = "Feyrs (pronounced 'fears') are created from the remnants of ordinary nightmares, mixed with residual magical energies, and unknowingly brought to life by the strong emotions of a large group of people. They are most commonly found in large cities that have a good number of mages, priests, and other spellcasters. Normal feyrs stalk the streets at night, seeking nothing more than to create havoc. Great feyrs, on the other hand, are the combination of lesser feyrs, and may be found anywhere, though they a much rarer than the common feyrs.",
-	RGB_OROG = "Elite orcs, or orogs, are a race of great orcs, possibly mixed with ogre blood. Orogs range between 6 and 6½ feet tall. They are highly disciplined warriors and have their own standards and banners which they display prominently - it is usually easy to tell when orogs are present among common orcs. Orogs can be found at the vanguard of large orc armies, but rarely on patrol. There is a 10% chance that an orc tribe will have orogs, whose number equals 10% of the male population. (Thus a community of 3,000 male orcs has a 10% chance of having 300 additional orogs.) Small bands of elites (20-80 orogs) will hire themselves out as mercenaries. Orogs wear plate mail and have are much stronger than orcs. For every 20 orogs, there will also be one leader. Orogs use weaponry common to orcs, but will typically possess two weapons apiece. ",
-	RGB_OTYU = "Otyughs (Aw-tee-ug), also known as the gulguthra, are terrifying creatures that lurk in heaps of dung and decay, waiting for something to disturb it. There are two varieties, the regular otyugh, and its larger, more intelligent offshoot, the neo-otyugh. They feed on dung and wastes from other dungeon creatures (gulguthra means 'dung eaters') but also enjoy an occasional snack of fresh meat. Otyughs have huge, bloated bodies covered with a rock-like skin that is brownish gray in color, which is in turn covered with dung. They stand on three thick legs that give them slow ground movement but enable them to pivot quickly. They have three eyes on a leaf-like stalk that moves quickly from side to side, enabling them to scan a large area. The eye stalk is also a receiver/transmitter for their telepathic abilities. Otyughs have a huge mouth with very sharp teeth in the center of their mass. They also have two tentacles with leaf-like ridges that they use to smash and grapple their opponents. The tentacles are covered with rough thorn-like projections. Neo-otyughs have smaller mouths than otyughs. ",
-	RGB_DRBL = "The Drowned in Blood, a macabre undead entity born from the depths of tragic demise and ghastly transformation, lurks with an aura of haunting dread and insatiable hunger. Created from the tormented souls of those who met their end drowning in a sea of crimson, the Drowned in Blood embodies the essence of relentless pursuit and ravenous consumption, its grotesque form dripping with congealed gore and festering wounds. With its elongated claws and blood-stained maw, the Drowned in Blood instills terror in the hearts of those who cross its path.",
-	RGB_BBAT = "The Bone Bat, a sinister creature of the night, glides with an aura of eerie grace and spectral chill. Born from the macabre fusion of necrotic energy and skeletal remains, the Bone Bat embodies the essence of nocturnal terror and undead menace, its skeletal form adorned with remnants of desiccated flesh and sharpened bone. With its hollow eye sockets gleaming with malevolent light and its leathery wings casting ominous shadows, the Bone Bat strikes fear into the hearts of those who dare to cross its path.",
-	RGB_UMBE = "Residents of the Underdark, umber hulks are huge, incredibly powerful monsters with thick, scaly hides, sharp mandibles, and two sets of eyes. They use strong talons to shred through rock at a frightening speed, often taking unsuspecting miners by surprise. The most debilitating power of the umber hulk is its ability to cause confusion with its gaze. Many adventurers have made their final mistake by looking into the eyes of an umber hulk.",
-	RGB_SLAV = "The Athkatlan Slaver, a sinister purveyor of human misery and depravity, prowls with an aura of vile corruption and ruthless exploitation. Residing in the seedy underbelly of the city of Athkatla, this unscrupulous individual embodies the essence of moral decay and callous indifference, their demeanor adorned with ostentatious wealth and the stench of cruelty. With their calculating gaze and iron grip, slavers strike fear into the hearts of the vulnerable, ensnaring them in chains of bondage and selling them into lives of servitude and suffering.",
-	RGB_PIRA = "The Pirate, a swashbuckling marauder of the high seas, sails with an aura of daring adventure and salty bravado. Born from the untamed waters of the open ocean and tempered by the winds of fortune, the Pirate embodies the essence of freedom and lawless ambition, their weathered attire adorned with trinkets plundered from distant shores. With their cutlasses flashing and cannons roaring, Pirates strike fear into the hearts of sailors and merchants alike, their flag fluttering defiantly in the wind.",
-	RGB_SOLD = "The Mercenary Soldier, a hardened warrior for hire, marches with an aura of stoic resolve and battle-hardened experience. Born from the crucible of conflict and tempered by the fires of war, the Mercenary Soldier embodies the essence of martial prowess and pragmatic survival, their armor adorned with the scars of countless battles and their weapons honed to a razor's edge. With their disciplined ranks and steely determination, Mercenary Soldiers strike fear into the hearts of their enemies and inspire confidence in their allies.",
-	RGB_GIAF = "Like all evil giants, frost giants have a reputation for crudeness and stupidity. This reputation is deserved, but frost giants are crafty fighters. Frost giants have muscular, roughly human builds. The typical adult male is 21' tall and weighs about 8,000 pounds. Females are slightly shorter and lighter, but otherwise identical to males. Frost giants have snow-white or ivory skin. Their hair is light blue or dirty yellow, with matching eyes. They can live to be 250 years old.",
-	RGB_GIAV = "Known as human behemoths, these human giants inhabit areas infested with hill giants and ogres. Verbeeg vary in height from 8½ to 10 feet tall, and weigh between 300 and 400 pounds. They are unusually thin for their height, although this does not inhibit their fighting ability. Some have minor deformities, such as club foot, uneven eyes, hair lips, etc. In all other respects they appear human, including skin, hair, and eye color. They wear as much protective clothing and armor as they can obtain, which isn't much. Usually they wear furs and hides with pieces of metal armor stitched into strategic places. They almost always carry shields and have the best weapons they can steal. Typically this means clubs and spears. ",
-	RGB_GIAH = "Hill giants are selfish, cunning brutes who survive through hunting and by terrorizing and raiding nearby communities. Despite their low intelligence, they are capable fighters. Hill giants are oddly simian and barbaric in appearance, with overly long arms, stooped shoulders, and low foreheads. Even though they are the smallest of the giants, their limbs are more muscular and massive than those of the other giant races. The average hill giant is 16 feet tall and weighs about 4,500 pounds. Females have the same builds as males. Their skin color ranges from a light tan to a deep ruddy brown. Their hair is brown or black, and their eyes are black. Hill giants can live to be 200 years old. ",
-	RGB_BOSS = "",
-	RGB_COW1 = "What have you done, you monster!\n\n\n\n\n\n\n\n\n\n",
+	RGG_UNDC = "Nieumarły Ghulowaty",
+	RGG_UNDG = "Nieumarły Większy",
+	RGG_UNDS = "Nieumarły Szkieletowy",
+	RGG_UNDP = "Nieumarły Upiór",
+	RGG_BEAR = "Niedźwiedziowate",
+	RGG_WOLF = "Wilkowate",
+	RGG_DOGN = "Psowate",
+	RGG_BEET = "Żukowate",
+	RGG_ANIM = "Zwierzę",
+RGB_BEAR = "Niedźwiedzie to wszystkożerne, drapieżne ssaki, najczęściej spotykane w lasach i jaskiniach. Niesamowicie silne i szybkie jak na swój rozmiar, niedźwiedzie zapadają w sen zimowy i polują na jedzenie latem, atakując nieszczęsnych podróżników, którzy są na tyle głupi, żeby się do nich zbliżyć.",  
+
+  
+
+RGB_WOLF = "Wilk to bardzo aktywny, przebiegły mięsożerca, który potrafi przetrwać w niemal każdym klimacie. Owiane tajemnicą i podejrzliwością, są postrzegane jako okrutni zabójcy, którzy zabijają zarówno ludzi, jak i zwierzęta z braku lepszych zajęć. Prawdą jest, że nigdy w historii nie odnotowano, aby wilk, który nie jest pod wpływem wścieklizny lub zauroczenia, zaatakował jakiekolwiek stworzenie o równym lub wyższym intelekcie niż on sam. (Szansa na spotkanie wściekłego wilka, który zaatakowałby cokolwiek, wynosi 1%, w przypadku spotkania samotnego osobnika) Wilki północne wykazują kolory od czystej bieli, przez szarość, do czerni. Wilki południowe są rudawe i brązowe. Chociaż kolor futra różni się w zależności od klimat, wszystkie wilki mają niektóre cechy wspólne. Charakteryzują się potężnymi szczękami; szerokimi, mocnymi zębami; krzaczastymi ogonami; wysokimi, mocnymi uszami; i okrągłymi źrenicami. Ich oczy, w kolorze złotym lub bursztynowym, wydają się być niemal zdolne do empatii.",  
+
+  
+
+RGB_SLIM = "Wycieki, szlamy i galarety podziemi to odrażające, amorficzne stworzenia, które są zmorą wszystkiego, co żyje, rozpuszczając broń, zbroję i ciało swoich ofiar. Bestia bez widocznego wsparcia w swoim galaretowatym ciele. Kwaśny dotyk tych stworzeń może się różnić w zależności od typu, ale wszystkie są śmiertelnymi padlinożercami.",  
+
+  
+
+RGB_WYVE = "Wiwerna to duża, uskrzydlona jaszczurka. Choć fizycznie słabsza i mniej inteligentna od swoich kuzynów smoków, może być przerażająca ze względu na swoje szybkie umiejętności latania i żądlące ogony, z których kapie śmiercionośny, szybko działający jad. W przeciwieństwie do prawdziwych smoków, wiwerny mają tylko parę tylnych nóg zamiast zestawu czterech. Rozpiętość ich skrzydeł może przekraczać 15 metrów. A ich ogony są często dość długie, stanowią prawie połowę ich ciała, ale są bardzo ruchliwe. Kończą się grubym węzłem chrząstki, z którego wystaje żądło, podobne do żądła skorpiona.",  
+
+  
+
+RGB_BASI = "Bazyliszki to ogromne, ośmionożne gady. Choć ich ugryzienie jest bardzo jadowite, ich prawdziwie przerażająca cecha pochodzi z ich zdolności do natychmiastowego zamieniania w kamień każdej żywej istoty swoim spojrzeniem. Obszary, w których bazyliszki szaleją, są łatwo rozpoznawalne ze względu na ich tendencję do pozostawiania kamiennych ofiar na swojej drodze.",  
+
+  
+
+RGB_BASG = "Większy bazyliszek jest większym kuzynem bardziej powszechnego gada, zwykłego bazyliszka. Te potwory są zazwyczaj wykorzystywane do ochrony skarbów.\n\nBazyliszki to ogromne, ośmionożne gady. Choć ich ugryzienie jest bardzo jadowite, ich prawdziwie przerażająca cecha pochodzi z ich zdolności do natychmiastowego zamieniania w kamień każdej żywej istoty swoim spojrzeniem. Obszary, w których bazyliszki szaleją, są łatwo rozpoznawalne ze względu na ich tendencję do pozostawiania kamiennych ofiar na swojej drodze.",  
+
+  
+
+RGB_DOPP = "Sobowtórniaki to humanoidalne stworzenia ze zdolnością do zmiany kształtu. Są przebiegłe z natury, potrafią niemal idealnie naśladować wybrany cel po obserwując je przez wystarczająco długi czas. Gdy są wystawione na działanie, ich twarda skóra i ostre pazury dają im środek samoobrony w ich naturalnej formie.",  
+
+  
+
+RGB_DOGG = "Mniejsze od wilków, a ich wygląd dzików psów różni się w zależności od miejsca. Większość wygląda bardzo podobnie do wilków, podczas gdy inne wydają się łączyć wygląd wilka i szakala. Dzikie psy walczą w zorganizowanej watasze. Preferują małą zwierzynę i atakują ludzi i ludzkie siedliska tylko w okresach wielkiego głodu. Można je znaleźć niemal wszędzie, biegają w watahach i są prowadzone przez dominującego samca. Wataha zwykle poluje na różnorodną zwierzynę, atakując nawet jelenie lub antylopy. Szczenięta rodzą się wiosną. Dzikie psy można oswoić, jeśli zostaną oddzielone od watahy.",  
+
+  
+
+RGB_ANKH = "Ankhegi to ogromne, owadopodobne potwory, które ryją nory pod ziemią. Choć nie są szczególnie złośliwe i cenione za swoją zdolność do napowietrzania gleby poprzez drążenie tuneli, ankhegi są niebezpiecznymi potworami ze względu na ich twarde chitynowe skorupy (które wprawni płatnerze mogą wykorzystać do stworzenia z nich zbroi płytowej), ostre pazury i kwaśną ślinę.",  
+
+  
+
+RGB_FLES = "Golem to sztuczne humanoidalne ciało, które jest ożywiane przez ducha żywiołów i pozostaje pod kontrolą swojego twórcy.\n\nGolem z ciała jest o półtorej głowy wyższy od większości ludzi i waży prawie 160 kilogramów. Jest zrobiony z upiornej kolekcji skradzionych ludzkich części ciała, zszytych razem, aby utworzyć pojedyncze, złożone ludzkie ciało. Jego skóra jest chorobliwie zielona lub żółta, częściowo zgniłego ciała. Golem z ciała lekko pachnie świeżo wykopaną ziemią i martwym ciałem. Żadne naturalne zwierzę, takie jak pies, nie będzie chętnie śledzić golema z ciała. Nosi dowolne ubranie, jakiego zapragnie jego twórca, zwykle tylko podartą parę spodni. Nie posiada żadnych dóbr ani broni. Golem nie może mówić, chociaż może wydawać chrapliwy ryk. Chodzi i porusza się sztywnym, stawowym krokiem, jakby nie miał całkowitej kontroli nad częściami swojego ciała.",  
+
+  
+
+RGB_DRYA = "Driady to piękne, inteligentne drzewne duszki. Są tak nieuchwytne jak są jednak kuszące, a driady rzadko są widywane, chyba że zostaną zaskoczone - lub chcą być zauważone. Wykwintne rysy driady, delikatne i misternie wyrzeźbione, są bardzo podobne do elfich dziewic. Driady mają wysokie kości policzkowe i bursztynowe, fioletowe lub ciemnozielone oczy. Cera i kolor włosów driady zmieniają się wraz z porami roku, nadając duszkowi naturalny kamuflaż. Jesienią włosy driady stają się złote lub czerwone, a jej skóra subtelnie ciemnieje od zwykłej jasnobrązowej, aby bardziej pasować do koloru włosów. Dzięki temu może wtapiać się w opadające liście jesieni. Zimą zarówno włosy, jak i skóra driady są białe, jak śniegi pokrywające dębowe gaje. Kiedy spotka się ją w lesie jesienią lub zimą, driada jest często mylona z atrakcyjną pokojówką, prawdopodobnie elfiego pochodzenia. Nikt jednak nie pomyliłby driady z pokojówką elfa wiosną i latem. O tej porze roku skóra driady jest lekko opalona, a jej włosy zielone jak liście dębu wokół niej. Driady często pojawiają się ubrane w luźne, proste szaty. Noszą ubrania w kolorze gaju dębowego w porze roku, w której się pojawiają. Mówią własnym językiem, a także językami elfów, chochlików i duszków. Driady mogą również rozmawiać z roślinami.",  
+
+  
+
+RGB_SIRI = "Siryny to piękne, przypominające ludzi samice, które czują się jak w domu w każdym środowisku wodnym. Mają ludzkie odcienie skóry sięgające od jasnożółto-zielonego, a ich włosy mogą mieć niemal dowolny kolor, chociaż najczęściej występują srebrne i ciemnozielone. Siryny mają piękne sylwetki i w najlepszym razie noszą skąpe ubrania. Większość siryn jest antyspołeczna, więc próbują odstraszyć intruzów, a złe siryny podejmują silniejsze środki. Inne siryny są spragnione interakcji społecznych i próbują zwabić mężczyzn-ludzi lub półludzi, aby dołączyli do nich na jakiś czas. ",  
+
+  
+
+RGB_TASL = "Tasloi to długonogie, płaskogłowe humanoidy. Chodzą w pozycji kucanej, od czasu do czasu dotykając kostkami ziemi. Ich skóra jest lśniąco zielona i cienko pokryta grubymi czarnymi włosami. Ich oczy są podobne do oczu kota i mają złoty kolor. Często można ich usłyszeć w nocy, jak mówią wysokimi, szepczącymi głosami. Tasloi mówią własnym językiem i mogą również mówić językami małp i małp człekokształtnych. Około 5% ich rodzaju nauczyło się wspólnego języka pidżynowego, którego używają podczas handlu.",  
+
+  
+
+RGB_WEWO = "Wilkołaki są najbardziej przerażającymi spośród likantropów, ludzi, którzy mogą przekształcać się w bestie podobne do wilków. Nie należy ich mylić z łakowilkami - wilkami, które zamieniają się w ludzi. Między wilkołakami a łakowilkami istnieje wielka wrogość. Ludzkie formy wilkołaków nie mają żadnych cech charakterystycznych. Forma wilkołaka jest równie zróżnicowana. Wiele z nich ma dwunożną formę, która jest hybrydą cech ludzkich i wilczych. Te stworzenia są o około 30 cm wyższe i silniejsze od swoich ludzkich form. Ich ciała są pokryte futrem i mają krótkie ogony, wilcze nogi i głowy, które w różnym stopniu łączą cechy ludzkie i wilcze. Druga forma hybrydy jest bardziej wilcza i można ją pomylić z dużym wilkiem, gdy biega na wszystkich czterech nogach. Ta hybryda może również chodzić wyprostowana i ma ludzkie ręce. Inny rodzaj wilkołaka (około 20%) wygląda dokładnie jak duży wilk wielkości niedźwiedzia. To stworzenie nie ma cech ludzkich, chociaż jego oczy mogą świecić na czerwono w ciemności.",  
+
+  
+
+RGB_WOWE = "Łakowilk to złe i pełne nienawiści stworzenie, które rozkoszuje się brutalnym zabijaniem ludzi i półludzi. W wielu przypadkach łakowilk jest w stanie atakować swoje ofiary z całkowitego zaskoczenia, ponieważ potrafi przybrać postać człowieka o wyjątkowej charyzmie. Łakowilk jest w stanie przybrać szeroką gamę kształtów według własnej woli. Transformacja z jednej formy w drugą zajmuje tylko jedną rundę. Jego prawdziwa postać, w której woli spędzać większość czasu, to postać dużego wilka. W tym stanie jest prawie nie do odróżnienia od strasznego wilka. Kiedy wilkołak próbuje zwabić ludzi lub półludzi w zasadzkę, przybierze postać członka ich rasy. Prawie bez wyjątku nowa osobowość nie będzie tej samej płci co potencjalna ofiara. Tak więc wilkołak, który poluje na elfa płci męskiej, przekształci się w elfkę. We wszystkich przypadkach nowo przebrany łakowilk będzie miał wyjątkową urodę fizyczną. ",  
+
+  
+
+RGB_XVAR = "Xvarty to okrutna, tchórzliwa rasa humanoidów, która żyje w pagórkowatych, jaskiniowych regionach. Zajmują miejsce w społeczeństwie humanoidalnym gdzieś pomiędzy goblinami a koboldami. Te małe, łyse, niebieskoskóre stworzenia często działają jako pośrednicy między tymi dwiema rasami, zwykle dominując nad tymi ostatnimi. Choć słabi indywidualnie, są niezwykle płodni i prawie zawsze spotyka się ich w dużych grupach. ",  
+
+  
+
+RGB_ZOMB = "Należące do najniższego kalibru nieumarłych stworzeń, zombie to bezmyślne, ożywione trupy, które istnieją w stanie wiecznego głodu, zmierzając w stronę wszystkiego, co żyje z jednym celem. Pomimo tego, że są powolne i słabe, są najbardziej niebezpieczne, gdy gromadzą się w hordach.",  
+
+  
+
+RGB_HORB = "Horror Bitewny, dzieło starożytnej magii i tajemnego rzemiosła, kroczy przez ciemność z aurą cichego zagrożenia i nieustępliwej determinacji. Wykuty z zaczarowanej zbroi i ożywiony potężnymi zaklęciami, ten widmowy strażnik uosabia ponadczasową czujność i niezachwianą lojalność swoich twórców. Odziany w lśniącą stal i ozdobiony mistycznymi pieczęciami, Horror Bitewny wzbudza strach w sercach tych, którzy odważą się stanąć na jego drodze.",  
+
+  
+
+RGB_HORH = "Opancerzona groza, dzieło starożytnej magii i tajemnego rzemiosła, kroczy przez ciemność z aurą cichego zagrożenia i nieustępliwej determinacji. Wykuty z zaczarowanej zbroi i ożywiony potężnymi zaklęciami, ten widmowy strażnik uosabia ponadczasową czujność i niezachwianą lojalność swoich twórców. Odziany w lśniącą stal i ozdobiony mistycznymi pieczęciami, opancerzona groza wzbudza strach w sercach tych, którzy odważą się stanąć na jego drodze.",  
+
+  
+
+RGB_INVI = "Niewidzialny myśliwy to istota z żywiołu Powietrza. Ci, których spotyka się na Pierwszym Planie Materialnym, są niemal zawsze wzywani przez czarodziejów do wykonania określonego zadania. Prawdziwa forma niewidzialnego myśliwego jest nieznana. Na Planie Materialnym, Astralnym lub Eterycznym niewidzialnego myśliwego można postrzegać jedynie jako mieniącą się masę powietrza, która wygląda bardzo podobnie do efektu refrakcji wywołanego przez gorące powietrze przechodzące przed zimnym. Niewidzialni myśliwi rozumieją zwykłą mowę ludzi, ale nie potrafią nią mówić. Mogą rozmawiać tylko w swoim własnym języku, który brzmi bardzo podobnie do ryku i szumu wielkiej wichury. ",  
+
+  
+
+RGB_RATS = "Szczur to wszechobecne stworzenie ciemnych zaułków i zapomnianych kanałów, poruszające się z aurą płochliwości i pierwotnego instynktu przetrwania. Zrodzony z rojących się mas rozrastającej się zabudowy miejskiej i rozkładających się głębin starożytnych ruin, szczur uosabia istotę zbieractwa i adaptacyjność. Jego smukła forma ozdobiona jest grubym futrem i drgającymi wąsami. Dzięki swoim wyostrzonym zmysłom i zwinnym ruchom szczur porusza się po ukrytych zakamarkach świata z ostrożną ciekawością i ostrożną czujnością.", 
+
+  
+
+RGB_BAND = "Bandyta to bezprawny renegat dróg i traktów, wędrujący z aurą lekkomyślnego oddania i łobuzerskiego uroku. Zrodzony z marginesu społeczeństwa i wykuty w tyglu desperacji, bandyta uosabia istotę wolności i buntu. Jego surowy strój ozdobiony jest skradzionymi błyskotkami i nielegalnie zdobytymi skarbami. Dzięki swojej przebiegłej taktyce i szybkim ostrzom, bandyta poluje na nieostrożnych, wzbudzając strach w sercach podróżników i kupców.",  
+
+  
+
+RGB_DROW = "Dawno temu mroczne elfy były częścią rasy elfów, która wędrowała po lasach świata. Niedługo po tym, jak zostali stworzeni, elfy zostały podzielone na rywalizujące frakcje - jedna podążała za zasadami zła, druga wyznawała ideały dobra (lub przynajmniej neutralności). Nastąpiła wielka wojna domowa między elfami, a samolubne elfy, które podążały ścieżkami zła i chaosu, zostały zepchnięte w głąb ziemi, do ponurych, pozbawionych światła jaskiń i głębokich tuneli podziemnego świata. Te ciemne elfy stały się drowami. Drowy nie chcą już żyć na powierzchni ziemi. W rzeczywistości niewielu z tych, którzy żyją na powierzchni, kiedykolwiek widziało drowa. Ale ciemne elfy nienawidzą elfów i wróżek, które ich wygnały, i knują przeciwko tym, którzy mieszkają w świetle słonecznym.",  
+
+  
+
+RGB_ETTI = "Ettini lub dwugłowi giganci, jak są często nazywani, są okrutnymi i nieprzewidywalnymi myśliwymi, którzy polują nocą i zjadają każde mięso, jakie uda im się upolować. Ettini na pierwszy rzut oka wydają się być kamiennymi lub górskimi olbrzymami z dwiema głowami. Przy bliższym przyjrzeniu się, jednakże, ogromne różnice pomiędzy stworzeniem a stosunkowo cywilizowanymi rasami olbrzymów stają się oczywiste. Ettiny mają różową do brązowawej skórę, choć wydaje się być pokryta ciemnobrązową skórą. Dzieje się tak, ponieważ ettiny nigdy się nie kąpią, jeśli mogą i dlatego są zwykle pokryte grubą warstwą brudu i zanieczyszczeń. Prawa głowa ettina jest zawsze dominująca, a prawe ramię i noga prawdopodobnie będą wyglądać na nieco bardziej umięśnione i dobrze rozwinięte niż lewe. Ettiny noszą tylko szorstkie, nieobrobione skóry, które są brudne i niemyte. Oczywiste jest, że ettiny bardzo źle pachną, ze względu na ich całkowity brak nawyków pielęgnacyjnych — dobrych lub złych.",  
+
+  
+
+RGB_GOBL = "Te małe, złe humanoidy byłyby jedynie szkodnikami, gdyby nie ich wielka liczba. Gobliny mają płaskie twarze, szerokie nosy, spiczaste uszy, szerokie usta i małe, ostre kły. Ich czoła są pochylone do tyłu, a ich oczy są zwykle matowe i szkliste. Zawsze chodzą wyprostowani, ale ich ramiona zwisają prawie do kolan. Kolor ich skóry waha się od żółtego przez wszystkie odcienie pomarańczowego do głębokiej czerwieni. Zazwyczaj jedno plemię ma członków o mniej więcej tym samym kolorze skóry. Ich oczy wahają się od jasnoczerwonego do błyszczącego cytrynowożółtego. Noszą ubrania z ciemnej skóry, zmierzając w kierunku matowych, brudnych kolorów. Mowa goblinów jest ostra i wyższa niż ludzka. Oprócz własnego języka, niektóre gobliny potrafią mówić językami koboldów, orków i hobgoblinów.",  
+
+  
+
+RGB_LIZA = "Zazwyczaj występujący tylko w regionach tropikalnych, ludzie-jaszczury są prymitywnymi dwunożnymi istotami z dobrze rozwiniętą strukturą społeczną i zaawansowanymi wierzeniami religijnymi. Plemiona ludzi-jaszczurów są zazwyczaj prowadzone przez króla jaszczurów, który jest znacznie większy i potężniejszy od swoich krewnych. Ludzie jaszczury nie wchodzą często w konflikty z ludźmi, ale ich zamiłowanie do smaku ludzkiego mięsa często powoduje problemy.",  
+
+  
+
+RGB_MINO = "Minotaury są albo przeklętymi ludźmi, albo potomstwem minotaurów i ludzi. Zazwyczaj mieszkają w podziemnych labiryntach, ponieważ nie są zdezorientowane w tych miejscach, co daje im przewagę nad ofiarą. Minotaury są ogromne, mierząc ponad 2 metry wzrostu, dość szerokie i muskularne. Mają głowę byka, ale ciało mężczyzny. Ich futro jest brązowe do czarnego, a kolor ich ciała zmienia się tak jak u normalnego człowieka. Ubranie jest minimalne, zwykle jest to przepaska biodrowa lub spódnica.",  
+
+  
+
+RGB_YUAN = "Te stworzenia są rzadkimi, ale niezwykle śmiercionośnymi przeciwnikami. Yuan-ti są odgałęzieniem rasy, która rządziła Faerûnem na długo przed tym, jak humanoidy przejęły kontrolę. Z ciałami przypominającymi węże i niejasno ludzkimi kończynami, yuan-ti chowają się w tajnych kryptach, dopóki nie nadejdzie właściwy czas, aby uderzyć na swoich wrogów. Yuan-ti to niezwykle inteligentni wrogowie z bardzo wyrafinowanymi talentami magicznymi. Są znani ze swoich przebiegłych umysłów, trujących pułapek i odrażających rytuałów religijnych.",  
+
+  
+
+RGB_MUMM = "Mumie to zwłoki pochodzące z suchych obszarów pustynnych, gdzie zmarli są grzebani w procesie znanym jako mumifikacja. Kiedy ich groby zostają naruszone, zwłoki zostają ożywione w dziwnym stanie nieżycia, którego nieświęta nienawiść do życia sprawia, że atakują żywe istoty bez litości. Mumie są zazwyczaj (ale nie zawsze) ubrane w gnijące paski lnu. Mają od 1,5 do 2 metrów i są nadprzyrodzenie silne.",  
+
+  
+
+RGB_MUMG = "Znane również jako Dzieci Anhktepot, większe mumie są potężną formą nieumarłych, które powstają, gdy praworządny, zły kapłan pewnych religii zostaje zmumifikowany i obarczony obowiązkiem strzeżenia miejsca pochówku. Może przetrwać przez stulecia jako niezłomny obrońca swojej kryjówki, zabijając wszystkich, którzy zbezcześciliby jego święte miejsce spoczynku. Większe mumie wyglądają tak samo jak ich bardziej pospolite kuzynki, z tą różnicą, że są prawie zawsze ozdobione (nie)świętymi symbolami i noszą szaty swojego zakonu religijnego. Wydzielają zapach, który podobno przypomina szafkę na przyprawy ze względu na zioła używane w procesie balsamowania, który je stworzył. Większe mumie są niezwykle inteligentne i potrafią się komunikować tak samo, jak robiły to za życia. Ponadto mają wrodzoną zdolność do telepatycznego dowodzenia wszystkimi normalnymi mumiami, które stworzyły. Mają zdolność kontrolowania innych mumii, pod warunkiem, że nie znajdują się pod dominacją innej mumii, ale jest to możliwe tylko wtedy, gdy można im wydać polecenia ustne.",  
+
+  
+
+RGB_MYCO = "Myconidy, czyli grzyboludzie to rasa inteligentnych grzybów, które żyją w odległych zakątkach Podmroku. Są ostrożnymi stworzeniami, które nienawidzą przemocy. Myconidy nie mają ochoty nikogo podbijać i wolą zostać same. Myconidy przypominają chodzące muchomory w ludzkiej postaci. Ich ciało jest napęczniałe i gąbczaste, a jego kolor waha się od fioletowego do szarego. Ich szerokie stopy mają szczątkowe palce u nóg, a ich pulchne dłonie mają dwa krótkie palce i kciuk po obu stronach. Nie posługują się żadnym językiem.",  
+
+  
+
+RGB_ORCS = "Orkowie to gatunek agresywnych ssaków mięsożernych, które łączą się w plemiona by przetrwać dzięki polowaniom i napadom. Są zaciekłymi wrogami goblinów i hobgoblinów, z którymi często rywalizują o zasoby. Orkowie, jako dość inteligentni mięsożercy, nieustannie toczą wojny z innymi rasami, aby utrzymać swoje plemiona. Wojny te przerzedzają słabe drapieżniki ze swoich plemion i gromadzą zasoby dla następnego pokolenia. Orkowie mają reputację niezwykle potężnych wojowników. Czarodzieje próbowali stworzyć odmiany orków, aby wykorzystać naturalną dzikość i siłę tej rasy.",  
+
+  
+
+RGB_MIST = "Szkarłatna śmierć to złośliwe, parujące stworzenie, które żywi się płynami ustrojowymi swoich ofiar. Ciało szkarłatnej śmierci to humanoidalna chmura o bladym kolorze. Trudno ją odróżnić, jeśli widzi się ją we mgle i jest prawie niewidoczna dla infrawizji. Kiedy stworzenie jest karmione, rozwija szkarłatną poświatę, która jest łatwo widoczna w normalnym świetle lub infrawizji. Chmura posiada cechy humanoidalne. Palce wydłużają się w macki, gdy się karmi. Ze względu na swoje zachowanie, mędrcy uważają, że mgła szkarłatnej śmierci jest wynikiem faktycznej śmierci wampira. Językiem szkarłatnej śmierci jest ledwo słyszalna seria szeptów. Może komunikować się z innymi parującymi istotami, takimi jak żywiołaki powietrza. Komunikuje się z humanoidami tylko wtedy, gdy jest ich jeńcem.",  
+
+  
+
+RGB_SALA = "Salamandry, istoty z Planu Żywiołu Ognia i Planu Parażywiołu Lodu, są dużymi stworzeniami o górnej części ciała człowieka i dolnej części ciała węża. Salamandry występują zazwyczaj tylko w ekstremalnie gorących i ekstremalnie zimnych środowiskach. Ponieważ te istoty są spokrewnione z żywiołami, cały czas emitują niewielkie ilości energii żywiołów. Są samolubnymi i okrutnymi stworzeniami, które nie znoszą bycia odizolowanymi od swojego otoczenia na dłuższy czas.",  
+
+  
+
+RGB_GITH = "Githyanki to starożytna rasa pochodząca od ludzi. Mieszkają na Planie Astralnym, ale często opuszczają ten plan, aby prowadzić wojnę z innymi rasami. Toczą długą wojnę z githzerai. Githyanki mają silnie humanoidalny wygląd. Mają mniej więcej ludzki wzrost, ale zazwyczaj są o wiele bardziej wychudłe i mają długie kończyny. Mają szorstką, żółtą skórę i błyszczące czarne oczy, które natychmiast zdradzają ich nieludzkość. Podobnie jak wiele ras półludzkich, ich uszy mają ostre końcówki i są ząbkowane z tyłu. Ubiór githyanki jest zawsze wyszukany. Ich barokowe zbroje i broń wojenna są ozdobione piórami, koralikami oraz metalami szlachetnymi i klejnotami. Githyanki mówią jedynie własnym językiem.",  
+
+  
+
+RGB_BALO = "Najwięksi i najstraszniejsi z prawdziwych tanar'ri, balorowie są niekwestionowanym postrachem Otchłani. Są główną motywacją stojącą za zaangażowaniem tanar'ri w Wojnę Krwi. W każdym znaczeniu tego słowa balorowie są kwintesencją tanar'ri. Czerpią wielką przyjemność z cierpienia innych i robią wszystko, aby dręczyć niższe istoty i sprawiać im ból. Balorowie są odpychający i odrażający. Są górującymi humanoidami o głębokiej, ciemnoczerwonej skórze. Mają ogromne skrzydła, które napędzają ich z nienaturalną szybkością i zwinnością. Mają długie, okrutne pazury i groteskowe kły, które ociekają jadem. Balorowie są zazwyczaj otoczeni przez płonące płomienie.",  
+
+  
+
+RGB_MARI = "Odważni i przebiegli, marilithy są generałami i taktykami Wojny Krwi. Podczas gdy balorowie są siłą napędową i energią stojącą za wysiłkiem wojennym, marilithy są mózgami i taktykami. Straszne do oglądania, te stworzenia mają ciała gigantycznych węży, z ogromnymi, zielonymi, łuskowatymi zwojami. Od pasa w górę są pięknymi, urodziwymi samicami. Oprócz jej oczywistego ciała węża, cechą, która ujawnia prawdziwą naturę tej tanar'ri, jest jej sześć ramion. Są zazwyczaj ozdobione drogocenną biżuterią i bogato zdobioną bronią, marilithy najczęściej noszą inną broń w każdej z sześciu rąk.",  
+
+  
+
+RGB_TANA = "Tanar'ri są, najogólniej rzecz biorąc, chaosem i złem zdefiniowanym. Mniej inteligentni często atakują bez pytania i walczą, aż zostaną zabici. Prawdziwi i więksi tanar'ri często wędrują po Planach Astralnym i Eterycznym — ich uwagę przyciągają ci w stanie eterycznym.",  
+
+  
+
+RGB_PITF = "Biesy to władcy Dziewięciu Piekieł. Są baatezu o największej mocy i najwyższej pozycji. Biesy można znaleźć w różnych warstwach Dziewięciu Piekieł, ale są bardzo rzadcy na wyższych warstwach. Gdziekolwiek się znajdują, ci potężni władcy zajmują pozycję wielkiego autorytetu i mocy. Czasami dowodzą ogromnymi legionami składającymi się z dziesiątek kompletnych armii, prowadząc je do bitwy z tanar'ri.",  
+
+  
+
+RGB_ABIS = "Abishai są powszechni na pierwszej i drugiej warstwie Dziewięciu Piekieł, wyglądając bardzo podobnie do gotyckich gargulców. Są szczupli i gadzi z długimi, chwytnymi ogonami i wielkimi skrzydłami. Istnieją trzy odmiany abishai. Są, w kolejności rosnącej rangi, czarne, zielone i czerwone. Abishai komunikują się telepatycznie. Abishai są żarłoczne i złe. Uwielbiają dręczyć tych niewielu mieszkańców Dziewięciu Piekieł, którzy mają od nich niższą moc.",  
+
+  
+
+RGB_DOGW = "Zazwyczaj duże mastify lub wilczarze, mają wyostrzony węch i słuch, co czyni je biegłymi w wykrywaniu intruzów. Większość psów wojennych zwykle nie jest agresywna i rzadko atakuje bez powodu. Status psów wojennych jest bardzo różny; niektóre są lojalnymi i kochanymi zwierzętami domowymi, niektóre są psami stróżującymi, inne psami myśliwskimi, a niektóre są szkolone do walki.",  
+
+  
+
+RGB_CATS = "Wielki kot jest nieustraszonym przeciwnikiem w bitwie. Są ekspertami w śledzeniu i często polują w parach lub grupach. Potrafią skoczyć 13 metry w górę i skoczyć do przodu 9 do 15 metrów, aby zaatakować. Jeśli uderzą skutecznie obiema przednimi łapami, ich tylne pazury zadają 2-8 (2k4) punktów obrażeń na pazur. Gatunek ten występuje w strefie subarktycznej i tropikalnej, zazwyczaj zamieszkując tereny zalesione lub zakryte. Są nocnymi, samotnymi, wdzięcznymi wspinaczami i pływakami, którzy są w stanie utrzymać dużą prędkość. Te zwierzęta rzadko walczą między sobą, ale będą zaciekle bronić swoich terytoriów. Są również najbardziej nieprzewidywalnymi i niebezpiecznymi spośród wielkich kotów, nie wahającymi się atakować ludzi. Ich ulubioną zdobyczą jest bydło, dziki i jelenie. Samice wychowują samotnie od 1 do 3 młodych. Młode pozostają z matką przez kilka lat. Jeśli spotka się je w legowisku, istnieje 25% szans, że młode będą obecne. Ludzie się ich boją, tygrysy są agresywnie ścigane i zagrożone przez niszczenie lasów. Jednak w nieokiełznanej dziczy tygrys zajmuje najwyższą niszę drapieżników.",  
+
+  
+
+RGB_DUER = "Duergarowie, czyli szarzy krasnoludowie, to złowroga rasa, która żyje na ekstremalnych głębokościach pod ziemią. Duergarowie mogą być wojownikami, kapłanami, złodziejami lub wieloklasowymi wojownikami/kapłanami, wojownikami/złodziejami lub kapłanami/złodziejami. Złodzieje są biegli w używaniu trucizny. Duergarowie wydają się być wychudzonymi, paskudnie wyglądającymi krasnoludami. Ich cera i włosy wahają się od jasno- do ciemnoszarej. Preferują szare ubrania, które mają wtapiać się w otoczenie. W swoich legowiskach mogą nosić biżuterię, chociaż takie elementy są matowe. Duergarowie dysponują infrawizją do 37 metrów. Mówią dialektem duergarów krasnoludzkiego języka, podwspólnym (językiem handlowym podziemnych kultur) i cichą mową używaną przez niektóre podziemne stworzenia. Inteligentni duergarowie mogą również mówić innymi językami.",  
+
+  
+
+RGB_GIAN = "Ogniste olbrzymy są brutalne, bezwzględne i militarystyczne. Są wysokie, ale krępe, przypominając ogromne krasnoludy. Dorosły samiec ma 5,5 metra wzrostu, 3,5 metra w klatce piersiowej i waży około 3,5 tony. Ogniste olbrzymy mają czarną jak węgiel skórę, płonące czerwone lub jaskrawo pomarańczowe włosy i wystające szczęki, które odsłaniają brudne, kościane lub żółte zęby. Mogą żyć 350 lat. Wojownicy zazwyczaj noszą kolczugi i okrągłe metalowe hełmy. Swoje rzeczy noszą w ogromnych workach. Typowy worek olbrzyma ognistego zawiera 2-5 (1k4+1) kamieni do rzucania, skarb olbrzyma, krzesiwo i 3-12 (3k4) zwykłych przedmiotów. Wszystko, co posiadają, jest zniszczone, brudne i śmierdzące, co utrudnia identyfikację cennych przedmiotów. Wszystkie ogniste olbrzymy potrafią mówić językiem reszty olbrzymów i swoim własnym.",  
+
+  
+
+RGB_MIMI = "Mimiki to magicznie stworzone stworzenia z twardą, przypominającą skałę zewnętrzną skorupą, która chroni ich miękkie organy wewnętrzne. Mimiki mogą zmieniać swoją formę i pigmentację; wykorzystują ten talent, aby zwabić ofiary na bliską odległość, gdzie próbują się nimi pożywić. Zazwyczaj pojawiają się w formie skrzyń ze skarbami. Istnieją dwie odmiany: mniejszy, bardziej inteligentny pospolity mimik i większy, mniej inteligentny zabójczy mimik. Mimiki są duże. Zwykłe mimiki zajmują około 4,25 metra sześciennego (1,5 metra x 1,5 metra x 1,8 metra, albo duża framuga drzwiowa). Zabójcze mimiki zajmują około 5,5 metra sześciennego. Naturalny kolor mimików to cętkowana szarość przypominająca granit. Mimiki mogą zmieniać swoją pigmentację, aby przypominać różne rodzaje kamienia (takie jak marmur), słoje drewna i różne metale (złoto, srebro, miedź); potrzeba jednej rundy, aby dokonać pożądanej zmiany. Nie mogą stracić masy w tej transformacji (muszą pozostać tej samej wielkości, chociaż mogą radykalnie zmienić swoje wymiary). Zwykłe mimiki mają swój własny język (zniekształcenia oryginalnego języka, którym mówili ich czarodzieje-twórcy) i można ich również nauczyć mówić w językach powszechnych i innych. Zabójcze mimikry nie potrafią mówić.",  
+
+  
+
+RGB_OROG = "Elitarni orkowie, lub orogowie, to rasa wielkich orków, prawdopodobnie zmieszanych z krwią ogrów. Orogowie mają od 1,8 do 2 metrów wzrostu. Są bardzo zdyscyplinowanymi wojownikami i mają własne sztandary i chorągwie, które eksponują w widocznym miejscu - zwykle łatwo stwierdzić, czy orogowie są obecni wśród zwykłych orków. Orogów można znaleźć na czele dużych armii orków, ale rzadko na patrolu. Istnieje 10% szans, że plemię orków będzie miało orogów, których liczba równa się 10% męskiej populacji. (Społeczność 3000 orków płci męskiej ma 10% szans na posiadanie 300 dodatkowych orogów.) Małe grupy elit (20-80 orogów) będą wynajmować się jako najemnicy.",  
+
+  
+
+RGB_SHAM = "Włóczące kopce lub włóczęgi, wydają się być stertami gnijącej roślinności. Są w rzeczywistości inteligentną formą życia roślinnego, o mniej więcej humanoidalnym kształcie i mózgopodobnym centrum sterowania w okolicy klatki piersiowej. Włóczęga ma niemal 2 metry obwodu w dolnej połowie, zwężający się do około 60 centymetrów na głowie. Włóczące kopce można znaleźć tylko w regionach o gęstych opadach deszczu i roślinności. Ponure bagna, mokradła i lasy deszczowe są ich ulubionymi miejscami życia, ale niektóre wilgotne, podziemne miejsca służą również jako legowiska włóczęgów. Są to samotne bestie, rzadko żyjące w tym samym obszarze co inne włóczęgi - zwykle tylko w obszarach, gdzie źródło pożywienia jest stałe, w pobliżu słynnych ruin lub opuszczonych kopalni złota. Włóczęgi są prawie całkowicie ciche i niewidzialne w swoim naturalnym otoczeniu; przeciwnicy otrzymują karę -3 do rzutów zaskoczenia. Włóczęga często leży w płytkim bagnie, czekając, aż jakieś stworzenie na nie wejdzie, a następnie atakuje. Stworzenia te są doskonałymi pływakami, zdarzało im się zakradać nocą do obozowisk niczego niepodejrzewających podróżników.",	  
+
+  
+
+RGB_SNAK = "Węże to długie, smukłe gady, które można znaleźć na całym świecie, nawet w najzimniejszych regionach arktycznych. Istnieją zasadniczo dwa rodzaje węży o najróżniejszych rozmiarach. Jadowite węże rekompensują swoje stosunkowo mniejsze rozmiary zabójczym jadem, podczas gdy więksi dusiciele ściskają swoje ofiary na śmierć. Oba rodzaje śpią przez kilka dni po jedzeniu. Wszystkie węże zrzucają skórę kilka razy w roku.",  
+
+  
+
+RGB_WIGH = "Dawniej słowo zmora oznaczało po prostu człowieka. Jednak z upływem stuleci zaczęto je kojarzyć tylko z nieumarłymi, którzy zazwyczaj zamieszkują kurhany i katakumby. Z daleka zmorę można łatwo pomylić z dowolną liczbą ras humanoidalnych. Jednak po bliższym przyjrzeniu się jej prawdziwa natura staje się oczywista. Jako nieumarłe stworzenia, zmory są koszmarnym odbiciem ich dawnych jaźni, z okrutnymi, płonącymi oczami osadzonymi w zmumifikowanym ciele nad poskręcanym szkieletem z rękami zakończonymi ostrymi pazurami.",  
+
+  
+
+RGB_SHAD = "Druidzi Cienia to druidzki kult, który wierzy, że natura powinna wypędzić cywilizację przemocą. Działają wzdłuż Wybrzeża Mieczy, mając bazy operacyjne w Lesie Cloakwood i Gaju Druidów. Cały krąg druidów jest prowadzony przez Arcydruida Cienia, podczas gdy „Pierwsi Druidzi” pełnią funkcję przywódców poszczególnych gajów. Stosują ekstremalne metody i przemoc, aby wypędzić cywilizację, wykorzystując okrutne moce natury.",  
+
+  
+
+RGB_SHAT = "Złodzieje Cienia to organizacja, która działa za pośrednictwem agentów w całym Zachodnim Faerunie, wśród swoich licznych baz. Ich główna baza znajduje się w Dokach w mieście Athkatla, a ich najwyższym przywódcą jest Aran Linvail. Specjalizują się się w działalności przestępczej.",  
+
+  
+
+GB_COWL = " Zakapturzeni Czarodzieje to organizacja, która reguluje używanie magii czarodziejskiej przez mieszkańców Athkatli. Ustanawiają surowe prawa, które zakazują używania nielicencjonowanych zaklęć czarodziejskich. Rzucenie jednego z nich doprowadzi do aresztowania wszystkich zaangażowanych osób. Ci którzy będą stawiają opór, są zabijani. Aresztowani są osądzeni w budynku w rządzie Athkatli, gdzie przywódca decyduje, jaki wyrok będzie zastosowany.",  
+
+  
+
+RGB_GLAB = "Ze wszystkich tanar'ri - demonicznych diabłów zamieszkujących Otchłań chaosu i zła - niewielu jest tak przebiegłych jak podobne do psów glabrezu. Są to wybrani kusiciele śmiertelnych umysłów, oferujący moc i wiedzę wykraczającą poza możliwości nawet najbardziej wykształconych. Oczywiście, ta wiedza ma swoją cenę. Są to również brutalni wojownicy, jedne z najniebezpieczniejszych stworzeń, jakie kiedykolwiek spotkałeś. Stąpaj ostrożnie, zarówno ciałem, jak i umysłem.",  
+
+  
+
+RGB_CORN = "Jednymi z najwyższych w hierarchii baatezu w całym Baator są cornugony, którzy awansowali w szeregach swoich towarzyszy poprzez niezliczone pokolenia zdrad, poświęceń, oszustw i wszelkiego rodzaju przestępstw. Pokryci małymi rogami, mający ogromną parę skrzydeł i silnie umięśnieni, wyglądają jak głupie stworzenia i często wykorzystują to na swoją korzyść - są w rzeczywistości głęboko inteligentnymi kreaturami i nie sposób powiedzieć, jak głębokie mogą sięgać ich intrygi.",  
+
+  
+
+RGB_ALUF = "Dziecko tanar'ri i mężczyzny, alu-bies przypomina wyglądem sukkuba. Niektórzy z nich próbują stłumić w sobie zło, zdecydowana większość jednak próbuje prześcignąć swoich diabelskich przodków w czystym złu i okrucieństwie. Wiedz, że nie należy ufać tanar'ri.",  
+
+  
+
+RGB_ERIN = "Erynie to zaciekłe baatezu, których niebiański wygląd przeczy ich niegodziwym intencjom. Są furiami Dziewięciu Piekieł, odpowiedzialnymi za wymierzanie piekielnej sprawiedliwości i mściwej zemsty zarówno śmiertelnikom, jak i diabłom. Podczas gdy większość uczonych zajmujących się planami uważa erynie za pomniejsze diabły, ich wyjątkowa pozycja w bezpośrednim raportowaniu Mrocznej Ósemce sprawiła, że niektórzy uważają je za większe baatezu.",  
+
+  
+
+RGB_SUCU = "Jedna z tanar'ri, która jest diabelską kusicielką. Kiedy zostanie odkryta w swojej prawdziwej postaci, sukkub pojawia się jako oszałamiająco piękna kobieta o posągowej budowie i idealnej sylwetce, z nieskazitelną skórą i czerwonymi lub kruczoczarnymi włosami, ale także pazurami i dużymi ciemnymi lub czerwonawymi nietoperzowymi skrzydłami osadzonymi na plecach. Mówi się, że ich oczy tlą się złowrogim pożądaniem. Można również dostrzec małe rogi lub ogon. Sukkuby mają średnio około 1,8 metra wzrostu i ważą 60 kilogramów. Demoniczne sukuby są zdecydowanie najbardziej atrakcyjne spośród wstrętnych tanar'ri, a może nawet ze wszystkich demonów.",  
+
+  
+
+RGB_REDW = "Czerwoni Czarodzieje z Thay to złowroga organizacja czarodziejów - magokracja - która rządzi odległym królestwem Thay na wschodnich krańcach Faerunu, daleko od ziem Wrót Baldura lub Athkatli. Ci bezwzględni, okrutni i żądni władzy czarodzieje starają się zdominować wszystkie rasy i narody świata, stosując różne fortele, aby osiągnąć ten cel, od wywrotowej działalności handlowej po zabójstwa i otwartą wojnę. Ich sąsiadami są Rashemeni, którzy często najeżdżali ich królestwo, aby realizować swoje ambicje, ale za każdym razem byli odpierani.",  
+
+  
+
+RGB_MONK = "Mnisi to wojownicy, którzy dążą do doskonałości poprzez kontemplację i działanie. Są wszechstronnymi wojownikami, szczególnie utalentowanymi w walce bez broni i zbroi. Chociaż mnisi nie potrafią rzucać czarów, posiadają własną, unikalną magię: kierują subtelną energią zwaną ki, która pozwala im wykonywać niesamowite wyczyny. Najbardziej znanym wyczynem mnicha jest ich zdolność do ogłuszania przeciwnika ciosem bez broni.",  
+
+  
+
+RGB_MOND = "Zakon Ciemnego Księżyca to tajemniczy zakon monastyczny, który podąża za naukami mrocznej bogini Shar. Mnisi Ciemnego Księżyca wykorzystują fizyczną sprawność, czarną magię i wiele różnych form oszustwa, aby maskować swoje działania i uderzać z zabójczą precyzją.",  
+
+  
+
+RGB_MONH = "Mnich-heretyk to zbuntowany akolita zakazanych doktryn i tajemnych sekretów, poruszający się z aurą buntowniczego zapału i mistycznego zapału. Wyrzuceni z ortodoksyjnych zakonów i napiętnowani jako odstępcy, mnisi-heretycy uosabiają istotę buntu i duchowej eksploracji, ich szaty zdobią ezoteryczne symbole i zakazane pisma. Swoimi nieortodoksyjnymi technikami i bluźnierczymi rytuałami mnisi-heretycy kwestionują ustalone dogmaty i szukają oświecenia ścieżkami nieuczęszczanymi przez ich tradycyjnych braci.",  
+
+  
+
+RGB_MONS = "Mnich Shar to mroczny uczeń ciemności i zwiastun rozpaczy, porusza się z aurą cichego zagrożenia i piekielnej łaski. Oddany Pani Nocy i przysięgający podtrzymywać jej złowrogie zasady, mnich Shar uosabia istotę cienia i tajemnicy, jego forma jest spowita w odcienie mroku, a ruchy spowite ciemnością. Swoimi nieświętymi ciosami i nieziemskimi zdolnościami mnich Shar wzbudza strach w sercach tych, którzy ośmielają się sprzeciwić woli jego mrocznej pani.",  
+
+  
+
+RGB_BARB = "Barbarzyńca to zaciekły wojownik z nieokiełznanych ziem, rzuca się do walki z aurą pierwotnej furii i niezwyciężonej siły. Pochodzący z surowych krain i dzikich kresów, barbarzyńca uosabia istotę wolności i surowej siły, jego muskularna sylwetka ozdobiona jest plemiennymi oznaczeniami i bitewnymi bliznami. Swoimi potężnymi brońmi i dzikimi okrzykami bojowymi barbarzyńca wzbudza strach w sercach swoich wrogów i podziw u tych, którzy są świadkami jego niezrównanego kunsztu.",  
+
+  
+
+RGB_BATN = "Nietoperze to nocni mieszkańcy ciemnego nieba, są często traktowane jako zwykłe szkodniki lub utrapienia przez tych, którzy mieszkają w świetle. Jednak te uskrzydlone stworzenia odgrywają kluczową rolę w delikatnej równowadze naturalnego świata. Dzięki swoim skórzastym skrzydłom i doskonałej echolokacji nietoperze poruszają się w ciemnościach z niezrównaną gracją i precyzją, polując na owady i zapylając kwiaty z równą skutecznością.",  
+
+  
+
+RGB_BEET = "Olbrzymie chrząszcze są podobne do swoich bardziej zwyczajnych odpowiedników, ale tysiące razy większe — z żuwaczkami do żucia i twardymi skrzydłami, które zapewniają znaczną ochronę pancerza. Chrząszcze mają dwie pary skrzydeł i trzy pary nóg. Na szczęście skrzydła olbrzymiego chrząszcza nie mogą być użyte do latania, a w większości przypadków jego sześć szczeciniastych nóg nie pozwala mu poruszać się tak szybko, jak uciekający człowiek. Twarda, chitynowa skorupa kilku odmian tych chrząszczy jest jaskrawo kolorowa i czasami ma wartość dla kolekcjonerów sztuki. Podczas gdy ich skorupy chronią chrząszcze tak samo dobrze, jak zbroja płytowa, trudno jest z nich wykonać zbroję i do tej pracy trzeba by zatrudnić wykwalifikowanego alchemika. Wszystkie chrząszcze są zasadniczo nieinteligentne i zawsze głodne. Żywią się praktycznie każdym rodzajem materiału organicznego, w tym innymi gatunkami chrząszczy. Wyczuwają smak materii za pomocą czułek lub czułków. Jeśli zjadana substancja jest organiczna, chrząszcz chwyta ją żuwaczkami, miażdży i zjada. Ze względu na dokładne zgrzytanie żuwaczek, nic zjedzonego przez gigantyczne chrząszcze nie może zostać przywrócone do życia przez nic innego niż życzenie. Chrząszcze nie słyszą ani nie widzą dobrze i polegają głównie na smaku i dotyku.",  
+
+  
+
+RGB_BEHO = "Obserwator to istota z koszmarów. To stworzenie, zwane także sferą wielu oczu lub tyranim okiem wygląda jak duża kula z dominującym centralnym okiem i dużą zębatą paszczą, ma 10 mniejszych oczu na czułkach wyrastających z wierzchołka kuli. Wśród poszukiwaczy przygód obserwatorzy są znani jako śmiertelni przeciwnicy. Równie śmiertelne są liczne odmiany stworzeń znane zbiorowo jako beholderowate, w tym radykalne i spokrewnione stworzenia oraz odmiana nieumarła. Te stworzenia są spokrewnione w sposób rodzinny i tajemny z „tradycyjnymi” obserwatorami i mają wiele cech wspólnych, w tym śmiertelnie magiczną naturę swoich oczu. Najbardziej ekstremalne z tych stworzeń nazywane są obserwatorami-abominacjami. Kuliste ciało obserwatora i jego krewnych jest podtrzymywane przez lewitację, co pozwala mu powoli unosić się, jak chce. Obserwatorzy i beholderowate są zazwyczaj samotnymi stworzeniami, ale istnieją doniesienia o dużych społecznościach, które przetrwały głęboko pod ziemią i w pustce między gwiazdami, pod panowaniem matek roju. Wszyscy obserwatorzy mówią własnym językiem, który jest również rozumiany przez wszystkich beholderowatych. Ponadto często mówią językami innych praworządnych złych stworzeń.",  
+
+  
+
+RGB_DJIN = "Dżiny pochodzą z Planów Żywiołów. Tam, wśród swojego rodzaju, mają własne społeczeństwa. Dżiny są czasami spotykane na Pierwszym Planie Materialnym i często są wzywane specjalnie, aby wykonać jakąś usługę dla potężnego czarodzieja lub kapłana. Wszystkie dżiny mogą podróżować do dowolnego z Planów Żywiołów, a także do Pierwszego Planu Materialnego oraz Astralnego. Dżiny mówią własnym językiem oraz każdej inteligentnej istoty, którą spotykają, za pomocą ograniczonej formy telepatii. Djinny, dżiny żywiołu powietrza, to majestatyczne istoty, które szybują po niebie na prądach wiatru i magii. Zrodzone z wirującego chaosu Planu Żywiołu Powietrza, te potężne byty ucieleśniają istotę wolności i burzliwości.",  
+
+  
+
+RGB_EFRE = " Ifrity to dżiny z Planu Żywiołu Ognia. Są wrogami djinnów i atakują ich, kiedykolwiek zostaną napotkani. Prawidłowo przyzwany lub schwytany ifrit może zostać zmuszony do służby przez maksymalnie 1001 dni lub może zostać zmuszony do spełnienia trzech życzeń. Ifrity nie są chętnymi sługami i starają się wypaczyć intencje swoich panów, trzymając się litery ich rozkazów. Mówi się, że ifrity są zrobione z bazaltu, brązu i stałych płomieni. Są to masywne, solidne stworzenia.",  
+
+  
+
+RGB_ELEF = "Z serca Planu Żywiołu Ognia, żywiołaki ognia manifestują się jako żywe inferno Ich eteryczne formy migoczą z nieokiełznaną intensywnością. Te istoty ucieleśniają istotę samego ognia, ich obecność jest naznaczona palącym żarem, który odzwierciedla dzikość pożaru. Spotkania z żywiołakami ognia to jaskrawe widowiska, w których samo powietrze mieni się intensywną energią, którą władają. Poszukiwacze przygód mogą natknąć się na żywiołaki ognia pośród starożytnych sanktuariów lub domen wulkanicznych. Walki z tymi żywymi płomieniami wymagają nie tylko umiejętności walki, ale także strategicznego zrozumienia nieprzewidywalnej natury żywiołu ognia. W tajemnych krajobrazach, w których sekrety migoczą jak żar, pojawienie się żywiołaków ognia oznacza zbieżność mocy żywiołów i nieustanne zagrożenie pożarem.",  
+
+  
+
+RGB_ELEE = "Wykute z podłoża Planu Żywiołu Ziemi, żywiołaki ziemi wznoszą się jako kolosalne ucieleśnienia kamienia i gleby. W podziemnych głębinach i starożytnych jaskiniach te istoty rozkazują spoistością samego gruntu, po którym stąpają poszukiwacze przygód. Spotkania z żywiołakami ziemi to bitwy z nieprzemijającą siłą samej ziemi, gdzie sam teren staje się zarówno bronią, jak i tarczą. W labiryntowych przejściach lub zakopanych ruinach poszukiwacze przygód mogą stawić czoła żywiołakom ziemi jako cichym strażnikom. Te stworzenia mogą połączyć się z samą ziemią, co czyni z nich groźnych przeciwników z niesamowitą zdolnością kontrolowania pola bitwy. Walka z żywiołakami ziemi wymaga nie tylko sprawności bojowej, ale także strategicznego zrozumienia samego gruntu, na którym rozgrywa się bitwa. W podziemnych królestwach, gdzie kryją się tajemnice, obecność żywiołaków ziemi oznacza konfrontację z nieprzemijającymi siłami ziemi.",  
+
+  
+
+RGB_ELEA = "Przemierzając niebo z bezkresnych zasięgów Planu Żywiołu Powietrza, żywiołaki powietrza materializują się jako eteryczne wiry. Te byty, składające się z wirujących prądów i gruzu, rządzą samą atmosferą. Spotkania z żywiołkami powietrza to pełne gracji, ale burzliwe tańce, w których powietrze staje się zarówno sojusznikiem, jak i przeciwnikiem. W powietrznych przestrzeniach lub mistycznych komnatach, w których zbiegają się wiatry, poszukiwacze przygód mogą stawić czoła żywiołkom powietrza. Byty te mogą manipulować samymi prądami powietrza, tworząc pole bitwy, które stanowi wyzwanie zarówno dla stabilności naziemnej, jak i manewrowości w powietrzu. Walka z żywiołkami powietrza wymaga nie tylko opanowania walki, ale także zrozumienia ciągle zmieniających się wiatrów, które definiują królestwa atmosferyczne. Na szerokich niebach świata, gdzie tajemnice szybują wysoko, obecność żywiołaków powietrza oznacza taniec z nieokiełznanymi siłami atmosfery.",  
+
+  
+
+RGB_ELEW = "Wyłaniające się z głębin Planu Żywiołu Wody, żywiołaki wody falują przez królestwa wodne z płynną gracją. Te żywe potoki wody uosabiają przypływ i odpływ samego oceanu. Spotkania z żywiołakami wody to płynne tańce, w których granice między tym, co fizyczne, a tym, co wodne, stają się niewyraźne. Pod powierzchnią mistycznych stawów lub ukrytych jaskiń wodnych, poszukiwacze przygód mogą spotkać żywiołaki wody jako strażników lub mieszkańców zanurzonych krain. Ich płynne formy czynią z nich nieuchwytnych przeciwników, zdolnych manipulować wodą, aby topić wrogów lub przeprowadzać wodne ataki. Walka z żywiołakami wody wymaga nie tylko opanowania walki, ale także zrozumienia dynamiki płynów, która definiuje zamieszkiwane przez nie środowiska wodne. W podwodnej mozaice Baldur's Gate gdzie sekrety falują pod powierzchnią, obecność żywiołaków wody oznacza taniec z ciągle zmieniającymi się przypływami.",  
+
+  
+
+RGB_MINF = "Łupieżca umysłu to abominacja zrodzona z najciemniejszych głębin Podmroku. Porusza się pośród cieni z ponurą aurą mocy psychicznej i nadprzyrodzonej wiedzy. Jego oślizgła, mackowata twarz wzbudza strach w sercach tych, którzy ją ujrzą, podczas gdy jego złowrogi intelekt knuje i spiskuje z okrutną skutecznością. Uzbrojony w zdolności psioniczne i głód myśli innych, łupieżca umysłu poluje na umysły istot świadomych, wykrzywiając ich myśli i wysysając ich esencję.",  
+
+  
+
+RGB_GOLS = "Kamienny golem to górujący kolos ożywionej skały i ziemi stojący jako strażnik starożytnej mocy i trwałej siły. Wyrzeźbiony z litego kamienia i przesiąknięty tajemną energią, ten potężny konstrukt uosabia odporność i niewzruszoność samych gór. Dzięki swojej masywnej formie i niewzruszonemu obliczu, kamienny golem wzbudza strach w sercach wszystkich, którzy odważą się rzucić wyzwanie jego domenie.",  
+
+  
+
+RGB_GOLI = "Żelazny golem to potężny olbrzym wykuty z roztopionego metalu i tajemnych zaklęć, górujący nad otoczeniem z imponującą prezencją. Wykonany przez mistrzów rzemiosła i przepełniony potężną magią, ten potężny konstrukt uosabia połączenie sztuczności i czarów. Jego lśniąca metaliczna forma, wykonana z misternymi szczegółami i potężną siłą, wzbudza strach w sercach wszystkich, którzy go zobaczą.",  
+
+  
+
+RGB_GOLA = "Golem adamantytowy to szczyt kunsztu i tajemnego mistrzostwa, stojący jako strażnik nieustępliwej determinacji i niezwyciężonej siły. Wykonany z najrzadszych metali i przepełniony najczystszą magiczną energią, ten potężny konstrukt uosabia kwintesencję trwałości i odporności. Jego lśniąca forma, wykuta z precyzją i przepełniona starożytnymi zaklęciami, emanuje aurą niezwyciężoności, która wzbudza zarówno szacunek jak i strach.",  
+
+  
+
+RGB_GOLF = "Golem z ciała to groteskowa mieszanka zszytych części ciała i mrocznej magii, krocząca naprzód z niepokojącym pozorem życia. Stworzony przez bezbożne rytuały i bluźniercze eksperymenty, ten obrzydliwy twór z ciała i kości uosabia horrory najciemniejszych zakamarków umysłu. Jego zszyta forma, ożywiona zakazanymi nekromanckimi energiami, emanuje aurą grozy, która zapiera oddech.",  
+
+  
+
+RGB_GOLC = "Gliniany golem to masywna konstrukcja uformowana z zaczarowanej gliny ożywionej starożytną magią, krocząca naprzód z ciężką gracją. Stworzony przez utalentowanych rzemieślników i przepełniony potężną magią, ten potężny strażnik uosabia trwałą siłę i odporność samej ziemi. Jego masywna forma, wyrzeźbiona z precyzją i przesiąknięta tajemnymi energiami, emanuje aurą stoickiej determinacji, która wzbudza szacunek i podziw.",  
+
+  
+
+RGB_GOLM = "Magiczny golem to cud tajemnego rzemiosła i mistycznego czaru, kroczy naprzód z aurą nieziemskiej mocy i starożytnej mądrości. Stworzony przez mistrzów rzemiosła i przesiąknięty potężnymi czarami, ten eteryczny strażnik uosabia połączenie magii i maszynerii. Jego forma, mieniąca się tajemną energią i ozdobiona misternymi runami, emanuje aurą transcendentnego majestatu, która wzbudza zarówno szacunek jak i podziw.",  
+
+  
+
+RGB_GOLD = "Piaskowy golem to górująca postać wyrzeźbiona z ruchomych piasków pustyni i przesiąknięta starożytną magią, kroczy naprzód z niesamowitą gracją i milczącą determinacją. Ukształtowany przez zapomnianych czarowników i ożywiony pierwotnymi siłami samej pustyni, ten potężny strażnik uosabia surowe piękno i nieprzejednaną naturę jałowego pustkowia. Jego górująca forma, złożona z wirujących piasków i związana mistycznymi energiami, emanuje aurą ponadczasowej mądrości i stoickiej odporności, która wzbudza zarówno szacunek jak i podziw.",  
+
+  
+
+RGB_HARP = "Harpie to okrutne ptasie bestie, które polują na niemal wszystkie stworzenia, ale wolą ciała ludzi i półludzi. Harpie mają ciała sępów, ale torsy i głowy kobiet. Ich ludzkie rysy są młodzieńcze, ale odrażające, z postrzępionymi, zaniedbanymi włosami i gnijącymi zębami. Wszystkie harpie i wszystko, czego dotykają, otacza nieprzyjemny zapach. Harpie nigdy się nie kąpią ani nie czyszczą w żaden sposób. Ich ubiór, jeśli w ogóle, ogranicza się do podartych szmat i błyszczących drobiazgów zabranych poprzednim ofiarom. Język harpii, w przeciwieństwie do ich kuszącej pieśni, to okropny zbiór chichotów i wrzasków. Chociaż zdarzają się przypadki harpii, które potrafią mówić językami innych stworzeń, są one nieliczne i rzadkie. ",  
+
+  
+
+RGB_JACK = "Łakoszakal jest strasznym i dzikim stworzeniem, które poluje na niczego niepodejrzewających podróżników i innych półludzi, których może zaatakować z zasadzki. Jego zdolność do zmiany kształtu według woli sprawia, że jest najniebezpieczniejszym przeciwnikiem. Łakoszakala można spotkać w dowolnej z trzech form, gdyż nie wykazuje żadnej preferencji względem którejkolwiek z nich. Pierwsza z nich to normalny szakal. W tej formie często biegnie i poluje ze stadem szakali. Jego druga forma to niemal dwumetrowy, pół-człowiek/pół-szakal hybryda, która stoi wyprostowana. W swojej trzeciej formie łakoszakal jest fizycznie nie do odróżnienia od normalnych ludzi. Dokładne cechy fizyczne ludzkiej formy łakoszakala różnią się w zależności od tego co zapragnie ten potwór. ",  
+
+  
+
+RGB_REMO = "Remorhaz, czasami nazywany polarnym robakiem, zamieszkuje tylko chłodne, arktyczne pustkowia. Jest to bardzo agresywny drapieżnik, który pożera wszelkie zwierzęce szczątki, w tym ludzi, półludzi i humanoidów. Wiadomo, że atakuje nawet lodowych gigantów. Remorhaz ma segmentowane ciało z uskrzydloną głową i szyją, stojąc na dziesiątkach chitynowych nóg. Remorhaz ma lodowato niebieski kolor wszędzie, z wyjątkiem grzbietu, gdzie smuga bieli podkreśla zlokalizowane tam liczne wypustki. Rozmiar remorhaza waha się od 6,4 do 12,8 metrów długości. Ich język składa się z ryku, wrzasku i wycia.",  
+
+  
+
+RGB_RAKS = "Rakshasas to złowrogie demony, które grasują na Planie Materialnym, ich pochodzenie owiane jest mroczną i starożytną wiedzą. Posiadając przebiegłość drapieżnika i podstęp mistrza manipulacji, te demony często przybierają humanoidalne formy, aby płynnie wtopić się w tłum śmiertelników. Jednak ich prawdziwa natura ujawnia się w ich charakterystycznych cechach: dzikich oczach bestii, ostrych jak brzytwa pazurach drapieżnika i niezaprzeczalnej aurze złowrogości, która ich otacza. Spotkania z rakshasas są często naznaczone oszustwem i intrygą, ponieważ te demony rozkoszują się igraszką z życiem i przeznaczeniem śmiertelników. Mistrzowie iluzji i manipulacji umysłem, tkają skomplikowane sieci oszustw, aby realizować własne złowrogie plany. Pomimo humanoidalnego wyglądu, rakshasowie są istotami czystego zła, a ich nienasycony głód władzy i dominacji popycha ich do popełniania niewypowiedzianych aktów okrucieństwa i zepsucia.",  
+
+  
+
+RGB_SAHU = "Sahuaginy to okrutna, drapieżna rasa ryboludzi, która żyje w ciepłych wodach przybrzeżnych. Są dobrze zorganizowane i uwielbiają napadać na społeczności przybrzeżne w poszukiwaniu pożywienia i sportu. Typowe sahuaginy mają czarnozielone grzbiety, przechodzące w zieleń na brzuchach, z czarnymi płetwami. Ich wielkie, wpatrzone oczy są głębokie i lśniąco czarne. Mają łuskowatą skórę, z błoniastymi palcami u rąk i nóg, a ich usta są wypełnione ostrymi kłami. Około 1 na 216 sahuaginów to mutacja z czterema władnymi ramionami. Te okazy są zwykle czarne przechodzące w szarość. Samice są nie do odróżnienia od samców, z wyjątkiem tego, że są nieco mniejsze. Młode osobniki mają jasnozielony kolor, ale ciemnieją i osiągają pełny wzrost około jednego do dwóch miesięcy po wykluciu. Sahuaginy mówią własnym językiem. ",  
+
+  
+
+RGB_SHAW = "Cienie to złowrogie nieumarłe stworzenia, które czają się w najciemniejszych zakamarkach świata, zrodzone z pozostałości zmarłych dusz i przesiąknięte esencją ciemności. Te bezcielesne istoty dryfują cicho przez cienie, a ich amorficzne formy są ledwo widoczne na tle słabego światła. Z każdą mijającą chwilą łakną ciepła życia, wysysając witalność tych nieszczęśników, którzy stanęli na ich drodze. Spotkanie z cieniami to mrożące krew w żyłach doświadczenie, ponieważ ich dotyk wysysa siłę i odporność żyjących, pozostawiając po sobie jedynie zimną pustkę. W opustoszałych kryptach i nawiedzonych ruinach, w których mieszkają, cienie są zwiastunami strachu i rozpaczy, a ich obecność przypomina o nieuchronności śmierci i widmie nieumarłych. Tylko uzbrojeni w światło i determinację mogą mieć nadzieję, że wytrzymają otępiający uścisk tych widmowych zjaw.",  
+
+  
+
+RGB_BONF = "Kościane biesy były gatunkiem biesów, które można było znaleźć na wielu niższych planach. Cięły swoich wrogów długimi, ostrymi ramionami, które zarażały innych chorobami. Posiadali wrodzoną ochronę przed żywiołami, fizycznymi obrażeniami, a nawet samą magią. Mogli zostać skrzywdzeni tylko przez magiczną broń. Kościane biesy były wykorzystywane jako sługi przez niektórych z potężniejszych pomiotów Bhaala z Piątki. Zarówno Abazigal, jak i Yaga-Shura byli znani z trzymania ich w swoich domenach w Tethyr.",  
+
+  
+
+RGB_CAMB = "Dokładne znaczenie terminu 'kambion' różniło się na przestrzeni lat. Niektóre źródła stwierdzały, że prawdziwy kambion był związkiem kobiety dotkniętej planem (zwykle diabelstwa) i tanar'ri. Później rozgraniczyli tę terminologię, aby stworzyć 'szlachetne kambiony': markizy i baron-kambiony mieli być spłodzeni przez władcę demonów i żeńską humanoidalną pół-demonkę.",  
+
+  
+
+RGB_MAUR = "Maurezhi były demonami tanar'ri o wielu wyraźnych podobieństwach do ghuli. Tym, co czyniło ich szczególnie niebezpiecznymi, było to, że spożywając ciała niedawno zmarłych, mogli wchłaniać doświadczenia i wspomnienia swoich ofiar. Głównym celem maurezhi było zabijanie i konsumowanie śmiertelników o wielkiej sprawności fizycznej i intelekcie. W przerwach między prawdziwymi celami maurezhi podjadali już zmarłych na cmentarzach, aby zaspokoić swoją potrzebę mięsa. Zazwyczaj próbowali wejść na Plan Materialny, aby rozpocząć swoją żarłoczną pracę, zanim powracali do Otchłani o wiele potężniejsi niż wcześniej.",  
+
+  
+
+RGB_NABA = "Nabassus, inaczej zwani złodziejami śmierci, byli agresywnymi demonami tanar'ri, którzy mieli silne powiązania z nieumarłymi i byli wiecznie głodni dusz. Byli wyjątkowi wśród demonów, ponieważ jako jedyni musieli żyć na obcej płaszczyźnie przez część swojego życia, wysłani, aby sprowadzić terror Otchłani na Plan Materialny. Złodzieje śmierci żywili szczególną wrogość do istot z Planu Materialnego, najwyraźniej obwiniając mieszkańców za swoje wygnanie z Otchłani. Chociaż młodzi nabassusowie nie byli szczególnie żądni skarbów, dorośli byli o wiele bardziej chciwi i często szukali bogactw i nagród.",  
+
+  
+
+RGB_VELI = "Velithuu to demon znaleziony na poziomie kompasu w Twierdzy Strażnika. Posiada odporności typowe dla większości demonów. Ponadto jest odporny na cios w plecy oraz broń +1 i potrafi wrodzonym wzrokiem widzieć niewidzialne stworzenia. Preferuje atakować błyskawicznymi strzałami z krótkiego łuku, a jego ataki wręcz mogą zatruć cel, zadając mu 1 punkt obrażeń. na sekundę przez 10s, chyba że uda im się rzut obronny przeciw śmierci z karą -2.",  
+
+  
+
+RGB_DKNI = "Rycerz śmierci to przerażający, zepsuty paladyn lub praworządny dobry wojownik, zaklęty przez bogów do jego strasznej formy jako kary za zdradę kodeksu honorowego, którym kierował się za życia. Rycerz śmierci przypomina potężnego rycerza, zazwyczaj wyższego niż 1,8 metra i ważącego ponad 130 kilogramów. Jego twarz to poczerniała czaszka pokryta odłamkami pomarszczonego, gnijącego mięsa. Ma dwa maleńkie, świecące pomarańczowo-czerwone punkciki zamiast oczu. Jego zbroja jest spalona na czarno, jakby była w ogniu. Zachowanie rycerza śmierci jest tak przerażające, że nawet kenderowie drżeli przed nim ze strachu. Głęboki, mrożący krew w żyłach głos rycerza śmierci wydaje się rozbrzmiewać z głębin bezdennej jaskini. Rycerz śmierci rozmawia w języku, którym mówił w poprzednim życiu, a także w maksymalnie sześciu dodatkowych językach. ",  
+
+  
+
+RGB_IMP1 = "Impy to niewielkie stworzenia o złej naturze, które wędrują po świecie i działają jako chowańce dla praworządnych złych czarodziejów i kapłanów. Przeciętny imp to humanoid o wzroście 60 centymetrów, ze skórzastymi, nietoperzowymi skrzydłami, kolczastym ogonem i ostrymi, skręconymi rogami. Jego skóra jest ciemnoczerwona, a rogi i ząbkowane zęby są lśniąco białe. Imp może przekształcić się w dwie inne zwierzęce formy. Najczęściej spotykane alternatywne formy to duży pająk, kruk, olbrzymi szczur lub koza. W takich formach imp jest fizycznie identyczny ze zwykłym zwierzęciem. ",  
+
+  
+
+RGB_QUAS = "Quasit to diaboliczny chowaniec, który ma służyć mrocznym czarodziejom i piekielnym władcom, przemyka przez cienie z aurą złowrogiej radości i bezbożnych psot. Objawiając się w świecie śmiertelników poprzez mroczne rytuały i piekielne pakty, quasit uosabia istotę demonicznej pokusy i diabolicznej niewoli, jego figlarna postać ozdobiona jest skórzastymi skrzydłami i ostrymi pazurami. Dzięki swojemu diabolicznemu intelektowi i nadprzyrodzonym zdolnościom, quasit służy jako stały towarzysz i agent chaosu tym, którzy odważą się go przywołać.",  
+
+  
+
+RGB_DRAG = "Smok to starożytne i majestatyczne stworzenie z legendy, szybujące po niebie z aurą budzącej podziw mocy i pierwotnego majestatu. Zrodzony z pierwotnych sił stworzenia i związany z naturalnym porządkiem świata, smok uosabia istotę surowej energii żywiołów i smoczej potęgi, jego masywna forma ozdobiona jest lśniącymi łuskami i potężnymi pazurami. Dzięki smoczemu intelektowi i mistrzostwu w posługiwaniu się tajemną magią, smok wzbudza szacunek i strach u wszystkich, którzy widzą jego wspaniałą obecność.",  
+
+  
+
+RGB_GOLE = "Lodowy golem to górujący strażnik mroźnej furii, kroczy przez krajobrazy nawiedzane przez zamiecie z aurą mrożącego krew w żyłach majestatu i żywiołowej mocy. Stworzony z lodowych głębin lodowcowych jaskiń i związany starożytnymi czarami, lodowy golem uosabia istotę zimowego gniewu, a jego krystaliczna forma lśni niczym mróz i śnieg. Dzięki swojej kolosalnej sylwetce i lodowym pięściom, lodowy golem wzbudza strach w sercach tych, którzy odważą się wkroczyć na jego zamrożone terytorium.",  
+
+  
+
+RGB_GOLB = "Kościany golem jest zbudowany z wcześniej ożywionych kości szkieletowych nieumarłych. Te potwory mają około 1,8 metra wzrostu i ważą od 23 do 27 kilogramów. Rzadko są opancerzone i można je łatwo pomylić z nieumarłymi, ku wielkiemu przerażeniu tych, którzy popełniają ten błąd. Kościane golemy nie są bardziej inteligentne niż inne formy golemów, więc nie będą stosować sprytnych taktyk ani strategii w walce. Jednak ich wielka moc sprawia, że są o wiele bardziej śmiercionośne, niż się początkowo wydaje. Istnieje 95% szans, że osoby nieznające prawdziwej natury przeciwnika pomylą je ze zwykłymi nieumarłymi. ",  
+
+  
+
+RGB_GOLN = "Mózgowy golem to groteskowe połączenie intelektu i ożywiającej siły, przemierzające tajemne laboratoria z aurą niesamowitego intelektu i nienaturalnej witalności. Stworzony z zebranych umysłów uczonych i przepełniony esencją nieziemskiej energii, mózgowy golem uosabia esencję supremacji mózgowej i tajemnego mistrzostwa, jego forma pulsuje tajemną energią. Dzięki swoim telepatycznym zdolnościom i potężnej sprawności umysłowej, mózgowy golem wzbudza strach w sercach tych, którzy odważą się rzucić wyzwanie jego psychicznej potędze.",  
+
+  
+
+RGB_GOLJ = "Golem-juggernaut to kolosalny olbrzym o nieustępliwej potędze, grzmiący przez pole bitwy z aurą niepowstrzymanej siły i mechanicznej precyzji. Wykuty z roztopionych głębin starożytnych odlewni i przesiąknięty esencją nieustępliwej determinacji, golem-juggernaut  uosabia esencję zniszczenia i mechanicznej supremacji, jego masywna rama ozdobiona jest wzmocnionym poszyciem i trzaskającą energią. Swoimi grzmiącymi krokami i miażdżącymi pięściami, golem-juggernaut wzbudza strach w sercach tych, którzy odważą się stanąć na jego drodze.",  
+
+  
+
+RGB_KUOT = "Kuo-toa to starożytna rasa ryboludzi, która żyje pod ziemią i głęboko nienawidzi mieszkańców powierzchni i światła słonecznego. Kuo-toa ma zimny i okropny wygląd. Typowy okaz wygląda bardzo podobnie do ludzkiego ciała, choć jest brzuchaty, pokryty łuskami i zwieńczony głową ryby. Ogromne rybie oczy mają tendencję do obracania się w różnych kierunkach podczas obserwacji obszaru lub stworzenia. Dłonie i stopy są bardzo długie, z trzema palcami i przeciwległym palcem, częściowo spięte błoną. Nogi i ramiona są krótkie w stosunku do wielkości ciała. Jego ubarwienie jest jasnoszare, z odcieniami opalenizny lub żółci tylko u samców. Skóra ma połysk od śluzowatego pokrycia. Kolor ciemnieje, gdy kuo-toa jest zły i blednie, gdy jest bardzo przestraszony. Wokół niego unosi się silny zapach martwych ryb. Nie nosi żadnego ubrania, tylko skórzane uprzęże do broni i ekwipunku. Zazwyczaj wojownik kuo-toa nosi sztylety, włócznie, tarcze, harpuny i obciążone sieci do rzucania.",  
+
+  
+
+RGB_MEPH = "Mefity to paskudni, mali posłańcy stworzeni przez potężne stworzenia z niższych planów. Są złe i złośliwe z natury i pojawiają się na Pierwszym Planie Materialnym tylko po to, by wykonywać złe uczynki. Znanych jest sześć typów mefitów: ognia, lodu, lawy, mgły, dymu i pary. Każdy z nich powstaje z substancji, od której pochodzi jego nazwa. Mefity wyglądają jak szczupłe, półtorametrowe humanoidalne istoty ze skrzydłami. Ich twarze mają przesadzone rysy, w tym haczykowate nosy, spiczaste uszy, szerokie oczy i wystające podbródki. Ich skóra nieustannie sączy substancję, z której zostały zrobione. Mefity mówią wspólnym językiem mefitów.",  
+
+  
+
+RGB_TROL = "Z natury gwałtowne i agresywne, trolle często atakują bez powodu. Regularnie napadają na ludzi i małe osady ludzkie, niszcząc wszystko na swojej drodze. Trolle budzą strach nie tylko ze względu na swoje duże, silne kończyny, ale także dlatego, że potrafią błyskawicznie regenerować większość zadanych im ran. Doświadczeni poszukiwacze przygód noszą ze sobą ogień i kwas, gdy spodziewają się trolli.",  
+
+  
+
+RGB_LICH = "Licz jest potencjalnie najpotężniejszą znaną formą nieumarłych, a ich zniszczenie jest trudne, jeśli nie niemożliwe. Oprócz posiadania mocy nieumarłego czarodzieja, przechowują swoją siłę życiową w bezpiecznym miejscu, z dala od swojej fizycznej formy. Zniszczenie ich ciała nie ma sensu, dopóki nie znajdzie się również pojemnika.",  
+
+  
+
+RGB_VAMP = "Ze wszystkich chaotycznych, złych nieumarłych stworzeń, które grasują po świecie, żadne nie jest bardziej przerażające niż wampir. Poruszając się cicho przez noc, wampiry polują na żywych bez litości i współczucia. Jeśli nie znajdują się głęboko pod ziemią, muszą wrócić do trumien, w których spędzają godziny dzienne, a nawet w pierwszym przypadku muszą od czasu do czasu wracać do nich, aby odpocząć, ponieważ ich moc odnawia się poprzez kontakt z ziemią z ich grobów. Jednym z aspektów, który sprawia, że wampir jest o wiele bardziej przerażający niż wielu jego nieumarłych krewnych, jest jego wygląd. W przeciwieństwie do innych nieumarłych stworzeń, wampir może łatwo przejść między normalnymi ludźmi, nie zwracając na siebie uwagi, ponieważ chociaż jego rysy twarzy są ostre i dzikie, wydają się być ludzkie. W wielu przypadkach prawdziwa natura wampira ujawnia się tylko wtedy, gdy atakuje. Istnieją jednak sposoby, w jakie uważny obserwator może wykryć wampira. Wampiry nie odbijają się w lustrze, nie rzucają cieni i poruszają się w całkowitej ciszy. ",  
+
+  
+
+RGB_YETI = "Czasami mylony z odrażającym bałwanem, yeti jest dalekim kuzynem wielkich mięsożernych małp z cieplejszych klimatów. Dorosły yeti ma 2,4 metra wzrostu i jest pokryty długim, białym futrem. Jego stopy i dłonie są szerokie i płaskie, co pomaga rozłożyć jego duży ciężar (około 140 kilogramów) na zdradliwych polach śnieżnych. Porusza się na czworakach jak małpy, ale walczy bardzo wygodnie, stojąc wyprostowany. W przeciwieństwie do większości małp i goryli, yeti nie ma przeciwstawnego palca u stopy. Nie nosi również żadnych ubrań ani ozdób. Trop lub zapach yeti jest niemal niezauważalny w zimnym klimacie, ale w zamkniętych lub ciepłych obszarach wydzielają silny, piżmowy zapach. Oczy yeti są lodowato niebieskie lub prawie bezbarwne. Ich pazury i ciało są białe jak kość słoniowa. W przeciwieństwie do wielu arktycznych stworzeń yeti nie ma grubej warstwy tłuszczu, która utrzymywałaby go w cieple. Zamiast tego polega na specjalnych właściwościach swojego grubego, ciepłego futra. Ma przezroczystą drugą powiekę, która pozwala stworzeniu widzieć w zamieci śnieżnej i zapobiega zamarzaniu oczu w ekstremalnych temperaturach.",  
+
+  
+
+RGB_ELVE = "Elfy są zazwyczaj niższe i szczuplejsze od ludzi. Ich rysy są delikatnie wyrzeźbione i delikatne, a mówią melodyjnym głosem. Elfy są postrzegane jako lekkomyślne i zdystansowane. Interesują się pięknem natury, tańcem, figlami i innymi podobnymi zajęciami. Ich humor jest inteligentny, podobnie jak ich pieśni i poezja. W krainach istnieje sześć ras elfów: złote elfy , księżycowe elfy, dzikie elfy, morskie elfy, mroczne elfy (drowy) i skrzydlate elfy (avariele).",  
+
+  
+
+RGB_SOUL = "Rozbita dusza to dręczone widmo utraconej tożsamości i złamanej egzystencji, dryfujące z aurą nawiedzającego smutku i widmowej udręki. Zrodzona z rozbitych resztek niegdyś całego ducha i związana łańcuchami nieprzepracowanej traumy, rozbita dusza ucieleśnia istotę rozbitej świadomości i widmowego niepokoju. Jej eteryczna forma migocze rozbitymi wspomnieniami i nierozwiązanymi emocjami. Swoimi żałobnymi zawodzeniami i widmowymi manifestacjami, rozbita dusza wzbudza strach w sercach tych, którzy odważą się zajrzeć w otchłań jej złamanej psychiki.",  
+
+  
+
+RGB_CRUS = "Krzyżowcy są żarliwymi wyznawcami Caelar Argent, Lśniącej Pani. Są oddanymi wyznawcami jej sprawy, postrzegającymi siebie jako sprawiedliwych obrońców królestwa przed siłami ciemności. Odziani w lśniącą zbroję ozdobioną symbolem swojej krucjaty, maszerują do bitwy z niezachwianą wiarą i determinacją. Wyszkoleni zarówno w walce wręcz, jak i w doktrynie religijnej, łączą umiejętności doświadczonego wojownika z zapałem religijnego fanatyka. Ci krzyżowcy stanowią trzon armii Caelar, gotowi oddać życie w służbie jej wizji oczyszczonego i sprawiedliwego świata.",  
+
+  
+
+RGB_HCAT = "Piekielny kot to diaboliczny drapieżnik z głębin piekielnych królestw, przechadzający się wśród cieni z aurą złowrogiej łaski i demonicznej furii. Zrodzony z najciemniejszych otchłani Dziewięciu Piekieł i przepełniony esencją piekielnej mocy, piekielny kot uosabia esencję drapieżnego instynktu i demonicznej dzikości, jego smukła forma ozdobiona jest hebanowym futrem i płonącymi oczami. Swoimi ostrymi jak brzytwa pazurami i ognistym oddechem, Kot piekielny wzbudza strach w sercach tych, którzy odważą się rzucić wyzwanie jego demonicznej potędze.",  
+
+  
+
+RGB_LEMU = "Najsłabsze z hord praworządnego zła baatezu, lemure są wcielonymi duchami prawdziwego zła. Są używane jako mięso armatnie w Wojnie Krwi i są ledwie inteligentne. Wydaje się, że potrzeba magicznej broni lub świętych przedmiotów, aby je zranić, ponieważ ich galaretowate ciało pieczętuje wszelkie rany, jakie można im zadać.",  
+
+  
+
+RGB_GFEY = "Fejry powstają z pozostałości zwykłych koszmarów, zmieszanych z resztkami energii magicznej i nieświadomie ożywionych przez silne emocje dużej grupy ludzi. Najczęściej można je znaleźć w dużych miastach, w których jest wielu magów, kapłanów i innych czarodziejów. Zwykłe fejry krążą nocą po ulicach, nie szukając niczego więcej niż siania spustoszenia. Wielkie fejry z kolei są połączeniem mniejszych fejrów i można je znaleźć wszędzie, choć są znacznie rzadsze niż zwykłe fejry.",  
+
+  
+
+RGB_OROG = "Elitarne orki, lub orogi, to rasa wielkich orków, prawdopodobnie zmieszana z krwią ogrów. Orogowie mają od 1,8 do 2 metrów wzrostu. Są bardzo zdyscyplinowanymi wojownikami i mają własne sztandary i chorągwie, które eksponują w widocznym miejscu - zwykle łatwo jest stwierdzić, czy orogowie są obecni wśród zwykłych orków. Orogów można znaleźć na czele dużych armii orków, ale rzadko na patrolu. Istnieje 10% szans, że plemię orków będzie miało orogów, których liczba jest równa 10% populacji mężczyzn. (Tak więc społeczność 3000 orków płci męskiej ma 10% szans na posiadanie 300 dodatkowych orogów.) Małe grupy elit (20-80 orogów) będą najmować się jako najemnicy. Orogowie noszą zbroje płytowe i są znacznie silniejsi od orków. Na każde 20 orogów przypada również jeden przywódca. Orogowie używają broni powszechnej dla orków, ale zazwyczaj posiadają po dwie bronie każdy. ",  
+
+  
+
+RGB_OTYU = "Otyughy znani również jako gulguthra, to przerażające stworzenia, które czają się w stosach gnoju i rozkładu, czekając, aż coś zakłóci ich spokój. Istnieją dwie odmiany - zwykły otyugh i jego większy, bardziej inteligentny odrost, neo-otyugh. Żywią się odchodami i odpadami innych stworzeń podziemi (gulguthra oznacza „zjadacze odchodów”), ale lubią też od czasu do czasu przekąsić świeże mięso. Otyughy mają ogromne, napęczniałe ciała pokryte skało podobną skórą o brązowo-szarym kolorze, która z kolei jest pokryta odchodami. Stoją na trzech grubych nogach, które umożliwiają im powolne poruszanie się po ziemi, ale pozwalają im szybko się obracać. Mają trzy oczy na macce przypominającej liść, którą szybko poruszają z boku na bok, co umożliwia im skanowanie dużego obszaru. Szypułka oka jest również odbiornikiem/nadajnikiem ich zdolności telepatycznych. Otyughy mają ogromną paszczę z bardzo ostrymi zębami w środku swojego cielska. Mają również dwie macki z liścio podobnymi grzbietami, których używają do miażdżenia i chwytania przeciwników. Macki są pokryte szorstkimi, cierniowymi wypustkami. Neo-otyughy mają mniejsze paszcze niż otyughy. ",  
+
+  
+
+RGB_DRBL = "Utopiony we krwi to makabryczny nieumarły byt zrodzony z głębin tragicznej śmierci i przerażającej transformacji, czai się z aurą nawiedzającego strachu i nienasyconego głodu. Stworzony z udręczonych dusz tych, którzy spotkali swój koniec tonąc w morzu szkarłatu, utopiony we krwi uosabia istotę nieustannego pościgu i żarłocznej konsumpcji, jego groteskowa forma ocieka zakrzepłą krwią i ropiejącymi ranami. Z wydłużonymi pazurami i zakrwawioną paszczą, utopiony we krwi wzbudza przerażenie w sercach tych, którzy staną mu na drodze.",  
+
+  
+
+RGB_BBAT = "Kościany nietoperz to złowrogi stwór nocy, sunący z aurą niesamowitej gracji i widmowego chłodu. Zrodzony z makabrycznego połączenia nekrotycznej energii i szczątków szkieletu, kościany nietoperz uosabia istotę nocnego terroru i nieumarłego zagrożenia. Jego szkieletowa forma ozdobiona jest resztkami wysuszonego ciała i zaostrzonymi kośćmi. Z pustymi oczodołami błyszczącymi złowrogim światłem i skórzastymi skrzydłami rzucającymi złowieszcze cienie, kościany nietoperz wzbudza strach w sercach tych, którzy odważą się stanąć na jego drodze.",  
+
+  
+
+RGB_UMBE = "Mieszkańcy Podmroku, umbrowe kolosy to ogromne, niesamowicie potężne potwory o grubej, łuskowatej skórze, ostrych żuchwach i dwóch parach oczu. Używają silnych szponów, by rozrywać skały z przerażającą szybkością, często zaskakując niczego niepodejrzewających górników. Najbardziej wyniszczającą mocą umbrowego kolosa jest jego zdolność do wywoływania zamieszania spojrzeniem. Wielu poszukiwaczy przygód popełniło swój ostatni błąd, patrząc w oczy umbrowego kolosa.",  
+
+  
+
+RGB_SLAV = "Handlarz niewolników z Athkatli to złowrogi dostawca ludzkiej nędzy i zepsucia, grasujący z aurą nikczemnej korupcji i bezwzględnego wyzysku. Mieszkając w obskurnych podziemiach miasta Athkatla, ten pozbawiony skrupułów osobnik uosabia istotę moralnego upadku i bezdusznej obojętności, a jego zachowanie zdobi ostentacyjne bogactwo i smród okrucieństwa. Swoim wyrachowanym spojrzeniem i żelaznym uściskiem handlarze niewolników wzbudzają strach w sercach bezbronnych, zakuwając ich w łańcuchy niewoli i sprzedając w życie pełne niewoli i cierpienia.",  
+
+  
+
+RGB_PIRA = "Pirat to awanturniczy rabuś na pełnym morzu, żeglujący z aurą śmiałej przygody i słonej brawury. Zrodzony z nieokiełznanych wód otwartego oceanu i zahartowany przez wiatry fortuny, pirat uosabia istotę wolności i bezprawnej ambicji, a jego zniszczony strój zdobią drobiazgi zrabowane na dalekich brzegach. Z błyszczącymi kordelasami i ryczącymi armatami piraci wzbudzają strach w sercach żeglarzy i kupców, a ich flaga powiewa śmiało na wietrze.",  
+
+  
+
+RGB_SOLD = "Najemnik to zahartowany wojownik do wynajęcia, maszerujący z aurą stoickiej determinacji i zaprawionego w boju doświadczenia. Zrodzony z tygla konfliktu i zahartowany ogniem wojny, najemnik uosabia istotę sprawności bojowej i pragmatycznego przetrwania, jego zbroja ozdobiona jest rysami z niezliczonych bitew, a broń jest ostra jak brzytwa. Dzięki zdyscyplinowanym szeregom i stalowej determinacji najemnicy wzbudzają strach w sercach wrogów i zaufanie wśród sojuszników.",  
+
+  
+
+RGB_GIAF = "Podobnie jak wszystkie złe olbrzymy, lodowe olbrzymy mają reputację grubiaństwa i głupoty. Ta reputacja jest zasłużona, ale lodowe olbrzymy są przebiegłymi wojownikami. Lodowe olbrzymy mają muskularną, mniej więcej ludzką budowę ciała. Typowy dorosły samiec ma 6,4 metrów wzrostu i waży onad 3,5 tony. Samice są nieco niższe i lżejsze, ale poza tym są identyczne jak samce. Lodowe olbrzymy mają skórę śnieżnobiałą bądź w kolorze kości słoniowej. Ich włosy są jasnoniebieskie lub brudnożółte, a oczy w tych samych kolorach. Mogą żyć 250 lat.",  
+
+  
+
+RGB_GIAV = "Znane jako ludzkie behemoty, te ludzkie olbrzymy zamieszkują obszary opanowane przez wzgórzowe giganty i ogry. Verbeegi mają od 2,6 do 3 metrów wzrostu i ważą od 140 do 180 kilogramów. Są niezwykle szczupłe jak na swój wzrost, chociaż nie ogranicza to ich zdolności do walki. Niektóre mają drobne deformacje, takie jak wygięte nogi, nierówne oczy czy zajęczą wargę itp. Pod wszystkimi innymi względami wyglądają jak ludzie, wliczając w to kolor skóry, włosów i oczu. Noszą tyle ochronnej odzieży i zbroi, ile mogą zdobyć, ale nie za dużo. Zazwyczaj noszą futra i skóry z kawałkami metalowej zbroi przyszytymi w newralgicznych miejscach. Prawie zawsze noszą tarcze i mają najlepszą broń, jaką mogą ukraść. Zazwyczaj oznacza to pałki i włócznie. ",  
+
+  
+
+RGB_GIAH = "Wzgórzowi giganci to samolubni, przebiegli brutale, którzy są w stanie przetrwać dzięki polowaniom oraz terroryzowaniu i napadaniu na pobliskie społeczności. Pomimo niskiej inteligencji są zdolnymi wojownikami. Wzgórzowi giganci mają dziwnie małpi i barbarzyński wygląd, z nadmiernie długimi rękoma, zgarbionymi ramionami i niskimi czołami. Mimo że są najmniejszymi z gigantów, ich kończyny są bardziej umięśnione i masywne niż kończyny innych ras gigantów. Przeciętny wzgórzowy gigant ma 4,8 metrów wzrostu i waży ponad 2 tony. Samice mają taką samą budowę jak samce. Kolor ich skóry waha się od jasnobrązowego do głęboko rudawego brązu. Ich włosy są brązowe lub czarne, a ich oczy są czarne. Wzgórzowe olbrzymy mogą żyć 200 lat.",  
+
+  
+
+RGB_BOSS = "", 
+	RGB_COW1 = "Coś ty zrobił, ty potworze!\n\n\n\n\n\n\n\n\n\n",
 }
