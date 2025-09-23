@@ -2435,7 +2435,7 @@ menu
 	label 
 	{
 		area 0 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 0
@@ -2443,7 +2443,7 @@ menu
 	label 
 	{
 		area 597 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 1
@@ -2471,67 +2471,52 @@ menu
 	} 
 	label
 	{
-		area	102 102 223 344
-		bam rgdbcrep
+		area 102 102 223 344
+		bam 'rgdport7'
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
-	
 	button
 	{
 		area		102 450 222 50
-		text		"APPEARANCE_BUTTON"
+		text lua	"rgString('APPEARANCE_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
-	 
-												   
-	   
-		 
-   
 		action "characterScreen:OnAppearanceButtonClick()"
    
 	}
 	button
 	{
 		area		102 504 222 50
-		text		"SOUNDS_BUTTON"
-					  
+		text lua	"rgString('SOUNDS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
-   
-												 
-	
-		 
-   
 		action "characterScreen:OnSoundsButtonClick()"
    
 	}
 	button
 	{
 		area		102 558 222 50
-		text		"COLORS_BUTTON"
-					  
+		text lua	"rgString('COLORS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
-   
-												 
-	
-		 
-   
 		action "characterScreen:OnHairSkinButtonClick()"
    
 	}
 	button
 	{
 		area		102 612 222 50
-		text		"SCRIPT_BUTTON"
-					  
+		text lua	"rgString('SCRIPT_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
-   
 		action "characterScreen:OnScriptButtonClick()"
    
 	}
@@ -2539,16 +2524,11 @@ menu
 	button
 	{
 		area		102 666 222 50
-		text		"BIOGRAPHY_BUTTON"
-					  
+		text lua	"rgString('BIOGRAPHY_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
-   
-												 
-   
-		 
-   
 		action "characterScreen:OnCusomizeBiographyButtonClick()"
    
 	}
@@ -2605,7 +2585,7 @@ menu
 	label 
 	{
 		area 0 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 0
@@ -2613,7 +2593,7 @@ menu
 	label 
 	{
 		area 597 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 1
@@ -2633,17 +2613,20 @@ menu
 	} 
 	label
 	{
-		area	102 102 223 344
-		bam rgdbcrep
+		area 102 102 223 344
+		bam 'rgdport7'
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
+
 	
 	button
 	{
 		area		102 450 222 50
-		text		"APPEARANCE_BUTTON"
+		text lua	"rgString('APPEARANCE_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -2656,9 +2639,10 @@ menu
 	button
 	{
 		area		102 504 222 50
-		text		"SOUNDS_BUTTON"
+		text lua	"rgString('SOUNDS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -2671,14 +2655,15 @@ menu
 	button
 	{
 		area		102 558 222 50
-		text		"COLORS_BUTTON"
+		text lua	"rgString('COLORS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
-			characterScreen:OnCancelButtonClick()
 			Infinity_PopMenu()
+			createCharScreen:OnCancelButtonClick()
 			currentPanelID = 17
 			characterScreen:OnHairSkinButtonClick()
 			"
@@ -2686,9 +2671,10 @@ menu
 	button
 	{
 		area		102 612 222 50
-		text		"SCRIPT_BUTTON"
+		text lua	"rgString('SCRIPT_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -2702,9 +2688,10 @@ menu
 	button
 	{
 		area		102 666 222 50
-		text		"BIOGRAPHY_BUTTON"
+		text lua	"rgString('BIOGRAPHY_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 2
 		action 
@@ -2941,7 +2928,7 @@ menu
 	label 
 	{
 		area 0 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 0
@@ -2949,7 +2936,7 @@ menu
 	label 
 	{
 		area 597 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 1
@@ -2969,17 +2956,19 @@ menu
 	} 
 	label
 	{
-		area	102 102 223 344
-		bam rgdbcrep
+		area 102 102 223 344
+		bam 'rgdport7'
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	
 	button
 	{
 		area		102 450 222 50
-		text		"APPEARANCE_BUTTON"
+		text lua	"rgString('APPEARANCE_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -2992,9 +2981,10 @@ menu
 	button
 	{
 		area		102 504 222 50
-		text		"SOUNDS_BUTTON"
+		text lua	"rgString('SOUNDS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -3007,14 +2997,15 @@ menu
 	button
 	{
 		area		102 558 222 50
-		text		"COLORS_BUTTON"
+		text lua	"rgString('COLORS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
-			characterScreen:OnCancelButtonClick()
 			Infinity_PopMenu()
+			createCharScreen:OnCancelButtonClick()
 			currentPanelID = 17
 			characterScreen:OnHairSkinButtonClick()
 			"
@@ -3022,9 +3013,10 @@ menu
 	button
 	{
 		area		102 612 222 50
-		text		"SCRIPT_BUTTON"
+		text lua	"rgString('SCRIPT_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 2
 		action 
@@ -3039,9 +3031,10 @@ menu
 	button
 	{
 		area		102 666 222 50
-		text		"BIOGRAPHY_BUTTON"
+		text lua	"rgString('BIOGRAPHY_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -3056,6 +3049,7 @@ menu
 		area 780 88 486 572
 		bam RGDSTBC1
 		ScaleToClip
+		sequence lua "RgUISkin"
 		enabled "showingSmartOptions == false"
 	}
 	label
@@ -3063,6 +3057,7 @@ menu
 		area 1078 88 188 572
 		bam RGDSTBC4
 		ScaleToClip
+		sequence lua "RgGetSkinLow()"
 		enabled "showingSmartOptions == true"
 	}
 
@@ -3248,7 +3243,7 @@ menu
 	label 
 	{
 		area 0 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 0
@@ -3256,7 +3251,7 @@ menu
 	label 
 	{
 		area 597 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 1
@@ -3277,7 +3272,8 @@ menu
 	label
 	{
 		area	102 102 223 344
-		bam rgdbcrep
+		bam rgdport7
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -3285,6 +3281,7 @@ menu
 		area 780 88 486 572
 		bam RGDSTBC1
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	button
 	{
@@ -3292,7 +3289,8 @@ menu
 		area		102 558 222 50
 		text		"CUSTOMIZE_BUTTON"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable	false
 	}
@@ -3302,7 +3300,8 @@ menu
 		area		102 612 222 50
 		text		"EXPORT_BUTTON"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable	false
 	}
@@ -3313,7 +3312,8 @@ menu
 		area		102 666 222 50
 		text		"REFORM_PARTY_BUTTON"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable	false
 	}
@@ -3323,7 +3323,8 @@ menu
 		area		102 504 222 50
 		text		"DUAL_CLASS_BUTTON"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable	false
 	}
@@ -3333,7 +3334,8 @@ menu
 		area		102 450 222 50
 		text		"LEVEL_UP_BUTTON"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable	false
 	}
@@ -3479,6 +3481,10 @@ function getSoundStringRef(rowNumber, tab)
 		return tab[rowNumber].sound
 	end
 end
+
+function RgGetSkinLow()
+	if RgUISkin == 0 then return 0 else return 1 end
+end
 `
 menu
 {
@@ -3495,7 +3501,7 @@ menu
 	label 
 	{
 		area 0 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 0
@@ -3503,7 +3509,7 @@ menu
 	label 
 	{
 		area 597 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 1
@@ -3523,17 +3529,19 @@ menu
 	} 
 	label
 	{
-		area	102 102 223 344
-		bam rgdbcrep
+		area 102 102 223 344
+		bam 'rgdport7'
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	
 	button
 	{
 		area		102 450 222 50
-		text		"APPEARANCE_BUTTON"
+		text lua	"rgString('APPEARANCE_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -3546,10 +3554,11 @@ menu
 	button
 	{
 		area		102 504 222 50
-		text		"SOUNDS_BUTTON"
+		text lua	"rgString('SOUNDS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
 		ScaleToClip
+		sequence lua "RgUISkin"
 		frame 2
 		action 
 		"
@@ -3562,14 +3571,15 @@ menu
 	button
 	{
 		area		102 558 222 50
-		text		"COLORS_BUTTON"
+		text lua	"rgString('COLORS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
-			characterScreen:OnCancelButtonClick()
 			Infinity_PopMenu()
+			createCharScreen:OnCancelButtonClick()
 			currentPanelID = 17
 			characterScreen:OnHairSkinButtonClick()
 			"
@@ -3577,9 +3587,10 @@ menu
 	button
 	{
 		area		102 612 222 50
-		text		"SCRIPT_BUTTON"
+		text lua	"rgString('SCRIPT_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -3593,9 +3604,10 @@ menu
 	button
 	{
 		area		102 666 222 50
-		text		"BIOGRAPHY_BUTTON"
+		text lua	"rgString('BIOGRAPHY_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -3609,6 +3621,7 @@ menu
 	{
 		area 818 88 448 572
 		bam RGDSTBC1
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	
@@ -4201,6 +4214,7 @@ menu
 	--}
 	button
 	{
+		enabled "RgUISkin < 3"
 		on escape
 		area 1290 7 42 42
 		bam rgdbtcls
@@ -4210,6 +4224,20 @@ menu
 		"
 			Infinity_PopMenu('OPTIONS_GAMEPLAY')
 			--Infinity_PushMenu('RG_START_OPTIONS_BAR')
+			RgOptionsMode = 0
+		"
+	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action
+		"
+			Infinity_PopMenu('OPTIONS_GAMEPLAY')
 			RgOptionsMode = 0
 		"
 	}
@@ -4489,6 +4517,7 @@ menu
 	--}
 	button
 	{
+	enabled "RgUISkin > 3"
 		on escape
 		area 1290 7 42 42
 		bam rgdbtcls
@@ -4500,6 +4529,22 @@ menu
 			helpString = 'GAMEPLAY_DESCRIPTION'
 			Infinity_PopMenu('OPTIONS_AUTOPAUSE')
 			--Infinity_PushMenu('RG_START_OPTIONS_BAR')
+			RgOptionsMode = 0
+		"
+	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action
+		"
+			panelID = 8
+			helpString = 'GAMEPLAY_DESCRIPTION'
+			Infinity_PopMenu('OPTIONS_AUTOPAUSE')
 			RgOptionsMode = 0
 		"
 	}
@@ -4848,6 +4893,7 @@ menu
 	--}
 	button
 	{
+		enabled "RgUISkin < 3"
 		on escape
 		area 1290 7 42 42
 		bam rgdbtcls
@@ -4864,6 +4910,24 @@ menu
 			RgOptionsMode = 0
 		"
 	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action
+		"
+			panelID = 6
+			Infinity_ChangeOption( 22, fontSizeCancel, panelID)
+			selectedSL = 0
+			Infinity_PopMenu('OPTIONS_GRAPHICS')
+			RgOptionsMode = 0
+		"
+	}
+	
 	button
 	{
 		area		838 660 428 70		
@@ -5471,6 +5535,7 @@ menu
 	--}
 	button
 	{
+		enabled "RgUISkin < 3"
 		on escape
 		area 1290 7 42 42
 		bam rgdbtcls
@@ -5482,6 +5547,22 @@ menu
 			panelID = 8
 			Infinity_PopMenu('OPTIONS_SOUND')
 			--Infinity_PushMenu('RG_START_OPTIONS_BAR')
+			RgOptionsMode = 0
+		"
+	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action
+		"
+			selectedSL = 0
+			panelID = 8
+			Infinity_PopMenu('OPTIONS_SOUND')
 			RgOptionsMode = 0
 		"
 	}
@@ -5935,6 +6016,7 @@ menu
 	--}
 	button
 	{
+		enabled "RgUISkin < 3"
 		on escape
 		area 1290 7 42 42
 		bam rgdbtcls
@@ -5946,6 +6028,22 @@ menu
 			panelID = 8
 			Infinity_PopMenu('OPTIONS_FEEDBACK')
 			--Infinity_PushMenu('RG_START_OPTIONS_BAR')
+			RgOptionsMode = 0
+		"
+	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action
+		"
+			selectedSL = 0
+			panelID = 8
+			Infinity_PopMenu('OPTIONS_FEEDBACK')
 			RgOptionsMode = 0
 		"
 	}
@@ -6202,6 +6300,7 @@ menu
 	}
 	button
 	{
+		enabled "RgUISkin < 3"
 		on escape
 		area 1290 7 42 42
 		bam rgdbtcls
@@ -6211,6 +6310,20 @@ menu
 		"
 			Infinity_PopMenu('OPTIONS_KEYBINDINGS')
 			--Infinity_PushMenu('RG_START_OPTIONS_BAR')
+			RgOptionsMode = 0
+		"
+	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action
+		"
+			Infinity_PopMenu('OPTIONS_KEYBINDINGS')
 			RgOptionsMode = 0
 		"
 	}
@@ -6489,6 +6602,7 @@ menu
 	
 	button
 	{
+		enabled "RgUISkin < 3"
 		on escape
 		area 1292 18 42 42
 		bam rgdbtcls
@@ -6496,6 +6610,22 @@ menu
 		action
 		"
 			-- cancel
+			for index, var in pairs(displayLanguages) do
+				Infinity_Log(var[3])
+			end
+			Infinity_PopMenu();
+		"
+	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action
+		"
 			for index, var in pairs(displayLanguages) do
 				Infinity_Log(var[3])
 			end
@@ -6539,8 +6669,9 @@ menu
 	{
 		on escape
 		area 235 75 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text  "QUIT_GAME_BUTTON"
 		text style	"button"
@@ -6557,8 +6688,9 @@ menu
 	{
 		on escape
 		area 235 75 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text  "QUIT_GAME_BUTTON"
 		text style	"button"
@@ -6574,8 +6706,9 @@ menu
 	button
 	{
 		area 235 150 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text  "CANCEL_BUTTON"
 		text style	"button"
@@ -6590,6 +6723,7 @@ menu
 	{
 		area 0 0 300 300
 		bam rgdpopup
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label --Title
@@ -6654,8 +6788,9 @@ menu
 	{
 		on escape
 		area 235 75 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text  "CANCEL_BUTTON"
 		text style	"button"
@@ -6668,8 +6803,9 @@ menu
 	{
 		on return
 		area 235 150 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text  "DONE_BUTTON"
 		text style	"button"
@@ -6687,6 +6823,7 @@ menu
 	{
 		area 0 0 300 300
 		bam rgdpopup
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -7034,8 +7171,9 @@ menu
 	button
 	{
 		area 235 112 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('DONE_BUTTON')"
@@ -7048,6 +7186,7 @@ menu
 	{
 		area 0 0 300 300
 		bam rgdpopup
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -7067,8 +7206,9 @@ menu
 	{
 		on escape
 		area 235 75 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		text lua "t(Popup2Button.cancelText or 'CANCEL_BUTTON')"
@@ -7083,8 +7223,9 @@ menu
 	button
 	{
 		area 235 150 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		text lua "t(Popup2Button.okText or 'DONE_BUTTON')"
@@ -7100,6 +7241,7 @@ menu
 	{
 		area 0 0 300 300
 		bam rgdpopup
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -7120,8 +7262,9 @@ menu
 	button
 	{
 		area 235 37 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		text lua "t(Popup3Button.rightText)"
@@ -7136,8 +7279,9 @@ menu
 	button
 	{
 		area 235 112 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		text lua "t(Popup3Button.midText)"
@@ -7152,8 +7296,9 @@ menu
 	button
 	{
 		area 235 187 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		text lua "t(Popup3Button.leftText)"
@@ -7169,6 +7314,7 @@ menu
 	{
 		area 0 0 300 300
 		bam rgdpopup
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -7195,6 +7341,7 @@ menu
 		area 965 200 300 80
 		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
@@ -7212,6 +7359,7 @@ menu
 		area 965 300 300 80
 		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
@@ -7230,6 +7378,7 @@ menu
 		area 965 400 300 80
 		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
@@ -7247,6 +7396,7 @@ menu
 		area 965 500 300 80
 		bam		rgdmbut2
 		ScaleToClip
+		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
@@ -7264,6 +7414,7 @@ menu
 	{
 		area		490 190 385 385
 		bam rgdpopup
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -10541,7 +10692,7 @@ function rgGetSelectedCharacter()
 			Infinity_PressKeyboardButton(rgInvChar) 
 			
 		end
-		rgPaperdollSwap = 1
+		--rgPaperdollSwap = 1
 	end
 end
 
@@ -10625,7 +10776,7 @@ function rgGetInvPaperdollFrame()
 end
 function rgGetInvModeSequence()
 	if RgUISkin == 3 then
-		return 1
+		return 0
 	else
 		return 0
 	end
@@ -10871,19 +11022,20 @@ menu
 	}
 	
 	
-	label
-	{
-		--enabled "rgInventoryMode == 1 or rgPaperdollSwap == 1"
-		enabled "id ~= rgInvId"
-		area 462 275 122 158
-		bam lua "rgGetInvPaperdollBam()"
-		sequence lua "rgGetInvPaperdollSeq()"
-		--text lua "characters[rgInvId].equipment.armor.item[3]"
-	}
+	--label
+	--{
+	--	--enabled "rgInventoryMode == 1 or rgPaperdollSwap == 1"
+	--	enabled "id ~= rgInvId"
+	--	area 462 275 122 158
+	--	bam lua "rgGetInvPaperdollBam()"
+	--	sequence lua "rgGetInvPaperdollSeq()"
+	--	--text lua "characters[rgInvId].equipment.armor.item[3]"
+	--}
 	button
 	{
 		--enabled "rgInventoryMode == 1 or rgPaperdollSwap == 1"
-		enabled "id == rgInvId"
+		--enabled "id == rgInvId"
+		--enabled "RgInvPartyModeHover == 0"
 		name 'rginvpaperdoll'
 		area 462 275 122 158
 		paperdoll 1
@@ -10895,19 +11047,22 @@ menu
 	--	area 463 281 122 158
 	--	bam 'aaa'
 	--}
-	--button
-	--{
-	--	enabled "rgInventoryMode == 0 and rgPaperdollSwap == 0 and RgInvPartyModeHover == 1"
-	--	area 452 245 142 218
-	--	bitmap		lua "characters[rgInvId].portrait"
-	--}
-	--label
-	--{
-	--	enabled "rgInventoryMode == 0 and rgPaperdollSwap == 0 and RgInvPartyModeHover == 1"
-	--	area 451 244 144 220
-	--	bam "rgdport4"
-	--	scaleToClip
-	--}
+	button
+	{
+		enabled "rgInventoryMode == 0 and RgInvPartyModeHover == 1 and rgPaperdollSwap == 0"
+		area 452 245 142 218
+		bitmap		lua "characters[rgInvId].portrait"
+		
+	}
+	text
+	{
+		enabled "rgInventoryMode == 0 and RgInvPartyModeHover == 1"
+		area 451 244 144 220
+		bam "rgdport4"
+		sequence lua "RgUISkin"
+		scaleToClip
+		action "rgPaperdollSwap = 1"
+	}
 	
 	
 	button
@@ -12057,7 +12212,7 @@ function rgGetAppearanceBackground()
 	if e:GetActiveEngine() == createCharScreen then
 		return 'rgdbccg2'
 	else
-		return 'rgdbcset'
+		return 'rgdbcres'
 	end
 end
 `
@@ -12142,6 +12297,7 @@ menu
 		area	0 0 768 768
 		bam lua "rgGetAppearanceBackground()"
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -12149,6 +12305,7 @@ menu
 		area	597 0 768 768
 		bam lua "rgGetAppearanceBackground()"
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	button
@@ -12165,9 +12322,9 @@ menu
 	} 
 	label
 	{
-		enabled "e:GetActiveEngine() ~= createCharScreen"
-		area	102 102 223 344
-		bam rgdbcrep
+		area 102 102 223 344
+		bam 'rgdport7'
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	
@@ -12175,9 +12332,10 @@ menu
 	{
 		enabled "e:GetActiveEngine() ~= createCharScreen"
 		area		102 450 222 50
-		text		"APPEARANCE_BUTTON"
+		text lua	"rgString('APPEARANCE_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -12189,9 +12347,10 @@ menu
 	{
 		enabled "e:GetActiveEngine() ~= createCharScreen"
 		area		102 504 222 50
-		text		"SOUNDS_BUTTON"
+		text lua	"rgString('SOUNDS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -12203,9 +12362,10 @@ menu
 	{
 		enabled "e:GetActiveEngine() ~= createCharScreen"
 		area		102 558 222 50
-		text		"COLORS_BUTTON"
+		text lua	"rgString('COLORS_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		frame 2
 		ScaleToClip
 		action 
@@ -12218,9 +12378,10 @@ menu
 	{
 		enabled "e:GetActiveEngine() ~= createCharScreen"
 		area		102 612 222 50
-		text		"SCRIPT_BUTTON"
+		text lua	"rgString('SCRIPT_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -12233,9 +12394,10 @@ menu
 	{
 		enabled "e:GetActiveEngine() ~= createCharScreen"
 		area		102 666 222 50
-		text		"BIOGRAPHY_BUTTON"
+		text lua	"rgString('BIOGRAPHY_BUTTON')"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action 
 		"
@@ -12246,9 +12408,11 @@ menu
 	
 	label
 	{
-		area 146 36 1074 44
-		text "APPEARANCE_LABEL"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString('APPEARANCE_LABEL')"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	
 	list
@@ -12465,7 +12629,8 @@ menu
 		name "rgColorButtCanc"
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "CANCEL_BUTTON"
 		text style "button"
@@ -12479,7 +12644,8 @@ menu
 		name "rgColorButtDone"
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -12884,7 +13050,7 @@ menu
 	}
 	label
 	{
-		bam 'RGDJSHND'
+		bam 'RGDJSHN1'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		area 0 0 440 75
@@ -12980,7 +13146,7 @@ menu
 	{
 		enabled "rgCheatSection == 1 or rgCheatSection == 3"
 		bam 'rgdsrch1'
-		sequence lua "rgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 24 356 392 40
 	}
@@ -13007,8 +13173,8 @@ menu
 	button 
 	{
 		enabled "rgCheatSection == 1"
-		bam 'RGDMBUT1'
-		sequence lua "rgUISkin"
+		bam 'RGDMBUT2'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 15 396 410 60
 		text lua	"rgString('TRAVEL_BUTTON')"
@@ -13182,7 +13348,7 @@ menu
 	button 
 	{
 		bam 'rgdbuts1' 
-		sequence lua "rgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 22 460 166 46
 		text lua	"rgString('GODBOW_LABEL')"
@@ -13193,7 +13359,7 @@ menu
 	button 
 	{
 		bam 'rgdbuts1'
-		sequence lua "rgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 192 510 226 46
 		--pad 10 8 10 8
@@ -13205,7 +13371,7 @@ menu
 	button 
 	{
 		bam 'rgdbuts1'
-		sequence lua "rgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 22 510 166 46
 		text style "button"
@@ -13226,7 +13392,7 @@ menu
 	button 
 	{
 		bam 'rgdbuts1'
-		sequence lua "rgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 22 560 166 46
 		text style "button"
@@ -13237,7 +13403,7 @@ menu
 	button 
 	{
 		bam 'rgdbuts1'
-		sequence lua "rgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 192 560 226 46
 		--pad 10 8 10 8
@@ -13258,7 +13424,7 @@ menu
 	button 
 	{
 		bam 'rgdbuts1'
-		sequence lua "rgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 192 460 226 46
 		--pad 10 8 10 8
@@ -13353,46 +13519,129 @@ menu
 	--	mosaic GUWBTP20
 	--}
 	
+	--label
+	--{
+	--	enabled "RgIsModernHud == 1"
+	--	area 655 0 666 118
+	--	bam 'rgdmbcg'
+	--	ScaleToClip
+	--}
+	--label
+	--{
+	--	enabled "RgIsModernHud == 0"
+	--	area 2 0 659 68
+	--	bam 'rgdmbcg1'
+	--	frame 0
+	--	sequence lua "RgUISkin"
+	--	ScaleToClip
+	--}
+	--label
+	--{
+	--	enabled "RgIsModernHud == 0"
+	--	area 659 0 659 68
+	--	bam 'rgdmbcg1'
+	--	frame 0
+	--	sequence lua "RgUISkin"
+	--	ScaleToClip
+	--}
+	--label
+	--{
+	--	enabled "RgIsModernHud == 0"
+	--	area 1316 0 659 68
+	--	bam 'rgdmbcg1'
+	--	frame 2
+	--	sequence lua "RgUISkin"
+	--	ScaleToClip
+	--}
 	label
 	{
+		name "rgActionbarBackground"
 		enabled "RgIsModernHud == 1"
-		area 655 0 666 118
+		area 1621 0 662 118
 		bam 'rgdmbcg'
-		ScaleToClip
-	}
-	label
-	{
-		enabled "RgIsModernHud == 0"
-		area 2 0 659 68
-		bam 'rgdmbcg1'
-		frame 0
 		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
 	{
 		enabled "RgIsModernHud == 0"
-		area 659 0 659 68
-		bam 'rgdmbcg1'
-		frame 0
+		area 0 0 3904 68
+	}
+	label
+	{
+		enabled "RgIsModernHud == 0"
+		area 0 0 654 68
+		bam 'rgdmbcg6'
 		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
 	{
 		enabled "RgIsModernHud == 0"
-		area 1316 0 659 68
-		bam 'rgdmbcg1'
-		frame 2
+		area 650 0 654 68
+		bam 'rgdmbcg6'
 		sequence lua "RgUISkin"
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgIsModernHud == 0"
+		area 1300 0 654 68
+		bam 'rgdmbcg6'
+		sequence lua "RgUISkin"
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgIsModernHud == 0"
+		area 1950 0 654 68
+		bam 'rgdmbcg6'
+		sequence lua "RgUISkin"
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgIsModernHud == 0"
+		area 2600 0 654 68
+		bam 'rgdmbcg6'
+		sequence lua "RgUISkin"
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgIsModernHud == 0"
+		area 3250 0 654 68
+		bam 'rgdmbcg6'
+		sequence lua "RgUISkin"
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgIsModernHud == 0 and RgUISkin == 0"
+		area 1598 0 49 68
+		bam 'rgdmbcg7'
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgIsModernHud == 0 and RgUISkin == 0"
+		area 2257 0 49 68
+		bam 'rgdmbcg7'
 		ScaleToClip
 	}
 	
+	label
+	{
+		bam rgdslct
+		sequence lua "RgUISkin*2"
+		ScaleToClip
+		area 1618 12 640 46
+	}
 	
 	edit
 	{
 		name				"luaEditArea"
-		area				678 22 620 26
+		area				1628 22 620 26
 		var					luaEdit
 		scrollbar			'rgdscrl1'
 		text style			"edit"
@@ -13413,21 +13662,6 @@ menu
 			end
 			return 1
 		"
-  
-	   
-  
-				   
-				
-			 
-								
-		
-   
-									   
-										  
-	   
-										   
-	  
-   
 	}
 	--button
 	--{
@@ -13722,6 +13956,14 @@ menu
 	--	bam 'GUIRSP10'
 	--	sequence 0
 	--}
+
+	label {enabled "RgUISkin == 1" area 15 190 200 348 fill 1 1 1 255  }
+	label {enabled "RgUISkin == 1" area 242 190 200 348 fill 1 1 1 255 }
+	label {enabled "RgUISkin == 1" area 469 190 200 348 fill 1 1 1 255 }
+	label {enabled "RgUISkin == 1" area 696 190 200 348 fill 1 1 1 255 }
+	label {enabled "RgUISkin == 1" area 923 190 200 348 fill 1 1 1 255 }
+	label {enabled "RgUISkin == 1" area 1150 190 200 348 fill 1 1 1 255 }
+	
 	button
 	{
 		area 20 215 190 299
@@ -13818,46 +14060,52 @@ menu
 	{
 		area 15 210 200 308
 		bam 'rgdport4'
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
 	{
 		area 242 210 200 308
 		bam 'rgdport4'
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
 	{
 		area 469 210 200 308
 		bam 'rgdport4'
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
 	{
 		area 696 210 200 308
 		bam 'rgdport4'
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
 	{
 		area 923 210 200 308
 		bam 'rgdport4'
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
 	{
 		area 1150 210 200 308
 		bam 'rgdport4'
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
-
 	
 
 	--delete/create buttons
 	button
 	{
 		area 5 164 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetCreateButtonString(1)"
 		text style "button"
@@ -13876,7 +14124,8 @@ menu
 	button
 	{
 		area 5 511 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetImportButtonString(1)"
 		text style "button"
@@ -13893,7 +14142,8 @@ menu
 	button
 	{
 		area 232 164 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetCreateButtonString(2)"
 		text style "button"
@@ -13912,7 +14162,8 @@ menu
 	button
 	{
 		area 232 511 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetImportButtonString(2)"
 		text style "button"
@@ -13929,7 +14180,8 @@ menu
 	button
 	{
 		area 459 164 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetCreateButtonString(3)"
 		text style "button"
@@ -13948,7 +14200,8 @@ menu
 	button
 	{
 		area 459 511 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetImportButtonString(3)"
 		text style "button"
@@ -13965,7 +14218,8 @@ menu
 	button
 	{
 		area 686 164 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetCreateButtonString(4)"
 		text style "button"
@@ -13984,7 +14238,8 @@ menu
 	button
 	{
 		area 686 511 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetImportButtonString(4)"
 		text style "button"
@@ -14001,7 +14256,8 @@ menu
 	button
 	{
 		area 913 164 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetCreateButtonString(5)"
 		text style "button"
@@ -14020,7 +14276,8 @@ menu
 	button
 	{
 		area 913 511 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetImportButtonString(5)"
 		text style "button"
@@ -14037,7 +14294,8 @@ menu
 	button
 	{
 		area 1140 164 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetCreateButtonString(6)"
 		text style "button"
@@ -14056,7 +14314,8 @@ menu
 	button
 	{
 		area 1140 511 220 54
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgGetImportButtonString(6)"
 		text style "button"
@@ -14075,7 +14334,8 @@ menu
 	{
 		name "rgPartyPregenButton"
 		area 532 1006 300 64
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "Pre-gen party"
 		text style 'button'
@@ -14091,7 +14351,8 @@ menu
 	{
 		name "rgPartyPlayButton"
 		area 865 1006 300 64
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "PLAY_IMPORT_BUTTON" -- Play
 		text style 'button'
@@ -14107,7 +14368,8 @@ menu
 		name "rgPartyBackButton"
 		on escape
 		area 200 1006 300 64
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON" -- Back
 		text style 'button'
@@ -14829,7 +15091,8 @@ menu
 			width 100
 			label
 			{
-				bam "rgdmcmp"
+				--bam "rgdmcmp"
+				bam lua "t('rgdmcmp') .. RgUISkin"
 				area		0 0 -1 -1
 				frame lua "getCampaignHighlight(rowNumber)"
 				sequence lua "rgCampaigns[rowNumber].icon"
@@ -19423,21 +19686,142 @@ menu
 	ignoreEsc
 	label
 	{
-		name "AREA_MAP_BACKGROUND"
-		area 0 0 595 78
+		enabled "RgUISkin < 3"
+		area 594 0 595 78
 		bam 'rgdabcg1'
-		frame 0
-		--sequence lua "RgUISkin"
+		frame 1
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
 	{
-		area 594 0 595 78
+		enabled "RgUISkin < 3"
+		name "AREA_MAP_BACKGROUND"
+		area 0 0 595 78
 		bam 'rgdabcg1'
-		frame 1
-		--sequence lua "RgUISkin"
+		frame 0
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
+	label
+	{
+		enabled "RgUISkin == 3"
+		area 594 8 595 70
+		bam 'rgdabcg1'
+		frame 1
+		sequence lua "RgUISkin"
+		ScaleToClip
+	}
+	label
+	{
+		enabled "RgUISkin == 3"
+		name "AREA_MAP_BACKGROUND"
+		area 0 8 595 70
+		bam 'rgdabcg1'
+		frame 0
+		sequence lua "RgUISkin"
+		ScaleToClip
+	}
+	
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 42 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 108 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 174 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 335 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 401 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 467 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 533 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 599 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 665 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 731 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 797 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	
+	label
+	{
+		enabled "RgUISkin > 0 and RgUISkin < 3"
+		area 957 10 58 58
+		bam 'rgdslot1'
+		ScaleToClip
+		sequence lua "RgUISkin"
+	}
+	
 	label
 	{
 		area 475 82 240 26
@@ -20367,7 +20751,8 @@ menu
 			{
 				enabled "store.storeItems[rowNumber] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label 
@@ -20380,6 +20765,7 @@ menu
 				enabled "store.storeItems[rowNumber] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.storeItems[rowNumber].highlight)"
 				icon lua "store.storeItems[rowNumber].item.icon"
@@ -20393,6 +20779,7 @@ menu
 				enabled "store.storeItems[rowNumber] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetStoreItemQuantity(rowNumber)"
 				text style	"rg_normal_small"
@@ -20410,7 +20797,13 @@ menu
 			label
 			{
 				enabled "store.storeItems[rowNumber] and store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.storeItems[rowNumber] and store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -20421,7 +20814,8 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+1] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label
@@ -20429,6 +20823,7 @@ menu
 				enabled "store.storeItems[rowNumber+1] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.storeItems[rowNumber+1].highlight)"
 				icon lua "store.storeItems[rowNumber+1].item.icon"
@@ -20442,6 +20837,7 @@ menu
 				enabled "store.storeItems[rowNumber+1] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetStoreItemQuantity(rowNumber+1)"
 				text style	"rg_normal_small"
@@ -20459,7 +20855,13 @@ menu
 			label
 			{
 				enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].valid == 0 and store.storeItems[rowNumber+1].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.storeItems[rowNumber+1] and store.storeItems[rowNumber+1].valid == 0 and store.storeItems[rowNumber+1].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -20470,7 +20872,8 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+2] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label
@@ -20478,6 +20881,7 @@ menu
 				enabled "store.storeItems[rowNumber+2] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.storeItems[rowNumber+2].highlight)"
 				icon lua "store.storeItems[rowNumber+2].item.icon"
@@ -20491,6 +20895,7 @@ menu
 				enabled "store.storeItems[rowNumber+2] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetStoreItemQuantity(rowNumber+2)"
 				text style	"rg_normal_small"
@@ -20508,7 +20913,13 @@ menu
 			label
 			{
 				enabled "store.storeItems[rowNumber+2] and store.storeItems[rowNumber+2].valid == 0 and store.storeItems[rowNumber+2].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.storeItems[rowNumber+2] and store.storeItems[rowNumber+2].valid == 0 and store.storeItems[rowNumber+2].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -20519,7 +20930,8 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+3] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label
@@ -20527,6 +20939,7 @@ menu
 				enabled "store.storeItems[rowNumber+3] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.storeItems[rowNumber+3].highlight)"
 				icon lua "store.storeItems[rowNumber+3].item.icon"
@@ -20540,6 +20953,7 @@ menu
 				enabled "store.storeItems[rowNumber+3] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetStoreItemQuantity(rowNumber+3)"
 				text style	"rg_normal_small"
@@ -20557,7 +20971,13 @@ menu
 			label
 			{
 				enabled "store.storeItems[rowNumber+3] and store.storeItems[rowNumber+3].valid == 0 and store.storeItems[rowNumber+3].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.storeItems[rowNumber+3] and store.storeItems[rowNumber+3].valid == 0 and store.storeItems[rowNumber+3].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				area 80 0  8 24
 				fill 0 0 0 150
 			}
 		}
@@ -20568,7 +20988,8 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+4] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label
@@ -20576,6 +20997,7 @@ menu
 				enabled "store.storeItems[rowNumber+4] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.storeItems[rowNumber+4].highlight)"
 				icon lua "store.storeItems[rowNumber+4].item.icon"
@@ -20589,6 +21011,7 @@ menu
 				enabled "store.storeItems[rowNumber+4] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetStoreItemQuantity(rowNumber+4)"
 				text style	"rg_normal_small"
@@ -20606,7 +21029,13 @@ menu
 			label
 			{
 				enabled "store.storeItems[rowNumber+4] and store.storeItems[rowNumber+4].valid == 0 and store.storeItems[rowNumber+4].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.storeItems[rowNumber+4] and store.storeItems[rowNumber+4].valid == 0 and store.storeItems[rowNumber+4].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				area 80 0  8 24
 				fill 0 0 0 150
 			}
 		}
@@ -20617,7 +21046,8 @@ menu
 			{
 				enabled "store.storeItems[rowNumber+5] and rgIsNthNumber(rowNumber,6)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label
@@ -20625,6 +21055,7 @@ menu
 				enabled "store.storeItems[rowNumber+5] and rgIsNthNumber(rowNumber,6)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.storeItems[rowNumber+5].highlight)"
 				icon lua "store.storeItems[rowNumber+5].item.icon"
@@ -20638,6 +21069,7 @@ menu
 				enabled "store.storeItems[rowNumber+5] and rgIsNthNumber(rowNumber,6)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetStoreItemQuantity(rowNumber+5)"
 				text style	"rg_normal_small"
@@ -20655,7 +21087,13 @@ menu
 			label
 			{
 				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].valid == 0 and store.storeItems[rowNumber+5].highlight == 0 and rgIsNthNumber(rowNumber,6)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.storeItems[rowNumber+5] and store.storeItems[rowNumber+5].valid == 0 and store.storeItems[rowNumber+5].highlight == 0 and rgIsNthNumber(rowNumber,6)"
+				area 80 0  8 24
 				fill 0 0 0 150
 			}
 		}
@@ -20956,7 +21394,8 @@ menu
 			{
 				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label 
@@ -20969,6 +21408,7 @@ menu
 				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
 				tint lua "store.groupItems[rowNumber].item.tint"
@@ -20982,6 +21422,7 @@ menu
 				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetGroupItemQuantity(rowNumber)"
 				text style	"rg_normal_small"
@@ -21000,7 +21441,14 @@ menu
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
 				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -21011,7 +21459,8 @@ menu
 			{
 				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label 
@@ -21024,6 +21473,7 @@ menu
 				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber+1].highlight)"
 				tint lua "store.groupItems[rowNumber+1].item.tint"
@@ -21037,6 +21487,7 @@ menu
 				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetGroupItemQuantity(rowNumber+1)"
 				text style	"rg_normal_small"
@@ -21055,7 +21506,14 @@ menu
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
 				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0  and store.groupItems[rowNumber+1].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0  and store.groupItems[rowNumber+1].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -21066,7 +21524,8 @@ menu
 			{
 				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT"
+				sequence lua "RgUISkin" 
 				ScaleToClip
 			}
 			label 
@@ -21079,6 +21538,7 @@ menu
 				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber+2].highlight)"
 				tint lua "store.groupItems[rowNumber+2].item.tint"
@@ -21092,6 +21552,7 @@ menu
 				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetGroupItemQuantity(rowNumber+2)"
 				text style	"rg_normal_small"
@@ -21110,7 +21571,14 @@ menu
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
 				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0  and store.groupItems[rowNumber+2].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0  and store.groupItems[rowNumber+2].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -21121,7 +21589,8 @@ menu
 			{
 				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label 
@@ -21134,6 +21603,7 @@ menu
 				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber+3].highlight)"
 				tint lua "store.groupItems[rowNumber+3].item.tint"
@@ -21147,6 +21617,7 @@ menu
 				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetGroupItemQuantity(rowNumber+3)"
 				text style	"rg_normal_small"
@@ -21165,7 +21636,14 @@ menu
 			{
 				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
 				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0  and store.groupItems[rowNumber+3].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				--#21242 We don't grey out bags, even though they're not selectable, because we can open them.
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0  and store.groupItems[rowNumber+3].item.isBag ~= 1 and rgIsNthNumber(rowNumber,4)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -21249,7 +21727,8 @@ menu
 			{
 				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label 
@@ -21262,6 +21741,7 @@ menu
 				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
 				tint lua "store.groupItems[rowNumber].item.tint"
@@ -21275,6 +21755,7 @@ menu
 				enabled "store.groupItems[rowNumber] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetGroupItemQuantity(rowNumber)"
 				text style	"rg_normal_small"
@@ -21292,7 +21773,13 @@ menu
 			label
 			{
 				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber] and store.groupItems[rowNumber].valid == 0 and rgIsNthNumber(rowNumber,4)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -21303,7 +21790,8 @@ menu
 			{
 				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label 
@@ -21316,6 +21804,7 @@ menu
 				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber+1].highlight)"
 				tint lua "store.groupItems[rowNumber+1].item.tint"
@@ -21329,6 +21818,7 @@ menu
 				enabled "store.groupItems[rowNumber+1] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetGroupItemQuantity(rowNumber+1)"
 				text style	"rg_normal_small"
@@ -21346,7 +21836,13 @@ menu
 			label
 			{
 				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber+1] and store.groupItems[rowNumber+1].valid == 0 and rgIsNthNumber(rowNumber,4)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -21357,7 +21853,8 @@ menu
 			{
 				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label 
@@ -21370,6 +21867,7 @@ menu
 				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber+2].highlight)"
 				tint lua "store.groupItems[rowNumber+2].item.tint"
@@ -21383,6 +21881,7 @@ menu
 				enabled "store.groupItems[rowNumber+2] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetGroupItemQuantity(rowNumber+2)"
 				text style	"rg_normal_small"
@@ -21400,7 +21899,13 @@ menu
 			label
 			{
 				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber+2] and store.groupItems[rowNumber+2].valid == 0 and rgIsNthNumber(rowNumber,4)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -21411,7 +21916,8 @@ menu
 			{
 				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 0 0  80 110 
-				bam "RGDISLOT" 
+				bam "RGDSSLOT" 
+				sequence lua "RgUISkin"
 				ScaleToClip
 			}
 			label 
@@ -21424,6 +21930,7 @@ menu
 				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 8 8 64 64
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber+3].highlight)"
 				tint lua "store.groupItems[rowNumber+3].item.tint"
@@ -21437,6 +21944,7 @@ menu
 				enabled "store.groupItems[rowNumber+3] and rgIsNthNumber(rowNumber,4)"
 				area 64 0 24 24
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				text lua "rgGetGroupItemQuantity(rowNumber+3)"
 				text style	"rg_normal_small"
@@ -21454,7 +21962,13 @@ menu
 			label
 			{
 				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0 and rgIsNthNumber(rowNumber,4)"
-				area 0 0 -1 -1
+				area 0 0  80 110 
+				fill 0 0 0 150
+			}
+			label
+			{
+				enabled "store.groupItems[rowNumber+3] and store.groupItems[rowNumber+3].valid == 0 and rgIsNthNumber(rowNumber,4)"
+				area 80 0  8 24 
 				fill 0 0 0 150
 			}
 		}
@@ -21538,6 +22052,7 @@ menu
 			{
 				area 0 0 454 60
 				bam "RGDSTBC3"
+				sequence lua "RgUISkin"
 				ScaleToClip
 				align left top
 				frame lua "rgGetStoreSlotHighlight(store.storeItems[rowNumber].highlight)"
@@ -21546,6 +22061,7 @@ menu
 			{
 				area 6 0 60 60
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.storeItems[rowNumber].highlight)"
 				icon lua "store.storeItems[rowNumber].item.icon"
@@ -21573,7 +22089,7 @@ menu
 			label
 			{
 				enabled "store.storeItems[rowNumber].valid == 0 and store.storeItems[rowNumber].highlight == 0"
-				area 0 0 -1 -1
+				area 0 0  -1 -1
 				fill 0 0 0 150
 			}
 		}
@@ -21631,6 +22147,7 @@ menu
 			{
 				area 0 0 454 60
 				bam "RGDSTBC3"
+				sequence lua "RgUISkin"
 				ScaleToClip
 				align left top
 				frame lua "rgGetStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
@@ -21639,6 +22156,7 @@ menu
 			{
 				area 6 0 60 60
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
 				tint lua "store.groupItems[rowNumber].item.tint"
@@ -21667,7 +22185,7 @@ menu
 			label
 			{
 				enabled "store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1"
-				area 0 0 -1 -1
+				area 0 0  -1 -1
 				fill 0 0 0 150
 			}
 		}
@@ -21727,6 +22245,7 @@ menu
 			{
 				area 0 0 454 60
 				bam "RGDSTBC3"
+				sequence lua "RgUISkin"
 				ScaleToClip
 				align left top
 				frame lua "rgGetStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
@@ -21735,6 +22254,7 @@ menu
 			{
 				area 6 0 60 60
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.groupItems[rowNumber].highlight)"
 				tint lua "store.groupItems[rowNumber].item.tint"
@@ -21763,7 +22283,7 @@ menu
 			label
 			{
 				enabled "store.groupItems[rowNumber].valid == 0  and store.groupItems[rowNumber].item.isBag ~= 1"
-				area 0 0 -1 -1
+				area 0 0  -1 -1 
 				fill 0 0 0 150
 			}
 		}
@@ -22146,7 +22666,8 @@ menu
 	button
 	{
 		area 35 562 320 74
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "checkContainerText(t('BUY_BUTTON') .. ' (' .. storeScreen:GetStoreCost() .. ')', 'TO_BACKPACK_BUTTON')"
 		text style "button"
@@ -22161,7 +22682,8 @@ menu
 	button
 	{
 		area 675 562 320 74
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "checkContainerText(t('SELL_BUTTON') .. ' (' .. storeScreen:GetGroupCost() .. ')','TO_CONTAINER_BUTTON')"
 		text style "button"
@@ -22178,7 +22700,8 @@ menu
 	{
 		area 355 566 320 70
 		enabled "(not storeScreen:IsContainer()) and storeScreen:IsStealEnabled()"
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "STEAL_BUTTON"
 		text style "button"
@@ -22208,7 +22731,8 @@ menu
 	{
 		area 355 562 320 74
 		enabled "storeScreen:IsCloseBagButtonClickable()"
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "CLOSE_CONTAINER_BUTTON"
 		text style "button"
@@ -22272,8 +22796,9 @@ menu
 	}
 	label
 	{
-		area 462 56 554 572
+		area 462 56 564 572
 		bam RGDSTBC1
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -22321,6 +22846,7 @@ menu
 				enabled "store.identifyItems[rowNumber].valid == 1"
 				area 0 0 400 60
 				bam "RGDSTBC5"
+				sequence lua "RgUISkin"
 				ScaleToClip
 				align left top
 				frame lua "rgGetStoreSlotHighlight(store.identifyItems[rowNumber].highlight)"
@@ -22338,6 +22864,7 @@ menu
 				enabled "store.identifyItems[rowNumber].valid == 1"
 				area 6 0 60 60
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				ScaleToClip
 				frame lua "getStoreSlotHighlight(store.identifyItems[rowNumber].highlight)"
 				icon lua "store.identifyItems[rowNumber].item.icon"
@@ -22377,7 +22904,8 @@ menu
 	button
 	{
 		area 28 562 424 74
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "IDENTIFY_BUTTON"
 		text style "button"
@@ -22389,7 +22917,7 @@ menu
 	}
 	text
 	{
-		area 486 81 508 517
+		area 486 81 518 517
 		text lua "store.identifyText"
 		text style "normal_parchment"
 		scrollbar 'rgdscrl1'
@@ -22435,14 +22963,16 @@ menu
 	}
 	label
 	{
-		area 462 56 554 572
+		area 462 56 564 572
 		bam RGDSTBC1
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
 	{
 		area 28 464 424 78
 		bam RGDSTBC2
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -22513,7 +23043,8 @@ menu
 	button
 	{
 		area 28 562 424 74
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONATE_BUTTON"
 		text style "button"
@@ -22531,7 +23062,7 @@ menu
 	--}
 	text
 	{
-		area 486 81 508 517
+		area 486 81 518 517
 		text lua "store.donateText"
 		text style "normal_parchment"
 		scrollbar 'rgdscrl1'
@@ -22561,8 +23092,9 @@ menu
 	}
 	label
 	{
-		area 594 56 422 572
+		area 594 56 432 572
 		bam RGDSTBC1
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -22618,6 +23150,7 @@ menu
 		name "BUTTON_room_peasant"
 		area 30 66 260 237
 		bam "rgdroom1"
+		sequence lua "RgUISkin"
 		scaleToClip
 		clickable lua "storeScreen:IsRoomTypeClickable(1)"
 		glow lua "storeScreen:GetRoomType() == 1"
@@ -22637,6 +23170,7 @@ menu
 		name "BUTTON_room_merchant"
 		area 308 66 260 237
 		bam "rgdroom2"
+		sequence lua "RgUISkin"
 		scaleToClip
 		clickable lua "storeScreen:IsRoomTypeClickable(2)"
 		glow lua "storeScreen:GetRoomType() == 2"
@@ -22656,6 +23190,7 @@ menu
 		name "BUTTON_room_noble"
 		area 30 314 260 237
 		bam "rgdroom3"
+		sequence lua "RgUISkin"
 		scaleToClip
 		clickable lua "storeScreen:IsRoomTypeClickable(3)"
 		glow lua "storeScreen:GetRoomType() == 3"
@@ -22675,6 +23210,7 @@ menu
 		name "BUTTON_room_royal"
 		area 308 314 260 237
 		bam "rgdroom4"
+		sequence lua "RgUISkin"
 		scaleToClip
 		clickable lua "storeScreen:IsRoomTypeClickable(4)"
 		glow lua "storeScreen:GetRoomType() == 4"
@@ -22816,7 +23352,7 @@ menu
 	--}
 	text
 	{
-		area 618 78 378 522
+		area 618 78 388 522
 		text lua "store.roomText"
 		text style "normal_parchment"
 	}
@@ -22831,7 +23367,8 @@ menu
 	button
 	{
 		area 20 562 560 74
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "t('RENT_BUTTON') .. ' ( ' .. t('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
 		text style "button"
@@ -22854,8 +23391,9 @@ menu
 	}
 	label
 	{
-		area 462 56 554 572
+		area 462 56 564 572
 		bam RGDSTBC1
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -22912,6 +23450,7 @@ menu
 				--enabled "store.healingSpells[rowNumber].valid == 1"
 				area 0 0 400 60
 				bam "RGDSTBC5"
+				sequence lua "RgUISkin"
 				ScaleToClip
 				align left top
 				frame lua "rgGetStoreSlotHighlight(store.healingSpells[rowNumber].highlight)"
@@ -22920,6 +23459,7 @@ menu
 			{
 				area 6 0 60 60
 				bam RGDSLOT
+				sequence lua "RgUISkin"
 				frame lua "getStoreSlotHighlight(store.healingSpells[rowNumber].highlight)"
 				icon lua "store.healingSpells[rowNumber].icon"
 				tint lua "store.healingSpells[rowNumber].tint"
@@ -22970,7 +23510,8 @@ menu
 	button
 	{
 		area 28 562 424 74
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BUY_BUTTON"
 		--text lua "t('RENT_BUTTON') .. ' ( ' .. t('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
@@ -22982,7 +23523,7 @@ menu
 	}
 	text
 	{
-		area 486 81 508 517
+		area 486 81 518 517
 		text lua "store.spellText"
 		text style "normal_parchment"
 		scrollbar 'rgdscrl1'
@@ -23006,8 +23547,9 @@ menu
 	}
 	label
 	{
-		area 462 56 554 572
+		area 462 56 564 572
 		bam RGDSTBC1
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -23059,6 +23601,7 @@ menu
 			{	
 				area 0 0 -1 -1
 				bam rgdslct
+				sequence lua "RgUISkin"
 				sequence lua "rgGetSelectedHighlight(rowNumber, storeDrinksVar)"
 				--sequence lua "rgGetStoreSlotHighlight(store.drinks[rowNumber].highlight)"
 				ScaleToClip
@@ -23096,7 +23639,8 @@ menu
 	button
 	{
 		area 28 562 404 74
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BUY_BUTTON"
 		--text lua "t('RENT_BUTTON') .. ' ( ' .. t('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
@@ -23120,7 +23664,7 @@ menu
 	}
 	text
 	{
-		area 486 164 508 436
+		area 486 164 518 436
 		text lua "store.drinkText"
 		text style "normal_parchment"
 		scrollbar 'rgdscrl1'
@@ -23167,6 +23711,7 @@ menu
 	{
 		area	0 0 768 768
 		bam rgdbcsto
+		sequence lua "RgUISkin"
 		frame 0
 		scaleToClip
 	}
@@ -23174,14 +23719,17 @@ menu
 	{
 		area	597 0 768 768
 		bam rgdbcsto
+		sequence lua "RgUISkin"
 		frame 1
 		scaleToClip
 	}
 	label
 	{
-		area 518 38 330 37
+		area 480 32 405 52
 		text lua "Infinity_FetchString(storeScreen:GetStoreName())"
-		text style "button"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	button
 	{
@@ -23200,6 +23748,7 @@ menu
 		area 1200 104 71 98
 		portrait 0
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 0"
 		action "Infinity_OnPortraitLClick(0) rgGroupItemCount = 0"
@@ -23216,6 +23765,7 @@ menu
 		area 1200 206 71 98
 		portrait 1
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 1"
 		action "Infinity_OnPortraitLClick(1) rgGroupItemCount = 0"
@@ -23232,6 +23782,7 @@ menu
 		area 1200 308 71 98
 		portrait 2
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 2"
 		action "Infinity_OnPortraitLClick(2) rgGroupItemCount = 0"
@@ -23248,6 +23799,7 @@ menu
 		area 1200 410 71 98
 		portrait 3
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 3"
 		action "Infinity_OnPortraitLClick(3) rgGroupItemCount = 0"
@@ -23264,6 +23816,7 @@ menu
 		area 1200 512 71 98
 		portrait 4
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 4"
 		action "Infinity_OnPortraitLClick(4) rgGroupItemCount = 0"
@@ -23280,6 +23833,7 @@ menu
 		area 1200 614 71 98
 		portrait 5
 		bam rgdport2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "Infinity_GetNumCharacters() > 5"
 		action "Infinity_OnPortraitLClick(5) rgGroupItemCount = 0"
@@ -23310,7 +23864,7 @@ menu
 	}
 	label
 	{
-		area 100 91 60 60
+		area 95 90 60 60
 		bam lua "store.icon"
 		scaleToClip
 	}
@@ -23327,9 +23881,24 @@ menu
 	--}
 	button
 	{
+		enabled "RgUISkin < 3"
 		on escape
-		area 1292 18 42 42
+		area 1290 7 42 42
 		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action
+		"
+			storeScreen:OnMainDoneButtonClick()
+		"
+	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action
 		"
@@ -23409,7 +23978,7 @@ menu
 		name 'BUTTON_storechooser_0'
 		area 87 170 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(0)"
-		bam rgdstbt1
+		bam lua "t('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(0)"
@@ -23424,7 +23993,7 @@ menu
 		name 'BUTTON_storechooser_1'
 		area 87 280 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(1)"
-		bam rgdstbt1
+		bam lua "t('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(1)"
@@ -23439,7 +24008,7 @@ menu
 		name 'BUTTON_storechooser_2'
 		area 87 390 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(2)"
-		bam rgdstbt1
+		bam lua "t('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(2)"
@@ -23454,7 +24023,7 @@ menu
 		name 'BUTTON_storechooser_3'
 		area 87 500 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(3)"
-		bam rgdstbt1
+		bam lua "t('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(3)"
@@ -27358,14 +27927,16 @@ menu
 			label
 			{
 				area		0 0 760 130
-				bam 'rgdlobc3'
+				bam 'rgdlobc6'
 				scaleToClip
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
 				align		left top
 			}
 			button
 			{
 				enabled		"rgLoadFiltered[rowNumber].hasScreenShot"
-				area		8 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -27444,9 +28015,9 @@ menu
 			label
 			{
 				area		0 0 760 130
-				bam 'rgdlobc4'
+				bam 'rgdlobc7'
+				sequence lua "RgUISkin"
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
 				align		left top
 			}
 		}
@@ -27486,14 +28057,16 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave'"
 				area		0 0 378 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
 				scaleToClip
 				align		left top
 			}
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber].hasScreenShot"
-				area		8 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -27575,9 +28148,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave'"
 				area		0 0 378 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 			}
 		}
@@ -27588,14 +28161,16 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave'"
 				area		0 0 378 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber+1,currentSave)"
 				scaleToClip
 				align		left top
 			}
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber+1].hasScreenShot"
-				area		8 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber+1].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -27678,9 +28253,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave'"
 				area		0 0 378 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber+1,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 			}
 		}
@@ -27721,14 +28296,16 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
 				scaleToClip
 				align		left top
 			}
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber].hasScreenShot"
-				area		5 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -27810,9 +28387,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 			}
 		}
@@ -27823,14 +28400,16 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber+1,currentSave)"
 				scaleToClip
 				align		left top
 			}
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber+1].hasScreenShot"
-				area		5 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber+1].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -27912,9 +28491,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber+1,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 			}
 		}
@@ -27925,14 +28504,16 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+2].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber+2,currentSave)"
 				scaleToClip
 				align		left top
 			}
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+2].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber+2].hasScreenShot"
-				area		5 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber+2].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -28014,9 +28595,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+2].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber+2,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 			}
 		}
@@ -28782,14 +29363,16 @@ menu
 			label
 			{
 				area		0 0 760 130
-				bam 'rgdlobc3'
+				bam 'rgdlobc6'
 				scaleToClip
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
 				align		left top
 			}
 			button
 			{
 				enabled		"rgLoadFiltered[rowNumber].hasScreenShot"
-				area		8 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -28872,9 +29455,9 @@ menu
 			label
 			{
 				area		0 0 760 130
-				bam 'rgdlobc4'
+				bam 'rgdlobc7'
+				sequence lua "RgUISkin"
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
 				align		left top
 			}
 		}
@@ -28914,7 +29497,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave'"
 				area		0 0 378 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
 				scaleToClip
 				align		left top
 					   
@@ -28922,7 +29507,7 @@ menu
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber].hasScreenShot"
-				area		8 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -29009,9 +29594,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave'"
 				area		0 0 378 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 			}
 		}
@@ -29022,14 +29607,16 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave'"
 				area		0 0 378 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber+1,currentSave)"
 				scaleToClip
 				align		left top
 			}
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber+1].hasScreenShot"
-				area		8 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber+1].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -29112,9 +29699,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,2) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave'"
 				area		0 0 378 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber+1,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 					   
 					   
@@ -29157,14 +29744,16 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
 				scaleToClip
 				align		left top
 			}
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber].hasScreenShot"
-				area		5 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -29246,9 +29835,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 			}
 		}
@@ -29259,14 +29848,16 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber+1,currentSave)"
 				scaleToClip
 				align		left top
 			}
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber+1].hasScreenShot"
-				area		5 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber+1].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -29348,9 +29939,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+1].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber+1,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 			}
 		}
@@ -29361,14 +29952,16 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+2].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc1'
+				bam 'rgdlobc8'
+				sequence lua "RgUISkin"
+				frame lua "rgGetSelectedHighlight(rowNumber+2,currentSave)"
 				scaleToClip
 				align		left top
 			}
 			button
 			{
 				enabled		"rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+2].slotName ~= 'rgRandomEndSave' and rgLoadFiltered[rowNumber+2].hasScreenShot"
-				area		5 5 160 120
+				area		8 8 158 114
 				bitmap res 	"rgLoadFiltered[rowNumber+2].screenshot"
 				--bitmap area	8 8 160 120 
 				align		center center
@@ -29450,9 +30043,9 @@ menu
 			{
 				enabled "rgIsNthNumber(rowNumber,3) and rgLoadFiltered[rowNumber+2].slotName ~= 'rgRandomEndSave'"
 				area		0 0 370 130
-				bam 'rgdlobc2'
+				bam 'rgdlobc9'
 				scaleToClip
-				frame lua "rgGetSelectedHighlight(rowNumber+2,currentSave)"
+				sequence lua "RgUISkin"
 				align		left top
 			}
 		}
@@ -29941,6 +30534,7 @@ menu
 		area		0 0 900 287
 		bam 'rgdlobcx'
 		scaleToClip
+		sequence lua "RgUISkin"
 		align		left top
 	}
 	label
@@ -29954,7 +30548,9 @@ menu
 	label
 	{
 		area		70 64 760 130
-		bam 'rgdlobc3'
+		bam 'rgdlobc6'
+		sequence lua "RgUISkin"
+		frame lua "rgGetSelectedHighlight(rowNumber,currentSave)"
 		scaleToClip
 		align		left top
 	}
@@ -30056,15 +30652,14 @@ menu
 	label
 	{
 		area		70 64 760 130
-		bam 'rgdlobc4'
+		bam 'rgdlobc7'
+		sequence lua "RgUISkin"
 		scaleToClip
 		align		left top
 	}
-	
-	
 	button
 	{
-		bam		rgdmbut1
+		bam		rgdbutm1
 		ScaleToClip
 		area 450 190 380 80
 		pad 10 8 10 8
@@ -30079,7 +30674,7 @@ menu
 	button
 	{
 		enabled	currentSave
-		bam		rgdmbut1
+		bam		rgdbutm1
 		ScaleToClip
 		area 450 190 380 80
 		pad 10 8 10 8
@@ -30093,7 +30688,7 @@ menu
 	}
 	button
 	{
-		bam		rgdmbut1
+		bam		rgdbutm1
 		ScaleToClip
 		area 70 190 380 80
 		pad 10 8 10 8
@@ -31642,6 +32237,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg1
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -31649,12 +32245,14 @@ menu
 		area	597 0 768 768
 		bam rgdbccg1
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
 		area 694 100 562 552
 		bam RGDSTBC1
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -31875,6 +32473,7 @@ menu
 		enabled "rgGameEngine ~= 3"
 		area 74 152 244 420
 		bam rgdcgen2
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -31882,6 +32481,7 @@ menu
 		enabled "rgGameEngine ~= 3"
 		area 318 152 244 420
 		bam rgdcgen2
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -31889,6 +32489,7 @@ menu
 		enabled "rgGameEngine ~= 3"
 		area 562 152 244 420
 		bam rgdcgen2
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -31896,6 +32497,7 @@ menu
 		enabled "rgGameEngine ~= 3"
 		area 806 152 242 420
 		bam rgdcgen2
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -31903,6 +32505,7 @@ menu
 		enabled "rgGameEngine ~= 3"
 		area 1048 152 244 420
 		bam rgdcgen2
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	
@@ -31924,6 +32527,7 @@ menu
 		enabled "createCharScreen:GetCurrentStep() > 0 and rgGameEngine ~= 3"
 		area 92 214 208 322
 		bam 'rgdport4'
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	text
@@ -31983,7 +32587,8 @@ menu
 	{
 		name "chargenButton1"
 		area 20 276 300 60
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		--clickable lua "createCharScreen:GetCurrentStep() == 0"
 		glow lua "createCharScreen:GetCurrentStep() == 0"
@@ -31999,7 +32604,8 @@ menu
 	{
 		name "chargenButton2"
 		area 20 346 300 60
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 3"
 		glow lua "createCharScreen:GetCurrentStep() == 3"
@@ -32049,7 +32655,8 @@ menu
 	{
 		name "chargenButton3"
 		area 20 416 300 60
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 8"
 		glow lua "createCharScreen:GetCurrentStep() == 8"
@@ -32065,7 +32672,8 @@ menu
 	{
 		name "chargenButton4"
 		area 20 486 300 60
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 9"
 		glow lua "createCharScreen:GetCurrentStep() == 9"
@@ -32081,7 +32689,8 @@ menu
 	{
 		name "chargenButton5"
 		area 20 556 300 60
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 15"
 		glow lua "createCharScreen:GetCurrentStep() == 15"
@@ -32104,7 +32713,8 @@ menu
 		area 566 1006 230 60
 		text "IMPORT_BUTTON"
 		text style "button"
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		action "createCharScreen:OnImportCharacterButtonClick()"
 	}
@@ -32114,7 +32724,8 @@ menu
 		area 800 1006 230 60
 		text "BIOGRAPHY_BUTTON"
 		text style "button"
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 17"
 		action "createCharScreen:OnBiographyButtonClick()"
@@ -32126,7 +32737,8 @@ menu
 		area 96 1006 230 60
 		text "BACK_BUTTON"
 		text style "button"
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:IsMainBackButtonClickable()"
 		action "
@@ -32157,7 +32769,8 @@ menu
 		area 96 1006 230 60
 		text "CANCEL_BUTTON"
 		text style "button"
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		enabled "not createCharScreen:IsMainBackButtonClickable()"
 		action "createCharScreen:OnMainCancelButtonClick()"
@@ -32168,7 +32781,8 @@ menu
 		enabled "rgGameEngine ~= 3"
 		name "chargenButtonAccept"
 		area 1036 1006 230 60
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 17"
 		glow lua "createCharScreen:GetCurrentStep() == 17"
@@ -32187,7 +32801,8 @@ menu
 		area 332 1006 230 60
 		text "CREATE_PARTY_BUTTON"
 		text style "button"
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:IsAdvancedButtonClickable() == true"
 		action "createCharScreen:OnAdvancedButtonClick()"
@@ -32210,7 +32825,8 @@ menu
 		area 1036 1006 230 60
 		text lua "chargenAcceptOrExport()"
 		text style "button"
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:IsChargenComplete()"
 		action "
@@ -32225,7 +32841,8 @@ menu
 		enabled "rgGameEngine == 3"
 		name "chargenButtonName"
 		area 20 626 300 60
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 17"
 		glow lua "createCharScreen:GetCurrentStep() == 17"
@@ -32293,6 +32910,7 @@ menu
 	{
 		area	0 0 768 768
 		bam rgdbccg1
+		sequence lua "RgUISkin"
 		frame 0
 		scaleToClip
 	}
@@ -32300,6 +32918,7 @@ menu
 	{
 		area	597 0 768 768
 		bam rgdbccg1
+		sequence lua "RgUISkin"
 		frame 1
 		scaleToClip
 	}
@@ -32320,19 +32939,24 @@ menu
 		enabled "toggleFemale == 1 or toggleMale == 1"
 		area 105 213 224 341
 		bam 'rgdport4'
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
+	
 	label
 	{
-		area 146 36 1074 44
-		text lua "t('GENDER_TITLE') .. '  &  ' .. t('APPEARANCE_TITLE')"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString(t('GENDER_TITLE') .. '  &  ' .. t('APPEARANCE_TITLE'))"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	label
 	{
 		enabled "toggleMale == 1"
 		area 105 560 224 50
 		bam 'rgdcgen1'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgMalePortraitList[currentPortrait]"
 		text style "normal"
@@ -32344,6 +32968,7 @@ menu
 		enabled "toggleFemale == 1"
 		area 105 560 224 50
 		bam 'rgdcgen1'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgFemalePortraitList[currentPortrait]"
 		text style "normal"
@@ -32353,8 +32978,8 @@ menu
 	button
 	{
 		area 104 96 112 110
-		bam RGDGEND1
-		sequence 0
+		bam RGDGEND2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		toggle toggleMale
 		action 
@@ -32373,8 +32998,8 @@ menu
 	button
 	{
 		area 220 96 112 110
-		bam RGDGEND1
-		sequence 1
+		bam RGDGEND3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		toggle toggleFemale
 		action 
@@ -32391,57 +33016,57 @@ menu
 				 label { area 0 0 90 135 enabled "rgIsNthNumber(rowNumber,10)" }
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10)" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber)"} 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10)" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber)"} 
 				}
 		column { width 10 
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber+1]" }
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+1] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+1)" } 				 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+1] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+1)" } 				 
 				}
 		column { width 10 
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber+2]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+2] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+2)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+2] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+2)" } 
 				}
 		column { width 10 
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber+3]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+3] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+3)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+3] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+3)" } 
 				}
 		column { width 10
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber+4]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+4] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+4)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+4] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+4)" } 
 				}
 		column { width 10
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber+5]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+5] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+5)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+5] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+5)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber+6]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+6] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+6)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+6] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+6)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber+7]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+7] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+7)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+7] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+7)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber+8]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+8] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+8)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+8] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+8)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgMalePortraitList[rowNumber+9]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+9] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+9)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgMalePortraitList[rowNumber+9] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+9)" } 
 				}
 		rowheight dynamic
 		hideHighlight
 		enabled "toggleMale == 1"
-		area 342 100 926 554
+		area 342 100 926 550
 		table "rgMalePortraitList"
 		var currentPortrait
 		scrollbar	'rgdscrl1'
@@ -32457,57 +33082,57 @@ menu
 				 label { area 0 0 90 135 enabled "rgIsNthNumber(rowNumber,10)" }
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10)" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber)"} 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10)" bam "RGDPORT3"  sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber)"} 
 				}
 		column { width 10 
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber+1]" }
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+1] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+1)" } 				 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+1] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+1)" } 				 
 				}
 		column { width 10 
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber+2]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+2] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+2)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+2] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+2)" } 
 				}
 		column { width 10 
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber+3]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+3] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+3)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+3] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+3)" } 
 				}
 		column { width 10
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber+4]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+4] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+4)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+4] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+4)" } 
 				}
 		column { width 10
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber+5]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+5] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+5)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+5] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+5)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber+6]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+6] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+6)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+6] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+6)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber+7]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+7] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+7)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+7] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+7)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber+8]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+8] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+8)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+8] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+8)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgFemalePortraitList[rowNumber+9]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+9] ~= nil" bam "RGDPORT3" Frame lua "rgGetSelectedPortrait(rowNumber+9)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgFemalePortraitList[rowNumber+9] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetSelectedPortrait(rowNumber+9)" } 
 				}
 		rowheight dynamic
 		hideHighlight
 		enabled "toggleFemale == 1"
-		area 342 100 926 554
+		area 342 100 926 550
 		table "rgFemalePortraitList"
 		var currentPortrait
 		scrollbar	'rgdscrl1'
@@ -32521,7 +33146,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -32541,7 +33167,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -32688,33 +33315,129 @@ menu
 	label
 	{
 		area	0 0 768 768
-		bam rgdbccg1
+		bam rgdbcres
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
 		area	597 0 768 768
-		bam rgdbccg1
+		bam rgdbcres
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
+	button
+	{
+		area		108 108 210 331
+		bitmap		lua "rgCustomizedPortraitList[currentCusPortrait]"
+	} 
 	label
 	{
-		area 111 218 212 330
-		bitmap lua "rgCustomizedPortraitList[currentCusPortrait]"
+		area 102 102 223 344
+		bam 'rgdport7'
+		sequence lua "RgUISkin"
+		scaleToClip
 	}
-	label
+	button
 	{
-		area 105 213 224 341
-		bam 'rgdport4'
-		ScaleToClip
-	}
-	label
-	{
-		area 146 36 1074 44
-		text lua "t('APPEARANCE_TITLE')"
+		area		102 450 222 50
+		text lua	"rgString('APPEARANCE_BUTTON')"
 		text style "button"
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
+		frame 2
+		ScaleToClip
+		action 
+		"
+			characterScreen:OnCancelButtonClick()
+			Infinity_PopMenu()
+			currentPanelID = 17
+			characterScreen:OnAppearanceButtonClick()
+		"
+	}
+	button
+	{
+		area		102 504 222 50
+		text lua	"rgString('SOUNDS_BUTTON')"
+		text style "button"
+		bam		rgdbuts3
+		ScaleToClip
+		sequence lua "RgUISkin"
+		action 
+		"
+			characterScreen:OnCancelButtonClick()
+			currentPanelID = 17
+			characterScreen:OnSoundsButtonClick()
+			"
+	}
+	button
+	{
+		area		102 558 222 50
+		text lua	"rgString('COLORS_BUTTON')"
+		text style "button"
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action 
+		"
+			createCharScreen:OnCancelButtonClick()
+			currentPanelID = const.CUSTOMIZE_ID
+			characterScreen:OnHairSkinButtonClick()
+			"
+	}
+	button
+	{
+		area		102 612 222 50
+		text lua	"rgString('SCRIPT_BUTTON')"
+		text style "button"
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action 
+		"
+			characterScreen:OnCancelButtonClick()
+			currentPanelID = 17
+			characterScreen:OnScriptButtonClick()
+			"
+	}
+	
+	button
+	{
+		area		102 666 222 50
+		text lua	"rgString('BIOGRAPHY_BUTTON')"
+		text style "button"
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action 
+		"
+			characterScreen:OnCancelButtonClick()
+			currentPanelID = 17
+			characterScreen:OnCusomizeBiographyButtonClick()
+			"
+	}
+	--label
+	--{
+	--	area 111 218 212 330
+	--	bitmap lua "rgCustomizedPortraitList[currentCusPortrait]"
+	--}
+	--label
+	--{
+	--	area 105 213 224 341
+	--	bam 'rgdport4'
+	--	sequence lua "RgUISkin"
+	--	ScaleToClip
+	--}
+	
+	label
+	{
+		area		480 32 405 52
+		text lua "rgString('APPEARANCE_TITLE')"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	list
 	{
@@ -32722,52 +33445,52 @@ menu
 				 label { area 0 0 90 135 enabled "rgIsNthNumber(rowNumber,10)" }
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10)" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber)"} 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10)" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber)"} 
 				}
 		column { width 10 
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber+1]" }
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+1] ~= nil" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+1)" } 				 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+1] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+1)" } 				 
 				}
 		column { width 10 
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber+2]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+2] ~= nil" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+2)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+2] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+2)" } 
 				}
 		column { width 10 
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber+3]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+3] ~= nil" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+3)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+3] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+3)" } 
 				}
 		column { width 10
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber+4]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+4] ~= nil" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+4)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+4] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+4)" } 
 				}
 		column { width 10
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber+5]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+5] ~= nil" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+5)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+5] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+5)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber+6]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+6] ~= nil" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+6)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+6] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+6)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber+7]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+7] ~= nil" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+7)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+7] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+7)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber+8]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+8] ~= nil" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+8)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+8] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+8)" } 
 				}             
 		column { width 10     
 				 
 				 label { area 4 4 82 126 enabled "rgIsNthNumber(rowNumber,10)" bitmap lua "rgCustomizedPortraitList[rowNumber+9]" } 
-				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+9] ~= nil" bam "RGDPORT3" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+9)" } 
+				 label { area 0 0 90 134 enabled "rgIsNthNumber(rowNumber,10) and rgCustomizedPortraitList[rowNumber+9] ~= nil" bam "RGDPORT3" sequence lua "RgUISkin" Frame lua "rgGetCustomizedSelectedPortrait(rowNumber+9)" } 
 				}
 		rowheight dynamic
 		hideHighlight
@@ -32785,8 +33508,9 @@ menu
 	button
 	{
 		on escape
-		area 316 661 320 70
-		bam		rgdmbut1
+		area 370 660 448 70	
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -32801,8 +33525,9 @@ menu
 	button
 	{
 		on return
-		area 732 661 320 70
-		bam		rgdmbut1
+		area 818 660 448 70	
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -32867,6 +33592,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg2
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -32874,14 +33600,17 @@ menu
 		area	597 0 768 768
 		bam rgdbccg2
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
+	
 	label
 	{
-		area 146 36 1074 44
-		--text lua "t('RACE_TITLE')"
-		text lua "t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON')"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON'))"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	label
 	{
@@ -32910,7 +33639,7 @@ menu
 		}
 		rowheight dynamic
 		hidehighlight
-		area 100 140 200 510
+		area 100 142 200 508
 		table "chargen.races"
 		var currentChargenRace
 		scrollbar	'rgdscrl1'
@@ -32934,7 +33663,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -32944,7 +33674,8 @@ menu
 	{
 		--on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -32990,6 +33721,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg2
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -32997,15 +33729,17 @@ menu
 		area	597 0 768 768
 		bam rgdbccg2
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
 		enabled "createCharScreen:GetCurrentStep() ~= const.STEP_DUALCLASS_CLASS"																   
-		area 146 36 1074 44
-		--text lua "t('CLASS_TITLE')"
-		text lua "t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON')"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON'))"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	label
 	{
@@ -33051,7 +33785,7 @@ menu
 		enabled "createCharScreen:GetCurrentStep() ~= const.STEP_DUALCLASS_CLASS"																   
 		rowheight dynamic
 		hidehighlight
-		area 100 140 200 510
+		area 100 142 200 508
 		table "chargen.races"
 		var currentChargenRace
 		scrollbar	'rgdscrl1'
@@ -33098,7 +33832,7 @@ menu
 			"
 		rowheight dynamic
 		hidehighlight
-		area  305 140 200 510
+		area  305 142 200 508
 		table "chargen.class"
 		var currentChargenClass
 		scrollbar 'rgdscrl1'
@@ -33127,7 +33861,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -33138,7 +33873,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -33189,6 +33925,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg2
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -33196,14 +33933,16 @@ menu
 		area	597 0 768 768
 		bam rgdbccg2
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
-		area 146 36 1074 44
-		--text lua "t('CLASS_KIT_TITLE')"
-		text lua "t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON')"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON'))"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	label
 	{
@@ -33247,7 +33986,7 @@ menu
 		}
 		rowheight dynamic
 		hidehighlight
-		area 100 140 200 510
+		area 100 142 200 508
 		table "chargen.races"
 		var currentChargenRace
 		scrollbar	'rgdscrl1'
@@ -33293,7 +34032,7 @@ menu
 			"
 		rowheight dynamic
 		hidehighlight
-		area  305 140 200 510
+		area  305 142 200 508
 		table "chargen.class"
 		var currentChargenClass
 		scrollbar 'rgdscrl1'
@@ -33329,7 +34068,7 @@ menu
 		scrollbar 'rgdscrl1'
 		rowheight dynamic
 		hidehighlight
-		area 510 140 200 510
+		area 510 142 200 508
 		table "chargen.kit"
 		var currentChargenKit
 	}
@@ -33345,7 +34084,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -33363,7 +34103,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -33401,6 +34142,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg2
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -33408,14 +34150,16 @@ menu
 		area	597 0 768 768
 		bam rgdbccg2
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
-		area 146 36 1074 44
-		--text lua "t('ALIGNMENT_TITLE')"
-		text lua "t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON')"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON'))"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	label
 	{
@@ -33478,7 +34222,7 @@ menu
 			"
 		rowheight dynamic
 		hidehighlight
-		area 100 140 200 510
+		area 100 142 200 508
 		table "chargen.races"
 		var currentChargenRace
 		scrollbar	'rgdscrl1'
@@ -33516,7 +34260,7 @@ menu
 			"
 		rowheight dynamic
 		hidehighlight
-		area  305 140 200 510
+		area  305 142 200 508
 		table "chargen.class"
 		var currentChargenClass
 		scrollbar 'rgdscrl1'
@@ -33556,7 +34300,7 @@ menu
 		scrollbar 'rgdscrl1'
 		rowheight dynamic
 		hidehighlight
-		area 510 140 200 510
+		area 510 142 200 508
 		table "chargen.kit"
 		var currentChargenKit
 	}
@@ -33585,7 +34329,7 @@ menu
 			"
 		rowheight dynamic
 		hidehighlight
-		area 715 140 200 510
+		area 715 142 200 508
 		table "chargen.alignment"
 		var currentChargenAlignment
 		scrollbar 'rgdscrl1'
@@ -33602,7 +34346,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -33612,7 +34357,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -33762,6 +34508,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg1
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -33769,21 +34516,42 @@ menu
 		area	597 0 768 768
 		bam rgdbccg1
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
 		area 146 421 334 54
 		bam 'rgdcgen1'
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
+	
 	label
 	{
-		area 146 36 1074 44
-		text "ABILITIES_TITLE"
-		--text lua "18 - chargen.ability[1].roll"
-		--text lua "chargen.class[currentChargenClass].id"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString('ABILITIES_TITLE')"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
+	}
+	list
+	{
+		column
+		{
+			width 100
+			label
+			{
+				area 0 0 -1 -1
+				bam rgdslct
+				sequence lua "RgUISkin*2"
+				ScaleToClip
+			}
+		}
+		rowheight 54
+		hidehighlight
+		area 105 96 386 325
+		table "chargen.ability"
 	}
 	list
 	{
@@ -33919,7 +34687,8 @@ menu
 	button
 	{
 		area 138 482 346 53
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "rgRerollButtonName()"
 		text style "button"
@@ -33941,7 +34710,8 @@ menu
 	button
 	{
 		area 138 535 346 53
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "STORE_BUTTON"
 		text style "button"
@@ -33950,7 +34720,8 @@ menu
 	button
 	{
 		area 138 588 346 53
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "RECALL_BUTTON"
 		text style "button"
@@ -34027,7 +34798,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -34037,7 +34809,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -34120,6 +34893,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg2
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -34127,13 +34901,17 @@ menu
 		area	597 0 768 768
 		bam rgdbccg2
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
+	
 	label
 	{
-		area 146 36 1074 44
+		area		480 32 405 52
 		text lua "getProficienciesTitle()"
-		text style "button"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	label
 	{
@@ -34400,7 +35178,8 @@ menu
 	{
 		enabled "chargen.levelingUp and (rgGameEngine == 2 or rgGameEngine == 4)"
 		area 524 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "HIGH_LEVEL_ABILITIES_BUTTON"
 		text style	"button"
@@ -34416,7 +35195,8 @@ menu
 		name "chargenProfBackButton"
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -34428,7 +35208,8 @@ menu
 		name "chargenProfDoneButton"
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -34802,7 +35583,7 @@ menu
 		area		0 0 500 88
 		text lua "rgString('PROF_SLOTS_LABEL') .. ': ' .. chargen.extraProficiencySlots"
 		text style "button"
-		bam		rgdmbut1
+		bam		rgdmbut2
 		sequence lua "RgUISkin"
 		scaleToClip
 		frame lua "rgLvlUpTabFrame(0)"
@@ -34814,7 +35595,7 @@ menu
 		area		0 602 500 88
 		text lua "rgString('SKILLS_LABEL') .. ': ' .. chargen.extraSkillPoints"
 		text style "button"
-		bam		rgdmbut1
+		bam		rgdmbut2
 		sequence lua "RgUISkin"
 		frame lua "rgLvlUpTabFrame(1)"
 		clickable lua "#chargen.thief_skill > 0"
@@ -35363,7 +36144,8 @@ menu
 		name "rgdlvlInfoButt"
 		enabled "chargen.levelingUp"
 		area 986 602 379 88
-		bam rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "INFORMATION_BUTTON"
 		text style "button"
@@ -35379,7 +36161,8 @@ menu
 		name "rgdlvlInfoButt1"
 		enabled "chargen.levelingUp"
 		area 986 0 379 88
-		bam rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "characters[currentID].name .. ', ' .. characters[currentID].class"
 		text style "button"
@@ -35394,7 +36177,8 @@ menu
 		name "rgdlvlBackButt"
 		on escape
 		area 390 698 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -35406,7 +36190,8 @@ menu
 		name "rgdlvlDoneButt"
 		on return
 		area 730 698 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -35422,7 +36207,8 @@ menu
 		name "rgdlvlHlaButt"
 		enabled "rgIsIwdHlaEnabled"
 		area 524 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "HIGH_LEVEL_ABILITIES_BUTTON"
 		text style	"button"
@@ -35762,6 +36548,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccgm
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -35769,16 +36556,17 @@ menu
 		area	597 0 768 768
 		bam rgdbccgm
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
+	
 	label
 	{
-		area		144 36 1078 46 
-		ScaleToClip
-		text lua "t(chargen.title) .. ': ' .. t('LEVEL_LABEL') .. ' ' .. chargen.currentSpellLevelChoice"
+		area		480 32 405 52
+		text lua "rgString(t(chargen.title) .. ': ' .. t('LEVEL_LABEL') .. ' ' .. chargen.currentSpellLevelChoice)"
 		text style 'rg_trajan'
 		text color '$'
-		text align center center
+		align center center
 	}
 	label
 	{
@@ -35999,10 +36787,11 @@ menu
 	text
 	{
 		area		696 156 36 44
-		bam		rgdwhl1
-		text '1'
+		text lua "rgGetSpellLvlButtText('1')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
+		--text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36013,10 +36802,11 @@ menu
 	text
 	{
 		area		696 210 36 44
-		bam		rgdwhl1
-		text '2'
+		text lua "rgGetSpellLvlButtText('2')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
+		--text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36027,10 +36817,10 @@ menu
 	text
 	{
 		area		696 264 36 44
-		bam		rgdwhl1
-		text '3'
+		text lua "rgGetSpellLvlButtText('3')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36041,10 +36831,10 @@ menu
 	text
 	{
 		area		696 318 36 44
-		bam		rgdwhl1
-		text '4'
+		text lua "rgGetSpellLvlButtText('4')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36055,10 +36845,10 @@ menu
 	text
 	{
 		area		696 372 36 44
-		bam		rgdwhl1
-		text '5'
+		text lua "rgGetSpellLvlButtText('5')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36069,10 +36859,10 @@ menu
 	text
 	{
 		area		696 426 36 44
-		bam		rgdwhl1
-		text '6'
+		text lua "rgGetSpellLvlButtText('6')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36083,10 +36873,10 @@ menu
 	text
 	{
 		area		696 480 36 44
-		bam		rgdwhl1
-		text '7'
+		text lua "rgGetSpellLvlButtText('7')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36097,10 +36887,10 @@ menu
 	text
 	{
 		area		696 534 36 44
-		bam		rgdwhl1
-		text '8'
+		text lua "rgGetSpellLvlButtText('8')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36111,10 +36901,10 @@ menu
 	text
 	{
 		area		696 588 36 44
-		bam		rgdwhl1
-		text '9'
+		text lua "rgGetSpellLvlButtText('9')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36180,7 +36970,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -36196,7 +36987,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "nextOrDone()"
 		text style "button"
@@ -36346,6 +37138,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccgm
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -36353,16 +37146,17 @@ menu
 		area	597 0 768 768
 		bam rgdbccgm
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
+	
 	label
 	{
-		area		144 36 1078 46 
-		ScaleToClip
-		text lua "chargen.title"
+		area		480 32 405 52
+		text lua "rgString(chargen.title)"
 		text style 'rg_trajan'
 		text color '$'
-		text align center center
+		align center center
 	}
 	label
 	{
@@ -36523,10 +37317,10 @@ menu
 	text
 	{
 		area		696 156 36 44
-		bam		rgdwhl1
-		text '1'
+		text lua "rgGetSpellLvlButtText('1')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36537,10 +37331,10 @@ menu
 	text
 	{
 		area		696 210 36 44
-		bam		rgdwhl1
-		text '2'
+		text lua "rgGetSpellLvlButtText('2')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36551,10 +37345,10 @@ menu
 	text
 	{
 		area		696 264 36 44
-		bam		rgdwhl1
-		text '3'
+		text lua "rgGetSpellLvlButtText('3')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36565,10 +37359,10 @@ menu
 	text
 	{
 		area		696 318 36 44
-		bam		rgdwhl1
-		text '4'
+		text lua "rgGetSpellLvlButtText('4')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36579,10 +37373,10 @@ menu
 	text
 	{
 		area		696 372 36 44
-		bam		rgdwhl1
-		text '5'
+		text lua "rgGetSpellLvlButtText('5')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36593,10 +37387,10 @@ menu
 	text
 	{
 		area		696 426 36 44
-		bam		rgdwhl1
-		text '6'
+		text lua "rgGetSpellLvlButtText('6')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36607,10 +37401,10 @@ menu
 	text
 	{
 		area		696 480 36 44
-		bam		rgdwhl1
-		text '7'
+		text lua "rgGetSpellLvlButtText('7')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36621,10 +37415,10 @@ menu
 	text
 	{
 		area		696 534 36 44
-		bam		rgdwhl1
-		text '8'
+		text lua "rgGetSpellLvlButtText('8')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36635,10 +37429,10 @@ menu
 	text
 	{
 		area		696 588 36 44
-		bam		rgdwhl1
-		text '9'
+		text lua "rgGetSpellLvlButtText('9')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -36703,7 +37497,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -36718,7 +37513,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "nextOrDone()"
 		text style "button"
@@ -36849,6 +37645,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccgp
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -36856,16 +37653,16 @@ menu
 		area	597 0 768 768
 		bam rgdbccgp
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
-		area		144 36 1078 46 
-		ScaleToClip
-		text lua "chargen.title"
+		area		480 32 405 52
+		text lua "rgString(chargen.title)"
 		text style 'rg_trajan'
 		text color '$'
-		text align center center
+		align center center
 	}
 	label
 	{
@@ -37026,10 +37823,10 @@ menu
 	text
 	{
 		area		696 156 36 44
-		bam		rgdwhl1
-		text '1'
+		text lua "rgGetSpellLvlButtText('1')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -37040,10 +37837,10 @@ menu
 	text
 	{
 		area		696 210 36 44
-		bam		rgdwhl1
-		text '2'
+		text lua "rgGetSpellLvlButtText('2')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -37054,10 +37851,10 @@ menu
 	text
 	{
 		area		696 264 36 44
-		bam		rgdwhl1
-		text '3'
+		text lua "rgGetSpellLvlButtText('3')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -37068,10 +37865,10 @@ menu
 	text
 	{
 		area		696 318 36 44
-		bam		rgdwhl1
-		text '4'
+		text lua "rgGetSpellLvlButtText('4')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -37082,10 +37879,10 @@ menu
 	text
 	{
 		area		696 372 36 44
-		bam		rgdwhl1
-		text '5'
+		text lua "rgGetSpellLvlButtText('5')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -37096,10 +37893,10 @@ menu
 	text
 	{
 		area		696 426 36 44
-		bam		rgdwhl1
-		text '6'
+		text lua "rgGetSpellLvlButtText('6')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -37110,10 +37907,10 @@ menu
 	text
 	{
 		area		696 480 36 44
-		bam		rgdwhl1
-		text '7'
+		text lua "rgGetSpellLvlButtText('7')"
+		bam	lua	"rgGetSpellLvlButtBam()"
+		opacity lua "rgGetSpellLvlButtOpacity()"
 		text style 'rg_trajan'
-		text color '5'
 		text point 14
 		ScaleToClip
 		align left top
@@ -37293,7 +38090,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -37308,7 +38106,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "nextOrDone()"
 		text style "button"
@@ -37451,6 +38250,13 @@ menu
 `
 currentChargenCustomSound = 0
 rgCustomSound = 0
+function rgGetSoundListHighlight(row,var)
+	if(row == var) then
+		return 1
+	else
+		return 0
+	end
+end
 
 `
 menu
@@ -37491,6 +38297,7 @@ menu
 		area	0 0 768 768
 		bam lua "rgGetAppearanceBackground()"
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -37498,13 +38305,17 @@ menu
 		area	597 0 768 768
 		bam lua "rgGetAppearanceBackground()"
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
+	
 	label
 	{
-		area 146 36 1074 44
-		text "APPEARANCE_LABEL"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString('APPEARANCE_LABEL')"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	
 	list
@@ -37516,7 +38327,7 @@ menu
 			{
 				area 0 0 -1 -1
 				bam rgdslct
-				sequence lua "rgGetSelectedHighlight(rowNumber, currentChargenCustomSound)"
+				sequence lua "rgGetSoundListHighlight(rowNumber, currentChargenCustomSound)"
 				ScaleToClip
 				text lua "getSoundStringRef(rowNumber, chargen.customSound)"
 				text style	"normal_parchment"
@@ -37704,7 +38515,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "CANCEL_BUTTON"
 		text style "button"
@@ -37719,7 +38531,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -37830,6 +38643,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg2
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -37837,13 +38651,17 @@ menu
 		area	597 0 768 768
 		bam rgdbccg2
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
+	
 	label
 	{
-		area 146 36 1074 44
-		text "SKILLS_LABEL"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString('SKILLS_LABEL')"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	label
 	{
@@ -37897,7 +38715,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -37907,7 +38726,8 @@ menu
 	{
 		on return
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -37946,7 +38766,8 @@ menu
 	{
 		on escape
 		area 235 75 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		pad 10 8 10 8
 		text "BACK_BUTTON"
@@ -37957,7 +38778,8 @@ menu
 	{
 		on return
 		area 235 150 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		pad 10 8 10 8
 		text "DONE_BUTTON"
@@ -37976,6 +38798,7 @@ menu
 	{
 		area 0 0 300 300
 		bam rgdpopup
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -38019,6 +38842,7 @@ menu
 	{
 		area		110 186 80 80
 		bam 		'rgdcgen3'
+		sequence lua "RgUISkin"
 		scaleToClip
 		action "
 			if toggleMale == 1 then
@@ -38045,6 +38869,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg1
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -38052,13 +38877,17 @@ menu
 		area	597 0 768 768
 		bam rgdbccg1
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
+	
 	label
 	{
-		area 146 36 1074 44
-		text "BIOGRAPHY_TITLE"
-		text style "button"
+		area		480 32 405 52
+		text lua "rgString('BIOGRAPHY_TITLE')"
+		text style 'rg_trajan'
+		text color '$'
+		align center center
 	}
 	label
 	{
@@ -38077,7 +38906,8 @@ menu
 	{
 		on escape
 		area 200 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BACK_BUTTON"
 		text style "button"
@@ -38087,7 +38917,8 @@ menu
 	{
 		on return
 		area 858 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -38096,7 +38927,8 @@ menu
 	button
 	{
 		area 524 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "CLEAR_BUTTON"
 		text style	"button"
@@ -38130,6 +38962,7 @@ menu
 		area 0 0 768 768
 		bam 'rgdbcsml'
 		scaleToClip
+		sequence lua "RgUISkin"
 	}
 	list
 	{
@@ -38175,6 +39008,7 @@ menu
 		area 152 670 222 50
 		bam rgdbuts1
 		scaleToClip
+		sequence lua "RgUISkin"
 		text "BACK_BUTTON"
 		text style "button"
 		action "Infinity_PopMenu('CHARGEN_IMPORT'); createCharScreen:OnCancelButtonClick()"
@@ -38183,10 +39017,10 @@ menu
 	{
 		on return
 		area 394 670 222 50
-		
 		bam rgdbuts1
 		scaleToClip
 		text lua "NextOrDone()"
+		sequence lua "RgUISkin"
 		text style "button"
 		clickable lua "list_GUICG_20_2_idx ~= 0"
 		action "Infinity_PopMenu('CHARGEN_IMPORT'); createCharScreen:OnDoneButtonClick()"
@@ -38289,7 +39123,7 @@ menu
 	label 
 	{
 		area 0 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 0
@@ -38297,7 +39131,7 @@ menu
 	label 
 	{
 		area 597 0 768 768
-		bam 'rgdbcset'
+		bam 'rgdbcres'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		frame 1
@@ -38310,11 +39144,17 @@ menu
 		text color '$'
 		align center center
 	}
+	label
+	{
+		area	102 102 223 344
+		bam rgdport7
+		sequence lua "RgUISkin"
+		scaleToClip
+	}
 	button
 	{
 		area		108 108 210 331
 		bitmap		lua "characters[currentID].portrait"
-					
 	} 
 	label
 	{
@@ -38323,24 +39163,16 @@ menu
 		scaleToClip
 	}
 	
-  
-					  
-							  
-					 
-					  
-  
 	button
 	{
 		area		102 504 222 50
 		text		"CLASS_BUTTON"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() == const.STEP_DUALCLASS_CLASS"
 		action 
-					 
-					 
-		
 		"
 			createCharScreen:OnMenuButtonClick()
 		"
@@ -38350,13 +39182,11 @@ menu
 		area		102 558 222 50
 		text		"SKILLS_BUTTON"
 		text style "button"
-		bam		rgdbuts1
+		bam		rgdbuts3
+		sequence lua "RgUISkin"
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() == const.STEP_DUALCLASS_PROFICIENCIES"
 		action 
-					  
-					 
-		
 		"
 			createCharScreen:OnMenuButtonClick()
 		"
@@ -38441,6 +39271,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg1
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -38448,6 +39279,7 @@ menu
 		area	597 0 768 768
 		bam rgdbccg1
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -38507,7 +39339,8 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text 15416
 		text style "button"
@@ -38529,7 +39362,8 @@ menu
 	button
 	{
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text lua "t('VENTURE_FORTH')"
 		text style "button"
@@ -38543,7 +39377,8 @@ menu
 	button
 	{
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdmbut2
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text 11973
 		text style "button"
@@ -38605,21 +39440,24 @@ menu
 	label
 	{
 		area	0 0 768 768
-		bam rgdbcsto
+		bam rgdbccg1
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
 		area	597 0 768 768
-		bam rgdbcsto
+		bam rgdbccg1
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
 	{
 		area 664 100 592 552
 		bam RGDSTBC1
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -38737,8 +39575,9 @@ menu
 	button
 	{
 		area 524 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
 		ScaleToClip
+		sequence lua "RgUISkin"
 		text "DONE_BUTTON"
 		text style "button"
 		clickable lua "createCharScreen:IsDoneButtonClickable()"
@@ -38860,7 +39699,7 @@ menu
 	button
 	{
 		area 528 660 310 70
-		bam		rgdmbut2
+		bam		rgdbutm1
 		sequence lua "RgUISkin"
 		ScaleToClip
 		pad 10 8 10 8
@@ -38871,7 +39710,7 @@ menu
 	button
 	{
 		area 100 660 428 70
-		bam		rgdmbut2
+		bam		rgdbutm1
 		sequence lua "RgUISkin"
 		ScaleToClip
 		pad 10 8 10 8
@@ -38882,8 +39721,19 @@ menu
 	
 	button
 	{
+		enabled "RgUISkin < 3"
 		on escape
 		area 1290 7 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action "moviesScreen:OnDoneButtonClick()"
+	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
 		bam rgdbtcls
 		sequence lua "RgUISkin"
 		ScaleToClip
@@ -39226,6 +40076,7 @@ menu
 			{
 				area		5 0 -1 58
 				bam 'rgdlobc5'
+				sequence lua "RgUISkin"
 				scaleToClip
 				frame lua "rgGetSelectedHighlight(rowNumber,selectedMp)"
 				align		left top
@@ -39482,9 +40333,10 @@ menu
 	button
 	{
 		area 235 75 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		clickable false
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -39502,11 +40354,12 @@ menu
 	button
 	{
 		area 235 150 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('DONE_BUTTON')"
+		sequence lua "RgUISkin"
 		action
 		"
 			Infinity_PopMenu();
@@ -39517,6 +40370,7 @@ menu
 		area 0 0 300 300
 		bam rgdpopup
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -39541,9 +40395,10 @@ menu
 	button
 	{
 		area 235 38 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		clickable false
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -39562,11 +40417,12 @@ menu
 	{
 		on escape
 		area 235 113 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('CANCEL_BUTTON')"
+		sequence lua "RgUISkin"
 		action
 		"
 			Infinity_PopMenu();
@@ -39576,12 +40432,13 @@ menu
 	button
 	{
 		area 235 188 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('DONE_BUTTON')"
 		clickable lua "connectionScreen:IsValidAddress(connectionTCPIPEdit)"
+		sequence lua "RgUISkin"
 		action
 		"
 			Infinity_PopMenu();
@@ -39593,6 +40450,7 @@ menu
 		area 0 0 300 300
 		bam rgdpopup
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -39669,6 +40527,7 @@ menu
 		area 0 0 666 666
 		bam 'rgdbcsml'
 		scaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -39794,7 +40653,7 @@ menu
 	button
 	{
 		clickable lua 	"connectionCreateGameClickable()"
-		bam 'RGDMBUT1'
+		bam 'RGDMBUT2'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		area 130 548 409 75
@@ -39823,7 +40682,7 @@ menu
 	
 	button 
 	{
-		bam 'RGDMBUT1'
+		bam 'RGDMBUT2'
 		sequence lua "RgUISkin"
 		ScaleToClip
 		area 130 473 409 75
@@ -39847,6 +40706,7 @@ menu
 		area 0 0 666 666
 		bam 'rgdbcsml'
 		scaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -39940,9 +40800,10 @@ menu
 	button
 	{
 		area 235 38 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		clickable false
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -39977,11 +40838,12 @@ menu
 	{
 		on escape
 		area 235 113 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('BACK_BUTTON')"
+		sequence lua "RgUISkin"
 		action
 		"
 			Infinity_PopMenu()
@@ -39990,12 +40852,13 @@ menu
 	button
 	{
 		area 235 188 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('DONE_BUTTON')"
 		clickable lua "connectionPasswordPasswordEdit ~='' and string.find(connectionPasswordPasswordEdit, '%S') ~= nil"
+		sequence lua "RgUISkin"
 		action
 		"
 			Infinity_PopMenu(); 
@@ -40009,6 +40872,7 @@ menu
 		area 0 0 300 300
 		bam rgdpopup
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -40038,9 +40902,10 @@ menu
 	button
 	{
 		area 235 38 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		clickable false
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -40083,11 +40948,12 @@ menu
 	{
 		on escape
 		area 235 113 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('BACK_BUTTON')"
+		sequence lua "RgUISkin"
 		action
 		"
 			Infinity_PopMenu()
@@ -40096,11 +40962,12 @@ menu
 	button
 	{
 		area 235 188 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('DONE_BUTTON')"
+		sequence lua "RgUISkin"
 		clickable lua "connectionNameNameEdit ~='' and string.find(connectionNameNameEdit, '%S') ~= nil"
 		action
 		"
@@ -40124,6 +40991,7 @@ menu
 		area 0 0 300 300
 		bam rgdpopup
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -40153,6 +41021,7 @@ menu
 		area 0 0 666 666
 		bam 'rgdbcsml'
 		scaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -40213,8 +41082,8 @@ menu
 	button 
 	{
 		clickable 	lua "connectionPlayerNameEdit ~= ''"
-		bam 'RGDMBUT1'
-		sequence lua "rgUISkin"
+		bam 'RGDMBUT2'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 130 548 409 75
 		pad 10 8 10 8
@@ -40239,11 +41108,12 @@ menu
 	button
 	{
 		area 235 112 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('CANCEL_BUTTON')"
+		sequence lua "RgUISkin"
 		on		escape
 		action 
 		"
@@ -40255,6 +41125,7 @@ menu
 		area 0 0 300 300
 		bam rgdpopup
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -40275,11 +41146,12 @@ menu
 	button
 	{
 		area 235 112 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('CANCEL_BUTTON')"
+		sequence lua "RgUISkin"
 		on		escape
 		action 
 		"
@@ -40291,6 +41163,7 @@ menu
 		area 0 0 300 300
 		bam rgdpopup
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -40312,11 +41185,12 @@ menu
 	{
 		on escape
 		area 235 75 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('CANCEL_BUTTON')"
+		sequence lua "RgUISkin"
 		action 
 		"
 			Infinity_PopMenu('CONNECTION_WAITING_FOR_PROVIDER')
@@ -40328,11 +41202,12 @@ menu
 	{
 		on		return
 		area 235 150 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('CONNECTION_LOCAL_NETWORK_GAME')"
+		sequence lua "RgUISkin"
 		action 
 		"
 			Infinity_PopMenu('CONNECTION_WAITING_FOR_PROVIDER')
@@ -40344,6 +41219,7 @@ menu
 		area 0 0 300 300
 		bam rgdpopup
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -40365,11 +41241,12 @@ menu
 	button
 	{
 		area 235 112 400 75
-		bam		rgdmbut1
+		bam		rgdmbut2
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('CANCEL_BUTTON')"
+		sequence lua "RgUISkin"
 		on		escape
 		action 
 		"
@@ -40382,6 +41259,7 @@ menu
 		area 0 0 300 300
 		bam rgdpopup
 		ScaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -41189,18 +42067,18 @@ menu
 	--}
 	label
 	{
-		area	0 0 768 768
+		area	0 0 1365 768
 		bam rgdbcmpl
-		frame 0
 		scaleToClip
+		sequence lua "RgUISkin"
 	}
-	label
-	{
-		area	597 0 768 768
-		bam rgdbcmpl
-		frame 1
-		scaleToClip
-	}
+	--label
+	--{
+	--	area	597 0 768 768
+	--	bam rgdbcmpl
+	--	frame 1
+	--	scaleToClip
+	--}
 	label
 	{
 		area 146 36 1074 44
@@ -41276,26 +42154,26 @@ menu
 	}
 	
 	
-	button { area 570 104 320 70 bam rgdmbut1 ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[1]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(1)" }
-	button { area 570 198 320 70 bam rgdmbut1 ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[2]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(2)" }
-	button { area 570 292 320 70 bam rgdmbut1 ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[3]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(3)" }
-	button { area 570 386 320 70 bam rgdmbut1 ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[4]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(4)" }
-	button { area 570 480 320 70 bam rgdmbut1 ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[5]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(5)" }
-	button { area 570 574 320 70 bam rgdmbut1 ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[6]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(6)" }
+	button { area 570 104 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[1]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(1)" }
+	button { area 570 198 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[2]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(2)" }
+	button { area 570 292 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[3]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(3)" }
+	button { area 570 386 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[4]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(4)" }
+	button { area 570 480 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[5]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(5)" }
+	button { area 570 574 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "getMultiplayerPlayerName(mpaCharacters[6]['player'],false,true)" text style "rg_trajan" text align center center text point 12 action  "rgPlayerButtonAction(6)" }
 	
-	button { area 910 104 320 70 bam rgdmbut1 ScaleToClip text lua "rgGetCharacterSlotName(1)" clickable lua "not shouldGreyscaleEditButton(1)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(1)" }
-	button { area 910 198 320 70 bam rgdmbut1 ScaleToClip text lua "rgGetCharacterSlotName(2)" clickable lua "not shouldGreyscaleEditButton(2)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(2)" }
-	button { area 910 292 320 70 bam rgdmbut1 ScaleToClip text lua "rgGetCharacterSlotName(3)" clickable lua "not shouldGreyscaleEditButton(3)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(3)" }
-	button { area 910 386 320 70 bam rgdmbut1 ScaleToClip text lua "rgGetCharacterSlotName(4)" clickable lua "not shouldGreyscaleEditButton(4)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(4)" }
-	button { area 910 480 320 70 bam rgdmbut1 ScaleToClip text lua "rgGetCharacterSlotName(5)" clickable lua "not shouldGreyscaleEditButton(5)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(5)" }
-	button { area 910 574 320 70 bam rgdmbut1 ScaleToClip text lua "rgGetCharacterSlotName(6)" clickable lua "not shouldGreyscaleEditButton(6)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(6)" }
+	button { area 910 104 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "rgGetCharacterSlotName(1)" clickable lua "not shouldGreyscaleEditButton(1)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(1)" }
+	button { area 910 198 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "rgGetCharacterSlotName(2)" clickable lua "not shouldGreyscaleEditButton(2)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(2)" }
+	button { area 910 292 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "rgGetCharacterSlotName(3)" clickable lua "not shouldGreyscaleEditButton(3)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(3)" }
+	button { area 910 386 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "rgGetCharacterSlotName(4)" clickable lua "not shouldGreyscaleEditButton(4)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(4)" }
+	button { area 910 480 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "rgGetCharacterSlotName(5)" clickable lua "not shouldGreyscaleEditButton(5)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(5)" }
+	button { area 910 574 320 70 bam rgdmbut2 sequence lua "RgUISkin" ScaleToClip text lua "rgGetCharacterSlotName(6)" clickable lua "not shouldGreyscaleEditButton(6)" text style "rg_trajan" text align center center text point 12 action  "rgCharacterButtonAction(6)" }
 	
-	label { area 868 91 64 93 bam rgdport2 align left top scaleToClip }
-	label { area 868 185 64 93 bam rgdport2 align left top scaleToClip }
-	label { area 868 279 64 93 bam rgdport2 align left top scaleToClip }
-	label { area 868 373 64 93 bam rgdport2 align left top scaleToClip }
-	label { area 868 467 64 93 bam rgdport2 align left top scaleToClip }
-	label { area 868 561 64 93 bam rgdport2 align left top scaleToClip }
+	label { area 868 91 64 93 bam rgdport2 sequence lua "RgUISkin" align left top scaleToClip }
+	label { area 868 185 64 93 bam rgdport2 sequence lua "RgUISkin" align left top scaleToClip }
+	label { area 868 279 64 93 bam rgdport2 sequence lua "RgUISkin" align left top scaleToClip }
+	label { area 868 373 64 93 bam rgdport2 sequence lua "RgUISkin" align left top scaleToClip }
+	label { area 868 467 64 93 bam rgdport2 sequence lua "RgUISkin" align left top scaleToClip }
+	label { area 868 561 64 93 bam rgdport2 sequence lua "RgUISkin" align left top scaleToClip }
 	
 	label { area 872 95 54 85 bitmap lua 'mpaCharacters[1]["portrait"]' align center center }
 	label { area 872 189 54 85 bitmap lua 'mpaCharacters[2]["portrait"]' align center center }
@@ -41304,12 +42182,12 @@ menu
 	label { area 872 471 54 85 bitmap lua 'mpaCharacters[5]["portrait"]' align center center }
 	label { area 872 565 54 85 bitmap lua 'mpaCharacters[6]["portrait"]' align center center }
 	
-	button { area 1233 120 40 40 bam 'rgdcheck' scaleToClip sequence lua "get4CheckFrame(1)" align left top tooltip lua "getMultiplayerReadyTooltip(1)" action "rgReadyButtonAction(1)" } --text lua "getMultiplayerCharacterReadyText(1)" text style "normal"
-	button { area 1233 214 40 40 bam 'rgdcheck' scaleToClip sequence lua "get4CheckFrame(2)" align left top tooltip lua "getMultiplayerReadyTooltip(2)" action "rgReadyButtonAction(2)" }
-	button { area 1233 308 40 40 bam 'rgdcheck' scaleToClip sequence lua "get4CheckFrame(3)" align left top tooltip lua "getMultiplayerReadyTooltip(3)" action "rgReadyButtonAction(3)" }
-	button { area 1233 402 40 40 bam 'rgdcheck' scaleToClip sequence lua "get4CheckFrame(4)" align left top tooltip lua "getMultiplayerReadyTooltip(4)" action "rgReadyButtonAction(4)" }
-	button { area 1233 496 40 40 bam 'rgdcheck' scaleToClip sequence lua "get4CheckFrame(5)" align left top tooltip lua "getMultiplayerReadyTooltip(5)" action "rgReadyButtonAction(5)" }
-	button { area 1233 590 40 40 bam 'rgdcheck' scaleToClip sequence lua "get4CheckFrame(6)" align left top tooltip lua "getMultiplayerReadyTooltip(6)" action "rgReadyButtonAction(6)" }
+	button { area 1233 120 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(1)" align left top tooltip lua "getMultiplayerReadyTooltip(1)" action "rgReadyButtonAction(1)" } --text lua "getMultiplayerCharacterReadyText(1)" text style "normal"
+	button { area 1233 214 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(2)" align left top tooltip lua "getMultiplayerReadyTooltip(2)" action "rgReadyButtonAction(2)" }
+	button { area 1233 308 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(3)" align left top tooltip lua "getMultiplayerReadyTooltip(3)" action "rgReadyButtonAction(3)" }
+	button { area 1233 402 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(4)" align left top tooltip lua "getMultiplayerReadyTooltip(4)" action "rgReadyButtonAction(4)" }
+	button { area 1233 496 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(5)" align left top tooltip lua "getMultiplayerReadyTooltip(5)" action "rgReadyButtonAction(5)" }
+	button { area 1233 590 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(6)" align left top tooltip lua "getMultiplayerReadyTooltip(6)" action "rgReadyButtonAction(6)" }
 	
 	
 	--list -- character list
@@ -41531,12 +42409,12 @@ menu
 	
 	
 	
-	label { area 101 336 461 51 bam "rgdmmbc1" scaleToClip align left top }
-	label { area 101 388 461 51 bam "rgdmmbc1" scaleToClip align left top }
-	label { area 101 440 461 51 bam "rgdmmbc1" scaleToClip align left top }
-	label { area 101 492 461 51 bam "rgdmmbc1" scaleToClip align left top }
-	label { area 101 544 461 51 bam "rgdmmbc1" scaleToClip align left top }
-	label { area 101 596 461 51 bam "rgdmmbc1" scaleToClip align left top }
+	label { area 101 336 461 51 bam "rgdmmbc1" sequence lua "RgUISkin" scaleToClip align left top }
+	label { area 101 388 461 51 bam "rgdmmbc1" sequence lua "RgUISkin" scaleToClip align left top }
+	label { area 101 440 461 51 bam "rgdmmbc1" sequence lua "RgUISkin" scaleToClip align left top }
+	label { area 101 492 461 51 bam "rgdmmbc1" sequence lua "RgUISkin" scaleToClip align left top }
+	label { area 101 544 461 51 bam "rgdmmbc1" sequence lua "RgUISkin" scaleToClip align left top }
+	label { area 101 596 461 51 bam "rgdmmbc1" sequence lua "RgUISkin" scaleToClip align left top }
 	
 	
 	label { area 154 336 195 51 text lua "getMultiplayerPlayerName(1, false, true)" text style "normal" align left center }
@@ -42416,11 +43294,12 @@ menu
 	{
 		enabled "multiplayerLocalPlayerID == 1"
 		area 524 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
 		ScaleToClip
 		text "MULTIPLAYER_GAME_OPTIONS_BUTTON"
 		text style	"button"
 		toggle "levelUpInfoToggle"
+		sequence lua "RgUISkin"
 		clickable lua "createCharScreen:IsHighLevelAbilitiesButtonClickable()"
 		action
 		"
@@ -42431,19 +43310,21 @@ menu
 	button
 	{
 		area 116 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
 		ScaleToClip
 		text "LOGOUT_BUTTON" -- Logout
 		text style "button"
+		sequence lua "RgUISkin"
 		action "multiplayerScreen:OnLogoutButtonClick()"
 	}
 	button
 	{
 		area 932 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
 		ScaleToClip
 		text "START_GAME_BUTTON" -- Done
 		text style "button"
+		sequence lua "RgUISkin"
 		clickable lua "multiplayer.donebuttonclickable"
 		enabled "not multiplayerFromInGame"
 		tooltip lua "getStartGameButtonTooltip()"
@@ -42453,7 +43334,8 @@ menu
 	{
 		on escape
 		area 932 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
+		sequence lua "RgUISkin"
 		ScaleToClip
 		text "DONE_BUTTON"
 		text style "button"
@@ -42550,6 +43432,7 @@ menu
 		area 0 0 666 666
 		bam 'rgdbcsml'
 		scaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -42807,6 +43690,7 @@ menu
 		area 0 0 666 666
 		bam 'rgdbcsml'
 		scaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -42937,8 +43821,8 @@ menu
 	button
 	{
 		on return
-		bam 'RGDMBUT1'
-		sequence lua "rgUISkin"
+		bam 'RGDMBUT2'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 130 548 409 75
 		pad 10 8 10 8
@@ -42968,8 +43852,8 @@ menu
 	button 
 	{
 		on escape
-		bam 'RGDMBUT1'
-		sequence lua "rgUISkin"
+		bam 'RGDMBUT2'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 130 473 409 75
 		pad 10 8 10 8
@@ -43011,6 +43895,7 @@ menu
 		area 0 0 666 666
 		bam 'rgdbcsml'
 		scaleToClip
+		sequence lua "RgUISkin"
 	}
 	label
 	{
@@ -43060,8 +43945,8 @@ menu
 	button
 	{
 		on return
-		bam 'RGDMBUT1'
-		sequence lua "rgUISkin"
+		bam 'RGDMBUT2'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 130 548 409 75
 		pad 10 8 10 8
@@ -43081,8 +43966,8 @@ menu
 	button 
 	{
 		on escape
-		bam 'RGDMBUT1'
-		sequence lua "rgUISkin"
+		bam 'RGDMBUT2'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		area 130 473 409 75
 		pad 10 8 10 8
@@ -44785,7 +45670,7 @@ function rgGetLibraryEntryTitle(text)
 	return str
 end
 function rgGetLibraryDescription(text)
-	str = string.gsub(text, t('RG_BESTIARY'), "")
+	str = string.gsub(text, t('RG_LIBRARY'), "")
 	
 	for i=1,#rgLibrary,1 do
 		if Infinity_FetchString(rgLibrary[i][1]) == str then 
@@ -48914,8 +49799,23 @@ menu
 	
 	button
 	{
+		enabled "RgUISkin < 3"
 		on escape
 		area 1290 7 42 42
+		bam rgdbtcls
+		sequence lua "RgUISkin"
+		ScaleToClip
+		action
+		"
+			Infinity_PopMenu('RG_UI_SETTINGS')
+			RgOptionsMode = 0
+		"
+	}
+	button
+	{
+		enabled "RgUISkin == 3"
+		on escape
+		area 1259 30 42 42
 		bam rgdbtcls
 		sequence lua "RgUISkin"
 		ScaleToClip
@@ -49024,11 +49924,13 @@ function rgSetMenubarArea()
 	Infinity_SetArea('rgmenubutton8',885,30,58,54)
 	--Infinity_SetArea('rgmenubutton9',1143,28,62,58)
 	if RgUISkin == 3 then
-			Infinity_SetArea('rgmenubutton9',1014,32,54,50)
-		else
-			Infinity_SetArea('rgmenubutton9',1147,32,54,50)
-		end
-	Infinity_SetArea('rgmenubuttclose',1290,7,42,42)
+		Infinity_SetArea('rgmenubutton9',1014,32,54,50)
+		Infinity_SetArea('rgmenubuttclose',1259,26,42,42)
+	else
+		Infinity_SetArea('rgmenubutton9',1147,32,54,50)
+		Infinity_SetArea('rgmenubuttclose',1290,7,42,42)
+	end
+	
 	if e:GetActiveEngine() == characterScreen then
 		Infinity_SetArea('flames4',615,10,70,76)
 	elseif e:GetActiveEngine() == journalScreen then
@@ -49048,7 +49950,7 @@ function rgSetMenubarArea()
 		Infinity_SetArea('rgmenubutton1',423,12-top,58,54)
 		Infinity_SetArea('rgmenubutton2',489,12-top,58,54)
 		Infinity_SetArea('rgmenubutton3',555,12-top,58,54)
-		Infinity_SetArea('rgmenubutton4',611,12-top,58,54)
+		Infinity_SetArea('rgmenubutton4',621,12-top,58,54)
 		Infinity_SetArea('rgmenubutton5',687,12-top,58,54)
 		Infinity_SetArea('rgmenubutton6',753,12-top,58,54)
 		Infinity_SetArea('rgmenubutton7',819,12-top,58,54)
@@ -49106,7 +50008,7 @@ menu
 	{
 		name 'rgmenubutton1'
 		area 421 28 62 58
-		bam lua "rgGetActionbarButtonBam()"
+		bam "rgdmenub"
 		sequence 0
 		frame lua "rgSelectedMenuButton(mapScreen)"
 		ScaleToClip
@@ -49125,7 +50027,7 @@ menu
 		on 'J'
 		name 'rgmenubutton2'
 		area 487 28 62 58
-		bam lua "rgGetActionbarButtonBam()"
+		bam "rgdmenub"
 		sequence 1
 		frame lua "rgSelectedMenuButton(journalScreen)"
 		ScaleToClip
@@ -49186,7 +50088,7 @@ menu
 		--on 'i'
 		name 'rgmenubutton3'
 		area 553 28 62 58
-		bam lua "rgGetActionbarButtonBam()"
+		bam "rgdmenub"
 		sequence 2
 		frame lua "rgSelectedMenuButton(inventoryScreen)"
 		ScaleToClip
@@ -49205,7 +50107,7 @@ menu
 		--on 'R'
 		name 'rgmenubutton4'
 		area 619 28 62 58
-		bam lua "rgGetActionbarButtonBam()"
+		bam "rgdmenub"
 		sequence 3
 		frame lua "rgSelectedMenuButton(characterScreen)"
 		ScaleToClip
@@ -49223,7 +50125,7 @@ menu
 	{
 		name 'rgmenubutton5'
 		area 685 28 62 58
-		bam lua "rgGetActionbarButtonBam()"
+		bam "rgdmenub"
 		sequence 4
 		frame lua "rgSelectedMenuButton(mageScreen)"
 		ScaleToClip
@@ -49241,7 +50143,7 @@ menu
 	{
 		name 'rgmenubutton6'
 		area 751 28 62 58
-		bam lua "rgGetActionbarButtonBam()"
+		bam "rgdmenub"
 		sequence 5
 		frame lua "rgSelectedMenuButton(priestScreen)"
 		ScaleToClip
@@ -49259,7 +50161,7 @@ menu
 	{
 		name 'rgmenubutton7'
 		area 817 28 62 58
-		bam lua "rgGetActionbarButtonBam()"
+		bam "rgdmenub"
 		sequence 6
 		frame lua "rgSelectedMenuButton(optionsScreen)"
 		ScaleToClip
@@ -49278,7 +50180,7 @@ menu
 		name 'rgmenubutton8'
 		area 883 28 62 58
 		--enabled "e:IsMultiplayer()"
-		bam lua "rgGetActionbarButtonBam()"
+		bam "rgdmenub"
 		sequence 7
 		frame lua "rgSelectedMenuButton(multiplayerScreen)"
 		ScaleToClip
@@ -49297,7 +50199,7 @@ menu
 		enabled "e:GetActiveEngine() ~= optionsScreen"
 		name 'rgmenubutton9'
 		area 1143 28 54 50
-		bam lua "rgGetActionbarButtonBam()"
+		bam "rgdmenub"
 		sequence 9
 		ScaleToClip
 		tooltip lua "getTooltipWithHotkey(31,rgGetGameEngineStringRef(11942,11942,11942,11942))"
@@ -50761,6 +51663,7 @@ menu
 		area	0 0 768 768
 		bam rgdbccg2
 		frame 0
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
@@ -50768,6 +51671,7 @@ menu
 		area	597 0 768 768
 		bam rgdbccg2
 		frame 1
+		sequence lua "RgUISkin"
 		scaleToClip
 	}
 	label
