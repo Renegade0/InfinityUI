@@ -1170,8 +1170,8 @@ function rgGetClassLevelString(num)
 		rgLevel = string.match(characters[currentID].classlevel.third.details, '%d.')
 		rgLevelXP = characters[currentID].classlevel.third.xp .. ' / ' .. characters[currentID].classlevel.third.nextLvlXp .. ' XP'
 	end
-    local rgClass1 = string.match(rgClass, ',.-[:：]')
-	local out = '^D' .. string.match(rgClass1, '[^,:：]+') .. ' (' .. string.match(rgLevel, '[^\n]+') .. ') - ^B' .. rgLevelXP
+    local rgClass1 = string.match(rgClass, ',.-:')
+	local out = '^D' .. string.match(rgClass1, '[^,:]+') .. ' (' .. string.match(rgLevel, '[^\n]+') .. ') - ^B' .. rgLevelXP
     return out
 end
 
@@ -1207,8 +1207,8 @@ function rgGetClassName(num)
 	else
 		rgClass = ',' .. characters[currentID].classlevel.third.details
 	end
-    local rgClass1 = string.match(rgClass, ',.-[:：]')
-	local out = string.match(rgClass1, '[^,:：]+')
+    local rgClass1 = string.match(rgClass, ',.-:')
+	local out = string.match(rgClass1, '[^,:]+')
 	
     return out
 end
