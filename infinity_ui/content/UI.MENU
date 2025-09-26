@@ -33185,10 +33185,12 @@ menu
 }
 `
 
+
 function rgGetPortraitList(gender)
+    
 	local genderM = 'MAN1L'
 	local genderF = 'WOMAN1L'
-	if rgGameEngine == 3 then
+    if rgGameEngine == 3 then
 		if gender == 'MAN1L' then
 			gender = 'DMC_L'
 		else
@@ -33197,45 +33199,55 @@ function rgGetPortraitList(gender)
 		genderM = 'DMC_L'
 		genderF = 'DFF_L'
 	end
-
-		while createCharScreen:IncCurrentPortrait() != nil do
-			local port = createCharScreen:GetCurrentPortrait()
-			local prefix = string.sub(port, 1, 2)
-			if gender == genderM and prefix ~= 'f#' then
-				table.insert(rgMalePortraitList, port)
-			elseif gender == genderF and prefix ~= 'm#' then
-				table.insert(rgFemalePortraitList, port)
-			else
-				table.insert(rgFemalePortraitList, port)
-				table.insert(rgMalePortraitList, port)
-			end
-		end
-end
-function rgGetCustomizedPortraitList()
-	genderM = 'MAN1L'
-	genderF = 'WOMAN1L'
-	if rgGameEngine == 3 then
-		if gender == 'MAN1L' then
-			gender = 'DMC_L'
-		else
-			gender = 'DFF_L'
-		end
-		genderM = 'DMC_L'
-		genderF = 'DFF_L'
-	end
-
-	local gender = createCharScreen:GetCurrentPortrait()
-	while createCharScreen:IncCurrentPortrait() != nil do
+	
+	local i = 1
+    while i > 0 do
 		local port = createCharScreen:GetCurrentPortrait()
 		local prefix = string.sub(port, 1, 2)
+		if port == gender and i > 1 then break end
+		if gender == genderM and prefix ~= 'f#' then
+			table.insert(rgMalePortraitList, port)
+		elseif gender == genderF and prefix ~= 'm#' then
+			table.insert(rgFemalePortraitList, port)
+		end
+		i = i + 1
+		createCharScreen:IncCurrentPortrait() --'MAN1L','WOMAN1L'
+		
+    end
+	--for index = 1, 100, 1 do
+	--	table.insert(rgMalePortraitList, createCharScreen:GetCurrentPortrait())
+    --    createCharScreen:IncCurrentPortrait()
+    --end
+end
+function rgGetCustomizedPortraitList()
+    
+	genderM = 'MAN1L'
+	genderF = 'WOMAN1L'
+    if rgGameEngine == 3 then
+		if gender == 'MAN1L' then
+			gender = 'DMC_L'
+		else
+			gender = 'DFF_L'
+		end
+		genderM = 'DMC_L'
+		genderF = 'DFF_L'
+	end
+	
+	local i = 1
+	local gender = createCharScreen:GetCurrentPortrait()
+    while i > 0 do
+		local port = createCharScreen:GetCurrentPortrait()
+		local prefix = string.sub(port, 1, 2)
+		if port == gender and i > 1 then break end
 		if gender == genderM and prefix ~= 'f#' then
 			table.insert(rgCustomizedPortraitList, port)
 		elseif gender == genderF and prefix ~= 'm#' then
 			table.insert(rgCustomizedPortraitList, port)
-		else
-			table.insert(rgCustomizedPortraitList, port)
 		end
-	end
+		i = i + 1
+		createCharScreen:IncCurrentPortrait() --'MAN1L','WOMAN1L'
+		
+    end
 end
 function rgGetSelectedPortrait(num)
     if currentPortrait == num then
@@ -33263,7 +33275,7 @@ menu
 	if CurrentlyInGame() then
 		currentCusPortrait = 1
 		rgGetCustomizedPortraitList()
-		popSidebars()
+		popSidebars()   
 	else
 		if rgGenderStep == 1 then
 			rgMalePortraitList = {}
@@ -33271,7 +33283,7 @@ menu
 			currentPortrait = 1
 			rgGenderStep = 2
 			createCharScreen:OnCancelButtonClick()
-		elseif rgGenderStep == 3 then
+		elseif 	rgGenderStep == 3 then
 				local i = 1
 				local curr = ''
 				if toggleMale == 1 then
