@@ -731,8 +731,7 @@ function updateAttrTable()
 	listXPdruid = { 0,2000,4000,7500,12500,20000,35000,60000,90000,125000,200000,300000,750000,1500000,3000000,3150000,3300000,3450000,3600000,3750000,3900000,4150000,4400000,4700000,5000000,5500000,6000000,6500000,7000000,7500000,8000000,8500000,9000000,9500000,10000000,10500000,11000000,11500000,12000000,12500000 }
 	listXProgue = { 0,1250,2500,5000,10000,20000,40000,70000,110000,160000,220000,440000,660000,880000,1100000,1320000,1540000,1760000,1980000,2200000,2420000,2640000,2860000,3080000,3300000,3520000,3740000,3960000,4180000,4400000,4620000,4840000,5060000,5280000,5500000,5720000,5940000,6160000,6380000,6600000 }
 	
-	if uiTranslationFile ~= "zh_CN" then
-	
+		
 		if rgFetchMageClassString(1) == true then
 			listClassXPs1 = listXPmage
 		elseif rgFetchFighterClassString(1) == true then
@@ -820,7 +819,7 @@ function updateAttrTable()
 			table.insert(listClassLevels, { rgGetClassLevelString(3), currLvlPercentage3 })
 		end
 	
-	end
+	
 
 	listItems = { }
 	listTest = { }
@@ -1832,7 +1831,7 @@ menu
 		bam rgdrcbar
 		ScaleToClip
 		sequence 1
-		enabled "characterViewable and characters[currentID].classlevel.third == nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1841,7 +1840,7 @@ menu
 		bam rgdrcbar
 		ScaleToClip
 		sequence 1
-		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third == nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1853,7 +1852,7 @@ menu
 		--greyscale	0 --display greyscale or not, number 0-1
 		--progressbar color	128 0 0 255	 --color when percentage != 100
 		--progressbar full	128 0 0 255	 --color when percentage == 100
-		enabled "characterViewable and characters[currentID].classlevel.third == nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1861,7 +1860,7 @@ menu
 		area		362 690 314 5
 		bam rgdrcbar
 		ScaleToClip
-		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third == nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third == nil"
 	}
 	label
 	{
@@ -1909,7 +1908,7 @@ menu
 		bam rgdrcbar
 		ScaleToClip
 		sequence 1
-		enabled "characterViewable and characters[currentID].classlevel.third ~= nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil"
 	}
 	label
 	{
@@ -1918,7 +1917,7 @@ menu
 		bam rgdrcbar
 		ScaleToClip
 		sequence 1
-		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third ~= nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third ~= nil"
 	}
 	label
 	{
@@ -1927,7 +1926,7 @@ menu
 		bam rgdrcbar
 		ScaleToClip
 		sequence 1
-		enabled "characterViewable and characters[currentID].classlevel.third ~= nil and characters[currentID].classlevel.third ~= nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil and characters[currentID].classlevel.third ~= nil"
 	}
 	label
 	{
@@ -1935,7 +1934,7 @@ menu
 		area		362 624 414 5
 		bam rgdrcbar
 		ScaleToClip
-		enabled "characterViewable and characters[currentID].classlevel.third ~= nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil"
 	}
 	label
 	{
@@ -1943,7 +1942,7 @@ menu
 		area		362 664 314 5
 		bam rgdrcbar
 		ScaleToClip
-		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third ~= nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.second ~= nil and characters[currentID].classlevel.third ~= nil"
 	}
 	label
 	{
@@ -1951,7 +1950,7 @@ menu
 		area		362 704 414 5
 		bam rgdrcbar
 		ScaleToClip
-		enabled "characterViewable and characters[currentID].classlevel.third ~= nil and characters[currentID].classlevel.third ~= nil and uiTranslationFile ~= 'zh_CN'"
+		enabled "characterViewable and characters[currentID].classlevel.third ~= nil and characters[currentID].classlevel.third ~= nil"
 	}
 	
 	
