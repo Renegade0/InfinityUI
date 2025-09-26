@@ -20247,7 +20247,7 @@ menu
 		area 0 0 0 0
 		bam 'rgdabcg1'
 		frame 0
-		--sequence lua "RgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -20256,7 +20256,7 @@ menu
 		area 0 0 0 0
 		bam 'rgdabcg1'
 		frame 1
-		--sequence lua "RgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -20266,7 +20266,7 @@ menu
 		area 0 0 0 0
 		bam 'rgdabcg1'
 		frame 1
-		--sequence lua "RgUISkin"
+		sequence lua "RgUISkin"
 		ScaleToClip
 	}
 	label
@@ -49717,6 +49717,7 @@ menu
 	
 	text
 	{
+		enabled "EEex_Active"
 		area 408 614 340 46
 		text "RG_SET_EEEX_PCEFF"
 		text style	"normal"
@@ -49729,6 +49730,7 @@ menu
 	}
 	button
 	{
+		enabled "EEex_Active"
 		area		758 622 32 32
 		bam			rgdrnbut
 		scaleToClip
@@ -49739,6 +49741,7 @@ menu
 	
 	text
 	{
+		enabled "EEex_Active"
 		area 408 660 340 46
 		text "RG_SET_EEEX_NPCBAR"
 		text style	"normal"
@@ -49751,12 +49754,14 @@ menu
 	}
 	label
 	{
+		enabled "EEex_Active"
 		enabled "RgUISkin == 1"
 		area		758 668 32 32
 		fill            0 0 0 200
 	}
 	edit
 	{
+		enabled "EEex_Active"
 		area		758 668 32 32
 		var		rgRadarKey
 		text style	"edit"
