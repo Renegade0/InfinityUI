@@ -16,6 +16,8 @@ LANGUAGE
 	~Russian~ ~infinity_ui/tra~ ~infinity_ui/tra/russian.tra~
 LANGUAGE
 	~Italian~ ~infinity_ui/tra~ ~infinity_ui/tra/Italian.tra~
+LANGUAGE
+	~German~ ~infinity_ui/tra~ ~infinity_ui/tra/german.tra~
 
 
 /////////////////////////////////////////////////////////////////////////////////
