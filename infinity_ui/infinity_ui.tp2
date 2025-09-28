@@ -1,6 +1,6 @@
 BACKUP ~infinity_ui/backup~
 AUTHOR ~Pecca~
-VERSION ~v1.0~
+VERSION ~v1.1~
 
 LANGUAGE
 	~English~ ~infinity_ui/tra~ ~infinity_ui/tra/english.tra~
@@ -32,6 +32,7 @@ COPY ~infinity_ui/language~ ~override~
 
 ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
 	COPY ~infinity_ui/content_bg~ ~override~
+	COPY ~infinity_ui/content-fbp~ ~override~
 END
 
 ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
@@ -130,5 +131,6 @@ SUBCOMPONENT @1003
 
 COPY_EXISTING ~savename.2da~ ~override~
 	SET_2DA_ENTRY 1 3 4 6
+
 
 	

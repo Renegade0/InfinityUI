@@ -10780,6 +10780,13 @@ function rgGetInvModeSequence()
 		return 0
 	end
 end
+function rgGetFullBodyPortrait(portrait)
+    if portrait:sub(-1) == "L" then
+        return portrait:sub(1, -2) .. "R"
+    else
+        return portrait
+    end
+end
 
 
 --function rgGetInvId()
@@ -10811,6 +10818,7 @@ rgInvChar = ''
 rgCurChar = ''
 rgPaperdollSwap = 0
 rgClassString = 0
+rgFullBodyPortrait = 0
 --RgInvPartyModeHover = 0
 `
 menu
@@ -10840,6 +10848,7 @@ menu
 		--rgGetTempItemDescList()
 		rgTempItem = ''
 		rgClassString = rgGetInvPaperdollSeq()
+		rgFullBodyPortrait = Infinity_GetINIValue('Game Options','RgFullBodyPortrait',0)
 	"
 	onClose 
 	"
@@ -11051,7 +11060,12 @@ menu
 		enabled "rgInventoryMode == 0 and RgInvPartyModeHover == 1 and rgPaperdollSwap == 0"
 		area 452 245 142 218
 		bitmap		lua "characters[rgInvId].portrait"
-		
+	}
+	button
+	{
+		enabled "rgInventoryMode == 0 and RgInvPartyModeHover == 1 and rgPaperdollSwap == 0 and rgFullBodyPortrait == 1"
+		area 452 245 142 218
+		bitmap		lua "rgGetFullBodyPortrait(characters[rgInvId].portrait)"
 	}
 	text
 	{
@@ -11994,13 +12008,18 @@ menu
 	{
 		enabled "rgInventoryMode == 0 and RgInvPartyModeHover == 1"
 		area 609 629 58 58
-		bam RGDICLR
+		bam RGDICLR1
 		ScaleToClip
-		sequence lua "(RgUISkin*2)+1"
+		sequence lua "RgUISkin"
 		--action "rgPaperdollSwap = 1"
 		action
 		"
-			Infinity_PushMenu('CHARACTER_COLOR', 0, 0)
+			if rgFullBodyPortrait == 0 then 
+				rgFullBodyPortrait = 1
+			else
+				rgFullBodyPortrait = 0
+			end
+			Infinity_SetINIValue('Game Options','RgFullBodyPortrait',rgFullBodyPortrait)
 		"
 		actionEnter
 		"
@@ -33262,6 +33281,13 @@ function rgGetCustomizedSelectedPortrait(num)
 	else
 		return 0
 	end
+end
+function rgGetMediumPortrait(portrait)
+    if portrait:sub(-1) == "L" then
+        return portrait:sub(1, -2) .. "M"
+    else
+        return portrait
+    end
 end
 `
 menu
