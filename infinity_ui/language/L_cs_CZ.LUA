@@ -829,6 +829,10 @@ uiStrings = {
 	RG_B_CHA = "CHA",  
 	RG_SET_BEST_KOEF_D = "Tato volba udává jak rychle se budou ukazovat statistiky příšer. Koeficient je násoben rostoucí hodnotou versus počet zabitých dané příšery, což umožňuje postupné zobrazování informací. Koeficient 0 znamená okamžité zobrazení všech statistik",
 	RG_SET_BEST_KOEF = "Koeficient bestiáře",
+	RG_SET_LARGE_PORT = "Velké portréty",
+	RG_SET_LARGE_PORT_D = "Zobrazí veké portréty na hlavní obrazovce, funguje pouze s klasickým HUD. Portréty mohou být mimo obrazovku, pokud není zobrazeno plné rozlišení.",
+	RG_SET_CENTER_QLOOT = "Quickloot menu vycentrované",
+	RG_SET_CENTER_QLOOT_D = "Vycentruje Quickloot menu (nahoře či dole) místo defaultní levé strany.",
 	RG_RESET_BUTTON = "Resetuj okno zpráv",
 	--note these RG_ITM_COMP strings must be equal to those inside item description strings 
 	RG_ITM_COMP_ST = "STATISTICS",

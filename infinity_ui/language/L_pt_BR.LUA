@@ -829,6 +829,10 @@ uiStrings = {
 	RG_B_CHA = "CHA",  
 	RG_SET_BEST_KOEF_D = "This option controls how fast are bestiary stats going to be revealed. Coefficient is multiplied by increasing variable against number of kills of the creature in the bestiary to allow for gradual revelation. Value Zero means instant revelation.",
 	RG_SET_BEST_KOEF = "Bestiary Coef.",
+	RG_SET_LARGE_PORT = "Large Portraits",
+	RG_SET_LARGE_PORT_D = "Displays larger portraits on main gameplay screen, only works with classic HUD. Portraits may go outside screen when played with scaled or zoomed UI.",
+	RG_SET_CENTER_QLOOT = "Quickloot in the center",
+	RG_SET_CENTER_QLOOT_D = "Switches Quickloot menu to the center (top or bottom) of the screen instead the default left.",
 	RG_RESET_BUTTON = "Reset Messagebox",
 	--note these RG_ITM_COMP strings must be equal to those inside item description strings 
 	RG_ITM_COMP_ST = "STATISTICS",

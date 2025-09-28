@@ -829,6 +829,10 @@ uiStrings = {
 	RG_B_CHA = "CAR",  
 	RG_SET_BEST_KOEF_D = "Esta opción controla la rapidez con la que se revelan las estadísticas del bestiario. El coeficiente se multiplica por la variable de incremento frente al número de muertes de la criatura en el bestiario para permitir una revelación gradual. Valor cero significa revelación instantánea.",
 	RG_SET_BEST_KOEF = "Revelar Bestiario.",
+	RG_SET_LARGE_PORT = "Large Portraits",
+	RG_SET_LARGE_PORT_D = "Displays larger portraits on main gameplay screen, only works with classic HUD. Portraits may go outside screen when played with scaled or zoomed UI.",
+	RG_SET_CENTER_QLOOT = "Quickloot in the center",
+	RG_SET_CENTER_QLOOT_D = "Switches Quickloot menu to the center (top or bottom) of the screen instead the default left.",
 	RG_RESET_BUTTON = "Restablecer buzón de mensajes",
 	--note these RG_ITM_COMP strings must be equal to those inside item description strings 
 	RG_ITM_COMP_ST = "ESTADISTICAS",

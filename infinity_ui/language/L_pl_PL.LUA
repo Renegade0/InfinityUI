@@ -829,6 +829,10 @@ uiStrings = {
 	RG_B_CHA = "CHA",  
 	RG_SET_BEST_KOEF_D = "Ta opcja kontroluje, jak szybko statystyki bestiariusza będą ujawniane. Współczynnik jest mnożony przez rosnącą zmienną w stosunku do liczby zabójstw stworzenia w bestiariuszu, aby umożliwić stopniowe ujawnianie. Wartość zero oznacza natychmiastowe ujawnienie.",
 	RG_SET_BEST_KOEF = "Współczynnik bestiariusza.",
+	RG_SET_LARGE_PORT = "Large Portraits",
+	RG_SET_LARGE_PORT_D = "Displays larger portraits on main gameplay screen, only works with classic HUD. Portraits may go outside screen when played with scaled or zoomed UI.",
+	RG_SET_CENTER_QLOOT = "Quickloot in the center",
+	RG_SET_CENTER_QLOOT_D = "Switches Quickloot menu to the center (top or bottom) of the screen instead the default left.",
 	RG_RESET_BUTTON = "Zresetuj okno dialogowe",
 	--note these RG_ITM_COMP strings must be equal to those inside item description strings 
 	RG_ITM_COMP_ST = "STATYSTYKI",
