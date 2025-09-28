@@ -24123,7 +24123,8 @@ menu
 	{
 		name "rgdeathload"
 		area 0 0 320 70
-		bam 'RGDMBUT1'
+		bam 'RGDMBUT2'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
@@ -24139,7 +24140,8 @@ menu
 	{
 		name "rgdeathquit"
 		area 0 0 320 70
-		bam 'RGDMBUT1'
+		bam 'RGDMBUT2'
+		sequence lua "RgUISkin"
 		ScaleToClip
 		pad 10 8 10 8
 		text style "button"
