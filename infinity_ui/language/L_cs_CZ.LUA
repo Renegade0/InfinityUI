@@ -793,6 +793,7 @@ uiStrings = {
 	RG_LIBRARY = 'Knihovna: ',
 	RG_BOOKS = 'Knihy',
 	RG_BEASTS = 'Stvůry',
+	RG_BOSSES = "Bossové",
 	RG_BESTIARY_TITLE = 'Bestiář',
 	RG_BESTIARY = 'Bestiář: ',
 	RG_LOOTALL = "Sebrat vše",

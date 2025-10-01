@@ -793,6 +793,7 @@ uiStrings = {
 	RG_LIBRARY = 'Bibliothèque: ',
 	RG_BOOKS = 'Livres',
 	RG_BEASTS = 'Créatures',
+	RG_BOSSES = "Bosses",
 	RG_BESTIARY_TITLE = 'Bestiaire',
 	RG_BESTIARY = 'Bestiaire: ',
 	RG_LOOTALL = "Récupérer tout",
