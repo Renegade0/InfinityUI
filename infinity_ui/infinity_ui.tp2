@@ -1,6 +1,6 @@
 BACKUP ~infinity_ui/backup~
 AUTHOR ~Pecca~
-VERSION ~v1.1~
+VERSION ~v1.15~
 
 LANGUAGE
 	~English~ ~infinity_ui/tra~ ~infinity_ui/tra/english.tra~
@@ -39,6 +39,10 @@ END
 
 ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
 	COPY ~infinity_ui/content_iwd~ ~override~
+END
+
+ACTION_IF MOD_IS_INSTALLED ~EEex.tp2~ ~0~ BEGIN
+	COPY ~infinity_ui/content-eeex~ ~override~
 END
 
 // Try to enable EEex's B3Scale module
