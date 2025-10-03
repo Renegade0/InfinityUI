@@ -32301,6 +32301,7 @@ menu
 				area		0 0 -1 -1
 				bam 'rgdcgim3'
 				scaleToClip
+				sequence lua "RgUISkin"
 				frame lua "rgGetSelectedHighlight(rowNumber,selectedCharacter)"
 				align		left top
 			}
@@ -32334,8 +32335,9 @@ menu
 	{
 		on escape
 		area 316 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
 		ScaleToClip
+		sequence lua "RgUISkin"
 		text "BACK_BUTTON"
 		text style "button"
 		action 
@@ -32347,8 +32349,9 @@ menu
 	button
 	{
 		area 732 661 320 70
-		bam		rgdmbut1
+		bam		rgdbutm1
 		ScaleToClip
+		sequence lua "RgUISkin"
 		text "DONE_BUTTON"
 		text style "button"
 		clickable lua "selectedCharacter ~= 0"
@@ -51200,6 +51203,7 @@ menu
 				area		0 0 -1 -1
 				bam 'rgdcgim1'
 				scaleToClip
+				sequence lua "RgUISkin"
 				frame lua "rgGetSelectedHighlight(rowNumber,rgImportCharacter)"
 				align		left top
 			}
@@ -51230,6 +51234,7 @@ menu
 				area		0 0 -1 -1
 				bam 'rgdcgim2'
 				scaleToClip
+				sequence lua "RgUISkin"
 				frame lua "rgGetSelectedHighlight(rowNumber,rgImportCharacter)"
 				align		left top
 			}
