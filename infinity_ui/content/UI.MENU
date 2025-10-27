@@ -357,6 +357,7 @@ function rgGetGameEnginePortraits()
 		{'SHARTEL', 2},
 		{'SKIE', 2},
 		{'VICONIA', 2},
+		{'NIMOEN', 2},
 		{'NNALIA', 2},
 		{'NMAZZY', 2},
 		{'NAERIE', 2},
@@ -6505,11 +6506,11 @@ menu
 	"
 		RgOptionsMode = 8
 		Infinity_PushMenu('RG_OPTIONS_BAR')
-		if e:IsTouchUI() then
-			displayLanguages = tabletLanguages
-		else
+		--if e:IsTouchUI() then
+		--	displayLanguages = tabletLanguages
+		--else
 			displayLanguages = languages
-		end
+		--end
 		showsubtitles = Infinity_GetINIValue('Program Options', 'Display Subtitles', 1)
 		findCurrentLanguage()
 	"
@@ -31315,6 +31316,13 @@ menu
 		scrollbar	'rgdscrl1'
 		scrollbar func "chatboxScroll"
 		scrollbar skipReset
+		action
+		"
+			if e:IsTouchUI() then
+				worldScreen:TogglePauseGame(true)
+			end
+		"
+		
 	}
 	handle
 	{
