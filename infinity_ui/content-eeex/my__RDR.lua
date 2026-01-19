@@ -81,13 +81,13 @@ function my_screen_radar_Inspect_sprite(sprite_row)
 	local raceIDS = EEex_Resource_LoadIDS("RACE")
 	local race_id = sprite.m_liveTypeAI.m_Race
 	local race = My_Ternary(raceIDS:hasID(race_id), raceIDS:getLine(race_id), race_id)
-	raceIDS:free()
+	-- raceIDS:free()
 
 	-- class // TODO: SHOULD BE A BETTER WAY WITH EEEX DOC, too lazy at the moment
 	local classIDS = EEex_Resource_LoadIDS("CLASS")
 	local class_id = sprite.m_liveTypeAI.m_Class
 	local class = My_Ternary(classIDS:hasID(class_id), classIDS:getLine(class_id), class_id)
-	classIDS:free()
+	-- classIDS:free()
 	-- allegiance
 	local allegiance = my_colored_allegiance(sprite.m_liveTypeAI.m_EnemyAlly)
 	result = result .. alignment .. " " .. race .. " " .. class .. " // " .. allegiance .. "\n"
