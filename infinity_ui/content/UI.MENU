@@ -16159,7 +16159,7 @@ function refreshMageBook()
 			rgBottomSpellsPlaceHolder9 = makeBlankTable(characters[id].mageDetails[9].maxMemorized) 
 			
 			rgBottomSpells = {
-			 {rgBottomSpells1,characters[id].mageDetails[1].maxMemorized,'1',1}
+			 {rgBottomSpells1,characters[id].mageDetails[1].maxMemorized,1,1}
 			--,{rgBottomSpells1,characters[id].mageDetails[1].maxMemorized,1,14}
 			--,{rgBottomSpells2,characters[id].mageDetails[2].maxMemorized,2,1}
 			--,{rgBottomSpells2,characters[id].mageDetails[2].maxMemorized,2,14}
@@ -16179,23 +16179,23 @@ function refreshMageBook()
 			--,{rgBottomSpells9,characters[id].mageDetails[9].maxMemorized,9,14}
 			}
 			--table.insert(rgBottomSpells,{rgBottomSpells1,characters[id].mageDetails[1].maxMemorized,1,1})
-			if characters[id].mageDetails[1].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells1,characters[id].mageDetails[1].maxMemorized,'1',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells2,characters[id].mageDetails[2].maxMemorized,'2',1})
-			if characters[id].mageDetails[2].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells2,characters[id].mageDetails[2].maxMemorized,'2',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells3,characters[id].mageDetails[3].maxMemorized,'3',1})
-			if characters[id].mageDetails[3].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells3,characters[id].mageDetails[3].maxMemorized,'3',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells4,characters[id].mageDetails[4].maxMemorized,'4',1})
-			if characters[id].mageDetails[4].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells4,characters[id].mageDetails[4].maxMemorized,'4',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells5,characters[id].mageDetails[5].maxMemorized,'5',1})
-			if characters[id].mageDetails[5].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells5,characters[id].mageDetails[5].maxMemorized,'5',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells6,characters[id].mageDetails[6].maxMemorized,'6',1})
-			if characters[id].mageDetails[6].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells6,characters[id].mageDetails[6].maxMemorized,'6',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells7,characters[id].mageDetails[7].maxMemorized,'7',1})
-			if characters[id].mageDetails[7].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells7,characters[id].mageDetails[7].maxMemorized,'7',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells8,characters[id].mageDetails[8].maxMemorized,'8',1})
-			if characters[id].mageDetails[8].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells8,characters[id].mageDetails[8].maxMemorized,'8',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells9,characters[id].mageDetails[9].maxMemorized,'9',1})
-			if characters[id].mageDetails[9].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells9,characters[id].mageDetails[9].maxMemorized,'9',14}) end
+			if characters[id].mageDetails[1].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells1,characters[id].mageDetails[1].maxMemorized,1,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells2,characters[id].mageDetails[2].maxMemorized,2,1})
+			if characters[id].mageDetails[2].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells2,characters[id].mageDetails[2].maxMemorized,2,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells3,characters[id].mageDetails[3].maxMemorized,3,1})
+			if characters[id].mageDetails[3].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells3,characters[id].mageDetails[3].maxMemorized,3,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells4,characters[id].mageDetails[4].maxMemorized,4,1})
+			if characters[id].mageDetails[4].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells4,characters[id].mageDetails[4].maxMemorized,4,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells5,characters[id].mageDetails[5].maxMemorized,5,1})
+			if characters[id].mageDetails[5].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells5,characters[id].mageDetails[5].maxMemorized,5,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells6,characters[id].mageDetails[6].maxMemorized,6,1})
+			if characters[id].mageDetails[6].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells6,characters[id].mageDetails[6].maxMemorized,6,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells7,characters[id].mageDetails[7].maxMemorized,7,1})
+			if characters[id].mageDetails[7].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells7,characters[id].mageDetails[7].maxMemorized,7,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells8,characters[id].mageDetails[8].maxMemorized,8,1})
+			if characters[id].mageDetails[8].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells8,characters[id].mageDetails[8].maxMemorized,8,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells9,characters[id].mageDetails[9].maxMemorized,9,1})
+			if characters[id].mageDetails[9].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells9,characters[id].mageDetails[9].maxMemorized,9,14}) end
 			
 		else
 			bookSpells = characters[id].mageSpells[currentSpellLevel]
@@ -16210,15 +16210,15 @@ function refreshMageBook()
 			bottomSpells = {}
 			bottomSpellsPlaceHolder = {}
 			rgBottomSpells = {
-			 {{},0,'1',1}
-			,{{},0,'2',1}
-			,{{},0,'3',1}
-			,{{},0,'4',1}
-			,{{},0,'5',1}
-			,{{},0,'6',1}
-			,{{},0,'7',1}
-			,{{},0,'8',1}
-			,{{},0,'9',1}
+			 {{},0,1,1}
+			,{{},0,2,1}
+			,{{},0,3,1}
+			,{{},0,4,1}
+			,{{},0,5,1}
+			,{{},0,6,1}
+			,{{},0,7,1}
+			,{{},0,8,1}
+			,{{},0,9,1}
 			}	
 			rgBottomSpells1 = {}
 			rgBottomSpells2 = {}
@@ -16498,7 +16498,7 @@ function rgGetSpellLvlButtText(str)
 	else
 		color = '^5'
 	end
-	return color .. t(str)
+	return color .. str
 end
 function rgGetSpellLvlButtOpacity()
 	if RgUISkin == 3 then
@@ -18634,21 +18634,21 @@ function refreshPriestBook()
 			rgBottomSpellsPlaceHolder7 = makeBlankTable(characters[id].priestDetails[7].maxMemorized) 
 			
 			rgBottomSpells = {
-			 {rgBottomSpells1,characters[id].priestDetails[1].maxMemorized,'1',1}
+			 {rgBottomSpells1,characters[id].priestDetails[1].maxMemorized,1,1}
 			}
-			if characters[id].priestDetails[1].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells1,characters[id].priestDetails[1].maxMemorized,'1',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells2,characters[id].priestDetails[2].maxMemorized,'2',1})
-			if characters[id].priestDetails[2].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells2,characters[id].priestDetails[2].maxMemorized,'2',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells3,characters[id].priestDetails[3].maxMemorized,'3',1})
-			if characters[id].priestDetails[3].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells3,characters[id].priestDetails[3].maxMemorized,'3',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells4,characters[id].priestDetails[4].maxMemorized,'4',1})
-			if characters[id].priestDetails[4].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells4,characters[id].priestDetails[4].maxMemorized,'4',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells5,characters[id].priestDetails[5].maxMemorized,'5',1})
-			if characters[id].priestDetails[5].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells5,characters[id].priestDetails[5].maxMemorized,'5',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells6,characters[id].priestDetails[6].maxMemorized,'6',1})
-			if characters[id].priestDetails[6].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells6,characters[id].priestDetails[6].maxMemorized,'6',14}) end
-			table.insert(rgBottomSpells,{rgBottomSpells7,characters[id].priestDetails[7].maxMemorized,'7',1})
-			if characters[id].priestDetails[7].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells7,characters[id].priestDetails[7].maxMemorized,'7',14}) end
+			if characters[id].priestDetails[1].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells1,characters[id].priestDetails[1].maxMemorized,1,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells2,characters[id].priestDetails[2].maxMemorized,2,1})
+			if characters[id].priestDetails[2].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells2,characters[id].priestDetails[2].maxMemorized,2,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells3,characters[id].priestDetails[3].maxMemorized,3,1})
+			if characters[id].priestDetails[3].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells3,characters[id].priestDetails[3].maxMemorized,3,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells4,characters[id].priestDetails[4].maxMemorized,4,1})
+			if characters[id].priestDetails[4].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells4,characters[id].priestDetails[4].maxMemorized,4,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells5,characters[id].priestDetails[5].maxMemorized,5,1})
+			if characters[id].priestDetails[5].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells5,characters[id].priestDetails[5].maxMemorized,5,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells6,characters[id].priestDetails[6].maxMemorized,6,1})
+			if characters[id].priestDetails[6].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells6,characters[id].priestDetails[6].maxMemorized,6,14}) end
+			table.insert(rgBottomSpells,{rgBottomSpells7,characters[id].priestDetails[7].maxMemorized,7,1})
+			if characters[id].priestDetails[7].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells7,characters[id].priestDetails[7].maxMemorized,7,14}) end
 			
 		else
 			bookSpells = characters[id].priestSpells[currentSpellLevel]
@@ -18663,13 +18663,13 @@ function refreshPriestBook()
 			bottomSpells = {}
 			bottomSpellsPlaceHolder = {}
 			rgBottomSpells = {
-			 {{},0,'1',1}
-			,{{},0,'2',1}
-			,{{},0,'3',1}
-			,{{},0,'4',1}
-			,{{},0,'5',1}
-			,{{},0,'6',1}
-			,{{},0,'7',1}
+			 {{},0,1,1}
+			,{{},0,2,1}
+			,{{},0,3,1}
+			,{{},0,4,1}
+			,{{},0,5,1}
+			,{{},0,6,1}
+			,{{},0,7,1}
 			}	
 			rgBottomSpells1 = {}
 			rgBottomSpells2 = {}
