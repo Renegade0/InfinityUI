@@ -15151,7 +15151,7 @@ menu
 		rgGetMainMenuArea()
 		
 		
-		if (rgGameEngine == 3 or rgGameEngine == 0) and rgFirstStart == 1 then
+		if (rgGameEngine == 3 or rgGameEngine == 0 or rgGameEngine == 2) and rgFirstStart == 1 then
 			rgFirstStart = 0
 			startEngine:OnSoAButtonClick(true)
 		end
