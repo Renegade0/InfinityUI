@@ -1782,27 +1782,27 @@ menu
 	text
 	{
 		area 578 316 200 52 
-		tooltip lua "t('ARMOR_CLASS_LABEL')"
+		tooltip lua "getUiString('ARMOR_CLASS_LABEL')"
 	}
 	text
 	{
 		area 578 364 200 52 
-		tooltip lua "t('HIT_POINTS_LABEL')"
+		tooltip lua "getUiString('HIT_POINTS_LABEL')"
 	}
 	text
 	{
 		area 578 412 200 52 
-		tooltip lua "t('THAC0_LABEL')"
+		tooltip lua "getUiString('THAC0_LABEL')"
 	}
 	text
 	{
 		area 578 460 200 52 
-		tooltip lua "t('DAMAGE_LABEL')"
+		tooltip lua "getUiString('DAMAGE_LABEL')"
 	}
 	text
 	{
 		area 578 508 200 52 
-		tooltip lua "t('NUM_ATTACKS_LABEL')"
+		tooltip lua "getUiString('NUM_ATTACKS_LABEL')"
 	}
 	
 	
@@ -2005,11 +2005,11 @@ menu
 		
 		name 'rgdrectab1'
 		area 812 687 88 46
-		bam lua "t('rgdrecb') .. RgUISkin"
+		bam lua "getUiString('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 0
-		tooltip lua "t('ASSIGN_KEYS_PAGE_CHARACTERINFORMATION')"
+		tooltip lua "getUiString('ASSIGN_KEYS_PAGE_CHARACTERINFORMATION')"
 		--text 'INFORMATION_BUTTON'
 		--text style "button"
 		--pad 10 4 10 4
@@ -2020,11 +2020,11 @@ menu
 		
 		name 'rgdrectab2'
 		area 1164 687 88 46
-		bam lua "t('rgdrecb') .. RgUISkin"
+		bam lua "getUiString('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 4
-		tooltip lua "t('BIOGRAPHY_LABEL')"
+		tooltip lua "getUiString('BIOGRAPHY_LABEL')"
 		--text 'BIOGRAPHY_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -2035,11 +2035,11 @@ menu
 		
 		name 'rgdrectab3'
 		area 988 687 88 46
-		bam lua "t('rgdrecb') .. RgUISkin"
+		bam lua "getUiString('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 1
-		tooltip lua "t('CLASS_LABEL')"
+		tooltip lua "getUiString('CLASS_LABEL')"
 		--text 'CLASS_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -2050,11 +2050,11 @@ menu
 		
 		name 'rgdrectab4'
 		area 1076 687 88 46
-		bam lua "t('rgdrecb') .. RgUISkin"
+		bam lua "getUiString('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 3
-		tooltip lua "t('STATS_LABEL')"
+		tooltip lua "getUiString('STATS_LABEL')"
 		--text 'STATS_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -2065,11 +2065,11 @@ menu
 		
 		name 'rgdrectab5'
 		area 900 687 88 46
-		bam lua "t('rgdrecb') .. RgUISkin"
+		bam lua "getUiString('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 2
-		tooltip lua "t('COMBAT_STATS_LABEL')"
+		tooltip lua "getUiString('COMBAT_STATS_LABEL')"
 		--text 'COMBAT_STATS_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -3142,7 +3142,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "t( scriptOptions[rowNumber][1])"
+				text lua "getUiString( scriptOptions[rowNumber][1])"
 				text style	"normal"
 				text align right center
 			}
@@ -3929,7 +3929,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "t( toggleTitles[rowNumber][1])"
+				text lua "getUiString( toggleTitles[rowNumber][1])"
 				text style "normal"
 				--text shadow lua "RgUISkin"
 				text align left center
@@ -3990,7 +3990,7 @@ menu
 	text
 	{
 		area		848 454 404 196
-		text		lua "t(helpString)"
+		text		lua "getUiString(helpString)"
 		text style	normal
 		text align	left top
 		scrollbar	'rgdscrl1'
@@ -4386,7 +4386,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "t( autoPauseToggles[rowNumber][1])"
+				text lua "getUiString( autoPauseToggles[rowNumber][1])"
 				text style "normal"
 				text align left center
 			}
@@ -4445,7 +4445,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "t( characterPauseToggles[rowNumber][1])"
+				text lua "getUiString( characterPauseToggles[rowNumber][1])"
 				text style "normal"
 				text align left center
 			}
@@ -4771,7 +4771,7 @@ menu
 				bam rgdslct
 				sequence lua "rgGetSelectedHighlight(rowNumber, selectedGraphicOpt)"
 				ScaleToClip
-				text lua "t( graphicsToggles[rowNumber][1])"
+				text lua "getUiString( graphicsToggles[rowNumber][1])"
 				text style "normal"
 				pad 10 0 0 0
 				text align left center
@@ -5095,7 +5095,7 @@ menu
 			label
 			{
 				area 0 0 -1 -1
-				text lua "t( soundsToggles[rowNumber][1])"
+				text lua "getUiString( soundsToggles[rowNumber][1])"
 				text style "normal"
 				text align right center
 			}
@@ -5181,7 +5181,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "t( command[rowNumber][1])"
+				text lua "getUiString( command[rowNumber][1])"
 				text style	"normal"
 				text align right center
 			}
@@ -5263,7 +5263,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "t( selectOpt[rowNumber][1])"
+				text lua "getUiString( selectOpt[rowNumber][1])"
 				text style	"normal"
 				text align right center
 			}
@@ -5768,7 +5768,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "t( feedbackToggles[rowNumber][1])"
+				text lua "getUiString( feedbackToggles[rowNumber][1])"
 				text style "normal"
 				text align left center
 			}
@@ -5839,7 +5839,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "t( messagesToggles[rowNumber][1])"
+				text lua "getUiString( messagesToggles[rowNumber][1])"
 				text style	"normal"
 				text align left center
 			}
@@ -5895,7 +5895,7 @@ menu
 	text
 	{
 		area		848 454 406 198
-		text		lua "t(helpString)"
+		text		lua "getUiString(helpString)"
 		text style	normal
 		scrollbar	'rgdscrl1'
 	}
@@ -6199,7 +6199,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "t(keycategories[rowNumber][2])"
+				text lua "getUiString(keycategories[rowNumber][2])"
 				text style	"normal"
 				text align	left center 
 			}
@@ -6654,7 +6654,7 @@ menu
 		ScaleToClip
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
-		text lua	"t('SAVE_BUTTON') .. ' & ' .. getUiString('DONE_BUTTON')" -- Done
+		text lua	"getUiString('SAVE_BUTTON') .. ' & ' .. getUiString('DONE_BUTTON')" -- Done
 		text style	"button"
 		action
 		"
@@ -7227,7 +7227,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "t(Popup2Button.cancelText or 'CANCEL_BUTTON')"
+		text lua "getUiString(Popup2Button.cancelText or 'CANCEL_BUTTON')"
 		action 
 		"
 			Infinity_PopMenu('POPUP_TWOBUTTON')
@@ -7244,7 +7244,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "t(Popup2Button.okText or 'DONE_BUTTON')"
+		text lua "getUiString(Popup2Button.okText or 'DONE_BUTTON')"
 		action 
 		"
 			Infinity_PopMenu('POPUP_TWOBUTTON')
@@ -7283,7 +7283,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "t(Popup3Button.rightText)"
+		text lua "getUiString(Popup3Button.rightText)"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7300,7 +7300,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "t(Popup3Button.midText)"
+		text lua "getUiString(Popup3Button.midText)"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7317,7 +7317,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "t(Popup3Button.leftText)"
+		text lua "getUiString(Popup3Button.leftText)"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7894,7 +7894,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[1][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[1][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		--ScaleToClip
 		--align left top
 		action "rgHotkeyButtonLeftClick(1)"
@@ -7919,7 +7919,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[2][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[2][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(2)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7932,7 +7932,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[3][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[3][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(3)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7945,7 +7945,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[4][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[4][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(4)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7958,7 +7958,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[5][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[5][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(5)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7971,7 +7971,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[6][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[6][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(6)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7984,7 +7984,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[7][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[7][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(7)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7997,7 +7997,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[8][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[8][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(8)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8010,7 +8010,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[9][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[9][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(9)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8023,7 +8023,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[10][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[10][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(10)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8036,7 +8036,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[11][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[11][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(11)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8049,7 +8049,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[12][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[12][1])"
 		scaleToClip
-		tooltip lua "t('RG_HOTKEY_BUTT')"
+		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(12)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -9650,7 +9650,7 @@ menu
 		bam lua "rgGetAdvSettingsButtonBam()"
 		sequence 0
 		ScaleToClip
-		tooltip lua "t('RG_NPCBAR_SETT')"
+		tooltip lua "getUiString('RG_NPCBAR_SETT')"
 		action
 		"
 			Infinity_PushMenu('RG_RADAR_SETTINGS')
@@ -10970,7 +10970,7 @@ menu
 		bam			rgdimbut
 		scaleToClip
 		toggle		rgInventoryMode
-		tooltip lua "t('RG_INV_MODE')"
+		tooltip lua "getUiString('RG_INV_MODE')"
 		sequence lua "rgGetInvModeSequence()"
 		action
 		"
@@ -11637,27 +11637,27 @@ menu
 	text
 	{
 		area 98 97 50 93
-		tooltip lua "t('ARMOR_CLASS_LABEL')"
+		tooltip lua "getUiString('ARMOR_CLASS_LABEL')"
 	}
 	text
 	{
 		area 152 97 50 93
-		tooltip lua "t('HIT_POINTS_LABEL')"
+		tooltip lua "getUiString('HIT_POINTS_LABEL')"
 	}
 	text
 	{
 		area 206 97 50 93
-		tooltip lua "t('THAC0_LABEL')"
+		tooltip lua "getUiString('THAC0_LABEL')"
 	}
 	text
 	{
 		area 260 97 50 93
-		tooltip lua "t('DAMAGE_LABEL')"
+		tooltip lua "getUiString('DAMAGE_LABEL')"
 	}
 	text
 	{
 		area 314 97 50 93
-		tooltip lua "t('NUM_ATTACKS_LABEL')"
+		tooltip lua "getUiString('NUM_ATTACKS_LABEL')"
 	}
 	
 	
@@ -13189,7 +13189,7 @@ menu
 		sequence 4
 		ScaleToClip
 		highlightgroup	rgcheatsection
-		tooltip lua "t('SPELLS_LABEL')"
+		tooltip lua "getUiString('SPELLS_LABEL')"
 		action "rgCheatSection = 3"	
 	}
 	button
@@ -13199,7 +13199,7 @@ menu
 		sequence 6
 		ScaleToClip
 		highlightgroup	rgcheatsection
-		tooltip lua "t('RG_CHEATHISTORY')"
+		tooltip lua "getUiString('RG_CHEATHISTORY')"
 		action "rgCheatSection = 2"	
 	}
 	list
@@ -15190,7 +15190,7 @@ menu
 			label
 			{
 				--bam "rgdmcmp"
-				bam lua "t('rgdmcmp') .. RgUISkin"
+				bam lua "getUiString('rgdmcmp') .. RgUISkin"
 				area		0 0 -1 -1
 				frame lua "getCampaignHighlight(rowNumber)"
 				sequence lua "rgCampaigns[rowNumber].icon"
@@ -18337,7 +18337,7 @@ menu
 			{
 				enabled "rowNumber ~= currentContingencySpell"
 				area	10 0 135 -1
-				text lua "t(mageBookStrings[preparedSpells[rowNumber].resref].title)"
+				text lua "getUiString(mageBookStrings[preparedSpells[rowNumber].resref].title)"
 				text style "normal"
 				text color '5'
 				align	left center
@@ -18371,7 +18371,7 @@ menu
 			{
 				enabled "rowNumber == currentContingencySpell"
 				area	10 0 135 -1
-				text lua "t(mageBookStrings[preparedSpells[rowNumber].resref].title)"
+				text lua "getUiString(mageBookStrings[preparedSpells[rowNumber].resref].title)"
 				text style "normal"
 				text color '$'
 				align	left center
@@ -19947,7 +19947,7 @@ menu
 		scaleToClip
 		sequence 2
 		frame lua "rgGetMapCheckboxFrame()"
-		tooltip lua "t('WORLDMAP_HIGHLIGHT_LABEL')"
+		tooltip lua "getUiString('WORLDMAP_HIGHLIGHT_LABEL')"
 		--sequence lua "mapScreen:DisplayExploredMap() and 0 or 1"
 		action "mapScreen:ToggleDisplayExploredMap()"
 	}
@@ -19976,7 +19976,7 @@ menu
 		bam rgdabut1
 		scaleToClip
 		sequence 1
-		tooltip lua "t('WORLD_MAP_NOTES_LABEL')"
+		tooltip lua "getUiString('WORLD_MAP_NOTES_LABEL')"
 		--sequence lua "showNotes == 1 and 0 or 1"
 		toggle showNotes
 	}
@@ -19986,7 +19986,7 @@ menu
 		area 172 10 62 58
 		bam rgdabut1
 		scaleToClip
-		tooltip lua "t('WORLD_MAP_BUTTON')"
+		tooltip lua "getUiString('WORLD_MAP_BUTTON')"
 		action
 		"
 			worldMapScreen:StartWorldMap(0)
@@ -23468,7 +23468,7 @@ menu
 		bam		rgdbutm1
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "t('RENT_BUTTON') .. ' ( ' .. getUiString('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
+		text lua "getUiString('RENT_BUTTON') .. ' ( ' .. getUiString('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
 		text style "button"
 		action
 		"
@@ -23612,7 +23612,7 @@ menu
 		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BUY_BUTTON"
-		--text lua "t('RENT_BUTTON') .. ' ( ' .. getUiString('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
+		--text lua "getUiString('RENT_BUTTON') .. ' ( ' .. getUiString('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
 		text style "button"
 		action
 		"
@@ -23741,7 +23741,7 @@ menu
 		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BUY_BUTTON"
-		--text lua "t('RENT_BUTTON') .. ' ( ' .. getUiString('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
+		--text lua "getUiString('RENT_BUTTON') .. ' ( ' .. getUiString('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
 		text style "button"
 		action
 		"
@@ -24090,7 +24090,7 @@ menu
 		name 'BUTTON_storechooser_0'
 		area 87 170 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(0)"
-		bam lua "t('rgdstbt') .. RgUISkin"
+		bam lua "getUiString('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(0)"
@@ -24105,7 +24105,7 @@ menu
 		name 'BUTTON_storechooser_1'
 		area 87 280 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(1)"
-		bam lua "t('rgdstbt') .. RgUISkin"
+		bam lua "getUiString('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(1)"
@@ -24120,7 +24120,7 @@ menu
 		name 'BUTTON_storechooser_2'
 		area 87 390 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(2)"
-		bam lua "t('rgdstbt') .. RgUISkin"
+		bam lua "getUiString('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(2)"
@@ -24135,7 +24135,7 @@ menu
 		name 'BUTTON_storechooser_3'
 		area 87 500 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(3)"
-		bam lua "t('rgdstbt') .. RgUISkin"
+		bam lua "getUiString('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(3)"
@@ -25006,7 +25006,7 @@ menu
 		bam lua "rgGetAdvSettingsButtonBam()"
 		sequence 0
 		ScaleToClip
-		tooltip lua "t('RG_NPCBAR_SETT')"
+		tooltip lua "getUiString('RG_NPCBAR_SETT')"
 		action
 		"
 			Infinity_PushMenu('RG_RADAR_SETTINGS')
@@ -25019,7 +25019,7 @@ menu
 		bam lua "rgGetAdvSettingsButtonBam()"
 		sequence 0
 		ScaleToClip
-		tooltip lua "t('RG_NPCBAR_SETT')"
+		tooltip lua "getUiString('RG_NPCBAR_SETT')"
 		action
 		"
 			Infinity_PushMenu('RG_RADAR_SETTINGS')
@@ -26424,7 +26424,7 @@ menu
 		Sequence lua "RgUISkin"
 		scaleToClip
 		toggle		RgQuicklootFilterJunk
-		tooltip lua "t('RG_JUNKBUTTON')"
+		tooltip lua "getUiString('RG_JUNKBUTTON')"
 		action
 		"
 			Infinity_SetINIValue('Game Options','RgQuicklootFilterJunk',RgQuicklootFilterJunk)
@@ -26438,7 +26438,7 @@ menu
 		bam			RGDMBTQ4
 		Sequence lua "RgUISkin"
 		scaleToClip
-		tooltip lua "t('RG_LOOTALL')"
+		tooltip lua "getUiString('RG_LOOTALL')"
 		action
 		"
 			rgQuicklootPickAllItems()
@@ -27514,7 +27514,7 @@ menu
 	label
 	{
 		area 575 570 654 32
-		text lua "t('REMOVE_MEMBERS_LABEL') .. ': ' .. game:GetCharacterOverflowCount()"
+		text lua "getUiString('REMOVE_MEMBERS_LABEL') .. ': ' .. game:GetCharacterOverflowCount()"
 		text style "button"
 		text shadow 1
 		align center center
@@ -32108,7 +32108,7 @@ menu
 		bam "rgdmenub"
 		sequence 1
 		ScaleToClip
-		tooltip lua "t('RG_WRITE_JOURNAL')"
+		tooltip lua "getUiString('RG_WRITE_JOURNAL')"
 		action 
 		"
 			rgAddNewNote(worldNPCDialogText)
@@ -32121,7 +32121,7 @@ menu
 		bam "rgdhkbt6"
 		text lua "rgLoadFromDialog()"
 		ScaleToClip
-		tooltip lua "t('ASSIGN_KEYS_MISC_QUICKLOAD')"
+		tooltip lua "getUiString('ASSIGN_KEYS_MISC_QUICKLOAD')"
 		action 
 		"
 			rgDialogLoad = 1
@@ -32161,7 +32161,7 @@ menu
 	--{
 	--	name "worldDialogShowMessagesButton"
 	--	area 764 8 62 31
-	--	tooltip lua "t('LOG_HISTORY_TOOLTIP')"
+	--	tooltip lua "getUiString('LOG_HISTORY_TOOLTIP')"
 	--	bam "CHATHIST"
 	--	frame lua "showMessagesButtonFrame()"
 	--	action 
@@ -32703,7 +32703,7 @@ menu
 	{
 		enabled "createCharScreen:GetCurrentStep() > 15 and rgGameEngine ~= 3"
 		area 1070 176 208 90
-		text lua "t('SOUND_TITLE') .. '\n' .. getSoundStringRef(currentChargenCustomSound, chargen.customSound)"
+		text lua "getUiString('SOUND_TITLE') .. '\n' .. getSoundStringRef(currentChargenCustomSound, chargen.customSound)"
 		scrollbar 'rgdscrl1'
 		text style "normal"
 		text point 12
@@ -32736,7 +32736,7 @@ menu
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 3"
 		glow lua "createCharScreen:GetCurrentStep() == 3"
-		text lua "t('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON')"
+		text lua "getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON')"
 		text style "button"
 		pad 8 2 8 2
 		action 
@@ -33879,7 +33879,7 @@ menu
 	{
 		enabled "createCharScreen:GetCurrentStep() == const.STEP_DUALCLASS_CLASS"
 		area 146 36 1074 44
-		text lua "t('CLASS_TITLE')"
+		text lua "getUiString('CLASS_TITLE')"
 		text style "button"
 	}
 	label
@@ -34695,7 +34695,7 @@ menu
 			label
 			{
 				area 0 0 180 55
-				text lua "t(chargen.ability[rowNumber].name)"
+				text lua "getUiString(chargen.ability[rowNumber].name)"
 				text style "normal"
 				align right center
 				
@@ -35674,7 +35674,7 @@ menu
 	--{
 	--	name "rgdlvlTitle"
 	--	area 512 12 486 44
-	--	text lua  "t('LEVEL_UP_TITLE') .. ' - ' ..  characters[currentID].name .. ', ' .. characters[currentID].class"
+	--	text lua  "getUiString('LEVEL_UP_TITLE') .. ' - ' ..  characters[currentID].name .. ', ' .. characters[currentID].class"
 	--	text style "button"
 	--	text shadow 1
 	--}
@@ -36705,7 +36705,7 @@ menu
 	label
 	{
 		area 136 109 219 27
-		text lua "t('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
+		text lua "getUiString('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
 		text style "rg_trajan"
 		text color '5'
 	}
@@ -37084,7 +37084,7 @@ menu
 	{
 		area 434 86 500 70
 		enabled "shouldShowSpecialistMessage()"
-		text lua "t('SPECIALIST_SPELL_REQ')"
+		text lua "getUiString('SPECIALIST_SPELL_REQ')"
 		text style "normal"
 		text align center center
 		rectangle 0
@@ -37295,7 +37295,7 @@ menu
 	label
 	{
 		area 136 109 219 27
-		text lua "t('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
+		text lua "getUiString('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
 		text style "rg_trajan"
 		text color '5'
 	}
@@ -37620,7 +37620,7 @@ menu
 	{
 		area 434 86 500 70
 		enabled "shouldShowSpecialistMessage()"
-		text lua "t('SPECIALIST_SPELL_REQ')"
+		text lua "getUiString('SPECIALIST_SPELL_REQ')"
 		text style "normal"
 		text align center center
 		rectangle 0
@@ -37801,7 +37801,7 @@ menu
 	label
 	{
 		area 136 109 219 27
-		text lua "t('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
+		text lua "getUiString('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
 		text style "rg_trajan"
 		text color '5'
 	}
@@ -39444,7 +39444,7 @@ menu
 			label
 			{
 				area 100 0 200 -1
-				text lua "t( difficulties[rowNumber].name )"
+				text lua "getUiString( difficulties[rowNumber].name )"
 				text style "normal"
 				text align center center
 				text color	B
@@ -39452,7 +39452,7 @@ menu
 			label
 			{
 				area 320 0 845 -1
-				text lua "t( difficulties[rowNumber].description )"
+				text lua "getUiString( difficulties[rowNumber].description )"
 				text style "normal"
 				text point	12
 				text align left center
@@ -39499,7 +39499,7 @@ menu
 		bam		rgdmbut2
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "t('VENTURE_FORTH')"
+		text lua "getUiString('VENTURE_FORTH')"
 		text style "button"
 		enabled "fromSinglePlayer"
 		action 
@@ -40176,28 +40176,28 @@ menu
 	--label
 	--{
 	--	area 78 198 498 28
-	--	text lua "t('GAME_NAME_LABEL')"
+	--	text lua "getUiString('GAME_NAME_LABEL')"
 	--	text style "label_parchment"
 	--	align center center
 	--}
 	--label
 	--{
 	--	area 576 198 84 28
-	--	text lua "t('PASSWORD_LABEL')"
+	--	text lua "getUiString('PASSWORD_LABEL')"
 	--	text style "label_parchment"
 	--	align center center
 	--}
 	--label
 	--{
 	--	area 660 198 70 28
-	--	text lua "t('PLAYERS_LABEL')"
+	--	text lua "getUiString('PLAYERS_LABEL')"
 	--	text style "label_parchment"
 	--	align center center
 	--}
 	--label
 	--{
 	--	area 730 198 186 28
-	--	text lua "t('GAME_TYPE_LABEL')"
+	--	text lua "getUiString('GAME_TYPE_LABEL')"
 	--	text style "label_parchment"
 	--	align center center
 	--}
@@ -40291,7 +40291,7 @@ menu
 		text		style 'normal'
 		text		"CONNECTION_NOT_PASSWORD_PROTECTED_LABEL"
 		align 		left center
-		tooltip lua "t('CONNECTION_NO_PASSWORDS_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_NO_PASSWORDS_TOOLTIP')"
 	}
 	button
 	{
@@ -40301,7 +40301,7 @@ menu
 		sequence lua "RgUISkin"
 		scaleToClip
 		glow lua	"connectionFilterNoPasswords"
-		tooltip lua "t('CONNECTION_NO_PASSWORDS_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_NO_PASSWORDS_TOOLTIP')"
 		action
 		"
 			connectionFilterNoPasswords = 1 - connectionFilterNoPasswords
@@ -40315,7 +40315,7 @@ menu
 		text		style 'normal'
 		text		"CONNECTION_NOT_FULL_LABEL"
 		align 		left center
-		tooltip lua "t('CONNECTION_NO_FULL_GAMES_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_NO_FULL_GAMES_TOOLTIP')"
 	}
 	button
 	{
@@ -40325,7 +40325,7 @@ menu
 		sequence lua "RgUISkin"
 		scaleToClip
 		glow lua	"connectionFilterNoFullGames"
-		tooltip lua "t('CONNECTION_NO_FULL_GAMES_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_NO_FULL_GAMES_TOOLTIP')"
 		action
 		"
 			connectionFilterNoFullGames = 1 - connectionFilterNoFullGames
@@ -40402,7 +40402,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('RG_MM_REFRESH')"
-		tooltip lua "t('CONNECTION_REFRESH_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_REFRESH_TOOLTIP')"
 		action
 		"
 			selectedMp = nil
@@ -40423,7 +40423,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('CONNECTION_DIRECT_CONNECTION_BUTTON')"
-		tooltip lua "t('CONNECTION_DIRECT_CONNECT_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_DIRECT_CONNECT_TOOLTIP')"
 		action
 		"
 			connectionIsHosting = false
@@ -40718,7 +40718,7 @@ menu
 		area		280 262 241 40
 		text		style 'normal'
 		text		"CONNECTION_PASSWORD_PROTECTED"
-		tooltip lua "t('CONNECTION_PASSWORD_PROTECTED_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_PASSWORD_PROTECTED_TOOLTIP')"
 		align 		left center
 	}
 	button
@@ -40728,7 +40728,7 @@ menu
 		sequence lua "RgUISkin"
 		scaleToClip
 		glow lua	"connectionPasswordProtected"
-		tooltip lua "t('CONNECTION_PASSWORD_PROTECTED_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_PASSWORD_PROTECTED_TOOLTIP')"
 		action
 		"
 			connectionPasswordProtected = 1 - connectionPasswordProtected
@@ -40743,7 +40743,7 @@ menu
 		area		280 314 241 40
 		text		style 'normal'
 		text		"CONNECTION_LOCAL_NETWORK_GAME"
-		tooltip lua "t('CONNECTION_LOCAL_NETWORK_GAME_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_LOCAL_NETWORK_GAME_TOOLTIP')"
 		align 		left center
 	}
 	button
@@ -40753,7 +40753,7 @@ menu
 		sequence lua "RgUISkin"
 		scaleToClip
 		glow lua	"connectionLocalNetworkGame"
-		tooltip lua "t('CONNECTION_LOCAL_NETWORK_GAME_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_LOCAL_NETWORK_GAME_TOOLTIP')"
 		action
 		"
 			if connectionScreen:HasServiceProvider() then
@@ -40865,7 +40865,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('NEW_GAME_BUTTON')"
-		tooltip lua "t('CONNECTION_NEW_GAME_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_NEW_GAME_TOOLTIP')"
 		action
 		"
 			fromMultiPlayer = true
@@ -40881,7 +40881,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('LOAD_BUTTON')"
-		tooltip lua "t('CONNECTION_LOAD_GAME_TOOLTIP')"
+		tooltip lua "getUiString('CONNECTION_LOAD_GAME_TOOLTIP')"
 		action
 		"
 			Infinity_PopMenu()
@@ -41011,7 +41011,7 @@ menu
 	label
 	{
 		area 50 50 200 200
-		text lua "t('PASSWORD_REQUIRED_LABEL') .. ', ' .. getUiString('ENTER_PASSWORD_LABEL')"
+		text lua "getUiString('PASSWORD_REQUIRED_LABEL') .. ', ' .. getUiString('ENTER_PASSWORD_LABEL')"
 		text style	"normal"
 		text align center center
 	}
@@ -42265,14 +42265,14 @@ menu
 	--label
 	--{
 	--	area 524 80 136 22
-	--	text lua "t('PLAYER_LABEL')"
+	--	text lua "getUiString('PLAYER_LABEL')"
 	--	text style "label"
 	--	align center center
 	--}
 	--label
 	--{
 	--	area 660 80 228 22
-	--	text lua "t('CHARACTER_LABEL')"
+	--	text lua "getUiString('CHARACTER_LABEL')"
 	--	text style "label"
 	--	align center center
 	--}
@@ -42280,7 +42280,7 @@ menu
 	label
 	{
 		area 1223 90 50 34
-		text lua "t('READY_TO_PLAY_LABEL')"
+		text lua "getUiString('READY_TO_PLAY_LABEL')"
 		text style "normal"
 		align center center
 		text color 'X'
@@ -42316,12 +42316,12 @@ menu
 	label { area 872 471 54 85 bitmap lua 'mpaCharacters[5]["portrait"]' align center center }
 	label { area 872 565 54 85 bitmap lua 'mpaCharacters[6]["portrait"]' align center center }
 	
-	button { area 1233 120 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(1)" align left top tooltip lua "getMultiplayerReadyTooltip(1)" action "rgReadyButtonAction(1)" } --text lua "getMultiplayerCharacterReadyText(1)" text style "normal"
-	button { area 1233 214 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(2)" align left top tooltip lua "getMultiplayerReadyTooltip(2)" action "rgReadyButtonAction(2)" }
-	button { area 1233 308 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(3)" align left top tooltip lua "getMultiplayerReadyTooltip(3)" action "rgReadyButtonAction(3)" }
-	button { area 1233 402 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(4)" align left top tooltip lua "getMultiplayerReadyTooltip(4)" action "rgReadyButtonAction(4)" }
-	button { area 1233 496 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(5)" align left top tooltip lua "getMultiplayerReadyTooltip(5)" action "rgReadyButtonAction(5)" }
-	button { area 1233 590 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(6)" align left top tooltip lua "getMultiplayerReadyTooltip(6)" action "rgReadyButtonAction(6)" }
+	button { area 1233 120 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(1)" align left top tooltip lua "getMultiplayerReadyTooltip(1)" action "rgReadyButtonAction(1)" } --text lua "getMultiplayerCharacterReadyText(1)" text style "normal"
+	button { area 1233 214 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(2)" align left top tooltip lua "getMultiplayerReadyTooltip(2)" action "rgReadyButtonAction(2)" }
+	button { area 1233 308 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(3)" align left top tooltip lua "getMultiplayerReadyTooltip(3)" action "rgReadyButtonAction(3)" }
+	button { area 1233 402 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(4)" align left top tooltip lua "getMultiplayerReadyTooltip(4)" action "rgReadyButtonAction(4)" }
+	button { area 1233 496 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(5)" align left top tooltip lua "getMultiplayerReadyTooltip(5)" action "rgReadyButtonAction(5)" }
+	button { area 1233 590 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(6)" align left top tooltip lua "getMultiplayerReadyTooltip(6)" action "rgReadyButtonAction(6)" }
 	
 	
 	--list -- character list
@@ -42351,7 +42351,7 @@ menu
 	--			frame lua 	"currentCellCheck(1)"
 	--			align 		center center
 	--			enabled 	"multiplayerLocalPlayerID == 1 and rowNumber ~= 1"
-	--			text lua	"t('MULTIPLAYER_CHANGE_PLAYER_BUTTON')"
+	--			text lua	"getUiString('MULTIPLAYER_CHANGE_PLAYER_BUTTON')"
 	--			text style 	"button"
 	--		}
 	--
@@ -42518,7 +42518,7 @@ menu
 	label
 	{
 		area 106 316 207 21
-		text lua "t('PLAYERS_LABEL')"
+		text lua "getUiString('PLAYERS_LABEL')"
 		text style "normal"
 		text color 'X'
 		align center center
@@ -42526,7 +42526,7 @@ menu
 	label
 	{
 		area 313 316 187 21
-		text lua "t('PARTY_SLOTS_LABEL')"
+		text lua "getUiString('PARTY_SLOTS_LABEL')"
 		text style "normal"
 		text color 'X'
 		align center center
@@ -42534,7 +42534,7 @@ menu
 	label
 	{
 		area 500 316 60 21
-		text lua "t('RULES_LABEL')"
+		text lua "getUiString('RULES_LABEL')"
 		text style "normal"
 		text color 'X'
 		align center center
@@ -42626,7 +42626,7 @@ menu
 		clickable lua	"mpaPlayers[2]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(2)"
 	}	
 	button
@@ -42637,7 +42637,7 @@ menu
 		clickable lua	"mpaPlayers[3]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(3)"
 	}
 	button
@@ -42648,7 +42648,7 @@ menu
 		clickable lua	"mpaPlayers[4]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(4)"
 	}
 	button
@@ -42659,7 +42659,7 @@ menu
 		clickable lua	"mpaPlayers[5]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(5)"
 	}
 	button
@@ -42670,7 +42670,7 @@ menu
 		clickable lua	"mpaPlayers[6]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(6)"
 	}
 	
@@ -42683,7 +42683,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[2]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(2)"
 	}
 	button
@@ -42694,7 +42694,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[3]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(3)"
 	}
 	button
@@ -42705,7 +42705,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[4]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(4)"
 	}
 	button
@@ -42716,7 +42716,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[5]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(5)"
 	}
 	button
@@ -42727,7 +42727,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[6]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(6)"
 	}
 
@@ -43635,7 +43635,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[1][3] == true"
-		tooltip lua "t(multiplayerPermissions[1][2])"
+		tooltip lua "getUiString(multiplayerPermissions[1][2])"
 		scaleToClip
 		action 
 		"
@@ -43647,8 +43647,8 @@ menu
 	text
 	{
 		area 154 148 416 46
-		text lua "t(multiplayerPermissions[1][1])"
-		tooltip lua "t(multiplayerPermissions[1][2])"
+		text lua "getUiString(multiplayerPermissions[1][1])"
+		tooltip lua "getUiString(multiplayerPermissions[1][2])"
 		text style "normal"
 		align left center
 	}
@@ -43658,7 +43658,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[2][3] == true"
-		tooltip lua "t(multiplayerPermissions[2][2])"
+		tooltip lua "getUiString(multiplayerPermissions[2][2])"
 		scaleToClip
 		action 
 		"
@@ -43670,8 +43670,8 @@ menu
 	text
 	{
 		area 154 194 416 46
-		text lua "t(multiplayerPermissions[2][1])"
-		tooltip lua "t(multiplayerPermissions[2][2])"
+		text lua "getUiString(multiplayerPermissions[2][1])"
+		tooltip lua "getUiString(multiplayerPermissions[2][2])"
 		text style "normal"
 		align left center
 	}
@@ -43681,7 +43681,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[3][3] == true"
-		tooltip lua "t(multiplayerPermissions[3][2])"
+		tooltip lua "getUiString(multiplayerPermissions[3][2])"
 		scaleToClip
 		action 
 		"
@@ -43693,8 +43693,8 @@ menu
 	text
 	{
 		area 154 240 416 46
-		text lua "t(multiplayerPermissions[3][1])"
-		tooltip lua "t(multiplayerPermissions[3][2])"
+		text lua "getUiString(multiplayerPermissions[3][1])"
+		tooltip lua "getUiString(multiplayerPermissions[3][2])"
 		text style "normal"
 		align left center
 	}
@@ -43704,7 +43704,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[4][3] == true"
-		tooltip lua "t(multiplayerPermissions[4][2])"
+		tooltip lua "getUiString(multiplayerPermissions[4][2])"
 		scaleToClip
 		action 
 		"
@@ -43716,8 +43716,8 @@ menu
 	text
 	{
 		area 154 286 416 46
-		text lua "t(multiplayerPermissions[4][1])"
-		tooltip lua "t(multiplayerPermissions[4][2])"
+		text lua "getUiString(multiplayerPermissions[4][1])"
+		tooltip lua "getUiString(multiplayerPermissions[4][2])"
 		text style "normal"
 		align left center
 	}
@@ -43727,7 +43727,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[5][3] == true"
-		tooltip lua "t(multiplayerPermissions[5][2])"
+		tooltip lua "getUiString(multiplayerPermissions[5][2])"
 		scaleToClip
 		action 
 		"
@@ -43739,8 +43739,8 @@ menu
 	text
 	{
 		area 154 332 416 46
-		text lua "t(multiplayerPermissions[5][1])"
-		tooltip lua "t(multiplayerPermissions[5][2])"
+		text lua "getUiString(multiplayerPermissions[5][1])"
+		tooltip lua "getUiString(multiplayerPermissions[5][2])"
 		text style "normal"
 		align left center
 	}
@@ -43750,7 +43750,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[6][3] == true"
-		tooltip lua "t(multiplayerPermissions[6][2])"
+		tooltip lua "getUiString(multiplayerPermissions[6][2])"
 		scaleToClip
 		action 
 		"
@@ -43762,8 +43762,8 @@ menu
 	text
 	{
 		area 154 378 416 46
-		text lua "t(multiplayerPermissions[6][1])"
-		tooltip lua "t(multiplayerPermissions[6][2])"
+		text lua "getUiString(multiplayerPermissions[6][1])"
+		tooltip lua "getUiString(multiplayerPermissions[6][2])"
 		text style "normal"
 		align left center
 	}
@@ -43845,7 +43845,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerGameOptions[1][3] == true"
-		tooltip lua "t(multiplayerGameOptions[1][2])"
+		tooltip lua "getUiString(multiplayerGameOptions[1][2])"
 		scaleToClip
 		action 
 		"
@@ -43855,9 +43855,9 @@ menu
 	text
 	{
 		area 252 162 303 42
-		text lua "t(multiplayerGameOptions[1][1])"
+		text lua "getUiString(multiplayerGameOptions[1][1])"
 		text style "normal"
-		tooltip lua "t(multiplayerGameOptions[1][2])"
+		tooltip lua "getUiString(multiplayerGameOptions[1][2])"
 		align left center
 	}
 	button
@@ -43866,7 +43866,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerGameOptions[2][3] == true"
-		tooltip lua "t(multiplayerGameOptions[2][2])"
+		tooltip lua "getUiString(multiplayerGameOptions[2][2])"
 		scaleToClip
 		action 
 		"
@@ -43876,9 +43876,9 @@ menu
 	text
 	{
 		area 252 216 303 42
-		text lua "t(multiplayerGameOptions[2][1])"
+		text lua "getUiString(multiplayerGameOptions[2][1])"
 		text style "normal"
-		tooltip lua "t(multiplayerGameOptions[2][2])"
+		tooltip lua "getUiString(multiplayerGameOptions[2][2])"
 		align left center
 	}
 
@@ -43889,7 +43889,7 @@ menu
 		sequence lua "RgUISkin"
 		frame lua "currentCellCheck(3)"
 		glow lua "multiplayerImportOption == 1"
-		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
+		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
 		scaleToClip
 		action 
 		"
@@ -43899,8 +43899,8 @@ menu
 	text
 	{
 		area 252 326 303 42
-		text lua "t('MULTIPLAYER_IMPORT_CHARACTER_RULES_SEI')"
-		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
+		text lua "getUiString('MULTIPLAYER_IMPORT_CHARACTER_RULES_SEI')"
+		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
 		text style "normal"
 		align left center
 	}
@@ -43911,7 +43911,7 @@ menu
 		sequence lua "RgUISkin"
 		frame lua "currentCellCheck(3)"
 		glow lua "multiplayerImportOption == 2"
-		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
+		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
 		scaleToClip
 		action 
 		"
@@ -43921,8 +43921,8 @@ menu
 	text
 	{
 		area 252 374 303 42
-		text lua "t('MULTIPLAYER_IMPORT_CHARACTER_RULES_SE')"
-		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
+		text lua "getUiString('MULTIPLAYER_IMPORT_CHARACTER_RULES_SE')"
+		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
 		text style "normal"
 		align left center
 	}
@@ -43933,7 +43933,7 @@ menu
 		sequence lua "RgUISkin"
 		frame lua "currentCellCheck(3)"
 		glow lua "multiplayerImportOption == 3"
-		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
+		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
 		scaleToClip
 		action 
 		"
@@ -43943,8 +43943,8 @@ menu
 	text
 	{
 		area 252 422 212 42
-		text lua "t('MULTIPLAYER_IMPORT_CHARACTER_RULES_S')"
-		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
+		text lua "getUiString('MULTIPLAYER_IMPORT_CHARACTER_RULES_S')"
+		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
 		text style "normal"
 		align left center
 	}
@@ -44542,7 +44542,7 @@ menu
 		bam "rgdbut3"
 		scaleToClip
 		enabled "showMpChat"
-		tooltip lua "t('MULTIPLAYER_CHAT_RESIZE_TOOLTIP')"
+		tooltip lua "getUiString('MULTIPLAYER_CHAT_RESIZE_TOOLTIP')"
 		actionDrag
 		"
 			dragMPChat(motionY)
@@ -45970,7 +45970,7 @@ menu
 		area		1077 34 58 54 
 		bam			rgdjobut
 		scaleToClip 
-		tooltip lua "t('RG_JOURNAL_MODE1')"
+		tooltip lua "getUiString('RG_JOURNAL_MODE1')"
 		sequence lua "rgGetInvModeSequence()"
 		--toggle		rgLargeJournal
 		action
@@ -47069,7 +47069,7 @@ menu
 		enabled "rgLargeJournal == 0"
 		area		14 8 62 58 
 		bam			rgdjobut
-		tooltip lua "t('RG_JOURNAL_MODE2')"
+		tooltip lua "getUiString('RG_JOURNAL_MODE2')"
 		scaleToClip
 		toggle		rgLargeJournal
 		action
@@ -47084,7 +47084,7 @@ menu
 		area 121 8 62 58 
 		bam "rgdjbt1"
 		scaleToClip
-		tooltip lua "t('CURRENT_LABEL')"
+		tooltip lua "getUiString('CURRENT_LABEL')"
 		glow lua "journalMode == const.JOURNAL_MODE_QUESTS and rgIsCurrentQuests == 1"
 		action 
 		"
@@ -47098,7 +47098,7 @@ menu
 		area 184 8 62 58 
 		bam "rgdjbt2"
 		scaleToClip
-		tooltip lua "t('OBJECTIVE_FINISHED_NORMAL')"
+		tooltip lua "getUiString('OBJECTIVE_FINISHED_NORMAL')"
 		glow lua "journalMode == const.JOURNAL_MODE_QUESTS and rgIsCurrentQuests == 0"
 		action 
 		"
@@ -47112,7 +47112,7 @@ menu
 		area 247 8 62 58 
 		bam "rgdjbt3"
 		scaleToClip
-		tooltip lua "t('JOURNAL_LABEL')"
+		tooltip lua "getUiString('JOURNAL_LABEL')"
 		glow lua "journalMode == const.JOURNAL_MODE_JOURNAL"
 		action "journalMode = const.JOURNAL_MODE_JOURNAL"
 	}
@@ -48695,7 +48695,7 @@ menu
 	label
 	{
 		area 118 24 752 120
-		text lua "t(buttonHelp[currentButtonHelp][8])"
+		text lua "getUiString(buttonHelp[currentButtonHelp][8])"
 		text style	"label"
 		text align left top
 	}
@@ -51162,7 +51162,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "t('CREDITS_TITLE') .. ' & ' .. getUiString('MOVIES_TITLE')"
+		text lua "getUiString('CREDITS_TITLE') .. ' & ' .. getUiString('MOVIES_TITLE')"
 		action 
 		"
 			Infinity_PopMenu()
@@ -53430,15 +53430,15 @@ menu
 	--	ScaleToClip 
 	--	action "Infinity_PushMenu('RG_RADAR_SETTINGS')" 
 	--}
-	button { enabled "rgRadarShowMinimizedBar == 1" area  20 0 20 20 bam rgdmrnd2 sequence 5 ScaleToClip tooltip lua "t('RG_NPCBAR_WEAPON')" toggle rgRadarShowWeapons }
-	button { enabled "rgRadarShowMinimizedBar == 1" area  40 0 20 20 bam rgdmrnd2 sequence 4 ScaleToClip tooltip lua "t('RG_NPCBAR_CRE')" toggle rgRadarShowNames }
-	button { enabled "rgRadarShowMinimizedBar == 1" area  60 0 20 20 bam rgdmrnd2 sequence 8 ScaleToClip tooltip lua "t('RG_NPCBAR_HP')" toggle rgRadarShowHitPoints }
-	button { enabled "rgRadarShowMinimizedBar == 1" area  80 0 20 20 bam rgdmrnd2 sequence 6 ScaleToClip tooltip lua "t('RG_NPCBAR_EFF')" toggle rgRadarShowNpcEffects }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 100 0 20 20 bam rgdmrnd2 sequence 9 ScaleToClip tooltip lua "t('RG_NPCBAR_AREA')" toggle rgRadarShowExtendRadius }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 120 0 20 20 bam rgdmrnd2 sequence 7 ScaleToClip tooltip lua "t('RG_NPCBAR_SELECT')" toggle rgRadarShowSingleCre }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 140 0 20 20 bam rgdmrnd2 sequence 2 ScaleToClip tooltip lua "t('RG_NPCBAR_ENEMY')" toggle rgRadarShowCreaturesR }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 160 0 20 20 bam rgdmrnd2 sequence 0 ScaleToClip tooltip lua "t('RG_NPCBAR_ALLY')" toggle rgRadarShowCreaturesG }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 180 0 20 20 bam rgdmrnd2 sequence 1 ScaleToClip tooltip lua "t('RG_NPCBAR_NEUTR')" toggle rgRadarShowCreaturesB }
+	button { enabled "rgRadarShowMinimizedBar == 1" area  20 0 20 20 bam rgdmrnd2 sequence 5 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_WEAPON')" toggle rgRadarShowWeapons }
+	button { enabled "rgRadarShowMinimizedBar == 1" area  40 0 20 20 bam rgdmrnd2 sequence 4 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_CRE')" toggle rgRadarShowNames }
+	button { enabled "rgRadarShowMinimizedBar == 1" area  60 0 20 20 bam rgdmrnd2 sequence 8 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_HP')" toggle rgRadarShowHitPoints }
+	button { enabled "rgRadarShowMinimizedBar == 1" area  80 0 20 20 bam rgdmrnd2 sequence 6 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_EFF')" toggle rgRadarShowNpcEffects }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 100 0 20 20 bam rgdmrnd2 sequence 9 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_AREA')" toggle rgRadarShowExtendRadius }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 120 0 20 20 bam rgdmrnd2 sequence 7 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_SELECT')" toggle rgRadarShowSingleCre }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 140 0 20 20 bam rgdmrnd2 sequence 2 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_ENEMY')" toggle rgRadarShowCreaturesR }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 160 0 20 20 bam rgdmrnd2 sequence 0 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_ALLY')" toggle rgRadarShowCreaturesG }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 180 0 20 20 bam rgdmrnd2 sequence 1 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_NEUTR')" toggle rgRadarShowCreaturesB }
 	
 	
 	
