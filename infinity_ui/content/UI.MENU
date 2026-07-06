@@ -8,6 +8,9 @@ end
 listMetaInfo = {}
 combatLog = {}
 
+function t(p)
+	return getUiString(p)
+end
 
 
 Infinity_DoFile("my__CNST") --// BY_ME
@@ -7414,7 +7417,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "rgString(t(Popup4Button.farRightText))"
+		text lua "rgString(getUiString(Popup4Button.farRightText))"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7432,7 +7435,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "rgString(t(Popup4Button.rightText))"
+		text lua "rgString(getUiString(Popup4Button.rightText))"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7451,7 +7454,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "rgString(t(Popup4Button.leftText))"
+		text lua "rgString(getUiString(Popup4Button.leftText))"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7469,7 +7472,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "rgString(t(Popup4Button.farLeftText))"
+		text lua "rgString(getUiString(Popup4Button.farLeftText))"
 		action 
 		"
 			Infinity_PopMenu()
@@ -36751,7 +36754,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(t(chargen.title) .. ': ' .. getUiString('LEVEL_LABEL') .. ' ' .. chargen.currentSpellLevelChoice)"
+		text lua "rgString(getUiString(chargen.title) .. ': ' .. getUiString('LEVEL_LABEL') .. ' ' .. chargen.currentSpellLevelChoice)"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -41999,7 +42002,7 @@ function updateMultiplayerSessionData(sessionName, saveName, chapter, timePlayed
 		multiplayerTimePlayed = gold..getUiString("MULTIPLAYER_TIME_PLAYED_LABEL").."^- ^0xffffffff"..timePlayed.."^-"
 		if difficulty > 0 then
 			mulitplayerPreexistingDifficulty = difficulty
-			multiplayerDifficultyLabel = gold..getUiString("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..t(difficulties[difficulty].name).."^-"
+			multiplayerDifficultyLabel = gold..getUiString("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..getUiString(difficulties[difficulty].name).."^-"
 			multiplayerDifficultyImage = difficulty - 1
 		end
 	else
@@ -42007,7 +42010,7 @@ function updateMultiplayerSessionData(sessionName, saveName, chapter, timePlayed
 		multiplayerChapter = gold..getUiString("MULTIPLAYER_CHAPTER_LABEL").."^- ^0xffffffff"..chapter.."^-"
 		multiplayerTimePlayed = gold..getUiString("MULTIPLAYER_TIME_PLAYED_NEW_GAME").."^-"
 		if difficulty > 0 then
-			multiplayerDifficultyLabel = gold..getUiString("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..t(difficulties[difficulty].name).."^-"
+			multiplayerDifficultyLabel = gold..getUiString("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..getUiString(difficulties[difficulty].name).."^-"
 			multiplayerDifficultyImage = difficulty - 1
 		end
 	end
