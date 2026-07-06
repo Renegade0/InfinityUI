@@ -3830,7 +3830,7 @@ function getDifficulty(d)
 	elseif (d == 4) then
 		text = getUiString("DIFFICULTY_LABEL_INSANE")
 	elseif (d == 5) then
-		text = string.upper(t("MULTIPLAYER_DIFFICULTY_LABEL")).." "..t("DIFFICULTY_LABEL_LEGACYOFBHAAL")
+		text = string.upper(getUiString("MULTIPLAYER_DIFFICULTY_LABEL")).." "..getUiString("DIFFICULTY_LABEL_LEGACYOFBHAAL")
 	end
 	return text
 end
@@ -4277,22 +4277,75 @@ menu
 }
 
 `
-autoPauseToggles = { 
-{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
-{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
-{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
-{'SPELL_CAST_LABEL',24432, 31, 0, 0},
-{'TRAP_FOUND_LABEL',24433, 34, 0, 0}
-}
 
-characterPauseToggles = { 
-{'CENTER_MEMBER_LABEL',24434, 37, 0, 0},
-{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
-{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
-{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
-{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
-{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
-}
+
+function rgGetAutopauseToggles()
+	if rgGameEngine == 0 then --bg1
+	autoPauseToggles = { 
+		{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
+		{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
+		{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
+		{'SPELL_CAST_LABEL',24432, 31, 0, 0},
+		{'TRAP_FOUND_LABEL',24433, 34, 0, 0}
+		}
+		characterPauseToggles = { 
+		{'CENTER_MEMBER_LABEL',24434, 37, 0, 0},
+		{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
+		{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
+		{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
+		{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
+		{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
+		}
+	elseif rgGameEngine == 1 then --sod
+	autoPauseToggles = { 
+		{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
+		{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
+		{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
+		{'SPELL_CAST_LABEL',24432, 31, 0, 0},
+		{'TRAP_FOUND_LABEL',24433, 34, 0, 0}
+		}
+		characterPauseToggles = { 
+		{'CENTER_MEMBER_LABEL',24434, 37, 0, 0},
+		{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
+		{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
+		{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
+		{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
+		{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
+		}
+	elseif rgGameEngine == 2 or rgGameEngine == 4 then --bg2
+	autoPauseToggles = { 
+		{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
+		{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
+		{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
+		{'SPELL_CAST_LABEL',31872, 31, 0, 0},
+		{'TRAP_FOUND_LABEL',58171, 34, 0, 0}
+		}
+		characterPauseToggles = { 
+		{'CENTER_MEMBER_LABEL',10571, 37, 0, 0},
+		{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
+		{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
+		{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
+		{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
+		{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
+		}
+	elseif rgGameEngine == 3 then --iwd
+	autoPauseToggles = { 
+		{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
+		{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
+		{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
+		{'SPELL_CAST_LABEL',31872, 31, 0, 0},
+		{'TRAP_FOUND_LABEL',24433,24433,58171,34672, 34, 0, 0}
+		}
+		characterPauseToggles = { 
+		{'CENTER_MEMBER_LABEL',24434,24434,10571,10571, 37, 0, 0},
+		{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
+		{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
+		{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
+		{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
+		{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
+		}
+	end
+end
 
 selOptAP = 0
 
@@ -6098,7 +6151,7 @@ key = 0
 
 function displayHelp()
 	if not (key == 0) then
-		return 24680
+		return rgGetGameEngineStringRef(24680,24680,2802,37843)
 	end
 	return 0
 end
@@ -7595,7 +7648,7 @@ function rgGetLibraryJournalEntry(text)
 		end
 			
 		if Infinity_FetchString(rgLibrary[i][1]) == text and hasEntry == 0 then 
-			Infinity_OnAddUserEntry(t('RG_LIBRARY') .. text)
+			Infinity_OnAddUserEntry(getUiString('RG_LIBRARY') .. text)
 			--C:CreateItem('book08')
 		end
 	end
@@ -10652,19 +10705,19 @@ function rgGetTempItemDesc()
 	
 	--if getTempStat(characters[id].AC.current,'AC',-1) ~= '-' then
 	--	rgTestItemDesc = rgTestItemDesc .. getUiString('ARMOR_CLASS_LABEL') .. ': ' .. getStat(characters[id].AC.current,'AC',-1) .. ' ==> ' .. getTempStat(characters[id].AC.current,'AC',-1) .. '\n'
-	--	table.insert(out, {t('ARMOR_CLASS_LABEL') .. ': ' .. getStat(characters[id].AC.current,'AC',-1) ,getTempStat(characters[id].AC.current,'AC',-1)}) 
+	--	table.insert(out, {getUiString('ARMOR_CLASS_LABEL') .. ': ' .. getStat(characters[id].AC.current,'AC',-1) ,getTempStat(characters[id].AC.current,'AC',-1)}) 
 	--end
 	--if getTempHP() ~= '-' then
 	--	rgTestItemDesc = rgTestItemDesc .. getUiString('HIT_POINTS_LABEL') .. ': ' .. characters[id].HP.current .. '/' .. getStat(characters[id].HP.max, 'HP', 1) .. ' ==> ' .. getTempHP() ..  '\n'
-	--	table.insert(out, {t('HIT_POINTS_LABEL') .. ': ' .. characters[id].HP.current .. '/' .. getStat(characters[id].HP.max, 'HP', 1),getTempHP()}) 
+	--	table.insert(out, {getUiString('HIT_POINTS_LABEL') .. ': ' .. characters[id].HP.current .. '/' .. getStat(characters[id].HP.max, 'HP', 1),getTempHP()}) 
 	--end
 	--if getTempStat(characters[id].THAC0.current,'THAC0',-1) ~= '-' then
 	--	rgTestItemDesc = rgTestItemDesc .. getUiString('THAC0_LABEL') .. ': ' .. getStat(characters[id].THAC0.current,'THAC0', -1) .. ' ==> ' .. getTempStat(characters[id].THAC0.current,'THAC0',-1) .. '\n'
-	--	table.insert(out, {t('THAC0_LABEL') .. ': ' .. getStat(characters[id].THAC0.current,'THAC0', -1),getTempStat(characters[id].THAC0.current,'THAC0',-1)}) 
+	--	table.insert(out, {getUiString('THAC0_LABEL') .. ': ' .. getStat(characters[id].THAC0.current,'THAC0', -1),getTempStat(characters[id].THAC0.current,'THAC0',-1)}) 
 	--end
 	--if getTempDamage() ~= '-' then
 	--	rgTestItemDesc = rgTestItemDesc .. getUiString('DAMAGE_LABEL') .. ': ' .. getStat(characters[id].damage.min,'dmgMin',1) .. ' - ' .. getStat(characters[id].damage.max, 'dmgMax', 1) .. ' ==> ' .. getTempDamage() .. '\n'
-	--	table.insert(out, {t('DAMAGE_LABEL') .. ': ' .. getStat(characters[id].damage.min,'dmgMin',1) .. ' - ' .. getStat(characters[id].damage.max, 'dmgMax', 1),getTempDamage()}) 
+	--	table.insert(out, {getUiString('DAMAGE_LABEL') .. ': ' .. getStat(characters[id].damage.min,'dmgMin',1) .. ' - ' .. getStat(characters[id].damage.max, 'dmgMax', 1),getTempDamage()}) 
 	--end
 	
 	--rgTestItemDesc = rgTestItemDesc .. '\n'
@@ -10721,16 +10774,16 @@ function rgSplitByDoubleLine(str)
 	local finLines = {}
 	local stat = false
 	for i in string.gmatch(str, "[^\r\n\r\n]+") do
-		if rgStringStart(i,t("RG_ITM_COMP_ST")) then
+		if rgStringStart(i,getUiString("RG_ITM_COMP_ST")) then
 			stat = true
-		elseif rgStringStart(i,t("RG_ITM_COMP_WE")) or rgStringStart(i,t("RG_ITM_COMP_RE")) then
+		elseif rgStringStart(i,getUiString("RG_ITM_COMP_WE")) or rgStringStart(i,getUiString("RG_ITM_COMP_RE")) then
 			stat = false
 		elseif rgStringStart(i,"THAC0") then
 			i = i:gsub("THAC0", "\nTHAC0")
 		end
-		i = i:gsub(t("RG_ITM_COMP_PR"), "")
-		i = i:gsub(t("RG_ITM_COMP_DA"), "")
-		i = i:gsub(t("RG_ITM_COMP_TY"), "")
+		i = i:gsub(getUiString("RG_ITM_COMP_PR"), "")
+		i = i:gsub(getUiString("RG_ITM_COMP_DA"), "")
+		i = i:gsub(getUiString("RG_ITM_COMP_TY"), "")
 		if stat == true  then --and not rgStringStart(i,"STAT")
 			table.insert(Lines, i);
 		end
@@ -15122,6 +15175,7 @@ menu
 		rgGetCheatLists()
 		rgGetGraphicToggles()
 		rgGetGameplayToggles()
+		rgGetAutopauseToggles()
 		rgGetBestiary()
 		
 		if EEex_Active == false then
@@ -16806,7 +16860,7 @@ menu
 		bam		rgdmbut2
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "rgString(t('CONTINGENCY_BUTTON'))"
+		text lua "rgString(getUiString('CONTINGENCY_BUTTON'))"
 		text style "button"
 		action "Infinity_PushMenu('MAGE_CONTINGENCY')"
 		
@@ -16818,7 +16872,7 @@ menu
 		bam		rgdbutw1
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "rgString(t('CONTINGENCY_BUTTON'))"
+		text lua "rgString(getUiString('CONTINGENCY_BUTTON'))"
 		text style "button"
 		action "Infinity_PushMenu('MAGE_CONTINGENCY')"
 		
@@ -22767,7 +22821,7 @@ menu
 		bam		rgdbutm1
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "checkContainerText(t('BUY_BUTTON') .. ' (' .. storeScreen:GetStoreCost() .. ')', 'TO_BACKPACK_BUTTON')"
+		text lua "checkContainerText(getUiString('BUY_BUTTON') .. ' (' .. storeScreen:GetStoreCost() .. ')', 'TO_BACKPACK_BUTTON')"
 		text style "button"
 		clickable lua "storeScreen:IsBuyItemButtonClickable()"
 		action
@@ -22783,7 +22837,7 @@ menu
 		bam		rgdbutm1
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "checkContainerText(t('SELL_BUTTON') .. ' (' .. storeScreen:GetGroupCost() .. ')','TO_CONTAINER_BUTTON')"
+		text lua "checkContainerText(getUiString('SELL_BUTTON') .. ' (' .. storeScreen:GetGroupCost() .. ')','TO_CONTAINER_BUTTON')"
 		text style "button"
 		clickable lua "storeScreen:IsSellItemButtonClickable()"
 		action
@@ -33073,7 +33127,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(t('GENDER_TITLE') .. '  &  ' .. getUiString('APPEARANCE_TITLE'))"
+		text lua "rgString(getUiString('GENDER_TITLE') .. '  &  ' .. getUiString('APPEARANCE_TITLE'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -33741,7 +33795,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
+		text lua "rgString(getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -33870,7 +33924,7 @@ menu
 	{
 		enabled "createCharScreen:GetCurrentStep() ~= const.STEP_DUALCLASS_CLASS"																   
 		area		480 32 405 52
-		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
+		text lua "rgString(getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -34073,7 +34127,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
+		text lua "rgString(getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -34290,7 +34344,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
+		text lua "rgString(getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -36463,21 +36517,21 @@ function rgChooseSpellsMenuOnOpen()
 		end
 		
 		if currentKitName == rgGetGameEngineString(25319,25319,597,597) then
-			setStringTokenLua('<SCHOOLTOKEN>',t('ABJURATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',getUiString('ABJURATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25320,25320,2179,2179) then
-			setStringTokenLua('<SCHOOLTOKEN>',t('CONJURATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',getUiString('CONJURATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25321,25321,2846,2846) then
-			setStringTokenLua('<SCHOOLTOKEN>',t('DIVINATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',getUiString('DIVINATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25322,25322,2861,2861) then
-			setStringTokenLua('<SCHOOLTOKEN>',t('ENCHANTMENT_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',getUiString('ENCHANTMENT_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25323,25323,2862,2862) then
-			setStringTokenLua('<SCHOOLTOKEN>',t('ILLUSION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',getUiString('ILLUSION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25324,25324,3015,3015) then
-			setStringTokenLua('<SCHOOLTOKEN>',t('EVOCATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',getUiString('EVOCATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25325,25325,12744,12744) then
-			setStringTokenLua('<SCHOOLTOKEN>',t('NECROMANCY_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',getUiString('NECROMANCY_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25326,25326,12745,12745) then
-			setStringTokenLua('<SCHOOLTOKEN>',t('TRANSMUTATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',getUiString('TRANSMUTATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25327,25327,54893,34656) then
 			setStringTokenLua('<SCHOOLTOKEN>',rgGetGameEngineString(25327,25327,54893,34656))
 		end
@@ -36651,21 +36705,21 @@ menu
 		--end
 		--
 		--if currentKitName == rgGetGameEngineString(25319,25319,597,597) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',t('ABJURATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('ABJURATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25320,25320,2179,2179) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',t('CONJURATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('CONJURATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25321,25321,2846,2846) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',t('DIVINATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('DIVINATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25322,25322,2861,2861) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',t('ENCHANTMENT_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('ENCHANTMENT_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25323,25323,2862,2862) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',t('ILLUSION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('ILLUSION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25324,25324,3015,3015) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',t('EVOCATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('EVOCATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25325,25325,12744,12744) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',t('NECROMANCY_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('NECROMANCY_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25326,25326,12745,12745) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',t('TRANSMUTATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('TRANSMUTATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25327,25327,,) then
 		--	setStringTokenLua('<SCHOOLTOKEN>',rgGetGameEngineString(25327,25327,54893,34656))
 		--end
@@ -41860,11 +41914,11 @@ function getMultiplayerPlayerName(slot,newLine,hostyou)
 
 	if hostyou == true then
 		if slot == multiplayerLocalPlayerID then
-			ret = ret..separator.."^0xFFFFFFFF"..t("MULTIPLAYER_PLAYER_YOU").."^-"
+			ret = ret..separator.."^0xFFFFFFFF"..getUiString("MULTIPLAYER_PLAYER_YOU").."^-"
 		elseif slot == 1 then
-			ret = ret..separator.."^0xFFFFFFFF"..t("MULTIPLAYER_PLAYER_HOST").."^-"
+			ret = ret..separator.."^0xFFFFFFFF"..getUiString("MULTIPLAYER_PLAYER_HOST").."^-"
 		elseif ret == "" then
-			ret = "^0xFF9B9B9B"..t("MULTIPLAYER_EMPTY_PLAYER").."^-"
+			ret = "^0xFF9B9B9B"..getUiString("MULTIPLAYER_EMPTY_PLAYER").."^-"
 		end
 	end
 
@@ -41940,20 +41994,20 @@ function updateMultiplayerSessionData(sessionName, saveName, chapter, timePlayed
 	multiplayerSessionName = gold..sessionName.."^-"
 
 	if areaName ~= "" then
-		multiplayerSaveName = gold..t("MULTIPLAYER_SAVED_GAME_LABEL").."^- ^0xffffffff"..saveName.."^-"
-		multiplayerChapter = gold..t("MULTIPLAYER_CHAPTER_LABEL").."^- ^0xffffffff"..chapter.."^-"
-		multiplayerTimePlayed = gold..t("MULTIPLAYER_TIME_PLAYED_LABEL").."^- ^0xffffffff"..timePlayed.."^-"
+		multiplayerSaveName = gold..getUiString("MULTIPLAYER_SAVED_GAME_LABEL").."^- ^0xffffffff"..saveName.."^-"
+		multiplayerChapter = gold..getUiString("MULTIPLAYER_CHAPTER_LABEL").."^- ^0xffffffff"..chapter.."^-"
+		multiplayerTimePlayed = gold..getUiString("MULTIPLAYER_TIME_PLAYED_LABEL").."^- ^0xffffffff"..timePlayed.."^-"
 		if difficulty > 0 then
 			mulitplayerPreexistingDifficulty = difficulty
-			multiplayerDifficultyLabel = gold..t("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..t(difficulties[difficulty].name).."^-"
+			multiplayerDifficultyLabel = gold..getUiString("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..t(difficulties[difficulty].name).."^-"
 			multiplayerDifficultyImage = difficulty - 1
 		end
 	else
-		multiplayerSaveName = gold..t("MULTIPLAYER_NEW_GAME_LABEL").."^- ^0xffffffff"..saveName.."^-"
-		multiplayerChapter = gold..t("MULTIPLAYER_CHAPTER_LABEL").."^- ^0xffffffff"..chapter.."^-"
-		multiplayerTimePlayed = gold..t("MULTIPLAYER_TIME_PLAYED_NEW_GAME").."^-"
+		multiplayerSaveName = gold..getUiString("MULTIPLAYER_NEW_GAME_LABEL").."^- ^0xffffffff"..saveName.."^-"
+		multiplayerChapter = gold..getUiString("MULTIPLAYER_CHAPTER_LABEL").."^- ^0xffffffff"..chapter.."^-"
+		multiplayerTimePlayed = gold..getUiString("MULTIPLAYER_TIME_PLAYED_NEW_GAME").."^-"
 		if difficulty > 0 then
-			multiplayerDifficultyLabel = gold..t("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..t(difficulties[difficulty].name).."^-"
+			multiplayerDifficultyLabel = gold..getUiString("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..t(difficulties[difficulty].name).."^-"
 			multiplayerDifficultyImage = difficulty - 1
 		end
 	end
@@ -42115,7 +42169,7 @@ end
 function rgGetCharacterSlotName(slot)
 	local ret = ""
 	if mpaCharacters[slot]["name"] == "" and multiplayerLocalPlayerID == mpaCharacters[slot]["player"] then
-		ret = '^$' .. string.lower(t("CREATE_CHAR_BUTTON"))
+		ret = '^$' .. string.lower(getUiString("CREATE_CHAR_BUTTON"))
 	elseif mpaCharacters[slot]["name"] == "" and multiplayerLocalPlayerID ~= mpaCharacters[slot]["player"] then
 		ret = ""
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] == "" then
@@ -45437,13 +45491,13 @@ function rgGetBestiaryStatistics(text)
 		if Infinity_FetchString(rgBeasts[i].name) == str then 
 		
 			local kil = rgGetBestiaryStat(kills,0,rgFirstLetterUpper(Infinity_FetchString(11954) .. ': ' .. kills))
-			local exp = rgGetBestiaryStat(kills,0,t('XP_LABEL') .. ': ' .. rgBeasts[i].xp)
+			local exp = rgGetBestiaryStat(kills,0,getUiString('XP_LABEL') .. ': ' .. rgBeasts[i].xp)
 			local lvl = rgGetBestiaryStat(kills,2,rgBeasts[i].lvl)
 			local hps = rgGetBestiaryStat(kills,1,rgBeasts[i].hp)
 			local acb = rgGetBestiaryStat(kills,1,rgBeasts[i].ac)
 			local thc = rgGetBestiaryStat(kills,2,rgBeasts[i].thc)
 			local apr = rgBestApr(rgGetBestiaryStat(kills,2,rgBeasts[i].apr))
-			local abi = rgGetBestiaryStat(kills,0,t('HIGH_LEVEL_ABILITIES_TITLE'))
+			local abi = rgGetBestiaryStat(kills,0,getUiString('HIGH_LEVEL_ABILITIES_TITLE'))
 			local str = rgGetBestiaryStat(kills,3,rgBeasts[i].abi.str)
 			local dex = rgGetBestiaryStat(kills,3,rgBeasts[i].abi.dex)
 			local con = rgGetBestiaryStat(kills,3,rgBeasts[i].abi.con)
@@ -45482,7 +45536,7 @@ function rgGetBestiaryStatistics(text)
 			--table.insert(endList, {rgFirstLetterUpper(Infinity_FetchString(11954)) .. ': ' .. kills, getUiString('XP_LABEL') .. ': ' .. rgBeasts[i].xp,'','','',''})
 			--
 			--table.insert(endList, rgGetBestiaryStatRow(kills,1,{rgBeasts[i].hp,rgBeasts[i].ac,rgBeasts[i].thc,rgBeasts[i].apr,'',''}))
-			--table.insert(endList, rgGetBestiaryStatRow(kills,2,{t('HIGH_LEVEL_ABILITIES_TITLE'),'','','','',''}))
+			--table.insert(endList, rgGetBestiaryStatRow(kills,2,{getUiString('HIGH_LEVEL_ABILITIES_TITLE'),'','','','',''}))
 			--table.insert(endList, rgGetBestiaryStatRow(kills,2,{rgBeasts[i].abi.str,rgBeasts[i].abi.dex,rgBeasts[i].abi.con,rgBeasts[i].abi.int,rgBeasts[i].abi.wis,rgBeasts[i].abi.cha}))
 			--table.insert(endList, rgGetBestiaryStatRow(kills,3,{Infinity_FetchString(17379),'','','','',''}))
 			--table.insert(endList, rgGetBestiaryStatRow(kills,3,{rgBeasts[i].sav.dea,rgBeasts[i].sav.wan,rgBeasts[i].sav.pol,rgBeasts[i].sav.bre,rgBeasts[i].sav.spe,''}))--saving throws
@@ -45503,17 +45557,17 @@ function rgGetBestiaryStatistics(text)
 	--	
 	--		local res = rgGetBestiaryResistances(i,kills)
 	--	
-	--		table.insert(endList, {rgFirstLetterUpper(Infinity_FetchString(11954)) .. '                    ' ..t('XP_LABEL') .. ': ' .. rgBeasts[i].xp,	kills,'','','','','','','','',''})
-	--		table.insert(endList, rgGetBestiaryStatRow(kills,1,{t('HIT_POINTS_LABEL'),							rgBeasts[i].hp							,'','','','','','','','',''}))
+	--		table.insert(endList, {rgFirstLetterUpper(Infinity_FetchString(11954)) .. '                    ' ..getUiString('XP_LABEL') .. ': ' .. rgBeasts[i].xp,	kills,'','','','','','','','',''})
+	--		table.insert(endList, rgGetBestiaryStatRow(kills,1,{getUiString('HIT_POINTS_LABEL'),							rgBeasts[i].hp							,'','','','','','','','',''}))
 	--		
 	--		if rgBeasts[i].mod.mis > 0 or rgBeasts[i].mod.sla >0 or rgBeasts[i].mod.cru>0 or rgBeasts[i].mod.pie >0 then
-	--			table.insert(endList, rgGetBestiaryStatRow(kills,2,{t('ARMOR_CLASS_LABEL'),							rgBeasts[i].ac							,'',1,rgBeasts[i].mod.mis,2,rgBeasts[i].mod.sla,3,rgBeasts[i].mod.cru,4,rgBeasts[i].mod.pie}))
+	--			table.insert(endList, rgGetBestiaryStatRow(kills,2,{getUiString('ARMOR_CLASS_LABEL'),							rgBeasts[i].ac							,'',1,rgBeasts[i].mod.mis,2,rgBeasts[i].mod.sla,3,rgBeasts[i].mod.cru,4,rgBeasts[i].mod.pie}))
 	--		else
-	--			table.insert(endList, rgGetBestiaryStatRow(kills,2,{t('ARMOR_CLASS_LABEL'),							rgBeasts[i].ac							,'','','','','','','','',''}))
+	--			table.insert(endList, rgGetBestiaryStatRow(kills,2,{getUiString('ARMOR_CLASS_LABEL'),							rgBeasts[i].ac							,'','','','','','','','',''}))
 	--		end
 	--		
-	--		table.insert(endList, rgGetBestiaryStatRow(kills,3,{t('THAC0_LABEL'),								rgBeasts[i].thc							,'','','','','','','','',''}))
-	--		table.insert(endList, rgGetBestiaryStatRow(kills,4,{t('RG_ATTACK'),									rgBeasts[i].apr							,'','','','','','','','',''}))--apr
+	--		table.insert(endList, rgGetBestiaryStatRow(kills,3,{getUiString('THAC0_LABEL'),								rgBeasts[i].thc							,'','','','','','','','',''}))
+	--		table.insert(endList, rgGetBestiaryStatRow(kills,4,{getUiString('RG_ATTACK'),									rgBeasts[i].apr							,'','','','','','','','',''}))--apr
 	--		table.insert(endList, rgGetBestiaryStatRow(kills,5,{Infinity_FetchString(17379),						5,rgBeasts[i].sav.dea,6,rgBeasts[i].sav.wan,9,rgBeasts[i].sav.pol,7,rgBeasts[i].sav.bre,8,rgBeasts[i].sav.spe}))--saving throws
 	--		table.insert(endList, rgGetBestiaryStatRow(kills,6,{Infinity_FetchString(1049),						Infinity_FetchString(rgBeasts[i].alg)	,'','','','','','','','',''}))--algn
 	--		table.insert(endList, rgGetBestiaryStatRow(kills,7,{rgGetGameEngineString( 24445,24445,32204,15544),	res[1],res[2],res[3],res[4],res[5],res[6],res[7],res[8],res[9],res[10]}))--resistances
@@ -45523,11 +45577,11 @@ function rgGetBestiaryStatistics(text)
 	--		--local resistances = rgGetBestiaryResistancesList(i,kills)
 	--		--
 	--		--table.insert(endList, {Infinity_FetchString(11954),kills,resistances[1]})
-	--		--table.insert(endList, {t('XP_LABEL'),rgBeasts[i].xp,resistances[2]})
+	--		--table.insert(endList, {getUiString('XP_LABEL'),rgBeasts[i].xp,resistances[2]})
 	--		--
-	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,1,resistances,t('HIT_POINTS_LABEL')))
-	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,2,resistances,t('ARMOR_CLASS_LABEL')))
-	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,3,resistances,t('THAC0_LABEL')))
+	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,1,resistances,getUiString('HIT_POINTS_LABEL')))
+	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,2,resistances,getUiString('ARMOR_CLASS_LABEL')))
+	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,3,resistances,getUiString('THAC0_LABEL')))
 	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,4,resistances,Infinity_FetchString(9458)))--apr
 	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,5,resistances,Infinity_FetchString(1049)))--algn
 	--		--
@@ -45543,11 +45597,11 @@ function rgGetBestiaryStatistics(text)
 	--		local resistances = rgGetBestiaryResistancesList(i,kills)
 	--		
 	--		table.insert(endList, {Infinity_FetchString(11954),kills,resistances[1]})
-	--		table.insert(endList, {t('XP_LABEL'),rgBeasts[i].xp,resistances[2]})
+	--		table.insert(endList, {getUiString('XP_LABEL'),rgBeasts[i].xp,resistances[2]})
 	--		
-	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,1,resistances,t('HIT_POINTS_LABEL')))
-	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,2,resistances,t('ARMOR_CLASS_LABEL')))
-	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,3,resistances,t('THAC0_LABEL')))
+	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,1,resistances,getUiString('HIT_POINTS_LABEL')))
+	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,2,resistances,getUiString('ARMOR_CLASS_LABEL')))
+	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,3,resistances,getUiString('THAC0_LABEL')))
 	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,4,resistances,Infinity_FetchString(9458)))--apr
 	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,5,resistances,Infinity_FetchString(1049)))--algn
 	--		
@@ -46071,8 +46125,8 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 0 and RgUISkin < 3"
 		area 206 108 228 42
-		--text lua "rgString(t('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
-		text lua "rgString(t('RG_BEASTS'))"
+		--text lua "rgString(getUiString('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
+		text lua "rgString(getUiString('RG_BEASTS'))"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46080,7 +46134,7 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 1 and RgUISkin < 3"
 		area 206 108 228 42
-		text lua "rgString(t('RG_BOSSES'))"
+		text lua "rgString(getUiString('RG_BOSSES'))"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46088,7 +46142,7 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 2 and journalMode == const.JOURNAL_MODE_JOURNAL and RgUISkin < 3"
 		area 206 108 228 42
-		text lua "rgString(t('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
+		text lua "rgString(getUiString('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46096,8 +46150,8 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 0 and RgUISkin == 3"
 		area 196 100 228 42
-		--text lua "rgString(t('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
-		text lua "rgString(t('RG_BEASTS'))"
+		--text lua "rgString(getUiString('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
+		text lua "rgString(getUiString('RG_BEASTS'))"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46105,7 +46159,7 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 1 and RgUISkin == 3"
 		area 196 100 228 42
-		text lua "rgString(t('RG_BOSSES'))"
+		text lua "rgString(getUiString('RG_BOSSES'))"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46113,7 +46167,7 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 2 and journalMode == const.JOURNAL_MODE_JOURNAL and RgUISkin == 3"
 		area 196 100 228 42
-		text lua "rgString(t('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
+		text lua "rgString(getUiString('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
 		text style "rg_trajan"
 		text align center center
 	}
