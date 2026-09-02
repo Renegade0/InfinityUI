@@ -11036,7 +11036,7 @@ menu
 	
 	text
 	{
-		enabled		"rgInventoryMode == 0 and RgInvPartyModeHover == 0"
+		enabled		"rgInventoryMode == 1 or (rgInventoryMode == 0 and RgInvPartyModeHover == 0)"
 		area		0 0 0 0
 		text lua "rgUnlockInvId()"
 	}
