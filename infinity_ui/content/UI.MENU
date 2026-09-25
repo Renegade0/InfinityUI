@@ -8583,7 +8583,7 @@ menu
 	{
 		enabled "worldScreen == e:GetActiveEngine() and RgIsModernHud == 0 and RgUISkin == 3"
 		area 3 58 77 57
-		bam "CGEAR"
+		bam "rgd2cgea"
 		frame lua "timer:GetCurrentTime() % 24"
 		useOverlayTint "worldScreen:CheckIfPaused()"
 		overlayTint 180 180 180
@@ -8593,7 +8593,7 @@ menu
 	{
 		enabled "worldScreen == e:GetActiveEngine() and RgIsModernHud == 0 and RgUISkin == 3"
 		area 3 58 77 57
-		bam "CDIAL"
+		bam "rgd2cdia"
 		frame lua "timer:GetCurrentHour() % timer.TIMESCALE_HOUR_PER_DAY"
 		useOverlayTint "worldScreen:CheckIfPaused()"
 		overlayTint 180 180 180
@@ -8603,7 +8603,7 @@ menu
 	{
 		enabled "worldScreen == e:GetActiveEngine() and RgIsModernHud == 0 and RgUISkin == 3"
 		area 3 58 77 57
-		bam "CPEN"
+		bam "rgd2cpen"
 		frame lua "timer:GetCurrentTime() % 24"
 		useOverlayTint "worldScreen:CheckIfPaused()"
 		overlayTint 180 180 180
@@ -11092,7 +11092,7 @@ menu
 	
 	text
 	{
-		enabled		"rgInventoryMode == 1 or (rgInventoryMode == 0 and RgInvPartyModeHover == 0)"
+		enabled		"rgInventoryMode == 0 and RgInvPartyModeHover == 0"
 		area		0 0 0 0
 		text lua "rgUnlockInvId()"
 	}
