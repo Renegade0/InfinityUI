@@ -8,9 +8,6 @@ end
 listMetaInfo = {}
 combatLog = {}
 
-function t(p)
-	return getUiString(p)
-end
 
 
 Infinity_DoFile("my__CNST") --// BY_ME
@@ -527,7 +524,7 @@ function rgString(str)
 	--else
 	--	color = '^B'
 	end
-	return color .. getUiString(str)
+	return color .. t(str)
 end
 
 function displayTHAC()
@@ -545,18 +542,18 @@ function displayCompiledAC()
 	local compiledAC = characters[currentID].AC.current
 
 	if characters[currentID].AC.crushing ~= 0 or characters[currentID].AC.missile ~= 0 or characters[currentID].AC.piercing ~= 0 or characters[currentID].AC.slashing ~= 0 then
-		compiledAC = compiledAC .. " (" .. getUiString("MODIFIERS_LABEL") .. ": "
+		compiledAC = compiledAC .. " (" .. t("MODIFIERS_LABEL") .. ": "
 
 		local numMods = 0
 		if characters[currentID].AC.crushing > 0 then
 			numMods = numMods + 1
 			setStringTokenLua("<ACTOKEN>","+"..characters[currentID].AC.crushing)
-			compiledAC = compiledAC .. " " .. getUiString("ACMOD_VS_CRUSHING")
+			compiledAC = compiledAC .. " " .. t("ACMOD_VS_CRUSHING")
 			removeStringTokenLua("<ACTOKEN>")
 		elseif characters[currentID].AC.crushing < 0 then
 			numMods = numMods + 1
 			setStringTokenLua("<ACTOKEN>",characters[currentID].AC.crushing)
-			compiledAC = compiledAC .. " " .. getUiString("ACMOD_VS_CRUSHING")
+			compiledAC = compiledAC .. " " .. t("ACMOD_VS_CRUSHING")
 			removeStringTokenLua("<ACTOKEN>")
 		end
 
@@ -566,7 +563,7 @@ function displayCompiledAC()
 			end
 			numMods = numMods + 1
 			setStringTokenLua("<ACTOKEN>","+"..characters[currentID].AC.missile)
-			compiledAC = compiledAC .. " " .. getUiString("ACMOD_VS_MISSILE")
+			compiledAC = compiledAC .. " " .. t("ACMOD_VS_MISSILE")
 			removeStringTokenLua("<ACTOKEN>")
 		elseif characters[currentID].AC.missile < 0 then
 			if numMods > 0 then
@@ -574,7 +571,7 @@ function displayCompiledAC()
 			end
 			numMods = numMods + 1
 			setStringTokenLua("<ACTOKEN>",characters[currentID].AC.missile)
-			compiledAC = compiledAC .. " " .. getUiString("ACMOD_VS_MISSILE")
+			compiledAC = compiledAC .. " " .. t("ACMOD_VS_MISSILE")
 			removeStringTokenLua("<ACTOKEN>")
 		end
 
@@ -584,7 +581,7 @@ function displayCompiledAC()
 			end
 			numMods = numMods + 1
 			setStringTokenLua("<ACTOKEN>","+"..characters[currentID].AC.piercing)
-			compiledAC = compiledAC .. " " .. getUiString("ACMOD_VS_PIERCING")
+			compiledAC = compiledAC .. " " .. t("ACMOD_VS_PIERCING")
 			removeStringTokenLua("<ACTOKEN>")
 		elseif characters[currentID].AC.piercing < 0 then
 			if numMods > 0 then
@@ -592,7 +589,7 @@ function displayCompiledAC()
 			end
 			numMods = numMods + 1
 			setStringTokenLua("<ACTOKEN>",characters[currentID].AC.piercing)
-			compiledAC = compiledAC .. " " .. getUiString("ACMOD_VS_PIERCING")
+			compiledAC = compiledAC .. " " .. t("ACMOD_VS_PIERCING")
 			removeStringTokenLua("<ACTOKEN>")
 		end
 
@@ -602,7 +599,7 @@ function displayCompiledAC()
 			end
 			numMods = numMods + 1
 			setStringTokenLua("<ACTOKEN>","+"..characters[currentID].AC.slashing)
-			compiledAC = compiledAC .. " " .. getUiString("ACMOD_VS_SLASHING")
+			compiledAC = compiledAC .. " " .. t("ACMOD_VS_SLASHING")
 			removeStringTokenLua("<ACTOKEN>")
 		elseif characters[currentID].AC.slashing < 0 then
 			if numMods > 0 then
@@ -610,7 +607,7 @@ function displayCompiledAC()
 			end
 			numMods = numMods + 1
 			setStringTokenLua("<ACTOKEN>",characters[currentID].AC.slashing)
-			compiledAC = compiledAC .. " " .. getUiString("ACMOD_VS_SLASHING")
+			compiledAC = compiledAC .. " " .. t("ACMOD_VS_SLASHING")
 			removeStringTokenLua("<ACTOKEN>")
 		end
 
@@ -857,7 +854,7 @@ function updateAttrTable()
 
 	if currentTab == 1 then
 		if statusEffects[1] ~= nil then
-			table.insert(listItems, { 'rgempty','0', head .. getUiString('STATUS_EFFECTS_LABEL') .. ':'})
+			table.insert(listItems, { 'rgempty','0', head .. t('STATUS_EFFECTS_LABEL') .. ':'})
 		end
 		for k, v in pairs(characters[currentID].statusEffects) do
 			--if v.current == 0 then --haste exception
@@ -869,9 +866,9 @@ function updateAttrTable()
 		if statusEffects[1] ~= nil then
 			table.insert(listItems, { 'rgempty','0', '' })
 		end
-		table.insert(listItems, { 'rgempty','0', head .. getUiString('SKILLS_LABEL') .. ':'})
-		table.insert(listItems, { 'rgempty','0', getUiString('LORE_LABEL') .. ': ' .. characters[currentID].proficiencies.lore.current })
-		table.insert(listItems, { 'rgempty','0', getUiString('REPUTATION_LABEL') .. ': ' .. characters[currentID].proficiencies.reputation.current })
+		table.insert(listItems, { 'rgempty','0', head .. t('SKILLS_LABEL') .. ':'})
+		table.insert(listItems, { 'rgempty','0', t('LORE_LABEL') .. ': ' .. characters[currentID].proficiencies.lore.current })
+		table.insert(listItems, { 'rgempty','0', t('REPUTATION_LABEL') .. ': ' .. characters[currentID].proficiencies.reputation.current })
 		
 		
 		for k, v in ipairs(characters[currentID].proficiencies.class_skills) do
@@ -879,7 +876,7 @@ function updateAttrTable()
 		end
 		
 		table.insert(listItems, { 'rgempty','0', '' })
-		table.insert(listItems, { 'rgempty','0', head .. getUiString('PROFICIENCIES_LABEL') .. ':'})
+		table.insert(listItems, { 'rgempty','0', head .. t('PROFICIENCIES_LABEL') .. ':'})
 		if characters[currentID].proficiencies.weapons.current ~= "" then
 			table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.weapons.current })
 		end
@@ -889,24 +886,24 @@ function updateAttrTable()
 		end
 		
 		table.insert(listItems, { 'rgempty','0', '' })
-		table.insert(listItems, { 'rgempty','0', head .. getUiString('SAVING_THROWS_LABEL') .. ':'})
+		table.insert(listItems, { 'rgempty','0', head .. t('SAVING_THROWS_LABEL') .. ':'})
 		table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.savingThrows})
 		table.insert(listItems, { 'rgempty','0', '' })
-		table.insert(listItems, { 'rgempty','0', head .. getUiString('RESISTANCES_LABEL') .. ':'})
+		table.insert(listItems, { 'rgempty','0', head .. t('RESISTANCES_LABEL') .. ':'})
 		table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.resistances})
 		--table.insert(listItems, { 'rgempty','0', '' })
-		table.insert(listItems, { 'rgempty','0', head .. '\n' .. getUiString('ABILITIES_TITLE') ..  ':'})--11976
+		table.insert(listItems, { 'rgempty','0', head .. '\n' .. t('ABILITIES_TITLE') ..  ':'})--11976
 		for k, v in ipairs(characters[currentID].proficiencies.ability) do
 			table.insert(listItems, {'rgempty','0', v.current})
 		end
 	elseif currentTab == 2 then
 		listItems = { 
-		{ 'rgempty','0', head .. getUiString('BIOGRAPHY_LABEL') .. ':'},
+		{ 'rgempty','0', head .. t('BIOGRAPHY_LABEL') .. ':'},
 		{ 'rgempty','0', Infinity_FetchString(characters[currentID].biography)},
 		}
 	elseif currentTab == 3 then
 	
-		table.insert(listItems, { 'rgempty','0', head .. getUiString('CLASS_LABEL') .. ':' })
+		table.insert(listItems, { 'rgempty','0', head .. t('CLASS_LABEL') .. ':' })
 		table.insert(listItems, { 'rgempty','0', characters[currentID].classlevel.first.details .. '\n' })
 		
 		if characters[currentID].classlevel.second ~= nil then
@@ -922,13 +919,13 @@ function updateAttrTable()
 	elseif currentTab == 4 then
 		listItems = { 
 		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.partychapxp.strRef)},
-		{ 'rgempty','0', getUiString('CHAPTER_LABEL') .. ': ' ..  characters[currentID].Stats.partychapxp.current .. '% / ' .. getUiString('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamexp.current .. '%\n'},
+		{ 'rgempty','0', t('CHAPTER_LABEL') .. ': ' ..  characters[currentID].Stats.partychapxp.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamexp.current .. '%\n'},
 		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.partychapkills.strRef)},
-		{ 'rgempty','0', getUiString('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.partychapkills.current .. '% / ' .. getUiString('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamekills.current .. '%\n'},
+		{ 'rgempty','0', t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.partychapkills.current .. '% / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.partygamekills.current .. '%\n'},
 		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.chapxpvalue.strRef)},
-		{ 'rgempty','0', getUiString('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapxpvalue.current .. ' / ' .. getUiString('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamexpvalue.current .. '\n'},
+		{ 'rgempty','0', t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapxpvalue.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamexpvalue.current .. '\n'},
 		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.chapkills.strRef)},
-		{ 'rgempty','0', getUiString('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapkills.current .. ' / ' .. getUiString('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamekills.current .. '\n'},
+		{ 'rgempty','0', t('CHAPTER_LABEL') .. ': ' .. characters[currentID].Stats.chapkills.current .. ' / ' .. t('GAME_LABEL') .. ': ' ..  characters[currentID].Stats.gamekills.current .. '\n'},
 		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.bestenemy.strRef)},
 		{ 'rgempty','0', characters[currentID].Stats.bestenemy.current .. '\n'},
 		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].Stats.timespent.strRef)},
@@ -940,21 +937,21 @@ function updateAttrTable()
 		}
 	elseif currentTab == 5 then
 		listItems = { 
-		{ 'rgempty','0', head .. getUiString('ARMOR_CLASS_LABEL') .. ': ' .. characters[currentID].AC.current},
+		{ 'rgempty','0', head .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[currentID].AC.current},
 		{ 'rgempty','0', characters[currentID].AC.details .. '\n'},
 		--{ 'rgempty','0', Infinity_FetchString(11766) },
 		--{ 'rgempty','0', Infinity_FetchString(11768) .. ': ' .. characters[currentID].AC.slashing },
 		--{ 'rgempty','0', Infinity_FetchString(11769) .. ': ' .. characters[currentID].AC.piercing },
 		--{ 'rgempty','0', Infinity_FetchString(11770) .. ': ' .. characters[currentID].AC.crushing },
 		--{ 'rgempty','0', Infinity_FetchString(11767) .. ': ' .. characters[currentID].AC.missile .. '\n' },
-		{ 'rgempty','0', head .. getUiString('HIT_POINTS_LABEL') .. ': ' .. characters[currentID].HP.current .. '/' .. characters[currentID].HP.max},
+		{ 'rgempty','0', head .. t('HIT_POINTS_LABEL') .. ': ' .. characters[currentID].HP.current .. '/' .. characters[currentID].HP.max},
 		{ 'rgempty','0', characters[currentID].HP.details .. '\n'},
 		{ 'rgempty','0', head .. rgGetTHAC0(currentID,body)},
 		{ 'rgempty','0', characters[currentID].THAC0.details .. '\n'},
 		{ 'rgempty','0', head .. rgGetDamage(currentID,body)},
 		{ 'rgempty','0', characters[currentID].damage.details .. '\n'},
 		{ 'rgempty','0', head .. Infinity_FetchString(characters[currentID].proficiencies.numAttacks.strRef) .. ': ' .. characters[currentID].proficiencies.numAttacks.current .. '\n'},
-		{ 'rgempty','0', head .. getUiString('CURRENT_SCRIPT_LABEL') .. ': ' .. characters[currentID].proficiencies.currentScript},
+		{ 'rgempty','0', head .. t('CURRENT_SCRIPT_LABEL') .. ': ' .. characters[currentID].proficiencies.currentScript},
 		}
 	end
 
@@ -968,16 +965,16 @@ function updateAttrTable()
 
 end
 function rgGetTHAC0(rgid, body)
-	local str = getUiString('THAC0_LABEL') .. ': ' .. characters[rgid].THAC0.current .. body
+	local str = t('THAC0_LABEL') .. ': ' .. characters[rgid].THAC0.current .. body
 	if(characters[rgid].THAC0.offhand) then
-		str = str .. "\n" .. getUiString('OFF_HAND_THAC0') .. ': ' .. characters[rgid].THAC0.offhand
+		str = str .. "\n" .. t('OFF_HAND_THAC0') .. ': ' .. characters[rgid].THAC0.offhand
 	end
 	return str
 end
 function rgGetDamage(rgid, body)
-	local str = getUiString('DAMAGE_LABEL') .. ': ' .. characters[rgid].damage.min .. ' - ' .. characters[rgid].damage.max .. body
+	local str = t('DAMAGE_LABEL') .. ': ' .. characters[rgid].damage.min .. ' - ' .. characters[rgid].damage.max .. body
 	if(characters[rgid].damage.minOffhand and characters[rgid].damage.maxOffhand) then
-		str = str .. "\n"  .. getUiString('OFF_HAND_DAMAGE') .. ': ' .. characters[rgid].damage.minOffhand .. ' - ' .. characters[rgid].damage.maxOffhand 
+		str = str .. "\n"  .. t('OFF_HAND_DAMAGE') .. ': ' .. characters[rgid].damage.minOffhand .. ' - ' .. characters[rgid].damage.maxOffhand 
 	end
 	return str
 end
@@ -1102,13 +1099,13 @@ function getNextLevelString()
 	local nextLevelXp = characters[currentID].level.nextLvlXp - characters[currentID].level.xp
 	local str = ""
 	if(nextLevelXp > 0) then
-		str = getUiString("NEXT_LEVEL_LABEL")
+		str = t("NEXT_LEVEL_LABEL")
 		str = str .. " "
 		str = str .. nextLevelXp
 		str = str .. " "
-		str = str .. getUiString("XP_LABEL")
+		str = str .. t("XP_LABEL")
 	else
-		str = getUiString("READY_TO_LEVEL_LABEL")
+		str = t("READY_TO_LEVEL_LABEL")
 	end
 	return str
 	
@@ -1718,14 +1715,14 @@ menu
 	--	text align center center
 	--	enabled "characterViewable"
 	--}
-	--{ '233', '^D' .. getUiString('ARMOR_CLASS_LABEL') .. ': ' .. characters[currentID].AC.current .. '^B'},
+	--{ '233', '^D' .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[currentID].AC.current .. '^B'},
 	--	--{ '233', characters[currentID].AC.details .. '\n'},
 	--	{ '233', Infinity_FetchString(11766) },
 	--	{ '233', Infinity_FetchString(11768) .. ': ' .. characters[currentID].AC.slashing },
 	--	{ '233', Infinity_FetchString(11769) .. ': ' .. characters[currentID].AC.piercing },
 	--	{ '233', Infinity_FetchString(11770) .. ': ' .. characters[currentID].AC.crushing },
 	--	{ '233', Infinity_FetchString(11767) .. ': ' .. characters[currentID].AC.missile .. '\n' },
-	--	{ '233', '^D' .. getUiString('HIT_POINTS_LABEL') .. ': ' .. characters[currentID].HP.current .. '/' .. characters[currentID].HP.max .. '^B\n'},
+	--	{ '233', '^D' .. t('HIT_POINTS_LABEL') .. ': ' .. characters[currentID].HP.current .. '/' .. characters[currentID].HP.max .. '^B\n'},
 	--	--{ '233', characters[currentID].HP.details .. '\n'},
 	--	{ '233', rgGetTHAC0(currentID) .. '\n'},
 	--	
@@ -1785,27 +1782,27 @@ menu
 	text
 	{
 		area 578 316 200 52 
-		tooltip lua "getUiString('ARMOR_CLASS_LABEL')"
+		tooltip lua "t('ARMOR_CLASS_LABEL')"
 	}
 	text
 	{
 		area 578 364 200 52 
-		tooltip lua "getUiString('HIT_POINTS_LABEL')"
+		tooltip lua "t('HIT_POINTS_LABEL')"
 	}
 	text
 	{
 		area 578 412 200 52 
-		tooltip lua "getUiString('THAC0_LABEL')"
+		tooltip lua "t('THAC0_LABEL')"
 	}
 	text
 	{
 		area 578 460 200 52 
-		tooltip lua "getUiString('DAMAGE_LABEL')"
+		tooltip lua "t('DAMAGE_LABEL')"
 	}
 	text
 	{
 		area 578 508 200 52 
-		tooltip lua "getUiString('NUM_ATTACKS_LABEL')"
+		tooltip lua "t('NUM_ATTACKS_LABEL')"
 	}
 	
 	
@@ -2008,11 +2005,11 @@ menu
 		
 		name 'rgdrectab1'
 		area 812 687 88 46
-		bam lua "getUiString('rgdrecb') .. RgUISkin"
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 0
-		tooltip lua "getUiString('ASSIGN_KEYS_PAGE_CHARACTERINFORMATION')"
+		tooltip lua "t('ASSIGN_KEYS_PAGE_CHARACTERINFORMATION')"
 		--text 'INFORMATION_BUTTON'
 		--text style "button"
 		--pad 10 4 10 4
@@ -2023,11 +2020,11 @@ menu
 		
 		name 'rgdrectab2'
 		area 1164 687 88 46
-		bam lua "getUiString('rgdrecb') .. RgUISkin"
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 4
-		tooltip lua "getUiString('BIOGRAPHY_LABEL')"
+		tooltip lua "t('BIOGRAPHY_LABEL')"
 		--text 'BIOGRAPHY_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -2038,11 +2035,11 @@ menu
 		
 		name 'rgdrectab3'
 		area 988 687 88 46
-		bam lua "getUiString('rgdrecb') .. RgUISkin"
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 1
-		tooltip lua "getUiString('CLASS_LABEL')"
+		tooltip lua "t('CLASS_LABEL')"
 		--text 'CLASS_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -2053,11 +2050,11 @@ menu
 		
 		name 'rgdrectab4'
 		area 1076 687 88 46
-		bam lua "getUiString('rgdrecb') .. RgUISkin"
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 3
-		tooltip lua "getUiString('STATS_LABEL')"
+		tooltip lua "t('STATS_LABEL')"
 		--text 'STATS_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -2068,11 +2065,11 @@ menu
 		
 		name 'rgdrectab5'
 		area 900 687 88 46
-		bam lua "getUiString('rgdrecb') .. RgUISkin"
+		bam lua "t('rgdrecb') .. RgUISkin"
 		ScaleToClip
 		highlightgroup	rgrectab
 		sequence 2
-		tooltip lua "getUiString('COMBAT_STATS_LABEL')"
+		tooltip lua "t('COMBAT_STATS_LABEL')"
 		--text 'COMBAT_STATS_LABEL'
 		--text style "button"
 		--pad 10 4 10 4
@@ -2917,7 +2914,7 @@ menu
 		currentPanelID = const.SCRIPT_ID
 
 		showingSmartOptions = (scriptList_idx == 2)
-		scriptDescription = getUiString(scriptOptions[scriptList_idx][2])
+		scriptDescription = t(scriptOptions[scriptList_idx][2])
 
 		for index, var in pairs(scriptOptions) do
 			var[5] = characterScreen:GetTempSmartScriptLocal(var[3])
@@ -3145,7 +3142,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "getUiString( scriptOptions[rowNumber][1])"
+				text lua "t( scriptOptions[rowNumber][1])"
 				text style	"normal"
 				text align right center
 			}
@@ -3174,7 +3171,7 @@ menu
 
 		action		
 		"
-			scriptDescription = getUiString(scriptOptions[selScriptOpt][2])
+			scriptDescription = t(scriptOptions[selScriptOpt][2])
 			selectedSL = 0
 			selFeedOpt = 0
 
@@ -3823,17 +3820,17 @@ panelID = 8
 function getDifficulty(d)
 	local text = ""
 	if ( d ==0 ) then
-		text = getUiString("DIFFICULTY_LABEL_EASY")
+		text = t("DIFFICULTY_LABEL_EASY")
 	elseif (d == 1) then
-		text = getUiString("DIFFICULTY_LABEL_NORMAL")
+		text = t("DIFFICULTY_LABEL_NORMAL")
 	elseif (d == 2) then
-		text = getUiString("DIFFICULTY_LABEL_CORERULES")
+		text = t("DIFFICULTY_LABEL_CORERULES")
 	elseif (d == 3) then
-		text = getUiString("DIFFICULTY_LABEL_HARD")
+		text = t("DIFFICULTY_LABEL_HARD")
 	elseif (d == 4) then
-		text = getUiString("DIFFICULTY_LABEL_INSANE")
+		text = t("DIFFICULTY_LABEL_INSANE")
 	elseif (d == 5) then
-		text = string.upper(getUiString("MULTIPLAYER_DIFFICULTY_LABEL")).." "..getUiString("DIFFICULTY_LABEL_LEGACYOFBHAAL")
+		text = string.upper(t("MULTIPLAYER_DIFFICULTY_LABEL")).." "..t("DIFFICULTY_LABEL_LEGACYOFBHAAL")
 	end
 	return text
 end
@@ -3932,7 +3929,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "getUiString( toggleTitles[rowNumber][1])"
+				text lua "t( toggleTitles[rowNumber][1])"
 				text style "normal"
 				--text shadow lua "RgUISkin"
 				text align left center
@@ -3993,7 +3990,7 @@ menu
 	text
 	{
 		area		848 454 404 196
-		text		lua "getUiString(helpString)"
+		text		lua "t(helpString)"
 		text style	normal
 		text align	left top
 		scrollbar	'rgdscrl1'
@@ -4280,75 +4277,22 @@ menu
 }
 
 `
+autoPauseToggles = { 
+{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
+{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
+{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
+{'SPELL_CAST_LABEL',24432, 31, 0, 0},
+{'TRAP_FOUND_LABEL',24433, 34, 0, 0}
+}
 
-
-function rgGetAutopauseToggles()
-	if rgGameEngine == 0 then --bg1
-	autoPauseToggles = { 
-		{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
-		{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
-		{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
-		{'SPELL_CAST_LABEL',24432, 31, 0, 0},
-		{'TRAP_FOUND_LABEL',24433, 34, 0, 0}
-		}
-		characterPauseToggles = { 
-		{'CENTER_MEMBER_LABEL',24434, 37, 0, 0},
-		{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
-		{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
-		{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
-		{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
-		{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
-		}
-	elseif rgGameEngine == 1 then --sod
-	autoPauseToggles = { 
-		{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
-		{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
-		{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
-		{'SPELL_CAST_LABEL',24432, 31, 0, 0},
-		{'TRAP_FOUND_LABEL',24433, 34, 0, 0}
-		}
-		characterPauseToggles = { 
-		{'CENTER_MEMBER_LABEL',24434, 37, 0, 0},
-		{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
-		{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
-		{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
-		{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
-		{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
-		}
-	elseif rgGameEngine == 2 or rgGameEngine == 4 then --bg2
-	autoPauseToggles = { 
-		{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
-		{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
-		{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
-		{'SPELL_CAST_LABEL',31872, 31, 0, 0},
-		{'TRAP_FOUND_LABEL',58171, 34, 0, 0}
-		}
-		characterPauseToggles = { 
-		{'CENTER_MEMBER_LABEL',10571, 37, 0, 0},
-		{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
-		{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
-		{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
-		{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
-		{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
-		}
-	elseif rgGameEngine == 3 then --iwd
-	autoPauseToggles = { 
-		{'WEAPON_UNUSABLE_LABEL',18036, 5 , 0, 0},
-		{'END_OF_ROUND_LABEL',10640, 25, 0, 0},
-		{'ENEMY_SIGHTED_LABEL',23514, 26, 0, 0},
-		{'SPELL_CAST_LABEL',31872, 31, 0, 0},
-		{'TRAP_FOUND_LABEL',24433,24433,58171,34672, 34, 0, 0}
-		}
-		characterPauseToggles = { 
-		{'CENTER_MEMBER_LABEL',24434,24434,10571,10571, 37, 0, 0},
-		{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
-		{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
-		{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
-		{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
-		{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
-		}
-	end
-end
+characterPauseToggles = { 
+{'CENTER_MEMBER_LABEL',24434, 37, 0, 0},
+{'CHARACTER_HIT_LABEL',18032, 1 , 0, 0},
+{'CHARACTER_INJURED_LABEL',18033, 2 , 0, 0},
+{'CHARACTER_DEATH_LABEL',18034, 3 , 0, 0},
+{'CHARACTER_ATTACKED_LABEL',18035, 4 , 0, 0},
+{'CHARACTER_TARGET_DESTROYED',18037, 13, 0, 0},
+}
 
 selOptAP = 0
 
@@ -4442,7 +4386,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "getUiString( autoPauseToggles[rowNumber][1])"
+				text lua "t( autoPauseToggles[rowNumber][1])"
 				text style "normal"
 				text align left center
 			}
@@ -4501,7 +4445,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "getUiString( characterPauseToggles[rowNumber][1])"
+				text lua "t( characterPauseToggles[rowNumber][1])"
 				text style "normal"
 				text align left center
 			}
@@ -4827,7 +4771,7 @@ menu
 				bam rgdslct
 				sequence lua "rgGetSelectedHighlight(rowNumber, selectedGraphicOpt)"
 				ScaleToClip
-				text lua "getUiString( graphicsToggles[rowNumber][1])"
+				text lua "t( graphicsToggles[rowNumber][1])"
 				text style "normal"
 				pad 10 0 0 0
 				text align left center
@@ -5151,7 +5095,7 @@ menu
 			label
 			{
 				area 0 0 -1 -1
-				text lua "getUiString( soundsToggles[rowNumber][1])"
+				text lua "t( soundsToggles[rowNumber][1])"
 				text style "normal"
 				text align right center
 			}
@@ -5237,7 +5181,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "getUiString( command[rowNumber][1])"
+				text lua "t( command[rowNumber][1])"
 				text style	"normal"
 				text align right center
 			}
@@ -5319,7 +5263,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "getUiString( selectOpt[rowNumber][1])"
+				text lua "t( selectOpt[rowNumber][1])"
 				text style	"normal"
 				text align right center
 			}
@@ -5713,7 +5657,7 @@ function getFrequency(d,includeHighter)
 	elseif (d == 5) then
 		strref = "MAXIMUM"
 	end
-	return getUiString(strref)
+	return t(strref)
 end
 
 `
@@ -5824,7 +5768,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "getUiString( feedbackToggles[rowNumber][1])"
+				text lua "t( feedbackToggles[rowNumber][1])"
 				text style "normal"
 				text align left center
 			}
@@ -5895,7 +5839,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "getUiString( messagesToggles[rowNumber][1])"
+				text lua "t( messagesToggles[rowNumber][1])"
 				text style	"normal"
 				text align left center
 			}
@@ -5951,7 +5895,7 @@ menu
 	text
 	{
 		area		848 454 406 198
-		text		lua "getUiString(helpString)"
+		text		lua "t(helpString)"
 		text style	normal
 		scrollbar	'rgdscrl1'
 	}
@@ -6143,9 +6087,9 @@ menu
 `
 function getGooglePlaySignInText()
 	if(Infinity_GooglePlaySignedIn() == 1) then
-		return getUiString("SIGN_OUT_BUTTON")
+		return t("SIGN_OUT_BUTTON")
 	else
-		return getUiString("SIGN_IN_BUTTON")
+		return t("SIGN_IN_BUTTON")
 	end
 end
 
@@ -6154,7 +6098,7 @@ key = 0
 
 function displayHelp()
 	if not (key == 0) then
-		return rgGetGameEngineStringRef(24680,24680,2802,37843)
+		return 24680
 	end
 	return 0
 end
@@ -6165,7 +6109,7 @@ function formatKeyCode(number)
 	if number < 127 and number > 32 then
 		return string.format('%c', keybindings[keyCategory][rowNumber][6])
 	end
-	ret = getUiString("SDL_" .. string.format('%d', keybindings[keyCategory][rowNumber][6]))
+	ret = t("SDL_" .. string.format('%d', keybindings[keyCategory][rowNumber][6]))
  
 	return ret
 end
@@ -6173,7 +6117,7 @@ end
 function getHotkeyName(category,number)
 	local ret = ""
 	if category < 5 then
-		ret = getUiString(keybindings[category][number][4])
+		ret = t(keybindings[category][number][4])
 		if ret == keybindings[category][number][4] then
 			ret = Infinity_FetchString(keybindings[category][number][4])
 		end
@@ -6255,7 +6199,7 @@ menu
 			label
 			{
 				area 10 0 -1 -1
-				text lua "getUiString(keycategories[rowNumber][2])"
+				text lua "t(keycategories[rowNumber][2])"
 				text style	"normal"
 				text align	left center 
 			}
@@ -6710,7 +6654,7 @@ menu
 		ScaleToClip
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
-		text lua	"getUiString('SAVE_BUTTON') .. ' & ' .. getUiString('DONE_BUTTON')" -- Done
+		text lua	"t('SAVE_BUTTON') .. ' & ' .. t('DONE_BUTTON')" -- Done
 		text style	"button"
 		action
 		"
@@ -6828,11 +6772,11 @@ end
 
 function GetAbilityIdentifyString()
 	if(characters[id].equipment[selectedSlot].item.identified == 0) then
-		return getUiString("IDENTIFY_BUTTON")
+		return t("IDENTIFY_BUTTON")
 	end
 	
 	if(characters[id].equipment[selectedSlot].abilityMode == 1) then
-		return getUiString("ABILITIES_BUTTON")
+		return t("ABILITIES_BUTTON")
 	end
 	
 	return ""
@@ -7283,7 +7227,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "getUiString(Popup2Button.cancelText or 'CANCEL_BUTTON')"
+		text lua "t(Popup2Button.cancelText or 'CANCEL_BUTTON')"
 		action 
 		"
 			Infinity_PopMenu('POPUP_TWOBUTTON')
@@ -7300,7 +7244,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "getUiString(Popup2Button.okText or 'DONE_BUTTON')"
+		text lua "t(Popup2Button.okText or 'DONE_BUTTON')"
 		action 
 		"
 			Infinity_PopMenu('POPUP_TWOBUTTON')
@@ -7339,7 +7283,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "getUiString(Popup3Button.rightText)"
+		text lua "t(Popup3Button.rightText)"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7356,7 +7300,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "getUiString(Popup3Button.midText)"
+		text lua "t(Popup3Button.midText)"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7373,7 +7317,7 @@ menu
 		sequence lua "RgUISkin"
 		pad 10 8 10 8
 		text style "button"
-		text lua "getUiString(Popup3Button.leftText)"
+		text lua "t(Popup3Button.leftText)"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7417,7 +7361,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "rgString(getUiString(Popup4Button.farRightText))"
+		text lua "rgString(t(Popup4Button.farRightText))"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7435,7 +7379,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "rgString(getUiString(Popup4Button.rightText))"
+		text lua "rgString(t(Popup4Button.rightText))"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7454,7 +7398,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "rgString(getUiString(Popup4Button.leftText))"
+		text lua "rgString(t(Popup4Button.leftText))"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7472,7 +7416,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "rgString(getUiString(Popup4Button.farLeftText))"
+		text lua "rgString(t(Popup4Button.farLeftText))"
 		action 
 		"
 			Infinity_PopMenu()
@@ -7605,7 +7549,7 @@ function itemDescLeftButtonText()
 	if(itemDesc.mode == 0) then
 		return GetAbilityIdentifyString()
 	elseif(itemDesc.mode == 1) then
-		return getUiString('OPEN_CONTAINER_BUTTON')
+		return t('OPEN_CONTAINER_BUTTON')
 	end
 	return ""
 end
@@ -7640,8 +7584,8 @@ function rgGetLibraryJournalEntry(text)
 	for i=1,#rgLibrary,1 do
 		local hasEntry = 0
 		for k, jouEntry in pairs(journalDisplay) do
-			if (string.match(Infinity_FetchString(jouEntry.text), getUiString('RG_LIBRARY'))) then 
-				str = string.gsub(Infinity_FetchString(jouEntry.text), getUiString('RG_LIBRARY'), "")
+			if (string.match(Infinity_FetchString(jouEntry.text), t('RG_LIBRARY'))) then 
+				str = string.gsub(Infinity_FetchString(jouEntry.text), t('RG_LIBRARY'), "")
 			
 				if str == text then
 					hasEntry = 1
@@ -7651,7 +7595,7 @@ function rgGetLibraryJournalEntry(text)
 		end
 			
 		if Infinity_FetchString(rgLibrary[i][1]) == text and hasEntry == 0 then 
-			Infinity_OnAddUserEntry(getUiString('RG_LIBRARY') .. text)
+			Infinity_OnAddUserEntry(t('RG_LIBRARY') .. text)
 			--C:CreateItem('book08')
 		end
 	end
@@ -7950,7 +7894,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[1][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[1][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		--ScaleToClip
 		--align left top
 		action "rgHotkeyButtonLeftClick(1)"
@@ -7975,7 +7919,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[2][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[2][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(2)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -7988,7 +7932,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[3][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[3][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(3)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8001,7 +7945,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[4][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[4][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(4)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8014,7 +7958,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[5][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[5][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(5)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8027,7 +7971,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[6][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[6][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(6)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8040,7 +7984,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[7][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[7][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(7)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8053,7 +7997,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[8][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[8][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(8)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8066,7 +8010,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[9][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[9][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(9)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8079,7 +8023,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[10][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[10][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(10)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8092,7 +8036,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[11][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[11][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(11)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -8105,7 +8049,7 @@ menu
 		bam lua "rgGetHotkeyIcon(RgHotkeyButtonsTable[12][1])"
 		sequence lua "rgGetHotkeyIconSequence(RgHotkeyButtonsTable[12][1])"
 		scaleToClip
-		tooltip lua "getUiString('RG_HOTKEY_BUTT')"
+		tooltip lua "t('RG_HOTKEY_BUTT')"
 		action "rgHotkeyButtonLeftClick(12)"
 		actionAlt "rgHotkeyButtonRightClick()"
 	}
@@ -9706,7 +9650,7 @@ menu
 		bam lua "rgGetAdvSettingsButtonBam()"
 		sequence 0
 		ScaleToClip
-		tooltip lua "getUiString('RG_NPCBAR_SETT')"
+		tooltip lua "t('RG_NPCBAR_SETT')"
 		action
 		"
 			Infinity_PushMenu('RG_RADAR_SETTINGS')
@@ -10114,21 +10058,21 @@ end
 
 function rgGetCombatStatsString(charId)
 	--out =
-	--'^D' .. getUiString('ARMOR_CLASS_LABEL') .. ': ' .. characters[id].AC.current .. '^B\n' ..
+	--'^D' .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[id].AC.current .. '^B\n' ..
 	--Infinity_FetchString(11766) .. '\n'  ..
 	--Infinity_FetchString(11768) .. ': ' .. characters[id].AC.slashing .. '\n'  ..
 	--Infinity_FetchString(11769) .. ': ' .. characters[id].AC.piercing .. '\n'  ..
 	--Infinity_FetchString(11770) .. ': ' .. characters[id].AC.crushing .. '\n'  ..
 	--Infinity_FetchString(11767) .. ': ' .. characters[id].AC.missile .. '\n\n'  ..
-	--'^D' .. getUiString('HIT_POINTS_LABEL') .. ': ' .. characters[id].HP.current .. '/' .. characters[id].HP.max .. '^B\n\n' ..
+	--'^D' .. t('HIT_POINTS_LABEL') .. ': ' .. characters[id].HP.current .. '/' .. characters[id].HP.max .. '^B\n\n' ..
 	--rgGetTHAC0(id) .. '\n\n' ..
 	--
 	--rgGetDamage(id) .. '\n\n' ..
 	--
 	--'^D' .. Infinity_FetchString(characters[id].proficiencies.numAttacks.strRef) .. ': ' .. characters[id].proficiencies.numAttacks.current .. '^B\n\n' ..
-	--'^D' .. getUiString('SAVING_THROWS_LABEL') .. ':' .. '^B\n' ..
+	--'^D' .. t('SAVING_THROWS_LABEL') .. ':' .. '^B\n' ..
 	--characters[id].proficiencies.savingThrows .. '\n\n' ..
-	--'^D' .. getUiString('RESISTANCES_LABEL') .. ':' .. '^B' .. '^B\n' ..
+	--'^D' .. t('RESISTANCES_LABEL') .. ':' .. '^B' .. '^B\n' ..
 	--characters[id].proficiencies.resistances .. '\n'
 	--return out
 	
@@ -10144,19 +10088,19 @@ function rgGetCombatStatsString(charId)
 	if TEXT_inventoryError == rgGetGameEngineString(24355,24355,16321,16321) or TEXT_inventoryError == nil or  TEXT_inventoryError == '' then
 	
 		out =
-		head .. getUiString('ARMOR_CLASS_LABEL') .. ': ' .. characters[charId].AC.current .. body .. '\n' ..
+		head .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[charId].AC.current .. body .. '\n' ..
 		characters[charId].AC.details .. '\n\n' ..
-		head .. getUiString('HIT_POINTS_LABEL') .. ': ' .. characters[charId].HP.current .. '/' .. characters[charId].HP.max .. body .. '\n' ..
+		head .. t('HIT_POINTS_LABEL') .. ': ' .. characters[charId].HP.current .. '/' .. characters[charId].HP.max .. body .. '\n' ..
 		characters[charId].HP.details .. '\n\n' ..
 		head .. rgGetTHAC0(charId, body) .. '\n' ..
 		characters[charId].THAC0.details .. '\n\n' ..
 		head .. rgGetDamage(charId, body) .. '\n' ..
 		characters[charId].damage.details .. '\n\n' ..
-		head .. getUiString('SAVING_THROWS_LABEL') .. ':' .. body .. '\n' ..
+		head .. t('SAVING_THROWS_LABEL') .. ':' .. body .. '\n' ..
 		characters[charId].proficiencies.savingThrows .. body .. '\n\n' ..
-		head .. getUiString('RESISTANCES_LABEL') .. ':' .. body .. '\n' ..
+		head .. t('RESISTANCES_LABEL') .. ':' .. body .. '\n' ..
 		characters[charId].proficiencies.resistances .. '\n\n' ..
-		head .. getUiString('PROFICIENCIES_LABEL') .. ':' .. body .. '\n' ..
+		head .. t('PROFICIENCIES_LABEL') .. ':' .. body .. '\n' ..
 		characters[charId].proficiencies.weapons.current .. '\n' ..
 		characters[charId].proficiencies.fightingstyles.current
 		
@@ -10694,33 +10638,33 @@ function rgGetTempItemDesc()
 	--table.insert(out, {'^D' .. tempStats[id].tempItem .. '^B\n',''}) 
 	
 	--if getTempStat(characters[id].AC.current,'AC',-1) ~= '-' then
-	--	rgTestItemDesc = rgTestItemDesc .. getUiString('ARMOR_CLASS_LABEL') .. ': ' .. getTempStat(characters[id].AC.current,'AC',-1) .. ' (' .. getUiString('CURRENT_LABEL') .. ' ' .. getStat(characters[id].AC.current,'AC',-1) .. ')\n'
+	--	rgTestItemDesc = rgTestItemDesc .. t('ARMOR_CLASS_LABEL') .. ': ' .. getTempStat(characters[id].AC.current,'AC',-1) .. ' (' .. t('CURRENT_LABEL') .. ' ' .. getStat(characters[id].AC.current,'AC',-1) .. ')\n'
 	--end
 	--if getTempHP() ~= '-' then
-	--	rgTestItemDesc = rgTestItemDesc .. getUiString('HIT_POINTS_LABEL') .. ': ' .. getTempHP() .. ' (' .. getUiString('CURRENT_LABEL') .. ' ' .. characters[id].HP.current .. ')\n'
+	--	rgTestItemDesc = rgTestItemDesc .. t('HIT_POINTS_LABEL') .. ': ' .. getTempHP() .. ' (' .. t('CURRENT_LABEL') .. ' ' .. characters[id].HP.current .. ')\n'
 	--end
 	--if getTempStat(characters[id].THAC0.current,'THAC0',-1) ~= '-' then
-	--	rgTestItemDesc = rgTestItemDesc .. getUiString('THAC0_LABEL') .. ': ' .. getTempStat(characters[id].THAC0.current,'THAC0',-1) .. ' (' .. getUiString('CURRENT_LABEL') .. ' ' .. getStat(characters[id].THAC0.current,'THAC0', -1)  .. ')\n'
+	--	rgTestItemDesc = rgTestItemDesc .. t('THAC0_LABEL') .. ': ' .. getTempStat(characters[id].THAC0.current,'THAC0',-1) .. ' (' .. t('CURRENT_LABEL') .. ' ' .. getStat(characters[id].THAC0.current,'THAC0', -1)  .. ')\n'
 	--end
 	--if getTempDamage() ~= '-' then
-	--	rgTestItemDesc = rgTestItemDesc .. getUiString('DAMAGE_LABEL') .. ': ' .. getTempDamage() .. ' (' .. getUiString('CURRENT_LABEL') .. ' ' .. getStat(characters[id].damage.min,'dmgMin',1) .. ' - ' .. getStat(characters[id].damage.max, 'dmgMax', 1) .. ')\n'
+	--	rgTestItemDesc = rgTestItemDesc .. t('DAMAGE_LABEL') .. ': ' .. getTempDamage() .. ' (' .. t('CURRENT_LABEL') .. ' ' .. getStat(characters[id].damage.min,'dmgMin',1) .. ' - ' .. getStat(characters[id].damage.max, 'dmgMax', 1) .. ')\n'
 	--end
 	
 	--if getTempStat(characters[id].AC.current,'AC',-1) ~= '-' then
-	--	rgTestItemDesc = rgTestItemDesc .. getUiString('ARMOR_CLASS_LABEL') .. ': ' .. getStat(characters[id].AC.current,'AC',-1) .. ' ==> ' .. getTempStat(characters[id].AC.current,'AC',-1) .. '\n'
-	--	table.insert(out, {getUiString('ARMOR_CLASS_LABEL') .. ': ' .. getStat(characters[id].AC.current,'AC',-1) ,getTempStat(characters[id].AC.current,'AC',-1)}) 
+	--	rgTestItemDesc = rgTestItemDesc .. t('ARMOR_CLASS_LABEL') .. ': ' .. getStat(characters[id].AC.current,'AC',-1) .. ' ==> ' .. getTempStat(characters[id].AC.current,'AC',-1) .. '\n'
+	--	table.insert(out, {t('ARMOR_CLASS_LABEL') .. ': ' .. getStat(characters[id].AC.current,'AC',-1) ,getTempStat(characters[id].AC.current,'AC',-1)}) 
 	--end
 	--if getTempHP() ~= '-' then
-	--	rgTestItemDesc = rgTestItemDesc .. getUiString('HIT_POINTS_LABEL') .. ': ' .. characters[id].HP.current .. '/' .. getStat(characters[id].HP.max, 'HP', 1) .. ' ==> ' .. getTempHP() ..  '\n'
-	--	table.insert(out, {getUiString('HIT_POINTS_LABEL') .. ': ' .. characters[id].HP.current .. '/' .. getStat(characters[id].HP.max, 'HP', 1),getTempHP()}) 
+	--	rgTestItemDesc = rgTestItemDesc .. t('HIT_POINTS_LABEL') .. ': ' .. characters[id].HP.current .. '/' .. getStat(characters[id].HP.max, 'HP', 1) .. ' ==> ' .. getTempHP() ..  '\n'
+	--	table.insert(out, {t('HIT_POINTS_LABEL') .. ': ' .. characters[id].HP.current .. '/' .. getStat(characters[id].HP.max, 'HP', 1),getTempHP()}) 
 	--end
 	--if getTempStat(characters[id].THAC0.current,'THAC0',-1) ~= '-' then
-	--	rgTestItemDesc = rgTestItemDesc .. getUiString('THAC0_LABEL') .. ': ' .. getStat(characters[id].THAC0.current,'THAC0', -1) .. ' ==> ' .. getTempStat(characters[id].THAC0.current,'THAC0',-1) .. '\n'
-	--	table.insert(out, {getUiString('THAC0_LABEL') .. ': ' .. getStat(characters[id].THAC0.current,'THAC0', -1),getTempStat(characters[id].THAC0.current,'THAC0',-1)}) 
+	--	rgTestItemDesc = rgTestItemDesc .. t('THAC0_LABEL') .. ': ' .. getStat(characters[id].THAC0.current,'THAC0', -1) .. ' ==> ' .. getTempStat(characters[id].THAC0.current,'THAC0',-1) .. '\n'
+	--	table.insert(out, {t('THAC0_LABEL') .. ': ' .. getStat(characters[id].THAC0.current,'THAC0', -1),getTempStat(characters[id].THAC0.current,'THAC0',-1)}) 
 	--end
 	--if getTempDamage() ~= '-' then
-	--	rgTestItemDesc = rgTestItemDesc .. getUiString('DAMAGE_LABEL') .. ': ' .. getStat(characters[id].damage.min,'dmgMin',1) .. ' - ' .. getStat(characters[id].damage.max, 'dmgMax', 1) .. ' ==> ' .. getTempDamage() .. '\n'
-	--	table.insert(out, {getUiString('DAMAGE_LABEL') .. ': ' .. getStat(characters[id].damage.min,'dmgMin',1) .. ' - ' .. getStat(characters[id].damage.max, 'dmgMax', 1),getTempDamage()}) 
+	--	rgTestItemDesc = rgTestItemDesc .. t('DAMAGE_LABEL') .. ': ' .. getStat(characters[id].damage.min,'dmgMin',1) .. ' - ' .. getStat(characters[id].damage.max, 'dmgMax', 1) .. ' ==> ' .. getTempDamage() .. '\n'
+	--	table.insert(out, {t('DAMAGE_LABEL') .. ': ' .. getStat(characters[id].damage.min,'dmgMin',1) .. ' - ' .. getStat(characters[id].damage.max, 'dmgMax', 1),getTempDamage()}) 
 	--end
 	
 	--rgTestItemDesc = rgTestItemDesc .. '\n'
@@ -10777,16 +10721,16 @@ function rgSplitByDoubleLine(str)
 	local finLines = {}
 	local stat = false
 	for i in string.gmatch(str, "[^\r\n\r\n]+") do
-		if rgStringStart(i,getUiString("RG_ITM_COMP_ST")) then
+		if rgStringStart(i,t("RG_ITM_COMP_ST")) then
 			stat = true
-		elseif rgStringStart(i,getUiString("RG_ITM_COMP_WE")) or rgStringStart(i,getUiString("RG_ITM_COMP_RE")) then
+		elseif rgStringStart(i,t("RG_ITM_COMP_WE")) or rgStringStart(i,t("RG_ITM_COMP_RE")) then
 			stat = false
 		elseif rgStringStart(i,"THAC0") then
 			i = i:gsub("THAC0", "\nTHAC0")
 		end
-		i = i:gsub(getUiString("RG_ITM_COMP_PR"), "")
-		i = i:gsub(getUiString("RG_ITM_COMP_DA"), "")
-		i = i:gsub(getUiString("RG_ITM_COMP_TY"), "")
+		i = i:gsub(t("RG_ITM_COMP_PR"), "")
+		i = i:gsub(t("RG_ITM_COMP_DA"), "")
+		i = i:gsub(t("RG_ITM_COMP_TY"), "")
 		if stat == true  then --and not rgStringStart(i,"STAT")
 			table.insert(Lines, i);
 		end
@@ -11026,7 +10970,7 @@ menu
 		bam			rgdimbut
 		scaleToClip
 		toggle		rgInventoryMode
-		tooltip lua "getUiString('RG_INV_MODE')"
+		tooltip lua "t('RG_INV_MODE')"
 		sequence lua "rgGetInvModeSequence()"
 		action
 		"
@@ -11693,27 +11637,27 @@ menu
 	text
 	{
 		area 98 97 50 93
-		tooltip lua "getUiString('ARMOR_CLASS_LABEL')"
+		tooltip lua "t('ARMOR_CLASS_LABEL')"
 	}
 	text
 	{
 		area 152 97 50 93
-		tooltip lua "getUiString('HIT_POINTS_LABEL')"
+		tooltip lua "t('HIT_POINTS_LABEL')"
 	}
 	text
 	{
 		area 206 97 50 93
-		tooltip lua "getUiString('THAC0_LABEL')"
+		tooltip lua "t('THAC0_LABEL')"
 	}
 	text
 	{
 		area 260 97 50 93
-		tooltip lua "getUiString('DAMAGE_LABEL')"
+		tooltip lua "t('DAMAGE_LABEL')"
 	}
 	text
 	{
 		area 314 97 50 93
-		tooltip lua "getUiString('NUM_ATTACKS_LABEL')"
+		tooltip lua "t('NUM_ATTACKS_LABEL')"
 	}
 	
 	
@@ -13245,7 +13189,7 @@ menu
 		sequence 4
 		ScaleToClip
 		highlightgroup	rgcheatsection
-		tooltip lua "getUiString('SPELLS_LABEL')"
+		tooltip lua "t('SPELLS_LABEL')"
 		action "rgCheatSection = 3"	
 	}
 	button
@@ -13255,7 +13199,7 @@ menu
 		sequence 6
 		ScaleToClip
 		highlightgroup	rgcheatsection
-		tooltip lua "getUiString('RG_CHEATHISTORY')"
+		tooltip lua "t('RG_CHEATHISTORY')"
 		action "rgCheatSection = 2"	
 	}
 	list
@@ -13863,12 +13807,12 @@ function CheckCloudSaveStatus()
 end
 function GetCloudLoadingText()
 	if(cloudLoadState == 1 or cloudLoadState == 0) then
-		return getUiString('DOWNLOADING_SAVE_NORMAL')
+		return t('DOWNLOADING_SAVE_NORMAL')
 	end
 	if(cloudLoadState == 2) then
-		return getUiString('SEARCHING_SAVE_NORMAL')
+		return t('SEARCHING_SAVE_NORMAL')
 	end
-	return getUiString('CLOUD_STATE_UNDEFINED_NORMAL')
+	return t('CLOUD_STATE_UNDEFINED_NORMAL')
 end
 `
 menu
@@ -13982,28 +13926,28 @@ function rgClearPartyScreen()
 	end
 end
 function rgGetImportButtonString(num)
-	if partyImport.character[num].createdelete == getUiString('CREATE_BUTTON'):lower() then
-		return getUiString('IMPORT_BUTTON')
+	if partyImport.character[num].createdelete == t('CREATE_BUTTON'):lower() then
+		return t('IMPORT_BUTTON')
 	else
 		return partyImport.character[num].createdelete
 	end
 end
 function rgGetImportButtonState(num)
-	if partyImport.character[num].createdelete == getUiString('CREATE_BUTTON'):lower() then
+	if partyImport.character[num].createdelete == t('CREATE_BUTTON'):lower() then
 		return 0
 	else
 		return 1
 	end
 end
 function rgGetCreateButtonString(num)
-	if partyImport.character[num].createdelete == getUiString('CREATE_BUTTON'):lower() then
-		return getUiString('CREATE_BUTTON')
+	if partyImport.character[num].createdelete == t('CREATE_BUTTON'):lower() then
+		return t('CREATE_BUTTON')
 	else
 		return partyImport.character[num].name
 	end
 end
 function rgCreateButtonClick(num)
-	if partyImport.character[num].createdelete == getUiString('CREATE_BUTTON'):lower() then
+	if partyImport.character[num].createdelete == t('CREATE_BUTTON'):lower() then
 		createPartyScreen:OnCreateDeleteButtonClick(num-1)
 		Infinity_PopMenu()
 		Infinity_PushMenu('CHARGEN')
@@ -14811,7 +14755,7 @@ end
 	
 	--function getCampaignTooltip(buttonNum)
 	--	local campaign = startEngine:GetCampaign()
-	--	return getUiString(startCampaignData[startButtons[campaign][buttonNum]].tooltip)
+	--	return t(startCampaignData[startButtons[campaign][buttonNum]].tooltip)
 	--end
 	
 	--function getCampaignButtonSequence()
@@ -15178,7 +15122,6 @@ menu
 		rgGetCheatLists()
 		rgGetGraphicToggles()
 		rgGetGameplayToggles()
-		rgGetAutopauseToggles()
 		rgGetBestiary()
 		
 		if EEex_Active == false then
@@ -15247,7 +15190,7 @@ menu
 			label
 			{
 				--bam "rgdmcmp"
-				bam lua "getUiString('rgdmcmp') .. RgUISkin"
+				bam lua "t('rgdmcmp') .. RgUISkin"
 				area		0 0 -1 -1
 				frame lua "getCampaignHighlight(rowNumber)"
 				sequence lua "rgCampaigns[rowNumber].icon"
@@ -15954,13 +15897,13 @@ menu
 function magePageInfo()
 	if bookMode == 0 then -- Regular
 		if characters[id].hasSorcererBook then
-			return getUiString("SPELLS_CAN_CAST_LABEL") .. ": " .. characters[id].mageDetails[currentSpellLevel].slotsRemaining .. "/" .. characters[id].mageDetails[currentSpellLevel].maxMemorized
+			return t("SPELLS_CAN_CAST_LABEL") .. ": " .. characters[id].mageDetails[currentSpellLevel].slotsRemaining .. "/" .. characters[id].mageDetails[currentSpellLevel].maxMemorized
 		else
-			--return getUiString("MEMORIZED_LABEL") .. ": " .. #bottomSpells .. "/" .. characters[id].mageDetails[currentSpellLevel].maxMemorized
-			return getUiString("MEMORIZED_LABEL")
+			--return t("MEMORIZED_LABEL") .. ": " .. #bottomSpells .. "/" .. characters[id].mageDetails[currentSpellLevel].maxMemorized
+			return t("MEMORIZED_LABEL")
 		end
 	elseif bookMode == 1 then -- Sequencer/Contingency
-		return getUiString("SPELLS_LABEL") .. " :" .. #bottomSpells .. "/" .. #bottomSpellsPlaceHolder
+		return t("SPELLS_LABEL") .. " :" .. #bottomSpells .. "/" .. #bottomSpellsPlaceHolder
 
 	end
 	return ""
@@ -15974,7 +15917,7 @@ function mageBookDescription()
 			if characters[id].mageSpells[currentSpellLevel][currentBookSpell] then
 				return Infinity_FetchString(characters[id].mageSpells[currentSpellLevel][currentBookSpell].description)
 			else
-				return getUiString('SPELL_MEMORIZATION_HELP')
+				return t('SPELL_MEMORIZATION_HELP')
 			end
 		elseif bookMode == 1 then
 			if contingencyDescription == 0 and currentBookSpell ~= 0 then
@@ -15992,16 +15935,16 @@ function mageBookDescription()
 end
 function mageBookTitle()
 	if bookMode == 1 and mageBookStrings[contingencyResRef] then
-		return getUiString(mageBookStrings[contingencyResRef].title)
+		return t(mageBookStrings[contingencyResRef].title)
 	else
-		return getUiString('MAGE_SPELLS_TITLE')
+		return t('MAGE_SPELLS_TITLE')
 	end
 end
 function mageBookAction()
 	if bookMode == 1 and mageBookStrings[contingencyResRef] then
-		return getUiString(mageBookStrings[contingencyResRef].action)
+		return t(mageBookStrings[contingencyResRef].action)
 	else
-		return getUiString("MAGE_BOOK_LABEL")
+		return t("MAGE_BOOK_LABEL")
 	end
 end
 
@@ -16024,9 +15967,9 @@ end
 
 function contingencyDoneButtonText()
 	if contingencyComplete() then
-		return getUiString("DONE_BUTTON")
+		return t("DONE_BUTTON")
 	else
-		return getUiString("CANCEL_BUTTON")
+		return t("CANCEL_BUTTON")
 	end
 end
 
@@ -16525,9 +16468,9 @@ function rgGetMemorizedListMax(level)
 end
 function rgGetContMemorizedText()
 	if currentSpellLevel == 99 then
-		return getUiString('MEMORIZED_LABEL')
+		return t('MEMORIZED_LABEL')
 	else
-		return getUiString('MEMORIZED_LABEL') .. ': ' .. Infinity_FetchString(7192) .. '  ' .. currentSpellLevel
+		return t('MEMORIZED_LABEL') .. ': ' .. Infinity_FetchString(7192) .. '  ' .. currentSpellLevel
 	end
 end
 
@@ -16863,7 +16806,7 @@ menu
 		bam		rgdmbut2
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "rgString(getUiString('CONTINGENCY_BUTTON'))"
+		text lua "rgString(t('CONTINGENCY_BUTTON'))"
 		text style "button"
 		action "Infinity_PushMenu('MAGE_CONTINGENCY')"
 		
@@ -16875,7 +16818,7 @@ menu
 		bam		rgdbutw1
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "rgString(getUiString('CONTINGENCY_BUTTON'))"
+		text lua "rgString(t('CONTINGENCY_BUTTON'))"
 		text style "button"
 		action "Infinity_PushMenu('MAGE_CONTINGENCY')"
 		
@@ -18394,7 +18337,7 @@ menu
 			{
 				enabled "rowNumber ~= currentContingencySpell"
 				area	10 0 135 -1
-				text lua "getUiString(mageBookStrings[preparedSpells[rowNumber].resref].title)"
+				text lua "t(mageBookStrings[preparedSpells[rowNumber].resref].title)"
 				text style "normal"
 				text color '5'
 				align	left center
@@ -18428,7 +18371,7 @@ menu
 			{
 				enabled "rowNumber == currentContingencySpell"
 				area	10 0 135 -1
-				text lua "getUiString(mageBookStrings[preparedSpells[rowNumber].resref].title)"
+				text lua "t(mageBookStrings[preparedSpells[rowNumber].resref].title)"
 				text style "normal"
 				text color '$'
 				align	left center
@@ -18568,10 +18511,10 @@ menu
 `
 function priestPageInfo()
 	if characters[id].hasShamanBook then
-		return getUiString("SPELLS_CAN_CAST_LABEL") .. ": " .. characters[id].priestDetails[currentSpellLevel].slotsRemaining .. "/" .. characters[id].priestDetails[currentSpellLevel].maxMemorized
+		return t("SPELLS_CAN_CAST_LABEL") .. ": " .. characters[id].priestDetails[currentSpellLevel].slotsRemaining .. "/" .. characters[id].priestDetails[currentSpellLevel].maxMemorized
 	else
-		--return getUiString("MEMORIZED_LABEL") .. ": " .. #bottomSpells .. "/" .. characters[id].priestDetails[currentSpellLevel].maxMemorized
-		return getUiString("MEMORIZED_LABEL")
+		--return t("MEMORIZED_LABEL") .. ": " .. #bottomSpells .. "/" .. characters[id].priestDetails[currentSpellLevel].maxMemorized
+		return t("MEMORIZED_LABEL")
 	end
 end
 
@@ -18580,7 +18523,7 @@ function priestBookDescription()
 		if characters[id].priestSpells[currentSpellLevel][currentBookSpell] then
 			return Infinity_FetchString(characters[id].priestSpells[currentSpellLevel][currentBookSpell].description)
 		else
-			return getUiString('SPELL_MEMORIZATION_HELP')
+			return t('SPELL_MEMORIZATION_HELP')
 		end
 	end
 	return ""
@@ -20004,7 +19947,7 @@ menu
 		scaleToClip
 		sequence 2
 		frame lua "rgGetMapCheckboxFrame()"
-		tooltip lua "getUiString('WORLDMAP_HIGHLIGHT_LABEL')"
+		tooltip lua "t('WORLDMAP_HIGHLIGHT_LABEL')"
 		--sequence lua "mapScreen:DisplayExploredMap() and 0 or 1"
 		action "mapScreen:ToggleDisplayExploredMap()"
 	}
@@ -20033,7 +19976,7 @@ menu
 		bam rgdabut1
 		scaleToClip
 		sequence 1
-		tooltip lua "getUiString('WORLD_MAP_NOTES_LABEL')"
+		tooltip lua "t('WORLD_MAP_NOTES_LABEL')"
 		--sequence lua "showNotes == 1 and 0 or 1"
 		toggle showNotes
 	}
@@ -20043,7 +19986,7 @@ menu
 		area 172 10 62 58
 		bam rgdabut1
 		scaleToClip
-		tooltip lua "getUiString('WORLD_MAP_BUTTON')"
+		tooltip lua "t('WORLD_MAP_BUTTON')"
 		action
 		"
 			worldMapScreen:StartWorldMap(0)
@@ -20719,9 +20662,9 @@ function groupSplitStack(count)
 end
 function checkContainerText(normalStr, containerStr)
 	if(storeScreen:IsContainer()) then
-		return getUiString(containerStr)
+		return t(containerStr)
 	else
-		return getUiString(normalStr)
+		return t(normalStr)
 	end
 end
 function getStoreItemCount(row)
@@ -22824,7 +22767,7 @@ menu
 		bam		rgdbutm1
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "checkContainerText(getUiString('BUY_BUTTON') .. ' (' .. storeScreen:GetStoreCost() .. ')', 'TO_BACKPACK_BUTTON')"
+		text lua "checkContainerText(t('BUY_BUTTON') .. ' (' .. storeScreen:GetStoreCost() .. ')', 'TO_BACKPACK_BUTTON')"
 		text style "button"
 		clickable lua "storeScreen:IsBuyItemButtonClickable()"
 		action
@@ -22840,7 +22783,7 @@ menu
 		bam		rgdbutm1
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "checkContainerText(getUiString('SELL_BUTTON') .. ' (' .. storeScreen:GetGroupCost() .. ')','TO_CONTAINER_BUTTON')"
+		text lua "checkContainerText(t('SELL_BUTTON') .. ' (' .. storeScreen:GetGroupCost() .. ')','TO_CONTAINER_BUTTON')"
 		text style "button"
 		clickable lua "storeScreen:IsSellItemButtonClickable()"
 		action
@@ -22925,9 +22868,9 @@ menu
 --function rgGetIdentifyCost()
 --	if storeScreen:GetGroupCost() == rgGroupItemCount and storeScreen:GetGroupCost() ~= 0 then
 --		local cost = rgGroupItemCount * 100
---		return getUiString("IDENTIFY_BUTTON") .. ' (' .. cost .. ')'
+--		return t("IDENTIFY_BUTTON") .. ' (' .. cost .. ')'
 --	else
---		return getUiString("IDENTIFY_BUTTON")
+--		return t("IDENTIFY_BUTTON")
 --	end
 --end
 	identifyItemsVar = 0
@@ -23525,7 +23468,7 @@ menu
 		bam		rgdbutm1
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "getUiString('RENT_BUTTON') .. ' ( ' .. getUiString('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
+		text lua "t('RENT_BUTTON') .. ' ( ' .. t('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
 		text style "button"
 		action
 		"
@@ -23669,7 +23612,7 @@ menu
 		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BUY_BUTTON"
-		--text lua "getUiString('RENT_BUTTON') .. ' ( ' .. getUiString('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
+		--text lua "t('RENT_BUTTON') .. ' ( ' .. t('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
 		text style "button"
 		action
 		"
@@ -23798,7 +23741,7 @@ menu
 		sequence lua "RgUISkin"
 		ScaleToClip
 		text "BUY_BUTTON"
-		--text lua "getUiString('RENT_BUTTON') .. ' ( ' .. getUiString('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
+		--text lua "t('RENT_BUTTON') .. ' ( ' .. t('COST_LABEL') .. ' ' .. storeScreen:GetRoomCost() .. ' )'"
 		text style "button"
 		action
 		"
@@ -23835,7 +23778,7 @@ menu
 	end
 	function getBuySellTooltip()
 		if(storeScreen:IsContainer()) then
-			return getUiString('TRANSFER_ITEMS_TOOLTIP')
+			return t('TRANSFER_ITEMS_TOOLTIP')
 		else
 			return Infinity_FetchString(storeScreen:GetPanelButtonToolTip(0))
 		end
@@ -24147,7 +24090,7 @@ menu
 		name 'BUTTON_storechooser_0'
 		area 87 170 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(0)"
-		bam lua "getUiString('rgdstbt') .. RgUISkin"
+		bam lua "t('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(0)"
@@ -24162,7 +24105,7 @@ menu
 		name 'BUTTON_storechooser_1'
 		area 87 280 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(1)"
-		bam lua "getUiString('rgdstbt') .. RgUISkin"
+		bam lua "t('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(1)"
@@ -24177,7 +24120,7 @@ menu
 		name 'BUTTON_storechooser_2'
 		area 87 390 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(2)"
-		bam lua "getUiString('rgdstbt') .. RgUISkin"
+		bam lua "t('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(2)"
@@ -24192,7 +24135,7 @@ menu
 		name 'BUTTON_storechooser_3'
 		area 87 500 70 105
 		enabled "storeScreen:GetPanelButtonEnabled(3)"
-		bam lua "getUiString('rgdstbt') .. RgUISkin"
+		bam lua "t('rgdstbt') .. RgUISkin"
 		ScaleToClip
 		highlightgroup storePanelButtonHighlightGroup
 		sequence lua "storeScreen:GetPanelButtonSequence(3)"
@@ -24231,9 +24174,9 @@ menu
 	end
 	function worldDeathQuitText()
 		if(e:IsMultiplayer()) then
-			return getUiString('LOGOUT_BUTTON')
+			return t('LOGOUT_BUTTON')
 		else
-			return getUiString('QUIT_BUTTON')
+			return t('QUIT_BUTTON')
 		end
 	end
 	groundItemsButtonToggle = 0
@@ -25063,7 +25006,7 @@ menu
 		bam lua "rgGetAdvSettingsButtonBam()"
 		sequence 0
 		ScaleToClip
-		tooltip lua "getUiString('RG_NPCBAR_SETT')"
+		tooltip lua "t('RG_NPCBAR_SETT')"
 		action
 		"
 			Infinity_PushMenu('RG_RADAR_SETTINGS')
@@ -25076,7 +25019,7 @@ menu
 		bam lua "rgGetAdvSettingsButtonBam()"
 		sequence 0
 		ScaleToClip
-		tooltip lua "getUiString('RG_NPCBAR_SETT')"
+		tooltip lua "t('RG_NPCBAR_SETT')"
 		action
 		"
 			Infinity_PushMenu('RG_RADAR_SETTINGS')
@@ -26481,7 +26424,7 @@ menu
 		Sequence lua "RgUISkin"
 		scaleToClip
 		toggle		RgQuicklootFilterJunk
-		tooltip lua "getUiString('RG_JUNKBUTTON')"
+		tooltip lua "t('RG_JUNKBUTTON')"
 		action
 		"
 			Infinity_SetINIValue('Game Options','RgQuicklootFilterJunk',RgQuicklootFilterJunk)
@@ -26495,7 +26438,7 @@ menu
 		bam			RGDMBTQ4
 		Sequence lua "RgUISkin"
 		scaleToClip
-		tooltip lua "getUiString('RG_LOOTALL')"
+		tooltip lua "t('RG_LOOTALL')"
 		action
 		"
 			rgQuicklootPickAllItems()
@@ -27571,7 +27514,7 @@ menu
 	label
 	{
 		area 575 570 654 32
-		text lua "getUiString('REMOVE_MEMBERS_LABEL') .. ': ' .. game:GetCharacterOverflowCount()"
+		text lua "t('REMOVE_MEMBERS_LABEL') .. ': ' .. game:GetCharacterOverflowCount()"
 		text style "button"
 		text shadow 1
 		align center center
@@ -27807,9 +27750,9 @@ function getSaveBackground(row)
 end
 function getLoadMenuTitle()
 	if (gameSaves.isImporting~=1) then
-		return getUiString('LOAD_TITLE')
+		return t('LOAD_TITLE')
 	end
-	return getUiString('IMPORT_TITLE')
+	return t('IMPORT_TITLE')
 end
 
 function rgGetLoadCharNames()
@@ -31119,8 +31062,8 @@ function rgGetJournalBestiaryEntry(text,row)
 				--Tutor^-^-
 				
 				--s:match('^(.-)%d+')
-				if (string.match(Infinity_FetchString(jouEntry.text), getUiString('RG_BESTIARY'))) then 
-					str = string.gsub(Infinity_FetchString(jouEntry.text), getUiString('RG_BESTIARY'), "")
+				if (string.match(Infinity_FetchString(jouEntry.text), t('RG_BESTIARY'))) then 
+					str = string.gsub(Infinity_FetchString(jouEntry.text), t('RG_BESTIARY'), "")
 				
 					local list = {}
 					for i in string.gmatch(str, "[^;]+") do
@@ -31195,7 +31138,7 @@ function rgAddNewBestiaryEntry(text)
 			--e:GetActiveEngine():OnLeftPanelButtonClick(2)
 			--journalMode = const.JOURNAL_MODE_EDIT
 			--text = string.gsub(text, '%\n', '\n"') .. '"'
-			journalNoteEdit = getUiString('RG_BESTIARY') .. text-- .. '; 1'
+			journalNoteEdit = t('RG_BESTIARY') .. text-- .. '; 1'
 			journalNoteEditRef = nil
 			--journalNoteEdit = JFStrings.JF_Notes .. '\n' .. journalNoteEdit .. '\n - ' .. Infinity_GetTimeString()
 			Infinity_OnAddUserEntry(journalNoteEdit)
@@ -31216,7 +31159,7 @@ function rgEditNewBestiaryEntry(text,kills,ref)
 	end
 	e:GetActiveEngine():OnLeftPanelButtonClick(2)
 	--journalMode = const.JOURNAL_MODE_EDIT
-	journalNoteEdit =  getUiString('RG_BESTIARY') .. text .. '; ' .. kills
+	journalNoteEdit =  t('RG_BESTIARY') .. text .. '; ' .. kills
 	journalNoteEditRef = nil
 	--Infinity_OnAddUserEntry(journalNoteEdit)
 	Infinity_OnEditUserEntry(ref, journalNoteEdit)
@@ -32165,7 +32108,7 @@ menu
 		bam "rgdmenub"
 		sequence 1
 		ScaleToClip
-		tooltip lua "getUiString('RG_WRITE_JOURNAL')"
+		tooltip lua "t('RG_WRITE_JOURNAL')"
 		action 
 		"
 			rgAddNewNote(worldNPCDialogText)
@@ -32178,7 +32121,7 @@ menu
 		bam "rgdhkbt6"
 		text lua "rgLoadFromDialog()"
 		ScaleToClip
-		tooltip lua "getUiString('ASSIGN_KEYS_MISC_QUICKLOAD')"
+		tooltip lua "t('ASSIGN_KEYS_MISC_QUICKLOAD')"
 		action 
 		"
 			rgDialogLoad = 1
@@ -32218,7 +32161,7 @@ menu
 	--{
 	--	name "worldDialogShowMessagesButton"
 	--	area 764 8 62 31
-	--	tooltip lua "getUiString('LOG_HISTORY_TOOLTIP')"
+	--	tooltip lua "t('LOG_HISTORY_TOOLTIP')"
 	--	bam "CHATHIST"
 	--	frame lua "showMessagesButtonFrame()"
 	--	action 
@@ -32535,9 +32478,9 @@ chargen = {
 }
 function chargenAcceptOrExport()
 	if createCharScreen:GetEngineState() == 4 then
-		return getUiString("EXPORT_BUTTON")
+		return t("EXPORT_BUTTON")
 	else
-		return getUiString("ACCEPT_BUTTON")
+		return t("ACCEPT_BUTTON")
 
 	end
 end
@@ -32760,7 +32703,7 @@ menu
 	{
 		enabled "createCharScreen:GetCurrentStep() > 15 and rgGameEngine ~= 3"
 		area 1070 176 208 90
-		text lua "getUiString('SOUND_TITLE') .. '\n' .. getSoundStringRef(currentChargenCustomSound, chargen.customSound)"
+		text lua "t('SOUND_TITLE') .. '\n' .. getSoundStringRef(currentChargenCustomSound, chargen.customSound)"
 		scrollbar 'rgdscrl1'
 		text style "normal"
 		text point 12
@@ -32793,7 +32736,7 @@ menu
 		ScaleToClip
 		clickable lua "createCharScreen:GetCurrentStep() >= 3"
 		glow lua "createCharScreen:GetCurrentStep() == 3"
-		text lua "getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON')"
+		text lua "t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON')"
 		text style "button"
 		pad 8 2 8 2
 		action 
@@ -33130,7 +33073,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(getUiString('GENDER_TITLE') .. '  &  ' .. getUiString('APPEARANCE_TITLE'))"
+		text lua "rgString(t('GENDER_TITLE') .. '  &  ' .. t('APPEARANCE_TITLE'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -33798,7 +33741,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
+		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -33927,7 +33870,7 @@ menu
 	{
 		enabled "createCharScreen:GetCurrentStep() ~= const.STEP_DUALCLASS_CLASS"																   
 		area		480 32 405 52
-		text lua "rgString(getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
+		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -33936,7 +33879,7 @@ menu
 	{
 		enabled "createCharScreen:GetCurrentStep() == const.STEP_DUALCLASS_CLASS"
 		area 146 36 1074 44
-		text lua "getUiString('CLASS_TITLE')"
+		text lua "t('CLASS_TITLE')"
 		text style "button"
 	}
 	label
@@ -34130,7 +34073,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
+		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -34347,7 +34290,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(getUiString('RACE_BUTTON') .. ' & ' .. getUiString('CLASS_BUTTON'))"
+		text lua "rgString(t('RACE_BUTTON') .. ' & ' .. t('CLASS_BUTTON'))"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -34657,7 +34600,7 @@ end
 function rgRerollButtonName()
 	if rgIsRolling == 0 then
 		rgDragonEnabled = false
-		return getUiString('REROLL_BUTTON')
+		return t('REROLL_BUTTON')
 	else
 		return rgGetGameEngineString(15924,15924,15924,15924)
 	end
@@ -34752,7 +34695,7 @@ menu
 			label
 			{
 				area 0 0 180 55
-				text lua "getUiString(chargen.ability[rowNumber].name)"
+				text lua "t(chargen.ability[rowNumber].name)"
 				text style "normal"
 				align right center
 				
@@ -35034,9 +34977,9 @@ end
 
 function getProficienciesTitle()
 	if(chargen.levelingUp) then
-		return getUiString("LEVEL_UP_TITLE")
+		return t("LEVEL_UP_TITLE")
 	else
-		return getUiString("SKILLS_LABEL")
+		return t("SKILLS_LABEL")
 	end
 end
 
@@ -35731,7 +35674,7 @@ menu
 	--{
 	--	name "rgdlvlTitle"
 	--	area 512 12 486 44
-	--	text lua  "getUiString('LEVEL_UP_TITLE') .. ' - ' ..  characters[currentID].name .. ', ' .. characters[currentID].class"
+	--	text lua  "t('LEVEL_UP_TITLE') .. ' - ' ..  characters[currentID].name .. ', ' .. characters[currentID].class"
 	--	text style "button"
 	--	text shadow 1
 	--}
@@ -36421,9 +36364,9 @@ function specialistFrame(num)
 end
 function spellLearnOrUnlearnText()
 	if currentChargenChooseMageSpell == nil or not chargen.choose_spell[currentChargenChooseMageSpell].enabled then
-		return getUiString("BUTTON_LEARN")
+		return t("BUTTON_LEARN")
 	else
-		return getUiString("BUTTON_UNLEARN")
+		return t("BUTTON_UNLEARN")
 	end
 end
 function spellLearnOrUnlearnClickable()
@@ -36453,9 +36396,9 @@ end
 
 function nextOrDone()
 	if(createCharScreen:HasMoreMageLevels()) then
-		return getUiString('NEXT_BUTTON')
+		return t('NEXT_BUTTON')
 	else
-		return getUiString('DONE_BUTTON')
+		return t('DONE_BUTTON')
 	end
 end
 function shouldShowSpecialistMessage()
@@ -36520,21 +36463,21 @@ function rgChooseSpellsMenuOnOpen()
 		end
 		
 		if currentKitName == rgGetGameEngineString(25319,25319,597,597) then
-			setStringTokenLua('<SCHOOLTOKEN>',getUiString('ABJURATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',t('ABJURATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25320,25320,2179,2179) then
-			setStringTokenLua('<SCHOOLTOKEN>',getUiString('CONJURATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',t('CONJURATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25321,25321,2846,2846) then
-			setStringTokenLua('<SCHOOLTOKEN>',getUiString('DIVINATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',t('DIVINATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25322,25322,2861,2861) then
-			setStringTokenLua('<SCHOOLTOKEN>',getUiString('ENCHANTMENT_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',t('ENCHANTMENT_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25323,25323,2862,2862) then
-			setStringTokenLua('<SCHOOLTOKEN>',getUiString('ILLUSION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',t('ILLUSION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25324,25324,3015,3015) then
-			setStringTokenLua('<SCHOOLTOKEN>',getUiString('EVOCATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',t('EVOCATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25325,25325,12744,12744) then
-			setStringTokenLua('<SCHOOLTOKEN>',getUiString('NECROMANCY_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',t('NECROMANCY_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25326,25326,12745,12745) then
-			setStringTokenLua('<SCHOOLTOKEN>',getUiString('TRANSMUTATION_SCHOOL_TOKEN'))
+			setStringTokenLua('<SCHOOLTOKEN>',t('TRANSMUTATION_SCHOOL_TOKEN'))
 		elseif currentKitName == rgGetGameEngineString(25327,25327,54893,34656) then
 			setStringTokenLua('<SCHOOLTOKEN>',rgGetGameEngineString(25327,25327,54893,34656))
 		end
@@ -36708,21 +36651,21 @@ menu
 		--end
 		--
 		--if currentKitName == rgGetGameEngineString(25319,25319,597,597) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('ABJURATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',t('ABJURATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25320,25320,2179,2179) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('CONJURATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',t('CONJURATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25321,25321,2846,2846) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('DIVINATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',t('DIVINATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25322,25322,2861,2861) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('ENCHANTMENT_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',t('ENCHANTMENT_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25323,25323,2862,2862) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('ILLUSION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',t('ILLUSION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25324,25324,3015,3015) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('EVOCATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',t('EVOCATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25325,25325,12744,12744) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('NECROMANCY_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',t('NECROMANCY_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25326,25326,12745,12745) then
-		--	setStringTokenLua('<SCHOOLTOKEN>',getUiString('TRANSMUTATION_SCHOOL_TOKEN'))
+		--	setStringTokenLua('<SCHOOLTOKEN>',t('TRANSMUTATION_SCHOOL_TOKEN'))
 		--elseif currentKitName == rgGetGameEngineString(25327,25327,,) then
 		--	setStringTokenLua('<SCHOOLTOKEN>',rgGetGameEngineString(25327,25327,54893,34656))
 		--end
@@ -36754,7 +36697,7 @@ menu
 	label
 	{
 		area		480 32 405 52
-		text lua "rgString(getUiString(chargen.title) .. ': ' .. getUiString('LEVEL_LABEL') .. ' ' .. chargen.currentSpellLevelChoice)"
+		text lua "rgString(t(chargen.title) .. ': ' .. t('LEVEL_LABEL') .. ' ' .. chargen.currentSpellLevelChoice)"
 		text style 'rg_trajan'
 		text color '$'
 		align center center
@@ -36762,7 +36705,7 @@ menu
 	label
 	{
 		area 136 109 219 27
-		text lua "getUiString('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
+		text lua "t('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
 		text style "rg_trajan"
 		text color '5'
 	}
@@ -37141,7 +37084,7 @@ menu
 	{
 		area 434 86 500 70
 		enabled "shouldShowSpecialistMessage()"
-		text lua "getUiString('SPECIALIST_SPELL_REQ')"
+		text lua "t('SPECIALIST_SPELL_REQ')"
 		text style "normal"
 		text align center center
 		rectangle 0
@@ -37352,7 +37295,7 @@ menu
 	label
 	{
 		area 136 109 219 27
-		text lua "getUiString('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
+		text lua "t('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
 		text style "rg_trajan"
 		text color '5'
 	}
@@ -37677,7 +37620,7 @@ menu
 	{
 		area 434 86 500 70
 		enabled "shouldShowSpecialistMessage()"
-		text lua "getUiString('SPECIALIST_SPELL_REQ')"
+		text lua "t('SPECIALIST_SPELL_REQ')"
 		text style "normal"
 		text align center center
 		rectangle 0
@@ -37858,7 +37801,7 @@ menu
 	label
 	{
 		area 136 109 219 27
-		text lua "getUiString('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
+		text lua "t('SPELLS_REMAINING_NORMAL') .. ': ' .. chargen.extraSpells"
 		text style "rg_trajan"
 		text color '5'
 	}
@@ -39132,9 +39075,9 @@ menu
 list_GUICG_20_2_idx = 0
 function NextOrDone()
 	if createCharScreen:GetImportState() == 1 then
-		return getUiString("NEXT_BUTTON")
+		return t("NEXT_BUTTON")
 	else
-		return getUiString("DONE_BUTTON")
+		return t("DONE_BUTTON")
 	end
 end
 `
@@ -39501,7 +39444,7 @@ menu
 			label
 			{
 				area 100 0 200 -1
-				text lua "getUiString( difficulties[rowNumber].name )"
+				text lua "t( difficulties[rowNumber].name )"
 				text style "normal"
 				text align center center
 				text color	B
@@ -39509,7 +39452,7 @@ menu
 			label
 			{
 				area 320 0 845 -1
-				text lua "getUiString( difficulties[rowNumber].description )"
+				text lua "t( difficulties[rowNumber].description )"
 				text style "normal"
 				text point	12
 				text align left center
@@ -39556,7 +39499,7 @@ menu
 		bam		rgdmbut2
 		sequence lua "RgUISkin"
 		ScaleToClip
-		text lua "getUiString('VENTURE_FORTH')"
+		text lua "t('VENTURE_FORTH')"
 		text style "button"
 		enabled "fromSinglePlayer"
 		action 
@@ -40022,9 +39965,9 @@ function gameHasPassword(slot)
 	end
 	Infinity_GetPasswordRequired(mp_shownSessions[slot]["actualIndex"])
 	if passwordReq ~= 0 then 
-		ret = getUiString("YES")
+		ret = t("YES")
 	else
-		ret = getUiString("NO")
+		ret = t("NO")
 	end
 	return ret
 end
@@ -40049,25 +39992,25 @@ function connectionGetGameType(slot)
 	
 		if rgGameEngine == 0 or rgGameEngine == 1 then --bg1
 			if mp_sessions[mp_shownSessions[slot]["actualIndex"]]["version"] == "bgee-main" then
-				ret = getUiString("MAIN_GAME_LABEL")
+				ret = t("MAIN_GAME_LABEL")
 			elseif mp_sessions[mp_shownSessions[slot]["actualIndex"]]["version"] == "bgee-bp" then
-				ret = getUiString("ARENA_MODE_LABEL")
+				ret = t("ARENA_MODE_LABEL")
 			elseif mp_sessions[mp_shownSessions[slot]["actualIndex"]]["version"] == "bgee-sod" then
-				ret = getUiString("EXPANSION_LABEL")
+				ret = t("EXPANSION_LABEL")
 		end
 		elseif rgGameEngine == 2 or rgGameEngine == 4 then --bg2 eet
 			if mp_sessions[mp_shownSessions[slot]["actualIndex"]]["version"] == "bg2ee-main" then
-				ret = getUiString("MAIN_GAME_BG2_LABEL")
+				ret = t("MAIN_GAME_BG2_LABEL")
 			elseif mp_sessions[mp_shownSessions[slot]["actualIndex"]]["version"] == "bg2ee-bp" then
-				ret = getUiString("ARENA_MODE_BG2_LABEL")
+				ret = t("ARENA_MODE_BG2_LABEL")
 			elseif mp_sessions[mp_shownSessions[slot]["actualIndex"]]["version"] == "bg2ee-tob" then
-				ret = getUiString("EXPANSION_BG2_LABEL")
+				ret = t("EXPANSION_BG2_LABEL")
 			end
 		elseif rgGameEngine == 3 then --iwd
 			if mp_sessions[mp_shownSessions[slot]["actualIndex"]]["version"] == "iwd-main" then
-				ret = getUiString(16509)
+				ret = t(16509)
 			elseif mp_sessions[mp_shownSessions[slot]["actualIndex"]]["version"] == "iwd-how" then
-				ret = getUiString(26799)
+				ret = t(26799)
 			end
 		end
 	end
@@ -40133,7 +40076,7 @@ function matchMultiplayerGameType(gameVersion)
 end
 function rgGetPlayerNameText()
 	if connectionPlayerNameEdit == '' then
-		return getUiString('PLAYER_NAME_LABEL')
+		return t('PLAYER_NAME_LABEL')
 	else
 		return connectionPlayerNameEdit
 	end
@@ -40233,28 +40176,28 @@ menu
 	--label
 	--{
 	--	area 78 198 498 28
-	--	text lua "getUiString('GAME_NAME_LABEL')"
+	--	text lua "t('GAME_NAME_LABEL')"
 	--	text style "label_parchment"
 	--	align center center
 	--}
 	--label
 	--{
 	--	area 576 198 84 28
-	--	text lua "getUiString('PASSWORD_LABEL')"
+	--	text lua "t('PASSWORD_LABEL')"
 	--	text style "label_parchment"
 	--	align center center
 	--}
 	--label
 	--{
 	--	area 660 198 70 28
-	--	text lua "getUiString('PLAYERS_LABEL')"
+	--	text lua "t('PLAYERS_LABEL')"
 	--	text style "label_parchment"
 	--	align center center
 	--}
 	--label
 	--{
 	--	area 730 198 186 28
-	--	text lua "getUiString('GAME_TYPE_LABEL')"
+	--	text lua "t('GAME_TYPE_LABEL')"
 	--	text style "label_parchment"
 	--	align center center
 	--}
@@ -40348,7 +40291,7 @@ menu
 		text		style 'normal'
 		text		"CONNECTION_NOT_PASSWORD_PROTECTED_LABEL"
 		align 		left center
-		tooltip lua "getUiString('CONNECTION_NO_PASSWORDS_TOOLTIP')"
+		tooltip lua "t('CONNECTION_NO_PASSWORDS_TOOLTIP')"
 	}
 	button
 	{
@@ -40358,7 +40301,7 @@ menu
 		sequence lua "RgUISkin"
 		scaleToClip
 		glow lua	"connectionFilterNoPasswords"
-		tooltip lua "getUiString('CONNECTION_NO_PASSWORDS_TOOLTIP')"
+		tooltip lua "t('CONNECTION_NO_PASSWORDS_TOOLTIP')"
 		action
 		"
 			connectionFilterNoPasswords = 1 - connectionFilterNoPasswords
@@ -40372,7 +40315,7 @@ menu
 		text		style 'normal'
 		text		"CONNECTION_NOT_FULL_LABEL"
 		align 		left center
-		tooltip lua "getUiString('CONNECTION_NO_FULL_GAMES_TOOLTIP')"
+		tooltip lua "t('CONNECTION_NO_FULL_GAMES_TOOLTIP')"
 	}
 	button
 	{
@@ -40382,7 +40325,7 @@ menu
 		sequence lua "RgUISkin"
 		scaleToClip
 		glow lua	"connectionFilterNoFullGames"
-		tooltip lua "getUiString('CONNECTION_NO_FULL_GAMES_TOOLTIP')"
+		tooltip lua "t('CONNECTION_NO_FULL_GAMES_TOOLTIP')"
 		action
 		"
 			connectionFilterNoFullGames = 1 - connectionFilterNoFullGames
@@ -40459,7 +40402,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('RG_MM_REFRESH')"
-		tooltip lua "getUiString('CONNECTION_REFRESH_TOOLTIP')"
+		tooltip lua "t('CONNECTION_REFRESH_TOOLTIP')"
 		action
 		"
 			selectedMp = nil
@@ -40480,7 +40423,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('CONNECTION_DIRECT_CONNECTION_BUTTON')"
-		tooltip lua "getUiString('CONNECTION_DIRECT_CONNECT_TOOLTIP')"
+		tooltip lua "t('CONNECTION_DIRECT_CONNECT_TOOLTIP')"
 		action
 		"
 			connectionIsHosting = false
@@ -40669,9 +40612,9 @@ function connectionCreateGameClickable()
 	return ret
 end
 function connectionSetDefaultGameSettings() 
-	local player = getUiString("MULTIPLAYER_DEFAULT_PLAYER")
-	local game = getUiString("MULTIPLAYER_ENTER_GAME_NAME")
-	local pass = getUiString("MULTIPLAYER_ENTER_GAME_PASSWORD")
+	local player = t("MULTIPLAYER_DEFAULT_PLAYER")
+	local game = t("MULTIPLAYER_ENTER_GAME_NAME")
+	local pass = t("MULTIPLAYER_ENTER_GAME_PASSWORD")
 
 	if connectionPlayerNameEdit == "" then
 		connectionPlayerNameEdit = Infinity_GetINIString('Multiplayer', 'Player Name', player)
@@ -40775,7 +40718,7 @@ menu
 		area		280 262 241 40
 		text		style 'normal'
 		text		"CONNECTION_PASSWORD_PROTECTED"
-		tooltip lua "getUiString('CONNECTION_PASSWORD_PROTECTED_TOOLTIP')"
+		tooltip lua "t('CONNECTION_PASSWORD_PROTECTED_TOOLTIP')"
 		align 		left center
 	}
 	button
@@ -40785,7 +40728,7 @@ menu
 		sequence lua "RgUISkin"
 		scaleToClip
 		glow lua	"connectionPasswordProtected"
-		tooltip lua "getUiString('CONNECTION_PASSWORD_PROTECTED_TOOLTIP')"
+		tooltip lua "t('CONNECTION_PASSWORD_PROTECTED_TOOLTIP')"
 		action
 		"
 			connectionPasswordProtected = 1 - connectionPasswordProtected
@@ -40800,7 +40743,7 @@ menu
 		area		280 314 241 40
 		text		style 'normal'
 		text		"CONNECTION_LOCAL_NETWORK_GAME"
-		tooltip lua "getUiString('CONNECTION_LOCAL_NETWORK_GAME_TOOLTIP')"
+		tooltip lua "t('CONNECTION_LOCAL_NETWORK_GAME_TOOLTIP')"
 		align 		left center
 	}
 	button
@@ -40810,7 +40753,7 @@ menu
 		sequence lua "RgUISkin"
 		scaleToClip
 		glow lua	"connectionLocalNetworkGame"
-		tooltip lua "getUiString('CONNECTION_LOCAL_NETWORK_GAME_TOOLTIP')"
+		tooltip lua "t('CONNECTION_LOCAL_NETWORK_GAME_TOOLTIP')"
 		action
 		"
 			if connectionScreen:HasServiceProvider() then
@@ -40922,7 +40865,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('NEW_GAME_BUTTON')"
-		tooltip lua "getUiString('CONNECTION_NEW_GAME_TOOLTIP')"
+		tooltip lua "t('CONNECTION_NEW_GAME_TOOLTIP')"
 		action
 		"
 			fromMultiPlayer = true
@@ -40938,7 +40881,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		text lua "rgString('LOAD_BUTTON')"
-		tooltip lua "getUiString('CONNECTION_LOAD_GAME_TOOLTIP')"
+		tooltip lua "t('CONNECTION_LOAD_GAME_TOOLTIP')"
 		action
 		"
 			Infinity_PopMenu()
@@ -41068,7 +41011,7 @@ menu
 	label
 	{
 		area 50 50 200 200
-		text lua "getUiString('PASSWORD_REQUIRED_LABEL') .. ', ' .. getUiString('ENTER_PASSWORD_LABEL')"
+		text lua "t('PASSWORD_REQUIRED_LABEL') .. ', ' .. t('ENTER_PASSWORD_LABEL')"
 		text style	"normal"
 		text align center center
 	}
@@ -41828,13 +41771,13 @@ function getMultiplayerCharacterName(slot, newLine, getClass)
 	end
 
 	if mpaCharacters[slot]["name"] == "" and multiplayerLocalPlayerID == mpaCharacters[slot]["player"] then
-		ret = getUiString("MULTIPLAYER_CREATE_CHARACTER_MESSAGE")
+		ret = t("MULTIPLAYER_CREATE_CHARACTER_MESSAGE")
 	elseif mpaCharacters[slot]["name"] == "" and multiplayerLocalPlayerID ~= mpaCharacters[slot]["player"] and mpaCharacters[slot]["inprogress"] == false then
-		ret = getUiString("MULTIPLAYER_EMPTY_CHARACTER_MESSAGE")
+		ret = t("MULTIPLAYER_EMPTY_CHARACTER_MESSAGE")
 	elseif mpaCharacters[slot]["inprogress"] == true and mpaCharacters[slot]["class"] == "" then
 		setStringTokenLua("<PLAYER_NAME_1>",getMultiplayerPlayerName(mpaCharacters[slot]["player"], false, true))
 		setStringTokenLua("<SEPERATOR>",separator)
-		ret = getUiString("MULTIPLAYER_CREATING_CHARACTER_MESSAGE")
+		ret = t("MULTIPLAYER_CREATING_CHARACTER_MESSAGE")
 		removeStringTokenLua("<SEPERATOR>")
 		removeStringTokenLua("<PLAYER_NAME_1>")
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] ~= "" then
@@ -41850,24 +41793,24 @@ function getMultiplayerCharacterButtonText(slot)
 	local ret = ""
 
 	if mpaCharacters[slot]["name"] == "" and multiplayerLocalPlayerID == mpaCharacters[slot]["player"] then
-		ret = getUiString("CREATE_CHAR_BUTTON")
+		ret = t("CREATE_CHAR_BUTTON")
 	elseif mpaCharacters[slot]["name"] == "" and multiplayerLocalPlayerID ~= mpaCharacters[slot]["player"] then
 		ret = ""
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] == "" then
 		ret = ""
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] ~= "" and mpaCharacters[slot]["player"] ~= multiplayerLocalPlayerID then
-		ret = getUiString("MULTIPLAYER_VIEW_DETAILS_BUTTON")
+		ret = t("MULTIPLAYER_VIEW_DETAILS_BUTTON")
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] ~= "" and mpaCharacters[slot]["player"] == multiplayerLocalPlayerID and multiplayer.allowreformparty == false and multiplayerDifficultyLabel ~= "" then
-		ret = getUiString("MULTIPLAYER_VIEW_DETAILS_BUTTON")
+		ret = t("MULTIPLAYER_VIEW_DETAILS_BUTTON")
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] ~= "" and mpaCharacters[slot]["player"] == multiplayerLocalPlayerID then
-		ret = getUiString("MULTIPLAYER_EDIT_CHAR_BUTTON")
+		ret = t("MULTIPLAYER_EDIT_CHAR_BUTTON")
 	end
 
 	return ret
 end
 function shouldGreyscaleEditButton(slot)
 	local ret = false
-	local storedString = getUiString("MULTIPLAYER_VIEW_DETAILS_BUTTON")
+	local storedString = t("MULTIPLAYER_VIEW_DETAILS_BUTTON")
 
 	if multiplayerFromInGame == true then
 		ret = true
@@ -41897,9 +41840,9 @@ function getMultiplayerCharacterReadyText(slot)
 	if mpaCharacters[slot]["name"] == "" and mpaCharacters[slot]["inprogress"] == false then
 		ret = ""
 	elseif mpaCharacters[slot]["ready"] == false then
-		ret = getUiString("MULTIPLAYER_NOT_READY_MESSAGE")
+		ret = t("MULTIPLAYER_NOT_READY_MESSAGE")
 	elseif mpaCharacters[slot]["ready"] == true then
-		ret = getUiString("MULTIPLAYER_READY_MESSAGE")
+		ret = t("MULTIPLAYER_READY_MESSAGE")
 	end
 
 	return ret
@@ -41917,11 +41860,11 @@ function getMultiplayerPlayerName(slot,newLine,hostyou)
 
 	if hostyou == true then
 		if slot == multiplayerLocalPlayerID then
-			ret = ret..separator.."^0xFFFFFFFF"..getUiString("MULTIPLAYER_PLAYER_YOU").."^-"
+			ret = ret..separator.."^0xFFFFFFFF"..t("MULTIPLAYER_PLAYER_YOU").."^-"
 		elseif slot == 1 then
-			ret = ret..separator.."^0xFFFFFFFF"..getUiString("MULTIPLAYER_PLAYER_HOST").."^-"
+			ret = ret..separator.."^0xFFFFFFFF"..t("MULTIPLAYER_PLAYER_HOST").."^-"
 		elseif ret == "" then
-			ret = "^0xFF9B9B9B"..getUiString("MULTIPLAYER_EMPTY_PLAYER").."^-"
+			ret = "^0xFF9B9B9B"..t("MULTIPLAYER_EMPTY_PLAYER").."^-"
 		end
 	end
 
@@ -41988,7 +41931,7 @@ function getStartGameButtonTooltip()
 	if multiplayer.donebuttonclickable then
 		return ""
 	else
-		return getUiString("MULTIPLAYER_CANNOT_START")
+		return t("MULTIPLAYER_CANNOT_START")
 	end
 end
 
@@ -41997,20 +41940,20 @@ function updateMultiplayerSessionData(sessionName, saveName, chapter, timePlayed
 	multiplayerSessionName = gold..sessionName.."^-"
 
 	if areaName ~= "" then
-		multiplayerSaveName = gold..getUiString("MULTIPLAYER_SAVED_GAME_LABEL").."^- ^0xffffffff"..saveName.."^-"
-		multiplayerChapter = gold..getUiString("MULTIPLAYER_CHAPTER_LABEL").."^- ^0xffffffff"..chapter.."^-"
-		multiplayerTimePlayed = gold..getUiString("MULTIPLAYER_TIME_PLAYED_LABEL").."^- ^0xffffffff"..timePlayed.."^-"
+		multiplayerSaveName = gold..t("MULTIPLAYER_SAVED_GAME_LABEL").."^- ^0xffffffff"..saveName.."^-"
+		multiplayerChapter = gold..t("MULTIPLAYER_CHAPTER_LABEL").."^- ^0xffffffff"..chapter.."^-"
+		multiplayerTimePlayed = gold..t("MULTIPLAYER_TIME_PLAYED_LABEL").."^- ^0xffffffff"..timePlayed.."^-"
 		if difficulty > 0 then
 			mulitplayerPreexistingDifficulty = difficulty
-			multiplayerDifficultyLabel = gold..getUiString("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..getUiString(difficulties[difficulty].name).."^-"
+			multiplayerDifficultyLabel = gold..t("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..t(difficulties[difficulty].name).."^-"
 			multiplayerDifficultyImage = difficulty - 1
 		end
 	else
-		multiplayerSaveName = gold..getUiString("MULTIPLAYER_NEW_GAME_LABEL").."^- ^0xffffffff"..saveName.."^-"
-		multiplayerChapter = gold..getUiString("MULTIPLAYER_CHAPTER_LABEL").."^- ^0xffffffff"..chapter.."^-"
-		multiplayerTimePlayed = gold..getUiString("MULTIPLAYER_TIME_PLAYED_NEW_GAME").."^-"
+		multiplayerSaveName = gold..t("MULTIPLAYER_NEW_GAME_LABEL").."^- ^0xffffffff"..saveName.."^-"
+		multiplayerChapter = gold..t("MULTIPLAYER_CHAPTER_LABEL").."^- ^0xffffffff"..chapter.."^-"
+		multiplayerTimePlayed = gold..t("MULTIPLAYER_TIME_PLAYED_NEW_GAME").."^-"
 		if difficulty > 0 then
-			multiplayerDifficultyLabel = gold..getUiString("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..getUiString(difficulties[difficulty].name).."^-"
+			multiplayerDifficultyLabel = gold..t("MULTIPLAYER_DIFFICULTY_LABEL").."^-^0xffffffff"..t(difficulties[difficulty].name).."^-"
 			multiplayerDifficultyImage = difficulty - 1
 		end
 	end
@@ -42023,7 +41966,7 @@ function broadcastCharacterControlChange(slot, newPlayer)
 		local player = getMultiplayerPlayerName(newPlayer,false,false)
 		setStringTokenLua("<PLAYER_NAME_1>",host)
 		setStringTokenLua("<PLAYER_NAME_2>",player)
-		local message = getUiString("MULTIPLAYER_SLOT_"..slot.."_ASSIGNED_TO")
+		local message = t("MULTIPLAYER_SLOT_"..slot.."_ASSIGNED_TO")
 		removeStringTokenLua("<PLAYER_NAME_1>")
 		removeStringTokenLua("<PLAYER_NAME_2>")
 		print(message)
@@ -42036,7 +41979,7 @@ function broadcastCharacterAdded(slot)
 	local character = getMultiplayerCharacterName(slot, false, true)
 	setStringTokenLua("<PLAYER_NAME_1>",player)
 	setStringTokenLua("<CHARACTER_NAME_1>",character)
-	local message = getUiString("MULTIPLAYER_HAS_ADDED")
+	local message = t("MULTIPLAYER_HAS_ADDED")
 	removeStringTokenLua("<PLAYER_NAME_1>")
 	removeStringTokenLua("<CHARACTER_NAME_1>")
 	print(message)
@@ -42048,7 +41991,7 @@ function broadcastCharacterRemoved(slot)
 	local character = getMultiplayerCharacterName(slot, false, true)
 	setStringTokenLua("<PLAYER_NAME_1>",player)
 	setStringTokenLua("<CHARACTER_NAME_1>",character)
-	local message = getUiString("MULTIPLAYER_HAS_REMOVED")
+	local message = t("MULTIPLAYER_HAS_REMOVED")
 	removeStringTokenLua("<PLAYER_NAME_1>")
 	removeStringTokenLua("<CHARACTER_NAME_1>")
 	print(message)
@@ -42058,7 +42001,7 @@ end
 function broadcastCharacterReady(slot)
 	local character = getMultiplayerCharacterName(slot, false, false)
 	setStringTokenLua("<CHARACTER_NAME_1>",character)
-	local message = getUiString("MULTIPLAYER_IS_READY_TO_START")
+	local message = t("MULTIPLAYER_IS_READY_TO_START")
 	removeStringTokenLua("<CHARACTER_NAME_1>")
 	print(message)
 	Infinity_SendChatMessage(message, true) 
@@ -42067,7 +42010,7 @@ end
 function broadcastCharacterNotReady(slot)
 	local character = getMultiplayerCharacterName(slot, false, false)
 	setStringTokenLua("<CHARACTER_NAME_1>",character)
-	local message = getUiString("MULTIPLAYER_IS_NO_LONGER_READY")
+	local message = t("MULTIPLAYER_IS_NO_LONGER_READY")
 	removeStringTokenLua("<CHARACTER_NAME_1>")
 	print(message)
 	Infinity_SendChatMessage(message, true) 
@@ -42076,7 +42019,7 @@ end
 function broadcastPlayerAdded(slot)
 	local player = getMultiplayerPlayerName(slot,false,false)
 	setStringTokenLua("<PLAYER_NAME_1>",player)
-	local message = getUiString("MULTIPLAYER_HAS_JOINED_THE_GAME")
+	local message = t("MULTIPLAYER_HAS_JOINED_THE_GAME")
 	removeStringTokenLua("<PLAYER_NAME_1>")
 	print(message)
 	Infinity_SendChatMessage(message, true) 
@@ -42085,7 +42028,7 @@ end
 function broadcastPlayerRemoved(slot)
 	local player = getMultiplayerPlayerName(slot,false,false)
 	setStringTokenLua("<PLAYER_NAME_1>",player)
-	local message = getUiString("MULTIPLAYER_HAS_LEFT_THE_GAME")
+	local message = t("MULTIPLAYER_HAS_LEFT_THE_GAME")
 	removeStringTokenLua("<PLAYER_NAME_1>")
 	print(message)
 	Infinity_SendChatMessage(message, true) 
@@ -42123,9 +42066,9 @@ function getMultiplayerReadyTooltip(character)
 	local ret = ""
 
 	if mpaCharacters[character]["ready"] == true then
-		ret = getUiString("MULTIPLAYER_READY_BUTTON_ON_TOOLTIP")
+		ret = t("MULTIPLAYER_READY_BUTTON_ON_TOOLTIP")
 	else
-		ret = getUiString("MULTIPLAYER_READY_BUTTON_OFF_TOOLTIP")
+		ret = t("MULTIPLAYER_READY_BUTTON_OFF_TOOLTIP")
 	end
 
 	return ret
@@ -42172,15 +42115,15 @@ end
 function rgGetCharacterSlotName(slot)
 	local ret = ""
 	if mpaCharacters[slot]["name"] == "" and multiplayerLocalPlayerID == mpaCharacters[slot]["player"] then
-		ret = '^$' .. string.lower(getUiString("CREATE_CHAR_BUTTON"))
+		ret = '^$' .. string.lower(t("CREATE_CHAR_BUTTON"))
 	elseif mpaCharacters[slot]["name"] == "" and multiplayerLocalPlayerID ~= mpaCharacters[slot]["player"] then
 		ret = ""
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] == "" then
 		ret = ""
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] ~= "" and mpaCharacters[slot]["player"] ~= multiplayerLocalPlayerID then
-		ret = getUiString("MULTIPLAYER_VIEW_DETAILS_BUTTON")
+		ret = t("MULTIPLAYER_VIEW_DETAILS_BUTTON")
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] ~= "" and mpaCharacters[slot]["player"] == multiplayerLocalPlayerID and multiplayer.allowreformparty == false and multiplayerDifficultyLabel ~= "" then
-		ret = getUiString("MULTIPLAYER_VIEW_DETAILS_BUTTON")
+		ret = t("MULTIPLAYER_VIEW_DETAILS_BUTTON")
 	elseif mpaCharacters[slot]["name"] ~= "" and mpaCharacters[slot]["class"] ~= "" and mpaCharacters[slot]["player"] == multiplayerLocalPlayerID then
 		ret = getMultiplayerCharacterName(slot, false, true)
 	end
@@ -42190,16 +42133,16 @@ end
 function rgCharacterButtonAction(slot)
 	selectedCharacter = slot
 	if shouldGreyscaleEditButton(slot) == false then
-		if getMultiplayerCharacterButtonText(slot) == getUiString('MULTIPLAYER_VIEW_DETAILS_BUTTON') then
+		if getMultiplayerCharacterButtonText(slot) == t('MULTIPLAYER_VIEW_DETAILS_BUTTON') then
 			multiplayerScreen:OnPortraitButtonClick(slot-1)
-		elseif getMultiplayerCharacterButtonText(slot) == getUiString('CREATE_CHAR_BUTTON') then
+		elseif getMultiplayerCharacterButtonText(slot) == t('CREATE_CHAR_BUTTON') then
 			if multiplayerFromInGame == false then
 				multiplayerScreen:SetModifiedCharacterSlot(slot-1)
 				multiplayerScreen:UpdateModifyCharacterPanel()
 			elseif shouldGreyscaleEditButton(slot) == false then
 				multiplayerScreen:OnModifyButtonClick()
 			end
-		elseif getMultiplayerCharacterButtonText(slot) == getUiString('MULTIPLAYER_EDIT_CHAR_BUTTON') then
+		elseif getMultiplayerCharacterButtonText(slot) == t('MULTIPLAYER_EDIT_CHAR_BUTTON') then
 			if multiplayerFromInGame == false then
 				mpModifyingCharacter = slot - 1
 				Infinity_PushMenu('MP_MODIFYCHARACTER')
@@ -42322,14 +42265,14 @@ menu
 	--label
 	--{
 	--	area 524 80 136 22
-	--	text lua "getUiString('PLAYER_LABEL')"
+	--	text lua "t('PLAYER_LABEL')"
 	--	text style "label"
 	--	align center center
 	--}
 	--label
 	--{
 	--	area 660 80 228 22
-	--	text lua "getUiString('CHARACTER_LABEL')"
+	--	text lua "t('CHARACTER_LABEL')"
 	--	text style "label"
 	--	align center center
 	--}
@@ -42337,7 +42280,7 @@ menu
 	label
 	{
 		area 1223 90 50 34
-		text lua "getUiString('READY_TO_PLAY_LABEL')"
+		text lua "t('READY_TO_PLAY_LABEL')"
 		text style "normal"
 		align center center
 		text color 'X'
@@ -42373,12 +42316,12 @@ menu
 	label { area 872 471 54 85 bitmap lua 'mpaCharacters[5]["portrait"]' align center center }
 	label { area 872 565 54 85 bitmap lua 'mpaCharacters[6]["portrait"]' align center center }
 	
-	button { area 1233 120 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(1)" align left top tooltip lua "getMultiplayerReadyTooltip(1)" action "rgReadyButtonAction(1)" } --text lua "getMultiplayerCharacterReadyText(1)" text style "normal"
-	button { area 1233 214 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(2)" align left top tooltip lua "getMultiplayerReadyTooltip(2)" action "rgReadyButtonAction(2)" }
-	button { area 1233 308 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(3)" align left top tooltip lua "getMultiplayerReadyTooltip(3)" action "rgReadyButtonAction(3)" }
-	button { area 1233 402 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(4)" align left top tooltip lua "getMultiplayerReadyTooltip(4)" action "rgReadyButtonAction(4)" }
-	button { area 1233 496 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(5)" align left top tooltip lua "getMultiplayerReadyTooltip(5)" action "rgReadyButtonAction(5)" }
-	button { area 1233 590 40 40 bam lua "getUiString('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(6)" align left top tooltip lua "getMultiplayerReadyTooltip(6)" action "rgReadyButtonAction(6)" }
+	button { area 1233 120 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(1)" align left top tooltip lua "getMultiplayerReadyTooltip(1)" action "rgReadyButtonAction(1)" } --text lua "getMultiplayerCharacterReadyText(1)" text style "normal"
+	button { area 1233 214 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(2)" align left top tooltip lua "getMultiplayerReadyTooltip(2)" action "rgReadyButtonAction(2)" }
+	button { area 1233 308 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(3)" align left top tooltip lua "getMultiplayerReadyTooltip(3)" action "rgReadyButtonAction(3)" }
+	button { area 1233 402 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(4)" align left top tooltip lua "getMultiplayerReadyTooltip(4)" action "rgReadyButtonAction(4)" }
+	button { area 1233 496 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(5)" align left top tooltip lua "getMultiplayerReadyTooltip(5)" action "rgReadyButtonAction(5)" }
+	button { area 1233 590 40 40 bam lua "t('rgdchec') .. RgUISkin" scaleToClip sequence lua "get4CheckFrame(6)" align left top tooltip lua "getMultiplayerReadyTooltip(6)" action "rgReadyButtonAction(6)" }
 	
 	
 	--list -- character list
@@ -42408,7 +42351,7 @@ menu
 	--			frame lua 	"currentCellCheck(1)"
 	--			align 		center center
 	--			enabled 	"multiplayerLocalPlayerID == 1 and rowNumber ~= 1"
-	--			text lua	"getUiString('MULTIPLAYER_CHANGE_PLAYER_BUTTON')"
+	--			text lua	"t('MULTIPLAYER_CHANGE_PLAYER_BUTTON')"
 	--			text style 	"button"
 	--		}
 	--
@@ -42508,16 +42451,16 @@ menu
 	--		elseif cellNumber == 3 then
 	--			cellNumber = nil
 	--			if shouldGreyscaleEditButton(selectedCharacter) == false then
-	--				if getMultiplayerCharacterButtonText(selectedCharacter) == getUiString('MULTIPLAYER_VIEW_DETAILS_BUTTON') then
+	--				if getMultiplayerCharacterButtonText(selectedCharacter) == t('MULTIPLAYER_VIEW_DETAILS_BUTTON') then
 	--					multiplayerScreen:OnPortraitButtonClick(selectedCharacter-1)
-	--				elseif getMultiplayerCharacterButtonText(selectedCharacter) == getUiString('CREATE_CHAR_BUTTON') then
+	--				elseif getMultiplayerCharacterButtonText(selectedCharacter) == t('CREATE_CHAR_BUTTON') then
 	--					if multiplayerFromInGame == false then
 	--						multiplayerScreen:SetModifiedCharacterSlot(selectedCharacter-1)
 	--						multiplayerScreen:UpdateModifyCharacterPanel()
 	--					elseif shouldGreyscaleEditButton(selectedCharacter) == false then
 	--						multiplayerScreen:OnModifyButtonClick()
 	--					end
-	--				elseif getMultiplayerCharacterButtonText(selectedCharacter) == getUiString('MULTIPLAYER_EDIT_CHAR_BUTTON') then
+	--				elseif getMultiplayerCharacterButtonText(selectedCharacter) == t('MULTIPLAYER_EDIT_CHAR_BUTTON') then
 	--					if multiplayerFromInGame == false then
 	--						mpModifyingCharacter = selectedCharacter - 1
 	--						Infinity_PushMenu('MP_MODIFYCHARACTER')
@@ -42575,7 +42518,7 @@ menu
 	label
 	{
 		area 106 316 207 21
-		text lua "getUiString('PLAYERS_LABEL')"
+		text lua "t('PLAYERS_LABEL')"
 		text style "normal"
 		text color 'X'
 		align center center
@@ -42583,7 +42526,7 @@ menu
 	label
 	{
 		area 313 316 187 21
-		text lua "getUiString('PARTY_SLOTS_LABEL')"
+		text lua "t('PARTY_SLOTS_LABEL')"
 		text style "normal"
 		text color 'X'
 		align center center
@@ -42591,7 +42534,7 @@ menu
 	label
 	{
 		area 500 316 60 21
-		text lua "getUiString('RULES_LABEL')"
+		text lua "t('RULES_LABEL')"
 		text style "normal"
 		text color 'X'
 		align center center
@@ -42683,7 +42626,7 @@ menu
 		clickable lua	"mpaPlayers[2]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(2)"
 	}	
 	button
@@ -42694,7 +42637,7 @@ menu
 		clickable lua	"mpaPlayers[3]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(3)"
 	}
 	button
@@ -42705,7 +42648,7 @@ menu
 		clickable lua	"mpaPlayers[4]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(4)"
 	}
 	button
@@ -42716,7 +42659,7 @@ menu
 		clickable lua	"mpaPlayers[5]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(5)"
 	}
 	button
@@ -42727,7 +42670,7 @@ menu
 		clickable lua	"mpaPlayers[6]['name'] ~= ''"
 		align 		left top
 		enabled 	"multiplayerLocalPlayerID == 1"
-		tooltip lua	"getUiString('MULTIPALYER_KICK_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_KICK_TOOLTIP')"
 		action "rgKickButtonAction(6)"
 	}
 	
@@ -42740,7 +42683,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[2]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(2)"
 	}
 	button
@@ -42751,7 +42694,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[3]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(3)"
 	}
 	button
@@ -42762,7 +42705,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[4]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(4)"
 	}
 	button
@@ -42773,7 +42716,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[5]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(5)"
 	}
 	button
@@ -42784,7 +42727,7 @@ menu
 		ScaleToClip
 		clickable lua	"mpaPlayers[6]['name'] ~= '' and multiplayerLocalPlayerID == 1"
 		align 		left top
-		tooltip lua	"getUiString('MULTIPALYER_PERMISSION_TOOLTIP')"
+		tooltip lua	"t('MULTIPALYER_PERMISSION_TOOLTIP')"
 		action "rgPermissionButtonAction(6)"
 	}
 
@@ -43561,13 +43504,13 @@ multiplayerPermissions =
 
 function broadcastPermissionChange(player,permission,setting)
 	local player = getMultiplayerPlayerName(player,false,true)
-	local todo = getUiString(multiplayerPermissions[permission][1])
+	local todo = t(multiplayerPermissions[permission][1])
 	setStringTokenLua("<PLAYER_NAME_1>",player)
 	setStringTokenLua("<PERMISSION>",todo)
 	if setting == true then
-		message = getUiString("MULTIPLAYER_IS_NOW_PERMITTED")
+		message = t("MULTIPLAYER_IS_NOW_PERMITTED")
 	else
-		message = getUiString("MULTIPLAYER_IS_NOT_PERMITTED")
+		message = t("MULTIPLAYER_IS_NOT_PERMITTED")
 	end
 	removeStringTokenLua("<PLAYER_NAME_1>")
 	removeStringTokenLua("<PERMISSION>")
@@ -43578,7 +43521,7 @@ end
 function getMultiplayerPlayerPermissionDescription()
 	local player = getMultiplayerPlayerName(multiplayerInPermissionForPlayer,false,false)
 	setStringTokenLua("<PLAYER_NAME_1>",player)
- 	local canPerform = getUiString("MULTIPLAYER_CAN_PERFORM")
+ 	local canPerform = t("MULTIPLAYER_CAN_PERFORM")
 	removeStringTokenLua("<PLAYER_NAME_1>")
 
 	return canPerform
@@ -43692,7 +43635,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[1][3] == true"
-		tooltip lua "getUiString(multiplayerPermissions[1][2])"
+		tooltip lua "t(multiplayerPermissions[1][2])"
 		scaleToClip
 		action 
 		"
@@ -43704,8 +43647,8 @@ menu
 	text
 	{
 		area 154 148 416 46
-		text lua "getUiString(multiplayerPermissions[1][1])"
-		tooltip lua "getUiString(multiplayerPermissions[1][2])"
+		text lua "t(multiplayerPermissions[1][1])"
+		tooltip lua "t(multiplayerPermissions[1][2])"
 		text style "normal"
 		align left center
 	}
@@ -43715,7 +43658,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[2][3] == true"
-		tooltip lua "getUiString(multiplayerPermissions[2][2])"
+		tooltip lua "t(multiplayerPermissions[2][2])"
 		scaleToClip
 		action 
 		"
@@ -43727,8 +43670,8 @@ menu
 	text
 	{
 		area 154 194 416 46
-		text lua "getUiString(multiplayerPermissions[2][1])"
-		tooltip lua "getUiString(multiplayerPermissions[2][2])"
+		text lua "t(multiplayerPermissions[2][1])"
+		tooltip lua "t(multiplayerPermissions[2][2])"
 		text style "normal"
 		align left center
 	}
@@ -43738,7 +43681,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[3][3] == true"
-		tooltip lua "getUiString(multiplayerPermissions[3][2])"
+		tooltip lua "t(multiplayerPermissions[3][2])"
 		scaleToClip
 		action 
 		"
@@ -43750,8 +43693,8 @@ menu
 	text
 	{
 		area 154 240 416 46
-		text lua "getUiString(multiplayerPermissions[3][1])"
-		tooltip lua "getUiString(multiplayerPermissions[3][2])"
+		text lua "t(multiplayerPermissions[3][1])"
+		tooltip lua "t(multiplayerPermissions[3][2])"
 		text style "normal"
 		align left center
 	}
@@ -43761,7 +43704,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[4][3] == true"
-		tooltip lua "getUiString(multiplayerPermissions[4][2])"
+		tooltip lua "t(multiplayerPermissions[4][2])"
 		scaleToClip
 		action 
 		"
@@ -43773,8 +43716,8 @@ menu
 	text
 	{
 		area 154 286 416 46
-		text lua "getUiString(multiplayerPermissions[4][1])"
-		tooltip lua "getUiString(multiplayerPermissions[4][2])"
+		text lua "t(multiplayerPermissions[4][1])"
+		tooltip lua "t(multiplayerPermissions[4][2])"
 		text style "normal"
 		align left center
 	}
@@ -43784,7 +43727,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[5][3] == true"
-		tooltip lua "getUiString(multiplayerPermissions[5][2])"
+		tooltip lua "t(multiplayerPermissions[5][2])"
 		scaleToClip
 		action 
 		"
@@ -43796,8 +43739,8 @@ menu
 	text
 	{
 		area 154 332 416 46
-		text lua "getUiString(multiplayerPermissions[5][1])"
-		tooltip lua "getUiString(multiplayerPermissions[5][2])"
+		text lua "t(multiplayerPermissions[5][1])"
+		tooltip lua "t(multiplayerPermissions[5][2])"
 		text style "normal"
 		align left center
 	}
@@ -43807,7 +43750,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerPermissions[6][3] == true"
-		tooltip lua "getUiString(multiplayerPermissions[6][2])"
+		tooltip lua "t(multiplayerPermissions[6][2])"
 		scaleToClip
 		action 
 		"
@@ -43819,8 +43762,8 @@ menu
 	text
 	{
 		area 154 378 416 46
-		text lua "getUiString(multiplayerPermissions[6][1])"
-		tooltip lua "getUiString(multiplayerPermissions[6][2])"
+		text lua "t(multiplayerPermissions[6][1])"
+		tooltip lua "t(multiplayerPermissions[6][2])"
 		text style "normal"
 		align left center
 	}
@@ -43843,18 +43786,18 @@ function broadcastOptionChange(slot, onOff)
 	if multiplayerLocalPlayerID == 1 then
 		local message = ""
 		if slot < 3 then
-			local setting = getUiString(multiplayerGameOptions[slot][1])
+			local setting = t(multiplayerGameOptions[slot][1])
 			setStringTokenLua("<SESSION_RULES>",setting)
 			if onOff == true then
-				message = getUiString("MULTIPLAYER_GAME_WILL_NOW")
+				message = t("MULTIPLAYER_GAME_WILL_NOW")
 			else
-				message = getUiString("MULTIPLAYER_GAME_WILL_NO_LONGER")
+				message = t("MULTIPLAYER_GAME_WILL_NO_LONGER")
 			end
 			removeStringTokenLua("<SESSION_RULES>")
 		else
-			local setting = getUiString(multiplayerImportOptions[slot-2][1])
+			local setting = t(multiplayerImportOptions[slot-2][1])
 			setStringTokenLua("<IMPORT_RULES>",setting)
-			message = getUiString("MULTIPLAYER_IMPORT_SETTINGS_CHANGE")
+			message = t("MULTIPLAYER_IMPORT_SETTINGS_CHANGE")
 			removeStringTokenLua("<IMPORT_RULES>")
 		end
 		print(message)
@@ -43902,7 +43845,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerGameOptions[1][3] == true"
-		tooltip lua "getUiString(multiplayerGameOptions[1][2])"
+		tooltip lua "t(multiplayerGameOptions[1][2])"
 		scaleToClip
 		action 
 		"
@@ -43912,9 +43855,9 @@ menu
 	text
 	{
 		area 252 162 303 42
-		text lua "getUiString(multiplayerGameOptions[1][1])"
+		text lua "t(multiplayerGameOptions[1][1])"
 		text style "normal"
-		tooltip lua "getUiString(multiplayerGameOptions[1][2])"
+		tooltip lua "t(multiplayerGameOptions[1][2])"
 		align left center
 	}
 	button
@@ -43923,7 +43866,7 @@ menu
 		bam			rgdrnbut
 		sequence lua "RgUISkin"
 		glow lua "multiplayerGameOptions[2][3] == true"
-		tooltip lua "getUiString(multiplayerGameOptions[2][2])"
+		tooltip lua "t(multiplayerGameOptions[2][2])"
 		scaleToClip
 		action 
 		"
@@ -43933,9 +43876,9 @@ menu
 	text
 	{
 		area 252 216 303 42
-		text lua "getUiString(multiplayerGameOptions[2][1])"
+		text lua "t(multiplayerGameOptions[2][1])"
 		text style "normal"
-		tooltip lua "getUiString(multiplayerGameOptions[2][2])"
+		tooltip lua "t(multiplayerGameOptions[2][2])"
 		align left center
 	}
 
@@ -43946,7 +43889,7 @@ menu
 		sequence lua "RgUISkin"
 		frame lua "currentCellCheck(3)"
 		glow lua "multiplayerImportOption == 1"
-		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
+		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
 		scaleToClip
 		action 
 		"
@@ -43956,8 +43899,8 @@ menu
 	text
 	{
 		area 252 326 303 42
-		text lua "getUiString('MULTIPLAYER_IMPORT_CHARACTER_RULES_SEI')"
-		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
+		text lua "t('MULTIPLAYER_IMPORT_CHARACTER_RULES_SEI')"
+		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
 		text style "normal"
 		align left center
 	}
@@ -43968,7 +43911,7 @@ menu
 		sequence lua "RgUISkin"
 		frame lua "currentCellCheck(3)"
 		glow lua "multiplayerImportOption == 2"
-		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
+		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
 		scaleToClip
 		action 
 		"
@@ -43978,8 +43921,8 @@ menu
 	text
 	{
 		area 252 374 303 42
-		text lua "getUiString('MULTIPLAYER_IMPORT_CHARACTER_RULES_SE')"
-		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
+		text lua "t('MULTIPLAYER_IMPORT_CHARACTER_RULES_SE')"
+		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
 		text style "normal"
 		align left center
 	}
@@ -43990,7 +43933,7 @@ menu
 		sequence lua "RgUISkin"
 		frame lua "currentCellCheck(3)"
 		glow lua "multiplayerImportOption == 3"
-		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
+		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
 		scaleToClip
 		action 
 		"
@@ -44000,8 +43943,8 @@ menu
 	text
 	{
 		area 252 422 212 42
-		text lua "getUiString('MULTIPLAYER_IMPORT_CHARACTER_RULES_S')"
-		tooltip lua "getUiString('IMPORT_RULES_TOOLTIP')"
+		text lua "t('MULTIPLAYER_IMPORT_CHARACTER_RULES_S')"
+		tooltip lua "t('IMPORT_RULES_TOOLTIP')"
 		text style "normal"
 		align left center
 	}
@@ -44174,14 +44117,14 @@ menu
 `
 	function multiplayerIsDelete ()
 		if (multiplayer.character[mpModifyingCharacter+1].portrait ~= '') then
-			return getUiString("DELETE_BUTTON")
+			return t("DELETE_BUTTON")
 		else
-			return getUiString("CREATE_BUTTON")
+			return t("CREATE_BUTTON")
 		end
 	end
 	function getModifyConfirmationLabel()
 		print(mpModifyingCharacter+1)
-		return getUiString('MULTIPLAYER_EDIT_CONFIRM').. ' ' .. getMultiplayerCharacterName(mpModifyingCharacter+1)
+		return t('MULTIPLAYER_EDIT_CONFIRM').. ' ' .. getMultiplayerCharacterName(mpModifyingCharacter+1)
 	end
 `
 menu
@@ -44414,9 +44357,9 @@ menu
 	end
 	function getChatBarTooltip()
 		if(showMpChat == 0) then
-			return getUiString("MULTIPLAYER_CHAT_BAR_COLLAPSED")
+			return t("MULTIPLAYER_CHAT_BAR_COLLAPSED")
 		else
-			return getUiString("MULTIPLAYER_CHAT_BAR_EXPANDED")
+			return t("MULTIPLAYER_CHAT_BAR_EXPANDED")
 		end
 	end
 	function resizeMpEditBox()
@@ -44599,7 +44542,7 @@ menu
 		bam "rgdbut3"
 		scaleToClip
 		enabled "showMpChat"
-		tooltip lua "getUiString('MULTIPLAYER_CHAT_RESIZE_TOOLTIP')"
+		tooltip lua "t('MULTIPLAYER_CHAT_RESIZE_TOOLTIP')"
 		actionDrag
 		"
 			dragMPChat(motionY)
@@ -44877,7 +44820,7 @@ function getObjectiveText(row)
 	if (rowTab == nil) then return nil end
 	local text = rowTab.text
 	if(text == "" or text == nil) then
-		text = getUiString("NO_OBJECTIVE_NORMAL")
+		text = t("NO_OBJECTIVE_NORMAL")
 	end
 	--objectives shouldn't really display a completed state since they don't actually follow a progression.
 	--if(getFinished(row)) then
@@ -44908,7 +44851,7 @@ function getQuestText(row)
 	local text = Infinity_FetchString(rowTab.text)
 	
 	--if(getFinished(row)) then
-	--	text = "^0xFFaaaaaa" .. text .. " (" .. getUiString("OBJECTIVE_FINISHED_NORMAL") .. ")^-"
+	--	text = "^0xFFaaaaaa" .. text .. " (" .. t("OBJECTIVE_FINISHED_NORMAL") .. ")^-"
 	--end
 
 	return text
@@ -45085,12 +45028,12 @@ end
 function rgCurrentFinishedLabel()
 	if journalMode == const.JOURNAL_MODE_QUESTS then
 		if rgIsCurrentQuests == 1 then
-			return getUiString('QUESTS_LABEL') .. ': ' .. getUiString('CURRENT_LABEL')
+			return t('QUESTS_LABEL') .. ': ' .. t('CURRENT_LABEL')
 		else
-			return getUiString('QUESTS_LABEL') .. ': ' .. getUiString("OBJECTIVE_FINISHED_NORMAL")
+			return t('QUESTS_LABEL') .. ': ' .. t("OBJECTIVE_FINISHED_NORMAL")
 		end
 	else
-		return getUiString('JOURNAL_LABEL')
+		return t('JOURNAL_LABEL')
 	end
 end
 function rgGetQuestText(rowNumber)
@@ -45116,7 +45059,7 @@ function rgGetQuestSelection(rowNumber)
 	end
 end
 function rgBestiaryJournalEntry(text)
-	if (string.match(text, getUiString('RG_BESTIARY'))) then
+	if (string.match(text, t('RG_BESTIARY'))) then
 		return 1
 	else
 		return 0
@@ -45146,17 +45089,17 @@ function rgGetBestiaryEntryTitle(text)
 	for i in string.gmatch(text, "[^;]+") do
 		table.insert(list, i);
 	end
-	str = string.gsub(list[1], getUiString('RG_BESTIARY'), "")
+	str = string.gsub(list[1], t('RG_BESTIARY'), "")
 	return str
 end
 function rgGetBestiaryCategory(text)
 	local ret = ''
-	if (string.match(text, getUiString('RG_BESTIARY'))) then
+	if (string.match(text, t('RG_BESTIARY'))) then
 		local list = {}
 		for i in string.gmatch(text, "[^;]+") do
 			table.insert(list, i);
 		end
-		str = string.gsub(list[1], getUiString('RG_BESTIARY'), "")
+		str = string.gsub(list[1], t('RG_BESTIARY'), "")
 		
 		for i=1,#rgBeasts,1 do
 			if Infinity_FetchString(rgBeasts[i].name) == str and rgBeasts[i].grp ~= '' and rgBeasts[i].name ~= rgBeasts[i].grp then 
@@ -45181,12 +45124,12 @@ function rgGetBestiaryBoss(row)
 end
 function rgGetBestiaryCategoryOrder(text)
 	local ret = ''
-	if (string.match(text, getUiString('RG_BESTIARY'))) then
+	if (string.match(text, t('RG_BESTIARY'))) then
 		local list = {}
 		for i in string.gmatch(text, "[^;]+") do
 			table.insert(list, i);
 		end
-		str = string.gsub(list[1], getUiString('RG_BESTIARY'), "")
+		str = string.gsub(list[1], t('RG_BESTIARY'), "")
 		ret = str
 		
 		for i=1,#rgBeasts,1 do
@@ -45219,12 +45162,12 @@ function rgGetBestiaryDescription(text)
 	--for i in string.gmatch(text, "[^;]+") do
 	--	table.insert(list, i);
 	--end
-	--str = string.gsub(list[1], getUiString('RG_BESTIARY'), "")
+	--str = string.gsub(list[1], t('RG_BESTIARY'), "")
 	--
 	--for i=1,#rgBeasts,1 do
 	--	if Infinity_FetchString(rgBeasts[i].name) == str then 
 	--		if  string.find(rgBeasts[i].desc, "RGB") then
-	--			ret = getUiString(rgBeasts[i].desc)
+	--			ret = t(rgBeasts[i].desc)
 	--		else
 	--			ret = Infinity_FetchString(rgBeasts[i].desc)
 	--			local stref  = rgBeasts[i].desc - 0
@@ -45479,7 +45422,7 @@ function rgGetBestiaryStatistics(text)
 	--for i in string.gmatch(text, "[^;]+") do
 	--	table.insert(list, i);
 	--end
-	--str = string.gsub(list[1], getUiString('RG_BESTIARY'), "")
+	--str = string.gsub(list[1], t('RG_BESTIARY'), "")
 	--local kills = 1
 	--if #list == 2 then
 	--	kills = list[2]
@@ -45494,13 +45437,13 @@ function rgGetBestiaryStatistics(text)
 		if Infinity_FetchString(rgBeasts[i].name) == str then 
 		
 			local kil = rgGetBestiaryStat(kills,0,rgFirstLetterUpper(Infinity_FetchString(11954) .. ': ' .. kills))
-			local exp = rgGetBestiaryStat(kills,0,getUiString('XP_LABEL') .. ': ' .. rgBeasts[i].xp)
+			local exp = rgGetBestiaryStat(kills,0,t('XP_LABEL') .. ': ' .. rgBeasts[i].xp)
 			local lvl = rgGetBestiaryStat(kills,2,rgBeasts[i].lvl)
 			local hps = rgGetBestiaryStat(kills,1,rgBeasts[i].hp)
 			local acb = rgGetBestiaryStat(kills,1,rgBeasts[i].ac)
 			local thc = rgGetBestiaryStat(kills,2,rgBeasts[i].thc)
 			local apr = rgBestApr(rgGetBestiaryStat(kills,2,rgBeasts[i].apr))
-			local abi = rgGetBestiaryStat(kills,0,getUiString('HIGH_LEVEL_ABILITIES_TITLE'))
+			local abi = rgGetBestiaryStat(kills,0,t('HIGH_LEVEL_ABILITIES_TITLE'))
 			local str = rgGetBestiaryStat(kills,3,rgBeasts[i].abi.str)
 			local dex = rgGetBestiaryStat(kills,3,rgBeasts[i].abi.dex)
 			local con = rgGetBestiaryStat(kills,3,rgBeasts[i].abi.con)
@@ -45536,10 +45479,10 @@ function rgGetBestiaryStatistics(text)
 			
 			
 			
-			--table.insert(endList, {rgFirstLetterUpper(Infinity_FetchString(11954)) .. ': ' .. kills, getUiString('XP_LABEL') .. ': ' .. rgBeasts[i].xp,'','','',''})
+			--table.insert(endList, {rgFirstLetterUpper(Infinity_FetchString(11954)) .. ': ' .. kills, t('XP_LABEL') .. ': ' .. rgBeasts[i].xp,'','','',''})
 			--
 			--table.insert(endList, rgGetBestiaryStatRow(kills,1,{rgBeasts[i].hp,rgBeasts[i].ac,rgBeasts[i].thc,rgBeasts[i].apr,'',''}))
-			--table.insert(endList, rgGetBestiaryStatRow(kills,2,{getUiString('HIGH_LEVEL_ABILITIES_TITLE'),'','','','',''}))
+			--table.insert(endList, rgGetBestiaryStatRow(kills,2,{t('HIGH_LEVEL_ABILITIES_TITLE'),'','','','',''}))
 			--table.insert(endList, rgGetBestiaryStatRow(kills,2,{rgBeasts[i].abi.str,rgBeasts[i].abi.dex,rgBeasts[i].abi.con,rgBeasts[i].abi.int,rgBeasts[i].abi.wis,rgBeasts[i].abi.cha}))
 			--table.insert(endList, rgGetBestiaryStatRow(kills,3,{Infinity_FetchString(17379),'','','','',''}))
 			--table.insert(endList, rgGetBestiaryStatRow(kills,3,{rgBeasts[i].sav.dea,rgBeasts[i].sav.wan,rgBeasts[i].sav.pol,rgBeasts[i].sav.bre,rgBeasts[i].sav.spe,''}))--saving throws
@@ -45560,17 +45503,17 @@ function rgGetBestiaryStatistics(text)
 	--	
 	--		local res = rgGetBestiaryResistances(i,kills)
 	--	
-	--		table.insert(endList, {rgFirstLetterUpper(Infinity_FetchString(11954)) .. '                    ' ..getUiString('XP_LABEL') .. ': ' .. rgBeasts[i].xp,	kills,'','','','','','','','',''})
-	--		table.insert(endList, rgGetBestiaryStatRow(kills,1,{getUiString('HIT_POINTS_LABEL'),							rgBeasts[i].hp							,'','','','','','','','',''}))
+	--		table.insert(endList, {rgFirstLetterUpper(Infinity_FetchString(11954)) .. '                    ' ..t('XP_LABEL') .. ': ' .. rgBeasts[i].xp,	kills,'','','','','','','','',''})
+	--		table.insert(endList, rgGetBestiaryStatRow(kills,1,{t('HIT_POINTS_LABEL'),							rgBeasts[i].hp							,'','','','','','','','',''}))
 	--		
 	--		if rgBeasts[i].mod.mis > 0 or rgBeasts[i].mod.sla >0 or rgBeasts[i].mod.cru>0 or rgBeasts[i].mod.pie >0 then
-	--			table.insert(endList, rgGetBestiaryStatRow(kills,2,{getUiString('ARMOR_CLASS_LABEL'),							rgBeasts[i].ac							,'',1,rgBeasts[i].mod.mis,2,rgBeasts[i].mod.sla,3,rgBeasts[i].mod.cru,4,rgBeasts[i].mod.pie}))
+	--			table.insert(endList, rgGetBestiaryStatRow(kills,2,{t('ARMOR_CLASS_LABEL'),							rgBeasts[i].ac							,'',1,rgBeasts[i].mod.mis,2,rgBeasts[i].mod.sla,3,rgBeasts[i].mod.cru,4,rgBeasts[i].mod.pie}))
 	--		else
-	--			table.insert(endList, rgGetBestiaryStatRow(kills,2,{getUiString('ARMOR_CLASS_LABEL'),							rgBeasts[i].ac							,'','','','','','','','',''}))
+	--			table.insert(endList, rgGetBestiaryStatRow(kills,2,{t('ARMOR_CLASS_LABEL'),							rgBeasts[i].ac							,'','','','','','','','',''}))
 	--		end
 	--		
-	--		table.insert(endList, rgGetBestiaryStatRow(kills,3,{getUiString('THAC0_LABEL'),								rgBeasts[i].thc							,'','','','','','','','',''}))
-	--		table.insert(endList, rgGetBestiaryStatRow(kills,4,{getUiString('RG_ATTACK'),									rgBeasts[i].apr							,'','','','','','','','',''}))--apr
+	--		table.insert(endList, rgGetBestiaryStatRow(kills,3,{t('THAC0_LABEL'),								rgBeasts[i].thc							,'','','','','','','','',''}))
+	--		table.insert(endList, rgGetBestiaryStatRow(kills,4,{t('RG_ATTACK'),									rgBeasts[i].apr							,'','','','','','','','',''}))--apr
 	--		table.insert(endList, rgGetBestiaryStatRow(kills,5,{Infinity_FetchString(17379),						5,rgBeasts[i].sav.dea,6,rgBeasts[i].sav.wan,9,rgBeasts[i].sav.pol,7,rgBeasts[i].sav.bre,8,rgBeasts[i].sav.spe}))--saving throws
 	--		table.insert(endList, rgGetBestiaryStatRow(kills,6,{Infinity_FetchString(1049),						Infinity_FetchString(rgBeasts[i].alg)	,'','','','','','','','',''}))--algn
 	--		table.insert(endList, rgGetBestiaryStatRow(kills,7,{rgGetGameEngineString( 24445,24445,32204,15544),	res[1],res[2],res[3],res[4],res[5],res[6],res[7],res[8],res[9],res[10]}))--resistances
@@ -45580,11 +45523,11 @@ function rgGetBestiaryStatistics(text)
 	--		--local resistances = rgGetBestiaryResistancesList(i,kills)
 	--		--
 	--		--table.insert(endList, {Infinity_FetchString(11954),kills,resistances[1]})
-	--		--table.insert(endList, {getUiString('XP_LABEL'),rgBeasts[i].xp,resistances[2]})
+	--		--table.insert(endList, {t('XP_LABEL'),rgBeasts[i].xp,resistances[2]})
 	--		--
-	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,1,resistances,getUiString('HIT_POINTS_LABEL')))
-	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,2,resistances,getUiString('ARMOR_CLASS_LABEL')))
-	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,3,resistances,getUiString('THAC0_LABEL')))
+	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,1,resistances,t('HIT_POINTS_LABEL')))
+	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,2,resistances,t('ARMOR_CLASS_LABEL')))
+	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,3,resistances,t('THAC0_LABEL')))
 	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,4,resistances,Infinity_FetchString(9458)))--apr
 	--		--table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,5,resistances,Infinity_FetchString(1049)))--algn
 	--		--
@@ -45600,11 +45543,11 @@ function rgGetBestiaryStatistics(text)
 	--		local resistances = rgGetBestiaryResistancesList(i,kills)
 	--		
 	--		table.insert(endList, {Infinity_FetchString(11954),kills,resistances[1]})
-	--		table.insert(endList, {getUiString('XP_LABEL'),rgBeasts[i].xp,resistances[2]})
+	--		table.insert(endList, {t('XP_LABEL'),rgBeasts[i].xp,resistances[2]})
 	--		
-	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,1,resistances,getUiString('HIT_POINTS_LABEL')))
-	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,2,resistances,getUiString('ARMOR_CLASS_LABEL')))
-	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,3,resistances,getUiString('THAC0_LABEL')))
+	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,1,resistances,t('HIT_POINTS_LABEL')))
+	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,2,resistances,t('ARMOR_CLASS_LABEL')))
+	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,3,resistances,t('THAC0_LABEL')))
 	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,4,resistances,Infinity_FetchString(9458)))--apr
 	--		table.insert(endList, rgGetBestiaryStatRow(rgBeasts[i].hp,kills,5,resistances,Infinity_FetchString(1049)))--algn
 	--		
@@ -45619,13 +45562,13 @@ function rgGetBestiaryStatistics(text)
 	--		--		stat1 = ''
 	--		--	end
 	--		--	if j == 1 then --xp
-	--		--		desc1 = getUiString('XP_LABEL')
+	--		--		desc1 = t('XP_LABEL')
 	--		--	elseif j == 2 and rgBeasts[i][7] ~= 'RGB_BOSS' then --hp
-	--		--		desc1 = getUiString('HIT_POINTS_LABEL')
+	--		--		desc1 = t('HIT_POINTS_LABEL')
 	--		--	elseif j == 3 and rgBeasts[i][7] ~= 'RGB_BOSS' then --ac
-	--		--		desc1 = getUiString('ARMOR_CLASS_LABEL')
+	--		--		desc1 = t('ARMOR_CLASS_LABEL')
 	--		--	elseif j == 4 and rgBeasts[i][7] ~= 'RGB_BOSS' then --thaco
-	--		--		desc1 = getUiString('THAC0_LABEL')
+	--		--		desc1 = t('THAC0_LABEL')
 	--		--	elseif j == 5 and rgBeasts[i][7] ~= 'RGB_BOSS' then --apr
 	--		--		desc1 = Infinity_FetchString(9458)
 	--		--	elseif j == 6 and rgBeasts[i][7] ~= 'RGB_BOSS' then --algn
@@ -45722,7 +45665,7 @@ function rgGetBestiaryPicture(text)
 	for i in string.gmatch(text, "[^;]+") do
 		table.insert(list, i);
 	end
-	str = string.gsub(list[1], getUiString('RG_BESTIARY'), "")
+	str = string.gsub(list[1], t('RG_BESTIARY'), "")
 	for i=1,#rgBeasts,1 do
 		if Infinity_FetchString(rgBeasts[i].name) == str then 
 			ret = rgBeasts[i].pic
@@ -45850,18 +45793,18 @@ function rgOrderJournalLibrary(s1,s2)
 	return s1.text < s2.text
 end
 function rgLibraryJournalEntry(text)
-	if (string.match(text, getUiString('RG_LIBRARY'))) then
+	if (string.match(text, t('RG_LIBRARY'))) then
 		return 1
 	else
 		return 0
 	end
 end
 function rgGetLibraryEntryTitle(text)
-	str = string.gsub(text, getUiString('RG_LIBRARY'), "")
+	str = string.gsub(text, t('RG_LIBRARY'), "")
 	return str
 end
 function rgGetLibraryDescription(text)
-	str = string.gsub(text, getUiString('RG_LIBRARY'), "")
+	str = string.gsub(text, t('RG_LIBRARY'), "")
 	
 	for i=1,#rgLibrary,1 do
 		if Infinity_FetchString(rgLibrary[i][1]) == str then 
@@ -46027,7 +45970,7 @@ menu
 		area		1077 34 58 54 
 		bam			rgdjobut
 		scaleToClip 
-		tooltip lua "getUiString('RG_JOURNAL_MODE1')"
+		tooltip lua "t('RG_JOURNAL_MODE1')"
 		sequence lua "rgGetInvModeSequence()"
 		--toggle		rgLargeJournal
 		action
@@ -46128,8 +46071,8 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 0 and RgUISkin < 3"
 		area 206 108 228 42
-		--text lua "rgString(getUiString('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
-		text lua "rgString(getUiString('RG_BEASTS'))"
+		--text lua "rgString(t('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
+		text lua "rgString(t('RG_BEASTS'))"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46137,7 +46080,7 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 1 and RgUISkin < 3"
 		area 206 108 228 42
-		text lua "rgString(getUiString('RG_BOSSES'))"
+		text lua "rgString(t('RG_BOSSES'))"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46145,7 +46088,7 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 2 and journalMode == const.JOURNAL_MODE_JOURNAL and RgUISkin < 3"
 		area 206 108 228 42
-		text lua "rgString(getUiString('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
+		text lua "rgString(t('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46153,8 +46096,8 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 0 and RgUISkin == 3"
 		area 196 100 228 42
-		--text lua "rgString(getUiString('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
-		text lua "rgString(getUiString('RG_BEASTS'))"
+		--text lua "rgString(t('RG_BEASTS') .. ': ' .. rgBestiaryCount .. ' / ' .. #rgBeasts)"
+		text lua "rgString(t('RG_BEASTS'))"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46162,7 +46105,7 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 1 and journalMode == const.JOURNAL_MODE_JOURNAL and rgBestiaryBoss == 1 and RgUISkin == 3"
 		area 196 100 228 42
-		text lua "rgString(getUiString('RG_BOSSES'))"
+		text lua "rgString(t('RG_BOSSES'))"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -46170,7 +46113,7 @@ menu
 	{
 		enabled "rgLargeJournal == 1 and rgIsJournalBestiary == 2 and journalMode == const.JOURNAL_MODE_JOURNAL and RgUISkin == 3"
 		area 196 100 228 42
-		text lua "rgString(getUiString('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
+		text lua "rgString(t('RG_BOOKS') .. ': ' .. rgLibraryCount .. ' / ' .. #rgLibrary)"
 		text style "rg_trajan"
 		text align center center
 	}
@@ -47126,7 +47069,7 @@ menu
 		enabled "rgLargeJournal == 0"
 		area		14 8 62 58 
 		bam			rgdjobut
-		tooltip lua "getUiString('RG_JOURNAL_MODE2')"
+		tooltip lua "t('RG_JOURNAL_MODE2')"
 		scaleToClip
 		toggle		rgLargeJournal
 		action
@@ -47141,7 +47084,7 @@ menu
 		area 121 8 62 58 
 		bam "rgdjbt1"
 		scaleToClip
-		tooltip lua "getUiString('CURRENT_LABEL')"
+		tooltip lua "t('CURRENT_LABEL')"
 		glow lua "journalMode == const.JOURNAL_MODE_QUESTS and rgIsCurrentQuests == 1"
 		action 
 		"
@@ -47155,7 +47098,7 @@ menu
 		area 184 8 62 58 
 		bam "rgdjbt2"
 		scaleToClip
-		tooltip lua "getUiString('OBJECTIVE_FINISHED_NORMAL')"
+		tooltip lua "t('OBJECTIVE_FINISHED_NORMAL')"
 		glow lua "journalMode == const.JOURNAL_MODE_QUESTS and rgIsCurrentQuests == 0"
 		action 
 		"
@@ -47169,7 +47112,7 @@ menu
 		area 247 8 62 58 
 		bam "rgdjbt3"
 		scaleToClip
-		tooltip lua "getUiString('JOURNAL_LABEL')"
+		tooltip lua "t('JOURNAL_LABEL')"
 		glow lua "journalMode == const.JOURNAL_MODE_JOURNAL"
 		action "journalMode = const.JOURNAL_MODE_JOURNAL"
 	}
@@ -47891,26 +47834,26 @@ DLC_STATE_DOWNLOADING = 7
 function checkDLCState()
 	dlcStatusState = dlcScreen:GetDLCState()
 	if dlcStatusState == DLC_STATE_WAITING then
-		dlcStatusDescriptionText = getUiString("STRREF_GUI_DLC_WAITING")
-		dlcStatusButtonText = getUiString("BACK_BUTTON")
+		dlcStatusDescriptionText = t("STRREF_GUI_DLC_WAITING")
+		dlcStatusButtonText = t("BACK_BUTTON")
 	elseif dlcStatusState == DLC_STATE_IN_PROGRESS then
-		dlcStatusDescriptionText = getUiString("STRREF_GUI_DLC_IN_PROGRESS")
-		dlcStatusButtonText = getUiString("BACK_BUTTON")
+		dlcStatusDescriptionText = t("STRREF_GUI_DLC_IN_PROGRESS")
+		dlcStatusButtonText = t("BACK_BUTTON")
 	elseif dlcStatusState == DLC_STATE_SUCCESS then
-		dlcStatusDescriptionText = getUiString("STRREF_GUI_DLC_SUCCESS")
-		dlcStatusButtonText = getUiString("CONTINUE_BUTTON")
+		dlcStatusDescriptionText = t("STRREF_GUI_DLC_SUCCESS")
+		dlcStatusButtonText = t("CONTINUE_BUTTON")
 	elseif dlcStatusState == DLC_STATE_FAILED then
-		dlcStatusDescriptionText = getUiString("STRREF_GUI_DLC_FAILED")
-		dlcStatusButtonText = getUiString("CONTINUE_BUTTON")
+		dlcStatusDescriptionText = t("STRREF_GUI_DLC_FAILED")
+		dlcStatusButtonText = t("CONTINUE_BUTTON")
 	elseif dlcStatusState == DLC_STATE_CANCELLED then
-		dlcStatusDescriptionText = getUiString("STRREF_GUI_DLC_CANCELLED")
-		dlcStatusButtonText = getUiString("CONTINUE_BUTTON")
+		dlcStatusDescriptionText = t("STRREF_GUI_DLC_CANCELLED")
+		dlcStatusButtonText = t("CONTINUE_BUTTON")
 	elseif dlcStatusState == DLC_STATE_RESTORING_PURCHASES then
-		dlcStatusDescriptionText = getUiString("STRREF_GUI_DLC_RESTORING_PURCHASES")
-		dlcStatusButtonText = getUiString("BACK_BUTTON")
+		dlcStatusDescriptionText = t("STRREF_GUI_DLC_RESTORING_PURCHASES")
+		dlcStatusButtonText = t("BACK_BUTTON")
 	elseif dlcStatusState == DLC_STATE_RESTORING_PURCHASES_COMPLETE then
-		dlcStatusDescriptionText = getUiString("STRREF_GUI_DLC_RESTORING_PURCHASES_COMPLETE")
-		dlcStatusButtonText = getUiString("CONTINUE_BUTTON")
+		dlcStatusDescriptionText = t("STRREF_GUI_DLC_RESTORING_PURCHASES_COMPLETE")
+		dlcStatusButtonText = t("CONTINUE_BUTTON")
 	elseif dlcStatusState == DLC_STATE_DOWNLOADING then
 		dlcScreen:GetDownloadString()
 		dlcStatusButtonText = ""
@@ -48081,15 +48024,15 @@ menu
 	end
 	function getDialogButtonText()
 		if(dialogViewMode) then
-			return getUiString("DONE_BUTTON")
+			return t("DONE_BUTTON")
 		end
 		
 		if(#dialogOverflowTable > 0) then
-			return getUiString("SHOW_MORE_RESPONSES_BUTTON")
+			return t("SHOW_MORE_RESPONSES_BUTTON")
 		end
 		
 		if(gameOptions.m_bConfirmDialog == true) then
-			return getUiString("CHOOSE_RESPONSE_BUTTON")
+			return t("CHOOSE_RESPONSE_BUTTON")
 		end
 		
 		return dialogButtonText
@@ -48752,7 +48695,7 @@ menu
 	label
 	{
 		area 118 24 752 120
-		text lua "getUiString(buttonHelp[currentButtonHelp][8])"
+		text lua "t(buttonHelp[currentButtonHelp][8])"
 		text style	"label"
 		text align left top
 	}
@@ -49345,13 +49288,13 @@ function rgSetUIZoomWidth()
 end
 function rgGetUISkinString()
 	if rgUISkin == 0 then
-		return getUiString('RG_SET_SKIN_SOD')
+		return t('RG_SET_SKIN_SOD')
 	elseif rgUISkin == 1 then
-		return getUiString('RG_SET_SKIN_IWD')
+		return t('RG_SET_SKIN_IWD')
 	elseif rgUISkin == 2 then
-		return getUiString('RG_SET_SKIN_BG1')
+		return t('RG_SET_SKIN_BG1')
 	else
-		return getUiString('RG_SET_SKIN_BG2')
+		return t('RG_SET_SKIN_BG2')
 	end
 end
 
@@ -49367,39 +49310,39 @@ end
 function rgGetUiOptDescription()
 	
 	if rgUiOptSelected == 0 then
-		return getUiString('RG_SET_DESC')
+		return t('RG_SET_DESC')
 	elseif rgUiOptSelected == 1 then
-		return getUiString('RG_SET_FREE_MSGBOX_D')
+		return t('RG_SET_FREE_MSGBOX_D')
 	elseif rgUiOptSelected == 2 then
-		return getUiString('RG_SET_MODERN_HUD_D')
+		return t('RG_SET_MODERN_HUD_D')
 	elseif rgUiOptSelected == 3 then
-		return getUiString('RG_SET_MODERN_HUD_R_D')
+		return t('RG_SET_MODERN_HUD_R_D')
 	elseif rgUiOptSelected == 4 then
-		return getUiString('RG_SET_HOTKEY_BUTT_D')
+		return t('RG_SET_HOTKEY_BUTT_D')
 	elseif rgUiOptSelected == 5 then
-		return getUiString('RG_SET_BOTTOM_QLOOT_D')
+		return t('RG_SET_BOTTOM_QLOOT_D')
 	elseif rgUiOptSelected == 6 then
-		return getUiString('RG_SET_INV_SWAP_D')
+		return t('RG_SET_INV_SWAP_D')
 	elseif rgUiOptSelected == 7 then
-		return getUiString('RG_SET_SPACE_DLG_D')
+		return t('RG_SET_SPACE_DLG_D')
 	elseif rgUiOptSelected == 8 then
-		return getUiString('RG_SET_QLOOT_ROWS_D')
+		return t('RG_SET_QLOOT_ROWS_D')
 	elseif rgUiOptSelected == 9 then
-		return getUiString('RG_SET_SKIN_D')
+		return t('RG_SET_SKIN_D')
 	elseif rgUiOptSelected == 10 then
-		return getUiString('RG_SET_EEEX_ZOOM_D')
+		return t('RG_SET_EEEX_ZOOM_D')
 	elseif rgUiOptSelected == 11 then
-		return getUiString('RG_SET_BEST_KOEF_D')
+		return t('RG_SET_BEST_KOEF_D')
 	elseif rgUiOptSelected == 12 then
-		return getUiString('RG_SET_LARGE_PORT_D')
+		return t('RG_SET_LARGE_PORT_D')
 	elseif rgUiOptSelected == 13 then
-		return getUiString('RG_SET_CENTER_QLOOT_D')
+		return t('RG_SET_CENTER_QLOOT_D')
 	elseif rgUiOptSelected == 14 then
-		return getUiString('RG_SET_EEEX_PCEFF_D')
+		return t('RG_SET_EEEX_PCEFF_D')
 	elseif rgUiOptSelected == 15 then
-		return getUiString('RG_SET_EEEX_NPCBAR_D')
+		return t('RG_SET_EEEX_NPCBAR_D')
 	else
-		return getUiString('RG_SET_DESC')
+		return t('RG_SET_DESC')
 	end
 end
 
@@ -50443,7 +50386,7 @@ function rgFormatKeyCode(number,row)
 	if number < 127 and number > 32 then
 		return string.format('%c', rgHotkeyTable[row][6])
 	end
-	ret = getUiString("SDL_" .. string.format('%d', rgHotkeyTable[row][6]))
+	ret = t("SDL_" .. string.format('%d', rgHotkeyTable[row][6]))
  
 	return ret
 end
@@ -50452,7 +50395,7 @@ end
 function rgGetHotkeyName(row)
 	local ret = ""
 	if row < 100 then
-		ret = getUiString(rgHotkeyTable[row][4])
+		ret = t(rgHotkeyTable[row][4])
 		if ret == rgHotkeyTable[row][4] then
 			ret = Infinity_FetchString(rgHotkeyTable[row][4])
 		end
@@ -50520,27 +50463,27 @@ function rgGetHotkeyFrame(row,val)
 	end
 end
 function rgGetHotkeySlotName()
-	local ret = getUiString('RG_HB_CHOOSEKEY')
+	local ret = t('RG_HB_CHOOSEKEY')
 	if key > 0 then
-		ret = getUiString('RG_HB_CHOOSEKEY') .. rgGetHotkeyName(key)
+		ret = t('RG_HB_CHOOSEKEY') .. rgGetHotkeyName(key)
 	end
 	return ret
 end
 function rgGetHotkeySelectionName()
-	local ret = getUiString('RG_HB_CHOOSESEL')
+	local ret = t('RG_HB_CHOOSESEL')
 	if sel > 1 then
-		ret = getUiString('RG_HB_CHOOSEPOR') .. sel-1
+		ret = t('RG_HB_CHOOSEPOR') .. sel-1
 	else
-		ret = getUiString('RG_HB_CHOOSENON')
+		ret = t('RG_HB_CHOOSENON')
 	end
 	return ret
 end
 function rgGetHotkeySlotSelectionName(row)
 	local ret = rgHotkeySelection[row]
 	if row == 1 then
-		ret = getUiString('RG_HB_NONE')
+		ret = t('RG_HB_NONE')
 	elseif row == 8 then
-		ret = getUiString('RG_HB_ALL')
+		ret = t('RG_HB_ALL')
 	end
 	return ret
 end
@@ -51219,7 +51162,7 @@ menu
 		pad 10 8 10 8
 		text style "button"
 		sequence lua "RgUISkin"
-		text lua "getUiString('CREDITS_TITLE') .. ' & ' .. getUiString('MOVIES_TITLE')"
+		text lua "t('CREDITS_TITLE') .. ' & ' .. t('MOVIES_TITLE')"
 		action 
 		"
 			Infinity_PopMenu()
@@ -51726,15 +51669,15 @@ menu
 	contingencySpellLevel = 1
 	contingencySwapTable = {}
 	function getContingencyTitle()
-		return getUiString(mageBookStrings[contingencyResRef].title)
+		return t(mageBookStrings[contingencyResRef].title)
 	end
 	function getContingencySpellType()
 		local ret = ""
 		
 		if contingencySpellType == 0 then
-			ret = getUiString("MAGE_SPELLS_TITLE")
+			ret = t("MAGE_SPELLS_TITLE")
 		else
-			ret = getUiString("ASSIGN_KEYS_PRIESTSPELLS")
+			ret = t("ASSIGN_KEYS_PRIESTSPELLS")
 		end
 
 		return ret
@@ -51742,7 +51685,7 @@ menu
 	function getContingencySpellLevel()
 		local ret = ""
 		
-		ret = getUiString("LEVEL_LABEL").." "..contingencySpellLevel
+		ret = t("LEVEL_LABEL").." "..contingencySpellLevel
 
 		return ret
 	end
@@ -53487,15 +53430,15 @@ menu
 	--	ScaleToClip 
 	--	action "Infinity_PushMenu('RG_RADAR_SETTINGS')" 
 	--}
-	button { enabled "rgRadarShowMinimizedBar == 1" area  20 0 20 20 bam rgdmrnd2 sequence 5 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_WEAPON')" toggle rgRadarShowWeapons }
-	button { enabled "rgRadarShowMinimizedBar == 1" area  40 0 20 20 bam rgdmrnd2 sequence 4 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_CRE')" toggle rgRadarShowNames }
-	button { enabled "rgRadarShowMinimizedBar == 1" area  60 0 20 20 bam rgdmrnd2 sequence 8 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_HP')" toggle rgRadarShowHitPoints }
-	button { enabled "rgRadarShowMinimizedBar == 1" area  80 0 20 20 bam rgdmrnd2 sequence 6 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_EFF')" toggle rgRadarShowNpcEffects }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 100 0 20 20 bam rgdmrnd2 sequence 9 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_AREA')" toggle rgRadarShowExtendRadius }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 120 0 20 20 bam rgdmrnd2 sequence 7 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_SELECT')" toggle rgRadarShowSingleCre }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 140 0 20 20 bam rgdmrnd2 sequence 2 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_ENEMY')" toggle rgRadarShowCreaturesR }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 160 0 20 20 bam rgdmrnd2 sequence 0 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_ALLY')" toggle rgRadarShowCreaturesG }
-	button { enabled "rgRadarShowMinimizedBar == 1" area 180 0 20 20 bam rgdmrnd2 sequence 1 ScaleToClip tooltip lua "getUiString('RG_NPCBAR_NEUTR')" toggle rgRadarShowCreaturesB }
+	button { enabled "rgRadarShowMinimizedBar == 1" area  20 0 20 20 bam rgdmrnd2 sequence 5 ScaleToClip tooltip lua "t('RG_NPCBAR_WEAPON')" toggle rgRadarShowWeapons }
+	button { enabled "rgRadarShowMinimizedBar == 1" area  40 0 20 20 bam rgdmrnd2 sequence 4 ScaleToClip tooltip lua "t('RG_NPCBAR_CRE')" toggle rgRadarShowNames }
+	button { enabled "rgRadarShowMinimizedBar == 1" area  60 0 20 20 bam rgdmrnd2 sequence 8 ScaleToClip tooltip lua "t('RG_NPCBAR_HP')" toggle rgRadarShowHitPoints }
+	button { enabled "rgRadarShowMinimizedBar == 1" area  80 0 20 20 bam rgdmrnd2 sequence 6 ScaleToClip tooltip lua "t('RG_NPCBAR_EFF')" toggle rgRadarShowNpcEffects }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 100 0 20 20 bam rgdmrnd2 sequence 9 ScaleToClip tooltip lua "t('RG_NPCBAR_AREA')" toggle rgRadarShowExtendRadius }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 120 0 20 20 bam rgdmrnd2 sequence 7 ScaleToClip tooltip lua "t('RG_NPCBAR_SELECT')" toggle rgRadarShowSingleCre }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 140 0 20 20 bam rgdmrnd2 sequence 2 ScaleToClip tooltip lua "t('RG_NPCBAR_ENEMY')" toggle rgRadarShowCreaturesR }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 160 0 20 20 bam rgdmrnd2 sequence 0 ScaleToClip tooltip lua "t('RG_NPCBAR_ALLY')" toggle rgRadarShowCreaturesG }
+	button { enabled "rgRadarShowMinimizedBar == 1" area 180 0 20 20 bam rgdmrnd2 sequence 1 ScaleToClip tooltip lua "t('RG_NPCBAR_NEUTR')" toggle rgRadarShowCreaturesB }
 	
 	
 	

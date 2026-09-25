@@ -770,7 +770,7 @@ uiStrings = {
 	RG_SET_MODERN_HUD = "Pokaż nowoczesny interfejs",
 	RG_SET_HOTKEY_BUTT = "Włącz przyciski skrótów klawiszowych",
 	RG_SET_BOTTOM_QLOOT = "„Weź wszystko„ na dole ekranu",
-	RG_SET_CENTER_QLOOT = "Quickloot in the center",										 
+	RG_SET_CENTER_QLOOT = "„Weź wszystko„ w centrum ekranu",
 	RG_SET_INV_SWAP = "Zablokuj postać w ekwipunku drużyny",
 	RG_SET_SPACE_DLG = "Kontynuuj dialog za pomocą spacji",
 	RG_SET_QLOOT_ROWS = "Rzędy „Weź wszystko„",
@@ -780,7 +780,7 @@ uiStrings = {
 	RG_SET_MODERN_HUD_D = "Przesuwa elementy interfejsu na dół ekranu.",
 	RG_SET_HOTKEY_BUTT_D = "Na ekranie pojawia się dodatkowy przycisk otwierający menu umożliwiające przypisanie skrótów klawiszowych do przycisków. Menu można również otworzyć klikając prawym przyciskiem myszy dowolny skrót klawiszowy. Wszyskie albo dowolne postacie mogą być przypisane do skrótu klawiszowego wybierając je automatycznie przed wciśnięciem skrótu.",
 	RG_SET_BOTTOM_QLOOT_D = "Przenosi menu „Weź wszystko„ do lewego dolnego rogu ekranu zamiast domyślnego lewego górnego rogu",
-	RG_SET_CENTER_QLOOT_D = "Przełącza menu szybkiego łupu na środek (górę lub dół) ekranu zamiast domyślnej lewej strony.",
+	RG_SET_CENTER_QLOOT_D = "Przenosi menu „Weź wszystko„ na środek ekranu zamiast domyślnego lewego górnego rogu.",
 	RG_SET_INV_SWAP_D = "W trybie ekwipunku „Cała drużyna” postacie są przełączane po najechaniu kursorem na ich ekwipunek. Po włączeniu tej opcji możesz zablokować wybraną postać, dzięki czemu pozostanie ona aktywna podczas dostępu do dowolnego ekwipunku.\nWAŻNA UWAGA! Aby ekwipunek drużyny działał, skróty klawiszowe 1-6 muszą być przypisane do wyboru postaci.",
 	RG_SET_SPACE_DLG_D = "Dialog można kontynuować naciskając przycisk spacji. Jest to domyślnie wyłączone",
 	RG_SET_QLOOT_ROWS_D = "Ustala liczbę rzędów menu „Weź wszystko„ na ekranie",																		  
@@ -795,7 +795,7 @@ uiStrings = {
 	RG_LIBRARY = 'Biblioteka: ',
 	RG_BOOKS = 'Książki',
 	RG_BEASTS = 'Potwory',
-	RG_BOSSES = "Bossowie",		
+	RG_BOSSES = "Bossowie",
 	RG_BESTIARY_TITLE = 'Bestiariusz',
 	RG_BESTIARY = 'Bestiariusz: ',
 	RG_LOOTALL = "Weź wszystko",
@@ -832,8 +832,8 @@ uiStrings = {
 	RG_SET_BEST_KOEF_D = "Ta opcja kontroluje, jak szybko statystyki bestiariusza będą ujawniane. Współczynnik jest mnożony przez rosnącą zmienną w stosunku do liczby zabójstw stworzenia w bestiariuszu, aby umożliwić stopniowe ujawnianie. Wartość zero oznacza natychmiastowe ujawnienie.",
 	RG_SET_BEST_KOEF = "Współczynnik bestiariusza.",
 	RG_SET_LARGE_PORT = "Duże Portrety",
-	RG_SET_LARGE_PORT_D = "Wyświetla większe portrety na głównym ekranie gry, działa tylko z klasycznym interfejsem HUD. Portrety mogą wychodzić poza ekran przy powiększonym lub skalowanym interfejsie.",	RG_RESET_BUTTON = "Zresetuj okno dialogowe",
-	RG_RESET_BUTTON = "Resetuj okno wiadomości",									  
+	RG_SET_LARGE_PORT_D = "Wyświetla duże portrety na głównym ekranie gry, działa tylko z klasycznym interfejsem. Portrety mogą wychodzić poza ekran przy powiększonym lub skalowanym interfejsie.",
+	RG_RESET_BUTTON = "Zresetuj okno dialogowe",
 	--note these RG_ITM_COMP strings must be equal to those inside item description strings 
 	RG_ITM_COMP_ST = "STATYSTYKI",
 	RG_ITM_COMP_WE = "Waga",
@@ -861,7 +861,6 @@ uiStrings = {
 	RG_NPCBAR_ALWAYS = "Pasek NPC zawsze włączony",
 	RG_NPCBAR_SETT = "Ustawienia paska NPC",
 	RG_B3_DISABLE_OPTMIZE = "Zalecana jest automatyczna optymalizacja rozmiaru slotu w trybie nakładki, ponieważ może on obejmować inne elementy interfejsu użytkownika. Czy naprawdę chcesz wyłączyć tę opcję?",
-	
 }
 
 BestiaryStrings = {
