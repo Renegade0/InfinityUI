@@ -23,7 +23,7 @@ function Sprite_HasItem(sprite, itm_resref)
 	local base = EEex_UDToPtr(sprite.m_equipment.m_items)
 	for i=SLOT_AMULET,SLOT_WEAPON_4 do
 		local address = base + i*8 -- *8 because x64
-		local item = EEex_Read32(address)
+		local item = EEex_Read64(address)
 		if (item ~= 0) then
 			local resref = EEex_ReadLString(item + 0x08 + 0x08, 8)
 			if resref:upper() == itm_resref then
@@ -41,7 +41,7 @@ function Sprite_HasItem_InSlot(sprite, itm_resref, slots)
 	for s=1,#slots do
 		local i =slots[s]
 		local address = base + i*8 -- *8 because x64
-		local item = EEex_Read32(address)
+		local item = EEex_Read64(address)
 		if (item ~= 0) then
 			local resref = EEex_ReadLString(item + 0x08 + 0x08, 8)
 			if resref:upper() == itm_resref then return true end
@@ -59,7 +59,7 @@ local items = {}
 for k,v in pairs(SLOTS) do
 	local i=v.id
 	local address = base + i*8 -- *8 because x64
-	local item = EEex_Read32(address)
+	local item = EEex_Read64(address)
 	if (item ~= 0) then
 		local resref = EEex_ReadLString(item + 0x08 + 0x08, 8)
 		if resref then resref = resref:upper() end
