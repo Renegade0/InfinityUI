@@ -862,6 +862,16 @@ uiStrings = {
 	RG_NPCBAR_ALWAYS = "Панель NPC всегда включена",
 	RG_NPCBAR_SETT = "Настройки панели NPC",
 	RG_B3_DISABLE_OPTMIZE = "Автоматическая оптимизация размера слота рекомендуется при использовании \"режима наложения\", так как он может закрывать другие элементы пользовательского интерфейса. Вы действительно хотите отключить эту опцию?",
+	RG_SET_INV_SPRITE_D = "Displays chosen inventory sprites. Original sprites are not compatible with party inventory (They disappear on hover to another party member). New inventory sprites are made compatible with party inventory, but are limited to default races with no color recognition. Full-body portraits are extended images for BG1 and BG2 default portraits. No sprite option gives generic hero background with rearranged slots.",
+	RG_SET_INV_SPRITE = "Inventory sprites",
+	RG_SET_INV_SPRITE_OLD = "Original sprites",
+	RG_SET_INV_SPRITE_NEW = "New sprites",
+	RG_SET_INV_SPRITE_POR = "Portraits",
+	RG_SET_INV_SPRITE_FBP = "Full-body portraits",
+	RG_SET_INV_SPRITE_NON = "No sprites",
+	RG_SET_INV_LOAD_D = "On opening inventory screen with all-party mode, it iterates through all party members to get current IDs to render correct item slots. With this option, it will only iterate when party members change (or rearrange) or on new game load (more precisely when number of changelog rows are less than 7).\nIMPORTANT NOTE! This option is in BETA as it has not been properly tested yet.",
+	RG_SET_INV_LOAD = "Faster all-party inventory loading",
+	RG_INV_PARTY_INFO = "Note that hotkeys 1-6 must be assigned to character selections for party inventory to work!",
 }
 
 BestiaryStrings = {
