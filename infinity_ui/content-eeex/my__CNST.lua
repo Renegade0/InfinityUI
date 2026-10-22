@@ -172,24 +172,24 @@ SLOT_WEAPON_3 = 37
 SLOT_WEAPON_4 = 38
 
 SLOTS = {}
-SLOTS[tostring(SLOT_AMULET)] 		= { name = "Amulet" 		, sprite_item_sort_order =  8, }
-SLOTS[tostring(SLOT_ARMOR)] 		= { name = "Armor"  		, sprite_item_sort_order =  9, }
-SLOTS[tostring(SLOT_BELT)] 			= { name = "Belt"   		, sprite_item_sort_order = 15, }
-SLOTS[tostring(SLOT_BOOTS)] 		= { name = "Boots"  		, sprite_item_sort_order = 11, }
-SLOTS[tostring(SLOT_CLOAK)] 		= { name = "Cloak"  		, sprite_item_sort_order = 10, }
-SLOTS[tostring(SLOT_GAUNTLETS)] 	= { name = "Gauntlets"		, sprite_item_sort_order = 12, }
-SLOTS[tostring(SLOT_HELMET)] 		= { name = "Helmet"   		, sprite_item_sort_order =  7, }
-SLOTS[tostring(SLOT_RINGL)] 		= { name = "Ring L"   		, sprite_item_sort_order = 13, }
-SLOTS[tostring(SLOT_RINGR)] 		= { name = "Ring R"   		, sprite_item_sort_order = 14, }
-SLOTS[tostring(SLOT_SHIELD)] 		= { name = "Shield"   		, sprite_item_sort_order =  6, }
-SLOTS[tostring(SLOT_FIST)] 			= { name = "Fist"     		, sprite_item_sort_order =  5, }
-SLOTS[tostring(SLOT_QUIVER_1)] 		= { name = "Quiver 1" 		, sprite_item_sort_order = 23, } 
-SLOTS[tostring(SLOT_QUIVER_2)] 		= { name = "Quiver 2" 		, sprite_item_sort_order = 24, } 
-SLOTS[tostring(SLOT_QUIVER_3)] 		= { name = "Quiver 3" 		, sprite_item_sort_order = 25, } 
-SLOTS[tostring(SLOT_QUIVER_4)] 		= { name = "Quiver 4" 		, sprite_item_sort_order = 26, } -- Unused in BG2EE
-SLOTS[tostring(SLOT_QUICKITEM_1)] 	= { name = "Quick Item 1"   , sprite_item_sort_order = 20, }
-SLOTS[tostring(SLOT_QUICKITEM_2)] 	= { name = "Quick Item 2"   , sprite_item_sort_order = 21, }
-SLOTS[tostring(SLOT_QUICKITEM_3)] 	= { name = "Quick Item 3"   , sprite_item_sort_order = 22, }
+SLOTS[tostring(SLOT_AMULET)] 		= { name = "Amulette" 		, sprite_item_sort_order =  8, }
+SLOTS[tostring(SLOT_ARMOR)] 		= { name = "Armure"  		, sprite_item_sort_order =  9, }
+SLOTS[tostring(SLOT_BELT)] 			= { name = "Ceinture"   	, sprite_item_sort_order = 15, }
+SLOTS[tostring(SLOT_BOOTS)] 		= { name = "Bottes"  		, sprite_item_sort_order = 11, }
+SLOTS[tostring(SLOT_CLOAK)] 		= { name = "Cape"	  		, sprite_item_sort_order = 10, }
+SLOTS[tostring(SLOT_GAUNTLETS)] 	= { name = "Gantelets"		, sprite_item_sort_order = 12, }
+SLOTS[tostring(SLOT_HELMET)] 		= { name = "Casque"   		, sprite_item_sort_order =  7, }
+SLOTS[tostring(SLOT_RINGL)] 		= { name = "Anneau G."   	, sprite_item_sort_order = 13, }
+SLOTS[tostring(SLOT_RINGR)] 		= { name = "Anneau D."   	, sprite_item_sort_order = 14, }
+SLOTS[tostring(SLOT_SHIELD)] 		= { name = "Bouclier"   	, sprite_item_sort_order =  6, }
+SLOTS[tostring(SLOT_FIST)] 			= { name = "Poing"     		, sprite_item_sort_order =  5, }
+SLOTS[tostring(SLOT_QUIVER_1)] 		= { name = "Carquois 1"		, sprite_item_sort_order = 23, } 
+SLOTS[tostring(SLOT_QUIVER_2)] 		= { name = "Carquois 2" 	, sprite_item_sort_order = 24, } 
+SLOTS[tostring(SLOT_QUIVER_3)] 		= { name = "Carquois 3" 	, sprite_item_sort_order = 25, } 
+SLOTS[tostring(SLOT_QUIVER_4)] 		= { name = "Carquois 4" 	, sprite_item_sort_order = 26, } -- Unused in BG2EE
+SLOTS[tostring(SLOT_QUICKITEM_1)] 	= { name = "Objet rapide 1" , sprite_item_sort_order = 20, }
+SLOTS[tostring(SLOT_QUICKITEM_2)] 	= { name = "Objet rapide 2" , sprite_item_sort_order = 21, }
+SLOTS[tostring(SLOT_QUICKITEM_3)] 	= { name = "Objet rapide 3" , sprite_item_sort_order = 22, }
 SLOTS[tostring(SLOT_INVENTORY_1)] 	= { name = "Inv 1"			, sprite_item_sort_order = 30, }
 SLOTS[tostring(SLOT_INVENTORY_2)] 	= { name = "Inv 2"			, sprite_item_sort_order = 31, }
 SLOTS[tostring(SLOT_INVENTORY_3)] 	= { name = "Inv 3"			, sprite_item_sort_order = 32, }
@@ -207,10 +207,10 @@ SLOTS[tostring(SLOT_INVENTORY_14)] 	= { name = "Inv 14"			, sprite_item_sort_ord
 SLOTS[tostring(SLOT_INVENTORY_15)] 	= { name = "Inv 15"			, sprite_item_sort_order = 44, }
 SLOTS[tostring(SLOT_INVENTORY_16)] 	= { name = "Inv 16"			, sprite_item_sort_order = 45, }
 SLOTS[tostring(SLOT_INVENTORY_17)] 	= { name = "Inv 17"			, sprite_item_sort_order = 46, }
-SLOTS[tostring(SLOT_WEAPON_1)] 		= { name = "Weapon 1"		, sprite_item_sort_order =  1, }
-SLOTS[tostring(SLOT_WEAPON_2)] 		= { name = "Weapon 2"		, sprite_item_sort_order =  2, }
-SLOTS[tostring(SLOT_WEAPON_3)] 		= { name = "Weapon 3"		, sprite_item_sort_order =  3, }
-SLOTS[tostring(SLOT_WEAPON_4)] 		= { name = "Weapon 4"		, sprite_item_sort_order =  4, }
+SLOTS[tostring(SLOT_WEAPON_1)] 		= { name = "Arme 1"			, sprite_item_sort_order =  1, }
+SLOTS[tostring(SLOT_WEAPON_2)] 		= { name = "Arme 2"			, sprite_item_sort_order =  2, }
+SLOTS[tostring(SLOT_WEAPON_3)] 		= { name = "Arme 3"			, sprite_item_sort_order =  3, }
+SLOTS[tostring(SLOT_WEAPON_4)] 		= { name = "Arme 4"			, sprite_item_sort_order =  4, }
 function initialize_SLOTS()
 	for k,v in pairs(SLOTS) do
 		v.id = tonumber(k)		
@@ -222,22 +222,22 @@ SECONDARY_TYPE_SPELL_PROTECTION = 1
 SECONDARY_TYPE_COMBAT_PROTECTION = 7
 SECONDARY_TYPE_NON_COMBAT = 13
 SECONDARY_TYPES = {}
-SECONDARY_TYPES[tostring(SECONDARY_TYPE_SPELL_PROTECTION)] = "Spell"
+SECONDARY_TYPES[tostring(SECONDARY_TYPE_SPELL_PROTECTION)] = "Sort"
 SECONDARY_TYPES[tostring(SECONDARY_TYPE_COMBAT_PROTECTION)] = "Combat"
 SECONDARY_TYPES[tostring(SECONDARY_TYPE_NON_COMBAT)] = "Non-combat"
 
 
 ALIGNMENTS = {}
-ALIGNMENTS[0x00] = "NONE"
-ALIGNMENTS[0x11] = "^GLG^-"
+ALIGNMENTS[0x00] = "AUCUN"
+ALIGNMENTS[0x11] = "^GLB^-"
 ALIGNMENTS[0x12] = "^bLN^-"
-ALIGNMENTS[0x13] = "^RLE^-"
-ALIGNMENTS[0x21] = "^GNG^-"
+ALIGNMENTS[0x13] = "^RLM^-"
+ALIGNMENTS[0x21] = "^GNB^-"
 ALIGNMENTS[0x22] = "^bN^-"
-ALIGNMENTS[0x23] = "^RNE^-"
-ALIGNMENTS[0x31] = "^GCG^-"
+ALIGNMENTS[0x23] = "^RNM^-"
+ALIGNMENTS[0x31] = "^GCB^-"
 ALIGNMENTS[0x32] = "^bCN^-"
-ALIGNMENTS[0x33] = "^RCE^-"
+ALIGNMENTS[0x33] = "^RCM^-"
 ALIGNMENTS[0x01] = "MASK_GOOD"
 ALIGNMENTS[0x02] = "MASK_GENEUTRAL"
 ALIGNMENTS[0x03] = "MASK_EVIL"
