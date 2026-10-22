@@ -13,6 +13,9 @@ my_radar_sprite =
 
 function my_Radar_KeyPressedListener(key)
 	if key ~= EEex_Key_GetFromName(RgRadarKey) then return end -- PECCA
+--	if key == EEex_Key_GetFromName(RgRadarKey) then Infinity_PushMenu('RADAR') end -- PECCA
+	if Infinity_IsMenuOnStack('RADAR') then Infinity_PopMenu('RADAR') return end
+
 
 	Infinity_PopMenu('RADAR')
 	--Infinity_PopMenu('RG_RADAR_PC')
@@ -30,6 +33,10 @@ function my_Radar_KeyPressedListener(key)
 	if RgRadarKey ~= '' then
 		Infinity_PushMenu('RADAR')
 	end
+	--if RgRadarShowPcEffects == 1 then
+	--	Infinity_PushMenu('RG_RADAR_PC')
+	--end
+	
 	--if RgRadarShowPcEffects == 1 then
 	--	Infinity_PushMenu('RG_RADAR_PC')
 	--end
@@ -100,16 +107,16 @@ function my_screen_radar_Inspect_sprite(sprite_row)
 	end
 	local str = sprite:getStat(STATS_STR)
 	local str_extra = sprite:getStat(STATS_STREXTRA)
-	local stats = "^DSTR:^-" .. stat_colored(str) .. My_Ternary(str == 18, "/" .. str_extra, "^-")
+	local stats = "^DFOR:^-" .. stat_colored(str) .. My_Ternary(str == 18, "/" .. str_extra, "^-")
 					.. "^D DEX: ^-" .. stat_colored(sprite:getStat(STATS_DEX))
 					.. "^D CON: ^-" .. stat_colored(sprite:getStat(STATS_CON)) .. "\n"
 					.. "^DINT: ^-" .. stat_colored(sprite:getStat(STATS_INT))
-					.. "^D WIS: ^-" .. stat_colored(sprite:getStat(STATS_WIS))
+					.. "^D SAG: ^-" .. stat_colored(sprite:getStat(STATS_WIS))
 					.. "^D CHA: ^-" .. stat_colored(sprite:getStat(STATS_CHA))
 	result = result
-		.. "^DHP: ^-" .. sprite.m_baseStats.m_hitPoints .. " / " .. sprite:getStat(STATS_MAXHITPOINTS) .. "\n"
+		.. "^DPV: ^-" .. sprite.m_baseStats.m_hitPoints .. " / " .. sprite:getStat(STATS_MAXHITPOINTS) .. "\n"
 		.. stats .. "\n"
-		.. "^DTHAC0: ^-" .. sprite:getStat(STATS_THAC0) .. "\n"
+		.. "^DTAC0: ^-" .. sprite:getStat(STATS_THAC0) .. "\n"
 
 	
 	
@@ -121,19 +128,19 @@ function my_screen_radar_Inspect_sprite(sprite_row)
 	local ac_p = ac + sprite:getStat(STATS_ACPIERCINGMOD)
 	local ac_s = ac + sprite:getStat(STATS_ACSLASHINGMOD)
 	if ac_c == ac_m	and ac_c == ac_p and ac_c == ac_s then
-		ac = "^DAC: ^-" .. ac_c
+		ac = "^DCA: ^-" .. ac_c
 	else
-		ac = "^DAC: ^-" .. ac_c .. ", " .. ac_m .. ", " .. ac_p .. ", " .. ac_s .. "^-"
+		ac = "^DCA: ^-" .. ac_c .. ", " .. ac_m .. ", " .. ac_p .. ", " .. ac_s .. "^-"
 	end
 	result = result .. ac .. "\n"
 
 	-- Saves
 	result = result
-		.. "^DSave vs Paralysis/Poison/Death: ^-" .. sprite:getStat(STATS_SAVEVSDEATH) .. "\n"
-		.. "^DSave vs Rod/Staff/Wand: ^-" .. sprite:getStat(STATS_SAVEVSWANDS) .. "\n"
-		.. "^DSave vs Petrification/Polymorph: ^-" .. sprite:getStat(STATS_SAVEVSPOLY) .. "\n"
-		.. "^DSave vs Breath: ^-" .. sprite:getStat(STATS_SAVEVSBREATH) .. "\n"
-		.. "^DSave vs Spell: ^-" .. sprite:getStat(STATS_SAVEVSSPELL) .. "\n"
+		.. "^DJets vs Paralysie/Mort/Poison: ^-" .. sprite:getStat(STATS_SAVEVSDEATH) .. "\n"
+		.. "^DJets vs Baguettes/Sceptres/Bâtons: ^-" .. sprite:getStat(STATS_SAVEVSWANDS) .. "\n"
+		.. "^DJets vs Pétrification/Métamorphose: ^-" .. sprite:getStat(STATS_SAVEVSPOLY) .. "\n"
+		.. "^DJets vs Souffles: ^-" .. sprite:getStat(STATS_SAVEVSBREATH) .. "\n"
+		.. "^DJets vs Sorts: ^-" .. sprite:getStat(STATS_SAVEVSSPELL) .. "\n"
 
 	
 	-- Resistances
@@ -149,16 +156,16 @@ function my_screen_radar_Inspect_sprite(sprite_row)
 		end
 		return ""
 	end
-	result = result .. resistance(sprite, "^DResistance Crushing: ^-", STATS_RESISTCRUSHING)
-	result = result .. resistance(sprite, "^DResistance Missile: ^-", STATS_RESISTMISSILE)
-	result = result .. resistance(sprite, "^DResistance Piercing: ^-", STATS_RESISTPIERCING)
-	result = result .. resistance(sprite, "^DResistance Slashing: ^-", STATS_RESISTSLASHING)
-	result = result .. resistance(sprite, "^vRESISTANCE MAGIC: ^-", STATS_RESISTMAGIC)
-	result = result .. resistance(sprite, "^DResistance Fire: ^-", STATS_RESISTFIRE)
-	result = result .. resistance(sprite, "^DResistance Cold: ^-", STATS_RESISTCOLD)
-	result = result .. resistance(sprite, "^DResistance Acid: ^-", STATS_RESISTACID)
-	result = result .. resistance(sprite, "^DResistance Electricity: ^-", STATS_RESISTELECTRICITY)
-	result = result .. resistance(sprite, "^DResistance Poison: ^-", STATS_RESISTPOISON)
+	result = result .. resistance(sprite, "^DRésistance contondant: ^-", STATS_RESISTCRUSHING)
+	result = result .. resistance(sprite, "^DRésistance projectiles: ^-", STATS_RESISTMISSILE)
+	result = result .. resistance(sprite, "^DRésistance perforant: ^-", STATS_RESISTPIERCING)
+	result = result .. resistance(sprite, "^DRésistance tranchant: ^-", STATS_RESISTSLASHING)
+	result = result .. resistance(sprite, "^vRÉSISTANCE MAGIQUE: ^-", STATS_RESISTMAGIC)
+	result = result .. resistance(sprite, "^DRésistance feu: ^-", STATS_RESISTFIRE)
+	result = result .. resistance(sprite, "^DRésistance froid: ^-", STATS_RESISTCOLD)
+	result = result .. resistance(sprite, "^DRésistance acide: ^-", STATS_RESISTACID)
+	result = result .. resistance(sprite, "^DRésistance électricité: ^-", STATS_RESISTELECTRICITY)
+	result = result .. resistance(sprite, "^DRésistance poison: ^-", STATS_RESISTPOISON)
 
 	my_radar_sprite.main_text = result -- ASSIGN UI SPRITE STATS HERE
 	
@@ -190,26 +197,26 @@ function my_screen_radar_Inspect_sprite(sprite_row)
 	--end
 	rgAll[#rgAll +1] = { desc = sprite:getName():upper() .. rgAdvInfo1} -- 
 	rgAll[#rgAll +1] = { desc = alignment .. " - " .. race .. " - " .. class} -- .. " // " .. allegiance 
-	rgAll[#rgAll +1] = { desc = "^DHP: ^-" .. sprite.m_baseStats.m_hitPoints .. " / " .. sprite:getStat(STATS_MAXHITPOINTS) }
-	rgAll[#rgAll +1] = { desc = "^DSTR: ^-" .. stat_colored(str) .. My_Ternary(str == 18, "/" .. str_extra, "^-") .. "^D DEX: ^-" .. stat_colored(sprite:getStat(STATS_DEX)) .. "^D CON: ^-" .. stat_colored(sprite:getStat(STATS_CON)) }
-	rgAll[#rgAll +1] = { desc = "^DINT: ^-" .. stat_colored(sprite:getStat(STATS_INT)) .. "^D WIS: ^-" .. stat_colored(sprite:getStat(STATS_WIS)) .. "^D CHA: ^-" .. stat_colored(sprite:getStat(STATS_CHA)) }
-	rgAll[#rgAll +1] = { desc = "^DTHAC0: ^-" .. sprite:getStat(STATS_THAC0) }
+	rgAll[#rgAll +1] = { desc = "^DPV: ^-" .. sprite.m_baseStats.m_hitPoints .. " / " .. sprite:getStat(STATS_MAXHITPOINTS) }
+	rgAll[#rgAll +1] = { desc = "^DFOR: ^-" .. stat_colored(str) .. My_Ternary(str == 18, "/" .. str_extra, "^-") .. "^D DEX: ^-" .. stat_colored(sprite:getStat(STATS_DEX)) .. "^D CON: ^-" .. stat_colored(sprite:getStat(STATS_CON)) }
+	rgAll[#rgAll +1] = { desc = "^DINT: ^-" .. stat_colored(sprite:getStat(STATS_INT)) .. "^D SAG: ^-" .. stat_colored(sprite:getStat(STATS_WIS)) .. "^D CHA: ^-" .. stat_colored(sprite:getStat(STATS_CHA)) }
+	rgAll[#rgAll +1] = { desc = "^DTAC0: ^-" .. sprite:getStat(STATS_THAC0) }
 	rgAll[#rgAll +1] = { desc = ac }
-	rgAll[#rgAll +1] = { desc = "^DSave vs Paralysis/Poison/Death: ^-" .. sprite:getStat(STATS_SAVEVSDEATH) }
-	rgAll[#rgAll +1] = { desc = "^DSave vs Rod/Staff/Wand: ^-" .. sprite:getStat(STATS_SAVEVSWANDS) }
-	rgAll[#rgAll +1] = { desc = "^DSave vs Petrification/Polymorph: ^-" .. sprite:getStat(STATS_SAVEVSPOLY) }
-	rgAll[#rgAll +1] = { desc = "^DSave vs Breath: ^-" .. sprite:getStat(STATS_SAVEVSBREATH) }
-	rgAll[#rgAll +1] = { desc = "^DSave vs Spell: ^-" .. sprite:getStat(STATS_SAVEVSSPELL) }
-	if rg_is_resistance(STATS_RESISTCRUSHING) then rgAll[#rgAll +1] = { desc = "^DResistance Crushing: ^-" .. rg_g_or_r(STATS_RESISTCRUSHING) } end
-	if rg_is_resistance(STATS_RESISTMISSILE) then rgAll[#rgAll +1] = { desc = "^DResistance Missile: ^-" .. rg_g_or_r(STATS_RESISTMISSILE) } end
-	if rg_is_resistance(STATS_RESISTPIERCING) then rgAll[#rgAll +1] = { desc = "^DResistance Piercing: ^-" .. rg_g_or_r(STATS_RESISTPIERCING) } end
-	if rg_is_resistance(STATS_RESISTSLASHING) then rgAll[#rgAll +1] = { desc = "^DResistance Slashing: ^-" .. rg_g_or_r(STATS_RESISTSLASHING) } end
-	if rg_is_resistance(STATS_RESISTMAGIC) then rgAll[#rgAll +1] = { desc = "^vRESISTANCE MAGIC: ^-" .. rg_g_or_r(STATS_RESISTMAGIC) } end
-	if rg_is_resistance(STATS_RESISTFIRE) then rgAll[#rgAll +1] = { desc = "^DResistance Fire: ^-" .. rg_g_or_r(STATS_RESISTFIRE) } end
-	if rg_is_resistance(STATS_RESISTCOLD) then rgAll[#rgAll +1] = { desc = "^DResistance Cold: ^-" .. rg_g_or_r(STATS_RESISTCOLD) } end
-	if rg_is_resistance(STATS_RESISTACID) then rgAll[#rgAll +1] = { desc = "^DResistance Acid: ^-" .. rg_g_or_r(STATS_RESISTACID) } end
-	if rg_is_resistance(STATS_RESISTELECTRICITY) then rgAll[#rgAll +1] = { desc = "^DResistance Electricity: ^-" .. rg_g_or_r(STATS_RESISTELECTRICITY) } end
-	if rg_is_resistance(STATS_RESISTPOISON) then rgAll[#rgAll +1] = { desc = "^DResistance Poison: ^-" .. rg_g_or_r(STATS_RESISTPOISON) } end
+	rgAll[#rgAll +1] = { desc = "^DJets vs Paralysie/Mort/Poison: ^-" .. sprite:getStat(STATS_SAVEVSDEATH) }
+	rgAll[#rgAll +1] = { desc = "^DJets vs Baguettes/Sceptres/Bâtons: ^-" .. sprite:getStat(STATS_SAVEVSWANDS) }
+	rgAll[#rgAll +1] = { desc = "^DJets vs Pétrification/Métamorphose: ^-" .. sprite:getStat(STATS_SAVEVSPOLY) }
+	rgAll[#rgAll +1] = { desc = "^DJets vs Souffles: ^-" .. sprite:getStat(STATS_SAVEVSBREATH) }
+	rgAll[#rgAll +1] = { desc = "^DJets vs Sorts: ^-" .. sprite:getStat(STATS_SAVEVSSPELL) }
+	if rg_is_resistance(STATS_RESISTCRUSHING) then rgAll[#rgAll +1] = { desc = "^DRésistance contondant: ^-" .. rg_g_or_r(STATS_RESISTCRUSHING) } end
+	if rg_is_resistance(STATS_RESISTMISSILE) then rgAll[#rgAll +1] = { desc = "^DRésistance projectile: ^-" .. rg_g_or_r(STATS_RESISTMISSILE) } end
+	if rg_is_resistance(STATS_RESISTPIERCING) then rgAll[#rgAll +1] = { desc = "^DRésistance perforant: ^-" .. rg_g_or_r(STATS_RESISTPIERCING) } end
+	if rg_is_resistance(STATS_RESISTSLASHING) then rgAll[#rgAll +1] = { desc = "^DRésistance tranchant: ^-" .. rg_g_or_r(STATS_RESISTSLASHING) } end
+	if rg_is_resistance(STATS_RESISTMAGIC) then rgAll[#rgAll +1] = { desc = "^vRÉSISTANCE MAGIQUE: ^-" .. rg_g_or_r(STATS_RESISTMAGIC) } end
+	if rg_is_resistance(STATS_RESISTFIRE) then rgAll[#rgAll +1] = { desc = "^DRésistance feu: ^-" .. rg_g_or_r(STATS_RESISTFIRE) } end
+	if rg_is_resistance(STATS_RESISTCOLD) then rgAll[#rgAll +1] = { desc = "^DRésistance froid: ^-" .. rg_g_or_r(STATS_RESISTCOLD) } end
+	if rg_is_resistance(STATS_RESISTACID) then rgAll[#rgAll +1] = { desc = "^DRésistance acide: ^-" .. rg_g_or_r(STATS_RESISTACID) } end
+	if rg_is_resistance(STATS_RESISTELECTRICITY) then rgAll[#rgAll +1] = { desc = "^DRésistance électricité: ^-" .. rg_g_or_r(STATS_RESISTELECTRICITY) } end
+	if rg_is_resistance(STATS_RESISTPOISON) then rgAll[#rgAll +1] = { desc = "^DRésistance poison: ^-" .. rg_g_or_r(STATS_RESISTPOISON) } end
 	
 	local effects = {}
 	local timed_effects = Sprite_Timed_Effects(sprite)
