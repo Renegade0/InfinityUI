@@ -716,6 +716,91 @@ function rgFetchRogueClassString(class)
 	end
 end
 
+-- XPLEVEL.2DA loaded via EEex (rows = class names, columns = levels 1..N), cached as { ROWLABEL = {xp1, xp2, ...}, _order = {labels} }
+function rgGetXPLevelTable()
+	if rgXPLevelTable ~= nil then return rgXPLevelTable end
+	if not EEex_Active or EEex_Resource_Load2DA == nil then return nil end
+	local ok, result = pcall(function()
+		local array = EEex_Resource_Load2DA("XPLEVEL")
+		local sizeX, sizeY = array:getDimensions()
+		local out = { _order = {} }
+		for row = 0, sizeY - 1 do
+			local label = string.upper(array:getRowLabel(row))
+			local values = {}
+			for col = 0, sizeX - 2 do
+				local v = tonumber(array:getAtPoint(col, row))
+				if v == nil then break end
+				values[col + 1] = v
+			end
+			if label ~= "" and #values > 0 then
+				out[label] = values
+				table.insert(out._order, label)
+			end
+		end
+		return out
+	end)
+	if ok and result ~= nil and #result._order > 0 then
+		rgXPLevelTable = result
+	end
+	return rgXPLevelTable
+end
+-- Returns the XPLEVEL.2DA row matching the class slot (1-3); validated against the engine's nextLvlXp, otherwise staticList
+function rgGetEngineXPList(classIndex, preferredRows, staticList)
+	local xpTable = rgGetXPLevelTable()
+	if xpTable == nil then return staticList end
+	local classKeys = { "first", "second", "third" }
+	local classLevel = characters[currentID].classlevel[classKeys[classIndex]]
+	local level = rgGetClassLevelInt(classIndex)
+	if classLevel == nil or level == nil then return staticList end
+
+	local candidates = {}
+	for _, label in ipairs(preferredRows or {}) do table.insert(candidates, label) end
+	for _, label in ipairs(xpTable._order) do table.insert(candidates, label) end
+
+	for _, label in ipairs(candidates) do
+		local values = xpTable[label]
+		if values ~= nil and values[level] ~= nil and values[level + 1] == classLevel.nextLvlXp then
+			return values
+		end
+	end
+	for _, label in ipairs(preferredRows or {}) do
+		if xpTable[label] ~= nil then return xpTable[label] end
+	end
+	return staticList
+end
+
+-- Base class components of the sprite from CLASS.IDS (e.g. FIGHTER_MAGE_THIEF -> {"FIGHTER","MAGE","THIEF"}).
+-- Kits (also modded ones) always use their base class XP table, so the sprite's class is sufficient.
+function rgGetEngineClassRows(characterID)
+	if not EEex_Active or EEex_GameObject_Get == nil or EEex_Resource_LoadIDS == nil then return nil end
+	local ok, rows = pcall(function()
+		local sprite = EEex_GameObject_Get(characterID)
+		if sprite == nil then return nil end
+		if rgClassIDS == nil then rgClassIDS = EEex_Resource_LoadIDS("CLASS") end
+		local symbol = rgClassIDS:getStart(sprite.m_typeAI.m_Class)
+		if symbol == nil or symbol == "" then return nil end
+		local out = {}
+		for part in string.gmatch(string.upper(symbol), "[^_]+") do
+			table.insert(out, part)
+		end
+		return out
+	end)
+	if ok then return rows end
+	return nil
+end
+-- Candidate XPLEVEL rows for class slot: positional engine class first, other engine classes, then name-based fallback
+function rgBuildXPRowCandidates(engineRows, classIndex, fallbackRows)
+	local out = {}
+	if engineRows ~= nil then
+		if engineRows[classIndex] ~= nil then table.insert(out, engineRows[classIndex]) end
+		for i, label in ipairs(engineRows) do
+			if i ~= classIndex then table.insert(out, label) end
+		end
+	end
+	for _, label in ipairs(fallbackRows or {}) do table.insert(out, label) end
+	return out
+end
+
 function updateAttrTable()
 	
 	statusEffects = { }
@@ -781,6 +866,25 @@ function updateAttrTable()
 				listClassXPs3 = listXProgue
 			end
 		end
+		
+		if EEex_Active then
+			local xpGroupRows = {
+				[listXPmage] = { "MAGE", "SORCERER" },
+				[listXPfighter] = { "FIGHTER", "MONK" },
+				[listXPranger] = { "RANGER", "PALADIN" },
+				[listXPpriest] = { "CLERIC", "SHAMAN" },
+				[listXPdruid] = { "DRUID", "SHAMAN" },
+				[listXProgue] = { "THIEF", "BARD" },
+			}
+			local engineRows = rgGetEngineClassRows(currentID)
+			listClassXPs1 = rgGetEngineXPList(1, rgBuildXPRowCandidates(engineRows, 1, xpGroupRows[listClassXPs1]), listClassXPs1)
+			if characters[currentID].classlevel.second ~= nil then
+				listClassXPs2 = rgGetEngineXPList(2, rgBuildXPRowCandidates(engineRows, 2, xpGroupRows[listClassXPs2]), listClassXPs2)
+			end
+			if characters[currentID].classlevel.third ~= nil then
+				listClassXPs3 = rgGetEngineXPList(3, rgBuildXPRowCandidates(engineRows, 3, xpGroupRows[listClassXPs3]), listClassXPs3)
+			end
+		end	
 		
 		
 		local currLevelXP1 = 0
@@ -9759,6 +9863,46 @@ menu
 
 function resetStatsDisplay()
 	tempStats = {}
+	rgTempAPRPreview = {}
+end
+rgTempAPRPreview = rgTempAPRPreview or {}
+-- STATS.IDS 8 = NUMBEROFATTACKS, stored as key: 0-5 = 0-5 APR, 6-10 = 0.5-4.5 APR
+function rgAPRKeyToNumber(key)
+	if key == nil then return nil end
+	if key > 5 then return key - 5.5 end
+	if key < -5 then return key + 5.5 end
+	return key
+end
+function rgParseAPR(value)
+	if value == nil then return nil end
+	local num = tonumber(value)
+	if num ~= nil then return num end
+	local a, b = string.match(tostring(value), "(%-?%d+)%s*/%s*(%d+)")
+	if a ~= nil and tonumber(b) ~= 0 then return tonumber(a) / tonumber(b) end
+	return nil
+end
+function rgFormatAPRValue(value)
+	if value == nil then return "-" end
+	if math.floor(value) == value then return tostring(math.floor(value)) end
+	return tostring(math.floor(value * 2 + 0.5)) .. "/2"
+end
+-- Item comparison (CGameSprite::GetRatingWithItem) evaluates a temporary copy of the sprite.
+-- That copy is not a party member, so it is matched to the inspected character by name.
+function rgTempAPRListener(sprite)
+	if inventoryScreen == nil or e:GetActiveEngine() ~= inventoryScreen then return end
+	if sprite == nil or rgInvId == nil or sprite:getPortraitIndex() >= 0 then return end
+	local original = rgInvGetSpriteByCharacterID(rgInvId)
+	if original == nil or original:getName() ~= sprite:getName() then return end
+	local cloneAPR = rgAPRKeyToNumber(sprite:getStat(8))
+	local originalAPR = rgAPRKeyToNumber(original:getStat(8))
+	if cloneAPR == nil or originalAPR == nil then return end
+	rgTempAPRPreview[rgInvId] = { delta = cloneAPR - originalAPR }
+end
+if not rgTempAPRListenerRegistered and EEex_Opcode_AddListsResolvedListener ~= nil then
+	EEex_Opcode_AddListsResolvedListener(function(sprite)
+		pcall(rgTempAPRListener, sprite)
+	end)
+	rgTempAPRListenerRegistered = true
 end
 function getTempDamage()
 	local str = ""
@@ -10040,6 +10184,7 @@ end
 --end
 
 charTable = {}
+rgCharTable = {}
 rgCharInvNames = ''
 function rgUpdateSlots()
 	charTable = {}
@@ -10085,6 +10230,10 @@ function rgUpdateSlots()
 	if Infinity_GetNumCharacters() > 5 then
     table.insert(charTable, CharId6)
     rgCharInvNames = rgCharInvNames .. ' ' .. characters[id].name
+	end
+	rgCharTable = {}
+	for k, v in pairs(charTable) do
+		table.insert(rgCharTable, v)
 	end
     
     if curCharId == CharId1 then Infinity_OnPortraitLClick(0) rgActiveArea = 1; rgInvChar = '1'
@@ -10143,10 +10292,22 @@ function rgGetTempHP()
 	return getTempHP()
 end
 function rgGetTempDamage()
-	return getTempStat(characters[rgInvId].THAC0.current,'THAC0',-1)
+	return getTempDamage()
 end
 function rgGetTempTHAC0()
-	return getTempDamage()
+	return getTempStat(characters[rgInvId].THAC0.current,'THAC0',-1)
+end
+function rgGetTempAPR()
+	if tempStats[rgInvId] == nil then return "-" end
+	local preview = rgTempAPRPreview[rgInvId]
+	if preview == nil or preview.delta == 0 then return "-" end
+	local currentAPR = rgParseAPR(characters[rgInvId].proficiencies.numAttacks.current)
+	if currentAPR == nil then return "-" end
+	local newAPR = currentAPR + preview.delta
+	tempStats[rgInvId].numAttacks = newAPR
+	local text = rgFormatAPRValue(newAPR)
+	if preview.delta < 0 then return "^R" .. text .. "^-" end
+	return "^G" .. text .. "^-"
 end
 
 
@@ -10810,27 +10971,235 @@ function rgGetTempItemDesc()
 	--rgItemDescList = out
 end
 
+-- ITEMCAT.IDS (ITM header 0x1C) -> equipment slot used for comparison; "weapon" = active weapon slot
+rgInvItemTypeToSlot = {
+	[1] = "amulet", [3] = "belt", [4] = "boots", [6] = "gauntlets", [73] = "gauntlets",
+	[2] = "armor", [60] = "armor", [61] = "armor", [62] = "armor", [63] = "armor", [64] = "armor",
+	[65] = "armor", [66] = "armor", [67] = "armor", [68] = "armor",
+	[7] = "helmet", [72] = "helmet",
+	[10] = "ring", [32] = "cloak",
+	[12] = "shield", [41] = "shield", [47] = "shield", [49] = "shield", [53] = "shield",
+	[5] = "quiver", [14] = "quiver", [31] = "quiver",
+	[15] = "weapon", [16] = "weapon", [17] = "weapon", [18] = "weapon", [19] = "weapon", [20] = "weapon",
+	[21] = "weapon", [22] = "weapon", [23] = "weapon", [24] = "weapon", [25] = "weapon", [26] = "weapon",
+	[27] = "weapon", [28] = "weapon", [29] = "weapon", [30] = "weapon", [44] = "weapon", [57] = "weapon",
+	[69] = "weapon",
+}
+function rgInvSlotHasItem(character, slotName)
+	local slot = character.equipment[slotName]
+	return slot ~= nil and slot.item ~= nil and slot.item.name ~= nil and slot.item.name ~= ""
+end
+function rgGetTempItemRes()
+	if tempStats[rgInvId] == nil then return nil end
+	for i = #rgItemDescList, 1, -1 do
+		if rgItemDescList[i][1] == tempStats[rgInvId].tempItem then
+			return rgItemDescList[i][3]
+		end
+	end
+	return nil
+end
+-- Returns the equipment slot name of the currently worn item matching the type of tempStats[rgInvId].tempItem, or nil
+function rgGetCurrentItemSlotName()
+	local character = characters[rgInvId]
+	if character == nil or character.equipment == nil then return nil end
+	local category = rgInvItemTypeToSlot[rgInvGetItemType(rgGetTempItemRes())]
+	if category == nil then return nil end
+
+	if category == "weapon" then
+		local info = rgInvGetActiveWeaponInfo(character, rgInvGetSpriteByCharacterID(rgInvId))
+		if string.sub(info.slot, 1, 6) == "weapon" then return info.slot end
+		for i = 0, 3 do
+			if rgInvSlotHasItem(character, "weapon" .. i) then return "weapon" .. i end
+		end
+		return nil
+	elseif category == "quiver" then
+		local info = rgInvGetActiveWeaponInfo(character, rgInvGetSpriteByCharacterID(rgInvId))
+		if info.ammoSlot ~= "-" and rgInvSlotHasItem(character, info.ammoSlot) then return info.ammoSlot end
+		for i = 0, 2 do
+			if rgInvSlotHasItem(character, "quiver" .. i) then return "quiver" .. i end
+		end
+		return nil
+	elseif category == "ring" then
+		if rgInvSlotHasItem(character, "ringleft") then return "ringleft" end
+		if rgInvSlotHasItem(character, "ringright") then return "ringright" end
+		return nil
+	end
+
+	if rgInvSlotHasItem(character, category) then return category end
+	return nil
+end
+
+function rgGetSkinContrast()
+	if RgUISkin == 1 or RgUISkin == 2 then
+		return 1
+	else
+		return 0
+	end
+end
+function rgGetTempStatColor(txt)
+	--if text:sub(1, 2) == "^R" then
+	--	return "^G"
+	--else
+	--	return "^R"
+	--end
+	if txt:find("^R", 1, true) == 1 then
+		return "^G"
+	elseif txt:find("^G", 1, true) == 1 then
+		return "^R"
+	else
+		if RgUISkin == 1 or RgUISkin == 2 then
+			return '^5'
+		else
+			return '^B'
+		end
+	end
+end
+function rgGetTempStatNeutralColor()
+	if RgUISkin == 1 or RgUISkin == 2 then
+		return '^5'
+	else
+		return '^B'
+	end
+end
+
+rgItemComparisonList = {}
+function rgGetFullItemComparison()
+	if tempStats[rgInvId] == nil then
+		rgItemComparisonList = {}
+		return false
+	end
+	local head = '^D'
+	local body = '^B'
+	if RgUISkin == 1 or RgUISkin == 2 then
+		head = '^M'
+		body = '^5'
+	end
+	rgItemComparisonList = {}
+	local slotName = rgGetCurrentItemSlotName()
+	--if slotName == nil then return "" end
+	local item = {}
+	local curHeader = ''
+	local curDesc = ''
+	if slotName ~= nil then
+		item = characters[rgInvId].equipment[slotName].item
+		curHeader = head .. item.name
+		curDesc = body .. '\n' .. rgSplitByDoubleLine(item.description or "")	
+	else
+		curHeader = head .. t('RG_INV_EMPTY_SLOT')
+	end
+	
+	local newDesc = ''
+	local newHeader = ''
+	for i=1,#rgItemDescList,1 do
+		if rgItemDescList[i][1] == tempStats[rgInvId].tempItem  then
+			newHeader =  head .. tempStats[rgInvId].tempItem
+			newDesc = body .. '\n' .. rgSplitByDoubleLine(rgItemDescList[i][2])
+			break
+		end
+	end
+	
+	table.insert(rgItemComparisonList, {0,curHeader,newHeader}) 
+	
+	local cur = ''
+	local new = ''
+	if rgGetTempAC() ~= "-" then
+		cur = '     ' .. rgGetTempStatColor(rgGetTempAC()) .. characters[rgInvId].AC.current
+		new = '     ' .. rgGetTempAC()
+		table.insert(rgItemComparisonList, {1,cur,new}) 
+	end
+	if rgGetTempHP() ~= "-" then
+		cur = '     ' .. rgGetTempStatColor(rgGetTempHP()) .. characters[rgInvId].HP.current .. '/' .. characters[rgInvId].HP.max
+		new = '     ' .. rgGetTempHP()
+		table.insert(rgItemComparisonList, {2,cur,new}) 
+	end
+	if rgGetTempTHAC0() ~= "-" then
+		cur = '     ' .. rgGetTempStatColor(rgGetTempTHAC0()) .. characters[rgInvId].THAC0.current --rgGetTHAC0simleInv(rgInvId)
+		new = '     ' .. rgGetTempTHAC0()
+		table.insert(rgItemComparisonList, {3,cur,new}) 
+	end
+	if rgGetTempDamage() ~= "-" then
+		local dmgMinClr = rgGetTempStatColor(getTempStat(characters[rgInvId].damage.min,'dmgMin',1))
+		local dmgMaxClr = rgGetTempStatColor(getTempStat(characters[rgInvId].damage.max,'dmgMax',1))
+		cur = '     ' .. dmgMinClr .. characters[rgInvId].damage.min .. rgGetTempStatNeutralColor() .. ' - ' .. dmgMaxClr .. characters[rgInvId].damage.max --rgGetDamagesimleInv(rgInvId)
+		new = '     ' .. rgGetTempDamage()
+		table.insert(rgItemComparisonList, {4,cur,new}) 
+	end
+	if rgGetTempAPR() ~= "-" then
+		cur = '     ' .. rgGetTempStatColor(rgGetTempAPR()) .. characters[rgInvId].proficiencies.numAttacks.current
+		new = '     ' .. rgGetTempAPR()
+		table.insert(rgItemComparisonList, {5,cur,new}) 
+	end
+	
+	table.insert(rgItemComparisonList, {0,curDesc,newDesc}) 
+	
+	if tempStats[rgInvId].tempItem == '' then
+		rgItemDescList = {}
+		rgItemComparisonList = {}
+	end
+	
+	return true
+end
+function rgTrimString(str)
+	return (str:gsub("^%s+", ""):gsub("%s+$", ""))
+end
+-- Returns "++" style pips for weaponName from characters[rgInvId].proficiencies.weapons.current, or nil if not found.
+function rgGetWeaponProficiencyPips(weaponName)
+	local profs = characters[rgInvId].proficiencies.weapons.current
+	if profs == nil or weaponName == nil then return nil end
+	local wanted = string.lower(rgTrimString(weaponName:gsub("%^.", "")))
+	for line in string.gmatch(profs, "[^\r\n]+") do
+		--line = line:match("^(.-)/") or line
+		line = line:gsub(" / ", " ")
+		line = line:gsub("/", " ")
+		local clean = line:gsub("%^.", "")
+		local pips = clean:match("(%++)%s*$") or ""
+		local name = rgTrimString(clean:gsub("%++%s*$", ""):gsub("[:%s]+$", ""))
+		if string.lower(name) == wanted then
+			return pips
+		end
+	end
+	return nil
+end
+function rgAddProficiencyPips(line)
+	
+	local name = rgTrimString(line)
+	if name == "" then return line end
+	local pips = rgGetWeaponProficiencyPips(name)
+	if pips == nil or pips == "" then pips = "-" end
+	return line:gsub("%s+$", "") .. " (" .. pips .. ")"
+end
 function rgSplitByDoubleLine(str) 
 	local Lines = {}
 	local finLines = {}
 	local stat = false
+	str = str:gsub("/", " ")
+	--str = str:match("^(.-)/") or str
 	for i in string.gmatch(str, "[^\r\n\r\n]+") do
-		if rgStringStart(i,t("RG_ITM_COMP_ST")) then
+		if rgStringStart(i,getUiString("RG_ITM_COMP_ST")) then
 			stat = true
-		elseif rgStringStart(i,t("RG_ITM_COMP_WE")) or rgStringStart(i,t("RG_ITM_COMP_RE")) then
+		elseif rgStringStart(i,getUiString("RG_ITM_COMP_WE")) or rgStringStart(i,getUiString("RG_ITM_COMP_RE")) then
 			stat = false
 		elseif rgStringStart(i,"THAC0") then
 			i = i:gsub("THAC0", "\nTHAC0")
 		end
-		i = i:gsub(t("RG_ITM_COMP_PR"), "")
-		i = i:gsub(t("RG_ITM_COMP_DA"), "")
-		i = i:gsub(t("RG_ITM_COMP_TY"), "")
+		local isProfLine = rgStringStart(i,getUiString("RG_ITM_COMP_PR"))
+		i = i:gsub(getUiString("RG_ITM_COMP_PR"), "")
+		if isProfLine then
+			i = rgAddProficiencyPips(i)
+		end
+		i = i:gsub(getUiString("RG_ITM_COMP_DA"), "")
+		i = i:gsub(getUiString("RG_ITM_COMP_TY"), "")
 		if stat == true  then --and not rgStringStart(i,"STAT")
 			table.insert(Lines, i);
 		end
 	end	
 	
-	--table.remove(Lines, 1) 
+	table.remove(Lines, 1) 
+	local x = table.concat(Lines, "\n") 
+	local part1, part2 = x:match("^(.-)\r?\n\r?\n(.*)$")
+	if part1 and part2 then
+		return part2 .. "\n\n" .. part1
+	end
 	
 	--return Lines[1]
 	
@@ -10841,7 +11210,7 @@ function rgSplitByDoubleLine(str)
 	--return finLines[2] .. "\n\n" .. finLines[1]
 	--return table.concat(finLines, "\n") 
 	
-	return table.concat(Lines, "\n") 
+	return trim(table.concat(Lines, "\n") )
 end
 --function rgStringStart(str,start)
 --   return string.sub(str,1,string.len(start)) == start
@@ -10873,7 +11242,7 @@ function rgGetTempItemCheck(tempItem)
 	--if tempStats[rgInvId].tempItem ~= '' then
 		--rgTempItemDesc = tempItem.description
 		--rgTempItemName = tempItem.name
-		table.insert(rgItemDescList, {tempItem.name,tempItem.description}) 
+		table.insert(rgItemDescList, {tempItem.name,tempItem.description,tempItem.res}) 
 	--end
 end
 
@@ -10898,94 +11267,74 @@ function rgUnlockInvId()
 	rgInvId = id
 end
 
+function rgInvGetPlayerLooksLikeDrow()
+	if EEex_GameState_GetGlobalInt == nil then
+		return 0
+	end
+	local success, value = pcall(function() return EEex_GameState_GetGlobalInt("PlayerLooksLikeDrow") end)
+	if success and value ~= nil then
+		return value
+	end
+	return 0
+end
+
 function rgGetInvPaperdollBam()
-	--if rgGameEngine == 2 then
+	
+	local bam = ''
+	if EEex_Active == nil then
 		for i=1,#rgIpNpc,1 do
 			if rgIpNpc[i].name:lower() == t(characters[rgInvId].name):lower() then 
 				return 'rgdipnpc'
 			end
 		end
-	--end
+		bam = 'rgdip'
+		if characters[rgInvId].gender == 15729635 then
+			bam = bam .. 'f'
+		--elseif characters[rgInvId].gender == 15729749 then
+		--	bam = bam .. 'm'
+		else
+			bam = bam .. 'm'
+		end
+		if characters[rgInvId].race == 1096 or characters[rgInvId].race == 2828 then
+			bam = bam .. 'h'
+		elseif  characters[rgInvId].race == 1097 or characters[rgInvId].race == 1098 or characters[rgInvId].race == 8330 then
+			bam = bam .. 'e'
+		elseif  characters[rgInvId].race == 1100 then
+			bam = bam .. 'd'
+		elseif  characters[rgInvId].race == 1101 then
+			bam = bam .. 'l'
+		elseif  characters[rgInvId].race == 1099 then
+			bam = bam .. 'g'
+		elseif  characters[rgInvId].race == 53212 then
+			bam = bam .. 'o'
+		else
+			bam = bam .. 'h'
+		end
+	else
+		local data = rgEEexPlayerData
+		if data.paperdollBamDerived == '-' then
+			bam = 'rgdippol'
+		else
+			if rgPlayerLooksLikeDrow == 1 then
+				if characters[rgInvId].gender == 15729635 then
+					return 'rgdipfx'
+				else
+					return 'rgdipmx'
+				end
+			else
+				for i=1,#rgIpNpc,1 do
+					if rgIpNpc[i].name:lower() == t(characters[rgInvId].name):lower() then 
+						return 'rgdipnpc'
+					end
+				end
+				bam = data.paperdollBamDerived
+			end
+		end
+	end
 	
-	local bam = 'rgdip'
-	if characters[rgInvId].gender == 15729635 then
-		bam = bam .. 'f'
-	--elseif characters[rgInvId].gender == 15729749 then
-	--	bam = bam .. 'm'
-	else
-		bam = bam .. 'm'
-	end
-	if characters[rgInvId].race == 1096 or characters[rgInvId].race == 2828 then
-		bam = bam .. 'h'
-	elseif  characters[rgInvId].race == 1097 or characters[rgInvId].race == 1098 or characters[rgInvId].race == 8330 then
-		bam = bam .. 'e'
-	elseif  characters[rgInvId].race == 1100 then
-		bam = bam .. 'd'
-	elseif  characters[rgInvId].race == 1101 then
-		bam = bam .. 'l'
-	elseif  characters[rgInvId].race == 1099 then
-		bam = bam .. 'g'
-	elseif  characters[rgInvId].race == 53212 then
-		bam = bam .. 'o'
-	else
-		bam = bam .. 'h'
-	end
 	return bam
 end
-function rgGetInvPaperdollOffhandBamCoordinate()
-	local res = 0
-	if characters[rgInvId].race == 1096 or characters[rgInvId].race == 2828 or characters[rgInvId].race == 53212 then
-		res = 1 --'h'
-	elseif  characters[rgInvId].race == 1097 or characters[rgInvId].race == 1098 or characters[rgInvId].race == 8330 then
-		res = 2 --'e'
-	elseif  characters[rgInvId].race == 1100 or (characters[rgInvId].race == 1101 and characters[rgInvId].gender == 15729635)  then
-		res = 3 --'d'
-	elseif  characters[rgInvId].race == 1099 or (characters[rgInvId].race == 1101 and characters[rgInvId].gender == 15729749) then
-		res = 4 --'g'
-	else
-		res = 1 
-	end
-	return res
-end
---function rgGetInvPaperdollSeq()
---	if characters[rgInvId].class == Infinity_FetchString(10177) or characters[rgInvId].class == Infinity_FetchString(10184) or characters[rgInvId].class == Infinity_FetchString(10186) or characters[rgInvId].class == Infinity_FetchString(1065)
---			or characters[rgInvId].class == Infinity_FetchString(1079) or characters[rgInvId].class == Infinity_FetchString(1080) then
---		return 0
---	elseif  characters[rgInvId].class == Infinity_FetchString(10174) 
---	or characters[rgInvId].class == Infinity_FetchString(10178) 
---	or characters[rgInvId].class == Infinity_FetchString(10182) 
---	or characters[rgInvId].class == Infinity_FetchString(10187) 
---			or characters[rgInvId].class == Infinity_FetchString(10188) 
---			or characters[rgInvId].class == Infinity_FetchString(10189) 
---			or characters[rgInvId].class == Infinity_FetchString(10173) 
---			or characters[rgInvId].class == Infinity_FetchString(1073) 
---			or characters[rgInvId].class == Infinity_FetchString(1074) 
---			or characters[rgInvId].class == Infinity_FetchString(1075) 
---			or characters[rgInvId].class == Infinity_FetchString(1076 )
---			or characters[rgInvId].class == Infinity_FetchString(1077) 
---			or characters[rgInvId].class == Infinity_FetchString(1078) 
---			or characters[rgInvId].class == Infinity_FetchString(1066)
---			or characters[rgInvId].class == Infinity_FetchString(10190) 
---			or characters[rgInvId].class == Infinity_FetchString(10191) 
---			or characters[rgInvId].class == Infinity_FetchString(10194) 
---			or characters[rgInvId].class == Infinity_FetchString(1052) 
---			or characters[rgInvId].class == Infinity_FetchString(1053) 
---			or characters[rgInvId].class == Infinity_FetchString(1056) then
---		return 1
---	elseif  rgGetClassLevelInvString(1):lower() == Infinity_FetchString(10176):lower() 
---		 or rgGetClassLevelInvString(1):lower() == Infinity_FetchString(10180):lower() 
---		 or rgGetClassLevelInvString(1):lower() == Infinity_FetchString(1058):lower() 
---		 or rgGetClassLevelInvString(1):lower() == Infinity_FetchString(1058):lower()
---		 or rgGetClassLevelInvString(1):lower() == Infinity_FetchString(1081):lower() then
---		return 3
---	elseif  characters[rgInvId].class:lower() == Infinity_FetchString(10175):lower() or characters[rgInvId].class:lower() == Infinity_FetchString(10179):lower() or characters[rgInvId].class:lower() == Infinity_FetchString(10193):lower()
---			or characters[rgInvId].class:lower() == Infinity_FetchString(1057):lower()
---			or characters[rgInvId].class:lower() == Infinity_FetchString(1082):lower() or characters[rgInvId].class:lower() == Infinity_FetchString(1083):lower() then
---		return 2
---	else
---		return 0
---	end
---end
+
 
 function rgGetInvPaperdollSeq()
 	local ret = 0
@@ -10996,40 +11345,59 @@ function rgGetInvPaperdollSeq()
 			end
 		end
 	--end
-	for i=1,#rgIpAppearance,1 do
-		if rgGetGameEngineString(rgIpAppearance[i].strref[1],rgIpAppearance[i].strref[2],rgIpAppearance[i].strref[3],rgIpAppearance[i].strref[4]):lower() == rgGetClassLevelInvString(1):lower() then 
-			ret = rgIpAppearance[i].level
-			break
+	if EEex_Active == nil then
+		for i=1,#rgIpAppearance,1 do
+			if rgGetGameEngineString(rgIpAppearance[i].strref[1],rgIpAppearance[i].strref[2],rgIpAppearance[i].strref[3],rgIpAppearance[i].strref[4]):lower() == rgGetClassLevelInvString(1):lower() then 
+				ret = rgIpAppearance[i].level
+				break
+			end
 		end
+	else
+		local data = rgEEexPlayerData
+		ret = data.paperdollSequenceDerived
 	end
 	return ret
 end
 
 function rgGetInvPaperdollFrame()
 	local ret = 0
-	local isRobe = 0
-	if rgGetInvPaperdollBam() == 'rgdipnpc' and (rgGetInvPaperdollSeq() == 0 or rgGetInvPaperdollSeq() == 3 or rgGetInvPaperdollSeq() == 7 or rgGetInvPaperdollSeq() == 12 or rgGetInvPaperdollSeq() >= 18) then
-		isRobe = 1
-	end
-	if rgGetInvPaperdollBam() ~= 'rgdipnpc' and rgGetInvPaperdollSeq() == 3 then
-		isRobe = 1
-	end
-	
-	if isRobe == 1 then
-	ret = 0
-		for i=1,#rgIpRobe,1 do
-			if rgGetGameEngineString(rgIpRobe[i].strref[1],rgIpRobe[i].strref[2],rgIpRobe[i].strref[3],rgIpRobe[i].strref[4]) == characters[rgInvId].equipment.armor.item.name then 
-				ret = rgIpRobe[i].level
-				break
+	if EEex_Active == nil then
+		local isRobe = 0
+		if rgGetInvPaperdollBam() == 'rgdipnpc' and (rgGetInvPaperdollSeq() == 0 or rgGetInvPaperdollSeq() == 3 or rgGetInvPaperdollSeq() == 7 or rgGetInvPaperdollSeq() == 12 or rgGetInvPaperdollSeq() >= 18) then
+			isRobe = 1
+		end
+		if rgGetInvPaperdollBam() ~= 'rgdipnpc' and rgGetInvPaperdollSeq() == 3 then
+			isRobe = 1
+		end
+		
+		if isRobe == 1 then
+		ret = 0
+			for i=1,#rgIpRobe,1 do
+				if rgGetGameEngineString(rgIpRobe[i].strref[1],rgIpRobe[i].strref[2],rgIpRobe[i].strref[3],rgIpRobe[i].strref[4]) == characters[rgInvId].equipment.armor.item.name then 
+					ret = rgIpRobe[i].level
+					break
+				end
+			end
+		else
+		ret = 0
+			for i=1,#rgIpArmor,1 do
+				if rgGetGameEngineString(rgIpArmor[i].strref[1],rgIpArmor[i].strref[2],rgIpArmor[i].strref[3],rgIpArmor[i].strref[4]) == characters[rgInvId].equipment.armor.item.name then 
+					ret = rgIpArmor[i].level
+					break
+				end
 			end
 		end
 	else
-	ret = 0
-		for i=1,#rgIpArmor,1 do
-			if rgGetGameEngineString(rgIpArmor[i].strref[1],rgIpArmor[i].strref[2],rgIpArmor[i].strref[3],rgIpArmor[i].strref[4]) == characters[rgInvId].equipment.armor.item.name then 
-				ret = rgIpArmor[i].level
-				break
+		local data = rgEEexPlayerData
+		if data.paperdollBamDerived == '-' then
+			local code = string.format("0x%04X", tonumber(data.animationID) or 0)
+			for i=1,#rgEEexPolymorph,1 do
+				if rgEEexPolymorph[i].name == code then 
+					return rgEEexPolymorph[i].frame
+				end
 			end
+		else
+			ret = data.paperdollFrameDerived
 		end
 	end
 	return ret
@@ -11077,29 +11445,69 @@ function rgGetInvShield()
 	return ret
 end
 function rgGetInvPaperdollOffhandFrame()
-	local shield = rgGetInvShield()
-	if shield > 0 then
-		return shield
-	end
-	
-	if characters[rgInvId].damage.minOffhand then
-		local name = characters[rgInvId].equipment.shield.item.name
-		for i=1,#rgIpWeaponSpecial,1 do
-			if rgGetGameEngineString(rgIpWeaponSpecial[i].strref[1],rgIpWeaponSpecial[i].strref[2],rgIpWeaponSpecial[i].strref[3],rgIpWeaponSpecial[i].strref[4]) == name then 
-				return rgIpWeaponSpecial[i].frameOffhand
+	if EEex_Active == nil then
+		local shield = rgGetInvShield()
+		if shield > 0 then
+			return shield
+		end
+		
+		if characters[rgInvId].damage.minOffhand then
+			local name = characters[rgInvId].equipment.shield.item.name
+			for i=1,#rgIpWeaponSpecial,1 do
+				if rgGetGameEngineString(rgIpWeaponSpecial[i].strref[1],rgIpWeaponSpecial[i].strref[2],rgIpWeaponSpecial[i].strref[3],rgIpWeaponSpecial[i].strref[4]) == name then 
+					return rgIpWeaponSpecial[i].frameOffhand
+				end
+			end
+			local desc = characters[rgInvId].equipment.shield.item.description
+			local startIdx = string.find(desc, getUiString('RG_ITM_COMP_ST'))
+			
+			if not startIdx then
+				startIdx = 0
+			end
+			
+			local substring = string.sub(desc, startIdx)
+			
+			for _, item in ipairs(rgIpWeaponOffHand) do
+				--local fetchedString = Infinity_FetchString(item.strref)
+				local fetchedString = rgGetGameEngineString(item.strref[1],item.strref[2],item.strref[3],item.strref[4])
+				local cleanDetails = string.lower(substring)
+				local cleanFetched = string.lower(fetchedString or "")
+				
+				if cleanFetched ~= "" and string.find(cleanDetails, cleanFetched, 1, true) then
+					return item.frame
+				end
 			end
 		end
-		local desc = characters[rgInvId].equipment.shield.item.description
-		local startIdx = string.find(desc, getUiString('RG_ITM_COMP_ST'))
+	else
+		local data = rgEEexPlayerData
+		local code = tostring(data.shieldEquippedAppearance)
+		for i=1,#rgEEexOffHand,1 do
+			if rgEEexOffHand[i].name == code and data.shieldSlotActive == true and data.paperdollBamDerived ~= '-' and ((characters[rgInvId].damage.minOffhand and rgEEexOffHand[i].shield == false) or rgEEexOffHand[i].shield == true) then 
+				return rgEEexOffHand[i].frame
+			end
+		end
+	end
+    
+    return 0
+end
+function rgGetInvPaperdollWeaponFrame()
+	if EEex_Active == nil then
+		local nameString = rgGetWeaponNameFromDetails()
+		for i=1,#rgIpWeaponSpecial,1 do
+			if rgGetGameEngineString(rgIpWeaponSpecial[i].strref[1],rgIpWeaponSpecial[i].strref[2],rgIpWeaponSpecial[i].strref[3],rgIpWeaponSpecial[i].strref[4]) == nameString then 
+				return rgIpWeaponSpecial[i].frame
+			end
+		end
+		local inputString = rgGetWeaponDescriptionFromDetails()
+		local startIdx = string.find(inputString, getUiString('RG_ITM_COMP_ST'))
 		
 		if not startIdx then
 			startIdx = 0
 		end
 		
-		local substring = string.sub(desc, startIdx)
+		local substring = string.sub(inputString, startIdx)
 		
-		for _, item in ipairs(rgIpWeaponOffHand) do
-			--local fetchedString = Infinity_FetchString(item.strref)
+		for _, item in ipairs(rgIpWeapon) do
 			local fetchedString = rgGetGameEngineString(item.strref[1],item.strref[2],item.strref[3],item.strref[4])
 			local cleanDetails = string.lower(substring)
 			local cleanFetched = string.lower(fetchedString or "")
@@ -11108,36 +11516,15 @@ function rgGetInvPaperdollOffhandFrame()
 				return item.frame
 			end
 		end
-	end
-	
-    
-    return 0
-end
-function rgGetInvPaperdollWeaponFrame()
-	local nameString = rgGetWeaponNameFromDetails()
-	for i=1,#rgIpWeaponSpecial,1 do
-		if rgGetGameEngineString(rgIpWeaponSpecial[i].strref[1],rgIpWeaponSpecial[i].strref[2],rgIpWeaponSpecial[i].strref[3],rgIpWeaponSpecial[i].strref[4]) == nameString then 
-			return rgIpWeaponSpecial[i].frame
+	else
+		local data = rgEEexPlayerData
+		local code = tostring(data.weaponEquippedAppearance)
+		for i=1,#rgEeexMainHand,1 do
+			if rgEeexMainHand[i].name == code then 
+				return rgEeexMainHand[i].frame
+			end
 		end
 	end
-	local inputString = rgGetWeaponDescriptionFromDetails()
-    local startIdx = string.find(inputString, getUiString('RG_ITM_COMP_ST'))
-    
-    if not startIdx then
-        startIdx = 0
-    end
-	
-	local substring = string.sub(inputString, startIdx)
-    
-    for _, item in ipairs(rgIpWeapon) do
-        local fetchedString = rgGetGameEngineString(item.strref[1],item.strref[2],item.strref[3],item.strref[4])
-        local cleanDetails = string.lower(substring)
-		local cleanFetched = string.lower(fetchedString or "")
-		
-		if cleanFetched ~= "" and string.find(cleanDetails, cleanFetched, 1, true) then
-			return item.frame
-		end
-    end
     
     return nil
 end
@@ -11210,6 +11597,74 @@ function rgGetWeaponNameFromDetails()
 
     return nil
 end
+function rgGetInvPaperdollHelmetFrame()
+	local data = rgEEexPlayerData
+		local code = tostring(data.helmetEquippedAppearance)
+		for i=1,#rgEEexHelmets,1 do
+			if rgEEexHelmets[i].name == code then 
+				return rgEEexHelmets[i].frame
+			end
+		end
+    return nil
+end
+
+function rgGetInvPaperdollHelmetOffset()
+	local data = rgEEexPlayerData
+	if data.paperdollBamDerived == 'RGDIPMH' then
+		Infinity_SetArea("rgHelmetPaperdoll", 505,273,90,90)
+	elseif data.paperdollBamDerived == 'RGDIPFH' or data.paperdollBamDerived == 'RGDIPFO' then
+		Infinity_SetArea("rgHelmetPaperdoll", 505,275,90,90)
+	elseif data.paperdollBamDerived == 'RGDIPMO' then
+		Infinity_SetArea("rgHelmetPaperdoll", 503,266,95,95)
+	elseif data.paperdollBamDerived == 'RGDIPME' or data.paperdollBamDerived == 'RGDIPFE' then
+		Infinity_SetArea("rgHelmetPaperdoll", 504,288,85,85)
+	elseif data.paperdollBamDerived == 'RGDIPFL' or data.paperdollBamDerived == 'RGDIPML' then
+		Infinity_SetArea("rgHelmetPaperdoll", 502,298,100,100)
+	elseif data.paperdollBamDerived == 'RGDIPMD' then
+		Infinity_SetArea("rgHelmetPaperdoll", 502,297,100,100)
+	elseif data.paperdollBamDerived == 'RGDIPFD' then
+		Infinity_SetArea("rgHelmetPaperdoll", 504,297,100,100)
+	elseif data.paperdollBamDerived == 'RGDIPMG' or data.paperdollBamDerived == 'RGDIPFG' then
+		Infinity_SetArea("rgHelmetPaperdoll", 503,297,100,100)
+	else
+		Infinity_SetArea("rgHelmetPaperdoll", 0 ,0 ,0,0)
+	end
+	
+	for i=1,#rgIpNpc,1 do
+		if rgIpNpc[i].name:lower() == characters[rgInvId].name:lower() and rgIpNpc[i].helmX > 0 then 
+			Infinity_SetArea("rgHelmetPaperdoll", rgIpNpc[i].helmX,rgIpNpc[i].helmY,rgIpNpc[i].helmW,rgIpNpc[i].helmW)
+		end
+	end
+end
+function rgGetInvPaperdollOffhandOffset()
+	if EEex_Active == nil then
+		if characters[rgInvId].race == 1096 or characters[rgInvId].race == 2828 or characters[rgInvId].race == 53212 then
+			Infinity_SetArea("rgOffhandPaperdoll", 440, 274, 204, 264)
+		elseif  characters[rgInvId].race == 1097 or characters[rgInvId].race == 1098 or characters[rgInvId].race == 8330 then
+			Infinity_SetArea("rgOffhandPaperdoll", 434, 275, 204, 264)
+		elseif  characters[rgInvId].race == 1100 or (characters[rgInvId].race == 1101 and characters[rgInvId].gender == 15729635)  then
+			Infinity_SetArea("rgOffhandPaperdoll", 448, 269, 204, 264)
+		elseif  characters[rgInvId].race == 1099 or (characters[rgInvId].race == 1101 and characters[rgInvId].gender == 15729749) then
+			Infinity_SetArea("rgOffhandPaperdoll", 450, 279, 204, 264)
+		else
+			Infinity_SetArea("rgOffhandPaperdoll", 0 ,0 ,0,0)
+		end
+	else
+		local data = rgEEexPlayerData
+		if data.paperdollBamDerived == 'RGDIPMH' or data.paperdollBamDerived == 'RGDIPFH' or data.paperdollBamDerived == 'RGDIPFO' or data.paperdollBamDerived == 'RGDIPMO' then
+			Infinity_SetArea("rgOffhandPaperdoll", 440, 274, 204, 264)
+		elseif data.paperdollBamDerived == 'RGDIPME' or data.paperdollBamDerived == 'RGDIPFE' then
+			Infinity_SetArea("rgOffhandPaperdoll", 434, 275, 204, 264)
+		elseif data.paperdollBamDerived == 'RGDIPMD' or data.paperdollBamDerived == 'RGDIPFD' or data.paperdollBamDerived == 'RGDIPFL' then
+			Infinity_SetArea("rgOffhandPaperdoll", 448, 269, 204, 264)
+		elseif data.paperdollBamDerived == 'RGDIPMG' or data.paperdollBamDerived == 'RGDIPFG' or data.paperdollBamDerived == 'RGDIPML' then
+			Infinity_SetArea("rgOffhandPaperdoll", 450, 279, 204, 264)
+		else
+			Infinity_SetArea("rgOffhandPaperdoll", 0 ,0 ,0,0)
+		end
+	end
+end
+
 --function rgGetWeaponDescriptionFromDetails()
 --    -- Přístup k datům
 --    local details = characters[rgInvId].damage.details
@@ -11314,6 +11769,428 @@ function rgGetSpriteSlotArea()
 	end
 end
 
+function rgInvGetSpriteByCharacterID(characterID)
+	if EEex_GameObject_Get == nil or characterID == nil then
+		return nil
+	end
+	return EEex_GameObject_Get(characterID)
+end
+
+-- ITM header offset 0x1C (Item_Header_st.itemType)
+function rgInvGetItemType(itemResref)
+	if itemResref == nil or itemResref == "" or EEex_Resource_Demand == nil then
+		return -1
+	end
+	local success, itemType = pcall(function()
+		local header = EEex_Resource_Demand(itemResref, "ITM")
+		if header == nil then
+			return nil
+		end
+		return EEex_ReadU16(EEex_UDToPtr(header) + 0x1C)
+	end)
+	if success and itemType ~= nil then
+		return itemType
+	end
+	return -1
+end
+
+-- Bow (15), sling (18), crossbow (27)
+rgInvLauncherItemTypes = {[15] = true, [18] = true, [27] = true}
+
+-- m_selectedWeapon uses SLOTS.IDS: 10 = fist, 11-14 = ammo, 34 = magic weapon, 35-38 = weapon0-3
+function rgInvGetActiveWeaponInfo(character, sprite)
+	local out = {slot = "-", name = "-", index = -1, ammoSlot = "-"}
+	if character == nil then
+		return out
+	end
+
+	local selectedWeaponIndex = -1
+	if sprite ~= nil and sprite.m_equipment ~= nil and sprite.m_equipment.m_selectedWeapon ~= nil then
+		selectedWeaponIndex = sprite.m_equipment.m_selectedWeapon
+	end
+	out.index = selectedWeaponIndex
+
+	local function setFromSlot(slotName)
+		out.slot = slotName
+		local slot = character.equipment ~= nil and character.equipment[slotName] or nil
+		if slot ~= nil and slot.item ~= nil and slot.item.name ~= nil and slot.item.name ~= "" then
+			out.name = slot.item.name
+		end
+	end
+
+	if selectedWeaponIndex >= 35 and selectedWeaponIndex <= 38 then
+		setFromSlot("weapon" .. tostring(selectedWeaponIndex - 35))
+	elseif selectedWeaponIndex >= 11 and selectedWeaponIndex <= 14 then
+		-- Ranged: the engine selects the ammo slot, the held launcher sits in a weapon slot
+		out.ammoSlot = "quiver" .. tostring(selectedWeaponIndex - 11)
+		if character.equipment ~= nil then
+			for i = 0, 3 do
+				local weaponSlot = "weapon" .. tostring(i)
+				local slot = character.equipment[weaponSlot]
+				if slot ~= nil and slot.item ~= nil and rgInvLauncherItemTypes[rgInvGetItemType(slot.item.res)] then
+					setFromSlot(weaponSlot)
+					break
+				end
+			end
+		end
+	elseif selectedWeaponIndex == 10 then
+		out.slot = "fist"
+	elseif selectedWeaponIndex == 34 then
+		out.slot = "magic"
+	end
+
+	return out
+end
+
+-- ITM header offset 0x4C (Item_Header_st.baseWeight), multiplied by stack count
+function rgInvGetItemWeight(item)
+	if item == nil or item.res == nil or item.res == "" or EEex_Resource_Demand == nil then
+		return 0
+	end
+	local success, weight = pcall(function()
+		local header = EEex_Resource_Demand(item.res, "ITM")
+		if header == nil then
+			return nil
+		end
+		return EEex_ReadU32(EEex_UDToPtr(header) + 0x4C)
+	end)
+	if not success or weight == nil then
+		return 0
+	end
+
+	local count = tonumber(item.count)
+	if count ~= nil and count > 1 then
+		return weight * count
+	end
+	return weight
+end
+
+rgInvCarriedSlotNames = {
+	"armor", "gauntlets", "helmet", "amulet", "belt", "ringleft", "ringright", "cloak", "boots", "shield",
+	"weapon0", "weapon1", "weapon2", "weapon3",
+	"quiver0", "quiver1", "quiver2", "quiver3",
+	"personal0", "personal1", "personal2", "personal3",
+}
+for i = 0, 15 do
+	table.insert(rgInvCarriedSlotNames, "group" .. tostring(i))
+end
+
+function rgInvGetTotalCarriedWeight(character)
+	if character == nil or character.equipment == nil then
+		return 0
+	end
+	local totalWeight = 0
+	for _, slotName in ipairs(rgInvCarriedSlotNames) do
+		local slotData = character.equipment[slotName]
+		if slotData ~= nil and slotData.item ~= nil then
+			totalWeight = totalWeight + rgInvGetItemWeight(slotData.item)
+		end
+	end
+	return totalWeight
+end
+
+function rgInvGetAnimationID(sprite)
+	if sprite == nil or sprite.m_animation == nil or sprite.m_animation.m_animation == nil then
+		return -1
+	end
+	return sprite.m_animation.m_animation.m_animationID or -1
+end
+
+-- ITM header offset 0x22 (Item_Header_st.animationType), e.g. "2A", "3A", "4A"
+rgInvAnimateIDS = nil
+
+function rgInvGetAnimateIDS()
+	if rgInvAnimateIDS == nil and EEex_Resource_LoadIDS ~= nil then
+		local success, ids = pcall(function() return EEex_Resource_LoadIDS("ANIMATE") end)
+		if success then
+			rgInvAnimateIDS = ids
+		end
+	end
+	return rgInvAnimateIDS
+end
+
+function rgInvGetAnimationSymbol(animationID)
+	if animationID == nil or animationID < 0 then
+		return "-"
+	end
+	local ids = rgInvGetAnimateIDS()
+	if ids == nil then
+		return "-"
+	end
+	local success, symbol = pcall(function() return ids:getStart(animationID) end)
+	if success and symbol ~= nil and symbol ~= "" then
+		return symbol
+	end
+	return "-"
+end
+
+function rgInvGetPaperdollBamFromAnimationSymbol(animationSymbol)
+	if animationSymbol == nil or animationSymbol == "-" then
+		return "-"
+	end
+	local symbol = string.upper(animationSymbol)
+	local sexCode = nil
+	if string.find(symbol, "FEMALE", 1, true) ~= nil then
+		sexCode = "F"
+	elseif string.find(symbol, "MALE", 1, true) ~= nil then
+		sexCode = "M"
+	end
+	local raceCode = nil
+	if string.find(symbol, "HALF_ORC", 1, true) ~= nil or string.find(symbol, "HALFORC", 1, true) ~= nil then
+		raceCode = "O"
+	elseif string.find(symbol, "HALFLING", 1, true) ~= nil then
+		raceCode = "L"
+	elseif string.find(symbol, "DWARF", 1, true) ~= nil then
+		raceCode = "D"
+	elseif string.find(symbol, "ELF", 1, true) ~= nil then
+		raceCode = "E"
+	elseif string.find(symbol, "GNOME", 1, true) ~= nil then
+		raceCode = "G"
+	elseif string.find(symbol, "HUMAN", 1, true) ~= nil then
+		raceCode = "H"
+	end
+	if sexCode == nil or raceCode == nil then
+		return "-"
+	end
+	return "RGDIP" .. sexCode .. raceCode
+end
+
+function rgInvGetPaperdollSequenceFromAnimationSymbol(animationSymbol)
+	if animationSymbol == nil or animationSymbol == "-" then
+		return 0
+	end
+	local symbol = string.upper(animationSymbol)
+	if string.find(symbol, "MONK", 1, true) ~= nil or string.find(symbol, "CLERIC", 1, true) ~= nil then
+		return 0
+	elseif string.find(symbol, "FIGHTER", 1, true) ~= nil then
+		return 1
+	elseif string.find(symbol, "THIEF", 1, true) ~= nil then
+		return 2
+	elseif string.find(symbol, "MAGE", 1, true) ~= nil then
+		return 3
+	end
+	return 0
+end
+
+function rgInvGetPaperdollFrameFromAnimationSymbol(animationSymbol, armorAppearance)
+	if armorAppearance == nil or armorAppearance == "" or armorAppearance == "-" then
+		return 0
+	end
+	local symbol = string.upper(animationSymbol or "")
+	local isMage = string.find(symbol, "MAGE", 1, true) ~= nil
+	local frameMap = { ["2A"] = 1, ["3A"] = 2, ["4A"] = 3, ["2W"] = 1, ["3W"] = 2, ["4W"] = 3 }
+	local appearance = string.upper(armorAppearance)
+	local frame = frameMap[appearance]
+	if frame == nil then
+		return 0
+	end
+	if isMage then
+		return string.sub(appearance, 2, 2) == "W" and frame or 0
+	else
+		return string.sub(appearance, 2, 2) == "A" and frame or 0
+	end
+end
+
+function rgInvGetDerivedPaperdollInfo(animationID, armorAppearance)
+	local animationSymbol = rgInvGetAnimationSymbol(animationID)
+	return {
+		animationSymbol = animationSymbol,
+		animationIDSLine = string.format("0x%04X %s", tonumber(animationID) or 0, animationSymbol),
+		bam = rgInvGetPaperdollBamFromAnimationSymbol(animationSymbol),
+		sequence = rgInvGetPaperdollSequenceFromAnimationSymbol(animationSymbol),
+		frame = rgInvGetPaperdollFrameFromAnimationSymbol(animationSymbol, armorAppearance),
+	}
+end
+
+function rgInvGetItemEquippedAppearance(itemResref)
+	if itemResref == nil or itemResref == "" or EEex_Resource_Demand == nil then
+		return "-"
+	end
+	local success, appearance = pcall(function()
+		local header = EEex_Resource_Demand(itemResref, "ITM")
+		if header == nil then
+			return nil
+		end
+		local address = EEex_UDToPtr(header) + 0x22
+		local out = ""
+		for i = 0, 1 do
+			local byte = EEex_ReadU8(address + i)
+			if byte ~= 0 then
+				out = out .. string.char(byte)
+			end
+		end
+		return out
+	end)
+	if success and appearance ~= nil and appearance ~= "" then
+		return appearance
+	end
+	return "-"
+end
+
+function rgInvGetSlotEquippedAppearance(character, slotName)
+	if character == nil or character.equipment == nil or slotName == nil or character.equipment[slotName] == nil or character.equipment[slotName].item == nil then
+		return "-", "-"
+	end
+	local itemResref = character.equipment[slotName].item.res
+	if itemResref == nil or itemResref == "" then
+		return "-", "-"
+	end
+	return rgInvGetItemEquippedAppearance(itemResref), itemResref
+end
+
+function rgInvGetArmorEquippedAppearance(character)
+	return rgInvGetSlotEquippedAppearance(character, "armor")
+end
+
+-- ITM header offset 0x18 (Item_Header_st.itemFlags), bit 1 (0x2) = two-handed
+function rgInvIsItemTwoHanded(itemResref)
+	if itemResref == nil or itemResref == "" or itemResref == "-" or EEex_Resource_Demand == nil then
+		return false
+	end
+	local success, flags = pcall(function()
+		local header = EEex_Resource_Demand(itemResref, "ITM")
+		if header == nil then
+			return nil
+		end
+		return EEex_ReadU32(EEex_UDToPtr(header) + 0x18)
+	end)
+	if success and flags ~= nil then
+		return EEex_BAnd(flags, 0x2) ~= 0
+	end
+	return false
+end
+
+-- Derived stat 58 = m_bHeld (EEex_Fix.lua), good proxy for paralysis / non-orderable inventory state
+function rgInvGetSpriteOrderableInfo(sprite)
+	local heldValue = 0
+	local generalState = -1
+	if sprite ~= nil then
+		local okHeld, retHeld = pcall(function() return sprite:getStat(58) end)
+		if okHeld and retHeld ~= nil then
+			heldValue = retHeld
+		end
+		local okState, retState = pcall(function() return sprite:getState() end)
+		if okState and retState ~= nil then
+			generalState = retState
+		end
+	end
+	return {
+		held = heldValue ~= 0,
+		heldValue = heldValue,
+		orderableApprox = heldValue == 0,
+		generalState = generalState,
+	}
+end
+
+function rgInvGetSelectedCharacterData()
+	local character = nil
+	if characters ~= nil then
+		character = characters[rgInvId]
+	end
+	if character == nil then
+		return nil
+	end
+
+	local sprite = rgInvGetSpriteByCharacterID(rgInvId)
+	local activeWeapon = rgInvGetActiveWeaponInfo(character, sprite)
+	--local orderableInfo = rgInvGetSpriteOrderableInfo(sprite)
+	local animationID = rgInvGetAnimationID(sprite)
+	local armorAppearance, armorResref = rgInvGetArmorEquippedAppearance(character)
+	local paperdollInfo = rgInvGetDerivedPaperdollInfo(animationID, armorAppearance)
+	local helmetAppearance, helmetResref = rgInvGetSlotEquippedAppearance(character, "helmet")
+	local shieldAppearance, shieldResref = rgInvGetSlotEquippedAppearance(character, "shield")
+	local weaponAppearance, weaponResref = "-", "-"
+	if string.sub(activeWeapon.slot, 1, 6) == "weapon" then
+		weaponAppearance, weaponResref = rgInvGetSlotEquippedAppearance(character, activeWeapon.slot)
+	end
+	activeWeapon.twoHanded = rgInvIsItemTwoHanded(weaponResref)
+
+	local majorColor = "-"
+	local minorColor = "-"
+	if sprite ~= nil and sprite.m_baseStats ~= nil and sprite.m_baseStats.m_colors ~= nil then
+		minorColor = tostring(sprite.m_baseStats.m_colors:get(1))
+		majorColor = tostring(sprite.m_baseStats.m_colors:get(2))
+	end
+
+	local topLevelKeys = {}
+	for key, _ in pairs(character) do
+		table.insert(topLevelKeys, tostring(key))
+	end
+	table.sort(topLevelKeys)
+	rgEEexPlayerData =
+	{
+		characterID = rgInvId,
+		name = character.name or "-",
+		class = character.class or "-",
+		activeWeapon = activeWeapon,
+		animationID = animationID,
+		animationSymbol = paperdollInfo.animationSymbol,
+		animationIDSLine = paperdollInfo.animationIDSLine,
+		paperdollBamDerived = paperdollInfo.bam,
+		paperdollSequenceDerived = paperdollInfo.sequence,
+		paperdollFrameDerived = paperdollInfo.frame,
+		armorResref = armorResref,
+		armorEquippedAppearance = armorAppearance,
+		helmetResref = helmetResref,
+		helmetEquippedAppearance = helmetAppearance,
+		shieldResref = shieldResref,
+		shieldEquippedAppearance = shieldAppearance,
+		weaponResref = weaponResref,
+		weaponEquippedAppearance = weaponAppearance,
+		weaponTwoHanded = activeWeapon.twoHanded,
+		shieldSlotActive = not activeWeapon.twoHanded,
+		--spriteHeld = orderableInfo.held,
+		--spriteHeldValue = orderableInfo.heldValue,
+		--spriteOrderableApprox = orderableInfo.orderableApprox,
+		--spriteGeneralState = orderableInfo.generalState,
+		paperdollColorMajor = majorColor,
+		paperdollColorMinor = minorColor,
+		totalCarriedWeight = rgInvGetTotalCarriedWeight(character),
+		availableTopLevelKeys = topLevelKeys,
+		character = character,
+		sprite = sprite,
+	}
+	rgGetInvPaperdollOffhandOffset()
+	rgGetInvPaperdollHelmetOffset()
+end
+
+function rgInvGetSelectedCharacterTooltip()
+	local data = rgEEexPlayerData
+	local maxWeight = rgGetMaxEncumberance()
+	if data == nil then
+		return "No selected character data"
+	end
+
+	local activeWeaponLine = data.activeWeapon.name
+	activeWeaponLine = activeWeaponLine .. " (slot: " .. data.activeWeapon.slot .. ", SLOTS.IDS: " .. tostring(data.activeWeapon.index)
+	if data.activeWeapon.ammoSlot ~= "-" then
+		activeWeaponLine = activeWeaponLine .. ", ammo: " .. data.activeWeapon.ammoSlot
+	end
+	activeWeaponLine = activeWeaponLine .. ")"
+
+	return "EEex / IUI++ snapshot\n"
+		.. "ID: " .. tostring(data.characterID) .. "\n"
+		--.. "Name: " .. tostring(data.name) .. "\n"
+		--.. "Class: " .. tostring(data.class) .. "\n"
+		--.. "Active weapon: " .. tostring(activeWeaponLine) .. "\n"
+		.. "Animation ID: " .. string.format("0x%04X", tonumber(data.animationID) or 0) .. " (" .. tostring(data.animationID) .. ")\n"
+		.. "Animation IDS: " .. tostring(data.animationIDSLine) .. "\n"
+		.. "Derived paperdoll: bam=" .. tostring(data.paperdollBamDerived) .. ", seq=" .. tostring(data.paperdollSequenceDerived) .. ", frame=" .. tostring(data.paperdollFrameDerived) .. "\n"
+		.. "Armor: " .. tostring(data.armorResref) .. ", " .. tostring(data.armorEquippedAppearance) .. "\n"
+		.. "Helmet: " .. tostring(data.helmetResref) .. ", " .. tostring(data.helmetEquippedAppearance) .. "\n"
+		.. "Shield: " .. tostring(data.shieldResref) .. ", " .. tostring(data.shieldEquippedAppearance) .. "\n"
+		.. "Weapon: " .. tostring(data.weaponResref) .. ", " .. tostring(data.weaponEquippedAppearance) .. "\n"
+		.. "Shield slot active: " .. tostring(data.shieldSlotActive) .. "\n"
+		.. "Paperdoll major/minor color: " .. tostring(data.paperdollColorMajor) .. " / " .. tostring(data.paperdollColorMinor) .. "\n"
+		.. "Total carried item weight: " .. tostring(data.totalCarriedWeight) .. "\n"
+		.. "Weight allowance: " .. maxWeight
+end
+
+function rgGetInvId()
+    rgInvId = id
+end
+
+
 --function rgGetInvId()
 --    if rgInvId ~= id then
 --		rgGetTempItemDescList()
@@ -11343,6 +12220,8 @@ rgInvChar = ''
 rgCurChar = ''
 rgPaperdollSwap = 0
 rgClassString = 0
+rgPlayerLooksLikeDrow = 0
+rgEEexPlayerData = {}
 --rgFullBodyPortrait = 0
 --RgInvPartyModeHover = 0
 --rgInvNewPaperdolls = 1
@@ -11372,9 +12251,14 @@ menu
 			if rgCharNames ~= rgCharInvNames or rgEmptyLog == 0  then
 				rgEmptyLog = 1
 				rgUpdateSlots()
+			else
+				charTable = rgCharTable
 			end
 		else
 			rgUpdateSlots()
+		end
+		if rgGameEngine == 2 and EEex_Active == true then
+			rgPlayerLooksLikeDrow = rgInvGetPlayerLooksLikeDrow()
 		end
 		--rgSetInvArea()
 		rgGroupSlotInfo = 'group0'
@@ -11388,6 +12272,7 @@ menu
 	"
 		Infinity_PopMenu('CHARACTER_COLOR')
 		rgPopItemDesc()
+		Infinity_SetOffset('ITEM_DESCRIPTION',0, 0)
 		Infinity_PopMenu('ITEM_IDENTIFY')
 		Infinity_PopMenu('RG_MENU_BAR')
 		--Infinity_PopMenu('RG_JOURNAL')
@@ -11443,6 +12328,24 @@ menu
 	--{
 	--	area	0 0 768 768
 	--	fill 255 255 255 255
+	--}
+	label
+	{
+		enabled "rgInventoryMode == 1"
+		area	0 0 0 0
+		text lua "rgGetInvId()"
+	}
+	label
+	{
+		enabled "EEex_Active"
+		area	0 0 0 0
+		text lua "rgInvGetSelectedCharacterData()"
+	}
+	--label
+	--{
+	--	enabled "EEex_Active"
+	--	area	0 0 0 0
+	--	text lua "rgGetInvPaperdollHelmetFramex()"
 	--}
 	button
 	{
@@ -11524,7 +12427,7 @@ menu
 	
 	label
 	{
-		enabled		"tempStats[rgInvId] ~= nil"
+		enabled		"tempStats[rgInvId] ~= nil and RgImprovedItemComparison == 0"
 		area		93 195 275 55
 		bam rgdicomx
 		sequence lua "RgUISkin"
@@ -11533,7 +12436,7 @@ menu
 
 	label
 	{
-		enabled		"tempStats[rgInvId] ~= nil"
+		enabled		"tempStats[rgInvId] ~= nil and RgImprovedItemComparison == 0"
 		area		98 203 50 43
 		text lua	"rgGetTempAC()"
 		text style	"rg_normal_small"
@@ -11541,7 +12444,7 @@ menu
 	}
 	label
 	{
-		enabled		"tempStats[rgInvId] ~= nil"
+		enabled		"tempStats[rgInvId] ~= nil and RgImprovedItemComparison == 0"
 		area		152 203 50 43
 		text lua	"rgGetTempHP()"
 		text style	"rg_normal_small"
@@ -11549,23 +12452,127 @@ menu
 	}
 	label
 	{
-		enabled		"tempStats[rgInvId] ~= nil"
-		area		260 203 50 43
+		enabled		"tempStats[rgInvId] ~= nil and RgImprovedItemComparison == 0"
+		area		206 203 50 43
 		text lua	"rgGetTempTHAC0()"
 		text style	"rg_normal_small"
 		align center center
 	}
 	label
 	{
-		enabled		"tempStats[rgInvId] ~= nil"
-		area		206 203 50 43
-		text lua	"rgGetTempDamage()"
+		enabled		"tempStats[rgInvId] ~= nil and EEex_Active and RgImprovedItemComparison == 0"
+		area		314 203 50 43
+		text lua	"rgGetTempAPR()"
 		text style	"rg_normal_small"
 		align center center
 	}
 	label
 	{
-		enabled		"tempStats[rgInvId] ~= nil"
+		enabled		"tempStats[rgInvId] ~= nil and RgImprovedItemComparison == 0"
+		area		260 203 50 43
+		text lua	"rgGetTempDamage()"
+		text style	"rg_normal_small"
+		align center center
+	}
+	
+	--label
+	--{
+	--	enabled		"tempStats[rgInvId] ~= nil"
+	--	area		98 256 270 440
+	--	text lua	"rgGetTempItemDesc()" -- .. rgGetCurrentItemDesc()
+	--	text style	"rg_normal_small"
+	--	scrollbar	'rgdscrl1'
+	--}
+	--label
+	--{
+	--	enabled		"tempStats[rgInvId] ~= nil"
+	--	area		98 275 15 15
+	--	bam "rgdiico"
+	--	scaleToClip
+	--	frame 0
+	--}
+	--label
+	--{
+	--	enabled		"tempStats[rgInvId] ~= nil"
+	--	area		98 290 15 15
+	--	bam "rgdiico"
+	--	scaleToClip
+	--	frame 2
+	--}
+	--label
+	--{
+	--	enabled		"tempStats[rgInvId] ~= nil"
+	--	area		98 305 15 15
+	--	bam "rgdiico"
+	--	scaleToClip
+	--	frame 3
+	--}
+	list
+	{
+		column 
+		{ 
+			width	50
+			label
+			{
+				area 0 0 15 15
+				bam "rgdiico"
+				scaleToClip
+				sequence lua "rgGetSkinContrast()"
+				frame lua "rgItemComparisonList[rowNumber][1]"
+			}
+			label
+			{
+				area 0 0 -1 -1
+				text lua "rgItemComparisonList[rowNumber][2]"
+				text style "rg_normal_small"
+				text point 10
+			}
+		}
+		column 
+		{ 
+			width	50
+			label
+			{
+				area 0 0 15 15
+				bam "rgdiico"
+				scaleToClip
+				sequence lua "rgGetSkinContrast()"
+				frame lua "rgItemComparisonList[rowNumber][1]"
+			}
+			label
+			{
+				area 0 0 -1 -1
+				text lua "rgItemComparisonList[rowNumber][3]"
+				text style "rg_normal_small"
+				text point 10
+			}
+		}
+		enabled		"tempStats[rgInvId] ~= nil and EEex_Active and RgImprovedItemComparison == 1 and rgGetFullItemComparison() == true"
+		area 98 223 270 503
+		rowheight	dynamic
+		hidehighlight
+		scrollbar 'rgdscrl1'
+		table "rgItemComparisonList"
+	}
+	label
+	{
+		enabled		"tempStats[rgInvId] ~= nil and EEex_Active and RgImprovedItemComparison == 1 and rgGetFullItemComparison() == true"
+		area		98 203 130 18
+		text lua "rgString('CURRENT_LABEL')"
+		text style	"rg_trajan"
+		text point 10
+	}
+	label
+	{
+		enabled		"tempStats[rgInvId] ~= nil and EEex_Active and RgImprovedItemComparison == 1 and rgGetFullItemComparison() == true"
+		area		225 203 130 18
+		text lua "rgString('NEW_LABEL')"
+		text style	"rg_trajan"
+		text point 10
+	}
+	label
+	{
+		enabled		"tempStats[rgInvId] ~= nil and RgImprovedItemComparison == 0"
 		area		98 256 270 440
 		text lua	"rgGetTempItemDesc()"
 		text style	"rg_normal_small"
@@ -11585,7 +12592,7 @@ menu
 		enabled		"tempStats[rgInvId] == nil"
 		name 'rginvcombatstatdesc'
 		area		98 203 270 527
-		text lua	"rgGetCombatStatsString(rgInvId)"
+		text lua	"rgGetCombatStatsString(rgInvId)" --rgInvGetSelectedCharacterTooltip()
 		text style	"rg_normal_small"
 		scrollbar	'rgdscrl1'	--'rgdscrl1'
 	}
@@ -11593,56 +12600,48 @@ menu
 	
 	label
 	{
-		--enabled "rgInventoryMode == 1 or rgPaperdollSwap == 1"
-		--enabled "id ~= rgInvId"
 		enabled "RgInvPaperdolls == 1"
-		area 434 270 212 274
+		area 438 275 204 264 --434 270 212 274
 		bam lua "rgGetInvPaperdollBam()"
 		scaleToClip
 		sequence lua "rgGetInvPaperdollSeq()"
 		frame lua "rgGetInvPaperdollFrame()"
-		--text lua "characters[rgInvId].equipment.armor.item[3]"
 	}
 	label
 	{
 		enabled "RgInvPaperdolls == 1"
-		area 434 270 212 274
+		area 438 275 204 264
 		bam "rgdipw1"
 		scaleToClip
 		frame lua "rgGetInvPaperdollWeaponFrame()"
 	}
-	label --human
-	{
-		enabled "RgInvPaperdolls == 1 and rgGetInvPaperdollOffhandBamCoordinate() == 1"
-		area 436 269 212 274
-		bam "rgdipw2"
-		scaleToClip
-		frame lua "rgGetInvPaperdollOffhandFrame()"
+	label 
+	{ 
+		name "rgHelmetPaperdoll" 
+		area 505 273 90 90 
+		bam "rgdiphlm" 
+		scaleToClip 
+		frame lua "rgGetInvPaperdollHelmetFrame()" 
+		enabled "RgInvPaperdolls == 1 and EEex_Active and rgInvShowHelmet == 0" 
 	}
-	label --elf
-	{
-		enabled "RgInvPaperdolls == 1 and rgGetInvPaperdollOffhandBamCoordinate() == 2"
-		area 430 270 212 274
-		bam "rgdipw2"
-		scaleToClip
-		frame lua "rgGetInvPaperdollOffhandFrame()"
+	label 
+	{ 
+		name "rgOffhandPaperdoll" 
+		area 440 274 204 264 
+		bam "rgdipw2" 
+		scaleToClip 
+		frame lua "rgGetInvPaperdollOffhandFrame()" 
+		enabled "RgInvPaperdolls == 1" 
 	}
-	label --dwarf
-	{
-		enabled "RgInvPaperdolls == 1 and rgGetInvPaperdollOffhandBamCoordinate() == 3"
-		area 444 264 212 274
-		bam "rgdipw2"
-		scaleToClip
-		frame lua "rgGetInvPaperdollOffhandFrame()"
-	}
-	label --gnome
-	{
-		enabled "RgInvPaperdolls == 1 and rgGetInvPaperdollOffhandBamCoordinate() == 4"
-		area 446 274 212 274
-		bam "rgdipw2"
-		scaleToClip
-		frame lua "rgGetInvPaperdollOffhandFrame()"
-	}
+	
+	
+	
+	--label
+	--{
+	--	enabled "RgInvPaperdolls == 0 and id == rgInvId"
+	--	area 482 330 122 158
+	--	fill 255 255 255 255
+	--}
 	button
 	{
 		enabled "RgInvPaperdolls == 0 and id == rgInvId"
@@ -11685,21 +12684,52 @@ menu
 	
 	button
 	{
-		enabled "id == rgInvId"
+		enabled "id == rgInvId and EEex_Active == nil"
 		name 'rginvencumberance' --434 714 180 18 438 762 243 20
 		area 602 650 96 70
 		encumbrance
 	}
 	label
 	{
-		enabled "rgInventoryMode == 0 and RgInvPartyModeHover == 1"
+		enabled "rgInventoryMode == 0 and EEex_Active == nil"
 		area 624 699 74 20
 		bam "rgdiencb"
 		--text lua "rgGetMaxEncumberance()"
 		frame lua "rgGetEncumberanceFrame()"
 	}
-	
-	
+	label
+	{
+		enabled "EEex_Active and rgEEexPlayerData.totalCarriedWeight <= rgGetMaxEncumberance()"
+		area 605 648 96 23
+		text lua "rgEEexPlayerData.totalCarriedWeight .. ' lbs'"
+		text style "normal"
+		align left center
+		text shadow 1
+		text color '$'
+		opacity 180
+	}
+	label
+	{
+		enabled "EEex_Active and rgEEexPlayerData.totalCarriedWeight > rgGetMaxEncumberance()"
+		area 605 648 96 23
+		text lua "rgEEexPlayerData.totalCarriedWeight .. ' lbs'"
+		text style "normal"
+		align left center
+		text shadow 1
+		text color 'R'
+		opacity 180
+	}
+	label
+	{
+		enabled "EEex_Active"
+		area 620 699 74 23
+		text lua "rgGetMaxEncumberance() .. ' lbs'"
+		text style "normal"
+		align right center
+		text shadow 1
+		text color '$'
+		opacity 180
+	}
 	
 	
 	--label
@@ -11800,7 +12830,7 @@ menu
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(1)"
 		enabled "Infinity_GetNumCharacters() > 0 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(0); rgActiveArea = 1; rgInvId = id; rgInvChar = '1'; rgClassString = rgGetInvPaperdollSeq()"
+		action "Infinity_OnPortraitLClick(0); rgActiveArea = 1; rgInvId = id; rgInvChar = '1'; rgClassString = rgGetInvPaperdollSeq();"
 		actionAlt "Infinity_OnPortraitRClick(0)"
 		actionDbl "Infinity_OnPortraitDblClick(0); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(0)"
@@ -11818,7 +12848,7 @@ menu
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(2)"
 		enabled "Infinity_GetNumCharacters() > 1 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(1); rgActiveArea = 2; rgInvId = id; rgInvChar = '2'; rgClassString = rgGetInvPaperdollSeq()"
+		action "Infinity_OnPortraitLClick(1); rgActiveArea = 2; rgInvId = id; rgInvChar = '2'; rgClassString = rgGetInvPaperdollSeq();"
 		actionAlt "Infinity_OnPortraitRClick(1)"
 		actionDbl "Infinity_OnPortraitDblClick(1); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(1)"
@@ -11836,7 +12866,7 @@ menu
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(3)"
 		enabled "Infinity_GetNumCharacters() > 2 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(2); rgActiveArea = 3; rgInvId = id; rgInvChar = '3'; rgClassString = rgGetInvPaperdollSeq()"
+		action "Infinity_OnPortraitLClick(2); rgActiveArea = 3; rgInvId = id; rgInvChar = '3'; rgClassString = rgGetInvPaperdollSeq();"
 		actionAlt "Infinity_OnPortraitRClick(2)"
 		actionDbl "Infinity_OnPortraitDblClick(2); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(2)"
@@ -11854,7 +12884,7 @@ menu
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(4)"
 		enabled "Infinity_GetNumCharacters() > 3 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(3); rgActiveArea = 4; rgInvId = id; rgInvChar = '4'; rgClassString = rgGetInvPaperdollSeq()"
+		action "Infinity_OnPortraitLClick(3); rgActiveArea = 4; rgInvId = id; rgInvChar = '4'; rgClassString = rgGetInvPaperdollSeq();"
 		actionAlt "Infinity_OnPortraitRClick(3)"
 		actionDbl "Infinity_OnPortraitDblClick(3); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(3)"
@@ -11872,7 +12902,7 @@ menu
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(5)"
 		enabled "Infinity_GetNumCharacters() > 4 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(4); rgActiveArea = 5; rgInvId = id; rgInvChar = '5'; rgClassString = rgGetInvPaperdollSeq()"
+		action "Infinity_OnPortraitLClick(4); rgActiveArea = 5; rgInvId = id; rgInvChar = '5'; rgClassString = rgGetInvPaperdollSeq();"
 		actionAlt "Infinity_OnPortraitRClick(4)"
 		actionDbl "Infinity_OnPortraitDblClick(4); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(4)"
@@ -11890,7 +12920,7 @@ menu
 		--highlightgroup	rginvport
 		frame lua "rgGetInvPortSelected(6)"
 		enabled "Infinity_GetNumCharacters() > 5 and rgInventoryMode ~= 1 and RgInvPartyModeHover == 1"
-		action "Infinity_OnPortraitLClick(5); rgActiveArea = 6; rgInvId = id; rgInvChar = '6'; rgClassString = rgGetInvPaperdollSeq()"
+		action "Infinity_OnPortraitLClick(5); rgActiveArea = 6; rgInvId = id; rgInvChar = '6'; rgClassString = rgGetInvPaperdollSeq();"
 		actionAlt "Infinity_OnPortraitRClick(5)"
 		actionDbl "Infinity_OnPortraitDblClick(5); rgInvId = id"
 		actiondrag "Infinity_SwapWithPortrait(5)"
@@ -12650,6 +13680,17 @@ menu
 		"
 			Infinity_PushMenu('CHARACTER_COLOR', 0, 0)
 		"
+	}
+	button
+	{
+		enabled "RgInvPaperdolls == 1 and EEex_Active"
+		area		421 648 20 20 --529 234 20 20 
+		bam			rgdrnbut
+		sequence lua "RgUISkin"
+		scaleToClip
+		toggle		rgInvShowHelmet
+		tooltip lua "getUiString('RG_INV_HIDE_HELMET')"
+		action "Infinity_SetINIValue('Game Options','RgInvShowHelmet',rgInvShowHelmet)"
 	}
 	--button
 	--{
@@ -15814,6 +16855,7 @@ menu
 		
 		rgStoreMode = Infinity_GetINIValue('Game Options','RgStoreMode',0)
 		rgInventoryMode = Infinity_GetINIValue('Game Options','RgInventoryMode',0)
+		rgInvShowHelmet = Infinity_GetINIValue('Game Options','RgInvShowHelmet',0)
 		
 		RgHotkeyButtonsVisibility = Infinity_GetINIValue('Game Options','RgHotkeyButtonsVisibility',0)
 		RgIsModernHud = Infinity_GetINIValue('Game Options','RgIsModernHud',0)
@@ -15827,6 +16869,8 @@ menu
 		RgUISkin = Infinity_GetINIValue('Game Options','RgUISkin',0)
 		RgLargePortraits = Infinity_GetINIValue('Game Options','RgLargePortraits',0)
 		RgInvPaperdolls = Infinity_GetINIValue('Game Options','RgInvPaperdolls',0)
+		RgInvPartyFastLoad = Infinity_GetINIValue('Game Options','RgInvPartyFastLoad',0)
+		RgImprovedItemComparison = Infinity_GetINIValue('Game Options','RgImprovedItemComparison',0)
 		
 		rgRadarShowCreaturesR = Infinity_GetINIValue('Game Options','RgRadarShowCreaturesR',0)
 		rgRadarShowCreaturesG = Infinity_GetINIValue('Game Options','RgRadarShowCreaturesG',0)
@@ -15852,7 +16896,7 @@ menu
 		rgGetAutopauseToggles()
 		rgGetBestiary()
 		
-		if EEex_Active == false then
+		if EEex_Active == nil then
 			RgRadarKey = ''
 			RgRadarShowPcEffects = 0
 		end
@@ -16701,6 +17745,101 @@ function contingencyDoneButtonText()
 	end
 end
 
+-- Spell order by time of addition (EEex only): the engine keeps known / memorized spells
+-- as linked lists per spell level, new entries are appended to the end.
+rgSpellSortByTime = Infinity_GetINIValue('Game Options','RgSpellSortByTime',0)
+
+function rgSpellSortActive()
+	return EEex_Active and rgSpellSortByTime == 1 and EEex_GameObject_Get ~= nil and EEex_Utility_IterateCPtrList ~= nil
+end
+
+-- bookType: "mage" / "priest", listType: "known" / "memorized", level: 1-based spell level
+function rgGetEngineSpellList(bookType, listType, level)
+	local sprite = EEex_GameObject_Get(id)
+	if sprite == nil then return nil end
+	local field
+	if bookType == "mage" then
+		field = (listType == "known") and "m_knownSpellsMage" or "m_memorizedSpellsMage"
+	else
+		field = (listType == "known") and "m_knownSpellsPriest" or "m_memorizedSpellsPriest"
+	end
+	local array = sprite[field]
+	if array == nil then return nil end
+	local ok, list = pcall(function() return array:getReference(level - 1) end)
+	if not ok or list == nil then
+		ok, list = pcall(function() return array:get(level - 1) end)
+	end
+	if ok then return list end
+	return nil
+end
+
+-- Known spells: returns a copy of spells ordered like the engine's known spell list; unmatched entries go last
+--function rgSortBookSpellsByTime(spells, bookType, level)
+--	if spells == nil or not rgSpellSortActive() then return spells end
+--	local ok, result = pcall(function()
+--		local list = rgGetEngineSpellList(bookType, "known", level)
+--		if list == nil then return nil end
+--		local order = {}
+--		local n = 0
+--		EEex_Utility_IterateCPtrList(list, function(known)
+--			local key = string.upper(known.m_knownSpellId:get())
+--			if order[key] == nil then
+--				n = n + 1
+--				order[key] = n
+--			end
+--		end)
+--		local out = {}
+--		local orig = {}
+--		for i, spell in ipairs(spells) do
+--			out[i] = spell
+--			orig[spell] = i
+--		end
+--		local function rank(spell)
+--			return order[string.upper(spell.resref or "")] or (100000 + orig[spell])
+--		end
+--		table.sort(out, function(a, b)
+--			local ra, rb = rank(a), rank(b)
+--			if ra == rb then return orig[a] < orig[b] end
+--			return ra < rb
+--		end)
+--		return out
+--	end)
+--	if ok and result ~= nil then return result end
+--	return spells
+--end
+
+-- Memorized spells: reorders the already expanded list (one entry per memorization) like the engine's
+-- memorized spell list and takes castable state from its flags; falls back to the original list on any mismatch
+function rgSortMemorizedSpellsByTime(spells, bookType, level)
+	if spells == nil or #spells == 0 or not rgSpellSortActive() then return spells end
+	local ok, result = pcall(function()
+		local list = rgGetEngineSpellList(bookType, "memorized", level)
+		if list == nil then return nil end
+		local pool = {}
+		for _, spell in ipairs(spells) do
+			local key = string.upper(spell.resref or "")
+			pool[key] = pool[key] or {}
+			table.insert(pool[key], spell)
+		end
+		local out = {}
+		local valid = true
+		EEex_Utility_IterateCPtrList(list, function(memorized)
+			local bucket = pool[string.upper(memorized.m_spellId:get())]
+			if bucket == nil or #bucket == 0 then
+				valid = false
+				return true
+			end
+			local spell = table.remove(bucket, 1)
+			spell.castable = (EEex_BAnd(memorized.m_flags, 1) ~= 0) and 1 or 0
+			table.insert(out, spell)
+		end)
+		if not valid or #out ~= #spells then return nil end
+		return out
+	end)
+	if ok and result ~= nil then return result end
+	return spells
+end
+
 function filterMemorizedMageSpells()
 	local out = {}
 	currentSpellLevel = math.min(currentSpellLevel, 9)
@@ -16715,7 +17854,7 @@ function filterMemorizedMageSpells()
 			table.insert(out, spell)
 		end
 	end
-	return out
+	return rgSortMemorizedSpellsByTime(out, "mage", currentSpellLevel)
 end
 
 function tableInsert(out, v)
@@ -16812,7 +17951,7 @@ function rgFilterMemorizedMageSpellLevels(level)
 			table.insert(out, spell)
 		end
 	end
-	return out
+	return rgSortMemorizedSpellsByTime(out, "mage", level)
 end
 
 --function rgGetMaxMemorizedCount(level,row)
@@ -16832,7 +17971,7 @@ function refreshMageBook()
 	end
 	if bookMode == 0 then
 		if characters[id].hasMageBook then
-			bookSpells = characters[id].mageSpells[currentSpellLevel]
+			bookSpells = characters[id].mageSpells[currentSpellLevel] --rgSortBookSpellsByTime(characters[id].mageSpells[currentSpellLevel], "mage", currentSpellLevel)
 			--table.sort(bookSpells,function (k1, k2) return k1.icon < k2.icon end)
 			--rgBookSpells = {
 			-- {bookSpells[1],bookSpells[2],bookSpells[3]}
@@ -16926,7 +18065,7 @@ function refreshMageBook()
 			if characters[id].mageDetails[9].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells9,characters[id].mageDetails[9].maxMemorized,9,14}) end
 			
 		else
-			bookSpells = characters[id].mageSpells[currentSpellLevel]
+			bookSpells = characters[id].mageSpells[currentSpellLevel] --rgSortBookSpellsByTime(characters[id].mageSpells[currentSpellLevel], "mage", currentSpellLevel)
 			local rgSpellCountDiv = #(bookSpells)/3
 			if rgIsNthNumber(#(bookSpells)+1,3) == false then
 				rgSpellCountDiv = rgSpellCountDiv+1
@@ -17386,6 +18525,37 @@ menu
 		text align left center
 	}
 	
+	button
+	{
+		name 'rgMageSpellSortToggle'
+		enabled "EEex_Active and bookMode == 0"
+		area		1081 36 54 50 
+		bam			rgdspbut
+		scaleToClip
+		toggle		rgSpellSortByTime
+		tooltip lua "getUiString('RG_SPELL_SORT')"
+		action
+		"
+			Infinity_SetINIValue('Game Options','RgSpellSortByTime',rgSpellSortByTime)
+			refreshMageBook()
+		"
+	}
+	--button
+	--{
+	--	name 'rgMageSpellSortToggle'
+	--	enabled "EEex_Active and bookMode == 0 and rgSpellDescString == nil"
+	--	area 20 165 32 32
+	--	bam rgdrnbut
+	--	sequence lua "RgUISkin"
+	--	scaleToClip
+	--	toggle rgSpellSortByTime
+	--	action
+	--	"
+	--		Infinity_SetINIValue('Game Options','RgSpellSortByTime',rgSpellSortByTime)
+	--		refreshMageBook()
+	--	"
+	--}
+	
 	--label
 	--{
 	--	area		82 10 700 44
@@ -17526,6 +18696,7 @@ menu
 		align right center
 		text color '5'
 	}
+	
 
 	button
 	{
@@ -19207,7 +20378,7 @@ menu
 	}
 	text
 	{
-		name "rgItemDesc"
+		name "rgPopupDetailsDesc"
 		area 26 108 568 522
 		text lua "Infinity_FetchString(PopupDetails.description)"
 		scrollbar 'rgdscrl1'
@@ -19271,7 +20442,7 @@ function filterMemorizedPriestSpells()
 			table.insert(out, spell)
 		end
 	end
-	return out
+	return rgSortMemorizedSpellsByTime(out, "priest", currentSpellLevel)
 end
 
 function rgFilterMemorizedPriestSpellLevels(level)
@@ -19287,7 +20458,7 @@ function rgFilterMemorizedPriestSpellLevels(level)
 			table.insert(out, spell)
 		end
 	end
-	return out
+	return rgSortMemorizedSpellsByTime(out, "priest", level)
 end
 
 
@@ -19320,7 +20491,7 @@ function refreshPriestBook()
 		currentSpellLevel = 7
 	end
 	if characters[id].hasClericBook then
-			rgBookPriestSpells = characters[id].priestSpells[currentSpellLevel]
+			rgBookPriestSpells = characters[id].priestSpells[currentSpellLevel] --rgSortBookSpellsByTime(characters[id].priestSpells[currentSpellLevel], "priest", currentSpellLevel)
 			local rgSpellCountDiv = #(rgBookPriestSpells)/3
 			if rgIsNthNumber(#(rgBookPriestSpells)+1,3) == false then
 				rgSpellCountDiv = rgSpellCountDiv+1
@@ -19379,7 +20550,7 @@ function refreshPriestBook()
 			if characters[id].priestDetails[7].maxMemorized > 13 then table.insert(rgBottomSpells,{rgBottomSpells7,characters[id].priestDetails[7].maxMemorized,7,14}) end
 			
 		else
-			bookSpells = characters[id].priestSpells[currentSpellLevel]
+			bookSpells = characters[id].priestSpells[currentSpellLevel] --rgSortBookSpellsByTime(characters[id].priestSpells[currentSpellLevel], "priest", currentSpellLevel)
 			local rgSpellCountDiv = #(bookSpells)/3
 			if rgIsNthNumber(#(bookSpells)+1,3) == false then
 				rgSpellCountDiv = rgSpellCountDiv+1
@@ -19682,6 +20853,21 @@ menu
 		text style "rg_trajan"
 		align right center
 		text color '5'
+	}
+	button
+	{
+		name 'rgPriestSpellSortToggle'
+		enabled "EEex_Active"
+		area		1081 36 54 50 
+		bam			rgdspbut
+		scaleToClip
+		toggle		rgSpellSortByTime
+		tooltip lua "getUiString('RG_SPELL_SORT')"
+		action
+		"
+			Infinity_SetINIValue('Game Options','RgSpellSortByTime',rgSpellSortByTime)
+			refreshPriestBook()
+		"
 	}
 
 	
@@ -22947,6 +24133,7 @@ menu
 		"
 		actionalt
 		"
+			Infinity_SetOffset('ITEM_DESCRIPTION',300, 30)
 			showItemDescription(store.storeItems[storeItemsVar].item, 1)
 		"
 		actionDbl
@@ -23040,6 +24227,7 @@ menu
 		"
 		actionalt
 		"
+			Infinity_SetOffset('ITEM_DESCRIPTION',-290, 30)
 			showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
 		"
 		actionDbl
@@ -23138,6 +24326,7 @@ menu
 		"
 		actionalt
 		"
+			Infinity_SetOffset('ITEM_DESCRIPTION',-290, 30)
 			showItemDescription(store.groupItems[storeGroupItemsVar].item, 1)
 		"
 		actionDbl
@@ -24528,6 +25717,7 @@ menu
 	onClose 
 	"
 		local menuName = storeScreen:GetMenuName(storeCurMenuId)
+		Infinity_SetOffset('ITEM_DESCRIPTION',0, 0)
 		Infinity_PopMenu(menuName)
 		popSidebars()
 	"
@@ -25187,6 +26377,11 @@ menu
 		enabled "RgInvPartyFastLoad == 1"
 		area 0 0 0 0
 		text lua "rgGetPcNames()"
+	}
+	label
+	{
+		enabled "rgBestiaryTick()"
+		area 0 0 0 0
 	}
 	label
 	{
@@ -31775,115 +32970,133 @@ function rgDragMessageboxUnlocked()
 end
 rgMessageBoxLastRowNumber = -1
 
-function rgGetJournalBestiaryEntry(text,row)
-	if rgMessageBoxLastRowNumber ~= row then
-		rgGotBestiaryEntryOnce = 0
-	end
-	if (text ~= nil and string.match(text, Infinity_FetchString(14026))) then --Death
-		if (rgGotBestiaryEntryOnce == 0) then
-			text = string.gsub(text, "%^0x........", "")
-			text = string.gsub(text, ": " .. Infinity_FetchString(14026), "")
-			text = string.gsub(text, "-", "")
-			text = string.gsub(text, "%^", "")
-			--text = 'Beasts' .. ': ' .. text
-			
-			--journalDisplay
-			local rgEntryAlreadyExists = 0
-			local rgBeastHasValidEntry = 0
-			local rgBeastEntryRef = 0
-			local rgNumberOfKills = 0
-			
-			--local list = {}
-			--if #journalDisplay > 0 then
-			--	for i in string.gmatch(Infinity_FetchString(journalDisplay[2].text), "[^;]+") do
-			--		table.insert(list, i);
-			--	end
-			--	rgEntryAlreadyExists = 1
-			--end
-			--
-			--if #list == 3 then
-			--	--if (string.match(list[2], text)) then
-			--		rgEntryAlreadyExists = 1
-			--		rgBeastEntryRef = list[3]
-			--		local n = list[3]
-			--		rgNumberOfKills = n + 1
-			--	--end
-			--end
-			
-			for k, jouEntry in pairs(journalDisplay) do
-				--rgAddNewBestiaryEntry(text)
-				--rgAddNewBestiaryEntry(Infinity_FetchString(jouEntry.text))
-				--rgGotBestiaryEntryOnce = 1
-				--string.gsub(text, "Death", "")
-				--Tutor^-^-
-				
-				--s:match('^(.-)%d+')
-				if (string.match(Infinity_FetchString(jouEntry.text), getUiString('RG_BESTIARY'))) then 
-					str = string.gsub(Infinity_FetchString(jouEntry.text), getUiString('RG_BESTIARY'), "")
-				
-					local list = {}
-					for i in string.gmatch(str, "[^;]+") do
-						table.insert(list, i);
-					end
-					
-					if #list == 1 then
-						if list[1] == text then
-							rgEntryAlreadyExists = 1
-							rgBeastEntryRef = jouEntry.text
-							rgNumberOfKills = 2
-						end
-					elseif #list == 2 then
-						if list[1] == text then
-							rgEntryAlreadyExists = 1
-							rgBeastEntryRef = jouEntry.text
-							local n = list[2]
-							rgNumberOfKills = n + 1
-						end
-					end
-				end
-				
-				--if (string.match(Infinity_FetchString(jouEntry.text), text)) then --'Tutor^-: Death^-'
-				--	--Infinity_SetINIValue('Game Options','BestiaryEntry',text) --'^0xffc3803cPhlydia^-: ^0xffbed7d7Death^-'
-				--	rgEntryAlreadyExists = 1
-				--	rgBeastEntryRef = jouEntry.text
-				--end
-			end
-			for i=1,#rgBeasts,1 do
-				--a,b = string.match(text,"(.+);(.+)")
-				--a,b = text:match("(.+);(.+)")
-				--local a = ''
-				--for i in string.gmatch(text, "[^;]+") do
-				--	a = i
-				--end
-				--if a == 'Beasts' .. ': ' .. rgBeasts[i][1] then 
-				--	rgBeastHasValidEntry = 1
-				--end
-				if text == Infinity_FetchString(rgBeasts[i].name) then 
-					rgBeastHasValidEntry = 1
-				end
-			end
-			if (rgEntryAlreadyExists == 0 and rgBeastHasValidEntry == 1) then
-				rgAddNewBestiaryEntry(text)
-				rgGotBestiaryEntryOnce = 1
-			elseif (rgEntryAlreadyExists == 1 and rgBeastHasValidEntry == 1) then
-				--local a = 0
-				--local list = {}
-				--for i in string.gmatch(text, "[^;]+") do
-				--	table.insert(list, i);
-				--end
-				--local kills = list[1] + 1
-				rgMessageBoxLastRowNumber = row
-				rgEditNewBestiaryEntry(text,rgNumberOfKills,rgBeastEntryRef)
-				rgGotBestiaryEntryOnce = 1
-			end
-			
-		end
-	else
-		rgGotBestiaryEntryOnce = 0
-	end	
-	
+rgBestiaryKillQueue = rgBestiaryKillQueue or {}
+rgBestiaryLogCount = nil
+rgBestiaryLogLastText = nil
+-- STATE.IDS: STATE_DEAD (0x800) + acid/flame/exploding/stone/frozen death (0x40-0x400)
+RG_BESTIARY_DEATH_STATE_MASK = 0xFC0
+
+function rgEscapePattern(str)
+	return (string.gsub(str, "[%^%$%(%)%%%.%[%]%*%+%-%?]", "%%%0"))
 end
-rgtestx = 1
+
+-- Writes/updates the bestiary journal entry for one killed creature name
+function rgBestiaryRecordKill(text)
+	if text == nil or text == "" then return end
+	local rgEntryAlreadyExists = 0
+	local rgBeastHasValidEntry = 0
+	local rgBeastEntryRef = 0
+	local rgNumberOfKills = 0
+
+	for k, jouEntry in pairs(journalDisplay) do
+		if (string.match(Infinity_FetchString(jouEntry.text), getUiString('RG_BESTIARY'))) then 
+			local str = string.gsub(Infinity_FetchString(jouEntry.text), getUiString('RG_BESTIARY'), "")
+			local list = {}
+			for i in string.gmatch(str, "[^;]+") do
+				table.insert(list, i);
+			end
+			if #list == 1 then
+				if list[1] == text then
+					rgEntryAlreadyExists = 1
+					rgBeastEntryRef = jouEntry.text
+					rgNumberOfKills = 2
+				end
+			elseif #list == 2 then
+				if list[1] == text then
+					rgEntryAlreadyExists = 1
+					rgBeastEntryRef = jouEntry.text
+					rgNumberOfKills = list[2] + 1
+				end
+			end
+		end
+	end
+	for i=1,#rgBeasts,1 do
+		if text == Infinity_FetchString(rgBeasts[i].name) then 
+			rgBeastHasValidEntry = 1
+			break
+		end
+	end
+	if (rgEntryAlreadyExists == 0 and rgBeastHasValidEntry == 1) then
+		rgAddNewBestiaryEntry(text)
+	elseif (rgEntryAlreadyExists == 1 and rgBeastHasValidEntry == 1) then
+		rgEditNewBestiaryEntry(text,rgNumberOfKills,rgBeastEntryRef)
+	end
+end
+
+-- Returns the creature name from a combat log death line ("Name: Death"), or nil
+function rgBestiaryParseDeathLine(line)
+	local deathStr = Infinity_FetchString(14026)
+	if line == nil or deathStr == nil or deathStr == "" or not string.find(line, deathStr, 1, true) then
+		return nil
+	end
+	local text = string.gsub(line, "%^0x........", "")
+	text = string.gsub(text, ": " .. rgEscapePattern(deathStr), "")
+	text = string.gsub(text, "-", "")
+	text = string.gsub(text, "%^", "")
+	return text
+end
+
+-- Without EEex: processes every combat log line added since the last call
+function rgBestiaryScanCombatLog()
+	if combatLog == nil then return end
+	local count = #combatLog
+	if rgBestiaryLogCount == nil then
+		-- first call: skip history already in the log
+		rgBestiaryLogCount = count
+		rgBestiaryLogLastText = combatLog[count]
+		return
+	end
+	local start = rgBestiaryLogCount + 1
+	if count < rgBestiaryLogCount or (rgBestiaryLogCount > 0 and combatLog[rgBestiaryLogCount] ~= rgBestiaryLogLastText) then
+		-- log was trimmed or cleared: continue after the last processed line, if still present
+		start = count + 1
+		if rgBestiaryLogLastText ~= nil then
+			for i = count, 1, -1 do
+				if combatLog[i] == rgBestiaryLogLastText then
+					start = i + 1
+					break
+				end
+			end
+		end
+	end
+	for i = start, count do
+		local name = rgBestiaryParseDeathLine(combatLog[i])
+		if name ~= nil then
+			table.insert(rgBestiaryKillQueue, name)
+		end
+	end
+	rgBestiaryLogCount = count
+	rgBestiaryLogLastText = combatLog[count]
+end
+
+-- With EEex: called after every sprite effect-list evaluation, queues alive -> dead transitions of non-party creatures
+function rgBestiaryDeathListener(sprite)
+	if sprite == nil or sprite:getPortraitIndex() >= 0 then return end
+	local dead = EEex_BAnd(sprite:getState(), RG_BESTIARY_DEATH_STATE_MASK) ~= 0
+	local aux = EEex_GetUDAux(sprite)
+	local wasDead = aux.rgBestiaryWasDead
+	aux.rgBestiaryWasDead = dead
+	if wasDead == false and dead then
+		table.insert(rgBestiaryKillQueue, sprite:getName())
+	end
+end
+
+-- Called every frame from WORLD_ACTIONBAR (and the chat box); journal writes happen here, one kill per frame
+function rgBestiaryTick()
+	if not rgSpriteListenerRegistered then
+		rgBestiaryScanCombatLog()
+	end
+	if #rgBestiaryKillQueue > 0 then
+		local name = table.remove(rgBestiaryKillQueue, 1)
+		pcall(rgBestiaryRecordKill, name)
+	end
+	return false
+end
+
+-- Kept for the existing call in chatboxScroll()
+function rgGetJournalBestiaryEntry(text,row)
+	rgBestiaryTick()
+end
 function rgAddNewBestiaryEntry(text)
 		--if alreadyAdded == 0 then
 			local rgLarge = 0
@@ -31939,6 +33152,7 @@ function rgEditNewBestiaryEntry(text,kills,ref)
 		rgLargeJournal = 1
 	end
 end
+
 function rgGetMessageBoxPosition()
 	--local screenWidth, screenHeight = Infinity_GetScreenSize()
 	--local x,y,w,h = Infinity_GetArea('worldMessageBox')
@@ -46429,6 +47643,20 @@ function rgGetBestiaryPicture(text)
 	end
 	return ret
 end
+function rgGetBestiaryImg(text)
+	local ret = 0
+	local list = {}
+	for i in string.gmatch(text, "[^;]+") do
+		table.insert(list, i);
+	end
+	str = string.gsub(list[1], getUiString('RG_BESTIARY'), "")
+	for i=1,#rgBeasts,1 do
+		if Infinity_FetchString(rgBeasts[i].name) == str then 
+			ret = rgBeasts[i].img
+		end
+	end
+	return ret
+end
 function rgGetJournalRowTextColor(row, var)
 	if(rgGetHighlightSkin(row, var) == 0) then
 		return '^D•  '
@@ -46667,9 +47895,7 @@ menu
 		--if rgBestiaryJournalEntryCount() ~= rgBestiaryCount then
 		--	selectedBeast = 0
 		--end
-		if rgbj ~= rgbc then
-			selectedBeast = nil
-		end
+		
 		rgBestiaryCount = rgBestiaryJournalEntryCount()
 		table.sort(rgJournalBestiary,rgOrderBestiary)
 		
@@ -46677,6 +47903,12 @@ menu
 		local rglc = rgLibraryCount
 		if rglj ~= rglc then
 			rgSelectedBook = nil
+		end
+		if rgbj ~= rgbc then
+			selectedBeast = nil
+			rgGetBestiaryImage = 'RGDBST2'
+		else
+			rgGetBestiaryImage = rgGetBestiaryImg(Infinity_FetchString(rgJournalBestiary[selectedBeast].text))
 		end
 		rgLibraryCount = rglj
 		rgLibraryDescString = rgGetLibraryDescription(rgGetLibraryEntryTitle(Infinity_FetchString(rgJournalLibrary[rgSelectedBook].text)))
@@ -47489,12 +48721,14 @@ menu
 				rgBeastTitleString = ''
 				--rgBeastKillsString = ''
 				rgBeastStats = {}
+				rgGetBestiaryImage = 'RGDBST2'
 				rgGetBestiaryFrame = 0
 			else
 				rgBeastDescString = rgGetBestiaryDescription(rgGetBestiaryEntryTitle(Infinity_FetchString(rgJournalBestiary[selectedBeast].text)))
 				rgBeastTitleString = rgGetBestiaryEntryTitle(Infinity_FetchString(rgJournalBestiary[selectedBeast].text))
 				--rgBeastKillsString = rgGetBestiaryKills(Infinity_FetchString(rgJournalBestiary[selectedBeast].text))
 				rgBeastStats = rgGetBestiaryStatistics(Infinity_FetchString(rgJournalBestiary[selectedBeast].text))
+				rgGetBestiaryImage = rgGetBestiaryImg(Infinity_FetchString(rgJournalBestiary[selectedBeast].text))
 				rgGetBestiaryFrame = rgGetBestiaryPicture(Infinity_FetchString(rgJournalBestiary[selectedBeast].text))
 			end
 			"
@@ -47588,7 +48822,8 @@ menu
 	{
 		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 1 and selectedBeast ~= 0 and selectedBeast ~= nil"
 		area	932 196 320 480
-		bam rgdbst2
+		--bam rgdbst2
+		bam lua "rgGetBestiaryImage"
 		frame lua "rgGetBestiaryFrame"
 		scaleToClip
 	}
@@ -50099,6 +51334,8 @@ function rgGetUiOptDescription()
 		return getUiString('RG_SET_EEEX_NPCBAR_D')
 	elseif rgUiOptSelected == 16 then
 		return getUiString('RG_SET_INV_SPRITE_D')
+	elseif rgUiOptSelected == 17 then
+		return getUiString('RG_SET_EEEX_ITEMCOMP_D')
 	else
 		return getUiString('RG_SET_DESC')
 	end
@@ -50139,7 +51376,7 @@ menu
 		RgOptionsMode = 7
 		Infinity_PushMenu('RG_START_OPTIONS_BAR')
 		--RgSettingEEexZoomUI = 10
-		RgSettingEEexZoomUI = Infinity_GetINIValue('Graphics','RgSettingEEexZoomUI',0)
+		--RgSettingEEexZoomUI = Infinity_GetINIValue('Graphics','RgSettingEEexZoomUI',0)
 		rgHotkeyButtonsVisibility = RgHotkeyButtonsVisibility
 		rgIsModernHud = RgIsModernHud
 		rgMessageboxUnlocked  = RgMessageboxUnlocked 
@@ -50156,6 +51393,7 @@ menu
 		rgRadarShowPcEffects = RgRadarShowPcEffects
 		rgRadarKey = RgRadarKey
 		rgInvPaperdolls = RgInvPaperdolls
+		rgImprovedItemComparison = RgImprovedItemComparison
 		rgUiOptSelected = 0
 	"
 	text
@@ -50607,53 +51845,54 @@ menu
 	--	text style	"button"
 	--	text align 	left center
 	--}
-	text
-	{
-		enabled "EEex_Active and EEex_Modules['B3Scale']"
-		area		402 536 200 47
-		--area		852 329 200 47
-		text "RG_SET_EEEX_ZOOM"
-		text style	normal
-		text upper
-		bam rgdslct
-		ScaleToClip
-		sequence lua "rgGetSelectedUiOption(10)"
-		align right center
-		action "rgUiOptSelected = 10"
-	}
-	slider
-	{
-		enabled "EEex_Active and EEex_Modules['B3Scale']"
-		area 614 536 200 47
-		--area 1066 329 200 47
-		position "RgSettingEEexZoomUI"
-		bam	 'RGDSLDRS'
-		sliderBackground 'RGDSLDRB'
-		scaleToClip
-		sequence lua "RgUISkin"
-		frame	 1
-		settings	11
-		pad 5 0 4 0
-		action 
-		"
-			--w, h = Infinity_GetScreenSize()
-			rgUiOptSelected = 10
-			B3Scale_SetPercentage(RgSettingEEexZoomUI/10)
-			--B3Scale_SetWidth(RgSettingEEexZoomUI/10)
-		" 
-	}
-	text
-	{
-		enabled "EEex_Active and EEex_Modules['B3Scale']"
-		area		614 583 200 33
-		--area		1066 376 200 47
-		text lua "RgSettingEEexZoomUI*10 .. '%'"
-		--bam rgdslct
-		ScaleToClip
-		sequence lua "RgUISkin*2"
-		text style	normal
-		text align	center center
-	}
+	--text
+	--{
+	--	enabled "EEex_Active"-- and EEex_Modules['B3Scale']
+	--	area		402 536 200 47
+	--	--area		852 329 200 47
+	--	text "RG_SET_EEEX_ZOOM"
+	--	text style	normal
+	--	text upper
+	--	bam rgdslct
+	--	ScaleToClip
+	--	sequence lua "rgGetSelectedUiOption(10)"
+	--	align right center
+	--	action "rgUiOptSelected = 10"
+	--}
+	--slider
+	--{
+	--	enabled "EEex_Active"-- and EEex_Modules['B3Scale']
+	--	area 614 536 200 47
+	--	--area 1066 329 200 47
+	--	position "RgSettingEEexZoomUI"
+	--	bam	 'RGDSLDRS'
+	--	sliderBackground 'RGDSLDRB'
+	--	scaleToClip
+	--	sequence lua "RgUISkin"
+	--	frame	 1
+	--	settings	11
+	--	pad 5 0 4 0
+	--	action 
+	--	"
+	--		--w, h = Infinity_GetScreenSize()
+	--		rgUiOptSelected = 10
+	--		B3Scale_SetPercentage(RgSettingEEexZoomUI/10)
+	--		--B3Scale_SetWidth(RgSettingEEexZoomUI/10)
+	--	" 
+	--}
+	--text
+	--{
+	--	enabled "EEex_Active"-- and EEex_Modules['B3Scale']
+	--	area		614 583 200 33
+	--	--area		1066 376 200 47
+	--	text lua "RgSettingEEexZoomUI*10 .. '%'"
+	--	--bam rgdslct
+	--	ScaleToClip
+	--	sequence lua "RgUISkin*2"
+	--	text style	normal
+	--	text align	center center
+	--}
+	
 	text
 	{
 		area		848 454 404 196
@@ -50661,6 +51900,30 @@ menu
 		text style	normal
 		text align	left top
 		scrollbar	'rgdscrl1'
+	}
+	
+	text
+	{
+		enabled "EEex_Active"
+		area 408 568 340 46
+		text "RG_SET_EEEX_ITEMCOMP"
+		text style	"normal"
+		bam rgdslct
+		ScaleToClip
+		pad 10 0 0 0
+		sequence lua "rgGetSelectedUiOption(17)"
+		align left center
+		action "rgUiOptSelected = 17"
+	}
+	button
+	{
+		enabled "EEex_Active"
+		area		758 576 32 32
+		bam			rgdrnbut
+		scaleToClip
+		sequence lua "RgUISkin"
+		toggle		rgImprovedItemComparison
+		action "rgUiOptSelected = 17"
 	}
 	
 	text
@@ -50801,7 +52064,7 @@ menu
 		text style	"button"
 		action
 		"	
-			Infinity_SetINIValue('Graphics','RgSettingEEexZoomUI',RgSettingEEexZoomUI)
+			--Infinity_SetINIValue('Graphics','RgSettingEEexZoomUI',RgSettingEEexZoomUI)
 			
 			RgHotkeyButtonsVisibility = rgHotkeyButtonsVisibility
 			Infinity_SetINIValue('Game Options','RgHotkeyButtonsVisibility',RgHotkeyButtonsVisibility)
@@ -50853,6 +52116,9 @@ menu
 			
 			RgRadarShowPcEffects = rgRadarShowPcEffects
 			Infinity_SetINIValue('Game Options','RgRadarShowPcEffects',RgRadarShowPcEffects)
+			
+			RgImprovedItemComparison = rgImprovedItemComparison
+			Infinity_SetINIValue('Game Options','RgImprovedItemComparison',RgImprovedItemComparison)
 			
 			RgRadarKey = rgRadarKey
 			Infinity_SetINIValue('Game Options','RgRadarKey',RgRadarKey)

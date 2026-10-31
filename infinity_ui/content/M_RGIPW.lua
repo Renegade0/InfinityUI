@@ -268,25 +268,146 @@ rgIpAppearance = {
 }
 
 rgIpNpc = {
-{name="aerie"		,frame=0 }, --"aerie"		9184	
-{name="anomen"		,frame=1 }, --"anomen"		9138	
-{name="cernd"		,frame=2 }, --"cernd"		9153	
-{name="edwin"		,frame=3 }, --"edwin"		271	
-{name="haer'dalis"	,frame=4 }, --"haer'dalis"	9182	
-{name="imoen"		,frame=5 }, --"imoen"		16453	
-{name="jaheira"		,frame=6 }, --"jaheira"		9456	
-{name="jan"			,frame=7 }, --"jan"			8652	
-{name="keldorn"		,frame=8 }, --"keldorn"		9144	
-{name="korgan"		,frame=9 }, --"korgan"		1138	
-{name="mazzy"		,frame=10}, --"mazzy"		9104	
-{name="minsc"		,frame=11}, --"minsc"		9501	
-{name="nalia"		,frame=12}, --"nalia"		9102	
-{name="gnarls"		,frame=13}, --"gnarls"		0		
-{name="sarevok"		,frame=14}, --"sarevok"		12311	
-{name="valygar"		,frame=15}, --"valygar"		9158	
-{name="viconia"		,frame=16}, --"viconia"		6132	
-{name="yoshimo"		,frame=17}, --"yoshimo"		9923	
-{name="dynaheir"	,frame=18}, 
-{name="xan"			,frame=19}, 
-{name="xzar"		,frame=20}, 
+{name="aerie"		,frame=0 	,helmX=504,helmY=286,helmW=85 }, --"aerie"		9184	
+{name="anomen"		,frame=1 	,helmX=505,helmY=273,helmW=90 }, --"anomen"		9138	
+{name="cernd"		,frame=2 	,helmX=505,helmY=272,helmW=90 }, --"cernd"		9153	
+{name="edwin"		,frame=3 	,helmX=505,helmY=273,helmW=90 }, --"edwin"		271	
+{name="haer'dalis"	,frame=4 	,helmX=504,helmY=289,helmW=85 }, --"haer'dalis"	9182	
+{name="imoen"		,frame=5 	,helmX=505,helmY=275,helmW=90 }, --"imoen"		16453	
+{name="jaheira"		,frame=6 	,helmX=502,helmY=288,helmW=85 }, --"jaheira"		9456	
+{name="jan"			,frame=7 	,helmX=501,helmY=299,helmW=100}, --"jan"			8652	
+{name="keldorn"		,frame=8 	,helmX=503,helmY=274,helmW=90 }, --"keldorn"		9144	
+{name="korgan"		,frame=9 	,helmX=502,helmY=295,helmW=100}, --"korgan"		1138	
+{name="mazzy"		,frame=10	,helmX=502,helmY=296,helmW=100}, --"mazzy"		9104	
+{name="minsc"		,frame=11	,helmX=506,helmY=273,helmW=90 }, --"minsc"		9501	
+{name="nalia"		,frame=12	,helmX=505,helmY=275,helmW=90 }, --"nalia"		9102	
+{name="gnarls"		,frame=13	,helmX=503,helmY=266,helmW=95 }, --"gnarls"		0		
+{name="sarevok"		,frame=14	,helmX=506,helmY=273,helmW=90 }, --"sarevok"		12311	
+{name="valygar"		,frame=15	,helmX=505,helmY=274,helmW=90 }, --"valygar"		9158	
+{name="viconia"		,frame=16	,helmX=502,helmY=288,helmW=85 }, --"viconia"		6132	
+{name="yoshimo"		,frame=17	,helmX=505,helmY=273,helmW=90 }, --"yoshimo"		9923	
+{name="dynaheir"	,frame=18	,helmX=0,helmY=0,helmW=0}, 
+{name="xan"			,frame=19	,helmX=0,helmY=0,helmW=0}, 
+{name="xzar"		,frame=20	,helmX=0,helmY=0,helmW=0}, 
+}
+
+rgEeexMainHand = {
+{name="AX"	,frame=2  },
+{name="BS"	,frame=5  },
+{name="BW"	,frame=3  },
+{name="CB"	,frame=7  },
+{name="CL"	,frame=6  },
+{name="DD"	,frame=10 },
+{name="F0"	,frame=11 },
+{name="F1"	,frame=11 },
+{name="F2"	,frame=28 },
+{name="F3"	,frame=29 },
+{name="FL"	,frame=11 },
+{name="FS"	,frame=27 },
+{name="GS"	,frame=26 },
+{name="HB"	,frame=12 },
+{name="M2"	,frame=15 },
+{name="MC"	,frame=15 },
+{name="MS"	,frame=16 },
+{name="Q2"	,frame=20 },
+{name="Q3"	,frame=20 },
+{name="Q4"	,frame=20 },
+{name="QS"	,frame=20 },
+{name="S0"	,frame=21 },
+{name="S1"	,frame=22 },
+{name="S2"	,frame=24 },
+{name="S3"	,frame=14 },
+{name="SC"	,frame=17 },
+{name="SL"	,frame=18 },
+{name="SP"	,frame=19 },
+{name="SS"	,frame=23 },
+{name="WH"	,frame=13 },
+}
+
+rgEEexOffHand = {
+{name="AX"	,frame=5  ,shield=false},
+{name="C0"	,frame=20 ,shield=true},
+{name="C1"	,frame=21 ,shield=true},
+{name="C2"	,frame=22 ,shield=true},
+{name="C3"	,frame=23 ,shield=true},
+{name="C4"	,frame=24 ,shield=true},
+{name="C5"	,frame=25 ,shield=true},
+{name="C6"	,frame=26 ,shield=true},
+{name="C7"	,frame=27 ,shield=true},
+{name="CL"	,frame=6  ,shield=false},
+{name="D1"	,frame=1  ,shield=true},
+{name="D2"	,frame=2  ,shield=true},
+{name="D3"	,frame=3  ,shield=true},
+{name="D4"	,frame=4  ,shield=true},
+{name="DD"	,frame=7  ,shield=false},
+{name="F0"	,frame=8  ,shield=false},
+{name="F1"	,frame=8  ,shield=false},
+{name="F2"	,frame=19 ,shield=false},
+{name="F3"	,frame=28 ,shield=false},
+{name="FL"	,frame=8  ,shield=false},
+{name="FS"	,frame=18 ,shield=false},
+{name="M2"	,frame=11 ,shield=false},
+{name="MC"	,frame=11 ,shield=false},
+{name="MS"	,frame=12 ,shield=false},
+{name="S0"	,frame=14 ,shield=false},
+{name="S1"	,frame=15 ,shield=false},
+{name="S3"	,frame=10 ,shield=false},
+{name="SC"	,frame=13 ,shield=false},
+{name="SS"	,frame=16 ,shield=false},
+{name="WH"	,frame=9  ,shield=false},
+}
+
+rgEEexHelmets = {
+{name="H0"	,frame=0 },
+{name="H1"	,frame=0 },
+{name="H2"	,frame=0 },
+{name="H3"	,frame=0 },
+{name="H4"	,frame=0 },
+{name="H5"	,frame=0 },
+{name="H6"	,frame=0 },
+{name="H7"	,frame=0 },
+{name="J0"	,frame=1 },
+{name="J1"	,frame=2 },
+{name="J2"	,frame=3 },
+{name="J3"	,frame=4 },
+{name="J4"	,frame=5 },
+{name="J5"	,frame=6 },
+{name="J6"	,frame=7 },
+{name="J7"	,frame=8 },
+{name="J8"	,frame=9 },
+{name="J9"	,frame=10},
+{name="JA"	,frame=11},
+{name="JB"	,frame=12},
+{name="JC"	,frame=13},
+}
+
+rgEEexPolymorph = {
+{name="0x1000"	,frame=16},-- WYVERN_BIG
+{name="0xA000"	,frame=16},-- WYVERN
+{name="0x7200"	,frame=4 },-- BEAR_BLACK
+{name="0x7201"	,frame=3 },-- BEAR_BROWN
+{name="0x7300"	,frame=14},-- ELEMENTAL_EARTH
+{name="0x7301"	,frame=14},-- ELEMENTAL_EARTH_SMALL
+{name="0x7310"	,frame=13},-- ELEMENTAL_FIRE
+{name="0x7311"	,frame=13},-- ELEMENTAL_FIRE_SMALL
+{name="0x7312"	,frame=13},-- ELEMENTAL_FIRE_PURPLE
+{name="0x7313"	,frame=13},-- ELEMENTAL_FIRE_SMALL_PURPLE
+{name="0x7902"	,frame=15},-- SLIME_MUSTARD
+{name="0x7A00"	,frame=2 },-- SPIDER_GIANT
+{name="0x7A01"	,frame=2 },-- SPIDER_HUGE
+{name="0x7A03"	,frame=2 },-- SPIDER_SWORD
+{name="0x7B00"	,frame=1 },-- WOLF
+{name="0x7E00"	,frame=8 },-- WEREWOLF
+{name="0x7E01"	,frame=8 },-- WEREWOLF_GREATER
+{name="0x7F00"	,frame=7 },-- TROLL
+{name="0x7F01"	,frame=6 },-- MINDFLAYER
+{name="0x7F04"	,frame=5 },-- GOLEM_IRON
+{name="0x7F32"	,frame=9 },-- SLAYER
+{name="0x9000"	,frame=11},-- OGRE
+{name="0xE900"	,frame=10},-- SALAMANDER_FIRE
+{name="0x8000"	,frame=12},-- GNOLL
+{name="0x7203"	,frame=18},-- BEAR_POLAR
+{name="0x7B03"	,frame=17},-- WOLF_WINTER
+{name="0xE24D"	,frame=19},-- ELEMENTAL_WATER
+{name="0xE26C"	,frame=19},-- ELEMENTAL_WATER_SMALL
 }

@@ -871,6 +871,11 @@ uiStrings = {
 	RG_SET_INV_LOAD_D = "On opening inventory screen with all-party mode, it iterates through all party members to get current IDs to render correct item slots. With this option, it will only iterate when party members change (or rearrange) or on new game load (more precisely when number of changelog rows are less than 7).\nIMPORTANT NOTE! This option is in BETA as it has not been properly tested yet.",
 	RG_SET_INV_LOAD = "Faster all-party inventory loading",
 	RG_INV_PARTY_INFO = "Note that hotkeys 1-6 must be assigned to character selections for party inventory to work!",
+	RG_INV_HIDE_HELMET = "Hide helmets",
+	RG_INV_EMPTY_SLOT = "Empty slot",
+	RG_SET_EEEX_ITEMCOMP_D = "Shows current and new item statistics next to each other.",
+	RG_SET_EEEX_ITEMCOMP = "EEex Improved Item Comparison",
+	RG_SPELL_SORT = "Sort memorized spells by name or time",
 
 }
 
