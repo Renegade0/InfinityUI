@@ -998,6 +998,12 @@ function updateAttrTable()
 		table.insert(listItems, { 'rgempty','0', '' })
 		table.insert(listItems, { 'rgempty','0', head .. getUiString('RESISTANCES_LABEL') .. ':'})
 		table.insert(listItems, { 'rgempty','0', characters[currentID].proficiencies.resistances})
+		
+		if characters[currentID].proficiencies.weaponStyleBonus ~= nil and characters[currentID].proficiencies.weaponStyleBonus ~= '' then
+			table.insert(listItems, { 'rgempty','0', '' })
+			table.insert(listItems, { 'rgempty','0', head .. getUiString('WEAPON_STYLE_BONUS_LABEL') .. ':'})
+			table.insert(listItems, { 'rgempty','0', trim(characters[currentID].proficiencies.weaponStyleBonus)})
+		end
 		--table.insert(listItems, { 'rgempty','0', '' })
 		table.insert(listItems, { 'rgempty','0', head .. '\n' .. getUiString('ABILITIES_TITLE') ..  ':'})--11976
 		for k, v in ipairs(characters[currentID].proficiencies.ability) do
@@ -10017,6 +10023,7 @@ function rgIsDeadOrDisabled()
 	end
 end
 function rgShouldGreyOutInventory(charid)
+	if charid == nil or characters[charid] == nil then return false end
 	return characters[charid].HP.current <= 0 or rgIsCharacterOrderable(charid) == false
 end
 function rgIsCharacterOrderable(charid)
@@ -26280,16 +26287,17 @@ function rgGetPcNames()
 	if #combatLog < 7 then
 		rgEmptyLog = 0
 	end
-	for i = 0, 5, 1 do
+	for i = 0, Infinity_GetNumCharacters() - 1, 1 do
 		local name = Infinity_GetPortraitTooltip(i)
-		lines = {}
-		for s in name:gmatch("[^\r\n]+") do
-			table.insert(lines, s)
-		end
-		name = lines[1]
-		if Infinity_GetNumCharacters() > i then
-			--table.insert(rgCharNamesTable, name)
-			result = result .. ' ' .. name
+		if name ~= nil then
+			lines = {}
+			for s in name:gmatch("[^\r\n]+") do
+				table.insert(lines, s)
+			end
+			name = lines[1]
+			if name ~= nil then
+				result = result .. ' ' .. name
+			end
 		end
 	end
 	rgCharNames = result
@@ -52106,9 +52114,24 @@ menu
 			end
 			Infinity_SetINIValue('Game Options','RgModernHudRight',RgModernHudRight)
 			
-			Infinity_SetArea('worldMessageBox',13,12,638,52)
-			Infinity_SetArea('messagesRect',0,0,664,76)
-			Infinity_SetArea('messagesHandleY',0,0,664,10)
+			--Infinity_SetArea('worldMessageBox',13,12,638,52)
+			--Infinity_SetArea('messagesRect',0,0,664,76)
+			--Infinity_SetArea('messagesHandleY',0,0,664,10)
+			if RgIsModernHud == 1 then
+				Infinity_SetArea('worldMessageBox',13,12,638,52)
+				Infinity_SetArea('messagesRect',0,0,664,76)
+				Infinity_SetArea('messagesHandleY',0,0,664,10)
+			else
+				--classic HUD: restore the docked box to its real default size (the 76px values above are for the modern HUD and leave a gap)
+				local rgMx,rgMy,rgMw,rgMh = Infinity_GetArea('messagesRect')
+				Infinity_SetArea('worldMessageBox',12,12,640,176)
+				Infinity_SetArea('messagesRect',0,0,664,200)
+				Infinity_SetArea('messagesHandleY',0,0,664,10)
+				toolbarTop = toolbarTop + (200 - rgMh)
+				if worldMessageBoxTop ~= nil then
+					setMessagesY(worldMessageBoxTop)
+				end
+			end
 			--rgGetHotkeySlotPosition()
 			
 			RgSpaceAdvanceDialog = rgSpaceAdvanceDialog
