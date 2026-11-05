@@ -49005,7 +49005,7 @@ menu
 			end
 			"
 	}
-	label
+	text
 	{
 		enabled "journalMode == const.JOURNAL_MODE_JOURNAL and rgLargeJournal == 1 and rgIsJournalBestiary == 2 and rgSelectedBook ~= 0 and rgSelectedBook ~= nil"
 		area		582 178 664 522
