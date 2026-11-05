@@ -1277,6 +1277,7 @@ function rgGetClassLevelString(num)
 		rgLevel = string.match(characters[currentID].classlevel.third.details, '%d.')
 		rgLevelXP = characters[currentID].classlevel.third.xp .. ' / ' .. characters[currentID].classlevel.third.nextLvlXp .. ' XP'
 	end
+    rgClass = string.gsub(rgClass, '\239\188\154', ':') -- full-width colon (zh_CN, ja_JP)
     local rgClass1 = string.match(rgClass, ',.-:')
 	local out = '^D' .. string.match(rgClass1, '[^,:]+') .. ' (' .. string.match(rgLevel, '[^\n]+') .. ') - ^B' .. rgLevelXP
     return out
@@ -1314,6 +1315,7 @@ function rgGetClassName(num)
 	else
 		rgClass = ',' .. characters[currentID].classlevel.third.details
 	end
+    rgClass = string.gsub(rgClass, '\239\188\154', ':') -- full-width colon (zh_CN, ja_JP)
     local rgClass1 = string.match(rgClass, ',.-:')
 	local out = string.match(rgClass1, '[^,:]+')
 	
@@ -11424,6 +11426,7 @@ function rgGetClassLevelInvString(num)
 	else
 		rgClass = ',' .. characters[rgInvId].classlevel.third.details 
 	end
+    rgClass = string.gsub(rgClass, '\239\188\154', ':') -- full-width colon (zh_CN, ja_JP)
     local rgClass1 = string.match(rgClass, ',.-:')
 	local out = string.match(rgClass1, '[^,:]+')
     return out
