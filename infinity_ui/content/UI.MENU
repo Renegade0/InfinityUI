@@ -15243,17 +15243,6 @@ menu
 		text lua "rgString('GIVE_GOLD_LABEL')"
 		action		"C:AddGold(cheatGoldAmt)"
 	}
-	button 
-	{
-		bam 'rgdbuts1'
-		sequence lua "RgUISkin"
-		ScaleToClip
-		area 22 510 166 46
-		text style "button"
-		pad 0 0 0 0
-		clickable false
-		text ""
-	}
 	edit
 	{
 		area		28 521 154 24
@@ -15264,17 +15253,6 @@ menu
 	}
 
 
-	button 
-	{
-		bam 'rgdbuts1'
-		sequence lua "RgUISkin"
-		ScaleToClip
-		area 22 560 166 46
-		text style "button"
-		pad 0 0 0 0
-		clickable false
-		text ""
-	}
 	button 
 	{
 		bam 'rgdbuts1'
