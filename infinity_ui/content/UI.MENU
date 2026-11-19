@@ -3590,6 +3590,7 @@ function prepareSounds(soundTable)
 end
 
 function getSoundStringRef(rowNumber, tab)
+	if tab == nil or rowNumber == nil or tab[rowNumber] == nil then return '' end
 	if ( filenames_stringrefs[tab[rowNumber].sound] ~= nil ) then
 		return Infinity_FetchString(filenames_stringrefs[tab[rowNumber].sound][1])
 	else
