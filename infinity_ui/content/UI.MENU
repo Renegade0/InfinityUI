@@ -22580,6 +22580,35 @@ function storeSplitStack(count)
 	storeScreen:SelectStoreItem(storeItemsVar-1, true);
 	storeScreen:SetStoreItemCount(storeItemsVar-1, count);
 end
+function rgShiftHeld()
+	if not EEex_Key_IsDown or not EEex_Key_GetFromName then return false end
+	return EEex_Key_IsDown(EEex_Key_GetFromName("Left Shift")) or EEex_Key_IsDown(EEex_Key_GetFromName("Right Shift"))
+end
+-- shift-click on a store item: choose how many to buy
+function rgStoreShiftClick()
+	if not rgShiftHeld() then return false end
+	local it = store.storeItems[storeItemsVar]
+	if not it or it.clickable ~= 1 or storeScreen:IsContainer() or storeScreen:IsCloseBagButtonClickable() then return false end
+	local maxCount = it.maxCount or 1
+	if maxCount > 1 then
+		popupRequester(maxCount, storeSplitStack, false)
+	else
+		-- unlimited stock reports 1: buy the chosen number one purchase at a time
+		rgRepeatBuyIdx = storeItemsVar
+		popupRequester(20, rgStoreBuyRepeat, false)
+	end
+	return true
+end
+function rgStoreBuyRepeat(count)
+	for i = 1, count do
+		storeScreen:SelectStoreItem(rgRepeatBuyIdx - 1, true)
+		if not storeScreen:IsBuyItemButtonClickable() then
+			storeScreen:SelectStoreItem(rgRepeatBuyIdx - 1, false)
+			break
+		end
+		storeScreen:OnBuyItemButtonClick()
+	end
+end
 function groupSplitStack(count)
 	storeScreen:SelectGroupItem(storeGroupItemsVar-1, true);
 	storeScreen:SetGroupItemCount(storeGroupItemsVar-1, count);
@@ -23131,25 +23160,27 @@ menu
 		action
 		"
 			storeItemsVar = storeItemsVar + cellNumber - 1
-			rgItemName = ''
-			if store.storeItems[storeItemsVar].clickable == 1 then
-				if not storeScreen:IsCloseBagButtonClickable() or store.storeItems[storeItemsVar].valid == 1 then
-					local highlight = true
-					if(store.storeItems[storeItemsVar].highlight == 1) then highlight = false end
-					storeScreen:SelectStoreItem( storeItemsVar - 1,  highlight)
-					rgItemName = store.storeItems[storeItemsVar].label
-				end
-			end
-			if(store.storeItems[storeItemsVar].highlight == 0) then 
+			if not rgStoreShiftClick() then
 				rgItemName = ''
-			end
-			if storeScreen:IsContainer() then
-				local count = store.storeItems[storeItemsVar].item.count
-				local stock = store.storeItems[storeItemsVar].numInStock
-				if (count > 1) then
-					storeScreen:SetStoreItemCount(storeItemsVar - 1, count)
-				elseif (stock > 1) then
-					storeScreen:SetStoreItemCount(storeItemsVar - 1, stock)
+				if store.storeItems[storeItemsVar].clickable == 1 then
+					if not storeScreen:IsCloseBagButtonClickable() or store.storeItems[storeItemsVar].valid == 1 then
+						local highlight = true
+						if(store.storeItems[storeItemsVar].highlight == 1) then highlight = false end
+						storeScreen:SelectStoreItem( storeItemsVar - 1,  highlight)
+						rgItemName = store.storeItems[storeItemsVar].label
+					end
+				end
+				if(store.storeItems[storeItemsVar].highlight == 0) then 
+					rgItemName = ''
+				end
+				if storeScreen:IsContainer() then
+					local count = store.storeItems[storeItemsVar].item.count
+					local stock = store.storeItems[storeItemsVar].numInStock
+					if (count > 1) then
+						storeScreen:SetStoreItemCount(storeItemsVar - 1, count)
+					elseif (stock > 1) then
+						storeScreen:SetStoreItemCount(storeItemsVar - 1, stock)
+					end
 				end
 			end
 		"
@@ -24124,20 +24155,22 @@ menu
 		scrollbar 'rgdscrl1'
 		action
 		"
-			if store.storeItems[storeItemsVar].clickable == 1 then
-				if not storeScreen:IsCloseBagButtonClickable() or store.storeItems[storeItemsVar].valid == 1 then
-					local highlight = true
-					if(store.storeItems[storeItemsVar].highlight == 1) then highlight = false end
-					storeScreen:SelectStoreItem( storeItemsVar - 1,  highlight)
+			if not rgStoreShiftClick() then
+				if store.storeItems[storeItemsVar].clickable == 1 then
+					if not storeScreen:IsCloseBagButtonClickable() or store.storeItems[storeItemsVar].valid == 1 then
+						local highlight = true
+						if(store.storeItems[storeItemsVar].highlight == 1) then highlight = false end
+						storeScreen:SelectStoreItem( storeItemsVar - 1,  highlight)
+					end
 				end
-			end
-			if storeScreen:IsContainer() then
-				local count = store.storeItems[storeItemsVar].item.count
-				local stock = store.storeItems[storeItemsVar].numInStock
-				if (count > 1) then
-					storeScreen:SetStoreItemCount(storeItemsVar - 1, count)
-				elseif (stock > 1) then
-					storeScreen:SetStoreItemCount(storeItemsVar - 1, stock)
+				if storeScreen:IsContainer() then
+					local count = store.storeItems[storeItemsVar].item.count
+					local stock = store.storeItems[storeItemsVar].numInStock
+					if (count > 1) then
+						storeScreen:SetStoreItemCount(storeItemsVar - 1, count)
+					elseif (stock > 1) then
+						storeScreen:SetStoreItemCount(storeItemsVar - 1, stock)
+					end
 				end
 			end
 		"
@@ -35823,7 +35856,7 @@ menu
 			rgChargenStepClass = 1
 			--currentChargenKit = 0
 			--rgKitSelected = -1
-			createCharScreen:OnClassSelectButtonClick(chargen.class[currentChargenClass].id)
+			rgSelectClass(chargen.class[currentChargenClass].id)
 			createCharScreen:OnDoneButtonClick() 
 			createCharScreen:OnMenuButtonClick()
 		end
@@ -35937,7 +35970,7 @@ menu
 		}
 		action "
 			if chargen.class[currentChargenClass] then
-				createCharScreen:OnClassSelectButtonClick(chargen.class[currentChargenClass].id)
+				rgSelectClass(chargen.class[currentChargenClass].id)
 				
 				if createCharScreen:GetCurrentStep() ~= const.STEP_DUALCLASS_CLASS then
 					createCharScreen:OnDoneButtonClick() 
@@ -36141,7 +36174,7 @@ menu
 				rgChargenStepClass = 0
 				currentChargenKit = nil
 				rgKitSelected = -1
-				createCharScreen:OnClassSelectButtonClick(chargen.class[currentChargenClass].id)
+				rgSelectClass(chargen.class[currentChargenClass].id)
 				createCharScreen:OnCancelButtonClick()
 			end
 			"
@@ -36366,7 +36399,7 @@ menu
 				rgChargenStepClass = 0
 				currentChargenKit = nil
 				rgKitSelected = -1
-				createCharScreen:OnClassSelectButtonClick(chargen.class[currentChargenClass].id)
+				rgSelectClass(chargen.class[currentChargenClass].id)
 				Infinity_PopMenu('CHARGEN_ALIGNMENT')
 				createCharScreen:OnCancelButtonClick()
 				createCharScreen:OnMainBackButtonClick()
@@ -36503,59 +36536,68 @@ function abilityOrGeneralHelp()
 end
 
 function rgAutoroll()
-	if rgIsRolling == 1 then
+	-- fastroll patch v2: rolls until you press the button again (500 rolls per frame),
+	-- storing the best roll above your targets. Press Recall to load it.
+	if rgIsRolling ~= 1 then return end
+	for rgBatch = 1, 500 do
 		createCharScreen:OnAbilityReRollButtonClick()
-		if chargen.totalRoll > rgMinimumRoll+75 then
-			rgIsRolling = 0
-			
-			
-			if string.len(chargen.ability[1].roll) < 5 then
-				local dif = 18 - chargen.ability[1].roll
-				local o = 1
-				
-				--while dif > chargen.extraAbilityPoints do
-				--	o = o + 1
-				--	createCharScreen:OnAbilityPlusMinusButtonClick(o, false)
-				--	if dif == chargen.extraAbilityPoints then 
-				--		for j = 1, dif, 1 do
-				--			createCharScreen:OnAbilityPlusMinusButtonClick(1, true)
-				--		end
-				--		break 
-				--	end
-				--	if o >= 5 then
-				--		o = 0
-				--	end
-				--end
-				
-				for i = 2, 16, 1 do
-					local n = i
-					if i > 11 then
-						n = i - 10
-					elseif i > 6 then
-						n = i - 5
-					end
-					createCharScreen:OnAbilityPlusMinusButtonClick(n, false)
-					if dif == chargen.extraAbilityPoints then 
-						for j = 1, dif, 1 do
-							createCharScreen:OnAbilityPlusMinusButtonClick(1, true)
-						end
-						break 
-					end
-				end
-			end
-			
-			if string.len(chargen.ability[1].roll) == 5 then
-				local mod = string.sub(chargen.ability[1].roll,4,5)
-				local num = mod - 0
-				if num == 0 then num = 100 end
-				if rgMinimumStrDesc() > num then
-					rgIsRolling = 1
-				end
-			end
-			
+		if chargen.totalRoll > rgMinimumRoll+75 and chargen.totalRoll >= rgBestTotal then
+			rgTryStoreRoll()
 		end
 	end
 end
+function rgExceptionalStr()
+	local r = chargen.ability[1].roll
+	if string.len(r) == 5 then
+		local num = string.sub(r,4,5) - 0
+		if num == 0 then num = 100 end
+		return num
+	end
+	return 0
+end
+function rgTryStoreRoll()
+	-- warrior classes: move spare points into Strength (original Infinity UI++ behaviour)
+	if rgMinStrModEnabled() and string.len(chargen.ability[1].roll) < 5 then
+		local dif = 18 - chargen.ability[1].roll
+		for i = 2, 16, 1 do
+			local n = i
+			if i > 11 then
+				n = i - 10
+			elseif i > 6 then
+				n = i - 5
+			end
+			createCharScreen:OnAbilityPlusMinusButtonClick(n, false)
+			if dif == chargen.extraAbilityPoints then
+				for j = 1, dif, 1 do
+					createCharScreen:OnAbilityPlusMinusButtonClick(1, true)
+				end
+				break
+			end
+		end
+	end
+	local exc = rgExceptionalStr()
+	if rgMinStrModEnabled() and rgMinimumStrModifier > 0 and exc < rgMinimumStrDesc() then
+		return
+	end
+	if chargen.totalRoll > rgBestTotal or exc > rgBestExc then
+		rgBestTotal = chargen.totalRoll
+		rgBestExc = exc
+		createCharScreen:OnAbilityStoreButtonClick()
+		rgStoreFlash = 22
+	end
+end
+function rgBestDesc()
+	if not rgBestTotal or rgBestTotal == 0 then return "" end
+	local s = "Stored total: " .. rgBestTotal
+	if rgStoreFlash and rgStoreFlash > 0 then
+		rgStoreFlash = rgStoreFlash - 1
+		s = s .. "\nNEW BEST!"
+	end
+	return s
+end
+rgBestTotal = 0
+rgBestExc = 0
+rgStoreFlash = 0
 function rgMinimumRollDesc()
 	return rgMinimumRoll+75
 end
@@ -36587,8 +36629,18 @@ function rgRerollButtonName()
 	end
 	
 end
+function rgSelectClass(id)
+	rgChosenClassId = id
+	createCharScreen:OnClassSelectButtonClick(id)
+end
 function rgMinStrModEnabled()
-	local id = chargen.class[currentChargenClass].id
+	-- class remembered when it was picked; fall back to the class list selection
+	local id = rgChosenClassId
+	if not id then
+		local c = currentChargenClass and chargen.class and chargen.class[currentChargenClass]
+		id = c and c.id
+	end
+	if not id then return false end
 	if id == 2 or id == 6 or id == 7 or id == 8 or id == 9 or id == 10 or id == 12 or id == 16 or id == 17 or id == 18 then
 		return true
 	else
@@ -36617,7 +36669,7 @@ menu
 	modal
 	align center center
 	ignoreesc
-	onopen "ticksPassed = 0; ticksStarting = 0; rgIsRolling = 0; rgDragonEnabled = false; rgIwdSkillPoints = 0"
+	onopen "ticksPassed = 0; ticksStarting = 0; rgIsRolling = 0; rgDragonEnabled = false; rgIwdSkillPoints = 0; rgBestTotal = 0; rgBestExc = 0; rgStoreFlash = 0"
 	label
 	{
 		area	0 0 768 768
@@ -36808,16 +36860,13 @@ menu
 		text lua "rgRerollButtonName()"
 		text style "button"
 		action "
-			if rgMinimumRoll == 0 and rgMinimumStrModifier == 0 then
-				createCharScreen:OnAbilityReRollButtonClick()
+			-- always auto-roll (targets optional): press to start, press again to stop
+			if rgIsRolling == 0 then
+				rgIsRolling = 1
+				rgDragonEnabled = true
 			else
-				if rgIsRolling == 0 then
-					rgIsRolling = 1
-					rgDragonEnabled = true
-				else
-					rgIsRolling = 0
-					rgDragonEnabled = false
-				end
+				rgIsRolling = 0
+				rgDragonEnabled = false
 			end
 			
 		" 
@@ -36905,6 +36954,13 @@ menu
 		enabled "rgMinStrModEnabled()"
 		area 1066 350 200 48
 		text lua "rgMinimumStrDesc()"
+		text style "normal"
+		text align center top
+	}
+	text
+	{
+		area 1066 410 200 60
+		text lua "rgBestDesc()"
 		text style "normal"
 		text align center top
 	}
