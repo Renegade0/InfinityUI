@@ -12,6 +12,7 @@ my_radar_sprite =
 --rgRadarKey = ";"
 
 function my_Radar_KeyPressedListener(key)
+	if not RgRadarKey or RgRadarKey == '' then return end
 	if key ~= EEex_Key_GetFromName(RgRadarKey) then return end -- PECCA
 
 	Infinity_PopMenu('RADAR')
