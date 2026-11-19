@@ -1078,6 +1078,7 @@ function updateAttrTable()
 
 end
 function rgGetTHAC0(rgid, body)
+	if rgid == nil or characters[rgid] == nil then return '' end
 	local str = getUiString('THAC0_LABEL') .. ': ' .. characters[rgid].THAC0.current .. body
 	if(characters[rgid].THAC0.offhand) then
 		str = str .. "\n" .. getUiString('OFF_HAND_THAC0') .. ': ' .. characters[rgid].THAC0.offhand
@@ -1085,6 +1086,7 @@ function rgGetTHAC0(rgid, body)
 	return str
 end
 function rgGetDamage(rgid, body)
+	if rgid == nil or characters[rgid] == nil then return '' end
 	local str = getUiString('DAMAGE_LABEL') .. ': ' .. characters[rgid].damage.min .. ' - ' .. characters[rgid].damage.max .. body
 	if(characters[rgid].damage.minOffhand and characters[rgid].damage.maxOffhand) then
 		str = str .. "\n"  .. getUiString('OFF_HAND_DAMAGE') .. ': ' .. characters[rgid].damage.minOffhand .. ' - ' .. characters[rgid].damage.maxOffhand 
@@ -1092,6 +1094,7 @@ function rgGetDamage(rgid, body)
 	return str
 end
 function rgGetTHAC0simle(rgid)
+	if rgid == nil or characters[rgid] == nil then return '' end
 	local str = characters[rgid].THAC0.current
 	if(characters[rgid].THAC0.offhand) then
 		str = str .. '^X / ' .. characters[rgid].THAC0.offhand
@@ -1099,6 +1102,7 @@ function rgGetTHAC0simle(rgid)
 	return str
 end
 function rgGetDamagesimle(rgid)
+	if rgid == nil or characters[rgid] == nil then return '' end
 	local str =  characters[rgid].damage.min .. ' - ' .. characters[rgid].damage.max
 	if(characters[rgid].damage.minOffhand and characters[rgid].damage.maxOffhand) then
 		str = str .. '^X / ' .. characters[rgid].damage.minOffhand .. '-' .. characters[rgid].damage.maxOffhand
@@ -1106,6 +1110,7 @@ function rgGetDamagesimle(rgid)
 	return str
 end
 function rgGetTHAC0simleInv(rgid)
+	if rgid == nil or characters[rgid] == nil then return '' end
 	local str = characters[rgid].THAC0.current
 	if(characters[rgid].THAC0.offhand) then
 		str = str .. '\n' .. characters[rgid].THAC0.offhand
@@ -1113,6 +1118,7 @@ function rgGetTHAC0simleInv(rgid)
 	return str
 end
 function rgGetDamagesimleInv(rgid)
+	if rgid == nil or characters[rgid] == nil then return '' end
 	local str =  characters[rgid].damage.min .. '-' .. characters[rgid].damage.max
 	if(characters[rgid].damage.minOffhand and characters[rgid].damage.maxOffhand) then
 		str = str .. '\n' .. characters[rgid].damage.minOffhand .. '-' .. characters[rgid].damage.maxOffhand
@@ -10028,6 +10034,7 @@ function rgShouldGreyOutInventory(charid)
 	return characters[charid].HP.current <= 0 or rgIsCharacterOrderable(charid) == false
 end
 function rgIsCharacterOrderable(charid)
+	if charid == nil or characters[charid] == nil then return true end
 	for k, v in pairs(characters[charid].statusEffects) do
 		if rgGetGameEngineString(10381,	10381,	10381	,10381 ) == Infinity_FetchString(v.strRef) --Berserk 	
 		or rgGetGameEngineString(14672,	14672,	1476	,14672 ) == Infinity_FetchString(v.strRef) --Charmed 	
@@ -10322,6 +10329,7 @@ end
 
 
 function rgGetCombatStatsString(charId)
+	if charId == nil or characters[charId] == nil then return '' end
 	--out =
 	--'^D' .. t('ARMOR_CLASS_LABEL') .. ': ' .. characters[id].AC.current .. '^B\n' ..
 	--Infinity_FetchString(11766) .. '\n'  ..
